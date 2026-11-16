@@ -37,7 +37,7 @@ Two families of art share one palette and one light direction, so they always lo
   Never use green #00FF00 inside the subject itself; use the palette green #58CC02 instead.
 - Square 1024 × 1024 unless the asset list says otherwise.
 - **People:** friendly cartoon children, diverse skin tones, hair and faces. Modest everyday Saudi-appropriate clothing:
-  long sleeves or a t-shirt with long trousers. Girls may wear a hijab or have their hair visible.
+  long sleeves or a t-shirt with long trousers.
   No real people and no likeness of existing cartoon characters or brands.
 - **Original designs only:** nothing resembling a known character, mascot, toy or brand.
 - Child-safe and warm. Nothing scary: germs and illnesses are cute and simple, never gross.

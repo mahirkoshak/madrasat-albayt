@@ -37,8 +37,6 @@ add('mascot-sheet', 'art/raw/mascot/mascot-sheet.png', 1, '3d',
     f'Character reference sheet of {MASCOT}: front view, 3/4 view, side view and back view standing in a row, same size, neutral happy expression',
     size='1536x1024')
 add('mascot-welcome', 'assets/mascot/mascot-welcome.webp', 1, '3d', f'{MASCOT}, waving hello with one paw, big happy smile, full body', '👋')
-add('avatar-girl-hijab', 'assets/avatars/avatar-girl-hijab.webp', 1, '3d',
-    f'Head-and-shoulders portrait avatar of {KIDS}: a girl with warm medium-brown skin, a soft pink hijab, a happy open smile; framed in a circle-friendly composition', '')
 add('avatar-fox', 'assets/avatars/avatar-fox.webp', 1, '3d', 'Head-and-shoulders portrait avatar of an original friendly orange fox cub with a cream muzzle, big curious eyes, a tiny green scarf', '🦊')
 add('badge-champion-earned', 'assets/badges/badge-champion-earned.webp', 1, '3d',
     'A round gold medal with a soft ribbon in blue and gold, a raised trophy shape in the centre, little sparkles around it (no text)', '🏆')
@@ -65,10 +63,10 @@ AVATARS = [
     ('boy-glasses', 'a boy with light-olive skin, neat short brown hair and round glasses, wearing a green hoodie', ''),
     ('boy-cap', 'a boy with deep brown skin and short hair under a backwards orange cap, wearing a sports jersey', ''),
     ('boy-thobe', 'a boy with medium skin and short wavy hair, wearing a white thobe', ''),
-    ('girl-hijab', 'a girl with warm medium-brown skin, a soft pink hijab', ''),
+    ('girl-bob', 'a girl with warm medium-brown skin and a short black bob with a pink hairclip, wearing a coral long-sleeve top', ''),
     ('girl-braids', 'a girl with dark brown skin and two puffy braids with purple hair ties, wearing a yellow long-sleeve top', ''),
     ('girl-ponytail', 'a girl with light skin, a high ginger-brown ponytail and freckles, wearing a teal long-sleeve top', ''),
-    ('girl-hijab-blue', 'a girl with fair-olive skin and a sky-blue hijab, wearing a cosy cream cardigan', ''),
+    ('girl-waves', 'a girl with fair-olive skin and long wavy brown hair with a sky-blue headband, wearing a cosy cream cardigan', ''),
     ('fox', 'an original friendly orange fox cub with a cream muzzle and a tiny green scarf', '🦊'),
     ('cat', 'an original playful tabby cat kitten with big green eyes and a little bell collar', ''),
     ('panda', 'an original chubby panda cub holding a bamboo leaf', '🐼'),

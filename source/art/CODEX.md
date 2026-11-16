@@ -32,7 +32,7 @@ Each manifest entry has `id`, `phase`, `size` and `prompt`.
 5. After each phase, commit with the message `art: phase N` and push to `main` (not a separate branch).
 
 ## Order
-- **Phase 1 (style test): generate only these 6, push, then STOP and wait for the owner's approval.**
+- **Phase 1 (style test): done and approved.**
 - Phases 2–6: core artwork, one phase at a time, pushing after each.
 - Phases 7–8: content pictures. Only start these when the owner asks.
   You can do them in batches of about 50, pushing after each batch.
