@@ -3,7 +3,7 @@
   python3 tools/art_process.py RAW_DIR            # e.g. ../site-repo/art-source/raw
 
 For every art/raw/<id>.png that is listed in art/manifest-*.json:
-  1. removes the flat chroma-green background (soft edges kept, green spill removed),
+  1. keeps a transparent PNG as it is; otherwise removes the flat chroma-green background (soft edges kept, green spill removed),
   2. trims empty space and pads to a square with a small margin,
   3. saves the WebP at the manifest's 'file' path: 512 px, plus a 128 px '-sm' copy for avatars, badges and rewards.
 Prints anything that looks wrong (background left over, image missing).
@@ -45,7 +45,10 @@ def main(raw_dir):
     for e in entries:
         src = os.path.join(raw_dir, e['id'] + '.png')
         if not os.path.exists(src) or not e['file'].startswith('assets/'): continue
-        cut = key_green(Image.open(src))
+        im = Image.open(src)
+        # Codex may hand over a transparent PNG already; only key out green when the background is solid
+        if im.mode in ('RGBA', 'LA') and min(im.getchannel('A').getextrema()) < 10: cut = im.convert('RGBA')
+        else: cut = key_green(im)
         left = np.mean(np.asarray(cut.getchannel('A'))[:8, :] > 200)   # top rows should be see-through
         if left > 0.2: print(f'check {e["id"]}: background not fully removed ({left:.0%} of the top edge)')
         dst = os.path.join(ROOT, 'dist', e['file'])
