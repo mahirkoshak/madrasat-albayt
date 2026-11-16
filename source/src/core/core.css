@@ -1,0 +1,31 @@
+/* Shared components (not scoped): toast, celebration, drag & drop states,
+   mastery bars. Built on the theme variables from portal/theme.css. */
+.hs-toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-140%);z-index:60;background:var(--t-ink-strong);color:#fff;
+  font-family:var(--t-font);font-weight:800;font-size:19px;padding:10px 20px;border-radius:16px;box-shadow:0 6px 0 rgba(0,0,0,.25);
+  transition:transform .25s ease;pointer-events:none;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.hs-toast.on{transform:translate(-50%,0)}
+.hs-party{position:fixed;inset:0;pointer-events:none;z-index:59;overflow:hidden}
+.hs-party span{position:absolute;bottom:-80px;font-size:46px;animation:hsrise 2.4s ease-out forwards}
+@keyframes hsrise{to{transform:translateY(-120vh) rotate(25deg)}}
+
+/* drag & drop */
+.hs-drag{touch-action:none;-webkit-user-select:none;user-select:none;cursor:grab}
+/* stop iPad/iPhone from showing their own drag picture or long-press menu on top of ours */
+.hs-dnd,.hs-dnd *{-webkit-touch-callout:none;-webkit-user-drag:none;-webkit-user-select:none;user-select:none}
+.hs-picked{outline:4px solid var(--t-blue)!important;outline-offset:2px;transform:translateY(-4px) scale(1.04)}
+.hs-drag{transition:transform .2s ease}
+.hs-moving{z-index:70!important;pointer-events:none;transition:none!important;box-shadow:0 12px 24px rgba(0,0,0,.25)!important;opacity:.97}
+.hs-ready{outline:3px dashed var(--t-blue);outline-offset:3px}
+.hs-over{outline:4px solid var(--t-green-edge)!important;background:var(--t-green-soft)!important}
+.hs-done{opacity:.25;pointer-events:none}
+
+/* mastery bar */
+.hs-meter{height:12px;border-radius:99px;background:var(--t-line);overflow:hidden}
+.hs-meter i{display:block;height:100%;border-radius:99px;background:var(--t-green);transition:width .4s}
+.hs-meter.mid i{background:var(--t-gold)}
+.hs-meter.low i{background:var(--t-orange)}
+
+@keyframes hspop{0%{transform:scale(.6)}70%{transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes hsshake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+.hs-pop{animation:hspop .35s}
+.hs-shake{animation:hsshake .4s}
