@@ -1,0 +1,1361 @@
+[
+ {
+  "id": "mascot-sheet",
+  "file": "art/raw/mascot/mascot-sheet.png",
+  "phase": 1,
+  "style": "3d",
+  "size": "1536x1024",
+  "replaces": "",
+  "prompt": "Character reference sheet of \"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge: front view, 3/4 view, side view and back view standing in a row, same size, neutral happy expression. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-welcome",
+  "file": "assets/mascot/mascot-welcome.webp",
+  "phase": 1,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "👋",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, waving hello with one paw, big happy smile, full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-girl-hijab",
+  "file": "assets/avatars/avatar-girl-hijab.webp",
+  "phase": 1,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a girl with warm medium-brown skin, a soft pink hijab, a happy open smile; framed in a circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-fox",
+  "file": "assets/avatars/avatar-fox.webp",
+  "phase": 1,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🦊",
+  "prompt": "Head-and-shoulders portrait avatar of an original friendly orange fox cub with a cream muzzle, big curious eyes, a tiny green scarf. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "badge-champion-earned",
+  "file": "assets/badges/badge-champion-earned.webp",
+  "phase": 1,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🏆",
+  "prompt": "A round gold medal with a soft ribbon in blue and gold, a raised trophy shape in the centre, little sparkles around it (no text). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "subject-science",
+  "file": "assets/catalog/subject-science.webp",
+  "phase": 1,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔬",
+  "prompt": "A friendly microscope beside a green leaf and a small round planet, science subject illustration. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "logo-mark",
+  "file": "art/raw/brand/logo-mark.png",
+  "phase": 2,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "App icon symbol for a home learning site: a small cosy house whose roof is an open book, with a gold star above the chimney, inside a rounded square of cream. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Used as the source for an SVG logo; keep shapes very simple."
+ },
+ {
+  "id": "app-icon",
+  "file": "assets/brand/app-icon.webp",
+  "phase": 2,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "App icon: \"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge peeking out of an open book shaped like a little house, rounded-square composition, cheerful. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-thinking",
+  "file": "assets/mascot/mascot-thinking.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🤔",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, tapping chin with one paw, looking up thoughtfully, a small question-mark-shaped cloud of light above (no text), full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-cheer",
+  "file": "assets/mascot/mascot-cheer.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🎉",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, jumping with both arms up, eyes closed with joy, full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-celebrate",
+  "file": "assets/mascot/mascot-celebrate.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🏆",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, holding a small gold trophy above its head, confetti around, full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-encourage",
+  "file": "assets/mascot/mascot-encourage.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "💪",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, giving a gentle thumbs up with a warm reassuring smile, full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-read",
+  "file": "assets/mascot/mascot-read.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "📖",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, sitting and reading an open book, happy and focused, full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-point",
+  "file": "assets/mascot/mascot-point.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "👆",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, pointing to the left with one paw, friendly helpful expression, full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-sleep",
+  "file": "assets/mascot/mascot-sleep.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🌙",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, sleeping curled up on a small pillow, with a tiny moon nearby, full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "mascot-sad-soft",
+  "file": "assets/mascot/mascot-sad-soft.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🙂",
+  "prompt": "\"Koko\", an original small round soft-3D koala child: dove-grey fur, cream belly and inner ears, big fluffy ears, large oval dark nose, big warm brown eyes, rosy cheeks, wearing a small mint-teal (#2BBBAD) backpack with a gold star badge, slightly sad but hopeful face, holding a little star, kind eyes, full body. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-boy-curly",
+  "file": "assets/avatars/avatar-boy-curly.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a boy with tan skin and short curly black hair, wearing a light blue t-shirt with a small star, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-boy-curly-happy",
+  "file": "assets/avatars/avatar-boy-curly-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-boy-curly (an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a boy with tan skin and short curly black hair, wearing a light blue t-shirt with a small star), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-boy-curly.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-boy-glasses",
+  "file": "assets/avatars/avatar-boy-glasses.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a boy with light-olive skin, neat short brown hair and round glasses, wearing a green hoodie, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-boy-glasses-happy",
+  "file": "assets/avatars/avatar-boy-glasses-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-boy-glasses (an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a boy with light-olive skin, neat short brown hair and round glasses, wearing a green hoodie), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-boy-glasses.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-boy-cap",
+  "file": "assets/avatars/avatar-boy-cap.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a boy with deep brown skin and short hair under a backwards orange cap, wearing a sports jersey, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-boy-cap-happy",
+  "file": "assets/avatars/avatar-boy-cap-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-boy-cap (an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a boy with deep brown skin and short hair under a backwards orange cap, wearing a sports jersey), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-boy-cap.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-boy-thobe",
+  "file": "assets/avatars/avatar-boy-thobe.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a boy with medium skin and short wavy hair, wearing a white thobe, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-boy-thobe-happy",
+  "file": "assets/avatars/avatar-boy-thobe-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-boy-thobe (an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a boy with medium skin and short wavy hair, wearing a white thobe), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-boy-thobe.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-girl-hijab-happy",
+  "file": "assets/avatars/avatar-girl-hijab-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-girl-hijab (an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a girl with warm medium-brown skin, a soft pink hijab), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-girl-hijab.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-girl-braids",
+  "file": "assets/avatars/avatar-girl-braids.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a girl with dark brown skin and two puffy braids with purple hair ties, wearing a yellow long-sleeve top, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-girl-braids-happy",
+  "file": "assets/avatars/avatar-girl-braids-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-girl-braids (an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a girl with dark brown skin and two puffy braids with purple hair ties, wearing a yellow long-sleeve top), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-girl-braids.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-girl-ponytail",
+  "file": "assets/avatars/avatar-girl-ponytail.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a girl with light skin, a high ginger-brown ponytail and freckles, wearing a teal long-sleeve top, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-girl-ponytail-happy",
+  "file": "assets/avatars/avatar-girl-ponytail-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-girl-ponytail (an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a girl with light skin, a high ginger-brown ponytail and freckles, wearing a teal long-sleeve top), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-girl-ponytail.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-girl-hijab-blue",
+  "file": "assets/avatars/avatar-girl-hijab-blue.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a girl with fair-olive skin and a sky-blue hijab, wearing a cosy cream cardigan, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-girl-hijab-blue-happy",
+  "file": "assets/avatars/avatar-girl-hijab-blue-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-girl-hijab-blue (an original cartoon child character, big head small body (about 1:1.2), friendly expressive face, modest everyday clothes (long sleeves or t-shirt with long trousers): a girl with fair-olive skin and a sky-blue hijab, wearing a cosy cream cardigan), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-girl-hijab-blue.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-fox-happy",
+  "file": "assets/avatars/avatar-fox-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-fox (an original friendly orange fox cub with a cream muzzle and a tiny green scarf), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-fox.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-cat",
+  "file": "assets/avatars/avatar-cat.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original playful tabby cat kitten with big green eyes and a little bell collar, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-cat-happy",
+  "file": "assets/avatars/avatar-cat-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-cat (an original playful tabby cat kitten with big green eyes and a little bell collar), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-cat.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-panda",
+  "file": "assets/avatars/avatar-panda.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🐼",
+  "prompt": "Head-and-shoulders portrait avatar of an original chubby panda cub holding a bamboo leaf, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-panda-happy",
+  "file": "assets/avatars/avatar-panda-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-panda (an original chubby panda cub holding a bamboo leaf), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-panda.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-dragon",
+  "file": "assets/avatars/avatar-dragon.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original cute baby dragon, mint green with a cream belly, tiny wings and rounded horns, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-dragon-happy",
+  "file": "assets/avatars/avatar-dragon-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-dragon (an original cute baby dragon, mint green with a cream belly, tiny wings and rounded horns), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-dragon.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-lion",
+  "file": "assets/avatars/avatar-lion.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🦁",
+  "prompt": "Head-and-shoulders portrait avatar of an original lion cub with a fluffy golden mane and a big grin, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-lion-happy",
+  "file": "assets/avatars/avatar-lion-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-lion (an original lion cub with a fluffy golden mane and a big grin), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-lion.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-bunny",
+  "file": "assets/avatars/avatar-bunny.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🐰",
+  "prompt": "Head-and-shoulders portrait avatar of an original soft white bunny with long floppy ears and pink cheeks, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-bunny-happy",
+  "file": "assets/avatars/avatar-bunny-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-bunny (an original soft white bunny with long floppy ears and pink cheeks), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-bunny.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-robot",
+  "file": "assets/avatars/avatar-robot.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🚀",
+  "prompt": "Head-and-shoulders portrait avatar of an original friendly round robot with a sky-blue body, a glowing heart light and antenna with a small star, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-robot-happy",
+  "file": "assets/avatars/avatar-robot-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-robot (an original friendly round robot with a sky-blue body, a glowing heart light and antenna with a small star), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-robot.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-unicorn",
+  "file": "assets/avatars/avatar-unicorn.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🦄",
+  "prompt": "Head-and-shoulders portrait avatar of an original magical baby unicorn with a pastel rainbow mane and a gold horn, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-unicorn-happy",
+  "file": "assets/avatars/avatar-unicorn-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-unicorn (an original magical baby unicorn with a pastel rainbow mane and a gold horn), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-unicorn.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-star-sprite",
+  "file": "assets/avatars/avatar-star-sprite.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "⭐",
+  "prompt": "Head-and-shoulders portrait avatar of an original magical star sprite: a soft golden star-shaped creature with a happy face and tiny arms, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-star-sprite-happy",
+  "file": "assets/avatars/avatar-star-sprite-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-star-sprite (an original magical star sprite: a soft golden star-shaped creature with a happy face and tiny arms), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-star-sprite.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "avatar-cloud-pal",
+  "file": "assets/avatars/avatar-cloud-pal.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Head-and-shoulders portrait avatar of an original magical fluffy cloud creature with a tiny rainbow tail and a cheerful face, happy smile, circle-friendly composition. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "avatar-cloud-pal-happy",
+  "file": "assets/avatars/avatar-cloud-pal-happy.webp",
+  "phase": 3,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same character as avatar-cloud-pal (an original magical fluffy cloud creature with a tiny rainbow tail and a cheerful face), celebrating with a big joyful laugh and sparkles, head-and-shoulders. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere. Use assets/avatars/avatar-cloud-pal.webp as the reference image so the character matches exactly."
+ },
+ {
+  "id": "grade-kg",
+  "file": "assets/catalog/grade-kg.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🧸",
+  "prompt": "Colourful building blocks, a soft teddy bear and a crayon, kindergarten illustration. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "grade-g3",
+  "file": "assets/catalog/grade-g3.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🧒",
+  "prompt": "A small school backpack with a pencil and a ruler, early primary school illustration, blue accents. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "grade-g4",
+  "file": "assets/catalog/grade-g4.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🎒",
+  "prompt": "A bigger school backpack with a notebook and a compass tool, primary school illustration, purple accents. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "subject-math",
+  "file": "assets/catalog/subject-math.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "➗",
+  "prompt": "Friendly plus, minus, times and divide shapes as soft rounded blocks with an abacus (no digits). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "subject-arabic",
+  "file": "assets/catalog/subject-arabic.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "📝",
+  "prompt": "An open notebook with a reed pen and an ink pot, decorative Arabic geometric pattern border (no letters). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "subject-english",
+  "file": "assets/catalog/subject-english.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔠",
+  "prompt": "A speech bubble and an open book with a small British-style red bus toy (no letters). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "subject-early",
+  "file": "assets/catalog/subject-early.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔤",
+  "prompt": "Two alphabet blocks and a speech bubble with sparkles, early language learning (blank block faces, no letters). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "subject-stories",
+  "file": "assets/catalog/subject-stories.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "📖",
+  "prompt": "An open storybook with a crescent moon and small stars rising from its pages. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "dict-cover",
+  "file": "assets/catalog/dict-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "📖",
+  "prompt": "A big friendly purple dictionary book with a magnifying glass and floating sparkles. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g3sciearth-cover",
+  "file": "assets/units/unit-g3sciearth-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🌎",
+  "prompt": "Earth science: a cut-away hill showing soil layers, a small volcano, a fossil shell and a rock. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g4scieco-cover",
+  "file": "assets/units/unit-g4scieco-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🌍",
+  "prompt": "Ecosystems: a small desert scene with a palm tree, a camel, a lizard, a sun and a pond. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g4scihealth-cover",
+  "file": "assets/units/unit-g4scihealth-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🩺",
+  "prompt": "Human health: a heart, a toothbrush, a soap bar and a plate of healthy food. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g3sci-living-cover",
+  "file": "assets/units/unit-g3sci-living-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🌱",
+  "prompt": "Living things: a sprouting seedling, a ladybug and a leaf. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g3sci-eco-cover",
+  "file": "assets/units/unit-g3sci-eco-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🦁",
+  "prompt": "Ecosystem: a lion cub in tall grass under a tree. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g3sci-weather-cover",
+  "file": "assets/units/unit-g3sci-weather-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⛅",
+  "prompt": "Weather and climate: a sun peeking behind a cloud with a few raindrops and a wind swirl. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g4sci-cells-cover",
+  "file": "assets/units/unit-g4sci-cells-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🦠",
+  "prompt": "Cells and classification: a friendly round cell under a magnifying glass, a leaf and a mushroom. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g4sci-animals-cover",
+  "file": "assets/units/unit-g4sci-animals-cover.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🐾",
+  "prompt": "Animals and their body systems: a paw print, a bone and a friendly heart. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "dict-mode-en",
+  "file": "assets/catalog/dict-mode-en.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "An open book with a small English flag-coloured bookmark and a sparkle (no letters). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "dict-mode-ar",
+  "file": "assets/catalog/dict-mode-ar.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "An open book with a green bookmark and a reed pen, Arabic geometric pattern on the cover (no letters). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-puzzle-card",
+  "file": "assets/games/kg/game-puzzle-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🧩",
+  "prompt": "A jigsaw puzzle with two pieces lifting out, showing part of a sunny garden picture. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-compose-card",
+  "file": "assets/games/kg/game-compose-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔺🟥",
+  "prompt": "A house built from simple shapes: a red square, a triangle roof and a round window. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-where-card",
+  "file": "assets/games/kg/game-where-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🐱📦",
+  "prompt": "A cute cat sitting inside an open cardboard box, with a ball beside the box. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-robot-card",
+  "file": "assets/games/kg/game-robot-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🤖🍎",
+  "prompt": "A small friendly robot on a checkered path heading toward a red apple. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-story-card",
+  "file": "assets/games/kg/game-story-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🥚🐣🐥",
+  "prompt": "Three steps of a story: an egg, a cracking egg, a fluffy chick. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-count-card",
+  "file": "assets/games/kg/game-count-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🍎🍎🍎",
+  "prompt": "Three shiny red apples in a row with little sparkles (no numbers). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-col-card",
+  "file": "assets/games/kg/game-col-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔴🔵",
+  "prompt": "Paint splashes of red, blue, yellow and green with a paintbrush. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-shp-card",
+  "file": "assets/games/kg/game-shp-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⭕🔺",
+  "prompt": "A circle, a triangle and a square as soft chunky toy blocks. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-ani-card",
+  "file": "assets/games/kg/game-ani-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🐈🐄",
+  "prompt": "A cat and a cow looking at each other happily. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-pat-card",
+  "file": "assets/games/kg/game-pat-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔴🔵🔴❓",
+  "prompt": "A row of red and blue beads in a pattern with a glowing empty spot at the end. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-odd-card",
+  "file": "assets/games/kg/game-odd-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🍎🍌🐈",
+  "prompt": "Two fruits and one kitten in a row, the kitten looking surprised. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-memory-card",
+  "file": "assets/games/kg/game-memory-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⭐❓⭐",
+  "prompt": "Two face-down cards and one flipped card showing a star. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-basket-card",
+  "file": "assets/games/kg/game-basket-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🧺🍎",
+  "prompt": "A woven basket with apples dropping into it. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-first-card",
+  "file": "assets/games/kg/game-first-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🐇",
+  "prompt": "A rabbit beside a soft speech bubble (no letters). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-menu-arabic-card",
+  "file": "assets/games/kg/game-menu-arabic-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Arabic learning for young children: a crescent-shaped bookmark in a picture book. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-menu-english-card",
+  "file": "assets/games/kg/game-menu-english-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "English learning for young children: a picture book with an apple on the cover. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-menu-numbers-card",
+  "file": "assets/games/kg/game-menu-numbers-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "Counting for young children: stacking rings in rainbow colours. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-menu-thinking-card",
+  "file": "assets/games/kg/game-menu-thinking-card.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🧠",
+  "prompt": "Thinking games for young children: a friendly lightbulb with a puzzle piece. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-fam",
+  "file": "assets/dict/topic-fam.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "👨‍👩‍👧",
+  "prompt": "a happy family of three cartoon figures holding hands. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-body",
+  "file": "assets/dict/topic-body.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🫀",
+  "prompt": "a friendly heart with a stethoscope. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-food",
+  "file": "assets/dict/topic-food.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🍎",
+  "prompt": "an apple, bread and a glass of milk. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-ani",
+  "file": "assets/dict/topic-ani.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🐾",
+  "prompt": "a paw print with a little bird. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-home",
+  "file": "assets/dict/topic-home.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🏠",
+  "prompt": "a cosy house with a door and a window. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-sch",
+  "file": "assets/dict/topic-sch.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🏫",
+  "prompt": "a school building with a flag pole (blank flag). Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-town",
+  "file": "assets/dict/topic-town.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🏙",
+  "prompt": "a small town with a shop and a mosque minaret. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-job",
+  "file": "assets/dict/topic-job.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "👩‍⚕️",
+  "prompt": "a doctor coat, a chef hat and a hard hat. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-trans",
+  "file": "assets/dict/topic-trans.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🚗",
+  "prompt": "a small car, a bus and a plane. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-nat",
+  "file": "assets/dict/topic-nat.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🌦",
+  "prompt": "a sun, a cloud and a tree. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-time",
+  "file": "assets/dict/topic-time.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⏰",
+  "prompt": "a round friendly clock. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "topic-sport",
+  "file": "assets/dict/topic-sport.webp",
+  "phase": 4,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⚽",
+  "prompt": "a football and a bicycle. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "badge-streak3-earned",
+  "file": "assets/badges/badge-streak3-earned.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "A round gold medal with a soft blue and gold ribbon, a friendly flame raised in the centre, small sparkles (no text). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "badge-stars100-earned",
+  "file": "assets/badges/badge-stars100-earned.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "A round gold medal with a soft blue and gold ribbon, a big star surrounded by small stars raised in the centre, small sparkles (no text). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "badge-lesson-earned",
+  "file": "assets/badges/badge-lesson-earned.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "A round gold medal with a soft blue and gold ribbon, an open book with a check-mark shape made of light raised in the centre, small sparkles (no text). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "star",
+  "file": "assets/rewards/star.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "⭐",
+  "prompt": "A single plump golden star with a soft glow and a tiny shine, the currency of a kids game. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "star-burst",
+  "file": "assets/rewards/star-burst.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🌟",
+  "prompt": "A burst of several plump golden stars flying outward with sparkles. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "gift-box",
+  "file": "assets/rewards/gift-box.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🎁",
+  "prompt": "A wrapped gift box in pink and gold with a big bow, slightly bouncing. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "goal-flag",
+  "file": "assets/rewards/goal-flag.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🎯",
+  "prompt": "A small flag on a pole on top of a little hill, goal reached. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "coupon",
+  "file": "assets/rewards/coupon.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🎟",
+  "prompt": "A cheerful paper ticket coupon in gold and orange with a star punched in it (no text). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-ipad",
+  "file": "assets/rewards/reward-ipad.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "📱",
+  "prompt": "a tablet with a colourful game on its screen (no logos). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-playstation",
+  "file": "assets/rewards/reward-playstation.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🎮",
+  "prompt": "a generic game controller (no logos). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-icecream",
+  "file": "assets/rewards/reward-icecream.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🍦",
+  "prompt": "an ice-cream cone with two scoops. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-movie",
+  "file": "assets/rewards/reward-movie.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🎬",
+  "prompt": "a movie clapperboard and a popcorn box. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-park",
+  "file": "assets/rewards/reward-park.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🏞",
+  "prompt": "a park with a tree and a swing. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-story",
+  "file": "assets/rewards/reward-story.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "📖",
+  "prompt": "a bedtime storybook with a moon. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-boardgame",
+  "file": "assets/rewards/reward-boardgame.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🎲",
+  "prompt": "a board game with a die and pieces. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-dinner",
+  "file": "assets/rewards/reward-dinner.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🍽",
+  "prompt": "a family dinner plate with a spoon and fork. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-toy",
+  "file": "assets/rewards/reward-toy.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🧸",
+  "prompt": "a small cuddly teddy bear toy. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-bike",
+  "file": "assets/rewards/reward-bike.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a small bicycle. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-outing",
+  "file": "assets/rewards/reward-outing.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a picnic basket and blanket. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-pizza",
+  "file": "assets/rewards/reward-pizza.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a pizza. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-juice",
+  "file": "assets/rewards/reward-juice.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a fruit juice cup with a straw. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-sweets",
+  "file": "assets/rewards/reward-sweets.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a few wrapped sweets. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-books",
+  "file": "assets/rewards/reward-books.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a stack of colourful books. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-crafts",
+  "file": "assets/rewards/reward-crafts.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "crayons and a drawing pad. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-beach",
+  "file": "assets/rewards/reward-beach.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a beach bucket and spade. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-cinema",
+  "file": "assets/rewards/reward-cinema.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "cinema tickets and popcorn (no text). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-sleepover",
+  "file": "assets/rewards/reward-sleepover.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a tent with fairy lights. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-cake",
+  "file": "assets/rewards/reward-cake.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a slice of cake. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-stayup",
+  "file": "assets/rewards/reward-stayup.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a moon and a clock showing late evening. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-friend",
+  "file": "assets/rewards/reward-friend.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "two kids high-fiving. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-ball",
+  "file": "assets/rewards/reward-ball.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a football. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-lego",
+  "file": "assets/rewards/reward-lego.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "colourful building bricks (generic). Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-camera",
+  "file": "assets/rewards/reward-camera.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a toy camera. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-music",
+  "file": "assets/rewards/reward-music.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "headphones with music notes. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-plant",
+  "file": "assets/rewards/reward-plant.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a small plant in a pot. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-pet",
+  "file": "assets/rewards/reward-pet.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a goldfish in a bowl. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-restaurant",
+  "file": "assets/rewards/reward-restaurant.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a burger meal tray. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-shopping",
+  "file": "assets/rewards/reward-shopping.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a shopping bag with a star. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-money",
+  "file": "assets/rewards/reward-money.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a piggy bank. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-trip",
+  "file": "assets/rewards/reward-trip.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a small suitcase with stickers. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "reward-swim",
+  "file": "assets/rewards/reward-swim.webp",
+  "phase": 5,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "a swim ring. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-robot-idle",
+  "file": "assets/games/kg/game-robot-idle.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🤖",
+  "prompt": "A small friendly round robot with a sky-blue body, big round eyes on a screen face and little wheels, standing still, top-down 3/4 view. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-robot-happy",
+  "file": "assets/games/kg/game-robot-happy.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "The same small friendly robot celebrating with arms up and heart eyes. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-apple-goal",
+  "file": "assets/games/kg/game-apple-goal.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🍎",
+  "prompt": "A shiny red apple with a green leaf. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-rock",
+  "file": "assets/games/kg/game-rock.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🪨",
+  "prompt": "A round grey cartoon boulder with soft moss spots. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-star-pickup",
+  "file": "assets/games/kg/game-star-pickup.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "⭐",
+  "prompt": "A plump golden star with a gentle glow, game collectible. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-tile",
+  "file": "assets/games/kg/game-tile.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "A single square grass tile seen from above, soft rounded edges. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-box",
+  "file": "assets/games/kg/game-box.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "📦",
+  "prompt": "An open cardboard box. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-basket",
+  "file": "assets/games/kg/game-basket.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "🧺",
+  "prompt": "An empty woven basket. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-table",
+  "file": "assets/games/kg/game-table.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "",
+  "prompt": "A small wooden kid table. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-ball",
+  "file": "assets/games/kg/game-ball.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "⚽",
+  "prompt": "A red and white ball. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "game-card-back",
+  "file": "assets/games/kg/game-card-back.webp",
+  "phase": 6,
+  "style": "3d",
+  "size": "1024x1024",
+  "replaces": "❓",
+  "prompt": "The back of a game card: purple with a gold star pattern, rounded rectangle. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ }
+]
