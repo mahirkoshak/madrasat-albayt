@@ -173,6 +173,78 @@
   "sm": "assets/badges/badge-champion-earned-sm.webp",
   "src": "assets/badges/badge-champion-earned.webp"
  },
+ "dict-cover": {
+  "src": "assets/catalog/dict-cover.webp"
+ },
+ "dict-mode-ar": {
+  "src": "assets/catalog/dict-mode-ar.webp"
+ },
+ "dict-mode-en": {
+  "src": "assets/catalog/dict-mode-en.webp"
+ },
+ "game-ani-card": {
+  "src": "assets/games/kg/game-ani-card.webp"
+ },
+ "game-basket-card": {
+  "src": "assets/games/kg/game-basket-card.webp"
+ },
+ "game-col-card": {
+  "src": "assets/games/kg/game-col-card.webp"
+ },
+ "game-compose-card": {
+  "src": "assets/games/kg/game-compose-card.webp"
+ },
+ "game-count-card": {
+  "src": "assets/games/kg/game-count-card.webp"
+ },
+ "game-first-card": {
+  "src": "assets/games/kg/game-first-card.webp"
+ },
+ "game-memory-card": {
+  "src": "assets/games/kg/game-memory-card.webp"
+ },
+ "game-menu-arabic-card": {
+  "src": "assets/games/kg/game-menu-arabic-card.webp"
+ },
+ "game-menu-english-card": {
+  "src": "assets/games/kg/game-menu-english-card.webp"
+ },
+ "game-menu-numbers-card": {
+  "src": "assets/games/kg/game-menu-numbers-card.webp"
+ },
+ "game-menu-thinking-card": {
+  "src": "assets/games/kg/game-menu-thinking-card.webp"
+ },
+ "game-odd-card": {
+  "src": "assets/games/kg/game-odd-card.webp"
+ },
+ "game-pat-card": {
+  "src": "assets/games/kg/game-pat-card.webp"
+ },
+ "game-puzzle-card": {
+  "src": "assets/games/kg/game-puzzle-card.webp"
+ },
+ "game-robot-card": {
+  "src": "assets/games/kg/game-robot-card.webp"
+ },
+ "game-shp-card": {
+  "src": "assets/games/kg/game-shp-card.webp"
+ },
+ "game-story-card": {
+  "src": "assets/games/kg/game-story-card.webp"
+ },
+ "game-where-card": {
+  "src": "assets/games/kg/game-where-card.webp"
+ },
+ "grade-g3": {
+  "src": "assets/catalog/grade-g3.webp"
+ },
+ "grade-g4": {
+  "src": "assets/catalog/grade-g4.webp"
+ },
+ "grade-kg": {
+  "src": "assets/catalog/grade-kg.webp"
+ },
  "home-hero-koko": {
   "h": 897,
   "sm": "assets/hero/home-hero-koko-800.webp",
@@ -224,7 +296,82 @@
   "sm": "assets/mascot/mascot-welcome-sm.webp",
   "src": "assets/mascot/mascot-welcome.webp"
  },
+ "subject-arabic": {
+  "src": "assets/catalog/subject-arabic.webp"
+ },
+ "subject-early": {
+  "src": "assets/catalog/subject-early.webp"
+ },
+ "subject-english": {
+  "src": "assets/catalog/subject-english.webp"
+ },
+ "subject-math": {
+  "src": "assets/catalog/subject-math.webp"
+ },
  "subject-science": {
   "src": "assets/catalog/subject-science.webp"
+ },
+ "subject-stories": {
+  "src": "assets/catalog/subject-stories.webp"
+ },
+ "topic-ani": {
+  "src": "assets/dict/topic-ani.webp"
+ },
+ "topic-body": {
+  "src": "assets/dict/topic-body.webp"
+ },
+ "topic-fam": {
+  "src": "assets/dict/topic-fam.webp"
+ },
+ "topic-food": {
+  "src": "assets/dict/topic-food.webp"
+ },
+ "topic-home": {
+  "src": "assets/dict/topic-home.webp"
+ },
+ "topic-job": {
+  "src": "assets/dict/topic-job.webp"
+ },
+ "topic-nat": {
+  "src": "assets/dict/topic-nat.webp"
+ },
+ "topic-sch": {
+  "src": "assets/dict/topic-sch.webp"
+ },
+ "topic-sport": {
+  "src": "assets/dict/topic-sport.webp"
+ },
+ "topic-time": {
+  "src": "assets/dict/topic-time.webp"
+ },
+ "topic-town": {
+  "src": "assets/dict/topic-town.webp"
+ },
+ "topic-trans": {
+  "src": "assets/dict/topic-trans.webp"
+ },
+ "unit-g3sci-eco-cover": {
+  "src": "assets/units/unit-g3sci-eco-cover.webp"
+ },
+ "unit-g3sci-living-cover": {
+  "src": "assets/units/unit-g3sci-living-cover.webp"
+ },
+ "unit-g3sci-weather-cover": {
+  "src": "assets/units/unit-g3sci-weather-cover.webp"
+ },
+ "unit-g3sciearth-cover": {
+  "src": "assets/units/unit-g3sciearth-cover.webp"
+ },
+ "unit-g4sci-animals-cover": {
+  "src": "assets/units/unit-g4sci-animals-cover.webp"
+ },
+ "unit-g4sci-cells-cover": {
+  "src": "assets/units/unit-g4sci-cells-cover.webp"
+ },
+ "unit-g4scieco-cover": {
+  "src": "assets/units/unit-g4scieco-cover.webp"
+ },
+ "unit-g4scihealth-cover": {
+  "src": "assets/units/unit-g4scihealth-cover.webp"
  }
 }
