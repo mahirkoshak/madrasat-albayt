@@ -137,7 +137,8 @@ function block(b) {
 function renderLesson(L) {
   const i = S.u.lessons.indexOf(L), m = mastery(L.id);
   const games = [...S.u.games.sort.filter(g => g.l === L.id).map(g => `<button type="button" class="btn sky" data-act="sort" data-g="${g.id}">🎮 ${g.title}</button>`),
-    ...S.u.games.order.filter(g => g.l === L.id).map(g => `<button type="button" class="btn sky" data-act="order" data-g="${g.id}">🎮 ${g.title}</button>`)];
+    ...S.u.games.order.filter(g => g.l === L.id).map(g => `<button type="button" class="btn sky" data-act="order" data-g="${g.id}">🎮 ${g.title}</button>`),
+    ...Object.values(LABS[S.id] || {}).filter(x => x.lesson === L.id).map(x => `<button type="button" class="btn sky" data-act="lab" data-g="${x.id}">${x.title}</button>`)];
   const cards = []; let cur = null;
   L.blocks.forEach(b => { if (cur && b.t === 'tiles' && !b.h) cur.push(b); else { cur = [b]; cards.push(cur); } });
   M().innerHTML = `
@@ -188,11 +189,18 @@ function showCard() {
 /* ---------------- play menu ---------------- */
 function renderPlay() {
   const L = id => { const i = S.u.lessons.findIndex(l => l.id === id); return i < 0 ? '' : 'الدرس ' + ar(i + 1); };
+  const labs = Object.values(LABS[S.id] || {});
   M().innerHTML = `<div class="card"><h2>🎮 الألعاب</h2><p class="lead">اسحب البطاقة إلى مكانها، أو اضغط عليها ثم اضغط على المكان.</p></div>
+  ${labs.length ? `<h3 class="gp-h">🧪 نفكّر ونجرّب <small>نتوقّع ثم نجرّب ونفسّر</small></h3><div class="game-pick">
+    ${labs.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
+  <h3 class="gp-h">🎮 نتدرّب <small>نرتّب ونصنّف ونتذكّر</small></h3>
   <div class="game-pick">
     ${S.u.games.sort.map(g => `<button type="button" class="gp" data-act="sort" data-g="${g.id}"><span class="em">${g.em}</span><b>${g.title}</b><span>${L(g.l)} · فرز</span></button>`).join('')}
     ${S.u.games.order.map(g => `<button type="button" class="gp" data-act="order" data-g="${g.id}"><span class="em">${g.em}</span><b>${g.title}</b><span>${L(g.l)} · ترتيب</span></button>`).join('')}
     <button type="button" class="gp" data-act="memory"><span class="em">🧠🃏</span><b>لعبة الذاكرة</b><span>طابق المصطلح بمعناه</span></button>
+  </div>
+  <h3 class="gp-h">⚡ نتحدّى <small>بسرعة ومن الذاكرة</small></h3>
+  <div class="game-pick">
     <button type="button" class="gp" data-act="speed"><span class="em">⚡⏱️</span><b>تحدّي السرعة</b><span>أجب عن أكبر عدد في ٦٠ ثانية</span></button>
   </div>`;
 }
@@ -327,19 +335,21 @@ function termOf(text) {   // the glossary entry an option names, if any
   const t = norm(text); if (!t) return null;
   return S.u.glossary.find(g => norm(g.term) === t || bare(g.term) === bare(t)) || null;
 }
-function coachHint(q, n, pickedText, used) {
+function coachHint(q, n, pickedText, used, i) {
+  const mis = q.mis && q.mis[i];   // authored: what this wrong choice usually means
   const rightWords = q.t === 'tf' ? '' : bare(q.t === 'pic' && q.labels ? q.labels[q.a] : q.o[q.a]);
   const safe = t => t && (!rightWords || !norm(t).includes(rightWords));
   const lesson = S.u.lessons.find(L => L.id === q.l);
   const inQuestion = S.u.glossary.filter(g => norm(q.q).includes(bare(g.term)) && !used.has(g.term) && safe(g.def));
   if (n === 1) {
+    if (mis) return mis;
     if (q.hint1) return q.hint1;
     const g = termOf(pickedText);
     if (g && safe(g.def)) { used.add(g.term); return `اخترت «${pickedText}». تذكّر معنى «${g.term}»: ${g.def} هل هذا ما يصفه السؤال؟`; }
     if (inQuestion[0]) { used.add(inQuestion[0].term); return `تذكّر: ${inQuestion[0].term}: ${inQuestion[0].def} اقرأ السؤال مرة ثانية.`; }
     return `فكّر مرة ثانية. هذا السؤال من درس «${lesson ? lesson.title : ''}»: اقرأه كلمة كلمة وابحث عن الكلمة المهمة.`;
   }
-  if (q.hint2) return q.hint2;
+  if (mis || q.hint2) return [mis, q.hint2 && 'تلميح: ' + q.hint2].filter(Boolean).join(' ');
   if (inQuestion[0]) { used.add(inQuestion[0].term); return `تلميح ثانٍ: ${inQuestion[0].term}: ${inQuestion[0].def}`; }
   return 'تلميح ثانٍ: أبعدنا خيارًا خاطئًا. قارن الخيارات الباقية بالسؤال.';
 }
@@ -369,7 +379,7 @@ function renderQuestion(q, el, done, opt = {}) {
       if (tries === 2 && left().length >= 3) { const g = left().find(x => +x.dataset.i !== a); g.disabled = true; g.classList.add('gone'); g.setAttribute('aria-label', g.textContent.trim() + ' (أُبعد)'); }
       const pickedText = q.t === 'pic' && q.labels ? q.labels[i] : q.t === 'tf' ? '' : opts[i];
       let box = el.querySelector('.coach'); if (!box) { el.insertAdjacentHTML('beforeend', '<div class="coach" role="status"></div>'); box = el.querySelector('.coach'); }
-      box.innerHTML = `<span class="coach-ic" aria-hidden="true">💡</span><span>${coachHint(q, tries, pickedText, used)}</span>`;
+      box.innerHTML = `<span class="coach-ic" aria-hidden="true">💡</span><span>${coachHint(q, tries, pickedText, used, i)}</span>`;
       box.classList.remove('hs-pop'); void box.offsetWidth; box.classList.add('hs-pop');
       onCoach(q, i, tries);
       const first = left()[0]; if (first) first.focus({ preventScroll: true });
@@ -566,6 +576,7 @@ APPS.unit = {
     return out;
   },
   labCount: id => Object.keys(LABS[id] || {}).length,
+  labs: () => LABS,   // read by the automated tests
   close() { stopAll(); },
   /** for the parent page */
   report(unitId, profileId) {
@@ -584,6 +595,7 @@ APPS.unit = {
     const next = !Object.keys(s).length ? null : weak && weak.first < .7 ? `ابدؤوا بدرس «${weak.title}»: فيه أقل نسبة صح من أول مرة.`
       : lessons.find(L => L.m < .8) ? `الدرس التالي للتثبيت: «${lessons.find(L => L.m < .8).title}».` : 'جاهز للاختبار الشامل.';
     const learn = lr && lr.n ? { n: lr.n, first: lr.first / lr.n, fixed: lr.fixed, revealed: lr.revealed, hints: lr.hints, last: lr.last } : null;
-    return { title: u.title, em: u.em, total: m(), lessons, best: d.best || {}, missed, mis, learn, next, answered: Object.keys(s).length, count: u.questions.length };
+    const labs = Object.entries(d.labs || {}).map(([id, x]) => ({ title: (LABS[unitId] && LABS[unitId][id] || {}).title || id, ...x, total: ((LABS[unitId] && LABS[unitId][id] || {}).challenges || []).length })).filter(x => x.runs);
+    return { title: u.title, em: u.em, total: m(), lessons, best: d.best || {}, missed, mis, learn, next, labs, answered: Object.keys(s).length, count: u.questions.length };
   }
 };

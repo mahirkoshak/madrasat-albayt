@@ -275,3 +275,48 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 .coach-ic{font-size:1.3em;line-height:1}
 .opt.gone{opacity:.35;text-decoration:line-through}
 .fb.ok.fixed{background:var(--t-blue-soft,#e6f0ff);color:var(--t-ink)}
+/* ---------- games page groups ---------- */
+.gp-h{margin:18px 4px 8px;font-size:1.05rem;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.gp-h small{font-weight:600;color:var(--t-ink-soft,#5b6474);font-size:.85rem}
+.gp.lab{border-color:var(--t-purple,#7048e8)}
+/* ---------- thinking labs ---------- */
+.lab h2{font-size:1.15rem;line-height:1.6}
+.lab-note{font-size:.9rem;color:var(--t-ink-soft,#5b6474)}
+.lab-steps{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 10px;flex-wrap:wrap;counter-reset:st}
+.lab-steps li{counter-increment:st;padding:4px 10px;border-radius:999px;background:#eef1f5;font-size:.85rem;font-weight:700;color:#5b6474}
+.lab-steps li::before{content:counter(st, arabic-indic) ". "}
+.lab-steps li.on{background:var(--t-blue);color:#fff}.lab-steps li.done{background:var(--t-green-soft);color:var(--t-green-ink)}
+.lab-list{padding-inline-start:20px;line-height:2}.lab-list li.ok{color:var(--t-green-ink)}
+.lab-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.lab-two:has(> :only-child){max-width:420px;margin-inline:auto}
+.hill .soil{transition:stroke-width 1.6s}
+.lab-hill{margin:0;background:#f4f9ff;border:2px solid #dbe7f5;border-radius:16px;padding:8px;min-width:0}
+.lab-hill figcaption{display:flex;flex-direction:column;gap:2px;font-size:.9rem}.lab-hill figcaption span{color:#5b6474;font-size:.82rem}
+.hill{width:100%;height:auto;display:block}
+.hill .rock{fill:#c9a27a}.hill .soil{stroke:#7a4b2a;stroke-width:9;stroke-linecap:round}
+.hill .ground{stroke:#8d6e63;stroke-width:3}.hill .path{fill:#cfd8dc}
+.hill .leaf{stroke:#2f9e44;stroke-width:2.4;fill:none;stroke-linecap:round}.hill .root{stroke:#5c3b1e;stroke-width:1.3;fill:none;opacity:.9}
+.hill .gr{fill:#6d4126;transition:transform 1.4s cubic-bezier(.45,.05,.7,1)}
+.hill .rain line{stroke:#4dabf7;stroke-width:1.6;stroke-linecap:round;opacity:0}
+.hill.raining .rain line{animation:rainfall .7s linear infinite}
+@keyframes rainfall{0%{opacity:0;transform:translateY(0)}15%{opacity:.9}100%{opacity:0;transform:translateY(120px)}}
+.lab-meter{height:10px;border-radius:6px;background:#e9ecef;overflow:hidden;margin-top:6px}.lab-meter i{display:block;height:100%;background:#8b5a2b;transition:width 1.6s}
+.lab-out{margin:6px 0 0;font-weight:800;min-height:1.4em}
+.lab-pred,.lab-seg{border:0;padding:0;margin:12px 0}.lab-pred legend,.lab-seg legend{font-weight:800;margin-bottom:6px}
+.lab-pred .btn.on,.lab-seg .btn[aria-pressed="true"]{background:var(--t-blue);color:#fff;border-color:var(--t-blue)}
+.lab-pred .col{display:flex;flex-direction:column;gap:8px}.lab-pred .btn.no{opacity:.45;text-decoration:line-through}
+.lab-cmp{margin-top:10px;padding:12px 14px;border-radius:14px;background:#fff4e6;font-weight:600}.lab-cmp.ok{background:var(--t-green-soft);color:var(--t-green-ink)}
+.lab-cmp-list{list-style:none;padding:0}.lab-cmp-list li{padding:4px 0;font-weight:700}.lab-cmp-list .no{color:var(--t-red-ink)}
+.lab-why{margin-top:12px}.lab-transfer{margin-top:8px;font-weight:600}
+.lab-web{max-width:420px;margin:8px auto}
+.fw{width:100%;height:auto}
+.fw-e{stroke:#868e96;stroke-width:2}.fw-ah{fill:#868e96}
+.fw-n circle{fill:#fff;stroke:#adb5bd;stroke-width:2.5}.fw-n.p > circle{fill:#ebfbee;stroke:#2f9e44}
+.fw-n text{font-size:11px;font-weight:800;text-anchor:middle;fill:#212529;font-family:var(--t-font)}
+.fw-n .fw-b{display:none}.fw-n .fw-b circle{stroke:none}.fw-n .fw-b text{fill:#fff;font-size:12px}
+.fw-n.up .fw-b,.fw-n.dn .fw-b{display:inline}.fw-n.up .fw-b circle{fill:#2f9e44}.fw-n.dn .fw-b circle{fill:#e03131}
+.fw-n.up > circle{stroke:#2f9e44;stroke-width:4}.fw-n.dn > circle{stroke:#e03131;stroke-width:4}
+.fw-n.start > circle{stroke-dasharray:4 3}
+.fw-n.s1,.fw-n.s2{animation:fwpulse .9s ease-out 1}
+@keyframes fwpulse{0%{transform-box:fill-box}50%{opacity:.4}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hill .gr,.lab-meter i{transition:none}.hill.raining .rain line,.fw-n.s1,.fw-n.s2{animation:none}}

@@ -335,7 +335,7 @@
     P.innerHTML = `<h2 class="p-title">👨‍👩‍👧 صفحة الأب</h2><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
     ${kids.map(k => {
       const d = HS.profileData(k.id);
-      const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && r.answered);
+      const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && (r.answered || r.labs.length));
       const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
       const dr = APPS.dict ? APPS.dict.report(k.id) : null;
       return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span><div><h3 class="nm">${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
@@ -353,6 +353,7 @@
             ${r.lessons.some(L => L.n) ? `<table class="pp-t"><thead><tr><th>الفكرة (الدرس)</th><th>صح من أول مرة</th><th>الإتقان</th></tr></thead><tbody>${r.lessons.filter(L => L.n).map(L => `<tr><td>${L.em} ${L.title}</td><td>${ar(Math.round(L.first * 100))}٪ <small>(${ar(L.n)})</small></td><td>${ar(Math.round(L.m * 100))}٪</td></tr>`).join('')}</tbody></table>` : ''}
             ${r.mis.length ? `<details><summary>🧩 أفكار خاطئة تكرّر اختيارها (${ar(r.mis.length)})</summary><ul>${r.mis.map(x => `<li>${x.q}<br><small>الاختيار: «${x.chose}»${x.n > 1 ? ` (${ar(x.n)} مرات)` : ''} · الصحيح: «${x.right}»</small></li>`).join('')}</ul></details>` : ''}
             ${r.next ? `<p class="pp-next">➡️ ${r.next}</p>` : ''}</div>` : ''}
+          ${(r.labs || []).map(x => `<p class="pp-note">${x.title}: التجارب المنتهية ${ar(x.done.length)} من ${ar(x.total)} · توقّع صحيح ${ar(x.predOk)} من ${ar(x.pred)} · فسّر من أول محاولة ${ar(x.whyFirst)} من ${ar(x.why)}</p>`).join('')}
           <p class="pp-note">أجاب عن ${ar(r.answered)} من ${ar(r.count)} سؤالًا${r.best.final ? ` · أفضل نتيجة في الاختبار الشامل ${ar(r.best.final.s)}/${ar(r.best.final.t)}` : ''}${r.best.speed ? ` · تحدّي السرعة ${ar(r.best.speed.s)}` : ''}</p>
           ${r.missed.length ? `<details><summary>⚠️ أكثر ما يخطئ فيه (${ar(r.missed.length)})</summary><ul>${r.missed.map(m => `<li>${m.q} <small>(أخطأ ${ar(m.w)} · أصاب ${ar(m.c)})</small></li>`).join('')}</ul></details>` : ''}</div>`).join('')}
         ${dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}${dr.spell && (dr.spell.en || dr.spell.ar) ? `<div class="m-row"><span>✍️ تحدّي الإملاء: أتقن ${ar(dr.spell.en)} كلمة إنجليزية${dr.spell.ar ? ` و${ar(dr.spell.ar)} عربية` : ''} · أطول سلسلة ${ar(dr.spell.best)}</span></div>` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}
