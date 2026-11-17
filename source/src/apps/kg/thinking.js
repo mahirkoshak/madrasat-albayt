@@ -154,7 +154,7 @@ function whereGame() {
   const L = G.lv, ar = LANG === 'ar', t = HS.bag('wt-t', WHERE.targets);
   if (WHERE.levels[L] === 'pick') return wherePick(t);
   const [s, p] = HS.bag('wt' + L, WHERE.levels[L]), zones = WHERE.scenes[s].zones;
-  const root = fresh(`<div class="wt-wrap">${sceneHtml(s)}</div><div class="wt-pool"><button type="button" class="wt-target hs-drag" aria-label="${t[1]}">${tgt(t)}</button></div>`);
+  const root = fresh(`<div class="wt-wrap">${sceneHtml(s)}</div><div class="wt-pool"><button type="button" class="wt-target${t[2] === 'ball' ? ' art' : ''} hs-drag" aria-label="${t[1]}">${tgt(t)}</button></div>`);
   const sc = root.querySelector('.wt-scene');
   zones.forEach(z => { const [x, y, zi] = ZONE_POS[s][z]; sc.insertAdjacentHTML('beforeend', `<div class="wt-zone" data-z="${z}" style="left:${x - 34}px;top:${y - 34}px;z-index:${zi}"></div>`); });
   ROOT._dbg = p;
