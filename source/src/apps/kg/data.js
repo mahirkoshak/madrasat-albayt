@@ -187,14 +187,16 @@ APPDATA.kg = {
     where: { ar: (t, s, p) => 'لنضع ' + t[1] + ' ' + W.preps[p][0] + ' ' + W.scenes[s].ar, en: (t, s, p) => 'Put the ' + t[2] + ' ' + W.preps[p][1] + ' ' + W.scenes[s].en },
     wherePick: { ar: (t, s, p) => 'أين ' + t[1] + ' ' + W.preps[p][0] + ' ' + W.scenes[s].ar + '؟', en: (t, s, p) => 'Where is the ' + t[2] + ' ' + W.preps[p][1] + ' ' + W.scenes[s].en + '?' },
     robot: { ar: () => 'لنخطّط طريق الروبوت إلى التفاحة', en: () => 'Help the robot get to the apple' },
-    robotStar: { ar: () => 'خذي النجمة أولًا، ثم اذهبي إلى التفاحة', en: () => 'Get the star first, then go to the apple' },
-    robotStars: { ar: () => 'خذي كل النجوم، ثم اذهبي إلى التفاحة', en: () => 'Get all the stars, then go to the apple' },
+    robotStar: { ar: () => 'لنأخذ النجمة أولًا، ثم نذهب إلى التفاحة', en: () => 'Get the star first, then go to the apple' },
+    robotStars: { ar: () => 'لنأخذ النجمة رقم ١ ثم النجمة رقم ٢، ثم نذهب إلى التفاحة', en: () => 'Get star 1, then star 2, then go to the apple' },
+    robotOrder: { ar: () => 'النجمة رقم ١ أولًا', en: () => 'Star number 1 first' },
+    robotRepeat: { ar: () => 'زر ×٢ يكرّر آخر سهم مرتين', en: () => 'The ×2 button repeats the last arrow twice' },
     robotLimit: { ar: n => 'عندك ' + n + (n <= 10 ? ' أسهم' : ' سهمًا') + ' فقط. لنجد أقصر طريق', en: n => 'You have only ' + n + ' arrows. Find the shortest way' },
-    robotMissed: { ar: () => 'وصلتِ! لكن نسيتِ نجمة', en: () => 'You got there, but you missed a star' },
+    robotMissed: { ar: () => 'وصلنا! لكن بقيت نجمة', en: () => 'You got there, but you missed a star' },
     notMine: { ar: () => 'هذه القطعة ليست من هذه الصورة', en: () => 'This piece is not from this picture' },
     robotRun: { ar: () => 'الآن نضغط زر التشغيل', en: () => 'Press play' },
     robotBump: { ar: () => 'أوه! اصطدم الروبوت. لنجرّب طريقًا آخر', en: () => 'Oops! The robot bumped. Try another way' },
-    robotShort: { ar: () => 'لم يصل بعد. أضيفي أسهمًا', en: () => 'Not there yet. Add more arrows' },
+    robotShort: { ar: () => 'لم يصل بعد. لنضف أسهمًا', en: () => 'Not there yet. Add more arrows' },
     story: { ar: () => 'لنرتّب القصة: ماذا حدث أولًا؟', en: () => 'Put the story in order: what happened first?' },
     storyNext: { ar: () => 'ماذا يحدث بعد ذلك؟', en: () => 'What happens next?' },
     up: { ar: () => 'لنجرّب في الأعلى', en: () => 'Try near the top' },
@@ -205,7 +207,7 @@ APPDATA.kg = {
   const base = K.speakables;
   K.speakables = function () {
     const out = base(), add = (t, l) => out.push([t, l]);
-    ['puzzle', 'robot', 'robotStar', 'robotStars', 'robotMissed', 'notMine', 'robotRun', 'robotBump', 'robotShort', 'story', 'storyNext', 'up', 'mid', 'down', 'brk'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
+    ['puzzle', 'robot', 'robotStar', 'robotStars', 'robotOrder', 'robotRepeat', 'robotMissed', 'notMine', 'robotRun', 'robotBump', 'robotShort', 'story', 'storyNext', 'up', 'mid', 'down', 'brk'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
     for (let n = 9; n <= 14; n++) { add(P.robotLimit.ar(n), 'ar'); add(P.robotLimit.en(n), 'en'); }
     K.DESIGNS.forEach(d => { add(P.compose.ar(d), 'ar'); add(P.compose.en(d), 'en'); });
     W.targets.forEach(t => Object.keys(W.scenes).forEach(s => W.scenes[s].zones.forEach(p => {

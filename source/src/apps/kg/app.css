@@ -188,3 +188,10 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 .kg-path i.now{box-shadow:0 0 0 3px rgba(255,200,0,.35);transform:scale(1.15)}
 .speak{display:inline-flex;align-items:center;gap:6px}
 .speak-l{font-size:16px;font-weight:800}
+.rb-run{margin-top:-2px}
+.rb-k.rep{font-size:24px;font-weight:900;color:var(--t-purple,#7048e8);background:#f3f0ff;border-color:#e5dbff}
+.rb-k.clr{background:#fff4e6;border-color:#ffd8a8}.rb-k.stp{background:#e7f5ff;border-color:#a5d8ff}
+.rb-prog span{position:relative}.rb-prog span b{font-size:13px;vertical-align:super;color:var(--t-purple,#7048e8)}
+.rb-prog span.did{opacity:.45}
+.rb-star{position:relative;display:inline-block}.rb-star b{position:absolute;inset-inline-end:-6px;bottom:-4px;font-size:.42em;background:#fff;border-radius:50%;width:1.5em;height:1.5em;line-height:1.5em;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.25);font-family:var(--t-font);color:var(--t-ink)}
+.rb-star.got{opacity:.35;filter:grayscale(1)}

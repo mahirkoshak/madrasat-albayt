@@ -163,7 +163,7 @@ function wherePick(t) {
 }
 
 /* ---------------- 🤖 guide the robot ---------------- */
-const DIRS = { u: [0, -1, '⬆️'], d: [0, 1, '⬇️'], l: [-1, 0, '⬅️'], r: [1, 0, '➡️'] };
+const DIRS = { u: [0, -1, '⬆️', 'فوق'], d: [0, 1, '⬇️', 'تحت'], l: [-1, 0, '⬅️', 'يسار'], r: [1, 0, '➡️', 'يمين'] };
 function bfs(N, rocks, a, b) {
   const key = p => p[0] + ',' + p[1], seen = new Map([[key(a), 0]]), q = [a];
   while (q.length) { const c = q.shift(); if (c[0] === b[0] && c[1] === b[1]) return seen.get(key(c));
@@ -193,8 +193,7 @@ function makeLevel(L) {
     let d, free;   // free = length without rocks, to check that the rocks really get in the way
     if (!stars.length) { d = D(a, b); free = man(a, b); }
     else if (stars.length === 1) { d = D(a, stars[0]) + D(stars[0], b); free = man(a, stars[0]) + man(stars[0], b); }
-    else { const [s1, s2] = stars; d = Math.min(D(a, s1) + D(s1, s2) + D(s2, b), D(a, s2) + D(s2, s1) + D(s1, b));
-      free = Math.min(man(a, s1) + man(s1, s2) + man(s2, b), man(a, s2) + man(s2, s1) + man(s1, b)); }
+    else { const [s1, s2] = stars; d = D(a, s1) + D(s1, s2) + D(s2, b); free = man(a, s1) + man(s1, s2) + man(s2, b); }   // two stars: in order (1 then 2)
     if (!(d >= minD && d <= maxD && d < Infinity)) continue;
     if (L >= 6 && d <= free) continue;                                 // from level 6 the rocks force a detour
     const sig = [a, b, stars, [...rocks].sort()].join('|');
@@ -203,30 +202,40 @@ function makeLevel(L) {
   }
   return { N: 4, a: [0, 0], b: [2, 0], rocks: new Set(), stars: [], d: 2, limit: 20 };
 }
+/* Plan before moving: arrows go into a plan, nothing moves until ▶️. 👣 plays one step, ⌫ removes the last
+   command, 🗑️ clears the plan. From level 6 the ×2 button repeats the last arrow (one command, two moves: a
+   first loop). Levels 7–8: two numbered stars, taken in order. Level 8: a limited number of commands. */
 function robotGame() {
-  const L = G.lv, lv = makeLevel(L), direct = L === 1, k = p => p[0] + ',' + p[1];
+  const L = G.lv, lv = makeLevel(L), direct = L === 1, k = p => p[0] + ',' + p[1], loop = L >= 6;
   const cell = Math.min(64, Math.floor((Math.min(360, window.innerWidth - 50)) / lv.N) - 4);
   const starAt = p => lv.stars.findIndex(t => k(t) === k(p));
   const root = fresh(`<div class="rb-board" dir="ltr" style="grid-template-columns:repeat(${lv.N},${cell}px);grid-auto-rows:${cell}px">
       ${Array.from({ length: lv.N * lv.N }, (_, i) => { const p = [i % lv.N, Math.floor(i / lv.N)], si = starAt(p);
-        return `<div class="rb-cell" style="font-size:${cell * .62}px">${lv.rocks.has(k(p)) ? '🪨' : si >= 0 ? `<span class="rb-star" data-s="${si}">⭐</span>` : k(p) === k(lv.b) ? '🍎' : ''}</div>`; }).join('')}
+        return `<div class="rb-cell" style="font-size:${cell * .62}px">${lv.rocks.has(k(p)) ? '🪨' : si >= 0 ? `<span class="rb-star" data-s="${si}">⭐${lv.stars.length > 1 ? `<b>${HS.toAr(si + 1)}</b>` : ''}</span>` : k(p) === k(lv.b) ? '🍎' : ''}</div>`; }).join('')}
       <div class="rb-bot" style="width:${cell}px;height:${cell}px;font-size:${cell * .7}px"><span>🤖</span></div></div>
-    ${direct ? '' : `<div class="rb-prog" dir="ltr" aria-label="الأوامر"></div>${lv.limit < 20 ? `<div class="rb-limit" aria-live="polite"></div>` : ''}`}
-    <div class="rb-keys" dir="ltr">${['l', 'u', 'd', 'r'].map(d => `<button type="button" class="rb-k" data-d="${d}" aria-label="${d}">${DIRS[d][2]}</button>`).join('')}
-      ${direct ? '' : `<button type="button" class="rb-k del" aria-label="مسح آخر سهم">⌫</button><button type="button" class="rb-k go" aria-label="تشغيل">▶️</button>`}</div>`);
+    ${direct ? '' : `<div class="rb-prog" dir="ltr" role="list" aria-label="الخطة"></div>${lv.limit < 20 ? `<div class="rb-limit" aria-live="polite"></div>` : ''}`}
+    <div class="rb-keys" dir="ltr">${['l', 'u', 'd', 'r'].map(d => `<button type="button" class="rb-k" data-d="${d}" aria-label="${DIRS[d][3]}">${DIRS[d][2]}</button>`).join('')}
+      ${loop ? '<button type="button" class="rb-k rep" aria-label="كرّر آخر سهم مرتين">×٢</button>' : ''}</div>
+    ${direct ? '' : `<div class="rb-keys rb-run" dir="ltr"><button type="button" class="rb-k del" aria-label="احذف آخر أمر">⌫</button><button type="button" class="rb-k clr" aria-label="امسح الخطة كلها">🗑️</button>
+      <button type="button" class="rb-k stp" aria-label="خطوة واحدة">👣</button><button type="button" class="rb-k go" aria-label="شغّل الخطة">▶️</button></div>`}`);
   ROOT._dbg = lv;   // read by the automated tests
   ask(tl(lv.stars.length > 1 ? P.robotStars : lv.stars.length ? P.robotStar : P.robot)(), lang());
   if (lv.limit < 20) later(() => say([[tl(P.robotLimit)(lv.limit), lang()]]), 2500);
-  const botBox = root.querySelector('.rb-bot'), bot = botBox.firstElementChild, prog = [];
-  let pos = lv.a.slice(), got = new Set(), runs = 0, busy = false;
+  else if (loop && L === 6) later(() => say([[tl(P.robotRepeat)(), lang()]]), 2500);
+  const botBox = root.querySelector('.rb-bot'), bot = botBox.firstElementChild, prog = [];   // prog: [{ d: 'l'|'r'|'u'|'d', n: 1|2 }]
+  let pos = lv.a.slice(), got = new Set(), runs = 0, busy = false, stepAt = 0;
   const place = (p, anim) => { botBox.style.left = (6 + p[0] * (cell + 4)) + 'px'; botBox.style.top = (6 + p[1] * (cell + 4)) + 'px'; if (anim) { bot.classList.remove('hs-pop'); void bot.offsetWidth; bot.classList.add('hs-pop'); } };
   place(pos);
   const ok = p => p[0] >= 0 && p[1] >= 0 && p[0] < lv.N && p[1] < lv.N && !lv.rocks.has(k(p));
-  const star = p => { const si = starAt(p); if (si >= 0 && !got.has(si)) { got.add(si); root.querySelector(`.rb-star[data-s="${si}"]`).textContent = '✨'; HS.fx('combo'); } };
-  const resetStars = () => { got = new Set(); root.querySelectorAll('.rb-star').forEach(s => s.textContent = '⭐'); };
+  // stars are taken in order: star 2 does not count before star 1
+  const star = p => { const si = starAt(p); if (si < 0 || got.has(si)) return;
+    if (si !== got.size) { if (!warned) { warned = true; say([[tl(P.robotOrder)(), lang()]]); } return; }
+    got.add(si); root.querySelector(`.rb-star[data-s="${si}"]`).classList.add('got'); HS.fx('combo'); };
+  let warned = false;
+  const resetStars = () => { got = new Set(); warned = false; root.querySelectorAll('.rb-star').forEach(s => s.classList.remove('got')); };
   const win = p => k(p) === k(lv.b) && got.size === lv.stars.length;
   const progView = () => {
-    const el = root.querySelector('.rb-prog'); if (el) el.innerHTML = prog.map(d => `<span>${DIRS[d][2]}</span>`).join('') || '<em>…</em>';
+    const el = root.querySelector('.rb-prog'); if (el) el.innerHTML = prog.map((c, j) => `<span role="listitem" aria-label="${DIRS[c.d][3]}${c.n > 1 ? ' مرتين' : ''}" class="${j < stepAt ? 'did' : ''}">${DIRS[c.d][2]}${c.n > 1 ? '<b>×٢</b>' : ''}</span>`).join('') || '<em>…</em>';
     const lim = root.querySelector('.rb-limit'); if (lim) { lim.textContent = `🔢 ${HS.toAr(prog.length)} / ${HS.toAr(lv.limit)}`; lim.classList.toggle('full', prog.length >= lv.limit); }
   };
   progView();
@@ -240,27 +249,45 @@ function robotGame() {
       return;
     }
     if (prog.length >= lv.limit) { HS.fx('no'); shake(root.querySelector(lv.limit < 20 ? '.rb-limit' : '.rb-prog')); if (lv.limit < 20) say([[tl(P.robotLimit)(lv.limit), lang()]]); return; }
-    prog.push(d); HS.fx('tap'); progView();
+    rewind(); prog.push({ d, n: 1 }); HS.fx('tap'); progView();
   });
-  const del = root.querySelector('.rb-k.del'); if (del) del.onclick = () => { if (!busy) { prog.pop(); progView(); } };
-  const go = root.querySelector('.rb-k.go');
-  if (go) go.onclick = () => {
-    if (busy || !prog.length) { say([[tl(P.robotRun)(), lang()]]); return; }
-    busy = true; runs++; pos = lv.a.slice(); resetStars(); place(pos);
-    let i = 0;
-    const step = () => {
-      if (i >= prog.length) {
-        busy = false;
-        if (win(pos)) { HS.fx('win'); busy = true; thinkDone(runs === 1); }
-        else { HS.fx('no'); say([[tl(k(pos) === k(lv.b) ? P.robotMissed : P.robotShort)(), lang()]]); later(() => { pos = lv.a.slice(); resetStars(); place(pos); }, 700); }
-        return;
-      }
-      const d = prog[i], n = [pos[0] + DIRS[d][0], pos[1] + DIRS[d][1]];
-      root.querySelectorAll('.rb-prog span').forEach((s, j) => s.classList.toggle('now', j === i));
-      if (!ok(n)) { HS.fx('no'); shake(bot); say([[tl(P.robotBump)(), lang()]]); busy = false; later(() => { pos = lv.a.slice(); resetStars(); place(pos); }, 900); return; }
-      pos = n; place(pos, true); star(pos); i++; later(step, lv.N > 5 ? 400 : 480);
+  const btn = c => root.querySelector('.rb-k.' + c);
+  const rewind = () => { if (stepAt) { stepAt = 0; pos = lv.a.slice(); resetStars(); place(pos); } };
+  if (btn('rep')) btn('rep').onclick = () => {      // ×2: the last arrow runs twice (still one command)
+    if (busy) return; const c = prog[prog.length - 1];
+    if (!c || c.n > 1) { HS.fx('no'); say([[tl(P.robotRepeat)(), lang()]]); return; }
+    rewind(); c.n = 2; HS.fx('tap'); progView();
+  };
+  if (btn('del')) btn('del').onclick = () => { if (!busy) { rewind(); prog.pop(); progView(); } };
+  if (btn('clr')) btn('clr').onclick = () => { if (!busy) { rewind(); prog.length = 0; progView(); } };
+  // one command = its moves (×2 → two moves)
+  const moves = c => Array(c.n).fill(c.d);
+  const fail = msg => { HS.fx('no'); say([[tl(msg)(), lang()]]); later(() => { stepAt = 0; pos = lv.a.slice(); resetStars(); place(pos); progView(); busy = false; }, 900); };
+  const end = () => { if (win(pos)) { HS.fx('win'); busy = true; thinkDone(runs === 1); } else fail(k(pos) === k(lv.b) ? P.robotMissed : P.robotShort); };
+  /** run command j; then(true) when it went fine, after the animation */
+  const runCmd = (j, then) => {
+    const ms = moves(prog[j]); let m = 0;
+    root.querySelectorAll('.rb-prog span').forEach((s, x) => s.classList.toggle('now', x === j));
+    const one = () => {
+      if (m >= ms.length) return then(true);
+      const d = ms[m++], n = [pos[0] + DIRS[d][0], pos[1] + DIRS[d][1]];
+      if (!ok(n)) { shake(bot); fail(P.robotBump); return then(false); }
+      pos = n; place(pos, true); star(pos); later(one, lv.N > 5 ? 400 : 480);
     };
-    later(step, 300);
+    one();
+  };
+  if (btn('go')) btn('go').onclick = () => {
+    if (busy || !prog.length) { say([[tl(P.robotRun)(), lang()]]); return; }
+    busy = true; runs++; stepAt = 0; pos = lv.a.slice(); resetStars(); place(pos);
+    const next = () => { if (stepAt >= prog.length) { busy = false; return end(); } runCmd(stepAt, ok => { if (!ok) return; stepAt++; progView(); next(); }); };
+    later(next, 300);
+  };
+  // 👣: play the plan one command at a time, to find where it goes wrong
+  if (btn('stp')) btn('stp').onclick = () => {
+    if (busy || !prog.length) { if (!prog.length) say([[tl(P.robotRun)(), lang()]]); return; }
+    if (stepAt === 0) { runs++; pos = lv.a.slice(); resetStars(); place(pos); }
+    busy = true;
+    runCmd(stepAt, ok => { if (!ok) return; stepAt++; progView(); busy = false; if (stepAt >= prog.length) { busy = true; end(); } });
   };
 }
 
