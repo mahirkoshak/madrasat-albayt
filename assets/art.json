@@ -12,60 +12,162 @@
   "sm": "assets/avatars/avatar-boy-cap-sm.webp",
   "src": "assets/avatars/avatar-boy-cap.webp"
  },
+ "avatar-boy-cap-happy": {
+  "sm": "assets/avatars/avatar-boy-cap-happy-sm.webp",
+  "src": "assets/avatars/avatar-boy-cap-happy.webp"
+ },
  "avatar-boy-curly": {
   "face": "assets/avatars/avatar-boy-curly-face.webp",
   "sm": "assets/avatars/avatar-boy-curly-sm.webp",
   "src": "assets/avatars/avatar-boy-curly.webp"
+ },
+ "avatar-boy-curly-happy": {
+  "sm": "assets/avatars/avatar-boy-curly-happy-sm.webp",
+  "src": "assets/avatars/avatar-boy-curly-happy.webp"
  },
  "avatar-boy-glasses": {
   "face": "assets/avatars/avatar-boy-glasses-face.webp",
   "sm": "assets/avatars/avatar-boy-glasses-sm.webp",
   "src": "assets/avatars/avatar-boy-glasses.webp"
  },
+ "avatar-boy-glasses-happy": {
+  "sm": "assets/avatars/avatar-boy-glasses-happy-sm.webp",
+  "src": "assets/avatars/avatar-boy-glasses-happy.webp"
+ },
  "avatar-boy-thobe": {
   "face": "assets/avatars/avatar-boy-thobe-face.webp",
   "sm": "assets/avatars/avatar-boy-thobe-sm.webp",
   "src": "assets/avatars/avatar-boy-thobe.webp"
+ },
+ "avatar-boy-thobe-happy": {
+  "sm": "assets/avatars/avatar-boy-thobe-happy-sm.webp",
+  "src": "assets/avatars/avatar-boy-thobe-happy.webp"
+ },
+ "avatar-bunny": {
+  "face": "assets/avatars/avatar-bunny-face.webp",
+  "sm": "assets/avatars/avatar-bunny-sm.webp",
+  "src": "assets/avatars/avatar-bunny.webp"
+ },
+ "avatar-bunny-happy": {
+  "sm": "assets/avatars/avatar-bunny-happy-sm.webp",
+  "src": "assets/avatars/avatar-bunny-happy.webp"
  },
  "avatar-cat": {
   "face": "assets/avatars/avatar-cat-face.webp",
   "sm": "assets/avatars/avatar-cat-sm.webp",
   "src": "assets/avatars/avatar-cat.webp"
  },
+ "avatar-cat-happy": {
+  "sm": "assets/avatars/avatar-cat-happy-sm.webp",
+  "src": "assets/avatars/avatar-cat-happy.webp"
+ },
+ "avatar-cloud-pal": {
+  "face": "assets/avatars/avatar-cloud-pal-face.webp",
+  "sm": "assets/avatars/avatar-cloud-pal-sm.webp",
+  "src": "assets/avatars/avatar-cloud-pal.webp"
+ },
+ "avatar-cloud-pal-happy": {
+  "sm": "assets/avatars/avatar-cloud-pal-happy-sm.webp",
+  "src": "assets/avatars/avatar-cloud-pal-happy.webp"
+ },
  "avatar-dragon": {
   "face": "assets/avatars/avatar-dragon-face.webp",
   "sm": "assets/avatars/avatar-dragon-sm.webp",
   "src": "assets/avatars/avatar-dragon.webp"
+ },
+ "avatar-dragon-happy": {
+  "sm": "assets/avatars/avatar-dragon-happy-sm.webp",
+  "src": "assets/avatars/avatar-dragon-happy.webp"
  },
  "avatar-fox": {
   "face": "assets/avatars/avatar-fox-face.webp",
   "sm": "assets/avatars/avatar-fox-sm.webp",
   "src": "assets/avatars/avatar-fox.webp"
  },
+ "avatar-fox-happy": {
+  "sm": "assets/avatars/avatar-fox-happy-sm.webp",
+  "src": "assets/avatars/avatar-fox-happy.webp"
+ },
  "avatar-girl-bob": {
   "face": "assets/avatars/avatar-girl-bob-face.webp",
   "sm": "assets/avatars/avatar-girl-bob-sm.webp",
   "src": "assets/avatars/avatar-girl-bob.webp"
+ },
+ "avatar-girl-bob-happy": {
+  "sm": "assets/avatars/avatar-girl-bob-happy-sm.webp",
+  "src": "assets/avatars/avatar-girl-bob-happy.webp"
  },
  "avatar-girl-braids": {
   "face": "assets/avatars/avatar-girl-braids-face.webp",
   "sm": "assets/avatars/avatar-girl-braids-sm.webp",
   "src": "assets/avatars/avatar-girl-braids.webp"
  },
+ "avatar-girl-braids-happy": {
+  "sm": "assets/avatars/avatar-girl-braids-happy-sm.webp",
+  "src": "assets/avatars/avatar-girl-braids-happy.webp"
+ },
  "avatar-girl-ponytail": {
   "face": "assets/avatars/avatar-girl-ponytail-face.webp",
   "sm": "assets/avatars/avatar-girl-ponytail-sm.webp",
   "src": "assets/avatars/avatar-girl-ponytail.webp"
+ },
+ "avatar-girl-ponytail-happy": {
+  "sm": "assets/avatars/avatar-girl-ponytail-happy-sm.webp",
+  "src": "assets/avatars/avatar-girl-ponytail-happy.webp"
  },
  "avatar-girl-waves": {
   "face": "assets/avatars/avatar-girl-waves-face.webp",
   "sm": "assets/avatars/avatar-girl-waves-sm.webp",
   "src": "assets/avatars/avatar-girl-waves.webp"
  },
+ "avatar-girl-waves-happy": {
+  "sm": "assets/avatars/avatar-girl-waves-happy-sm.webp",
+  "src": "assets/avatars/avatar-girl-waves-happy.webp"
+ },
+ "avatar-lion": {
+  "face": "assets/avatars/avatar-lion-face.webp",
+  "sm": "assets/avatars/avatar-lion-sm.webp",
+  "src": "assets/avatars/avatar-lion.webp"
+ },
+ "avatar-lion-happy": {
+  "sm": "assets/avatars/avatar-lion-happy-sm.webp",
+  "src": "assets/avatars/avatar-lion-happy.webp"
+ },
  "avatar-panda": {
   "face": "assets/avatars/avatar-panda-face.webp",
   "sm": "assets/avatars/avatar-panda-sm.webp",
   "src": "assets/avatars/avatar-panda.webp"
+ },
+ "avatar-panda-happy": {
+  "sm": "assets/avatars/avatar-panda-happy-sm.webp",
+  "src": "assets/avatars/avatar-panda-happy.webp"
+ },
+ "avatar-robot": {
+  "face": "assets/avatars/avatar-robot-face.webp",
+  "sm": "assets/avatars/avatar-robot-sm.webp",
+  "src": "assets/avatars/avatar-robot.webp"
+ },
+ "avatar-robot-happy": {
+  "sm": "assets/avatars/avatar-robot-happy-sm.webp",
+  "src": "assets/avatars/avatar-robot-happy.webp"
+ },
+ "avatar-star-sprite": {
+  "face": "assets/avatars/avatar-star-sprite-face.webp",
+  "sm": "assets/avatars/avatar-star-sprite-sm.webp",
+  "src": "assets/avatars/avatar-star-sprite.webp"
+ },
+ "avatar-star-sprite-happy": {
+  "sm": "assets/avatars/avatar-star-sprite-happy-sm.webp",
+  "src": "assets/avatars/avatar-star-sprite-happy.webp"
+ },
+ "avatar-unicorn": {
+  "face": "assets/avatars/avatar-unicorn-face.webp",
+  "sm": "assets/avatars/avatar-unicorn-sm.webp",
+  "src": "assets/avatars/avatar-unicorn.webp"
+ },
+ "avatar-unicorn-happy": {
+  "sm": "assets/avatars/avatar-unicorn-happy-sm.webp",
+  "src": "assets/avatars/avatar-unicorn-happy.webp"
  },
  "badge-champion-earned": {
   "sm": "assets/badges/badge-champion-earned-sm.webp",
