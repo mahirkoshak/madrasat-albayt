@@ -347,7 +347,8 @@ function coachHint(q, n, pickedText, used, i) {
     const g = termOf(pickedText);
     if (g && safe(g.def)) { used.add(g.term); return `اخترت «${pickedText}». تذكّر معنى «${g.term}»: ${g.def} هل هذا ما يصفه السؤال؟`; }
     if (inQuestion[0]) { used.add(inQuestion[0].term); return `تذكّر: ${inQuestion[0].term}: ${inQuestion[0].def} اقرأ السؤال مرة ثانية.`; }
-    return `فكّر مرة ثانية. هذا السؤال من درس «${lesson ? lesson.title : ''}»: اقرأه كلمة كلمة وابحث عن الكلمة المهمة.`;
+    const where = !lesson ? '' : safe(lesson.title) ? `من درس «${lesson.title}»` : `من الدرس ${ar(S.u.lessons.indexOf(lesson) + 1)}`;   // a lesson title can be the answer itself
+    return `فكّر مرة ثانية. هذا السؤال ${where}: اقرأه كلمة كلمة وابحث عن الكلمة المهمة.`;
   }
   if (mis || q.hint2) return [mis, q.hint2 && 'تلميح: ' + q.hint2].filter(Boolean).join(' ');
   if (inQuestion[0]) { used.add(inQuestion[0].term); return `تلميح ثانٍ: ${inQuestion[0].term}: ${inQuestion[0].def}`; }
@@ -577,6 +578,7 @@ APPS.unit = {
   },
   labCount: id => Object.keys(LABS[id] || {}).length,
   labs: () => LABS,   // read by the automated tests
+  hintFor(q, n, i) { const t = q.t === 'pic' && q.labels ? q.labels[i] : q.t === 'tf' ? '' : q.o[i]; return coachHint(q, n, t, new Set(), i); },   // tests
   close() { stopAll(); },
   /** for the parent page */
   report(unitId, profileId) {

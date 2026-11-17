@@ -124,17 +124,6 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #portal .go{flex:0 0 40px;width:40px;height:40px;border-radius:999px;display:grid;place-items:center;margin-inline-start:auto;
   background:var(--t-sand-soft);color:var(--t-ink)}
 
-/* ---------- brand bar ---------- */
-.p-top{display:flex;align-items:center;justify-content:space-between;gap:var(--t-s3);padding:var(--t-s1) 0 var(--t-s4)}
-.p-brand{display:flex;align-items:center;gap:10px;color:var(--t-ink-strong);text-decoration:none;font-weight:800;font-size:var(--t-fs-xl);border-radius:16px;min-height:48px}
-.p-brand .p-logo{width:60px;height:60px;border-radius:16px}
-.p-brand .hs-fb{font-size:36px}
-.p-me{display:flex;align-items:center;gap:var(--t-s2)}
-#portal .p-starpill{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:4px 16px;border-radius:999px;background:var(--t-gold-soft);color:var(--t-gold-ink);
-  font-weight:800;font-size:var(--t-fs-md);box-shadow:0 0 0 1.5px var(--t-gold),0 3px 0 1.5px var(--t-gold-sh)}
-.p-starpill b{font-size:var(--t-fs-lg)}
-.p-me-av{width:48px;height:48px;border-radius:999px;display:grid;place-items:center;font-size:28px;overflow:hidden;box-shadow:0 0 0 3px var(--t-surface),0 0 0 4.5px var(--t-line)}
-
 /* ---------- hero: Koko greets the child (the one bold moment of the page) ---------- */
 .p-hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:var(--t-s4);
   background:var(--t-sky);border-radius:var(--t-r-lg);padding:var(--t-s5) var(--t-s6) 0;overflow:hidden;isolation:isolate}
@@ -224,12 +213,6 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .p-sub{margin:0 0 var(--t-s4);color:var(--t-muted);font-size:var(--t-fs-md)}
 .p-head .p-sub{margin:2px 0 0}
 
-/* ---------- breadcrumb ---------- */
-.p-crumb{display:flex;align-items:center;gap:var(--t-s3);flex-wrap:wrap;margin:0 0 var(--t-s2)}
-#portal .p-back{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:4px 16px 4px 12px;border-radius:999px;background:var(--t-surface);font-weight:800;box-shadow:var(--t-raise)}
-#portal .p-back:active{transform:translateY(2px);box-shadow:var(--t-press)}
-.p-trail{color:var(--t-muted);font-size:var(--t-fs-sm)}
-
 /* ---------- empty state ---------- */
 .p-empty{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--t-s4)}
 .p-empty .hs-art{width:150px}
@@ -267,8 +250,6 @@ body{font-family:var(--t-font);background:var(--t-page)}
 /* ---------- small screens ---------- */
 @media (max-width:640px){
   .p-wrap{padding:var(--t-s2) var(--t-s3) var(--t-s6)}
-  .p-brand span{font-size:var(--t-fs-md)}
-  .p-brand .p-logo{width:48px;height:48px}
   .p-hero{display:block;padding:var(--t-s4) var(--t-s4) var(--t-s4)}
   .p-hero::after{width:210px;height:100px;bottom:auto;top:150px;inset-inline-end:-40px}
   .p-hero-art{position:absolute;top:-10px;inset-inline-end:-14px;width:196px;margin:0}
@@ -292,21 +273,68 @@ body{font-family:var(--t-font);background:var(--t-page)}
   .p-avs{grid-template-columns:repeat(4,1fr);gap:var(--t-s2)}
 }
 
-/* ============ top bar shown above every app ============ */
-.appbar{position:relative;z-index:6;display:flex;align-items:center;gap:var(--t-s2);padding:8px 12px;background:var(--t-surface);color:var(--t-ink);
-  font-size:var(--t-fs-sm);font-family:var(--t-font);border-bottom:1.5px solid var(--t-line);box-sizing:border-box}
-.appbar button{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:44px;font:inherit;font-weight:800;cursor:pointer;border:none;background:var(--t-surface);color:var(--t-ink);
-  border-radius:999px;padding:4px 14px 4px 10px;box-shadow:var(--t-raise);-webkit-tap-highlight-color:transparent}
-.appbar button:active{transform:translateY(2px);box-shadow:var(--t-press)}
-.appbar .p-i{width:22px;height:22px}
-.bar-home .bar-logo{width:30px;height:30px;border-radius:9px}
-.bar-trail{flex:1 1 auto;min-width:0;color:var(--t-muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar-me{flex:none;width:42px;height:42px;border-radius:999px;display:grid;place-items:center;font-size:24px;overflow:hidden}
-@media (max-width:560px){.bar-home span,.bar-trail{display:none}.bar-home{padding:4px 7px!important}.appbar{justify-content:space-between}.bar-shop{margin-inline-start:auto}}
+/* ============ the site header (every page): global row + context row ============ */
+.appbar{position:sticky;top:0;z-index:20;display:block;background:var(--t-surface);color:var(--t-ink);font-family:var(--t-font);font-size:var(--t-fs-sm);
+  border-bottom:1.5px solid var(--t-line);box-shadow:0 6px 18px -16px rgba(110,74,20,.5)}
+.appbar *{box-sizing:border-box}
+.appbar button{font:inherit;cursor:pointer;border:none;color:inherit;-webkit-tap-highlight-color:transparent}
+.gb-row,.gb-ctx{display:flex;align-items:center;gap:var(--t-s2);max-width:1080px;margin:0 auto;padding:6px var(--t-s4)}
+.gb-ctx{padding-top:0;padding-bottom:8px;min-height:52px}
+.gb-brand{display:flex;align-items:center;gap:8px;min-height:44px;color:var(--t-ink-strong);text-decoration:none;font-weight:800;font-size:var(--t-fs-md);border-radius:14px;margin-inline-end:auto}
+.gb-logo{width:44px;height:44px;border-radius:12px}
+.gb-brand .hs-fb{font-size:30px}
+.gb-tools{display:flex;align-items:center;gap:6px}
+.gb-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;padding:4px 12px;border-radius:999px;background:var(--t-surface);font-weight:800;box-shadow:var(--t-raise)}
+.gb-btn:active,.gb-back:active{transform:translateY(2px);box-shadow:var(--t-press)}
+.gb-btn .p-i{width:22px;height:22px}
+.gb-btn.p-mute[aria-pressed="true"]{background:var(--t-red-soft);color:var(--t-red-ink)}
+.gb-stars{background:var(--t-gold-soft);color:var(--t-gold-ink);box-shadow:0 0 0 1.5px var(--t-gold),0 3px 0 1.5px var(--t-gold-sh)}
+.gb-stars b{font-size:var(--t-fs-md)}
+.gb-menu{position:relative}
+.gb-me{padding:3px 10px 3px 4px}
+.gb-av{width:38px;height:38px;border-radius:999px;display:grid;place-items:center;font-size:22px;overflow:hidden;flex:none;background:var(--t-sand-soft)}
+.gb-who{max-width:9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gb-caret{font-size:12px;color:var(--t-muted)}
+.gb-pop{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:30;width:min(300px,calc(100vw - 24px));background:var(--t-surface);border-radius:var(--t-r-card);
+  padding:8px;box-shadow:0 0 0 1.5px var(--t-line),0 18px 40px -12px rgba(60,40,10,.35);display:flex;flex-direction:column;gap:2px}
+.gb-pop[hidden]{display:none}
+.gb-pop-h{margin:4px 8px 6px;color:var(--t-muted);font-size:var(--t-fs-xs)}
+.gb-pop button{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 12px;border-radius:14px;background:none;text-align:start;font-weight:700;font-size:var(--t-fs-sm)}
+.gb-pop button:hover,.gb-pop button:focus-visible{background:var(--t-sand-soft)}
+.gb-back{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:44px;padding:4px 16px 4px 12px;border-radius:999px;background:var(--t-sand-soft);font-weight:800;box-shadow:inset 0 0 0 1.5px var(--t-line)}
+.gb-back .p-i{width:22px;height:22px}
+[dir="ltr"] .p-i.flip{transform:scaleX(-1)}
+.gb-title{font-weight:800;font-size:var(--t-fs-md);color:var(--t-ink-strong);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* breadcrumb: ancestors are links, the current page is plain text; arrows point the reading direction */
+.gb-crumbs{min-width:0;flex:1}
+.gb-crumbs ol{display:flex;align-items:center;flex-wrap:wrap;gap:2px 0;list-style:none;margin:0;padding:0}
+.gb-crumbs li{display:flex;align-items:center;min-width:0}
+.gb-crumbs li + li::before{content:"←";color:var(--t-muted);margin:0 8px;font-weight:700}
+[dir="ltr"] .gb-crumbs li + li::before{content:"→"}
+.gb-crumbs a{color:var(--t-blue-sh);font-weight:700;text-decoration:underline;text-underline-offset:3px;padding:10px 2px;border-radius:8px}
+.gb-crumbs [aria-current]{font-weight:800;color:var(--t-ink-strong)}
+.gb-crumbs .ell{display:none}
+.gb-ell{min-width:44px;min-height:40px;border-radius:12px;background:var(--t-sand-soft);font-weight:800}
+/* focused activity: compact header, no breadcrumb, no brand name or star counter */
+.appbar.focus .gb-brand span,.appbar.focus .gb-stars{display:none}
+.appbar.focus{position:relative}   /* a game gets the whole screen: the compact header scrolls away with the page */
+@media (max-width:760px){
+  .gb-crumbs:not(.open) li.mid{display:none}
+  .gb-crumbs:not(.open) li.ell{display:flex}
+}
+@media (max-width:560px){
+  .gb-row,.gb-ctx{padding-inline:var(--t-s3)}
+  .gb-brand span,.gb-who,.gb-caret{display:none}
+  .gb-me{padding:3px}
+  .gb-back span{display:none}
+  .gb-back{padding:4px 10px}
+  .gb-crumbs ol{flex-wrap:nowrap}
+  .gb-crumbs li.cur{flex:1;min-width:0}
+  .gb-crumbs a,.gb-crumbs [aria-current]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;max-width:100%}
+}
+@media (max-width:360px){.gb-stars b{font-size:var(--t-fs-sm)}.gb-btn{padding:4px 8px}}
 
 /* ============ rewards shop ============ */
-.appbar .bar-shop{background:var(--t-gold-soft);color:var(--t-gold-ink);box-shadow:0 0 0 1.5px var(--t-gold),0 3px 0 1.5px var(--t-gold-sh)}
-.bar-shop b{font-weight:800;font-size:var(--t-fs-md)}
 .sh-head{display:flex;align-items:center;gap:14px}.sh-head .p-kid-av{width:64px;height:64px;font-size:34px}
 .sh-head .p-title{margin:0}
 .sh-bal{margin:0;font-size:var(--t-fs-lg)}.sh-bal b{color:var(--t-gold-ink);font-size:var(--t-fs-xl)}
@@ -383,12 +411,6 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #ppSyncCode{font:inherit;font-size:18px;letter-spacing:1px;border:2px solid var(--t-line);border-radius:10px;padding:5px 10px;width:190px;text-transform:uppercase}
 .p-cloud{text-align:center;color:var(--t-muted);font-size:var(--t-fs-xs);margin:0 0 10px}
 
-/* sound and language buttons */
-#portal .p-tool{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;padding:4px 12px;border-radius:999px;background:var(--t-surface);color:var(--t-ink);font-weight:800;font-size:var(--t-fs-sm);box-shadow:var(--t-raise)}
-#portal .p-mute[aria-pressed="true"],.appbar .bar-mute[aria-pressed="true"]{background:var(--t-red-soft);color:var(--t-red-ink)}
-.appbar .bar-mute{padding:4px 10px}
-[dir="ltr"] .p-i.flip{transform:scaleX(-1)}
-@media (max-width:640px){.p-top{flex-wrap:wrap}.p-me{gap:6px}#portal .p-tool{padding:4px 10px}}
 
 /* ---------- hero with the full Koko scene (assets/hero): text on the free sky, where reading starts ---------- */
 .p-hero.scene{display:flex;align-items:center;padding:var(--t-s5) 0;aspect-ratio:1752/897;background:#dcecfe}
@@ -407,6 +429,12 @@ body{font-family:var(--t-font);background:var(--t-page)}
   .p-hero.scene h1,.p-hero.scene .p-hero-sub{margin-inline-end:0}
   .p-hero.scene .p-hero-sub{min-height:0}
 }
+
+.pp-kglv summary{cursor:pointer;font-weight:800}
+.pp-lv{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-top:1px solid var(--line,#e5e7eb)}
+.pp-lv select{min-height:44px;font:inherit;border-radius:10px;padding:0 8px}
+.pp-learn{margin-top:10px;padding-top:8px;border-top:1px dashed var(--t-line,#e5e7eb)}
+.pp-next{font-weight:800;margin:8px 0 0}
 
 /* ===== app: dict (dict) ===== */
 #app-dict *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -741,6 +769,22 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-kg .k-hold span{position:relative}
 #app-kg .mi .em.has-art{display:grid;place-items:center;height:clamp(64px,16vw,84px)}
 #app-kg .mi .em .hs-art{height:100%;width:auto}
+#app-kg .kg-path{display:inline-flex;gap:6px;align-items:center;padding:4px 0}
+#app-kg .kg-path i{width:14px;height:14px;border-radius:99px;background:rgba(0,0,0,.12)}
+#app-kg .kg-path i.f{background:var(--t-gold)}
+#app-kg .kg-path i.now{box-shadow:0 0 0 3px rgba(255,200,0,.35);transform:scale(1.15)}
+#app-kg .speak{display:inline-flex;align-items:center;gap:6px}
+#app-kg .speak-l{font-size:16px;font-weight:800}
+#app-kg .rb-run{margin-top:-2px}
+#app-kg .rb-k.rep{font-size:24px;font-weight:900;color:var(--t-purple,#7048e8);background:#f3f0ff;border-color:#e5dbff}
+#app-kg .rb-k.clr{background:#fff4e6;border-color:#ffd8a8}
+#app-kg .rb-k.stp{background:#e7f5ff;border-color:#a5d8ff}
+#app-kg .rb-prog span{position:relative}
+#app-kg .rb-prog span b{font-size:13px;vertical-align:super;color:var(--t-purple,#7048e8)}
+#app-kg .rb-prog span.did{opacity:.45}
+#app-kg .rb-star{position:relative;display:inline-block}
+#app-kg .rb-star b{position:absolute;inset-inline-end:-6px;bottom:-4px;font-size:.42em;background:#fff;border-radius:50%;width:1.5em;height:1.5em;line-height:1.5em;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.25);font-family:var(--t-font);color:var(--t-ink)}
+#app-kg .rb-star.got{opacity:.35;filter:grayscale(1)}
 
 /* ===== app: unit (unit) ===== */
 #app-unit{
@@ -764,9 +808,10 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-unit header p{margin:4px 0 0;opacity:.92}
 #app-unit .stars{background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:6px 16px;font-weight:700;font-size:20px;white-space:nowrap}
 #app-unit .hills{position:absolute;bottom:-2px;left:0;right:0;width:100%;height:60px}
-#app-unit nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;margin-top:-46px}
-#app-unit .tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 16px 8px;max-width:980px;margin:0 auto;scrollbar-width:thin}
-#app-unit .tab{flex:0 0 auto;border:none;background:#fff;color:var(--ink);padding:8px 16px;margin:2px 2px 7px;border-radius:var(--t-r-btn);font-size:17px;font-weight:800;box-shadow:var(--shadow)}
+#app-unit .u-nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;margin-top:-46px}
+#app-unit .tabs{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:4px 16px 8px;max-width:980px;margin:0 auto}
+#app-unit .tabs li{display:flex}
+#app-unit .tab{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;border:none;background:#fff;color:var(--ink);padding:6px 16px;margin:2px 2px 6px;border-radius:var(--t-r-btn);font-size:17px;font-weight:800;box-shadow:var(--shadow)}
 #app-unit .tab.on{background:var(--t-blue);color:#fff;box-shadow:0 5px 0 var(--t-blue-sh)}
 #app-unit .tab .ck{color:var(--t-green-edge);margin-inline-start:4px}
 #app-unit .tab.on .ck{color:#8ee6ae}
@@ -878,8 +923,6 @@ body{font-family:var(--t-font);background:var(--t-page)}
 @media (max-width:560px){#app-unit header h1{font-size:27px}
 #app-unit .card{padding:16px}
 #app-unit .q{font-size:19px}}
-#app-unit .u-me{display:flex;align-items:center;gap:8px}
-#app-unit .u-av{overflow:hidden;width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:26px}
 #app-unit .small{font-size:15px}
 #app-unit .row.center{justify-content:center}
 #app-unit .btn.small{padding:6px 14px;font-size:16px}
@@ -972,78 +1015,144 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-unit .card.due{overflow:hidden}
 #app-unit .due-art{float:left;width:112px;margin:-6px 0 4px 8px}
 @media(max-width:480px){#app-unit .due-art{width:84px}}
+@media (max-width:560px){#app-unit .tabs{gap:6px;padding:4px 10px 6px}
+#app-unit .tab{font-size:15px;padding:4px 12px}}
+#app-unit.focus .u-head,#app-unit.focus .u-nav,#app-unit.focus > footer{display:none}
+#app-unit.focus .u-main-pad{padding-top:12px}
+#app-unit .coach{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:16px;background:var(--t-gold-soft);border:2px solid var(--t-gold);color:var(--t-gold-ink);font-weight:600;line-height:1.7}
+#app-unit .coach-ic{font-size:1.3em;line-height:1}
+#app-unit .opt.gone{opacity:.35;text-decoration:line-through}
+#app-unit .fb.ok.fixed{background:var(--t-blue-soft,#e6f0ff);color:var(--t-ink)}
+#app-unit .gp-h{margin:18px 4px 8px;font-size:1.05rem;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+#app-unit .gp-h small{font-weight:600;color:var(--t-ink-soft,#5b6474);font-size:.85rem}
+#app-unit .gp.lab{border-color:var(--t-purple,#7048e8)}
+#app-unit .lab h2{font-size:1.15rem;line-height:1.6}
+#app-unit .lab-note{font-size:.9rem;color:var(--t-ink-soft,#5b6474)}
+#app-unit .lab-steps{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 10px;flex-wrap:wrap;counter-reset:st}
+#app-unit .lab-steps li{counter-increment:st;padding:4px 10px;border-radius:999px;background:#eef1f5;font-size:.85rem;font-weight:700;color:#5b6474}
+#app-unit .lab-steps li::before{content:counter(st, arabic-indic) ". "}
+#app-unit .lab-steps li.on{background:var(--t-blue);color:#fff}
+#app-unit .lab-steps li.done{background:var(--t-green-soft);color:var(--t-green-ink)}
+#app-unit .lab-list{padding-inline-start:20px;line-height:2}
+#app-unit .lab-list li.ok{color:var(--t-green-ink)}
+#app-unit .lab-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+#app-unit .lab-two:has(> :only-child){max-width:420px;margin-inline:auto}
+#app-unit .hill .soil{transition:stroke-width 1.6s}
+#app-unit .lab-hill{margin:0;background:#f4f9ff;border:2px solid #dbe7f5;border-radius:16px;padding:8px;min-width:0}
+#app-unit .lab-hill figcaption{display:flex;flex-direction:column;gap:2px;font-size:.9rem}
+#app-unit .lab-hill figcaption span{color:#5b6474;font-size:.82rem}
+#app-unit .hill{width:100%;height:auto;display:block}
+#app-unit .hill .rock{fill:#c9a27a}
+#app-unit .hill .soil{stroke:#7a4b2a;stroke-width:9;stroke-linecap:round}
+#app-unit .hill .ground{stroke:#8d6e63;stroke-width:3}
+#app-unit .hill .path{fill:#cfd8dc}
+#app-unit .hill .leaf{stroke:#2f9e44;stroke-width:2.4;fill:none;stroke-linecap:round}
+#app-unit .hill .root{stroke:#5c3b1e;stroke-width:1.3;fill:none;opacity:.9}
+#app-unit .hill .gr{fill:#6d4126;transition:transform 1.4s cubic-bezier(.45,.05,.7,1)}
+#app-unit .hill .rain line{stroke:#4dabf7;stroke-width:1.6;stroke-linecap:round;opacity:0}
+#app-unit .hill.raining .rain line{animation:rainfall .7s linear infinite}
+@keyframes rainfall{0%{opacity:0;transform:translateY(0)}15%{opacity:.9}100%{opacity:0;transform:translateY(120px)}}
+#app-unit .lab-meter{height:10px;border-radius:6px;background:#e9ecef;overflow:hidden;margin-top:6px}
+#app-unit .lab-meter i{display:block;height:100%;background:#8b5a2b;transition:width 1.6s}
+#app-unit .lab-out{margin:6px 0 0;font-weight:800;min-height:1.4em}
+#app-unit .lab-pred,#app-unit .lab-seg{border:0;padding:0;margin:12px 0}
+#app-unit .lab-pred legend,#app-unit .lab-seg legend{font-weight:800;margin-bottom:6px}
+#app-unit .lab-pred .btn.on,#app-unit .lab-seg .btn[aria-pressed="true"]{background:var(--t-blue);color:#fff;border-color:var(--t-blue)}
+#app-unit .lab-pred .col{display:flex;flex-direction:column;gap:8px}
+#app-unit .lab-pred .btn.no{opacity:.45;text-decoration:line-through}
+#app-unit .lab-cmp{margin-top:10px;padding:12px 14px;border-radius:14px;background:#fff4e6;font-weight:600}
+#app-unit .lab-cmp.ok{background:var(--t-green-soft);color:var(--t-green-ink)}
+#app-unit .lab-cmp-list{list-style:none;padding:0}
+#app-unit .lab-cmp-list li{padding:4px 0;font-weight:700}
+#app-unit .lab-cmp-list .no{color:var(--t-red-ink)}
+#app-unit .lab-why{margin-top:12px}
+#app-unit .lab-transfer{margin-top:8px;font-weight:600}
+#app-unit .lab-web{max-width:420px;margin:8px auto}
+#app-unit .fw{width:100%;height:auto}
+#app-unit .fw-e{stroke:#868e96;stroke-width:2}
+#app-unit .fw-ah{fill:#868e96}
+#app-unit .fw-n circle{fill:#fff;stroke:#adb5bd;stroke-width:2.5}
+#app-unit .fw-n.p > circle{fill:#ebfbee;stroke:#2f9e44}
+#app-unit .fw-n text{font-size:11px;font-weight:800;text-anchor:middle;fill:#212529;font-family:var(--t-font)}
+#app-unit .fw-n .fw-b{display:none}
+#app-unit .fw-n .fw-b circle{stroke:none}
+#app-unit .fw-n .fw-b text{fill:#fff;font-size:12px}
+#app-unit .fw-n.up .fw-b,#app-unit .fw-n.dn .fw-b{display:inline}
+#app-unit .fw-n.up .fw-b circle{fill:#2f9e44}
+#app-unit .fw-n.dn .fw-b circle{fill:#e03131}
+#app-unit .fw-n.up > circle{stroke:#2f9e44;stroke-width:4}
+#app-unit .fw-n.dn > circle{stroke:#e03131;stroke-width:4}
+#app-unit .fw-n.start > circle{stroke-dasharray:4 3}
+#app-unit .fw-n.s1,#app-unit .fw-n.s2{animation:fwpulse .9s ease-out 1}
+@keyframes fwpulse{0%{transform-box:fill-box}50%{opacity:.4}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){#app-unit .hill .gr,#app-unit .lab-meter i{transition:none}
+#app-unit .hill.raining .rain line,#app-unit .fw-n.s1,#app-unit .fw-n.s2{animation:none}}
 </style>
 </head>
 <body>
-<nav class="appbar" id="appbar" aria-label="التنقل" style="display:none"></nav>
+<header class="appbar" id="appbar"></header>
 <main id="portal" class="screen on"><div class="p-wrap" id="pView"></div></main>
 <!-- ===== app: dict ===== -->
 <div class="screen" id="scr-dict" dir="rtl" lang="ar"><div id="app-dict">
-<header class="d-top">
-  <button type="button" class="d-chip" id="dHome" aria-label="القاموس">📖 My Dictionary</button>
-  <span id="dStars" hidden></span>
-</header>
+<span id="dStars" hidden></span>
 <main class="d-wrap" id="dMain" dir="rtl"></main>
 
 </div></div>
 
 <!-- ===== app: kg ===== -->
 <div class="screen" id="scr-kg" dir="rtl" lang="ar"><div id="app-kg">
-<header>
-  <button type="button" class="home-btn" id="homeBtn" aria-label="قائمة الروضة">🏠</button>
-  <div class="stars" aria-live="polite" aria-label="النجوم">⭐ <span id="sc">٠</span></div>
-</header>
+
 
 <main class="wrap">
 
 <!-- HOME -->
 <section class="view on" id="k-home">
   <h1>🌈 عالم الصغار</h1>
-  <p class="sub">اضغطي على الصورة واسمعي 🔊 · Tap and listen</p>
+  <p class="sub">نضغط على الصورة ونسمع 🔊 · Tap and listen</p>
 
   <div class="sec-title">📚 نتعلّم · Learn</div>
   <div class="menu">
-    <button class="mi" style="background:var(--pink)" data-learn="ar"><span class="em">أ ب ت</span><b>الحروف العربية</b></button>
-    <button class="mi" style="background:var(--sky)" data-learn="en"><span class="em" style="direction:ltr">A B C</span><b>English Letters</b></button>
-    <button class="mi" style="background:var(--orange)" data-learn="num"><span class="em">١ 2 ٣</span><b>الأرقام · Numbers</b></button>
-    <button class="mi" style="background:var(--grape)" data-learn="col"><span class="em">🎨</span><b>الألوان · Colors</b></button>
-    <button class="mi" style="background:var(--mint)" data-learn="shp"><span class="em">🔺⭐</span><b>الأشكال · Shapes</b></button>
-    <button class="mi" style="background:#e8a33d" data-learn="ani"><span class="em">🦁🐘</span><b>الحيوانات · Animals</b></button>
+    <button type="button" class="mi" style="background:var(--pink)" data-learn="ar"><span class="em">أ ب ت</span><b>الحروف العربية</b></button>
+    <button type="button" class="mi" style="background:var(--sky)" data-learn="en"><span class="em" style="direction:ltr">A B C</span><b>English Letters</b></button>
+    <button type="button" class="mi" style="background:var(--orange)" data-learn="num"><span class="em">١ 2 ٣</span><b>الأرقام · Numbers</b></button>
+    <button type="button" class="mi" style="background:var(--grape)" data-learn="col"><span class="em">🎨</span><b>الألوان · Colors</b></button>
+    <button type="button" class="mi" style="background:var(--mint)" data-learn="shp"><span class="em">🔺⭐</span><b>الأشكال · Shapes</b></button>
+    <button type="button" class="mi" style="background:#e8a33d" data-learn="ani"><span class="em">🦁🐘</span><b>الحيوانات · Animals</b></button>
   </div>
 
   <div class="bar">
-    <span>لغة الألعاب:</span>
-    <button class="pill on" data-lang="ar">عربي</button>
-    <button class="pill" data-lang="en">English</button>
+    <span id="kLangL">لغة النشاط (الأسئلة والصوت):</span>
+    <button type="button" class="pill on" data-lang="ar" aria-pressed="true" aria-describedby="kLangL">عربي</button>
+    <button type="button" class="pill" data-lang="en" aria-pressed="false" aria-describedby="kLangL" lang="en">English</button>
   </div>
   <div class="sec-title">🧠 نفكّر · Think</div>
   <div class="menu">
-    <button class="mi" style="background:#ff8c42" data-game="puzzle"><span class="em" data-art="game-puzzle-card" data-art-small>🧩</span><b>الأحجية</b><small>Jigsaw</small></button>
-    <button class="mi" style="background:#4d96ff" data-game="compose"><span class="em" data-art="game-compose-card" data-art-small>🔺🟥</span><b>ركّبي الشكل</b><small>Build with shapes</small></button>
-    <button class="mi" style="background:#2fb4a8" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b>أين أضعها؟</b><small dir="ltr">Where does it go?</small></button>
-    <button class="mi" style="background:#9b5de5" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b>وجّهي الروبوت</b><small>Guide the robot</small></button>
-    <button class="mi" style="background:#f15bb5" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b>رتّبي القصة</b><small>Story order</small></button>
+    <button type="button" class="mi" style="background:#ff8c42" data-game="puzzle"><span class="em" data-art="game-puzzle-card" data-art-small>🧩</span><b>الأحجية</b><small>Jigsaw</small></button>
+    <button type="button" class="mi" style="background:#4d96ff" data-game="compose"><span class="em" data-art="game-compose-card" data-art-small>🔺🟥</span><b>نركّب الشكل</b><small>Build with shapes</small></button>
+    <button type="button" class="mi" style="background:#2fb4a8" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b>أين أضعها؟</b><small dir="ltr">Where does it go?</small></button>
+    <button type="button" class="mi" style="background:#9b5de5" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b>نخطّط ثم نحرّك</b><small>Plan, then move</small></button>
+    <button type="button" class="mi" style="background:#f15bb5" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b>نرتّب القصة</b><small>Story order</small></button>
   </div>
 
   <div class="sec-title">🎮 نلعب · Play</div>
   <div class="menu">
-    <button class="mi" style="background:var(--pink)" data-game="letters"><span class="em" id="gLetEm">أ ؟</span><b>أين الحرف؟</b><small>Find the letter</small></button>
-    <button class="mi" style="background:var(--orange)" data-game="count"><span class="em" data-art="game-count-card" data-art-small>🍎🍎🍎</span><b>كم عددها؟</b><small>How many?</small></button>
-    <button class="mi" style="background:var(--grape)" data-game="col"><span class="em" data-art="game-col-card" data-art-small>🔴🔵</span><b>أين اللون؟</b><small>Find the color</small></button>
-    <button class="mi" style="background:var(--mint)" data-game="shp"><span class="em" data-art="game-shp-card" data-art-small>⭕🔺</span><b>أين الشكل؟</b><small>Find the shape</small></button>
-    <button class="mi" style="background:#e8a33d" data-game="ani"><span class="em" data-art="game-ani-card" data-art-small>🐈🐄</span><b>أين الحيوان؟</b><small>Find the animal</small></button>
-    <button class="mi" style="background:#ff6b6b" data-game="pat"><span class="em" data-art="game-pat-card" data-art-small>🔴🔵🔴❓</span><b>ماذا يأتي بعد؟</b><small>What comes next?</small></button>
-    <button class="mi" style="background:#5c7cfa" data-game="odd"><span class="em" data-art="game-odd-card" data-art-small>🍎🍌🐈</span><b>أيّهم مختلف؟</b><small>Odd one out</small></button>
-    <button class="mi" style="background:#2fb4a8" data-game="memory"><span class="em" data-art="game-memory-card" data-art-small>⭐❓⭐</span><b>لعبة الذاكرة</b><small>Memory</small></button>
-    <button class="mi" style="background:#c06cf0" data-game="basket"><span class="em" data-art="game-basket-card" data-art-small>🧺🍎</span><b>السلّة الصحيحة</b><small>Baskets</small></button>
-    <button class="mi" style="background:var(--sky)" data-game="first"><span class="em" data-art="game-first-card" data-art-small>🐇 ← أ</span><b>بأي حرف يبدأ؟</b><small>First letter</small></button>
+    <button type="button" class="mi" style="background:var(--pink)" data-game="letters"><span class="em" id="gLetEm">أ ؟</span><b>أين الحرف؟</b><small>Find the letter</small></button>
+    <button type="button" class="mi" style="background:var(--orange)" data-game="count"><span class="em" data-art="game-count-card" data-art-small>🍎🍎🍎</span><b>كم عددها؟</b><small>How many?</small></button>
+    <button type="button" class="mi" style="background:var(--grape)" data-game="col"><span class="em" data-art="game-col-card" data-art-small>🔴🔵</span><b>أين اللون؟</b><small>Find the color</small></button>
+    <button type="button" class="mi" style="background:var(--mint)" data-game="shp"><span class="em" data-art="game-shp-card" data-art-small>⭕🔺</span><b>أين الشكل؟</b><small>Find the shape</small></button>
+    <button type="button" class="mi" style="background:#e8a33d" data-game="ani"><span class="em" data-art="game-ani-card" data-art-small>🐈🐄</span><b>أين الحيوان؟</b><small>Find the animal</small></button>
+    <button type="button" class="mi" style="background:#ff6b6b" data-game="pat"><span class="em" data-art="game-pat-card" data-art-small>🔴🔵🔴❓</span><b>ماذا يأتي بعد؟</b><small>What comes next?</small></button>
+    <button type="button" class="mi" style="background:#5c7cfa" data-game="odd"><span class="em" data-art="game-odd-card" data-art-small>🍎🍌🐈</span><b>أيّهم مختلف؟</b><small>Odd one out</small></button>
+    <button type="button" class="mi" style="background:#2fb4a8" data-game="memory"><span class="em" data-art="game-memory-card" data-art-small>⭐❓⭐</span><b>لعبة الذاكرة</b><small>Memory</small></button>
+    <button type="button" class="mi" style="background:#c06cf0" data-game="basket"><span class="em" data-art="game-basket-card" data-art-small>🧺🍎</span><b>السلّة الصحيحة</b><small>Baskets</small></button>
+    <button type="button" class="mi" style="background:var(--sky)" data-game="first"><span class="em" data-art="game-first-card" data-art-small>🐇 ← أ</span><b>بأي حرف يبدأ؟</b><small>First letter</small></button>
   </div>
 
   <div class="parent">
     <b>👨‍👧 للأب:</b>
     <ul style="margin:6px 0 0;padding-inline-start:20px">
       <li>١٠ دقائق يوميًا تكفي في هذا العمر. اجلس معها في البداية وردّد الكلمات معها بصوت عالٍ.</li>
-      <li>ابدأوا بقسم «نتعلّم»، ثم العبوا. كل لعبة لها ٣ مستويات، والمستوى يتغيّر تلقائيًا: يصعد إذا أجابت جيدًا، وينزل إذا صعب عليها، حتى تبقى ناجحة في أغلب الأسئلة دون ملل.</li>
+      <li>ابدأوا بقسم «نتعلّم»، ثم العبوا. لكل لعبة <span id="kLvRange"></span> مستويات، والمستوى يتغيّر تلقائيًا: يصعد بعد إجابات جيدة، وينزل إذا صعبت الأسئلة، حتى ينجح الطفل في أغلب الأسئلة دون ملل. يمكنك اختيار المستوى بنفسك في «صفحة الأب».</li>
       <li>لا يوجد خطأ يحبطها: إذا اختارت غلط تحاول مرة ثانية. ويمكنها سحب البطاقات أو الضغط عليها ثم على السلّة.</li>
       <li>غيّر «لغة اللعب» بين عربي وEnglish لتسمع الأسئلة باللغتين.</li>
       <li>إعدادات الصوت ومتابعة تقدّمها في <b>«صفحة الأب»</b> من الصفحة الرئيسية.</li>
@@ -1054,13 +1163,13 @@ body{font-family:var(--t-font);background:var(--t-page)}
 <!-- LEARN -->
 <section class="view" id="k-learn">
   <h1 id="lTitle"></h1>
-  <p class="sub">اضغطي على أي بطاقة 👆 · Tap a card</p>
+  <p class="sub">نضغط على أي بطاقة 👆 · Tap a card</p>
   <div class="grid" id="lGrid"></div>
 </section>
 
 <!-- GAME -->
 <section class="view" id="k-game">
-  <div class="prompt"><div class="lv" id="gLv"></div><div class="q" id="gQ"></div><div class="show" id="gShow"></div><button type="button" class="speak" id="gSpeak" aria-label="أعد السؤال">🔊</button></div>
+  <div class="prompt"><div class="lv" id="gLv" aria-live="polite"></div><div class="q" id="gQ"></div><div class="show" id="gShow"></div><button type="button" class="speak" id="gSpeak" aria-label="اسمع السؤال مرة أخرى"><span aria-hidden="true">🔊</span><span class="speak-l">اسمع</span></button></div>
   <div id="gArea"></div>
   <div class="dots" id="gDots"></div>
 </section>
@@ -1079,14 +1188,10 @@ body{font-family:var(--t-font);background:var(--t-page)}
       <h1 id="uTitle"></h1>
       <p id="uSub"></p>
     </div>
-    <div class="u-me">
-      <span class="u-av" id="uAv" aria-hidden="true"></span>
-      <span class="stars" id="uStars" aria-live="polite"></span>
-    </div>
   </div>
   <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 40 Q150 0 300 30 T600 28 T900 30 T1200 20 V60 H0Z" style="fill:var(--t-page)"/></svg>
 </header>
-<nav aria-label="أقسام الوحدة"><div class="tabs" id="uTabs" role="tablist"></div></nav>
+<nav class="u-nav" aria-label="أقسام الوحدة"><ul class="tabs" id="uTabs"></ul></nav>
 <main class="wrap" id="uMain"></main>
 <footer>صُمّمت للمراجعة المنزلية. المرجع الأساسي هو كتاب الطالب.</footer>
 
@@ -1102,9 +1207,9 @@ window.HS_PHRASES = {
     ar: ['أحسنت!', 'ممتاز!', 'رائع!', 'برافو!', 'إجابة صحيحة!'],
     en: ['Great job!', 'Well done!', 'Super!', 'Yes!', 'Amazing!']
   },
-  praiseF: { ar: ['أحسنتِ!', 'ممتاز!', 'شاطرة!', 'برافو!', 'رائع!'] },
+  praiseF: { ar: ['ممتاز!', 'رائع!', 'برافو!', 'عمل رائع!', 'إجابة صحيحة!'] },   // kindergarten praise: fits boys and girls
   retry: { ar: 'حاول مرة ثانية', en: 'Try again' },
-  retryF: { ar: 'حاولي مرة ثانية' },
+  retryF: { ar: 'لنحاول مرة ثانية' },
   levelUp: { ar: 'مستوى جديد!', en: 'New level!' },
   levelDown: { ar: 'لنتدرّب أكثر هنا', en: "Let's practice a bit more" },
   combo: { ar: 'سلسلة رائعة!', en: 'On a roll!' }
@@ -1143,7 +1248,8 @@ window.HS_PHRASES = {
   HS.toAr = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
   HS.esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   /** Arabic counted noun: HS.count(3, HS.N.q) → "٣ أسئلة" */
-  HS.N = { q: ['سؤال', 'سؤالان', 'أسئلة', 'سؤالًا'], day: ['يوم', 'يومان', 'أيام', 'يومًا'], star: ['نجمة', 'نجمتان', 'نجوم', 'نجمة'], term: ['مصطلح', 'مصطلحان', 'مصطلحات', 'مصطلحًا'] };
+  HS.N = { q: ['سؤال', 'سؤالان', 'أسئلة', 'سؤالًا'], day: ['يوم', 'يومان', 'أيام', 'يومًا'], star: ['نجمة', 'نجمتان', 'نجوم', 'نجمة'], term: ['مصطلح', 'مصطلحان', 'مصطلحات', 'مصطلحًا'],
+    lesson: ['درس', 'درسان', 'دروس', 'درسًا'], game: ['لعبة', 'لعبتان', 'ألعاب', 'لعبة'] };
   HS.count = (n, w) => n === 1 ? `${w[0]} واحد${w[0].endsWith('ة') ? 'ة' : ''}` : n === 2 ? w[1] : n >= 3 && n <= 10 ? `${HS.toAr(n)} ${w[2]}` : `${HS.toAr(n)} ${w[3]}`;
   HS.today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 
@@ -3715,10 +3821,54 @@ const LEVEL = { 3: '🟢 سهل', 4: '🟡 متوسط', 5: '🔴 صعب' };
 function sayEn(t) { HS.speak([[t, 'en']]); }   // the device's English voice, for English words only
 function refreshStars() { const s = $('dStars'); if (s) s.textContent = ar(HS.stars()); }
 HS.on('stars', refreshStars);
-let back = [];   // simple history for the in-app back button
-function go(fn, ...args) { back.push([fn, args]); fn(...args); window.scrollTo(0, 0); }
-function goBack() { back.pop(); const p = back.pop(); if (p) go(p[0], ...p[1]); else go(home); }
-const backBtn = () => `<button type="button" class="d-back" data-a="back">→ رجوع</button>`;
+/* every page is a route (refresh, Back and Forward work; the site header has the only Back button):
+     #app-dict · -topics · -t-<topic> · -az · -l-<letter> · -mine · -q-<search> · -w-<word id> · -practice[-<word id>] · -spell · -done */
+let lastIds = null, keepTyping = false;   // keepTyping: the search box keeps the cursor while results update   // the list a word was opened from (for ‹ › between words); not part of the address
+const enc = encodeURIComponent, dec = s => { try { return decodeURIComponent(s); } catch (e) { return s; } };
+function routeFor(fn, args) {
+  if (fn === home) return '';
+  if (fn === topics) return 'topics';
+  if (fn === az) return 'az';
+  if (fn === practice) return 'practice' + (args[0] ? '-' + enc(args[0]) : '');
+  if (fn === word) { lastIds = args[1] || null; return 'w-' + enc(args[0]); }
+  if (fn === list) return args[0] === 'mine' ? 'mine' : args[0] + '-' + enc(args[1]);
+  if (typeof spellStart === 'function' && fn === spellStart) return 'spell';
+  if (typeof spellList === 'function' && fn === spellList) return 'done';
+  return '';
+}
+function go(fn, ...args) { const r = routeFor(fn, args); HS.nav.go('app-dict' + (r ? '-' + r : '')); }
+/** draw the page of a route (called by APPS.dict.open) */
+function show(sub) {
+  let m;
+  if (!sub) return home();
+  if (sub === 'topics') return topics();
+  if (sub === 'az') return az();
+  if (sub === 'mine') return list('mine');
+  if (sub === 'spell') return spellStart();
+  if (sub === 'done') return spellList();
+  if ((m = /^practice(?:-(.+))?$/.exec(sub))) return practice(m[1] && BY_ID[dec(m[1])] ? dec(m[1]) : undefined);
+  if ((m = /^w-(.+)$/.exec(sub)) && BY_ID[dec(m[1])]) { const id = dec(m[1]); return word(id, lastIds && lastIds.includes(id) ? lastIds : null); }
+  if ((m = /^([tlq])-(.+)$/.exec(sub)) && (m[1] !== 't' || TOPICS[dec(m[2])])) { const k = keepTyping; keepTyping = false; return list(m[1], dec(m[2]), k); }
+  home();
+}
+/** where a page sits below the dictionary, for the site header (see src/portal/nav.js) */
+function chainFor(sub) {
+  const R = s => 'app-dict-' + s; let m;
+  if (!sub) return [];
+  if (sub === 'topics') return [{ route: R(sub), title: 'المواضيع' }];
+  if (sub === 'az') return [{ route: R(sub), title: 'الحروف' }];
+  if (sub === 'mine') return [{ route: R(sub), title: 'كلماتي' }];
+  if (sub === 'spell') return [{ route: R(sub), title: 'تحدّي الإملاء', focus: true }];
+  if (sub === 'done') return [{ route: R(sub), title: 'كلمات أتقنتها' }];
+  if ((m = /^practice/.exec(sub))) return [{ route: R(sub), title: 'تدرّب', focus: true }];
+  if ((m = /^t-(.+)$/.exec(sub)) && TOPICS[dec(m[1])]) return [{ route: R('topics'), title: 'المواضيع' }, { route: R(sub), title: TOPICS[dec(m[1])][2] }];
+  if ((m = /^l-(.+)$/.exec(sub))) return [{ route: R('az'), title: 'الحروف' }, { route: R(sub), title: dec(m[1]) }];
+  if ((m = /^q-(.+)$/.exec(sub))) return [{ route: R(sub), title: 'بحث: ' + dec(m[1]) }];
+  if ((m = /^w-(.+)$/.exec(sub)) && BY_ID[dec(m[1])]) { const x = BY_ID[dec(m[1])];   // a word sits in its topic
+    return [{ route: R('topics'), title: 'المواضيع' }, { route: R('t-' + enc(x.t)), title: TOPICS[x.t] ? TOPICS[x.t][2] : x.t }, { route: R(sub), title: x.w }]; }
+  return [];
+}
+const backBtn = () => '';   // Back lives in the site header
 /** question text: Arabic, plus an English line in Arabic mode (these children read English more easily) */
 const askT = (a, e) => AR() ? `${a}<small dir="ltr">${e}</small>` : a;
 const sayBtn = (t, cls = '') => AR() && /[؀-ۿ]/.test(t) ? '' : `<button type="button" class="d-say ${cls}" data-say="${esc(t)}" aria-label="استمع للنطق">🔊</button>`;
@@ -3764,7 +3914,7 @@ function home() {
     <button type="button" class="d-tile" style="background:var(--t-purple)" data-a="az"><span class="em" dir="${tDir()}">${AR() ? 'أ–ي' : 'A–Z'}</span><b>الحروف</b><small dir="ltr">Letters</small></button>
   </div>`;
   $('dSearch').onsubmit = e => { e.preventDefault(); const q = $('dQ').value.trim(); if (q) go(list, 'q', q); };
-  $('dQ').oninput = () => { const q = $('dQ').value.trim(); if (q.length >= 2) { back.push([list, ['q', q]]); list('q', q, true); } };
+  $('dQ').oninput = () => { const q = $('dQ').value.trim(); if (q.length >= 2) { keepTyping = true; HS.nav.go('app-dict-q-' + enc(q)); } };
 }
 function search(q) {
   const en = q.toLowerCase(), a = normAr(q).replace(/^ال/, '');
@@ -3787,8 +3937,8 @@ function list(kind, v, keepFocus) {
     ${ws.length ? `<div class="d-list">${ws.map(x => `<button type="button" class="d-row" data-w="${esc(x.id)}"><span class="em">${x.em}</span><span class="tg" dir="${tDir()}">${esc(tgt(x))}</span><span class="sc" dir="${sDir()}">${esc(src(x))}</span><span class="st" aria-label="مستوى الحفظ">${learned(x.id) ? '✅' : d.mine.includes(x.id) ? '⭐' : ''}</span></button>`).join('')}</div>`
       : `<p class="d-empty">${kind === 'mine' ? 'لم تحفظ كلمات بعد. افتح أي كلمة واضغط ⭐ لتضيفها هنا.' : 'لم أجد هذه الكلمة. جرّب كلمة أخرى أو تأكّد من الكتابة.'}</p>`}`;
   M().dataset.ids = ids.join('\n');
-  const f = $('dSearch'); if (f) { f.onsubmit = e => { e.preventDefault(); const q = $('dQ').value.trim(); if (q) { back.pop(); go(list, 'q', q); } };
-    $('dQ').oninput = () => { const q = $('dQ').value.trim(); if (q.length >= 2) { back.pop(); back.push([list, ['q', q]]); list('q', q, true); } };
+  const f = $('dSearch'); if (f) { f.onsubmit = e => { e.preventDefault(); const q = $('dQ').value.trim(); if (q) HS.nav.go('app-dict-q-' + enc(q), true); };
+    $('dQ').oninput = () => { const q = $('dQ').value.trim(); if (q.length >= 2) { try { history.replaceState(null, '', '#app-dict-q-' + enc(q)); } catch (e) {} list('q', q, true); } };
     if (keepFocus) { const i = $('dQ'); i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }
 }
 function topics() {
@@ -3879,7 +4029,7 @@ function nextItem() {
   if (mode === 'pick' && T.length < (AR() ? 3 : 4)) mode = 'tiles';
   if (mode === 'pick' && misspell(T).length < 2) mode = 'tiles';
   P.cur = { x, mode, first: true }; ROOT._dbg = T;   // read by the automated tests
-  const head = `<div class="d-qhead"><span>${ar(P.i + 1)} / ${ar(P.ids.length)}${AR() ? ' · 📝 عربي' : ''}</span>${P.again ? '<span>🔁 مرة ثانية</span>' : ''}<button type="button" class="d-x" data-a="home" aria-label="إنهاء">✕</button></div>`;
+  const head = `<div class="d-qhead"><span>${ar(P.i + 1)} / ${ar(P.ids.length)}${AR() ? ' · 📝 عربي' : ''}</span>${P.again ? '<span>🔁 مرة ثانية</span>' : ''}</div>`;   // leave with the site header's Back
   // the clue must not give the spelling away: in English mode hide the word (and its forms) inside the definition
   const hide = s => AR() ? esc(s) : esc(s).replace(new RegExp('\\b' + x.w.split(' ')[0].slice(0, Math.max(3, x.w.split(' ')[0].length - 2)).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\w*', 'gi'), '___');
   const clue = `<div class="d-clue"><span class="em">${x.em}</span><b dir="${sDir()}">${esc(src(x))}</b><p dir="ltr">${hide(x.def)}</p></div>`;
@@ -3961,9 +4111,7 @@ ROOT.addEventListener('click', e => {
   const t = e.target.closest('button,[data-w]'); if (!t || !ROOT.contains(t)) return;
   const ds = t.dataset;
   if (ds.say) { e.stopPropagation(); return sayEn(ds.say); }
-  if (t.id === 'dHome') { back = []; return go(home); }
-  if (ds.a === 'back') return goBack();
-  if (ds.a === 'home') { back = []; return go(home); }
+  if (ds.a === 'home') return go(home);
   if (ds.a === 'practice') return go(practice);
   if (ds.a === 'mine') return go(list, 'mine');
   if (ds.a === 'topics') return go(topics);
@@ -3971,13 +4119,13 @@ ROOT.addEventListener('click', e => {
   if (ds.a === 'dice') {          // 🎲 another random word: on the home card it swaps the card, on a word page it opens the new word
     e.stopPropagation(); HS.fx('tap');
     if (t.closest('.d-wod')) { wodPick = randomWord(wordOfDay().id).id; return home(); }
-    const cur = M().querySelector('[data-mine]'); back.pop(); return go(word, randomWord(cur && cur.dataset.mine).id);
+    const cur = M().querySelector('[data-mine]'); return go(word, randomWord(cur && cur.dataset.mine).id);
   }
   if (ds.mode) { D().mode = ds.mode; HS.save(); HS.fx('tap'); return home(); }
   if (ds.lv !== undefined) { D().diff = +ds.lv; wodPick = null; HS.save(); return home(); }
   if (ds.t) return go(list, 't', ds.t);
   if (ds.l) return go(list, 'l', ds.l);
-  if (ds.navW) { back.pop(); return go(word, ds.navW, (M().dataset.ids || '').split('\n')); }
+  if (ds.navW) return go(word, ds.navW, (M().dataset.ids || '').split('\n'));
   if (ds.w) return go(word, ds.w, t.classList.contains('d-row') ? (M().dataset.ids || '').split('\n') : null);
   if (ds.mine) { const d = D(), i = d.mine.indexOf(ds.mine); if (i >= 0) d.mine.splice(i, 1); else { d.mine.push(ds.mine); HS.toast('⭐ أُضيفت إلى كلماتي'); } HS.save(); return word(ds.mine, (M().dataset.ids || '').split('\n')); }
   if (ds.one) return go(practice, ds.one);
@@ -3987,7 +4135,8 @@ ROOT.addEventListener('click', e => {
 });
 
 APPS.dict = {
-  open() { refreshStars(); back = []; wodPick = null; go(home); },
+  open(sub) { refreshStars(); show(sub || ''); if (!keepTyping) window.scrollTo(0, 0); },
+  nav: chainFor,
   close() { HS.stopSpeak(); },
   /** parent page: words seen / learned and accuracy, for each direction */
   report(pid) {
@@ -4039,7 +4188,7 @@ function spellPick() {
 const spHead = () => `<div class="sp-head"><b>✍️ ${HS.L('تحدّي الإملاء', 'Spelling challenge')}</b>
   <span class="sp-chip" aria-label="${HS.L('كلمات متتالية صحيحة', 'words right in a row')}">🔥 ${HS.num(SG.streak)}</span>
   <button type="button" class="sp-chip sp-donebtn" data-sp="list">✓ ${HS.num(spDone().length)} <span>${HS.L('أتقنتها', 'done')}</span></button>
-  <button type="button" class="d-x" data-a="home" aria-label="${HS.L('إنهاء', 'Stop')}">✕</button></div>`;
+</div>`;   // leave with the site header's Back
 function spellNext() {
   const p = spellPick();
   if (!p) return spellAllDone();
@@ -4248,7 +4397,7 @@ APPDATA.kg = {
     oddWhy: { ar: g => 'لأن البقية ' + g[0], en: g => 'The others are ' + g[1] },
     pattern: { ar: () => 'ماذا يأتي بعد ذلك؟', en: () => 'What comes next?' },
     memory: { ar: () => 'اقلبي بطاقتين وابحثي عن الأزواج', en: () => 'Flip two cards and find the pairs' },
-    basket: { ar: () => 'ضعي كل شيء في سلّته', en: () => 'Put each one in the right basket' }
+    basket: { ar: () => 'لنضع كل شيء في سلّته', en: () => 'Put each one in the right basket' }
   };
   /** every string the app can say, as [text, lang] (for tools/speech_list.js) */
   K.speakables = function () {
@@ -4343,30 +4492,32 @@ APPDATA.kg = {
 
   const P = K.P, W = K.WHERE;
   Object.assign(P, {
-    puzzle: { ar: () => 'ركّبي الصورة', en: () => 'Put the picture together' },
-    compose: { ar: d => 'ركّبي ' + d.ar + ' من الأشكال', en: d => 'Build a ' + d.en + ' with the shapes' },
-    where: { ar: (t, s, p) => 'ضعي ' + t[1] + ' ' + W.preps[p][0] + ' ' + W.scenes[s].ar, en: (t, s, p) => 'Put the ' + t[2] + ' ' + W.preps[p][1] + ' ' + W.scenes[s].en },
+    puzzle: { ar: () => 'هيا نركّب الصورة', en: () => 'Put the picture together' },
+    compose: { ar: d => 'لنركّب ' + d.ar + ' من الأشكال', en: d => 'Build a ' + d.en + ' with the shapes' },
+    where: { ar: (t, s, p) => 'لنضع ' + t[1] + ' ' + W.preps[p][0] + ' ' + W.scenes[s].ar, en: (t, s, p) => 'Put the ' + t[2] + ' ' + W.preps[p][1] + ' ' + W.scenes[s].en },
     wherePick: { ar: (t, s, p) => 'أين ' + t[1] + ' ' + W.preps[p][0] + ' ' + W.scenes[s].ar + '؟', en: (t, s, p) => 'Where is the ' + t[2] + ' ' + W.preps[p][1] + ' ' + W.scenes[s].en + '?' },
-    robot: { ar: () => 'وجّهي الروبوت إلى التفاحة', en: () => 'Help the robot get to the apple' },
-    robotStar: { ar: () => 'خذي النجمة أولًا، ثم اذهبي إلى التفاحة', en: () => 'Get the star first, then go to the apple' },
-    robotStars: { ar: () => 'خذي كل النجوم، ثم اذهبي إلى التفاحة', en: () => 'Get all the stars, then go to the apple' },
-    robotLimit: { ar: n => 'عندك ' + n + (n <= 10 ? ' أسهم' : ' سهمًا') + ' فقط. اختاري أقصر طريق', en: n => 'You have only ' + n + ' arrows. Find the shortest way' },
-    robotMissed: { ar: () => 'وصلتِ! لكن نسيتِ نجمة', en: () => 'You got there, but you missed a star' },
+    robot: { ar: () => 'لنخطّط طريق الروبوت إلى التفاحة', en: () => 'Help the robot get to the apple' },
+    robotStar: { ar: () => 'لنأخذ النجمة أولًا، ثم نذهب إلى التفاحة', en: () => 'Get the star first, then go to the apple' },
+    robotStars: { ar: () => 'لنأخذ النجمة رقم ١ ثم النجمة رقم ٢، ثم نذهب إلى التفاحة', en: () => 'Get star 1, then star 2, then go to the apple' },
+    robotOrder: { ar: () => 'النجمة رقم ١ أولًا', en: () => 'Star number 1 first' },
+    robotRepeat: { ar: () => 'زر ×٢ يكرّر آخر سهم مرتين', en: () => 'The ×2 button repeats the last arrow twice' },
+    robotLimit: { ar: n => 'عندك ' + n + (n <= 10 ? ' أسهم' : ' سهمًا') + ' فقط. لنجد أقصر طريق', en: n => 'You have only ' + n + ' arrows. Find the shortest way' },
+    robotMissed: { ar: () => 'وصلنا! لكن بقيت نجمة', en: () => 'You got there, but you missed a star' },
     notMine: { ar: () => 'هذه القطعة ليست من هذه الصورة', en: () => 'This piece is not from this picture' },
-    robotRun: { ar: () => 'اضغطي زر التشغيل', en: () => 'Press play' },
-    robotBump: { ar: () => 'أوه! اصطدم الروبوت. جرّبي طريقًا آخر', en: () => 'Oops! The robot bumped. Try another way' },
-    robotShort: { ar: () => 'لم يصل بعد. أضيفي أسهمًا', en: () => 'Not there yet. Add more arrows' },
-    story: { ar: () => 'رتّبي القصة: ماذا حدث أولًا؟', en: () => 'Put the story in order: what happened first?' },
+    robotRun: { ar: () => 'الآن نضغط زر التشغيل', en: () => 'Press play' },
+    robotBump: { ar: () => 'أوه! اصطدم الروبوت. لنجرّب طريقًا آخر', en: () => 'Oops! The robot bumped. Try another way' },
+    robotShort: { ar: () => 'لم يصل بعد. لنضف أسهمًا', en: () => 'Not there yet. Add more arrows' },
+    story: { ar: () => 'لنرتّب القصة: ماذا حدث أولًا؟', en: () => 'Put the story in order: what happened first?' },
     storyNext: { ar: () => 'ماذا يحدث بعد ذلك؟', en: () => 'What happens next?' },
-    up: { ar: () => 'جرّبي في الأعلى', en: () => 'Try near the top' },
-    mid: { ar: () => 'جرّبي في الوسط', en: () => 'Try in the middle' },
-    down: { ar: () => 'جرّبي في الأسفل', en: () => 'Try near the bottom' },
-    brk: { ar: () => 'أحسنتِ اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة', en: () => 'Great work today! Time for a break away from the screen' }
+    up: { ar: () => 'لنجرّب في الأعلى', en: () => 'Try near the top' },
+    mid: { ar: () => 'لنجرّب في الوسط', en: () => 'Try in the middle' },
+    down: { ar: () => 'لنجرّب في الأسفل', en: () => 'Try near the bottom' },
+    brk: { ar: () => 'عمل رائع اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة', en: () => 'Great work today! Time for a break away from the screen' }
   });
   const base = K.speakables;
   K.speakables = function () {
     const out = base(), add = (t, l) => out.push([t, l]);
-    ['puzzle', 'robot', 'robotStar', 'robotStars', 'robotMissed', 'notMine', 'robotRun', 'robotBump', 'robotShort', 'story', 'storyNext', 'up', 'mid', 'down', 'brk'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
+    ['puzzle', 'robot', 'robotStar', 'robotStars', 'robotOrder', 'robotRepeat', 'robotMissed', 'notMine', 'robotRun', 'robotBump', 'robotShort', 'story', 'storyNext', 'up', 'mid', 'down', 'brk'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
     for (let n = 9; n <= 14; n++) { add(P.robotLimit.ar(n), 'ar'); add(P.robotLimit.en(n), 'en'); }
     K.DESIGNS.forEach(d => { add(P.compose.ar(d), 'ar'); add(P.compose.en(d), 'en'); });
     W.targets.forEach(t => Object.keys(W.scenes).forEach(s => W.scenes[s].zones.forEach(p => {
@@ -4401,19 +4552,20 @@ let LANG = 'ar';
 const K = () => HS.data('kg');                 // this child's saved data for this app
 const ROUNDS = 5;
 
-function refreshStars() { $('sc').textContent = HS.toAr(HS.stars()); }
-HS.on('stars', refreshStars);
+function refreshStars() {}   // stars show in the site header
 
 /* ---------- nav ---------- */
 let tmr = null;
 function show(v) { ROOT.querySelectorAll('.view').forEach(s => s.classList.toggle('on', s.id === 'k-' + v)); window.scrollTo(0, 0); clearTimeout(tmr); HS.stopSpeak(); }
-$('homeBtn').onclick = () => show('home');
 ROOT.querySelectorAll('[data-lang]').forEach(b => b.onclick = () => {
-  LANG = b.dataset.lang; ROOT.querySelectorAll('[data-lang]').forEach(x => x.classList.toggle('on', x === b));
+  LANG = b.dataset.lang; ROOT.querySelectorAll('[data-lang]').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
   $('gLetEm').textContent = LANG === 'ar' ? 'أ ؟' : 'A ?'; $('gLetEm').style.direction = LANG === 'ar' ? 'rtl' : 'ltr';
 });
-ROOT.querySelectorAll('[data-learn]').forEach(b => b.onclick = () => learn(b.dataset.learn));
-ROOT.querySelectorAll('[data-game]').forEach(b => b.onclick = () => startGame(b.dataset.game));
+/* every screen is a route: #app-kg · #app-kg-learn-<set> · #app-kg-game-<game> (refresh and Back work) */
+ROOT.querySelectorAll('[data-learn]').forEach(b => b.onclick = () => HS.nav.go('app-kg-learn-' + b.dataset.learn));
+ROOT.querySelectorAll('[data-game]').forEach(b => b.onclick = () => HS.nav.go('app-kg-game-' + b.dataset.game));
+const gameName = k => { const b = ROOT.querySelector(`[data-game="${k}"] b`); return b ? b.textContent : ''; };
+const learnName = k => ({ ar: 'الحروف العربية', en: 'English Letters', num: 'الأرقام · Numbers', col: 'الألوان · Colors', shp: 'الأشكال · Shapes', ani: 'الحيوانات · Animals' })[k];
 
 const swatch = (c, size = 84) => `<div class="swatch" style="width:${size}px;height:${size}px;background:${c[0]};${c[0] === '#fff' ? 'border:3px solid #ddd' : ''}"></div>`;
 const shape = (s, i, size = 84) => `<div class="shape"><svg viewBox="0 0 100 100" style="width:${size}px;height:${size}px" fill="${SHPC[i % SHPC.length]}" aria-hidden="true">${s[3]}</svg></div>`;
@@ -4426,8 +4578,7 @@ const PAT_UNITS = { 1: [[0, 1]], 2: [[0, 1, 2], [0, 0, 1], [0, 1, 1]], 3: [[0, 0
 const EN_FIRST = EN.filter(x => x[0] !== 'X');
 const SETS = { ar: AR, en: EN, num: NUM, col: COL, shp: SHP, ani: ANI };
 function learn(k) {
-  const T = { ar: 'الحروف العربية', en: 'English Letters', num: 'الأرقام · Numbers', col: 'الألوان · Colors', shp: 'الأشكال · Shapes', ani: 'الحيوانات · Animals' };
-  $('lTitle').textContent = T[k]; LD = k;
+  $('lTitle').textContent = learnName(k); LD = k;
   const cell = {
     ar: x => `<span class="big">${x[0]}</span><span class="em">${x[3]}</span>`,
     en: x => `<span class="big" style="direction:ltr">${x[0]}${x[0].toLowerCase()}</span><span class="em">${x[2]}</span>`,
@@ -4473,9 +4624,11 @@ function startGame(k) {
 }
 function setLevel(l, silent) { G.lv = l; K().lv[G.k] = l; HS.save(); G.round = 0; G.hist = []; if (!silent) restart(); }
 function restart() { if (THINK_ROUNDS[G.k]) thinkStart(G.k); else if (G.k === 'memory') memoryGame(); else if (G.k === 'basket') basketGame(); else nextQ(); }
+/** the child sees how far along the path they are, not level numbers to pick from (levels adapt by themselves;
+    a parent can set one on the parent page) */
 function levelBar() {
-  $('gLv').innerHTML = Array.from({ length: G.max || 3 }, (_, i) => i + 1).map(l => `<button type="button" class="pill ${l === G.lv ? 'on' : ''}" data-l="${l}" aria-label="المستوى ${l}" aria-pressed="${l === G.lv}">${(G.max || 3) > 3 ? HS.toAr(l) : '⭐'.repeat(l)}</button>`).join('');
-  $('gLv').querySelectorAll('[data-l]').forEach(b => b.onclick = () => setLevel(+b.dataset.l));
+  const max = G.max || 3, n = Math.min(G.lv, max);
+  $('gLv').innerHTML = `<span class="kg-path" role="img" aria-label="التحدي ${HS.toAr(n)} من ${HS.toAr(max)}">${Array.from({ length: max }, (_, i) => `<i class="${i < n ? 'f' : ''}${i === n - 1 ? ' now' : ''}"></i>`).join('')}</span>`;
 }
 function dots() { $('gDots').innerHTML = Array.from({ length: G.roundN || ROUNDS }, (_, i) => `<i class="${i < G.round ? 'f' : ''}"></i>`).join(''); }
 /** record one finished question: firstTry = answered right with no wrong taps */
@@ -4489,7 +4642,7 @@ function track(firstTry) {
 function endOfRound() {
   const acc = G.hist.reduce((a, b) => a + b, 0) / Math.max(1, G.hist.length);
   HS.party();
-  if (acc >= .8 && G.lv < (G.max || 3)) { setLevel(G.lv + 1, true); setTimeout(() => say([[HS_PHRASES.levelUp[lang()], lang()]]), 400); HS.toast('⭐ مستوى جديد!'); }
+  if (acc >= .8 && G.lv < (G.max || 3)) { setLevel(G.lv + 1, true); setTimeout(() => say([[HS_PHRASES.levelUp[lang()], lang()]]), 400); HS.toast('⭐ تحدٍّ جديد أصعب قليلًا!'); }
   else if (acc < .5 && G.lv > 1) { setLevel(G.lv - 1, true); setTimeout(() => say([[HS_PHRASES.levelDown[lang()], lang()]]), 400); }
   G.round = 0; G.hist = [];
 }
@@ -4639,11 +4792,29 @@ function basketGame() {
 }
 
 APPS.kg = {
-  open() { HS.hydrateArt(ROOT); show('home'); refreshStars(); },
+  open(sub) {
+    const mx = APPS.kg.levels().map(x => x.max); $('kLvRange').textContent = HS.toAr(Math.min(...mx)) + '–' + HS.toAr(Math.max(...mx));
+    HS.hydrateArt(ROOT); clearTimeout(tmr); HS.stopSpeak(); $('ov').classList.remove('on');
+    const m = /^(learn|game)-([a-z]+)$/.exec(sub || '');
+    if (m && m[1] === 'learn' && SETS[m[2]]) return learn(m[2]);
+    if (m && m[1] === 'game' && ROOT.querySelector(`[data-game="${m[2]}"]`)) return startGame(m[2]);
+    show('home');
+  },
+  /** pages below the kindergarten menu, for the site header (see src/portal/nav.js) */
+  nav(sub) {
+    const m = /^(learn|game)-([a-z]+)$/.exec(sub || ''); if (!m) return [];
+    if (m[1] === 'learn' && SETS[m[2]]) return [{ route: 'app-kg-' + sub, title: learnName(m[2]) }];
+    const n = gameName(m[2]); return n ? [{ route: 'app-kg-' + sub, title: n, focus: true }] : [];
+  },
+  /** counted from the menu itself, so the card on the home page never goes out of date */
+  counts: () => ({ games: ROOT.querySelectorAll('[data-game]').length, learn: ROOT.querySelectorAll('[data-learn]').length }),
+  /** the parent can set the level of a game (otherwise it adapts by itself) */
+  levels: () => [...ROOT.querySelectorAll('[data-game]')].map(b => ({ k: b.dataset.game, name: b.querySelector('b').textContent, max: THINK_ROUNDS[b.dataset.game] ? THINK_MAX[b.dataset.game] : 3 })),
+  setLevel(profileId, k, lv) { const d = HS.data('kg', profileId); d.lv = d.lv || {}; d.lv[k] = lv; HS.save(); },
   close() { HS.stopSpeak(); clearTimeout(tmr); $('ov').classList.remove('on'); },
   report(profileId) {
-    const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'ركّبي الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'وجّهي الروبوت 🤖', story: 'رتّبي القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال' };
-    return Object.keys(names).map(k => ({ name: names[k], max: THINK_ROUNDS[k] ? THINK_MAX[k] : 3, lv: (d.lv || {})[k] || 0, c: ((d.stats || {})[k] || {}).c || 0, w: ((d.stats || {})[k] || {}).w || 0 }));
+    const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'نركّب الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'نخطّط ثم نحرّك 🤖', story: 'نرتّب القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال' };
+    return Object.keys(names).map(k => ({ k, name: names[k], max: THINK_ROUNDS[k] ? THINK_MAX[k] : 3, lv: (d.lv || {})[k] || 0, c: ((d.stats || {})[k] || {}).c || 0, w: ((d.stats || {})[k] || {}).w || 0 }));
   }
 };
 
@@ -4813,7 +4984,7 @@ function wherePick(t) {
 }
 
 /* ---------------- 🤖 guide the robot ---------------- */
-const DIRS = { u: [0, -1, '⬆️'], d: [0, 1, '⬇️'], l: [-1, 0, '⬅️'], r: [1, 0, '➡️'] };
+const DIRS = { u: [0, -1, '⬆️', 'فوق'], d: [0, 1, '⬇️', 'تحت'], l: [-1, 0, '⬅️', 'يسار'], r: [1, 0, '➡️', 'يمين'] };
 function bfs(N, rocks, a, b) {
   const key = p => p[0] + ',' + p[1], seen = new Map([[key(a), 0]]), q = [a];
   while (q.length) { const c = q.shift(); if (c[0] === b[0] && c[1] === b[1]) return seen.get(key(c));
@@ -4843,8 +5014,7 @@ function makeLevel(L) {
     let d, free;   // free = length without rocks, to check that the rocks really get in the way
     if (!stars.length) { d = D(a, b); free = man(a, b); }
     else if (stars.length === 1) { d = D(a, stars[0]) + D(stars[0], b); free = man(a, stars[0]) + man(stars[0], b); }
-    else { const [s1, s2] = stars; d = Math.min(D(a, s1) + D(s1, s2) + D(s2, b), D(a, s2) + D(s2, s1) + D(s1, b));
-      free = Math.min(man(a, s1) + man(s1, s2) + man(s2, b), man(a, s2) + man(s2, s1) + man(s1, b)); }
+    else { const [s1, s2] = stars; d = D(a, s1) + D(s1, s2) + D(s2, b); free = man(a, s1) + man(s1, s2) + man(s2, b); }   // two stars: in order (1 then 2)
     if (!(d >= minD && d <= maxD && d < Infinity)) continue;
     if (L >= 6 && d <= free) continue;                                 // from level 6 the rocks force a detour
     const sig = [a, b, stars, [...rocks].sort()].join('|');
@@ -4853,30 +5023,40 @@ function makeLevel(L) {
   }
   return { N: 4, a: [0, 0], b: [2, 0], rocks: new Set(), stars: [], d: 2, limit: 20 };
 }
+/* Plan before moving: arrows go into a plan, nothing moves until ▶️. 👣 plays one step, ⌫ removes the last
+   command, 🗑️ clears the plan. From level 6 the ×2 button repeats the last arrow (one command, two moves: a
+   first loop). Levels 7–8: two numbered stars, taken in order. Level 8: a limited number of commands. */
 function robotGame() {
-  const L = G.lv, lv = makeLevel(L), direct = L === 1, k = p => p[0] + ',' + p[1];
+  const L = G.lv, lv = makeLevel(L), direct = L === 1, k = p => p[0] + ',' + p[1], loop = L >= 6;
   const cell = Math.min(64, Math.floor((Math.min(360, window.innerWidth - 50)) / lv.N) - 4);
   const starAt = p => lv.stars.findIndex(t => k(t) === k(p));
   const root = fresh(`<div class="rb-board" dir="ltr" style="grid-template-columns:repeat(${lv.N},${cell}px);grid-auto-rows:${cell}px">
       ${Array.from({ length: lv.N * lv.N }, (_, i) => { const p = [i % lv.N, Math.floor(i / lv.N)], si = starAt(p);
-        return `<div class="rb-cell" style="font-size:${cell * .62}px">${lv.rocks.has(k(p)) ? '🪨' : si >= 0 ? `<span class="rb-star" data-s="${si}">⭐</span>` : k(p) === k(lv.b) ? '🍎' : ''}</div>`; }).join('')}
+        return `<div class="rb-cell" style="font-size:${cell * .62}px">${lv.rocks.has(k(p)) ? '🪨' : si >= 0 ? `<span class="rb-star" data-s="${si}">⭐${lv.stars.length > 1 ? `<b>${HS.toAr(si + 1)}</b>` : ''}</span>` : k(p) === k(lv.b) ? '🍎' : ''}</div>`; }).join('')}
       <div class="rb-bot" style="width:${cell}px;height:${cell}px;font-size:${cell * .7}px"><span>🤖</span></div></div>
-    ${direct ? '' : `<div class="rb-prog" dir="ltr" aria-label="الأوامر"></div>${lv.limit < 20 ? `<div class="rb-limit" aria-live="polite"></div>` : ''}`}
-    <div class="rb-keys" dir="ltr">${['l', 'u', 'd', 'r'].map(d => `<button type="button" class="rb-k" data-d="${d}" aria-label="${d}">${DIRS[d][2]}</button>`).join('')}
-      ${direct ? '' : `<button type="button" class="rb-k del" aria-label="مسح آخر سهم">⌫</button><button type="button" class="rb-k go" aria-label="تشغيل">▶️</button>`}</div>`);
+    ${direct ? '' : `<div class="rb-prog" dir="ltr" role="list" aria-label="الخطة"></div>${lv.limit < 20 ? `<div class="rb-limit" aria-live="polite"></div>` : ''}`}
+    <div class="rb-keys" dir="ltr">${['l', 'u', 'd', 'r'].map(d => `<button type="button" class="rb-k" data-d="${d}" aria-label="${DIRS[d][3]}">${DIRS[d][2]}</button>`).join('')}
+      ${loop ? '<button type="button" class="rb-k rep" aria-label="كرّر آخر سهم مرتين">×٢</button>' : ''}</div>
+    ${direct ? '' : `<div class="rb-keys rb-run" dir="ltr"><button type="button" class="rb-k del" aria-label="احذف آخر أمر">⌫</button><button type="button" class="rb-k clr" aria-label="امسح الخطة كلها">🗑️</button>
+      <button type="button" class="rb-k stp" aria-label="خطوة واحدة">👣</button><button type="button" class="rb-k go" aria-label="شغّل الخطة">▶️</button></div>`}`);
   ROOT._dbg = lv;   // read by the automated tests
   ask(tl(lv.stars.length > 1 ? P.robotStars : lv.stars.length ? P.robotStar : P.robot)(), lang());
   if (lv.limit < 20) later(() => say([[tl(P.robotLimit)(lv.limit), lang()]]), 2500);
-  const botBox = root.querySelector('.rb-bot'), bot = botBox.firstElementChild, prog = [];
-  let pos = lv.a.slice(), got = new Set(), runs = 0, busy = false;
+  else if (loop && L === 6) later(() => say([[tl(P.robotRepeat)(), lang()]]), 2500);
+  const botBox = root.querySelector('.rb-bot'), bot = botBox.firstElementChild, prog = [];   // prog: [{ d: 'l'|'r'|'u'|'d', n: 1|2 }]
+  let pos = lv.a.slice(), got = new Set(), runs = 0, busy = false, stepAt = 0;
   const place = (p, anim) => { botBox.style.left = (6 + p[0] * (cell + 4)) + 'px'; botBox.style.top = (6 + p[1] * (cell + 4)) + 'px'; if (anim) { bot.classList.remove('hs-pop'); void bot.offsetWidth; bot.classList.add('hs-pop'); } };
   place(pos);
   const ok = p => p[0] >= 0 && p[1] >= 0 && p[0] < lv.N && p[1] < lv.N && !lv.rocks.has(k(p));
-  const star = p => { const si = starAt(p); if (si >= 0 && !got.has(si)) { got.add(si); root.querySelector(`.rb-star[data-s="${si}"]`).textContent = '✨'; HS.fx('combo'); } };
-  const resetStars = () => { got = new Set(); root.querySelectorAll('.rb-star').forEach(s => s.textContent = '⭐'); };
+  // stars are taken in order: star 2 does not count before star 1
+  const star = p => { const si = starAt(p); if (si < 0 || got.has(si)) return;
+    if (si !== got.size) { if (!warned) { warned = true; say([[tl(P.robotOrder)(), lang()]]); } return; }
+    got.add(si); root.querySelector(`.rb-star[data-s="${si}"]`).classList.add('got'); HS.fx('combo'); };
+  let warned = false;
+  const resetStars = () => { got = new Set(); warned = false; root.querySelectorAll('.rb-star').forEach(s => s.classList.remove('got')); };
   const win = p => k(p) === k(lv.b) && got.size === lv.stars.length;
   const progView = () => {
-    const el = root.querySelector('.rb-prog'); if (el) el.innerHTML = prog.map(d => `<span>${DIRS[d][2]}</span>`).join('') || '<em>…</em>';
+    const el = root.querySelector('.rb-prog'); if (el) el.innerHTML = prog.map((c, j) => `<span role="listitem" aria-label="${DIRS[c.d][3]}${c.n > 1 ? ' مرتين' : ''}" class="${j < stepAt ? 'did' : ''}">${DIRS[c.d][2]}${c.n > 1 ? '<b>×٢</b>' : ''}</span>`).join('') || '<em>…</em>';
     const lim = root.querySelector('.rb-limit'); if (lim) { lim.textContent = `🔢 ${HS.toAr(prog.length)} / ${HS.toAr(lv.limit)}`; lim.classList.toggle('full', prog.length >= lv.limit); }
   };
   progView();
@@ -4890,27 +5070,45 @@ function robotGame() {
       return;
     }
     if (prog.length >= lv.limit) { HS.fx('no'); shake(root.querySelector(lv.limit < 20 ? '.rb-limit' : '.rb-prog')); if (lv.limit < 20) say([[tl(P.robotLimit)(lv.limit), lang()]]); return; }
-    prog.push(d); HS.fx('tap'); progView();
+    rewind(); prog.push({ d, n: 1 }); HS.fx('tap'); progView();
   });
-  const del = root.querySelector('.rb-k.del'); if (del) del.onclick = () => { if (!busy) { prog.pop(); progView(); } };
-  const go = root.querySelector('.rb-k.go');
-  if (go) go.onclick = () => {
-    if (busy || !prog.length) { say([[tl(P.robotRun)(), lang()]]); return; }
-    busy = true; runs++; pos = lv.a.slice(); resetStars(); place(pos);
-    let i = 0;
-    const step = () => {
-      if (i >= prog.length) {
-        busy = false;
-        if (win(pos)) { HS.fx('win'); busy = true; thinkDone(runs === 1); }
-        else { HS.fx('no'); say([[tl(k(pos) === k(lv.b) ? P.robotMissed : P.robotShort)(), lang()]]); later(() => { pos = lv.a.slice(); resetStars(); place(pos); }, 700); }
-        return;
-      }
-      const d = prog[i], n = [pos[0] + DIRS[d][0], pos[1] + DIRS[d][1]];
-      root.querySelectorAll('.rb-prog span').forEach((s, j) => s.classList.toggle('now', j === i));
-      if (!ok(n)) { HS.fx('no'); shake(bot); say([[tl(P.robotBump)(), lang()]]); busy = false; later(() => { pos = lv.a.slice(); resetStars(); place(pos); }, 900); return; }
-      pos = n; place(pos, true); star(pos); i++; later(step, lv.N > 5 ? 400 : 480);
+  const btn = c => root.querySelector('.rb-k.' + c);
+  const rewind = () => { if (stepAt) { stepAt = 0; pos = lv.a.slice(); resetStars(); place(pos); } };
+  if (btn('rep')) btn('rep').onclick = () => {      // ×2: the last arrow runs twice (still one command)
+    if (busy) return; const c = prog[prog.length - 1];
+    if (!c || c.n > 1) { HS.fx('no'); say([[tl(P.robotRepeat)(), lang()]]); return; }
+    rewind(); c.n = 2; HS.fx('tap'); progView();
+  };
+  if (btn('del')) btn('del').onclick = () => { if (!busy) { rewind(); prog.pop(); progView(); } };
+  if (btn('clr')) btn('clr').onclick = () => { if (!busy) { rewind(); prog.length = 0; progView(); } };
+  // one command = its moves (×2 → two moves)
+  const moves = c => Array(c.n).fill(c.d);
+  const fail = msg => { HS.fx('no'); say([[tl(msg)(), lang()]]); later(() => { stepAt = 0; pos = lv.a.slice(); resetStars(); place(pos); progView(); busy = false; }, 900); };
+  const end = () => { if (win(pos)) { HS.fx('win'); busy = true; thinkDone(runs === 1); } else fail(k(pos) === k(lv.b) ? P.robotMissed : P.robotShort); };
+  /** run command j; then(true) when it went fine, after the animation */
+  const runCmd = (j, then) => {
+    const ms = moves(prog[j]); let m = 0;
+    root.querySelectorAll('.rb-prog span').forEach((s, x) => s.classList.toggle('now', x === j));
+    const one = () => {
+      if (m >= ms.length) return then(true);
+      const d = ms[m++], n = [pos[0] + DIRS[d][0], pos[1] + DIRS[d][1]];
+      if (!ok(n)) { shake(bot); fail(P.robotBump); return then(false); }
+      pos = n; place(pos, true); star(pos); later(one, lv.N > 5 ? 400 : 480);
     };
-    later(step, 300);
+    one();
+  };
+  if (btn('go')) btn('go').onclick = () => {
+    if (busy || !prog.length) { say([[tl(P.robotRun)(), lang()]]); return; }
+    busy = true; runs++; stepAt = 0; pos = lv.a.slice(); resetStars(); place(pos);
+    const next = () => { if (stepAt >= prog.length) { busy = false; return end(); } runCmd(stepAt, ok => { if (!ok) return; stepAt++; progView(); next(); }); };
+    later(next, 300);
+  };
+  // 👣: play the plan one command at a time, to find where it goes wrong
+  if (btn('stp')) btn('stp').onclick = () => {
+    if (busy || !prog.length) { if (!prog.length) say([[tl(P.robotRun)(), lang()]]); return; }
+    if (stepAt === 0) { runs++; pos = lv.a.slice(); resetStars(); place(pos); }
+    busy = true;
+    runCmd(stepAt, ok => { if (!ok) return; stepAt++; progView(); busy = false; if (stepAt >= prog.length) { busy = true; end(); } });
   };
 }
 
@@ -4972,14 +5170,15 @@ function sessionTick() {
   if (lim && d.sess.sec >= lim && !$('kBreak')) showBreak();
 }
 function showBreak() {
-  clearTimeout(tmr); HS.stopSpeak(); show('home');
+  clearTimeout(tmr); HS.stopSpeak(); HS.nav.go('app-kg', true);   // back to the menu (replaces the game address)
   ROOT.insertAdjacentHTML('beforeend', `<div class="k-break" id="kBreak" role="dialog" aria-modal="true" aria-label="وقت الاستراحة"><div class="k-break-in">
-    <div class="big">${HS.mascot('sleep', { fb: '🧸🌳' })}</div><h2>وقت الاستراحة!</h2><p>أحسنتِ اليوم 🌟 هيا نلعب بعيدًا عن الشاشة.</p>
+    <div class="big">${HS.mascot('sleep', { fb: '🧸🌳' })}</div><h2>وقت الاستراحة!</h2><p>عمل رائع اليوم 🌟 هيا نلعب بعيدًا عن الشاشة.</p>
     <button type="button" class="k-hold" id="kHold"><i></i><span>للأب: اضغط مطوّلًا للمتابعة ١٠ دقائق</span></button></div></div>`);
   say([[tl(P.brk)(), lang()]]);
   const btn = $('kHold'); let t = null;
   const start = e => { e.preventDefault(); btn.classList.add('on'); t = setTimeout(() => { const d = K(); d.sess.sec = Math.max(0, sessionLimit() - 600); HS.save(); $('kBreak').remove(); }, 2000); };
   const stop = () => { btn.classList.remove('on'); clearTimeout(t); };
+  setTimeout(() => btn.focus(), 50);
   btn.addEventListener('pointerdown', start); ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => btn.addEventListener(ev, stop));
 }
 SESSION.iv = setInterval(sessionTick, 5000);
@@ -5020,41 +5219,71 @@ const star = (n = 1) => HS.addStars(n);
 
 /* ---------------- shell ---------------- */
 function header() {
-  const p = HS.current() || { avatar: '🙂' };
   $('uTitle').textContent = `${S.u.em} ${S.u.title}`;
   $('uSub').textContent = S.u.subtitle || '';
-  $('uAv').innerHTML = HS.avatar(p);
-  $('uStars').textContent = `⭐ ${ar(HS.stars())}`;
 }
-HS.on('stars', () => { if (S.u) $('uStars').textContent = `⭐ ${ar(HS.stars())}`; });
 
+/* unit sections: these change the address (they are pages), so they are links with aria-current, not ARIA tabs */
+const SECTIONS = () => [['home', '🗺️ الرحلة'], ...S.u.lessons.map((l, i) => [l.id, `${l.em} الدرس ${ar(i + 1)}`, mastery(l.id) >= .8]),
+  ['cards', '🃏 البطاقات'], ['play', '🎮 الألعاب'], ['test', '🏆 الاختبارات']];
 function tabs() {
-  const t = [['home', '🗺️ الرحلة'], ...S.u.lessons.map((l, i) => [l.id, `${l.em} الدرس ${ar(i + 1)}`, mastery(l.id) >= .8]),
-    ['cards', '🃏 البطاقات'], ['play', '🎮 الألعاب'], ['test', '🏆 الاختبارات']];
-  $('uTabs').innerHTML = t.map(([id, label, ok]) => `<button type="button" role="tab" class="tab ${id === S.page ? 'on' : ''}" aria-selected="${id === S.page}" data-p="${id}">${label}${ok ? ' <span class="ck">✓</span>' : ''}</button>`).join('');
-  const on = $('uTabs').querySelector('.on'); if (on) on.scrollIntoView({ inline: 'center', block: 'nearest' });
+  $('uTabs').innerHTML = SECTIONS().map(([id, label, ok]) => `<li><a class="tab ${id === S.page ? 'on' : ''}" href="#unit-${S.id}-${id}" data-p="${id}"${id === S.page ? ' aria-current="page"' : ''}>${label}${ok ? ' <span class="ck" aria-label="متقن">✓</span>' : ''}</a></li>`).join('');
 }
 ROOT.addEventListener('click', e => {
-  const b = e.target.closest('[data-p]'); if (b) { go(b.dataset.p); return; }
-  const a = e.target.closest('[data-act]'); if (a) act(a.dataset.act, a.dataset);
+  const b = e.target.closest('[data-p]'); if (b) { e.preventDefault(); go(b.dataset.p); return; }
+  const a = e.target.closest('[data-act]'); if (a) go(actRoute(a.dataset.act, a.dataset));
 });
-function act(a, d) {
-  if (a === 'quiz') return startQuiz(d.mode, d.l);
-  if (a === 'sort') return gameSort(S.u.games.sort.find(g => g.id === d.g));
-  if (a === 'order') return gameOrder(S.u.games.order.find(g => g.id === d.g));
-  if (a === 'memory') return gameMemory(d.l);
-  if (a === 'speed') return speedRound();
-}
 
-function go(page) {
+/* every page and activity is a route: #unit-<id>-<page>[-<activity>]
+     pages: home · l1… · cards · play · test
+     activities: play-s-<sort id> · play-o-<order id> · play-memory[-<lesson>] · play-speed · play-lab-<lab id> · test-final · test-review · test-<lesson id> */
+function actRoute(a, d) {
+  if (a === 'quiz') return 'test-' + (d.mode === 'lesson' ? d.l : d.mode);
+  if (a === 'sort') return 'play-s-' + d.g;
+  if (a === 'order') return 'play-o-' + d.g;
+  if (a === 'memory') return 'play-memory' + (d.l ? '-' + d.l : '');
+  if (a === 'speed') return 'play-speed';
+  if (a === 'lab') return 'play-lab-' + d.g;
+  return 'home';
+}
+/** what an activity route points to, or null */
+function findAct(u, page, rest) {
+  if (!rest) return null;
+  if (page === 'test') {
+    if (rest === 'final') return { title: '🏆 الاختبار الشامل', run: () => startQuiz('final') };
+    if (rest === 'review') return { title: '📅 مراجعة اليوم', run: () => startQuiz('review') };
+    const i = u.lessons.findIndex(l => l.id === rest);
+    return i < 0 ? null : { title: `✏️ اختبار الدرس ${ar(i + 1)}`, run: () => startQuiz('lesson', rest) };
+  }
+  if (page !== 'play') return null;
+  let m;
+  if ((m = /^s-(.+)$/.exec(rest))) { const g = (u.games.sort || []).find(x => x.id === m[1]); return g && { title: g.title, run: () => gameSort(g) }; }
+  if ((m = /^o-(.+)$/.exec(rest))) { const g = (u.games.order || []).find(x => x.id === m[1]); return g && { title: g.title, run: () => gameOrder(g) }; }
+  if ((m = /^memory(?:-(.+))?$/.exec(rest))) return { title: '🧠 لعبة الذاكرة', run: () => gameMemory(m[1]) };
+  if (rest === 'speed') return { title: '⚡ تحدّي السرعة', run: () => speedRound() };
+  if ((m = /^lab-(.+)$/.exec(rest)) && LABS[u.id] && LABS[u.id][m[1]]) { const L = LABS[u.id][m[1]]; return { title: L.title, run: () => L.run(M(), L) }; }
+  return null;
+}
+const PAGES = u => ['home', 'cards', 'play', 'test', ...u.lessons.map(l => l.id)];
+function splitSub(u, rest) {
+  const m = /^([a-z0-9]+)(?:-(.+))?$/.exec(rest || 'home') || [];
+  const page = PAGES(u).includes(m[1]) ? m[1] : 'home';
+  return { page, act: page === m[1] ? m[2] || '' : '' };
+}
+/** go to a page or activity of this unit (adds a history entry; the router then calls render) */
+function go(page) { HS.nav.go(`unit-${S.id}-${page}`); }
+/** draw a page or start an activity (called by APPS.unit.open on every route change) */
+function render(page, actKey) {
   stopAll();
-  const valid = ['home', 'cards', 'play', 'test', ...S.u.lessons.map(l => l.id)];
-  S.page = valid.includes(page) ? page : 'home';
-  try { history.replaceState(null, '', `#unit-${S.id}-${S.page}`); } catch (e) {}
+  S.page = page;
+  const A = findAct(S.u, page, actKey);
+  ROOT.classList.toggle('focus', !!A);   // in a game or quiz only the task shows (the site header keeps Back and the title)
   tabs(); header();
-  const L = S.u.lessons.find(l => l.id === S.page);
-  if (L) renderLesson(L);
-  else ({ home: renderHome, cards: renderCards, play: renderPlay, test: renderTest })[S.page]();
+  if (A) A.run();
+  else {
+    const L = S.u.lessons.find(l => l.id === page);
+    if (L) renderLesson(L); else ({ home: renderHome, cards: renderCards, play: renderPlay, test: renderTest })[page]();
+  }
   window.scrollTo({ top: 0 });
 }
 
@@ -5103,7 +5332,8 @@ function block(b) {
 function renderLesson(L) {
   const i = S.u.lessons.indexOf(L), m = mastery(L.id);
   const games = [...S.u.games.sort.filter(g => g.l === L.id).map(g => `<button type="button" class="btn sky" data-act="sort" data-g="${g.id}">🎮 ${g.title}</button>`),
-    ...S.u.games.order.filter(g => g.l === L.id).map(g => `<button type="button" class="btn sky" data-act="order" data-g="${g.id}">🎮 ${g.title}</button>`)];
+    ...S.u.games.order.filter(g => g.l === L.id).map(g => `<button type="button" class="btn sky" data-act="order" data-g="${g.id}">🎮 ${g.title}</button>`),
+    ...Object.values(LABS[S.id] || {}).filter(x => x.lesson === L.id).map(x => `<button type="button" class="btn sky" data-act="lab" data-g="${x.id}">${x.title}</button>`)];
   const cards = []; let cur = null;
   L.blocks.forEach(b => { if (cur && b.t === 'tiles' && !b.h) cur.push(b); else { cur = [b]; cards.push(cur); } });
   M().innerHTML = `
@@ -5154,11 +5384,18 @@ function showCard() {
 /* ---------------- play menu ---------------- */
 function renderPlay() {
   const L = id => { const i = S.u.lessons.findIndex(l => l.id === id); return i < 0 ? '' : 'الدرس ' + ar(i + 1); };
+  const labs = Object.values(LABS[S.id] || {});
   M().innerHTML = `<div class="card"><h2>🎮 الألعاب</h2><p class="lead">اسحب البطاقة إلى مكانها، أو اضغط عليها ثم اضغط على المكان.</p></div>
+  ${labs.length ? `<h3 class="gp-h">🧪 نفكّر ونجرّب <small>نتوقّع ثم نجرّب ونفسّر</small></h3><div class="game-pick">
+    ${labs.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
+  <h3 class="gp-h">🎮 نتدرّب <small>نرتّب ونصنّف ونتذكّر</small></h3>
   <div class="game-pick">
     ${S.u.games.sort.map(g => `<button type="button" class="gp" data-act="sort" data-g="${g.id}"><span class="em">${g.em}</span><b>${g.title}</b><span>${L(g.l)} · فرز</span></button>`).join('')}
     ${S.u.games.order.map(g => `<button type="button" class="gp" data-act="order" data-g="${g.id}"><span class="em">${g.em}</span><b>${g.title}</b><span>${L(g.l)} · ترتيب</span></button>`).join('')}
     <button type="button" class="gp" data-act="memory"><span class="em">🧠🃏</span><b>لعبة الذاكرة</b><span>طابق المصطلح بمعناه</span></button>
+  </div>
+  <h3 class="gp-h">⚡ نتحدّى <small>بسرعة ومن الذاكرة</small></h3>
+  <div class="game-pick">
     <button type="button" class="gp" data-act="speed"><span class="em">⚡⏱️</span><b>تحدّي السرعة</b><span>أجب عن أكبر عدد في ٦٠ ثانية</span></button>
   </div>`;
 }
@@ -5178,6 +5415,8 @@ function renderTest() {
 
 /* ---------------- quiz session ---------------- */
 let Q = null;
+/** thinking labs per unit: LABS[unitId][labId] = { title, em, sub, kind: 'think', run(el, lab) } (see labs-*.js) */
+const LABS = {};
 function pickQuestions(mode, l) {
   const all = S.u.questions, byId = id => all.find(q => q.id === id);
   if (mode === 'lesson') return HS.srs.choose(S.ns, qIds(l), 8).map(byId);
@@ -5211,27 +5450,44 @@ function renderQ() {
   }
   const q = list[Q.i];
   M().innerHTML = `<div class="card quiz">
-    <div class="q-top"><h2>${quizTitle()}</h2><span class="combo ${Q.combo.n >= 2 ? 'on' : ''}" aria-live="polite">${Q.combo.n >= 2 ? '🔥 ' + ar(Q.combo.n) : ''}</span></div>
+    <div class="q-top"><h2 class="sr">${quizTitle()}</h2><span class="combo ${Q.combo.n >= 2 ? 'on' : ''}" aria-live="polite">${Q.combo.n >= 2 ? '🔥 ' + ar(Q.combo.n) : ''}</span></div>
     ${Q.phase === 'retry' ? '<p class="retry-tag">🔁 محاولة ثانية: سؤال أخطأت فيه</p>' : ''}
     <div class="meta"><span>سؤال ${ar(Q.i + 1)} من ${ar(list.length)}</span><span>✅ ${ar(Q.score)}</span></div>
     <div class="bar"><i style="width:${Q.i / list.length * 100}%"></i></div>
     <div id="uQ"></div><div class="fb" id="uFb" aria-live="polite"></div></div>`;
-  renderQuestion(q, $('uQ'), ok => onAnswer(q, ok));
+  renderQuestion(q, $('uQ'), (ok, info) => onAnswer(q, ok, info), { coach: true });
 }
-function onAnswer(q, ok) {
+function onAnswer(q, ok, info = {}) {
+  // ok = right on the first try. info.fixed = found it after a hint, info.revealed = we showed it after three tries
   const main = Q.phase === 'main';
+  trackLearning(q, ok, info);
   if (main) {
     HS.srs.record(S.ns, q.id, ok);
-    if (ok) { Q.score++; star(1 + Q.combo.hit()); } else { Q.combo.miss(); Q.retry.push(q); Q.wrong.push(q); }
-  } else if (ok) star();
-  HS.fx(ok ? 'ok' : 'no');
-  const fb = $('uFb'); fb.className = 'fb ' + (ok ? 'ok' : 'no');
+    if (ok) { Q.score++; star(1 + Q.combo.hit()); } else { Q.combo.miss(); Q.retry.push(q); Q.wrong.push(q); if (info.fixed) star(); }
+  } else if (ok || info.fixed) star();
+  HS.fx(ok || info.fixed ? 'ok' : 'no');
+  const fb = $('uFb'); fb.className = 'fb ' + (ok ? 'ok' : info.fixed ? 'ok fixed' : 'no');
   const right = answerText(q);
-  fb.innerHTML = `<b>${ok ? HS.one(HS_PHRASES.praise.ar) : 'ليست هذه 🙂'}</b>${!ok && right ? `<div class="right">الإجابة الصحيحة: <b>${right}</b></div>` : ''}<div>${q.ex || ''}</div>
+  const head = ok ? HS.one(HS_PHRASES.praise.ar) : info.fixed ? 'صحّحتها بنفسك! 👏' : 'لنتعلّمها معًا';
+  fb.innerHTML = `<b>${head}</b>${info.revealed && right ? `<div class="right">الإجابة الصحيحة: <b>${right}</b></div>` : ''}<div>${q.ex || ''}</div>
     <div class="row"><button type="button" class="btn" id="uNext">${nextLabel()}</button></div>`;
   $('uNext').onclick = () => { Q.i++; renderQ(); };
   $('uNext').focus({ preventScroll: true });
   fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+/* ---------------- learning record (per child, per unit) ----------------
+   D().learn = { n, first, fixed, revealed, hints, L: {lessonId: {n, first}}, mis: {qid: {choice: count}}, last } */
+function learnRec() { const d = D(); d.learn = d.learn || { n: 0, first: 0, fixed: 0, revealed: 0, hints: 0, L: {}, mis: {} }; return d.learn; }
+function onCoach(q, i, tries) {
+  const r = learnRec(); r.hints++;
+  const k = q.t === 'tf' ? (i === 0 ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[i] : q.o[i];
+  const m = r.mis[q.id] = r.mis[q.id] || {}; m[k] = (m[k] || 0) + 1;
+}
+function trackLearning(q, ok, info) {
+  if (Q && Q.phase !== 'main') return;          // second attempts at the end of a quiz are practice, not measurement
+  const r = learnRec(); r.n++; if (ok) r.first++; if (info.fixed) r.fixed++; if (info.revealed) r.revealed++;
+  const L = r.L[q.l] = r.L[q.l] || { n: 0, first: 0 }; L.n++; if (ok) L.first++;
+  r.last = Date.now(); HS.save();
 }
 function nextLabel() { const list = Q.phase === 'main' ? Q.list : Q.retry; return Q.i + 1 < list.length ? 'التالي ←' : (Q.phase === 'main' && Q.retry.length ? 'التالي ←' : 'النتيجة 🎯'); }
 function answerText(q) {
@@ -5263,30 +5519,74 @@ function quizResult() {
   tabs();
 }
 
+/* ---------------- coach: hints instead of answers ----------------
+   A wrong first answer never shows the right one. 1st mistake: a hint about the choice the child made
+   (authored q.hint1 / q.mis[i], or the unit's own glossary definition of the chosen term). 2nd: one wrong
+   option is removed + a second hint. 3rd: the answer and the explanation. Hints made from the glossary are
+   dropped if they contain the right answer's words, so a hint never gives the answer away. */
+const norm = t => String(t || '').replace(/[\u064B-\u0652\u0640]/g, '').replace(/\([^)]*\)/g, '').replace(/[«»:.،؟?!]/g, '').trim();
+const bare = t => norm(t).replace(/^ال/, '');
+function termOf(text) {   // the glossary entry an option names, if any
+  const t = norm(text); if (!t) return null;
+  return S.u.glossary.find(g => norm(g.term) === t || bare(g.term) === bare(t)) || null;
+}
+function coachHint(q, n, pickedText, used, i) {
+  const mis = q.mis && q.mis[i];   // authored: what this wrong choice usually means
+  const rightWords = q.t === 'tf' ? '' : bare(q.t === 'pic' && q.labels ? q.labels[q.a] : q.o[q.a]);
+  const safe = t => t && (!rightWords || !norm(t).includes(rightWords));
+  const lesson = S.u.lessons.find(L => L.id === q.l);
+  const inQuestion = S.u.glossary.filter(g => norm(q.q).includes(bare(g.term)) && !used.has(g.term) && safe(g.def));
+  if (n === 1) {
+    if (mis) return mis;
+    if (q.hint1) return q.hint1;
+    const g = termOf(pickedText);
+    if (g && safe(g.def)) { used.add(g.term); return `اخترت «${pickedText}». تذكّر معنى «${g.term}»: ${g.def} هل هذا ما يصفه السؤال؟`; }
+    if (inQuestion[0]) { used.add(inQuestion[0].term); return `تذكّر: ${inQuestion[0].term}: ${inQuestion[0].def} اقرأ السؤال مرة ثانية.`; }
+    const where = !lesson ? '' : safe(lesson.title) ? `من درس «${lesson.title}»` : `من الدرس ${ar(S.u.lessons.indexOf(lesson) + 1)}`;   // a lesson title can be the answer itself
+    return `فكّر مرة ثانية. هذا السؤال ${where}: اقرأه كلمة كلمة وابحث عن الكلمة المهمة.`;
+  }
+  if (mis || q.hint2) return [mis, q.hint2 && 'تلميح: ' + q.hint2].filter(Boolean).join(' ');
+  if (inQuestion[0]) { used.add(inQuestion[0].term); return `تلميح ثانٍ: ${inQuestion[0].term}: ${inQuestion[0].def}`; }
+  return 'تلميح ثانٍ: أبعدنا خيارًا خاطئًا. قارن الخيارات الباقية بالسؤال.';
+}
+
 /* ---------------- question renderers ----------------
    Each draws question q into el and calls done(correct) once. */
 function renderQuestion(q, el, done, opt = {}) {
   // grade 3–4 units are read, not listened to: no speech buttons (the parent asked for it)
   const head = txt => `<div class="q-line"><div class="q">${txt}</div></div>`;
   let answered = false;
-  const finish = ok => { if (answered) return; answered = true; done(ok); };
+  const finish = (ok, info) => { if (answered) return; answered = true; done(ok, info || {}); };
   const choice = (opts, a, render, cls = '') => {
     const order = opt.keep ? opts.map((_, i) => i) : HS.shuffle(opts.map((_, i) => i));
     el.insertAdjacentHTML('beforeend', `<div class="opts ${cls}">${order.map((i, k) => `<button type="button" class="opt" data-i="${i}">${render(opts[i], i, k)}</button>`).join('')}</div>`);
+    let tries = 0; const used = new Set();
+    const reveal = () => el.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.i === a) x.classList.add('ok'); });
     el.querySelectorAll('.opt').forEach(b => b.onclick = () => {
-      if (answered) return;
+      if (answered || b.disabled) return;
       const i = +b.dataset.i, ok = i === a;
-      el.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.i === a) x.classList.add('ok'); });
-      if (!ok) b.classList.add('no');
       if (opt.onPick) opt.onPick(i, ok);
-      finish(ok);
+      if (!opt.coach) { reveal(); if (!ok) b.classList.add('no'); return finish(ok); }
+      if (ok) { reveal(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
+      tries++; b.classList.add('no'); b.disabled = true; b.setAttribute('aria-label', b.textContent.trim() + ' (ليست الإجابة)');
+      HS.fx('no'); if (opt.onWrong) opt.onWrong(i);
+      const left = () => [...el.querySelectorAll('.opt:not([disabled])')];
+      if (tries >= 3 || (tries >= 2 && left().length <= 1)) { reveal(); return finish(false, { tries, revealed: true }); }
+      if (tries === 2 && left().length >= 3) { const g = left().find(x => +x.dataset.i !== a); g.disabled = true; g.classList.add('gone'); g.setAttribute('aria-label', g.textContent.trim() + ' (أُبعد)'); }
+      const pickedText = q.t === 'pic' && q.labels ? q.labels[i] : q.t === 'tf' ? '' : opts[i];
+      let box = el.querySelector('.coach'); if (!box) { el.insertAdjacentHTML('beforeend', '<div class="coach" role="status"></div>'); box = el.querySelector('.coach'); }
+      box.innerHTML = `<span class="coach-ic" aria-hidden="true">💡</span><span>${coachHint(q, tries, pickedText, used, i)}</span>`;
+      box.classList.remove('hs-pop'); void box.offsetWidth; box.classList.add('hs-pop');
+      onCoach(q, i, tries);
+      const first = left()[0]; if (first) first.focus({ preventScroll: true });
     });
   };
   if (q.t === 'mcq') { el.innerHTML = head(q.q); choice(q.o, q.a, (o, i, k) => `<span class="ltr-badge">${LETTERS[k]}</span>${o}`); }
   else if (q.t === 'tf') { el.innerHTML = head(q.q) + '<p class="hint">هل العبارة صحيحة؟</p>'; opt.keep = true; choice(['صح ✔️', 'خطأ ✖️'], q.a ? 0 : 1, o => o, 'tf'); }
   else if (q.t === 'fill') {
     el.innerHTML = head(q.q.replace('____', '<span class="blank" id="uBlank">؟</span>'));
-    opt.onPick = (i, ok) => { const b = $('uBlank'); b.textContent = q.o[i]; b.classList.add(ok ? 'ok' : 'no'); if (!ok) later(() => { b.textContent = q.o[q.a]; b.className = 'blank ok'; }, 900); };
+    opt.onPick = (i, ok) => { const b = $('uBlank'); b.textContent = q.o[i]; b.className = 'blank ' + (ok ? 'ok' : 'no');
+      if (!ok) later(() => { if (b.classList.contains('ok')) return; b.textContent = opt.coach ? '؟' : q.o[q.a]; b.className = opt.coach ? 'blank' : 'blank ok'; }, 900); };
     choice(q.o, q.a, o => o, 'chips-opts');
   }
   else if (q.t === 'pic') { el.innerHTML = head(q.q); choice(q.o, q.a, (o, i) => `<span class="pic">${o}</span>${q.labels ? `<small>${q.labels[i]}</small>` : ''}`, 'pics'); }
@@ -5383,8 +5683,8 @@ function sortDone(g, s, t) {
     <div class="row center"><button type="button" class="btn" data-act="sort" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
   bindBack();
 }
-function gameHead(t) { return `<div class="g-head"><h2>${t}</h2><button type="button" class="btn sec small" id="uBack">↩ الألعاب</button></div>`; }
-function bindBack() { const b = $('uBack'); if (b) b.onclick = () => go('play'); }
+function gameHead(t) { return `<h2 class="sr">${t}</h2>`; }   // the title shows in the site header; kept here for screen-reader headings   // Back to the games list is in the site header
+function bindBack() {}   // the site header's Back returns to the games list
 
 /* ---------------- game: put in order (chains) ---------------- */
 function gameOrder(g) {
@@ -5452,11 +5752,28 @@ APPS.unit = {
   open(sub) {
     const m = /^([a-z0-9]+)(?:-(.+))?$/.exec(sub || '') || [];
     const u = window.UNITS && UNITS[m[1]];
-    if (!u) { ROOT.innerHTML = '<p style="padding:40px;text-align:center">لم يتم العثور على هذه الوحدة.</p>'; return; }
+    if (!u) { $('uMain').innerHTML = '<p style="padding:40px;text-align:center">لم يتم العثور على هذه الوحدة.</p>'; return; }
     if (S.id !== u.id) { FC = { list: [], i: 0, l: '' }; }
     S.u = u; S.id = u.id; S.ns = 'u:' + u.id; S.fcns = 'fc:' + u.id;
-    go(m[2] || 'home');
+    const { page, act } = splitSub(u, m[2]);
+    render(page, act);
   },
+  /** pages below the unit, for the site header and breadcrumbs (see src/portal/nav.js) */
+  nav(sub) {
+    const m = /^([a-z0-9]+)(?:-(.+))?$/.exec(sub || '') || [], u = window.UNITS && UNITS[m[1]];
+    if (!u) return [];
+    const { page, act } = splitSub(u, m[2]), base = 'unit-' + u.id, out = [];
+    if (page !== 'home') {
+      const i = u.lessons.findIndex(l => l.id === page);
+      out.push({ route: `${base}-${page}`, title: i >= 0 ? `الدرس ${ar(i + 1)}: ${u.lessons[i].title}` : { cards: 'البطاقات', play: 'الألعاب', test: 'الاختبارات' }[page] });
+    }
+    const A = findAct(u, page, act);
+    if (A) out.push({ route: `${base}-${page}-${act}`, title: A.title, focus: true });
+    return out;
+  },
+  labCount: id => Object.keys(LABS[id] || {}).length,
+  labs: () => LABS,   // read by the automated tests
+  hintFor(q, n, i) { const t = q.t === 'pic' && q.labels ? q.labels[i] : q.t === 'tf' ? '' : q.o[i]; return coachHint(q, n, t, new Set(), i); },   // tests
   close() { stopAll(); },
   /** for the parent page */
   report(unitId, profileId) {
@@ -5465,10 +5782,378 @@ APPS.unit = {
     const m = (l) => { if (!ids(l).length) return 0; const s = (d.srs || {}); return ids(l).reduce((a, id) => a + Math.min(4, (s[id] || { b: 0 }).b) / 4, 0) / ids(l).length; };
     const s = d.srs || {};
     const missed = Object.keys(s).filter(id => s[id].w > 0).sort((a, b) => (s[b].w - s[b].c * .5) - (s[a].w - s[a].c * .5)).slice(0, 5).map(id => ({ q: (u.questions.find(q => q.id === id) || {}).q, w: s[id].w, c: s[id].c })).filter(x => x.q);
-    return { title: u.title, em: u.em, total: m(), lessons: u.lessons.map(L => ({ title: L.title, em: L.em, m: m(L.id) })), best: d.best || {}, missed, answered: Object.keys(s).length, count: u.questions.length };
+    // how the child learns, not only what: first-try accuracy, self-corrections, and the wrong ideas chosen most
+    const lr = d.learn || null, byQ = id => u.questions.find(q => q.id === id) || {};
+    const rightOf = q => q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
+    const mis = lr ? Object.entries(lr.mis || {}).flatMap(([id, ch]) => Object.entries(ch).map(([c, n]) => ({ q: byQ(id).q, chose: c, right: rightOf(byQ(id)), n, l: byQ(id).l })))
+      .filter(x => x.q).sort((a, b) => b.n - a.n).slice(0, 4) : [];
+    const lessons = u.lessons.map(L => { const r = lr && lr.L && lr.L[L.id]; return { title: L.title, em: L.em, m: m(L.id), first: r && r.n ? r.first / r.n : null, n: r ? r.n : 0 }; });
+    const weak = lessons.filter(L => L.n >= 3).sort((a, b) => a.first - b.first)[0];
+    const next = !Object.keys(s).length ? null : weak && weak.first < .7 ? `ابدؤوا بدرس «${weak.title}»: فيه أقل نسبة صح من أول مرة.`
+      : lessons.find(L => L.m < .8) ? `الدرس التالي للتثبيت: «${lessons.find(L => L.m < .8).title}».` : 'جاهز للاختبار الشامل.';
+    const learn = lr && lr.n ? { n: lr.n, first: lr.first / lr.n, fixed: lr.fixed, revealed: lr.revealed, hints: lr.hints, last: lr.last } : null;
+    const labs = Object.entries(d.labs || {}).map(([id, x]) => ({ title: (LABS[unitId] && LABS[unitId][id] || {}).title || id, ...x, total: ((LABS[unitId] && LABS[unitId][id] || {}).challenges || []).length })).filter(x => x.runs);
+    return { title: u.title, em: u.em, total: m(), lessons, best: d.best || {}, missed, mis, learn, next, labs, answered: Object.keys(s).length, count: u.questions.length };
   }
 };
 
+/* ---- labs.js ---- */
+/* ============================================================
+   THINKING LABS (نفكّر ونجرّب): predict → run → compare → explain → transfer
+   Registered in LABS[unitId][labId] (app.js lists them on the games page and gives each a route:
+   #unit-<unit>-play-lab-<id>).
+
+   Each challenge keeps the fields an educator needs to review it:
+     id, learningObjective, cognitiveSkill, prompt, correctAnswer, distractors, misconceptions (one per
+     distractor), hint1, hint2, explanation, transferPrompt, difficulty (1–3), curriculumReference,
+     review: true  → this statement is NOT in the unit's lesson text; a teacher should check it.
+   The "why" questions use the quiz coach (renderQuestion with coach: true): a wrong first answer gets the
+   misconception text for that choice, never the right answer.
+   Pictures are drawn as SVG diagrams, not emoji, so they can show what matters (slope, roots, arrows).
+   ============================================================ */
+
+/* ---------- shared helpers ---------- */
+const labRec = id => { const d = D(); d.labs = d.labs || {}; return d.labs[id] = d.labs[id] || { runs: 0, pred: 0, predOk: 0, why: 0, whyFirst: 0, done: [], last: 0 }; };
+/** challenge fields → a question the quiz renderer understands (options shuffled by the renderer) */
+function labQ(c) {
+  const o = [c.correctAnswer, ...c.distractors];
+  const mis = {}; c.misconceptions.forEach((m, i) => { mis[i + 1] = m; });
+  return { id: 'lab:' + c.id, t: 'mcq', q: c.prompt, o, a: 0, ex: c.explanation, mis, hint1: c.hint1, hint2: c.hint2 };
+}
+function labSteps(n) {
+  return `<ol class="lab-steps" aria-label="خطوات التجربة">${['نتوقّع', 'نجرّب', 'نقارن', 'نفسّر'].map((t, i) => `<li class="${i < n ? 'done' : i === n ? 'on' : ''}"${i === n ? ' aria-current="step"' : ''}>${t}</li>`).join('')}</ol>`;
+}
+/** ask the "why" question with hints; then(okFirst) */
+function labWhy(el, lab, c, then) {
+  const box = document.createElement('div'); box.className = 'card lab-why'; el.appendChild(box);
+  box.innerHTML = `<h3>🤔 نفسّر</h3><div class="lab-q"></div><div class="fb" aria-live="polite"></div>`;
+  renderQuestion(labQ(c), box.querySelector('.lab-q'), (ok, info) => {
+    const r = labRec(lab.id); r.why++; if (ok) r.whyFirst++; HS.save();
+    if (ok) star(1); else if (info.fixed) star(1);
+    const fb = box.querySelector('.fb'); fb.className = 'fb ' + (ok || info.fixed ? 'ok' : 'no');
+    fb.innerHTML = `<b>${ok ? 'تفسير صحيح! 🌟' : info.fixed ? 'وصلت إلى التفسير بنفسك! 👏' : 'هذا هو التفسير:'}</b><div>${c.explanation}</div>
+      ${c.transferPrompt ? `<p class="lab-transfer">💭 <b>فكّر:</b> ${c.transferPrompt}</p>` : ''}`;
+    then(ok);
+  }, { coach: true });
+  box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+const labNext = (el, label, fn) => { const r = document.createElement('div'); r.className = 'row center lab-next'; r.innerHTML = `<button type="button" class="btn">${label}</button>`; el.appendChild(r); const b = r.firstElementChild; b.onclick = fn; b.focus({ preventScroll: true }); };
+const reduced = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================================================
+   🌧️ EROSION LAB (grade 3, unit 3, lesson 2: weathering and erosion)
+   Model (simplified, for comparing only): soil carried away = rain × slope × plant cover factor.
+   rain 1–3, slope 1–3, plants 0 none / 1 a little / 2 thick (factor 1, .55, .2). Max 9.
+   ============================================================ */
+const ER = {
+  rain: ['', 'خفيف', 'متوسط', 'غزير'], slope: ['', 'لطيف', 'متوسط', 'شديد'], veg: ['بلا نباتات', 'نباتات قليلة', 'نباتات كثيفة'],
+  loss: s => s.rain * s.slope * [1, .55, .2][s.veg],
+  /* the four challenges, easiest first */
+  C: [
+    { id: 'er-slope', kind: 'two', difficulty: 1, cognitiveSkill: 'التوقّع والمقارنة (تغيير عامل واحد)',
+      learningObjective: 'يربط سرعة الماء الجاري على المنحدر بكمية التربة التي ينقلها (التعرية).',
+      curriculumReference: 'علوم ٣، الوحدة ٣، درس «التجوية والتعرية»: الماء الجاري من عوامل التعرية', review: true,
+      setup: 'تلّان من التربة نفسها، ومطر متوسط على الاثنين. الفرق الوحيد: <b>الانحدار</b>.',
+      A: { rain: 2, slope: 1, veg: 0 }, B: { rain: 2, slope: 3, veg: 0 },
+      prompt: 'لماذا نقل المطر تربة أكثر من التل شديد الانحدار؟',
+      correctAnswer: 'لأن الماء يجري أسرع على المنحدر الشديد، فيحمل فتاتًا أكثر',
+      distractors: ['لأن التل شديد الانحدار فيه تربة أكثر', 'لأن المطر سقط عليه أكثر', 'لأن الشمس جفّفته فتفتّت'],
+      misconceptions: ['التربة كانت نفسها في التلّين. ما الشيء الوحيد الذي اختلف بينهما؟', 'المطر كان متوسطًا على التلّين معًا. انظر إلى الفرق في شكل التلّين.', 'هذه التجربة لم تغيّر الشمس. ما الذي يجعل الماء يجري أسرع؟'],
+      hint1: 'قارن شكل التلّين: ماذا يحدث للماء على منحدر شديد؟', hint2: 'تذكّر: التعرية = نقل الفتات، والماء الأسرع يقدر أن يحمل أكثر.',
+      explanation: 'على المنحدر الشديد يجري الماء أسرع، والماء الأسرع يحمل فتات الصخور والتربة أكثر. هذا نقل للفتات، أي <b>تعرية</b>.',
+      transferPrompt: 'أين تتوقّع أن يحفر السيل أكثر: في وادٍ شديد الانحدار أم في أرض منبسطة؟' },
+    { id: 'er-rain', kind: 'two', difficulty: 1, cognitiveSkill: 'التوقّع والمقارنة (تغيير عامل واحد)',
+      learningObjective: 'يربط كمية الماء الجاري بكمية التربة المنقولة.',
+      curriculumReference: 'علوم ٣، الوحدة ٣، درس «التجوية والتعرية»: الأنهار والسيول تحمل الحصى والرمل', review: true,
+      setup: 'التل نفسه مرتين، والانحدار متوسط. الفرق الوحيد: <b>كمية المطر</b>.',
+      A: { rain: 1, slope: 2, veg: 0 }, B: { rain: 3, slope: 2, veg: 0 },
+      prompt: 'لماذا نقل المطر الغزير تربة أكثر؟',
+      correctAnswer: 'لأن ماءً أكثر يجري على السطح فيحمل فتاتًا أكثر',
+      distractors: ['لأن المطر الغزير يحوّل التربة إلى صخر', 'لأن المطر الخفيف لا يصل إلى التربة', 'لأن التل تغيّر شكله قبل المطر'],
+      misconceptions: ['لو صارت التربة صخرًا لصعب نقلها. انظر: أين ذهبت التربة في الرسم؟', 'المطر الخفيف وصل إلى التربة، لكن الماء الجاري كان قليلًا. ماذا يحمل الماء الكثير؟', 'التل كان نفسه في المرتين: لم نغيّر إلا المطر.'],
+      hint1: 'كم ماءً جرى على التل في كل مرة؟', hint2: 'الأنهار والسيول تحمل الحصى والرمل: ماذا يحدث إذا زاد الماء؟',
+      explanation: 'كلما زاد الماء الجاري على السطح، حمل معه فتاتًا أكثر من التربة والصخور. لذلك تحدث <b>التعرية</b> أكثر بعد الأمطار الغزيرة والسيول.',
+      transferPrompt: 'لماذا تبدو الأودية مختلفة بعد سيل كبير؟' },
+    { id: 'er-plants', kind: 'two', difficulty: 2, cognitiveSkill: 'تفسير السبب (العلاقة بين النبات والتربة)',
+      learningObjective: 'يفسّر كيف تقلّل النباتات التعرية: الجذور تمسك التربة.',
+      curriculumReference: 'علوم ٣، الوحدة ٣، درس «التجوية والتعرية» و«التربة»', review: true,
+      setup: 'تلّان شديدا الانحدار ومطر غزير على الاثنين. الفرق الوحيد: <b>النباتات</b>.',
+      A: { rain: 3, slope: 3, veg: 0 }, B: { rain: 3, slope: 3, veg: 2 },
+      prompt: 'لماذا فقد التل المزروع تربة أقل؟',
+      correctAnswer: 'لأن جذور النباتات تمسك التربة، وأوراقها تخفّف ضربات المطر',
+      distractors: ['لأن النباتات شربت كل ماء المطر', 'لأن النباتات أوقفت المطر', 'لأن التربة تحت النباتات أثقل وزنًا'],
+      misconceptions: ['النباتات تأخذ بعض الماء فقط، وما زال ماء كثير يجري على السطح. انظر إلى الجذور في الرسم.', 'المطر سقط على التلّين بالقدر نفسه. ما الذي تحت سطح التل المزروع؟', 'التربة كانت من النوع نفسه. ما الذي يربط حبيبات التربة ببعضها؟'],
+      hint1: 'انظر تحت سطح التل المزروع في الرسم. ماذا ترى؟', hint2: 'جذور النباتات تنتشر في التربة. ماذا تفعل بحبيباتها؟',
+      explanation: 'جذور النباتات تنتشر في التربة وتمسك حبيباتها، وأوراقها تخفّف قوة قطرات المطر. لذلك ينقل الماء تربة أقل من التل المزروع.',
+      transferPrompt: 'لماذا يزرع الناس الأشجار والشجيرات على جوانب الطرق الجبلية؟' },
+    { id: 'er-garden', kind: 'fix', difficulty: 3, cognitiveSkill: 'تطبيق في موقف جديد (حلّ مشكلة)',
+      learningObjective: 'يختار طريقة لتقليل التعرية ويختبرها بالتجربة.',
+      curriculumReference: 'علوم ٣، الوحدة ٣، درس «التجوية والتعرية» (تطبيق)', review: true,
+      setup: 'حديقة المدرسة على منحدر متوسط، وتربتها مكشوفة. بعد كل مطر غزير تجري التربة إلى الممر. ماذا تفعل؟',
+      now: { rain: 3, slope: 2, veg: 0 },
+      fixes: [['🌱 نزرع عشبًا وشجيرات على المنحدر', { veg: 2 }, true], ['✂️ نقلع النباتات القليلة الباقية', { veg: 0 }, false], ['⛰️ نجعل المنحدر أشدّ ليجري الماء بسرعة', { slope: 3 }, false]],
+      prompt: 'لماذا نجح الحل الذي قلّل التربة المنقولة؟',
+      correctAnswer: 'لأن الجذور أمسكت التربة فلم يحملها الماء بسهولة',
+      distractors: ['لأن الماء جرى أسرع', 'لأن المطر صار أخف'],
+      misconceptions: ['الماء الأسرع يحمل فتاتًا أكثر، لا أقل. تذكّر تجربة التلّين.', 'المطر بقي غزيرًا في التجربتين. ما الذي تغيّر في الحديقة؟'],
+      hint1: 'ما الذي أضفناه إلى الحديقة؟', hint2: 'تذكّر تجربة التل المزروع.',
+      explanation: 'النباتات تمسك التربة بجذورها، فيحمل الماء تربة أقل. أما المنحدر الأشد أو قلع النباتات فيزيدان التعرية.',
+      transferPrompt: 'لو رأيت في حيّكم أرضًا مكشوفة تجرفها الأمطار، ماذا تقترح؟' }
+  ]
+};
+
+/** SVG of one hillside: slope height, soil layer, plants with roots, rain, the soil carried to the bottom */
+function hillSvg(s, label) {
+  const top = { 1: 104, 2: 74, 3: 40 }[s.slope], X0 = 12, X1 = 170, Y = 132;
+  const at = t => [X0 + (X1 - X0) * t, top + (Y - top) * t];
+  const nV = [0, 3, 7][s.veg];
+  const plants = Array.from({ length: nV }, (_, i) => { const [x, y] = at(.12 + .74 * (i + .5) / nV);
+    return `<g class="pl"><path d="M${x} ${y + 9} l-3 6 M${x} ${y + 9} l0 9 M${x} ${y + 9} l4 7 M${x - 2} ${y + 14} l-3 3 M${x + 2} ${y + 15} l3 2" class="root"/>
+      <path d="M${x} ${y} q-5 -8 -7 -12 M${x} ${y} q0 -9 1 -14 M${x} ${y} q5 -7 8 -10" class="leaf"/></g>`; }).join('');
+  const rain = Array.from({ length: s.rain * 7 }, (_, i) => { const x = 8 + (i * 197 / (s.rain * 7)) % 200; return `<line x1="${x}" y1="${-10 - (i % 5) * 9}" x2="${x - 3}" y2="${-2 - (i % 5) * 9}" style="animation-delay:${(i % 7) * 90}ms"/>`; }).join('');
+  const n = Math.round(ER.loss(s) * 2);
+  const grains = Array.from({ length: n }, (_, i) => { const [x, y] = at(.08 + .8 * ((i * 37) % n) / Math.max(1, n));
+    return `<circle class="gr" cx="${x.toFixed(1)}" cy="${(y + 3).toFixed(1)}" r="2.6" data-tx="${(186 + (i % 6) * 4.5 - x).toFixed(1)}" data-ty="${(Y - 3 - Math.floor(i / 6) * 4 - y - 3).toFixed(1)}" style="transition-delay:${i * 70}ms"/>`; }).join('');
+  return `<svg class="hill" viewBox="0 0 220 150" role="img" aria-label="${label}: مطر ${ER.rain[s.rain]}، انحدار ${ER.slope[s.slope]}، ${ER.veg[s.veg]}">
+    <g class="rain">${rain}</g>
+    <polygon points="${X0},${Y} ${X0},${top} ${X1},${Y}" class="rock"/>
+    <line x1="${X0}" y1="${top + 4}" x2="${X1}" y2="${Y}" class="soil"/>
+    ${plants}<rect x="172" y="${Y}" width="46" height="4" class="path"/><g class="grains">${grains}</g>
+    <line x1="0" y1="${Y + 2}" x2="220" y2="${Y + 2}" class="ground"/></svg>`;
+}
+function hillCard(s, label) {
+  return `<figure class="lab-hill" data-k="${label}"><figcaption><b>${label}</b><span>🌧️ ${ER.rain[s.rain]} · ⛰️ ${ER.slope[s.slope]} · 🌱 ${ER.veg[s.veg]}</span></figcaption>${hillSvg(s, label)}
+    <div class="lab-meter" aria-hidden="true"><i style="width:0"></i></div><p class="lab-out" aria-live="polite"></p></figure>`;
+}
+/** rain on the hills in el; then() when the soil has moved */
+function rainOn(el, then) {
+  const figs = [...el.querySelectorAll('.lab-hill')];
+  figs.forEach(f => f.querySelector('svg').classList.add('raining'));
+  const go = () => figs.forEach(f => {
+    f.querySelectorAll('.gr').forEach(g => { g.style.transform = `translate(${g.dataset.tx}px,${g.dataset.ty}px)`; });
+    const v = +f.dataset.loss; f.querySelector('.soil').style.strokeWidth = (9 - v * .75).toFixed(1);   // the soil layer gets thinner
+    f.querySelector('.lab-meter i').style.width = Math.max(4, v / 9 * 100) + '%';
+    f.querySelector('.lab-out').textContent = 'التربة المنقولة: ' + (v >= 6 ? 'كثيرة جدًا' : v >= 3.5 ? 'كثيرة' : v >= 1.5 ? 'قليلة' : 'قليلة جدًا');
+  });
+  if (reduced()) { go(); then(); return; }
+  later(go, 600); later(() => { figs.forEach(f => f.querySelector('svg').classList.remove('raining')); then(); }, 2600);
+}
+
+function erosionLab(el, lab) {
+  const r = labRec(lab.id); let ci = 0;
+  const intro = () => {
+    el.innerHTML = `<div class="card lab"><h2>🌧️ مختبر التعرية</h2>
+      <p class="lead">نجرّب المطر على تلال من التربة. في كل تجربة نغيّر <b>شيئًا واحدًا فقط</b>، ونتوقّع قبل أن نجرّب.</p>
+      <p class="lab-note">هذا نموذج مبسّط للمقارنة: الأرقام فيه ليست قياسات حقيقية.</p>
+      <ol class="lab-list">${ER.C.map((c, i) => `<li class="${r.done.includes(c.id) ? 'ok' : ''}">${r.done.includes(c.id) ? '✅' : '🔬'} ${['الانحدار', 'كمية المطر', 'النباتات', 'حديقة المدرسة'][i]}</li>`).join('')}</ol>
+      <div class="row center"><button type="button" class="btn" id="labGo">${r.done.length ? 'تجربة جديدة' : 'ابدأ التجربة الأولى'}</button><button type="button" class="btn sec" id="labFree">🧪 المختبر الحرّ</button></div></div>`;
+    ci = Math.min(ER.C.length - 1, ER.C.findIndex(c => !r.done.includes(c.id)) < 0 ? 0 : ER.C.findIndex(c => !r.done.includes(c.id)));
+    $('labGo').onclick = () => (ER.C[ci].kind === 'fix' ? fixOne : twoHills)(ER.C[ci]);
+    $('labFree').onclick = free;
+  };
+  const after = c => { if (!r.done.includes(c.id)) r.done.push(c.id); r.last = Date.now(); HS.save();
+    const i = ER.C.indexOf(c); labNext(el, i + 1 < ER.C.length ? 'التجربة التالية ←' : 'إلى المختبر الحرّ 🧪', () => i + 1 < ER.C.length ? (ER.C[i + 1].kind === 'fix' ? fixOne : twoHills)(ER.C[i + 1]) : free()); };
+
+  function twoHills(c) {
+    const lA = ER.loss(c.A), lB = ER.loss(c.B), more = lA > lB ? 'A' : 'B';
+    el.innerHTML = `<div class="card lab">${labSteps(0)}<h2>🔬 ${ER.C.indexOf(c) + 1}. ${c.setup}</h2>
+      <div class="lab-two">${hillCard(c.A, 'التل أ')}${hillCard(c.B, 'التل ب')}</div>
+      <fieldset class="lab-pred"><legend>توقّع قبل المطر: أيّ تلّ سينقل المطر تربته أكثر؟</legend>
+        <div class="row">${[['A', 'التل أ'], ['B', 'التل ب'], ['=', 'متساويان']].map(([k, t]) => `<button type="button" class="btn sec" data-pr="${k}" aria-pressed="false">${t}</button>`).join('')}</div></fieldset>
+      <div class="row center"><button type="button" class="btn" id="labRun" disabled>🌧️ أنزل المطر</button></div><div class="lab-res" aria-live="polite"></div></div>`;
+    const figs = el.querySelectorAll('.lab-hill'); figs[0].dataset.loss = lA; figs[1].dataset.loss = lB;
+    let pred = null;
+    el.querySelectorAll('[data-pr]').forEach(b => b.onclick = () => { pred = b.dataset.pr; el.querySelectorAll('[data-pr]').forEach(x => { x.setAttribute('aria-pressed', x === b); x.classList.toggle('on', x === b); }); $('labRun').disabled = false; });
+    $('labRun').onclick = () => {
+      $('labRun').disabled = true; el.querySelectorAll('[data-pr]').forEach(x => x.disabled = true);
+      el.querySelector('.lab-steps').outerHTML = labSteps(1); r.runs++;
+      rainOn(el, () => {
+        const ok = pred === more; r.pred++; if (ok) r.predOk++; HS.save();
+        el.querySelector('.lab-steps').outerHTML = labSteps(2);
+        el.querySelector('.lab-res').innerHTML = `<div class="lab-cmp ${ok ? 'ok' : ''}"><b>${more === 'A' ? 'التل أ' : 'التل ب'} نقل المطر تربته أكثر.</b>
+          ${ok ? 'توقّعك صحيح! 🌟' : 'النتيجة غير ما توقّعت. لا بأس: العلماء يغيّرون رأيهم عندما يرون الدليل.'}</div>`;
+        if (ok) star(1);
+        later(() => { el.querySelector('.lab-steps').outerHTML = labSteps(3); labWhy(el, lab, c, () => after(c)); }, 500);
+      });
+    };
+  }
+
+  function fixOne(c) {
+    el.innerHTML = `<div class="card lab">${labSteps(0)}<h2>🏫 ${c.setup}</h2>
+      <div class="lab-two">${hillCard(c.now, 'الحديقة الآن')}</div>
+      <fieldset class="lab-pred"><legend>اختر حلًّا، ثم جرّبه تحت المطر نفسه:</legend>
+        <div class="col">${c.fixes.map((f, i) => `<button type="button" class="btn sec" data-fx="${i}" aria-pressed="false">${f[0]}</button>`).join('')}</div></fieldset>
+      <div class="row center"><button type="button" class="btn" id="labRun" disabled>🌧️ جرّب الحل</button></div><div class="lab-res" aria-live="polite"></div></div>`;
+    let pick = null, tries = 0;
+    el.querySelectorAll('[data-fx]').forEach(b => b.onclick = () => { pick = +b.dataset.fx; el.querySelectorAll('[data-fx]').forEach(x => { x.setAttribute('aria-pressed', x === b); x.classList.toggle('on', x === b); }); $('labRun').disabled = false; });
+    $('labRun').onclick = () => {
+      const f = c.fixes[pick], after_ = Object.assign({}, c.now, f[1]); tries++; r.runs++;
+      $('labRun').disabled = true;
+      const two = el.querySelector('.lab-two');
+      two.innerHTML = hillCard(c.now, 'قبل الحل') + hillCard(after_, 'بعد الحل');
+      const figs = two.querySelectorAll('.lab-hill'); figs[0].dataset.loss = ER.loss(c.now); figs[1].dataset.loss = ER.loss(after_);
+      el.querySelector('.lab-steps').outerHTML = labSteps(1);
+      rainOn(el, () => {
+        el.querySelector('.lab-steps').outerHTML = labSteps(2);
+        const better = ER.loss(after_) < ER.loss(c.now);
+        if (tries === 1) { r.pred++; if (better) r.predOk++; HS.save(); }
+        el.querySelector('.lab-res').innerHTML = `<div class="lab-cmp ${better ? 'ok' : ''}">${better ? '<b>نجح الحل:</b> التربة المنقولة قلّت كثيرًا. 🌟' : ER.loss(after_) > ER.loss(c.now) ? '<b>انتبه:</b> هذا الحل زاد التربة المنقولة! جرّب حلًّا آخر.' : '<b>لم يتغيّر شيء.</b> جرّب حلًّا آخر.'}</div>`;
+        if (better) { if (tries === 1) star(1); later(() => { el.querySelector('.lab-steps').outerHTML = labSteps(3); labWhy(el, lab, c, () => after(c)); }, 500); }
+        else el.querySelectorAll('[data-fx]').forEach(x => { if (+x.dataset.fx === pick) { x.disabled = true; x.classList.add('no'); } });
+      });
+    };
+  }
+
+  function free() {
+    const s = { rain: 2, slope: 2, veg: 0 };
+    const seg = (k, opts, from) => `<fieldset class="lab-seg"><legend>${{ rain: '🌧️ المطر', slope: '⛰️ الانحدار', veg: '🌱 النباتات' }[k]}</legend><div class="row">${opts.slice(from).map((t, i) => `<button type="button" class="btn sec" data-k="${k}" data-v="${i + from}" aria-pressed="${s[k] === i + from}">${t}</button>`).join('')}</div></fieldset>`;
+    el.innerHTML = `<div class="card lab"><h2>🧪 المختبر الحرّ</h2><p class="lead">غيّر شيئًا واحدًا كل مرة، ثم أنزل المطر وقارن بالمرة السابقة. هكذا تكون التجربة عادلة.</p>
+      ${seg('rain', ER.rain, 1)}${seg('slope', ER.slope, 1)}${seg('veg', ER.veg, 0)}
+      <div class="lab-two" id="labFreeHill"></div><div class="row center"><button type="button" class="btn" id="labRun">🌧️ أنزل المطر</button></div>
+      <p class="lab-note" id="labPrev"></p></div>`;
+    let prev = null;
+    const draw = () => { $('labFreeHill').innerHTML = hillCard(s, 'تلّي'); $('labFreeHill').querySelector('.lab-hill').dataset.loss = ER.loss(s);
+      el.querySelectorAll('[data-k]').forEach(b => b.setAttribute('aria-pressed', s[b.dataset.k] === +b.dataset.v)); };
+    el.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { s[b.dataset.k] = +b.dataset.v; draw(); });
+    $('labRun').onclick = () => { $('labRun').disabled = true; r.runs++; HS.save();
+      rainOn(el, () => { $('labRun').disabled = false; const v = ER.loss(s);
+        if (prev != null) $('labPrev').textContent = v > prev ? '⬆️ نُقلت تربة أكثر من المرة السابقة.' : v < prev ? '⬇️ نُقلت تربة أقل من المرة السابقة.' : '＝ مثل المرة السابقة.';
+        prev = v; }); };
+    draw();
+  }
+  intro();
+}
+
+/* ============================================================
+   🕸️ FOOD-WEB SHOCK (grade 4, ecosystems, lesson 2: relationships)
+   Organisms and links come from the unit's own food chains:
+   grass → grasshopper → lizard → hawk · wheat → mouse → snake → hawk · grass → rabbit (rabbit = herbivore).
+   Arrows mean «the energy goes to…» (the unit's own note). A change spreads two steps:
+   step 1 – whatever eats the changed organism changes the same way; whatever it eats changes the other way.
+   step 2 – the same rule once more from the step-1 organisms. A simplified model: in nature animals can
+   switch to other food. Every scenario is marked for educator review.
+   ============================================================ */
+const FW = {
+  N: { grass: ['عشب', 75, 236, 'p'], wheat: ['قمح', 245, 236, 'p'], hopper: ['جرادة', 35, 152, 'c'], rabbit: ['أرنب', 130, 152, 'c'], mouse: ['فأر', 245, 152, 'c'],
+       lizard: ['سحلية', 60, 78, 'c'], snake: ['ثعبان', 230, 78, 'c'], hawk: ['صقر', 145, 22, 'c'] },
+  DEF: { grass: 'العشب', wheat: 'القمح', hopper: 'الجراد', rabbit: 'الأرانب', mouse: 'الفئران', lizard: 'السحالي', snake: 'الثعابين', hawk: 'الصقور' },
+  E: [['grass', 'hopper'], ['grass', 'rabbit'], ['wheat', 'mouse'], ['hopper', 'lizard'], ['mouse', 'snake'], ['lizard', 'hawk'], ['snake', 'hawk']],
+  /* one change → { id: +1 | -1 } for each step */
+  spread(start, sign) {
+    const eaters = x => this.E.filter(e => e[0] === x).map(e => e[1]), food = x => this.E.filter(e => e[1] === x).map(e => e[0]);
+    const seen = { [start]: sign }, s1 = {}, s2 = {};
+    const from = (x, sg, into) => { eaters(x).forEach(y => { if (!(y in seen)) { into[y] = sg; } }); food(x).forEach(y => { if (!(y in seen)) { into[y] = -sg; } }); };
+    from(start, sign, s1); Object.assign(seen, s1);
+    Object.keys(s1).forEach(x => from(x, s1[x], s2)); Object.keys(s2).forEach(k => { if (k in seen) delete s2[k]; });
+    return [s1, s2];
+  },
+  C: [
+    { id: 'fw-drought', start: 'grass', sign: -1, ask: ['rabbit', 'lizard'], difficulty: 1, kind: 'web',
+      setup: 'جاء <b>جفاف</b> طويل، فقلّ <b>العشب</b> كثيرًا.',
+      learningObjective: 'يتتبّع أثر نقص المنتج على المستهلكات في الشبكة الغذائية.', cognitiveSkill: 'التفكير في النتائج على خطوتين',
+      curriculumReference: 'علوم ٤، الأنظمة البيئية، درس «العلاقات في الأنظمة البيئية»: السلسلة والشبكة الغذائية', review: true,
+      prompt: 'لماذا قلّت السحالي مع أن الجفاف لم يصبها هي؟',
+      correctAnswer: 'لأن الجراد الذي تأكله قلّ عندما قلّ العشب',
+      distractors: ['لأن السحالي تأكل العشب', 'لأن الصقور زادت', 'لأن الجفاف يقتل كل الحيوانات فورًا'],
+      misconceptions: ['تتبّع السهم الداخل إلى السحلية: من أين تأتيها الطاقة؟', 'الصقور لم تتغيّر في هذه القصة. ابدأ من العشب واصعد مع الأسهم.', 'لو كان ذلك صحيحًا لتغيّرت كل الحيوانات معًا. انظر: من تغيّر أولًا، ومن بعده؟'],
+      hint1: 'ابدأ من العشب واتبع الأسهم صعودًا خطوة خطوة.', hint2: 'العشب ← الجرادة ← السحلية.',
+      explanation: 'العشب منتج، والجراد يأكله. عندما قلّ العشب قلّ الجراد (الخطوة ١)، ثم قلّت السحالي لأن غذاءها قلّ (الخطوة ٢). التغيير في مخلوق واحد يصل إلى مخلوقات لا تأكله مباشرة.',
+      transferPrompt: 'إذا قلّ القمح في الحقول، أيّ حيوان في الشبكة سيتأثّر في الخطوة الثانية؟' },
+    { id: 'fw-hopper', start: 'hopper', sign: -1, ask: ['lizard', 'grass'], difficulty: 2, kind: 'web',
+      setup: 'رشّ المزارعون مبيدًا، فاختفى <b>الجراد</b> تقريبًا.',
+      learningObjective: 'يتوقّع أثر اختفاء مستهلك على غذائه وعلى من يأكله.', cognitiveSkill: 'التفكير في الاتجاهين (أعلى وأسفل الشبكة)',
+      curriculumReference: 'علوم ٤، الأنظمة البيئية، درس «العلاقات» والدرس «التغيرات في الأنظمة البيئية»', review: true,
+      prompt: 'لماذا زاد العشب عندما اختفى الجراد؟',
+      correctAnswer: 'لأن الجراد كان يأكل العشب، فقلّ من يأكله',
+      distractors: ['لأن المبيد سماد يقوّي العشب', 'لأن السحالي بدأت تزرع العشب', 'لأن الصقور تحمي العشب'],
+      misconceptions: ['المبيد يقتل الحشرات، ولم يقل أحد إنه سماد. تتبّع الأسهم: من كان يأكل العشب؟', 'السحالي لا تزرع. انظر إلى السهم الخارج من العشب: إلى أين تذهب طاقته؟', 'الصقر بعيد عن العشب في الشبكة. ما المخلوق الذي بينهما مباشرة؟'],
+      hint1: 'انظر إلى السهم الخارج من العشب: من يأكله؟', hint2: 'إذا قلّ من يأكل النبات، ماذا يحدث للنبات؟',
+      explanation: 'الجراد كان يأكل العشب. عندما اختفى الجراد بقي عشب أكثر (الخطوة ١). وفي الوقت نفسه قلّت السحالي لأنها فقدت غذاءها.',
+      transferPrompt: 'ولماذا قد يزيد الأرنب بعد ذلك؟' },
+    { id: 'fw-snake', start: 'snake', sign: -1, ask: ['mouse', 'wheat'], difficulty: 2, kind: 'web',
+      setup: 'قلّت <b>الثعابين</b> في المنطقة.',
+      learningObjective: 'يفسّر أثر غياب المفترس على الفريسة وعلى المنتج.', cognitiveSkill: 'التفكير في النتائج على خطوتين',
+      curriculumReference: 'علوم ٤، الأنظمة البيئية، درس «العلاقات»: المفترس والفريسة', review: true,
+      prompt: 'لماذا قلّ القمح عندما قلّت الثعابين؟',
+      correctAnswer: 'لأن الفئران زادت بعد أن قلّ من يصطادها، فأكلت قمحًا أكثر',
+      distractors: ['لأن الثعابين كانت تأكل القمح', 'لأن الصقور أكلت القمح', 'لأن القمح يحتاج الثعابين ليكبر'],
+      misconceptions: ['الثعبان آكل لحوم هنا: تتبّع السهم الداخل إليه.', 'السهم من القمح يذهب إلى الفأر وحده.', 'القمح منتج يصنع غذاءه بضوء الشمس. ما الذي يأكله؟'],
+      hint1: 'من يصطاد الفئران؟ ماذا يحدث للفئران إذا قلّ صيّادها؟', hint2: 'الثعبان ← الفأر ← القمح: خطوتان.',
+      explanation: 'الثعبان مفترس يصطاد الفئران. عندما قلّت الثعابين زادت الفئران (الخطوة ١)، فأكلت قمحًا أكثر فقلّ القمح (الخطوة ٢).',
+      transferPrompt: 'لماذا يقول بعض المزارعين إن المفترسات قد تساعد حقولهم؟' },
+    { id: 'fw-hawk', start: 'hawk', sign: -1, ask: ['snake', 'hopper'], difficulty: 3, kind: 'web',
+      setup: 'صيد كثير للصقور، فقلّ عددها.',
+      learningObjective: 'يطبّق قاعدة الخطوتين على مستهلك في قمة الشبكة.', cognitiveSkill: 'تطبيق في موقف جديد',
+      curriculumReference: 'علوم ٤، الأنظمة البيئية، درس «التغيرات في الأنظمة البيئية»', review: true,
+      prompt: 'لماذا قلّ الجراد عندما قلّت الصقور؟',
+      correctAnswer: 'لأن السحالي زادت بعد أن قلّ من يصطادها، فأكلت جرادًا أكثر',
+      distractors: ['لأن الصقور كانت تأكل العشب', 'لأن الجراد يأكل الصقور', 'لأن الجراد لا يتأثر بشيء'],
+      misconceptions: ['الصقر في قمة الشبكة ويأكل الحيوانات. تتبّع الأسهم من الصقر نزولًا.', 'اتجاه السهم يعني «الطاقة تنتقل إلى». هل يدخل سهم من الصقر إلى الجراد؟', 'كل مخلوق في الشبكة مرتبط بغيره. من يأكل الجراد؟'],
+      hint1: 'من تصطاد الصقور؟ وماذا يأكل ذلك الحيوان؟', hint2: 'الصقر ← السحلية ← الجرادة: خطوتان.',
+      explanation: 'الصقور تصطاد السحالي والثعابين. عندما قلّت الصقور زادت السحالي والثعابين (الخطوة ١)، فأكلت جرادًا وفئرانًا أكثر فقلّ الجراد والفئران (الخطوة ٢).',
+      transferPrompt: 'لماذا يحاول الناس حماية الحيوانات التي في قمة الشبكة الغذائية؟' }
+  ]
+};
+function webSvg() {
+  const N = FW.N, R = 21;
+  const arrow = ([a, b]) => { const [, x1, y1] = N[a], [, x2, y2] = N[b], d = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / d, uy = (y2 - y1) / d;
+    return `<line class="fw-e" data-e="${a}-${b}" x1="${(x1 + ux * R).toFixed(1)}" y1="${(y1 + uy * R).toFixed(1)}" x2="${(x2 - ux * (R + 4)).toFixed(1)}" y2="${(y2 - uy * (R + 4)).toFixed(1)}" marker-end="url(#fwA)"/>`; };
+  return `<svg class="fw" viewBox="0 0 290 262" role="img" aria-label="شبكة غذائية: ${FW.E.map(([a, b]) => N[a][0] + ' يأكله ' + N[b][0]).join('، ')}">
+    <defs><marker id="fwA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="fw-ah"/></marker></defs>
+    ${FW.E.map(arrow).join('')}
+    ${Object.entries(N).map(([k, [t, x, y, kind]]) => `<g class="fw-n ${kind}" data-n="${k}" transform="translate(${x},${y})"><circle r="${R}"/><text y="5">${t}</text><g class="fw-b" transform="translate(16,-16)"><circle r="9"/><text y="4"></text></g></g>`).join('')}</svg>`;
+}
+function foodWebLab(el, lab) {
+  const r = labRec(lab.id);
+  const name = k => FW.N[k][0], def = k => FW.DEF[k];
+  const said = (k, v) => `${def(k)}: ${v > 0 ? 'زاد العدد' : v < 0 ? 'قلّ العدد' : 'لم يتغيّر'}`;
+  const intro = () => {
+    el.innerHTML = `<div class="card lab"><h2>🕸️ صدمة الشبكة الغذائية</h2>
+      <p class="lead">في كل قصة يتغيّر مخلوق واحد. توقّع ماذا يحدث لمخلوقين آخرين، ثم شاهد التغيير ينتقل مع الأسهم خطوة بعد خطوة.</p>
+      <p class="lab-note">السهم يعني: «الطاقة تنتقل إلى…». هذا نموذج مبسّط: في الطبيعة قد تجد الحيوانات غذاءً آخر.</p>
+      <div class="lab-web">${webSvg()}</div>
+      <ol class="lab-list">${FW.C.map(c => `<li class="${r.done.includes(c.id) ? 'ok' : ''}">${r.done.includes(c.id) ? '✅' : '🔬'} ${c.setup.replace(/<[^>]+>/g, '')}</li>`).join('')}</ol>
+      <div class="row center"><button type="button" class="btn" id="labGo">${r.done.length ? 'القصة التالية' : 'ابدأ'}</button></div></div>`;
+    const i = FW.C.findIndex(c => !r.done.includes(c.id));
+    $('labGo').onclick = () => story(FW.C[i < 0 ? 0 : i]);
+  };
+  function story(c) {
+    const [s1, s2] = FW.spread(c.start, c.sign), truth = k => s1[k] || s2[k] || 0;
+    el.innerHTML = `<div class="card lab">${labSteps(0)}<h2>🔬 ${c.setup}</h2>
+      <div class="lab-web">${webSvg()}</div>
+      ${c.ask.map(k => `<fieldset class="lab-pred" data-ask="${k}"><legend>ماذا يحدث لعدد <b>${def(k)}</b>؟</legend><div class="row">
+        ${[['1', '⬆️ يزيد'], ['-1', '⬇️ يقلّ'], ['0', '＝ لا يتغيّر']].map(([v, t]) => `<button type="button" class="btn sec" data-v="${v}" aria-pressed="false">${t}</button>`).join('')}</div></fieldset>`).join('')}
+      <div class="row center"><button type="button" class="btn" id="labRun" disabled>▶️ شاهد ماذا يحدث</button></div><div class="lab-res" aria-live="polite"></div></div>`;
+    const svg = el.querySelector('.fw'), node = k => svg.querySelector(`[data-n="${k}"]`);
+    node(c.start).classList.add('start', c.sign < 0 ? 'dn' : 'up'); node(c.start).querySelector('.fw-b text').textContent = c.sign < 0 ? '↓' : '↑';
+    const pred = {};
+    el.querySelectorAll('[data-ask]').forEach(fs => fs.querySelectorAll('[data-v]').forEach(b => b.onclick = () => {
+      pred[fs.dataset.ask] = +b.dataset.v; fs.querySelectorAll('[data-v]').forEach(x => { x.setAttribute('aria-pressed', x === b); x.classList.toggle('on', x === b); });
+      $('labRun').disabled = Object.keys(pred).length < c.ask.length; }));
+    const mark = (m, step) => Object.entries(m).forEach(([k, v]) => { const n = node(k); n.classList.add(v > 0 ? 'up' : 'dn', 's' + step); n.querySelector('.fw-b text').textContent = v > 0 ? '↑' : '↓'; });
+    $('labRun').onclick = () => {
+      $('labRun').disabled = true; el.querySelectorAll('[data-v]').forEach(x => x.disabled = true); r.runs++;
+      el.querySelector('.lab-steps').outerHTML = labSteps(1);
+      const res = el.querySelector('.lab-res');
+      const show = () => {
+        el.querySelector('.lab-steps').outerHTML = labSteps(2);
+        const okAll = c.ask.every(k => pred[k] === truth(k)); r.pred++; if (okAll) r.predOk++; HS.save();
+        res.innerHTML += `<ul class="lab-cmp-list">${c.ask.map(k => `<li class="${pred[k] === truth(k) ? 'ok' : 'no'}">${pred[k] === truth(k) ? '✅' : '❌'} ${said(k, truth(k))}${s2[k] ? ' (في الخطوة ٢)' : ''}${pred[k] === truth(k) ? '' : '. توقّعك كان مختلفًا'}</li>`).join('')}</ul>`;
+        if (okAll) star(1);
+        later(() => { el.querySelector('.lab-steps').outerHTML = labSteps(3); labWhy(el, lab, c, () => { if (!r.done.includes(c.id)) r.done.push(c.id); r.last = Date.now(); HS.save();
+          const i = FW.C.indexOf(c); labNext(el, i + 1 < FW.C.length ? 'القصة التالية ←' : 'إلى بداية المختبر', () => i + 1 < FW.C.length ? story(FW.C[i + 1]) : intro()); }); }, 500);
+      };
+      const step1 = () => { mark(s1, 1); res.innerHTML = `<p><b>الخطوة ١:</b> ${Object.entries(s1).map(([k, v]) => said(k, v)).join('، ')}.</p>`; };
+      const step2 = () => { mark(s2, 2); res.innerHTML += `<p><b>الخطوة ٢:</b> ${Object.keys(s2).length ? Object.entries(s2).map(([k, v]) => said(k, v)).join('، ') : 'لا تغيير آخر'}.</p>`; };
+      if (reduced()) { step1(); step2(); show(); return; }
+      later(step1, 500); later(step2, 1900); later(show, 2900);
+    };
+  }
+  intro();
+}
+
+LABS.g3sciearth = { erosion: { id: 'erosion', title: '🌧️ مختبر التعرية', em: '🌧️⛰️', sub: 'توقّع، جرّب، فسّر', kind: 'think', lesson: 'l2', run: erosionLab, challenges: ER.C } };
+LABS.g4scieco = { web: { id: 'web', title: '🕸️ صدمة الشبكة الغذائية', em: '🕸️🦅', sub: 'ماذا يحدث إذا تغيّر مخلوق واحد؟', kind: 'think', lesson: 'l2', run: foodWebLab, challenges: FW.C, spread: (s, g) => FW.spread(s, g) } };
 
 })();
 </script>
@@ -5498,7 +6183,7 @@ window.CATALOG = [
     color: 'var(--t-pink)',
     subjects: [
       { id: 'early', name: 'عربي و English', em: '🔤', art: 'subject-early',
-        desc: 'الحروف، الأرقام، الألوان، الأشكال، الحيوانات + ٨ ألعاب بالصوت',
+        desc: 'حروف وأرقام وألوان وأشكال وحيوانات، كلها بالصوت',
         color: 'var(--t-orange)', app: 'kg' },
       { name: 'قصص وأناشيد', em: '📖', art: 'subject-stories', soon: true }
     ]
@@ -5512,7 +6197,7 @@ window.CATALOG = [
         units: [
           { name: 'الوحدة ١: المخلوقات الحية', em: '🌱', art: 'unit-g3sci-living-cover', soon: true },
           { name: 'الوحدة ٢: النظام البيئي', em: '🦁', art: 'unit-g3sci-eco-cover', soon: true },
-          { name: 'الوحدة ٣: الأرض ومواردها', em: '🌎', art: 'unit-g3sciearth-cover', desc: '٤ دروس: تغيرات الأرض الفجائية، التجوية والتعرية، التربة، الأحافير والوقود الأحفوري',
+          { name: 'الوحدة ٣: الأرض ومواردها', em: '🌎', art: 'unit-g3sciearth-cover',
             color: 'var(--t-orange)', unit: 'g3sciearth' },
           { name: 'الوحدة ٤: الطقس والمناخ', em: '⛅', art: 'unit-g3sci-weather-cover', soon: true }
         ] },
@@ -5527,9 +6212,9 @@ window.CATALOG = [
       { id: 'sci', name: 'العلوم', em: '🔬', art: 'subject-science', desc: 'مراجعة الوحدات بالملخصات والألعاب والاختبارات',
         color: 'var(--t-blue)',
         units: [
-          { name: 'الأنظمة البيئية', em: '🌍', art: 'unit-g4scieco-cover', desc: '٣ دروس · بطاقات · ٦ ألعاب · اختبار نهائي',
+          { name: 'الأنظمة البيئية', em: '🌍', art: 'unit-g4scieco-cover',
             color: 'var(--t-purple)', unit: 'g4scieco' },
-          { name: 'صحة الإنسان', em: '🩺', art: 'unit-g4scihealth-cover', desc: '٤ دروس · بطاقات · ٦ ألعاب · اختبار نهائي',
+          { name: 'صحة الإنسان', em: '🩺', art: 'unit-g4scihealth-cover',
             color: 'var(--t-pink)', unit: 'g4scihealth' },
           { name: 'الخلايا وتصنيف المخلوقات', em: '🦠', art: 'unit-g4sci-cells-cover', soon: true },
           { name: 'الحيوانات وأجهزة أجسامها', em: '🐾', art: 'unit-g4sci-animals-cover', soon: true }
@@ -5571,7 +6256,7 @@ window.CATALOG = [
     ['اختر صورته', 'Pick a picture'], ['صورة الطفل', 'Child’s picture'], ['كلماتي في القاموس', 'My dictionary words'], ['محفوظ أونلاين', 'Saved online'], ['بدون إنترنت', 'Offline'],
     // catalog
     ['الروضة', 'Kindergarten'], ['KG2 · عمر ٤–٥ سنوات', 'KG2 · ages 4–5'], ['عربي و English', 'Arabic & English'], ['قصص وأناشيد', 'Stories & songs'],
-    ['الحروف، الأرقام، الألوان، الأشكال، الحيوانات + ٨ ألعاب بالصوت', 'Letters, numbers, colours, shapes, animals + 8 voice games'],
+    ['حروف وأرقام وألوان وأشكال وحيوانات، كلها بالصوت', 'Letters, numbers, colours, shapes and animals, all with sound'],
     ['الصف الثالث', 'Grade 3'], ['الصف الرابع', 'Grade 4'], ['ابتدائي · المنهج السعودي', 'Primary · Saudi curriculum'], ['العلوم', 'Science'], ['الرياضيات', 'Math'], ['لغتي', 'Arabic (Lughati)'],
     ['مراجعة الوحدات بالملخصات والألعاب والاختبارات', 'Unit review with summaries, games and tests'],
     ['الوحدة ١: المخلوقات الحية', 'Unit 1: Living things'], ['الوحدة ٢: النظام البيئي', 'Unit 2: Ecosystems'], ['الوحدة ٣: الأرض ومواردها', 'Unit 3: Earth and its resources'], ['الوحدة ٤: الطقس والمناخ', 'Unit 4: Weather and climate'],
@@ -5634,6 +6319,8 @@ window.CATALOG = [
     // short words (matched as whole words only)
     ['حفظ', 'Save'], ['إلغاء', 'Cancel'], ['حذف', 'Delete'], ['أرسل 🎁', 'Send 🎁'], ['أرسل', 'Send'], ['تم', 'Done'], ['عندك', 'You have'], ['باقي', 'need'], ['حتى', 'up to'], ['تقريبًا:', 'about:'], ['تقريبًا', 'about'],
     ['من', 'of'], ['نجمة.', 'stars.'], ['نجمة', 'stars'], ['تعلّم', 'Learned'], ['كلمة', 'words'], ['كلمتان', '2 words'], ['كلمات', 'words'], ['كلمة واحدة', '1 word'],
+    ['درس واحد', '1 lesson'], ['درسان', '2 lessons'], ['دروس', 'lessons'], ['درسًا', 'lessons'], ['لعبة واحدة', '1 game'], ['لعبتان', '2 games'], ['ألعاب', 'games'],
+    ['مصطلح واحد', '1 term'], ['مصطلحان', '2 terms'], ['مصطلحات', 'terms'], ['مصطلحًا', 'terms'],
     ['يوم واحد', '1 day'], ['يومان', '2 days'], ['أيام', 'days'], ['يومًا', 'days'], ['سؤال واحد', '1 question'], ['سؤالان', '2 questions'], ['أسئلة', 'questions'], ['سؤالًا', 'questions'],
   ];
   const AR_RE = /[؀-ۿ]/;
@@ -5665,6 +6352,110 @@ window.CATALOG = [
 })();
 
 /* ============================================================
+   NAVIGATION MODEL: one place that knows where every page sits.
+   From CATALOG (grades → subjects → units/apps) and each app's own pages it derives, for any route:
+     HS.nav.chain(route)   [{route, title, focus?}] from Home to the page itself
+     HS.nav.parent(route)  the logical parent (what "Back" opens), never browser history
+     HS.nav.title(route)   page title
+     HS.nav.place(route)   { grade, subject, unit, app } of the page
+   Routes are the URL hash without '#':
+     home · parent · shop · y-<grade> · s-<grade>-<subject> · app-<app>[-<page>] · unit-<unit>[-<page>[-<activity>]]
+   An app describes its own pages with APPS.<app>.nav(sub) → [{route, title, focus?}] below its root
+   (focus: a game or quiz in progress; the header becomes compact and hides the breadcrumb).
+   Counts shown on menu cards (games, lessons) come from the apps' data: HS.nav.count(item).
+   ============================================================ */
+(function () {
+  const HOME = { route: 'home', title: 'الرئيسية' };
+  const routeOf = o => o.unit ? 'unit-' + o.unit : o.app ? 'app-' + o.app : null;
+
+  /** catalog path to a grade, subject or unit/app item: [{route, title, item, kind}] (without Home) */
+  function catalogPath(test) {
+    for (const y of CATALOG) {
+      const yr = y.app ? 'app-' + y.app : 'y-' + y.id;
+      const yN = { route: yr, title: y.name, item: y, kind: 'grade' };
+      if (test(y, yr)) return [yN];
+      for (const s of y.subjects || []) {
+        const sr = s.app ? 'app-' + s.app : 's-' + y.id + '-' + s.id;
+        const sN = { route: sr, title: s.name, item: s, kind: 'subject' };
+        if (test(s, sr)) return [yN, sN];
+        for (const u of s.units || []) {
+          const ur = routeOf(u);
+          if (ur && test(u, ur)) return [yN, sN, { route: ur, title: u.name, item: u, kind: 'unit' }];
+        }
+      }
+    }
+    return null;
+  }
+
+  /** split a route into its base (a catalog route) and the app page below it */
+  function parse(route) {
+    route = String(route || 'home').replace(/^#/, '');
+    let m;
+    if ((m = route.match(/^app-([a-z0-9]+)(?:-(.+))?$/i))) return { base: 'app-' + m[1], app: m[1], sub: m[2] || '' };
+    if ((m = route.match(/^unit-([a-z0-9]+)(?:-(.+))?$/i))) return { base: 'unit-' + m[1], app: 'unit', unit: m[1], sub: m[2] || '' };
+    return { base: route };
+  }
+
+  function chain(route) {
+    const p = parse(route);
+    if (p.base === 'home' || !p.base) return [HOME];
+    if (p.base === 'parent') return [HOME, { route: 'parent', title: 'صفحة الأب' }];
+    if (p.base === 'shop') return [HOME, { route: 'shop', title: 'متجر النجوم' }];
+    const path = catalogPath((o, r) => r === p.base);
+    const out = [HOME, ...(path || []).map(({ route, title }) => ({ route, title }))];
+    if (!path) {   // not in the menu (e.g. a unit opened by link): still give it a title
+      if (p.unit && window.UNITS && UNITS[p.unit]) out.push({ route: p.base, title: UNITS[p.unit].title });
+      else return [HOME];
+    }
+    const app = window.APPS && APPS[p.app];
+    if (app && typeof app.nav === 'function') {
+      try { out.push(...(app.nav(p.unit ? p.unit + (p.sub ? '-' + p.sub : '') : p.sub) || [])); } catch (e) {}
+    }
+    return out;
+  }
+  const last = a => a[a.length - 1];
+
+  HS.nav = {
+    chain,
+    parse,
+    parent: route => { const c = chain(route); return c.length > 1 ? c[c.length - 2].route : null; },
+    title: route => last(chain(route)).title,
+    focus: route => !!last(chain(route)).focus,
+    /** grade / subject / unit of a page, from the catalog */
+    place(route) {
+      const p = parse(route), path = catalogPath((o, r) => r === p.base) || [];
+      const pick = k => (path.find(x => x.kind === k) || {}).item || null;
+      return { grade: pick('grade'), subject: pick('subject'), unit: pick('unit'), app: p.app || null };
+    },
+    /** open a route. replace: change the address without a new history entry (redirects) */
+    go(route, replace) {
+      const h = '#' + String(route).replace(/^#/, '');
+      if (replace) { try { history.replaceState(null, '', h); } catch (e) {} window.dispatchEvent(new HashChangeEvent('hashchange')); }
+      else if (location.hash === h) window.dispatchEvent(new HashChangeEvent('hashchange'));
+      else location.hash = h;
+    },
+    /** what a menu card says about its contents, counted from the data (never typed by hand) */
+    count(item) {
+      if (item.unit && window.UNITS && UNITS[item.unit]) {
+        const u = UNITS[item.unit], g = u.games || {};
+        const games = (g.sort || []).length + (g.order || []).length + (u.lessons.length ? 1 : 0) + 1 + ((window.APPS && APPS.unit && APPS.unit.labCount) ? APPS.unit.labCount(u.id) : 0);
+        return { lessons: u.lessons.length, games, questions: u.questions.length };
+      }
+      if (item.app && window.APPS && APPS[item.app] && typeof APPS[item.app].counts === 'function') return APPS[item.app].counts();
+      return null;
+    },
+    /** the line under a menu card: topic text from the catalog + counts from the data, never typed by hand */
+    desc(item) {
+      const c = this.count(item); if (!c) return item.desc || item.sub || '';
+      if (item.unit) { const u = UNITS[item.unit];
+        return [HS.count(c.lessons, HS.N.lesson), HS.count(u.glossary.length, HS.N.term), HS.count(c.games, HS.N.game), HS.count(c.questions, HS.N.q)].join(' · '); }
+      return [item.desc, HS.count(c.games, HS.N.game)].filter(Boolean).join(' · ');
+    },
+    routeOf,
+  };
+})();
+
+/* ============================================================
    PORTAL + ROUTER
    Draws the menu from CATALOG, the child picker, and the parent page,
    and switches between the menu and apps.
@@ -5689,49 +6480,61 @@ window.CATALOG = [
     on: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11'), off: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9.5l5 5M21 9.5l-5 5') };
   /* sound on/off and language buttons, in the top bar of every page */
   const muteBtn = cls => `<button type="button" class="${cls} p-mute" data-mute aria-pressed="${HS.muted()}" aria-label="${HS.muted() ? 'تشغيل الصوت' : 'كتم الصوت'}">${HS.muted() ? I.off : I.on}</button>`;
-  const langBtn = cls => `<button type="button" class="${cls} p-lang" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'عربي' : 'English'}</button>`;
 
   const navOf = o => o.unit ? 'unit-' + o.unit : o.app ? 'app-' + o.app : null;
   // a catalog item's picture: its artwork when it exists (o.art), otherwise its emoji
   const tile = (o, small) => `<span class="p-tile" aria-hidden="true">${HS.art(o.art, { fb: o.em, small, eager: true })}</span>`;
   const card = (o, nav) => o.soon
     ? `<div class="p-card soon">${tile(o, true)}<span class="tx"><b>${o.name}</b></span><span class="tag">قريبًا</span></div>`
-    : `<button type="button" class="p-card${HS.hasArt(o.art) ? ' has-art' : ''}" style="--c:${o.color}" data-nav="${nav}">${tile(o)}<span class="tx"><b>${o.name}</b><small>${o.desc || o.sub || ''}</small></span><span class="go">${I.fwd}</span></button>`;
-  const crumb = (back, trail) => `<nav class="p-crumb" aria-label="مكانك في الموقع"><button type="button" class="p-back" data-nav="${back}">${I.back}<span>رجوع</span></button><span class="p-trail">${trail}</span></nav>`;
-  /* the brand bar on every menu page: logo (back to the start) and the current child's stars */
-  function top() {
-    const me = HS.current(), named = me && me.id !== 'guest';
-    const stars = `⭐ <b>${ar(HS.stars())}</b>`;
-    return `<header class="p-top"><a class="p-brand" href="#home" data-nav="home">${HS.art('logo-mark', { eager: true, cls: 'p-logo', fb: '🏡' })}<span>مدرسة البيت</span></a>
-      <div class="p-me">${langBtn('p-tool')}${muteBtn('p-tool')}${named ? `${shopOn() ? `<button type="button" class="p-starpill" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">${stars}</button>` : `<span class="p-starpill">${stars}</span>`}
-        <span class="p-me-av" style="background:${HS.kidColor(me)}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}</div></header>`;
+    : `<button type="button" class="p-card${HS.hasArt(o.art) ? ' has-art' : ''}" style="--c:${o.color}" data-nav="${nav}">${tile(o)}<span class="tx"><b>${o.name}</b><small>${HS.nav.desc(o)}</small></span><span class="go">${I.fwd}</span></button>`;
+  /* ---------- the one header of the site (menu pages and apps) ----------
+     global row: brand (home) · sound · stars (shop) · menu with the secondary utilities
+     context row: one Back (to the logical parent from HS.nav) + clickable breadcrumb, or the activity title in a game */
+  let menuOpen = false;
+  function bar(route) {
+    const c = HS.nav.chain(route), cur = c[c.length - 1], par = c.length > 1 ? c[c.length - 2] : null, focus = !!cur.focus;
+    const me = HS.current(), named = !!(me && me.id !== 'guest');
+    const crumbs = !focus && c.length > 2 ? `<nav class="gb-crumbs" aria-label="مسار التنقل"><ol>${c.map((n, i) => {
+        const li = i === c.length - 1 ? `<li class="cur"><span aria-current="page">${n.title}</span></li>`
+          : `<li${i > 0 ? ' class="mid"' : ''}><a href="#${n.route}" data-nav="${n.route}">${n.title}</a></li>`;
+        return li + (i === 0 && c.length > 3 ? '<li class="ell"><button type="button" class="gb-ell" aria-label="أظهر المسار كاملًا" aria-expanded="false">…</button></li>' : '');
+      }).join('')}</ol></nav>` : '';
+    const ctx = par ? `<div class="gb-ctx"><button type="button" class="gb-back" data-nav="${par.route}" aria-label="رجوع إلى ${esc(par.title)}">${I.back}<span>رجوع</span></button>
+      ${focus ? `<span class="gb-title">${cur.title}</span>` : crumbs}</div>` : '';
+    const who = named ? `<span class="gb-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span><span class="gb-who nm">${esc(me.name)}</span>`
+      : `<span class="gb-av gb-guest" aria-hidden="true">👤</span><span class="gb-who">ضيف</span>`;
+    BAR.className = 'appbar' + (focus ? ' focus' : '') + (par ? '' : ' at-home');
+    BAR.innerHTML = `<div class="gb-row">
+      <a class="gb-brand" href="#home" data-nav="home" aria-label="مدرسة البيت: الرئيسية">${HS.art('logo-mark', { eager: true, cls: 'gb-logo', fb: '🏡' })}<span>مدرسة البيت</span></a>
+      <div class="gb-tools">${muteBtn('gb-btn')}
+        ${named && shopOn() ? `<button type="button" class="gb-btn gb-stars" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}
+        <div class="gb-menu"><button type="button" class="gb-btn gb-me" id="gbMenuBtn" aria-expanded="${menuOpen}" aria-controls="gbMenu" aria-label="القائمة: ${named ? esc(me.name) : 'ضيف'}">${who}<span class="gb-caret" aria-hidden="true">▾</span></button>
+          <div class="gb-pop" id="gbMenu" ${menuOpen ? '' : 'hidden'}>
+            <p class="gb-pop-h">${named ? `يتعلّم الآن: <b class="nm">${esc(me.name)}</b>` : 'تتعلّم الآن كضيف: التقدّم لا يُحفظ باسم طفل'}</p>
+            <button type="button" data-nav="home" data-menu>🏠 الرئيسية</button>
+            <button type="button" data-nav="home" data-menu>👧 ${HS.profiles().length ? 'تبديل الطفل أو إضافة طفل' : 'إضافة طفل'}</button>
+            ${named && shopOn() ? '<button type="button" data-nav="shop" data-menu>⭐ متجر النجوم</button>' : ''}
+            <button type="button" data-nav="parent" data-menu>👨‍👩‍👧 صفحة الأب</button>
+            <button type="button" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" data-menu>🌐 لغة الواجهة: <span lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'العربية' : 'English'}</span></button>
+          </div></div></div></div>${ctx}`;
+    document.title = HS.tr(par ? cur.title + ' – مدرسة البيت' : 'مدرسة البيت');
   }
-
-  // where does an app/unit sit in the catalog? -> back link + breadcrumb for its top bar
-  function locate(kind, id) {
-    const hit = o => (kind === 'unit' ? o.unit : o.app) === id;
-    for (const y of CATALOG) if (y.app && hit(y)) return { back: 'home', trail: y.name };
-    for (const y of CATALOG) for (const s of y.subjects || []) {
-      if (hit(s)) return { back: 'y-' + y.id, trail: `${y.name} ‹ ${s.name}` };
-      for (const u of s.units || []) if (hit(u)) return { back: `s-${y.id}-${s.id}`, trail: `${y.name} ‹ ${s.name} ‹ ${u.name}` };
-    }
-    return { back: 'home', trail: '' };
-  }
+  const closeMenu = focusBtn => { if (!menuOpen) return; menuOpen = false; const m = document.getElementById('gbMenu'), b = document.getElementById('gbMenuBtn');
+    if (m) m.hidden = true; if (b) { b.setAttribute('aria-expanded', 'false'); if (focusBtn) b.focus(); } };
 
   let current = null;   // app id currently open
-  function showScreen(id, title) {
+  let shown = '';
+  function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === id));
-    BAR.style.display = id === 'portal' ? 'none' : 'flex';
-    document.title = HS.tr(title ? title + ' – مدرسة البيت' : 'مدرسة البيت');
-    window.scrollTo(0, 0);
+    if (shown !== id) window.scrollTo(0, 0);
+    shown = id;
   }
   function closeApp() { if (current && APPS[current]) { try { APPS[current].close(); } catch (e) {} } current = null; }
-  function openApp(appId, sub, loc) {
-    if (current !== appId) closeApp();
+  /** open an app page. The same app stays open between its own pages (they are routes too), it is only re-drawn */
+  function openApp(appId, sub) {
+    if (current !== appId) { closeApp(); window.scrollTo(0, 0); }
     current = appId;
-    const me = HS.current();
-    BAR.innerHTML = `<button type="button" class="bar-back" data-nav="${loc.back}">${I.back}<span>رجوع</span></button><button type="button" class="bar-home" data-nav="home">${HS.art('logo-mark', { cls: 'bar-logo', fb: '' }) || I.home}<span>الرئيسية</span></button><span class="bar-trail">${loc.trail}</span>${muteBtn('bar-mute')}${shopOn() ? `<button type="button" class="bar-shop" data-nav="shop" aria-label="متجر النجوم">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}${me ? `<span class="bar-me" style="background:${HS.kidColor(me)}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}`;
-    showScreen('scr-' + appId, loc.trail.split(' ‹ ').pop());
+    showScreen('scr-' + appId);
     APPS[appId].open(sub);
   }
 
@@ -5802,8 +6605,8 @@ window.CATALOG = [
     const state = r => { const c = HS.cantBuy(r); return c === 'week' ? `<span class="sh-need">✋ خلصت هذا الأسبوع (${ar(HS.boughtWeek(r.id))}/${ar(r.week)})</span>`
       : c === 'stars' ? `<span class="sh-need">باقي ⭐ ${ar(r.cost - bal)}</span>`
       : `<button type="button" class="p-btn ${buying === r.id ? 'warn' : ''}" data-buy="${r.id}">${buying === r.id ? 'متأكد؟ اضغط مرة ثانية ✅' : 'اشترِ'}</button>`; };
-    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ المتجر') + `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
-        <div><h2 class="p-title">🛒 متجر النجوم</h2><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
+    P.innerHTML = `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
+        <div><h1 class="p-title">🛒 متجر النجوم</h1><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
       ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
       ${goal ? `<div class="sh-goal"><span class="em">${HS.rewardArt(goal)}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
           <div class="hs-meter ${bal >= goal.cost ? '' : 'mid'}"><i style="width:${pct(bal, goal.cost)}%"></i></div>
@@ -5941,11 +6744,11 @@ window.CATALOG = [
     if (!list.length && !skip) {   // first visit: Koko asks who will learn here
       const sc = !!heroScene(), form = `${avForm(list)}<button type="button" class="p-link" id="pSkip">المتابعة بدون إضافة</button>`;
       // with the full scene the form goes in a card below it, so it never covers Koko
-      P.innerHTML = top() + heroWrap('p-onb', `<div class="p-hero-tx"><h1 id="pHi">أهلًا! أنا كوكو</h1>
+      P.innerHTML = heroWrap('p-onb', `<div class="p-hero-tx"><h1 id="pHi">أهلًا! أنا كوكو</h1>
           <p class="p-hero-sub">من سيتعلّم معي؟ أضف كل طفل ليُحفظ تقدّمه ونجومه وأخطاؤه وحده.</p>${sc ? '' : form}</div>`) + (sc ? `<div class="p-onb-form">${form}</div>` : '');
       return bindPicker();
     }
-    P.innerHTML = top() + hero() + kidsRow() + today() + `
+    P.innerHTML = hero() + kidsRow() + today() + `
       <section class="p-sec" aria-labelledby="pGr"><h2 id="pGr" class="p-h2">ماذا نتعلّم اليوم؟</h2>
         <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div></section>
       <footer class="p-foot">${HS.sync && HS.sync.family() ? `<p class="p-cloud" id="pCloud">${HS.sync.status() === 'on' ? '☁️ محفوظ أونلاين' : ''}</p>` : ''}<button type="button" class="p-parent" data-nav="parent"><span aria-hidden="true">👨‍👩‍👧</span> صفحة الأب: التقدّم والإعدادات${HS.waitingCount() ? ` <span class="p-badge" aria-label="${ar(HS.waitingCount())} كوبون ينتظر">🎟️ ${ar(HS.waitingCount())}</span>` : ''}</button>
@@ -5963,7 +6766,7 @@ window.CATALOG = [
   function gate(next) {
     const pin = HS.settings().pin; let ok = false; try { ok = sessionStorage.getItem('hs-pin') === '1'; } catch (e) {}
     if (!pin || ok) return next();
-    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ صفحة الأب') + `<form class="p-form pin" id="pinF"><h2 class="p-title">🔒 صفحة الأب</h2><label for="pinI">الرقم السري</label>
+    P.innerHTML = `<form class="p-form pin" id="pinF"><h1 class="p-title">🔒 صفحة الأب</h1><label for="pinI">الرقم السري</label>
       <input id="pinI" inputmode="numeric" type="password" maxlength="8" autocomplete="off"><button type="submit" class="p-btn">دخول</button><p class="pp-note" id="pinE"></p></form>`;
     const i = document.getElementById('pinI'); i.focus();
     document.getElementById('pinF').onsubmit = e => { e.preventDefault();
@@ -5974,14 +6777,22 @@ window.CATALOG = [
   /* ---------- parent page ---------- */
   const meter = x => `<div class="hs-meter ${x < .4 ? 'low' : x < .8 ? 'mid' : ''}" role="img" aria-label="${Math.round(x * 100)}٪"><i style="width:${Math.max(3, Math.round(x * 100))}%"></i></div>`;
   let confirmKey = '';
+  // Kindergarten: the child never sees numbered levels. Difficulty adapts by itself;
+  // a parent can move a game to a different starting level here.
+  function kgLevels(pid) {
+    const cur = (HS.data('kg', pid).lv) || {};
+    return `<details class="pp-unit pp-kglv"><summary>🎚️ صعوبة ألعاب الروضة</summary>
+      <p class="pp-note">الألعاب تصعب وتسهل تلقائيًا حسب إجابات الطفل. غيّر المستوى هنا فقط إذا كانت لعبة سهلة جدًا أو صعبة جدًا.</p>
+      ${APPS.kg.levels().map(g => `<label class="pp-lv"><span>${esc(g.name)}</span><select data-kglv="${pid}|${g.k}" aria-label="مستوى ${esc(g.name)}">${Array.from({ length: g.max }, (_, i) => `<option value="${i + 1}" ${(cur[g.k] || 1) === i + 1 ? 'selected' : ''}>المستوى ${ar(i + 1)} من ${ar(g.max)}</option>`).join('')}</select></label>`).join('')}</details>`;
+  }
   function parent() {
     const kids = HS.profiles().length ? HS.profiles() : [{ id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' }];
     const units = Object.keys(window.UNITS || {});
     const s = HS.settings(), voices = HS.arVoices(), cur = s.arVoice;
-    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ صفحة الأب') + `<h2 class="p-title">👨‍👩‍👧 صفحة الأب</h2><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
+    P.innerHTML = `<h1 class="p-title">👨‍👩‍👧 صفحة الأب</h1><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
     ${kids.map(k => {
       const d = HS.profileData(k.id);
-      const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && r.answered);
+      const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && (r.answered || r.labs.length));
       const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
       const dr = APPS.dict ? APPS.dict.report(k.id) : null;
       return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span><div><h3 class="nm">${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
@@ -5994,10 +6805,17 @@ window.CATALOG = [
         ${!ur.length && !kg.length && !(dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar)) ? '<p class="pp-empty">لا يوجد نشاط بعد.</p>' : ''}
         ${ur.map(r => `<div class="pp-unit"><h4>${r.em} ${r.title}</h4><div class="m-row"><span>إتقان الوحدة</span><b>${ar(Math.round(r.total * 100))}٪</b></div>${meter(r.total)}
           <div class="pp-ls">${r.lessons.map(L => `<div class="m-row"><span>${L.em} ${L.title}</span><b>${ar(Math.round(L.m * 100))}٪</b></div>${meter(L.m)}`).join('')}</div>
+          ${r.learn ? `<div class="pp-learn"><div class="m-row"><span>صح من أول محاولة</span><b>${ar(Math.round(r.learn.first * 100))}٪</b></div>${meter(r.learn.first)}
+            <p class="pp-note">صُحّحت بعد تلميح: ${ar(r.learn.fixed)} مرة · عُرضت الإجابة بعد ٣ محاولات: ${ar(r.learn.revealed)} مرة · تلميحات: ${ar(r.learn.hints)}</p>
+            ${r.lessons.some(L => L.n) ? `<table class="pp-t"><thead><tr><th>الفكرة (الدرس)</th><th>صح من أول مرة</th><th>الإتقان</th></tr></thead><tbody>${r.lessons.filter(L => L.n).map(L => `<tr><td>${L.em} ${L.title}</td><td>${ar(Math.round(L.first * 100))}٪ <small>(${ar(L.n)})</small></td><td>${ar(Math.round(L.m * 100))}٪</td></tr>`).join('')}</tbody></table>` : ''}
+            ${r.mis.length ? `<details><summary>🧩 أفكار خاطئة تكرّر اختيارها (${ar(r.mis.length)})</summary><ul>${r.mis.map(x => `<li>${x.q}<br><small>الاختيار: «${x.chose}»${x.n > 1 ? ` (${ar(x.n)} مرات)` : ''} · الصحيح: «${x.right}»</small></li>`).join('')}</ul></details>` : ''}
+            ${r.next ? `<p class="pp-next">➡️ ${r.next}</p>` : ''}</div>` : ''}
+          ${(r.labs || []).map(x => `<p class="pp-note">${x.title}: التجارب المنتهية ${ar(x.done.length)} من ${ar(x.total)} · توقّع صحيح ${ar(x.predOk)} من ${ar(x.pred)} · فسّر من أول محاولة ${ar(x.whyFirst)} من ${ar(x.why)}</p>`).join('')}
           <p class="pp-note">أجاب عن ${ar(r.answered)} من ${ar(r.count)} سؤالًا${r.best.final ? ` · أفضل نتيجة في الاختبار الشامل ${ar(r.best.final.s)}/${ar(r.best.final.t)}` : ''}${r.best.speed ? ` · تحدّي السرعة ${ar(r.best.speed.s)}` : ''}</p>
           ${r.missed.length ? `<details><summary>⚠️ أكثر ما يخطئ فيه (${ar(r.missed.length)})</summary><ul>${r.missed.map(m => `<li>${m.q} <small>(أخطأ ${ar(m.w)} · أصاب ${ar(m.c)})</small></li>`).join('')}</ul></details>` : ''}</div>`).join('')}
         ${dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}${dr.spell && (dr.spell.en || dr.spell.ar) ? `<div class="m-row"><span>✍️ تحدّي الإملاء: أتقن ${ar(dr.spell.en)} كلمة إنجليزية${dr.spell.ar ? ` و${ar(dr.spell.ar)} عربية` : ''} · أطول سلسلة ${ar(dr.spell.best)}</span></div>` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}
         ${kg.length ? `<div class="pp-unit"><h4>🔤 عربي و English (الروضة)</h4><table class="pp-t"><thead><tr><th>اللعبة</th><th>المستوى</th><th>صح من أول مرة</th></tr></thead><tbody>${kg.map(g => `<tr><td>${g.name}</td><td>${g.max > 3 ? ar(g.lv || 1) + ' / ' + ar(g.max) : '⭐'.repeat(g.lv || 1)}</td><td>${ar(Math.round(g.c / (g.c + g.w) * 100))}٪ <small>(${ar(g.c + g.w)})</small></td></tr>`).join('')}</tbody></table></div>` : ''}
+        ${APPS.kg ? kgLevels(k.id) : ''}
         ${k.id !== 'guest' ? `<div class="pp-actions"><button type="button" class="p-btn sec" data-ren="${k.id}">✏️ تعديل الاسم</button>
           <button type="button" class="p-btn sec" data-reset="${k.id}">${confirmKey === 'r' + k.id ? '⚠️ اضغط مرة ثانية لمسح التقدّم' : '🔄 مسح التقدّم'}</button>
           <button type="button" class="p-btn sec danger" data-del="${k.id}">${confirmKey === 'd' + k.id ? '⚠️ اضغط مرة ثانية للحذف' : '🗑️ حذف الطفل'}</button></div>` : ''}
@@ -6047,6 +6865,9 @@ ${syncBox()}
         <li><b>أندرويد:</b> الإعدادات ← تحويل النص إلى كلام ← محرك Google ← تثبيت بيانات الصوت ← العربية.</li>
         <li>الأفضل: توليد مقاطع صوتية بالذكاء الاصطناعي مرة واحدة (انظر README، قسم الصوت).</li></ul></details>
     </section>`;
+    P.querySelectorAll('[data-kglv]').forEach(sel => sel.onchange = () => {
+      const [pid, k] = sel.dataset.kglv.split('|'); APPS.kg.setLevel(pid, k, +sel.value); HS.toast('✓ تم حفظ المستوى');
+    });
     P.querySelectorAll('[data-ren]').forEach(b => b.onclick = () => {
       const k = HS.profiles().find(x => x.id === b.dataset.ren); const sec = b.closest('.pp-kid').querySelector('h3');
       sec.innerHTML = `<form class="p-inline"><input value="${esc(k.name)}" maxlength="20" aria-label="الاسم الجديد"><button type="submit" class="p-btn">حفظ</button></form>`;
@@ -6080,7 +6901,11 @@ ${syncBox()}
   /* ---------- router ---------- */
   // addresses from the first single-unit pages (old links saved on the kids' devices) → new pages
   const LEGACY = { l1: 'l1', l2: 'l2', l3: 'l3', cards: 'cards', games: 'play', quiz: 'test' };
+  // the address #app-kg is also the id of the app's box, so the browser jumps down to it: keep pages at the top
+  const unjump = () => { if (document.getElementById((location.hash || '').slice(1))) requestAnimationFrame(() => window.scrollTo(0, 0)); };
+  window.addEventListener('load', unjump);
   function route() {
+    unjump();
     let h = (location.hash || '#home').slice(1);
     const jm = h.match(/^join-([A-Za-z0-9]{12})$/);
     if (jm && HS.sync) {   // a join link from another device: join this family, then go home (the code leaves the address bar)
@@ -6089,28 +6914,35 @@ ${syncBox()}
     }
     if (LEGACY[h]) { h = 'unit-g4scieco-' + LEGACY[h]; try { history.replaceState(null, '', '#' + h); } catch (e) {} }
     let m;
-    if ((m = h.match(/^app-([a-z0-9]+)(?:-(.+))?$/i)) && APPS[m[1]]) return openApp(m[1], m[2], locate('app', m[1]));
-    if ((m = h.match(/^unit-([a-z0-9]+)(?:-(.+))?$/i)) && APPS.unit && window.UNITS && UNITS[m[1]]) return openApp('unit', m[1] + (m[2] ? '-' + m[2] : ''), locate('unit', m[1]));
+    closeMenu();
+    if ((m = h.match(/^app-([a-z0-9]+)(?:-(.+))?$/i)) && APPS[m[1]]) { openApp(m[1], m[2] || ''); return bar(h); }
+    if ((m = h.match(/^unit-([a-z0-9]+)(?:-(.+))?$/i)) && APPS.unit && window.UNITS && UNITS[m[1]]) { openApp('unit', m[1] + (m[2] ? '-' + m[2] : '')); return bar(h); }
     closeApp(); confirmKey = '';
-    if (h === 'parent') { showScreen('portal', 'صفحة الأب'); return gate(parent); }
+    const draw = r => { if (r !== h) { try { history.replaceState(null, '', '#' + r); } catch (e) {} } bar(r); };
+    if (h === 'parent') { showScreen('portal'); draw('parent'); return gate(parent); }
     if (h !== 'shop') buying = '';
-    if (h === 'shop') { showScreen('portal', 'المتجر'); return shopOn() ? shop() : home(); }
+    if (h === 'shop') { showScreen('portal'); if (shopOn()) { draw('shop'); return shop(); } draw('home'); return home(); }
     showScreen('portal');
     if ((m = h.match(/^y-(\w+)$/))) {
-      const y = CATALOG.find(x => x.id === m[1]); if (!y) return home();
-      P.innerHTML = top() + crumb('home', 'الرئيسية ‹ ' + y.name) +
-        `<div class="p-head">${tile(y)}<div><h2 class="p-title">${y.name}</h2><p class="p-sub">اختر المادة</p></div></div><div class="p-grid">${
+      const y = CATALOG.find(x => x.id === m[1]); if (!y) { draw('home'); return home(); }
+      draw(h);
+      P.innerHTML =         `<div class="p-head">${tile(y)}<div><h1 class="p-title">${y.name}</h1><p class="p-sub">اختر المادة</p></div></div><div class="p-grid">${
           y.subjects.map(s => card(s, navOf(s) || `s-${y.id}-${s.id}`)).join('')}</div>`;
     } else if ((m = h.match(/^s-(\w+)-(\w+)$/))) {
       const y = CATALOG.find(x => x.id === m[1]); const s = y && y.subjects.find(x => x.id === m[2]);
-      if (!s || !s.units) return home();
-      P.innerHTML = top() + crumb('y-' + y.id, `الرئيسية ‹ ${y.name} ‹ ${s.name}`) +
-        `<div class="p-head">${tile(s)}<div><h2 class="p-title">${s.name}</h2><p class="p-sub">اختر الوحدة</p></div></div><div class="p-grid">${
+      if (!s || !s.units) { draw('home'); return home(); }
+      draw(h);
+      P.innerHTML =         `<div class="p-head">${tile(s)}<div><h1 class="p-title">${s.name}</h1><p class="p-sub">اختر الوحدة</p></div></div><div class="p-grid">${
           s.units.map(u => card(u, navOf(u))).join('')}</div>`;
-    } else home();
+    } else { draw('home'); home(); }
   }
 
   document.addEventListener('click', e => {
+    const mb = e.target.closest('#gbMenuBtn');
+    if (mb) { menuOpen = !menuOpen; const m = document.getElementById('gbMenu'); m.hidden = !menuOpen; mb.setAttribute('aria-expanded', menuOpen); if (menuOpen) { const f = m.querySelector('button'); if (f) f.focus(); } return; }
+    if (menuOpen && !e.target.closest('#gbMenu')) closeMenu();
+    const el = e.target.closest('.gb-ell');
+    if (el) { const nav = el.closest('.gb-crumbs'); nav.classList.add('open'); el.setAttribute('aria-expanded', 'true'); const a = nav.querySelector('li.mid a'); if (a) a.focus(); return; }
     const mu = e.target.closest('[data-mute]');
     if (mu) { HS.setMute(!HS.muted()); if (!HS.muted()) HS.fx('tap'); return; }
     const lg = e.target.closest('[data-lang-ui]');
@@ -6119,6 +6951,7 @@ ${syncBox()}
     if (b) { e.preventDefault(); if (('#' + b.dataset.nav) === location.hash) route(); else location.hash = b.dataset.nav; }
   });
   window.addEventListener('hashchange', route);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu(true); });
   HS.on('mute', m => document.querySelectorAll('[data-mute]').forEach(b => { b.setAttribute('aria-pressed', m); b.setAttribute('aria-label', HS.tr(m ? 'تشغيل الصوت' : 'كتم الصوت')); b.innerHTML = m ? I.off : I.on; }));
   HS.trWatch();
   route();

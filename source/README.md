@@ -3,7 +3,8 @@
 A learning site for kids (Arabic / English). It builds into **one file**, `dist/index.html`, which you can open in any browser, host anywhere, or send to someone.
 
 - **Grade 4 units:** Each unit has lessons, flashcards, quizzes with 6 question types, a daily spaced review, and games (drag-to-sort, ordering, memory, speed round).
-- **Kindergarten:** Spoken learn cards and 10 voice-led games that adapt to the child's level.
+- **Kindergarten:** Spoken learn cards and 15 voice-led games that adapt to the child's level (no level numbers for the child; a parent can set a game's difficulty on the parent page).
+- **Thinking labs:** «نفكّر ونجرّب» simulations where the child predicts, runs, compares and explains (Erosion Lab, grade 3; Food-Web Shock, grade 4).
 - **Per child:** Each child has their own profile with stars, progress and mistakes. A **parent page** shows mastery, weak spots and voice settings.
 
 ```
@@ -168,3 +169,45 @@ The design follows well-established learning research:
   downloads `madrasat-voices.zip`. Free tier = 500,000 characters/month; the whole site is ~16,000.
 - `python3 tools/import_voices.py madrasat-voices.zip` then `python3 tools/publish.py`.
 - Clips are now separate files in `assets/audio/` (the page went from 4.5 MB to ~0.6 MB).
+
+
+## Navigation (one system for every page)
+Every page has an address, so reload and browser Back/Forward keep your place:
+
+| Address | Page |
+|---|---|
+| `#home`, `#parent`, `#shop` | home, parent page, star shop |
+| `#y-<grade>` · `#s-<grade>-<subject>` | a year · a subject (from `catalog.js`) |
+| `#unit-<unit>` · `-<lesson id>` · `-cards` · `-play` · `-test` | unit sections |
+| `#unit-<unit>-play-s-<id>` · `-o-<id>` · `-memory` · `-speed` · `-lab-<id>` · `-test-final` · `-test-<lesson>` | one activity (game layout) |
+| `#app-kg` · `-learn-<id>` · `-game-<id>` | kindergarten |
+| `#app-dict` · `-topics` · `-t-<topic>` · `-w-<word id>` · `-spell` … | dictionary |
+
+`src/portal/nav.js` (HS.nav) turns an address into its chain of pages (from `catalog.js` + each app's `nav(sub)`),
+which the header uses for the **Back** button (always the logical parent, never browser history), the breadcrumb,
+and the tab title. Activities are marked `focus: true`: the header becomes compact and the breadcrumb is hidden.
+Counts on menu cards (lessons, terms, games, questions) are computed from the data by `HS.nav.desc`.
+
+## Thinking labs
+`src/apps/unit/labs.js` registers labs per unit (`LABS[unitId][labId]`). Each challenge stores
+id, learningObjective, cognitiveSkill, prompt, correctAnswer, distractors, misconceptions (one per distractor),
+hint1, hint2, explanation, transferPrompt, difficulty, curriculumReference and `review: true` when a teacher should
+check it. Results per child are on the parent page.
+
+## Tests
+```bash
+pip install playwright && playwright install chromium   # once
+python3 build.py && python3 tests/run_all.py             # all browser tests (about 9 minutes)
+python3 tests/run_all.py test_navigation.py              # one test
+```
+`CHROME=/path/to/chrome` uses an installed Chrome; screenshots go to `/tmp/madrasat-shots`.
+
+## Publish (GitHub Pages)
+```bash
+python3 tools/publish.py   # art + build + voice-maker page, copies index.html and assets/ to the repo root
+```
+Then commit and push to `main`; GitHub Pages serves the repo root. The voice maker page records natural voices;
+by default it records only the sentences that have no clip yet. Add the downloaded zip with
+`python3 tools/import_voices.py madrasat-voices.zip`, then publish again.
+
+See `docs/IMPROVEMENTS.md` for the November 2026 review: information architecture, decisions, educator-review list and backlog.

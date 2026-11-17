@@ -38,7 +38,11 @@ UNITS._template = {
   /* every question needs a unique, permanent id (progress is saved by id: never reuse or renumber).
      l = lesson id. ex = short explanation shown after answering (always write one: it is what teaches).
      Good options: one clearly correct answer; wrong options are real mistakes a child might make;
-     similar length; no "all/none of the above"; avoid NOT-questions. */
+     similar length; no "all/none of the above"; avoid NOT-questions.
+     Optional, for better hints (a wrong first answer never shows the right one):
+       hint1: 'first hint', hint2: 'second hint',
+       mis: { 2: 'what choosing option 2 usually means, and a question that makes the child rethink it' }
+     Without them the quiz builds hints from this unit's glossary and never puts the answer's words in a hint. */
   questions: [
     { id: 't1', l: 'l1', t: 'mcq', q: 'السؤال؟', o: ['الصحيح', 'خطأ شائع ١', 'خطأ شائع ٢', 'خطأ شائع ٣'], a: 0, ex: 'لماذا هذا صحيح.' },
     { id: 't2', l: 'l1', t: 'tf', q: 'عبارة صحيحة أو خاطئة.', a: true, ex: '...' },

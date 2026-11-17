@@ -1,0 +1,37 @@
+from playwright.sync_api import sync_playwright
+from _util import U, CHROME, OUT, FIX
+def nav(pg,h): pg.goto('about:blank');pg.goto(U+h);pg.wait_for_timeout(350)
+with sync_playwright() as p:
+    b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':400,'height':860})
+    errs=[];pg.on('pageerror',lambda e:errs.append(str(e)))
+    pg.goto(U);pg.wait_for_timeout(300)
+    pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    pg.click('#pNew');pg.fill('#pName','سارة');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    pg.click('[data-kid]:has-text("سارة")');pg.evaluate("HS.addStars(70)");pg.wait_for_timeout(150)
+    # old-default migration check
+    print('defaults',pg.evaluate("HS.rewards().length"))
+    nav(pg,'#shop');pg.screenshot(path=OUT+'/a1.png',full_page=True)
+    pg.click('[data-goal="r2"]');pg.wait_for_timeout(200)
+    print('goal',pg.evaluate("HS.goal()&&HS.goal().name"))
+    # buy iPad 3 times? stars 70: buy r1 (50)
+    pg.click('[data-buy="r1"]');pg.click('[data-buy="r1"]');pg.wait_for_timeout(300)
+    pg.evaluate("HS.addStars(200)");pg.wait_for_timeout(100);nav(pg,'#shop')
+    for i in range(2): pg.click('[data-buy="r1"]');pg.click('[data-buy="r1"]');pg.wait_for_timeout(200)
+    print('ipad week',pg.evaluate("HS.boughtWeek('r1')"),'can',pg.evaluate("HS.cantBuy(HS.rewardsFor().find(r=>r.id==='r1'))"), 'buy btn',pg.locator('[data-buy="r1"]').count())
+    pg.click('#shIdeaB');pg.fill('#shIdea','رحلة إلى البحر');pg.click('#shIdeaF button');pg.wait_for_timeout(200)
+    pg.screenshot(path=OUT+'/a2.png',full_page=True)
+    nav(pg,'#home');pg.screenshot(path=OUT+'/a3.png')
+    nav(pg,'#parent');print('w',pg.evaluate("document.documentElement.scrollWidth"))
+    # make r9 only for mohammed
+    rows=pg.locator('.pp-rw-row'); i=[pg.evaluate(f"HS.rewards()[{k}].id") for k in range(rows.count())].index('r9')
+    rows.nth(i).locator('.fr').select_option(label='محمد');pg.click('#ppRSave');pg.wait_for_timeout(200)
+    print('sara sees r9',pg.evaluate("HS.rewardsFor().some(r=>r.id==='r9')"))
+    # gift to sara
+    sid=pg.evaluate("HS.current().id")
+    f=pg.locator(f'[data-gift="{sid}"]'); pg.locator(f'[data-gift="{sid}"]').locator('xpath=..').locator('summary').click()
+    f.locator('select').select_option('20');f.locator('input').fill('فخور فيك');f.locator('button').click();pg.wait_for_timeout(200)
+    pg.click('[data-idea-add]');pg.wait_for_timeout(200);print('idea added',pg.evaluate("HS.rewards().some(r=>r.name==='رحلة إلى البحر')"),'ideas left',pg.evaluate("HS.ideas().length"))
+    pg.screenshot(path=OUT+'/a4.png',full_page=True)
+    nav(pg,'#home');pg.wait_for_timeout(300);print('gift popup',pg.locator('#shGift').count());pg.screenshot(path=OUT+'/a5.png')
+    pg.click('#shGiftOk');pg.wait_for_timeout(200);print('popup gone',pg.locator('#shGift').count(),'unseen',pg.evaluate("HS.unseenGifts().length"))
+    print(errs)

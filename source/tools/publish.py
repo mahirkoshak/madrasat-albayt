@@ -21,8 +21,12 @@ try:
     lines = json.loads(subprocess.run(['node', os.path.join(HERE, 'tools', 'speech_list.js')], capture_output=True, text=True, check=True).stdout)
     t = open(os.path.join(HERE, 'tools', 'voice_maker', 'template.html'), encoding='utf-8').read()
     ar_n = sum(1 for l in lines if l['lang'] == 'ar')
+    man = os.path.join(HERE, 'src', 'audio', 'manifest.json')
+    have = sorted(json.load(open(man, encoding='utf-8')).keys()) if os.path.isfile(man) else []
+    new_n = sum(1 for l in lines if l['lang'] + '|' + l['text'] not in set(have))
     for k, v in {'{{LINES}}': json.dumps(lines, ensure_ascii=False), '{{COUNT}}': str(len(lines)), '{{CHARS}}': f"{sum(len(l['text']) for l in lines):,}",
-                 '{{COUNT_AR}}': str(ar_n), '{{COUNT_EN}}': str(len(lines) - ar_n)}.items():
+                 '{{COUNT_AR}}': str(ar_n), '{{COUNT_EN}}': str(len(lines) - ar_n),
+                 '{{HAVE}}': json.dumps(have, ensure_ascii=False), '{{COUNT_NEW}}': str(new_n)}.items():
         t = t.replace(k, v)
     with open(os.path.join(HERE, 'dist', 'voice-maker.html'), 'w', encoding='utf-8') as f: f.write(t)
 except (OSError, subprocess.CalledProcessError) as e:

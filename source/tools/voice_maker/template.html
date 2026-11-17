@@ -17,6 +17,7 @@
   ol{margin:6px 0 0;padding-inline-start:22px}
   li{margin:4px 0}
   label{display:block;font-weight:700;margin:12px 0 4px}
+  label.chk{display:flex;gap:8px;align-items:center;font-weight:600}
   input,select{font:inherit;width:100%;min-height:46px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink)}
   input:focus,select:focus{outline:none;border-color:var(--blue)}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -76,6 +77,7 @@
   <section>
     <h2>٣. سجّل كل الجمل</h2>
     <label for="what">ماذا تسجّل؟</label>
+    <label class="chk"><input type="checkbox" id="onlyNew" checked> الجمل الجديدة فقط ({{COUNT_NEW}} جملة ليس لها صوت بعد)</label>
     <select id="what"><option value="ar">العربي فقط ({{COUNT_AR}} جملة)</option><option value="en">الإنجليزي فقط ({{COUNT_EN}} جملة): لألعاب الروضة بالإنجليزي</option><option value="both">الاثنين معًا</option></select>
     <div class="btns"><button type="button" id="go">🎙️ سجّل ونزّل الملف</button></div>
     <div class="bar" aria-hidden="true"><i id="bar"></i></div>
@@ -85,6 +87,7 @@
 </main>
 <script>
 const LINES = {{LINES}};
+const HAVE = new Set({{HAVE}});   // sentences that already have a recorded clip on the site
 const $ = id => document.getElementById(id);
 const msg = (t, cls) => { $('msg').textContent = t; $('msg').className = cls || ''; };
 const xml = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -143,9 +146,11 @@ function zip(files) {
 }
 $('go').onclick = async () => {
   $('go').disabled = true; const files = [], manifest = {}; let done = 0, failed = [];
+  if (!LINES.some(l => ($('what').value === 'both' || l.lang === $('what').value) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text)))) {
+    msg('كل الجمل في هذا الاختيار لها صوت مسجّل ✓'); $('go').disabled = false; return; }
   try {
     await getToken();
-    const w = $('what').value, todo = LINES.filter(l => w === 'both' || l.lang === w), queue = todo.slice(), worker = async () => {
+    const w = $('what').value, todo = LINES.filter(l => (w === 'both' || l.lang === w) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text))), queue = todo.slice(), worker = async () => {
       while (queue.length) {
         if (slow && worker.n > 1) { worker.n--; return; }   // throttled: one request at a time
         const l = queue.shift(), key = l.lang + '|' + l.text;

@@ -149,7 +149,7 @@
       : c === 'stars' ? `<span class="sh-need">باقي ⭐ ${ar(r.cost - bal)}</span>`
       : `<button type="button" class="p-btn ${buying === r.id ? 'warn' : ''}" data-buy="${r.id}">${buying === r.id ? 'متأكد؟ اضغط مرة ثانية ✅' : 'اشترِ'}</button>`; };
     P.innerHTML = `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
-        <div><h2 class="p-title">🛒 متجر النجوم</h2><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
+        <div><h1 class="p-title">🛒 متجر النجوم</h1><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
       ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
       ${goal ? `<div class="sh-goal"><span class="em">${HS.rewardArt(goal)}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
           <div class="hs-meter ${bal >= goal.cost ? '' : 'mid'}"><i style="width:${pct(bal, goal.cost)}%"></i></div>
@@ -309,7 +309,7 @@
   function gate(next) {
     const pin = HS.settings().pin; let ok = false; try { ok = sessionStorage.getItem('hs-pin') === '1'; } catch (e) {}
     if (!pin || ok) return next();
-    P.innerHTML = `<form class="p-form pin" id="pinF"><h2 class="p-title">🔒 صفحة الأب</h2><label for="pinI">الرقم السري</label>
+    P.innerHTML = `<form class="p-form pin" id="pinF"><h1 class="p-title">🔒 صفحة الأب</h1><label for="pinI">الرقم السري</label>
       <input id="pinI" inputmode="numeric" type="password" maxlength="8" autocomplete="off"><button type="submit" class="p-btn">دخول</button><p class="pp-note" id="pinE"></p></form>`;
     const i = document.getElementById('pinI'); i.focus();
     document.getElementById('pinF').onsubmit = e => { e.preventDefault();
@@ -332,7 +332,7 @@
     const kids = HS.profiles().length ? HS.profiles() : [{ id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' }];
     const units = Object.keys(window.UNITS || {});
     const s = HS.settings(), voices = HS.arVoices(), cur = s.arVoice;
-    P.innerHTML = `<h2 class="p-title">👨‍👩‍👧 صفحة الأب</h2><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
+    P.innerHTML = `<h1 class="p-title">👨‍👩‍👧 صفحة الأب</h1><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
     ${kids.map(k => {
       const d = HS.profileData(k.id);
       const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && (r.answered || r.labs.length));
@@ -444,7 +444,11 @@ ${syncBox()}
   /* ---------- router ---------- */
   // addresses from the first single-unit pages (old links saved on the kids' devices) → new pages
   const LEGACY = { l1: 'l1', l2: 'l2', l3: 'l3', cards: 'cards', games: 'play', quiz: 'test' };
+  // the address #app-kg is also the id of the app's box, so the browser jumps down to it: keep pages at the top
+  const unjump = () => { if (document.getElementById((location.hash || '').slice(1))) requestAnimationFrame(() => window.scrollTo(0, 0)); };
+  window.addEventListener('load', unjump);
   function route() {
+    unjump();
     let h = (location.hash || '#home').slice(1);
     const jm = h.match(/^join-([A-Za-z0-9]{12})$/);
     if (jm && HS.sync) {   // a join link from another device: join this family, then go home (the code leaves the address bar)
@@ -465,13 +469,13 @@ ${syncBox()}
     if ((m = h.match(/^y-(\w+)$/))) {
       const y = CATALOG.find(x => x.id === m[1]); if (!y) { draw('home'); return home(); }
       draw(h);
-      P.innerHTML =         `<div class="p-head">${tile(y)}<div><h2 class="p-title">${y.name}</h2><p class="p-sub">اختر المادة</p></div></div><div class="p-grid">${
+      P.innerHTML =         `<div class="p-head">${tile(y)}<div><h1 class="p-title">${y.name}</h1><p class="p-sub">اختر المادة</p></div></div><div class="p-grid">${
           y.subjects.map(s => card(s, navOf(s) || `s-${y.id}-${s.id}`)).join('')}</div>`;
     } else if ((m = h.match(/^s-(\w+)-(\w+)$/))) {
       const y = CATALOG.find(x => x.id === m[1]); const s = y && y.subjects.find(x => x.id === m[2]);
       if (!s || !s.units) { draw('home'); return home(); }
       draw(h);
-      P.innerHTML =         `<div class="p-head">${tile(s)}<div><h2 class="p-title">${s.name}</h2><p class="p-sub">اختر الوحدة</p></div></div><div class="p-grid">${
+      P.innerHTML =         `<div class="p-head">${tile(s)}<div><h1 class="p-title">${s.name}</h1><p class="p-sub">اختر الوحدة</p></div></div><div class="p-grid">${
           s.units.map(u => card(u, navOf(u))).join('')}</div>`;
     } else { draw('home'); home(); }
   }
