@@ -93,6 +93,8 @@
   /** <img> for artwork `id`, or the fallback when there is no picture.
       o.alt: '' = decorative (default), or a short Arabic description · o.small: the 192px copy · o.cls · o.size (px)
       o.face: the head-and-shoulders copy (avatars) · o.fb: fallback (emoji or text) · o.eager: load now (above the fold) */
+  /** the listen icon used on every 🔊 button (drawn, so it matches the header icons) */
+  HS.SPK = '<svg class="hs-spk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 9.2h3.8L12 5.3v13.4l-4.7-3.9H3.5z" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15.4 9.1a4.2 4.2 0 010 5.8M18.1 6.4a8 8 0 010 11.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
   HS.art = (id, o = {}) => {
     const a = HS.ART[id], fb = o.fb == null ? '' : String(o.fb);
     if (!a) return fb ? `<span class="hs-fb ${o.fbCls || ''}" aria-hidden="true">${fb}</span>` : '';

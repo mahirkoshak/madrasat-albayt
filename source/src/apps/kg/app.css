@@ -188,8 +188,7 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 .kg-path i{width:14px;height:14px;border-radius:99px;background:rgba(0,0,0,.12)}
 .kg-path i.f{background:var(--t-gold)}
 .kg-path i.now{box-shadow:0 0 0 3px rgba(255,200,0,.35);transform:scale(1.15)}
-.speak{display:inline-flex;align-items:center;gap:6px}
-.speak-l{font-size:16px;font-weight:800}
+
 .rb-run{margin-top:-2px}
 .rb-k.rep{font-size:24px;font-weight:900;color:var(--t-purple,#7048e8);background:#f3f0ff;border-color:#e5dbff}
 .rb-k.clr{background:#fff4e6;border-color:#ffd8a8}.rb-k.stp{background:#e7f5ff;border-color:#a5d8ff}
@@ -240,3 +239,11 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 .wt-target .wt-img,.wt-placed .wt-img{width:58px;height:58px;margin:auto}
 .mc-back.art{background:none;box-shadow:none}
 .mc-back-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 0 rgba(0,0,0,.18))}
+
+/* listen buttons: drawn icon, and the label stays inside the yellow */
+.speak{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;min-width:64px;height:56px;padding:0 20px;color:var(--t-gold-ink);font-size:20px;border:0;cursor:pointer}
+.speak .hs-spk{width:30px;height:30px}
+.speak-l{font-size:19px;font-weight:800;white-space:nowrap}
+.say-b{display:inline-flex;align-items:center;gap:8px;background:var(--sun);color:var(--t-gold-ink);box-shadow:0 5px 0 var(--t-gold-sh)}
+.say-b .hs-spk{width:28px;height:28px}
+:root.L-ar .speak-l .en,:root.L-en .speak-l .ar{display:none}

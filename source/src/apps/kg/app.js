@@ -72,7 +72,7 @@ function openCard(i) {
   if (k === 'ani') { const x = ANI[i]; mid = x[0]; w = x[1]; w2 = x[2]; sp = [[x[1], 'ar'], [x[2], 'en']]; }
   const n = SETS[k].length;
   $('bc').innerHTML = `${top ? `<div class="L" ${k === 'en' ? 'style="direction:ltr"' : ''}>${top}</div>` : ''}<div class="E">${mid}</div>${w ? `<div class="W">${w}</div>` : ''}${w2 ? `<div class="W2">${w2}</div>` : ''}
-   <div class="row"><button type="button" class="btn gr" id="cPrev" aria-label="السابق">→</button><button type="button" class="btn" id="cSay" aria-label="استمع">🔊</button><button type="button" class="btn gr" id="cNext" aria-label="التالي">←</button><button type="button" class="btn pk" id="cClose" aria-label="إغلاق">✖</button></div>`;
+   <div class="row"><button type="button" class="btn gr" id="cPrev" aria-label="السابق">→</button><button type="button" class="btn say-b" id="cSay" aria-label="استمع">${HS.SPK}<span class="speak-l"><span class="ar">اسمع</span><span class="en" lang="en">Listen</span></span></button><button type="button" class="btn gr" id="cNext" aria-label="التالي">←</button><button type="button" class="btn pk" id="cClose" aria-label="إغلاق">✖</button></div>`;
   $('ov').classList.add('on'); say(sp);
   $('cSay').onclick = () => say(sp);
   $('cNext').onclick = () => openCard((cardI + 1) % n);

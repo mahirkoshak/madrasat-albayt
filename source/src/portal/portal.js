@@ -401,7 +401,7 @@ ${syncBox()}
       ${HS.clipCount() ? `<p class="pp-note">✅ في الموقع ${HS.count(HS.clipCount(), ['مقطع', 'مقطعان', 'مقاطع', 'مقطعًا'])} صوتية مسجّلة بصوت ذكاء اصطناعي، تُستخدم قبل صوت الجهاز.</p>` : ''}
       <p class="pp-note">${voices.length ? `الأصوات العربية في هذا الجهاز (⭐ = صوت حديث وطبيعي):` : 'لا يوجد صوت عربي في هذا الجهاز/المتصفح، لذلك العربية بلا صوت إلا في المقاطع المسجّلة.'}</p>
       ${voices.length ? `<select id="ppVoice">${voices.map(v => `<option value="${esc(v.name)}" ${cur === v.name ? 'selected' : ''}>${esc(v.name)}${HS.isGoodVoice(v) ? ' ⭐' : ''}</option>`).join('')}</select>` : ''}
-      <div class="pp-actions"><button type="button" class="p-btn" id="ppTestAr">🔊 جرّب العربي</button><button type="button" class="p-btn sec" id="ppTestEn">🔊 Test English</button></div>
+      <div class="pp-actions"><button type="button" class="p-btn" id="ppTestAr">${HS.SPK} جرّب العربي</button><button type="button" class="p-btn sec" id="ppTestEn">${HS.SPK} Test English</button></div>
       <p class="pp-note"><a href="voice-maker.html" target="_blank" rel="noopener">🎙️ صانع الأصوات</a>: يسجّل كل جمل الموقع بصوت Microsoft الطبيعي (سعودي) مجانًا، بدل صوت الجهاز.</p><details><summary>كيف أحصل على صوت عربي أوضح؟</summary><ul>
         <li><b>ويندوز:</b> افتح الصفحة في متصفح <b>Microsoft Edge</b>؛ فيه أصوات عربية طبيعية مجانية (Hamed و Zariyah).</li>
         <li><b>آيفون / آيباد / ماك:</b> الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية ← حمّل «ماجد» أو «ليلى» (يفضّل النسخة المحسّنة Enhanced).</li>

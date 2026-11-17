@@ -104,6 +104,8 @@
 @keyframes hsshake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 .hs-pop{animation:hspop .35s}
 .hs-shake{animation:hsshake .4s}
+/* the listen icon (HS.SPK) */
+.hs-spk{width:1.25em;height:1.25em;display:inline-block;vertical-align:middle;flex:0 0 auto}
 
 html{color-scheme:light only}
 html,body{margin:0}
@@ -590,6 +592,9 @@ body{font-family:var(--t-font);background:var(--t-page)}
 @media(max-width:420px){#app-dict .sp-boxes i{width:34px;height:46px;font-size:24px}
 #app-dict .sp-clue .em{font-size:48px}
 #app-dict .sp-form input{font-size:24px}}
+#app-dict .d-say{display:inline-grid;place-items:center;color:var(--t-gold-ink);padding:0}
+#app-dict .d-say .hs-spk{width:24px;height:24px}
+#app-dict .d-say.sm .hs-spk{width:19px;height:19px}
 
 /* ===== app: kg (kg) ===== */
 #app-kg{--ink:var(--t-ink);--bg:var(--t-page);--pink:var(--t-pink);--sky:var(--t-blue);--sun:var(--t-gold);--mint:var(--t-green-btn);--grape:var(--t-purple);--orange:var(--t-orange);--shadow:var(--t-raise)}
@@ -775,8 +780,6 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-kg .kg-path i{width:14px;height:14px;border-radius:99px;background:rgba(0,0,0,.12)}
 #app-kg .kg-path i.f{background:var(--t-gold)}
 #app-kg .kg-path i.now{box-shadow:0 0 0 3px rgba(255,200,0,.35);transform:scale(1.15)}
-#app-kg .speak{display:inline-flex;align-items:center;gap:6px}
-#app-kg .speak-l{font-size:16px;font-weight:800}
 #app-kg .rb-run{margin-top:-2px}
 #app-kg .rb-k.rep{font-size:24px;font-weight:900;color:var(--t-purple,#7048e8);background:#f3f0ff;border-color:#e5dbff}
 #app-kg .rb-k.clr{background:#fff4e6;border-color:#ffd8a8}
@@ -830,6 +833,12 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-kg .wt-target .wt-img,#app-kg .wt-placed .wt-img{width:58px;height:58px;margin:auto}
 #app-kg .mc-back.art{background:none;box-shadow:none}
 #app-kg .mc-back-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 0 rgba(0,0,0,.18))}
+#app-kg .speak{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;min-width:64px;height:56px;padding:0 20px;color:var(--t-gold-ink);font-size:20px;border:0;cursor:pointer}
+#app-kg .speak .hs-spk{width:30px;height:30px}
+#app-kg .speak-l{font-size:19px;font-weight:800;white-space:nowrap}
+#app-kg .say-b{display:inline-flex;align-items:center;gap:8px;background:var(--sun);color:var(--t-gold-ink);box-shadow:0 5px 0 var(--t-gold-sh)}
+#app-kg .say-b .hs-spk{width:28px;height:28px}
+#app-kg.L-ar .speak-l .en,#app-kg.L-en .speak-l .ar{display:none}
 
 /* ===== app: unit (unit) ===== */
 #app-unit{
@@ -1235,7 +1244,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 
 <!-- GAME -->
 <section class="view" id="k-game">
-  <div class="prompt"><div class="lv" id="gLv" aria-live="polite"></div><div class="q" id="gQ"></div><div class="show" id="gShow"></div><button type="button" class="speak" id="gSpeak" aria-label="اسمع السؤال مرة أخرى"><span aria-hidden="true">🔊</span><span class="speak-l">اسمع</span></button></div>
+  <div class="prompt"><div class="lv" id="gLv" aria-live="polite"></div><div class="q" id="gQ"></div><div class="show" id="gShow"></div><button type="button" class="speak" id="gSpeak" aria-label="اسمع السؤال مرة أخرى"><svg class="hs-spk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 9.2h3.8L12 5.3v13.4l-4.7-3.9H3.5z" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15.4 9.1a4.2 4.2 0 010 5.8M18.1 6.4a8 8 0 010 11.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="speak-l"><span class="ar">اسمع</span><span class="en" lang="en">Listen</span></span></button></div>
   <div id="gArea"></div>
   <div class="dots" id="gDots"></div>
 </section>
@@ -1376,6 +1385,8 @@ window.HS_PHRASES = {
   /** <img> for artwork `id`, or the fallback when there is no picture.
       o.alt: '' = decorative (default), or a short Arabic description · o.small: the 192px copy · o.cls · o.size (px)
       o.face: the head-and-shoulders copy (avatars) · o.fb: fallback (emoji or text) · o.eager: load now (above the fold) */
+  /** the listen icon used on every 🔊 button (drawn, so it matches the header icons) */
+  HS.SPK = '<svg class="hs-spk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 9.2h3.8L12 5.3v13.4l-4.7-3.9H3.5z" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15.4 9.1a4.2 4.2 0 010 5.8M18.1 6.4a8 8 0 010 11.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
   HS.art = (id, o = {}) => {
     const a = HS.ART[id], fb = o.fb == null ? '' : String(o.fb);
     if (!a) return fb ? `<span class="hs-fb ${o.fbCls || ''}" aria-hidden="true">${fb}</span>` : '';
@@ -3937,7 +3948,7 @@ function chainFor(sub) {
 const backBtn = () => '';   // Back lives in the site header
 /** question text: Arabic, plus an English line in Arabic mode (these children read English more easily) */
 const askT = (a, e) => AR() ? `${a}<small dir="ltr">${e}</small>` : a;
-const sayBtn = (t, cls = '') => AR() && /[؀-ۿ]/.test(t) ? '' : `<button type="button" class="d-say ${cls}" data-say="${esc(t)}" aria-label="استمع للنطق">🔊</button>`;
+const sayBtn = (t, cls = '') => AR() && /[؀-ۿ]/.test(t) ? '' : `<button type="button" class="d-say ${cls}" data-say="${esc(t)}" aria-label="استمع للنطق">${HS.SPK}</button>`;
 
 /* word of the day: the same all day for this level; 🎲 swaps it for a random word */
 let wodPick = null;
@@ -4272,7 +4283,7 @@ function spellNext() {
         aria-label="${HS.L('اكتب الكلمة هنا', 'Type the word here')} (${HS.num(T.length)} ${HS.L('حروف', 'letters')})" placeholder="${HS.L('اكتب هنا', 'Type here')}">
       <button type="submit" class="d-btn sp-go">${HS.L('تحقّق', 'Check')} ✅</button></form>
     <div class="sp-tools"><button type="button" class="d-btn sec" data-sp="hint">💡 ${HS.L('أعطني حرفًا', 'Give me a letter')}</button>
-      ${AR() ? '' : `<button type="button" class="d-btn sec" data-sp="hear">🔊 ${HS.L('اسمعها (مساعدة)', 'Hear it (help)')}</button>`}</div>
+      ${AR() ? '' : `<button type="button" class="d-btn sec" data-sp="hear">${HS.SPK} ${HS.L('اسمعها (مساعدة)', 'Hear it (help)')}</button>`}</div>
     <p class="d-note sp-help-note">${HS.L('المساعدة متاحة، لكن الكلمة لا تدخل «أتقنتها» إلا إذا كتبتها بدونها.', 'Help is there if you need it, but a word only goes to “done” when you spell it without help.')}</p>
     ${AR() ? '<p class="d-note">على الآيباد: اضغط 🌐 في لوحة المفاتيح لتغيّرها إلى العربية</p>' : ''}
     <div id="spFb" class="d-fb" aria-live="polite"></div></div>`;
@@ -4701,7 +4712,7 @@ function openCard(i) {
   if (k === 'ani') { const x = ANI[i]; mid = x[0]; w = x[1]; w2 = x[2]; sp = [[x[1], 'ar'], [x[2], 'en']]; }
   const n = SETS[k].length;
   $('bc').innerHTML = `${top ? `<div class="L" ${k === 'en' ? 'style="direction:ltr"' : ''}>${top}</div>` : ''}<div class="E">${mid}</div>${w ? `<div class="W">${w}</div>` : ''}${w2 ? `<div class="W2">${w2}</div>` : ''}
-   <div class="row"><button type="button" class="btn gr" id="cPrev" aria-label="السابق">→</button><button type="button" class="btn" id="cSay" aria-label="استمع">🔊</button><button type="button" class="btn gr" id="cNext" aria-label="التالي">←</button><button type="button" class="btn pk" id="cClose" aria-label="إغلاق">✖</button></div>`;
+   <div class="row"><button type="button" class="btn gr" id="cPrev" aria-label="السابق">→</button><button type="button" class="btn say-b" id="cSay" aria-label="استمع">${HS.SPK}<span class="speak-l"><span class="ar">اسمع</span><span class="en" lang="en">Listen</span></span></button><button type="button" class="btn gr" id="cNext" aria-label="التالي">←</button><button type="button" class="btn pk" id="cClose" aria-label="إغلاق">✖</button></div>`;
   $('ov').classList.add('on'); say(sp);
   $('cSay').onclick = () => say(sp);
   $('cNext').onclick = () => openCard((cardI + 1) % n);
@@ -7615,7 +7626,7 @@ ${syncBox()}
       ${HS.clipCount() ? `<p class="pp-note">✅ في الموقع ${HS.count(HS.clipCount(), ['مقطع', 'مقطعان', 'مقاطع', 'مقطعًا'])} صوتية مسجّلة بصوت ذكاء اصطناعي، تُستخدم قبل صوت الجهاز.</p>` : ''}
       <p class="pp-note">${voices.length ? `الأصوات العربية في هذا الجهاز (⭐ = صوت حديث وطبيعي):` : 'لا يوجد صوت عربي في هذا الجهاز/المتصفح، لذلك العربية بلا صوت إلا في المقاطع المسجّلة.'}</p>
       ${voices.length ? `<select id="ppVoice">${voices.map(v => `<option value="${esc(v.name)}" ${cur === v.name ? 'selected' : ''}>${esc(v.name)}${HS.isGoodVoice(v) ? ' ⭐' : ''}</option>`).join('')}</select>` : ''}
-      <div class="pp-actions"><button type="button" class="p-btn" id="ppTestAr">🔊 جرّب العربي</button><button type="button" class="p-btn sec" id="ppTestEn">🔊 Test English</button></div>
+      <div class="pp-actions"><button type="button" class="p-btn" id="ppTestAr">${HS.SPK} جرّب العربي</button><button type="button" class="p-btn sec" id="ppTestEn">${HS.SPK} Test English</button></div>
       <p class="pp-note"><a href="voice-maker.html" target="_blank" rel="noopener">🎙️ صانع الأصوات</a>: يسجّل كل جمل الموقع بصوت Microsoft الطبيعي (سعودي) مجانًا، بدل صوت الجهاز.</p><details><summary>كيف أحصل على صوت عربي أوضح؟</summary><ul>
         <li><b>ويندوز:</b> افتح الصفحة في متصفح <b>Microsoft Edge</b>؛ فيه أصوات عربية طبيعية مجانية (Hamed و Zariyah).</li>
         <li><b>آيفون / آيباد / ماك:</b> الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية ← حمّل «ماجد» أو «ليلى» (يفضّل النسخة المحسّنة Enhanced).</li>

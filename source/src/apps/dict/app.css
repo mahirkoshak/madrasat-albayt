@@ -128,3 +128,5 @@ button:disabled{color:var(--t-ink);-webkit-text-fill-color:currentColor}
 .sp-row{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:8px 12px;box-shadow:var(--t-raise)}
 .sp-row .em{font-size:30px}.sp-row b{font-size:21px}.sp-src{flex:1;color:var(--t-muted);text-align:end}
 @media(max-width:420px){.sp-boxes i{width:34px;height:46px;font-size:24px}.sp-clue .em{font-size:48px}.sp-form input{font-size:24px}}
+
+.d-say{display:inline-grid;place-items:center;color:var(--t-gold-ink);padding:0}.d-say .hs-spk{width:24px;height:24px}.d-say.sm .hs-spk{width:19px;height:19px}

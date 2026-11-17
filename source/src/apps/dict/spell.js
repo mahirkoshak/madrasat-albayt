@@ -55,7 +55,7 @@ function spellNext() {
         aria-label="${HS.L('اكتب الكلمة هنا', 'Type the word here')} (${HS.num(T.length)} ${HS.L('حروف', 'letters')})" placeholder="${HS.L('اكتب هنا', 'Type here')}">
       <button type="submit" class="d-btn sp-go">${HS.L('تحقّق', 'Check')} ✅</button></form>
     <div class="sp-tools"><button type="button" class="d-btn sec" data-sp="hint">💡 ${HS.L('أعطني حرفًا', 'Give me a letter')}</button>
-      ${AR() ? '' : `<button type="button" class="d-btn sec" data-sp="hear">🔊 ${HS.L('اسمعها (مساعدة)', 'Hear it (help)')}</button>`}</div>
+      ${AR() ? '' : `<button type="button" class="d-btn sec" data-sp="hear">${HS.SPK} ${HS.L('اسمعها (مساعدة)', 'Hear it (help)')}</button>`}</div>
     <p class="d-note sp-help-note">${HS.L('المساعدة متاحة، لكن الكلمة لا تدخل «أتقنتها» إلا إذا كتبتها بدونها.', 'Help is there if you need it, but a word only goes to “done” when you spell it without help.')}</p>
     ${AR() ? '<p class="d-note">على الآيباد: اضغط 🌐 في لوحة المفاتيح لتغيّرها إلى العربية</p>' : ''}
     <div id="spFb" class="d-fb" aria-live="polite"></div></div>`;

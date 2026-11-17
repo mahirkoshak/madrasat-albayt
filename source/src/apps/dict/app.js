@@ -102,7 +102,7 @@ function chainFor(sub) {
 const backBtn = () => '';   // Back lives in the site header
 /** question text: Arabic, plus an English line in Arabic mode (these children read English more easily) */
 const askT = (a, e) => AR() ? `${a}<small dir="ltr">${e}</small>` : a;
-const sayBtn = (t, cls = '') => AR() && /[؀-ۿ]/.test(t) ? '' : `<button type="button" class="d-say ${cls}" data-say="${esc(t)}" aria-label="استمع للنطق">🔊</button>`;
+const sayBtn = (t, cls = '') => AR() && /[؀-ۿ]/.test(t) ? '' : `<button type="button" class="d-say ${cls}" data-say="${esc(t)}" aria-label="استمع للنطق">${HS.SPK}</button>`;
 
 /* word of the day: the same all day for this level; 🎲 swaps it for a random word */
 let wodPick = null;
