@@ -23,9 +23,10 @@ header p{margin:4px 0 0;opacity:.92}
 .hills{position:absolute;bottom:-2px;left:0;right:0;width:100%;height:60px}
 
 /* tabs */
-nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;margin-top:-46px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 16px 8px;max-width:980px;margin:0 auto;scrollbar-width:thin}
-.tab{flex:0 0 auto;border:none;background:#fff;color:var(--ink);padding:8px 16px;margin:2px 2px 7px;border-radius:var(--t-r-btn);font-size:17px;font-weight:800;box-shadow:var(--shadow)}
+.u-nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;margin-top:-46px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:4px 16px 8px;max-width:980px;margin:0 auto}
+.tabs li{display:flex}
+.tab{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;border:none;background:#fff;color:var(--ink);padding:6px 16px;margin:2px 2px 6px;border-radius:var(--t-r-btn);font-size:17px;font-weight:800;box-shadow:var(--shadow)}
 .tab.on{background:var(--t-blue);color:#fff;box-shadow:0 5px 0 var(--t-blue-sh)}
 .tab .ck{color:var(--t-green-edge);margin-inline-start:4px}
 .tab.on .ck{color:#8ee6ae}
@@ -149,8 +150,6 @@ footer{color:var(--muted);font-size:14px;text-align:center;padding:20px 16px 40p
 @media (max-width:560px){header h1{font-size:27px}.card{padding:16px}.q{font-size:19px}}
 
 /* ===================== unit engine additions ===================== */
-.u-me{display:flex;align-items:center;gap:8px}
-.u-av{overflow:hidden;width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:26px}
 .small{font-size:15px}
 .row.center{justify-content:center}
 .btn.small{padding:6px 14px;font-size:16px}
@@ -265,3 +264,9 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 .card.due{overflow:hidden}
 .due-art{float:left;width:112px;margin:-6px 0 4px 8px}
 @media(max-width:480px){.due-art{width:84px}}
+
+/* sections wrap onto a second row on narrow screens: nothing is hidden off-screen */
+@media (max-width:560px){.tabs{gap:6px;padding:4px 10px 6px}.tab{font-size:15px;padding:4px 12px}}
+/* focus mode: during a game or quiz only the task shows (the site header keeps Back and the activity title) */
+:root.focus .u-head,:root.focus .u-nav,:root.focus > footer{display:none}
+:root.focus .u-main-pad{padding-top:12px}

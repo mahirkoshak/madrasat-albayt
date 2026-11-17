@@ -24,41 +24,71 @@ const star = (n = 1) => HS.addStars(n);
 
 /* ---------------- shell ---------------- */
 function header() {
-  const p = HS.current() || { avatar: '🙂' };
   $('uTitle').textContent = `${S.u.em} ${S.u.title}`;
   $('uSub').textContent = S.u.subtitle || '';
-  $('uAv').innerHTML = HS.avatar(p);
-  $('uStars').textContent = `⭐ ${ar(HS.stars())}`;
 }
-HS.on('stars', () => { if (S.u) $('uStars').textContent = `⭐ ${ar(HS.stars())}`; });
 
+/* unit sections: these change the address (they are pages), so they are links with aria-current, not ARIA tabs */
+const SECTIONS = () => [['home', '🗺️ الرحلة'], ...S.u.lessons.map((l, i) => [l.id, `${l.em} الدرس ${ar(i + 1)}`, mastery(l.id) >= .8]),
+  ['cards', '🃏 البطاقات'], ['play', '🎮 الألعاب'], ['test', '🏆 الاختبارات']];
 function tabs() {
-  const t = [['home', '🗺️ الرحلة'], ...S.u.lessons.map((l, i) => [l.id, `${l.em} الدرس ${ar(i + 1)}`, mastery(l.id) >= .8]),
-    ['cards', '🃏 البطاقات'], ['play', '🎮 الألعاب'], ['test', '🏆 الاختبارات']];
-  $('uTabs').innerHTML = t.map(([id, label, ok]) => `<button type="button" role="tab" class="tab ${id === S.page ? 'on' : ''}" aria-selected="${id === S.page}" data-p="${id}">${label}${ok ? ' <span class="ck">✓</span>' : ''}</button>`).join('');
-  const on = $('uTabs').querySelector('.on'); if (on) on.scrollIntoView({ inline: 'center', block: 'nearest' });
+  $('uTabs').innerHTML = SECTIONS().map(([id, label, ok]) => `<li><a class="tab ${id === S.page ? 'on' : ''}" href="#unit-${S.id}-${id}" data-p="${id}"${id === S.page ? ' aria-current="page"' : ''}>${label}${ok ? ' <span class="ck" aria-label="متقن">✓</span>' : ''}</a></li>`).join('');
 }
 ROOT.addEventListener('click', e => {
-  const b = e.target.closest('[data-p]'); if (b) { go(b.dataset.p); return; }
-  const a = e.target.closest('[data-act]'); if (a) act(a.dataset.act, a.dataset);
+  const b = e.target.closest('[data-p]'); if (b) { e.preventDefault(); go(b.dataset.p); return; }
+  const a = e.target.closest('[data-act]'); if (a) go(actRoute(a.dataset.act, a.dataset));
 });
-function act(a, d) {
-  if (a === 'quiz') return startQuiz(d.mode, d.l);
-  if (a === 'sort') return gameSort(S.u.games.sort.find(g => g.id === d.g));
-  if (a === 'order') return gameOrder(S.u.games.order.find(g => g.id === d.g));
-  if (a === 'memory') return gameMemory(d.l);
-  if (a === 'speed') return speedRound();
-}
 
-function go(page) {
+/* every page and activity is a route: #unit-<id>-<page>[-<activity>]
+     pages: home · l1… · cards · play · test
+     activities: play-s-<sort id> · play-o-<order id> · play-memory[-<lesson>] · play-speed · play-lab-<lab id> · test-final · test-review · test-<lesson id> */
+function actRoute(a, d) {
+  if (a === 'quiz') return 'test-' + (d.mode === 'lesson' ? d.l : d.mode);
+  if (a === 'sort') return 'play-s-' + d.g;
+  if (a === 'order') return 'play-o-' + d.g;
+  if (a === 'memory') return 'play-memory' + (d.l ? '-' + d.l : '');
+  if (a === 'speed') return 'play-speed';
+  if (a === 'lab') return 'play-lab-' + d.g;
+  return 'home';
+}
+/** what an activity route points to, or null */
+function findAct(u, page, rest) {
+  if (!rest) return null;
+  if (page === 'test') {
+    if (rest === 'final') return { title: '🏆 الاختبار الشامل', run: () => startQuiz('final') };
+    if (rest === 'review') return { title: '📅 مراجعة اليوم', run: () => startQuiz('review') };
+    const i = u.lessons.findIndex(l => l.id === rest);
+    return i < 0 ? null : { title: `✏️ اختبار الدرس ${ar(i + 1)}`, run: () => startQuiz('lesson', rest) };
+  }
+  if (page !== 'play') return null;
+  let m;
+  if ((m = /^s-(.+)$/.exec(rest))) { const g = (u.games.sort || []).find(x => x.id === m[1]); return g && { title: g.title, run: () => gameSort(g) }; }
+  if ((m = /^o-(.+)$/.exec(rest))) { const g = (u.games.order || []).find(x => x.id === m[1]); return g && { title: g.title, run: () => gameOrder(g) }; }
+  if ((m = /^memory(?:-(.+))?$/.exec(rest))) return { title: '🧠 لعبة الذاكرة', run: () => gameMemory(m[1]) };
+  if (rest === 'speed') return { title: '⚡ تحدّي السرعة', run: () => speedRound() };
+  if ((m = /^lab-(.+)$/.exec(rest)) && LABS[u.id] && LABS[u.id][m[1]]) { const L = LABS[u.id][m[1]]; return { title: L.title, run: () => L.run(M(), L) }; }
+  return null;
+}
+const PAGES = u => ['home', 'cards', 'play', 'test', ...u.lessons.map(l => l.id)];
+function splitSub(u, rest) {
+  const m = /^([a-z0-9]+)(?:-(.+))?$/.exec(rest || 'home') || [];
+  const page = PAGES(u).includes(m[1]) ? m[1] : 'home';
+  return { page, act: page === m[1] ? m[2] || '' : '' };
+}
+/** go to a page or activity of this unit (adds a history entry; the router then calls render) */
+function go(page) { HS.nav.go(`unit-${S.id}-${page}`); }
+/** draw a page or start an activity (called by APPS.unit.open on every route change) */
+function render(page, actKey) {
   stopAll();
-  const valid = ['home', 'cards', 'play', 'test', ...S.u.lessons.map(l => l.id)];
-  S.page = valid.includes(page) ? page : 'home';
-  try { history.replaceState(null, '', `#unit-${S.id}-${S.page}`); } catch (e) {}
+  S.page = page;
+  const A = findAct(S.u, page, actKey);
+  ROOT.classList.toggle('focus', !!A);   // in a game or quiz only the task shows (the site header keeps Back and the title)
   tabs(); header();
-  const L = S.u.lessons.find(l => l.id === S.page);
-  if (L) renderLesson(L);
-  else ({ home: renderHome, cards: renderCards, play: renderPlay, test: renderTest })[S.page]();
+  if (A) A.run();
+  else {
+    const L = S.u.lessons.find(l => l.id === page);
+    if (L) renderLesson(L); else ({ home: renderHome, cards: renderCards, play: renderPlay, test: renderTest })[page]();
+  }
   window.scrollTo({ top: 0 });
 }
 
@@ -182,6 +212,8 @@ function renderTest() {
 
 /* ---------------- quiz session ---------------- */
 let Q = null;
+/** thinking labs per unit: LABS[unitId][labId] = { title, em, sub, kind: 'think', run(el, lab) } (see labs-*.js) */
+const LABS = {};
 function pickQuestions(mode, l) {
   const all = S.u.questions, byId = id => all.find(q => q.id === id);
   if (mode === 'lesson') return HS.srs.choose(S.ns, qIds(l), 8).map(byId);
@@ -387,8 +419,8 @@ function sortDone(g, s, t) {
     <div class="row center"><button type="button" class="btn" data-act="sort" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
   bindBack();
 }
-function gameHead(t) { return `<div class="g-head"><h2>${t}</h2><button type="button" class="btn sec small" id="uBack">↩ الألعاب</button></div>`; }
-function bindBack() { const b = $('uBack'); if (b) b.onclick = () => go('play'); }
+function gameHead(t) { return `<h2 class="sr">${t}</h2>`; }   // the title shows in the site header; kept here for screen-reader headings   // Back to the games list is in the site header
+function bindBack() {}   // the site header's Back returns to the games list
 
 /* ---------------- game: put in order (chains) ---------------- */
 function gameOrder(g) {
@@ -456,11 +488,26 @@ APPS.unit = {
   open(sub) {
     const m = /^([a-z0-9]+)(?:-(.+))?$/.exec(sub || '') || [];
     const u = window.UNITS && UNITS[m[1]];
-    if (!u) { ROOT.innerHTML = '<p style="padding:40px;text-align:center">لم يتم العثور على هذه الوحدة.</p>'; return; }
+    if (!u) { $('uMain').innerHTML = '<p style="padding:40px;text-align:center">لم يتم العثور على هذه الوحدة.</p>'; return; }
     if (S.id !== u.id) { FC = { list: [], i: 0, l: '' }; }
     S.u = u; S.id = u.id; S.ns = 'u:' + u.id; S.fcns = 'fc:' + u.id;
-    go(m[2] || 'home');
+    const { page, act } = splitSub(u, m[2]);
+    render(page, act);
   },
+  /** pages below the unit, for the site header and breadcrumbs (see src/portal/nav.js) */
+  nav(sub) {
+    const m = /^([a-z0-9]+)(?:-(.+))?$/.exec(sub || '') || [], u = window.UNITS && UNITS[m[1]];
+    if (!u) return [];
+    const { page, act } = splitSub(u, m[2]), base = 'unit-' + u.id, out = [];
+    if (page !== 'home') {
+      const i = u.lessons.findIndex(l => l.id === page);
+      out.push({ route: `${base}-${page}`, title: i >= 0 ? `الدرس ${ar(i + 1)}: ${u.lessons[i].title}` : { cards: 'البطاقات', play: 'الألعاب', test: 'الاختبارات' }[page] });
+    }
+    const A = findAct(u, page, act);
+    if (A) out.push({ route: `${base}-${page}-${act}`, title: A.title, focus: true });
+    return out;
+  },
+  labCount: id => Object.keys(LABS[id] || {}).length,
   close() { stopAll(); },
   /** for the parent page */
   report(unitId, profileId) {

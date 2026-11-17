@@ -1,58 +1,55 @@
-<header>
-  <button type="button" class="home-btn" id="homeBtn" aria-label="قائمة الروضة">🏠</button>
-  <div class="stars" aria-live="polite" aria-label="النجوم">⭐ <span id="sc">٠</span></div>
-</header>
+
 
 <main class="wrap">
 
 <!-- HOME -->
 <section class="view on" id="k-home">
   <h1>🌈 عالم الصغار</h1>
-  <p class="sub">اضغطي على الصورة واسمعي 🔊 · Tap and listen</p>
+  <p class="sub">نضغط على الصورة ونسمع 🔊 · Tap and listen</p>
 
   <div class="sec-title">📚 نتعلّم · Learn</div>
   <div class="menu">
-    <button class="mi" style="background:var(--pink)" data-learn="ar"><span class="em">أ ب ت</span><b>الحروف العربية</b></button>
-    <button class="mi" style="background:var(--sky)" data-learn="en"><span class="em" style="direction:ltr">A B C</span><b>English Letters</b></button>
-    <button class="mi" style="background:var(--orange)" data-learn="num"><span class="em">١ 2 ٣</span><b>الأرقام · Numbers</b></button>
-    <button class="mi" style="background:var(--grape)" data-learn="col"><span class="em">🎨</span><b>الألوان · Colors</b></button>
-    <button class="mi" style="background:var(--mint)" data-learn="shp"><span class="em">🔺⭐</span><b>الأشكال · Shapes</b></button>
-    <button class="mi" style="background:#e8a33d" data-learn="ani"><span class="em">🦁🐘</span><b>الحيوانات · Animals</b></button>
+    <button type="button" class="mi" style="background:var(--pink)" data-learn="ar"><span class="em">أ ب ت</span><b>الحروف العربية</b></button>
+    <button type="button" class="mi" style="background:var(--sky)" data-learn="en"><span class="em" style="direction:ltr">A B C</span><b>English Letters</b></button>
+    <button type="button" class="mi" style="background:var(--orange)" data-learn="num"><span class="em">١ 2 ٣</span><b>الأرقام · Numbers</b></button>
+    <button type="button" class="mi" style="background:var(--grape)" data-learn="col"><span class="em">🎨</span><b>الألوان · Colors</b></button>
+    <button type="button" class="mi" style="background:var(--mint)" data-learn="shp"><span class="em">🔺⭐</span><b>الأشكال · Shapes</b></button>
+    <button type="button" class="mi" style="background:#e8a33d" data-learn="ani"><span class="em">🦁🐘</span><b>الحيوانات · Animals</b></button>
   </div>
 
   <div class="bar">
-    <span>لغة الألعاب:</span>
-    <button class="pill on" data-lang="ar">عربي</button>
-    <button class="pill" data-lang="en">English</button>
+    <span id="kLangL">لغة النشاط (الأسئلة والصوت):</span>
+    <button type="button" class="pill on" data-lang="ar" aria-pressed="true" aria-describedby="kLangL">عربي</button>
+    <button type="button" class="pill" data-lang="en" aria-pressed="false" aria-describedby="kLangL" lang="en">English</button>
   </div>
   <div class="sec-title">🧠 نفكّر · Think</div>
   <div class="menu">
-    <button class="mi" style="background:#ff8c42" data-game="puzzle"><span class="em" data-art="game-puzzle-card" data-art-small>🧩</span><b>الأحجية</b><small>Jigsaw</small></button>
-    <button class="mi" style="background:#4d96ff" data-game="compose"><span class="em" data-art="game-compose-card" data-art-small>🔺🟥</span><b>ركّبي الشكل</b><small>Build with shapes</small></button>
-    <button class="mi" style="background:#2fb4a8" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b>أين أضعها؟</b><small dir="ltr">Where does it go?</small></button>
-    <button class="mi" style="background:#9b5de5" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b>وجّهي الروبوت</b><small>Guide the robot</small></button>
-    <button class="mi" style="background:#f15bb5" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b>رتّبي القصة</b><small>Story order</small></button>
+    <button type="button" class="mi" style="background:#ff8c42" data-game="puzzle"><span class="em" data-art="game-puzzle-card" data-art-small>🧩</span><b>الأحجية</b><small>Jigsaw</small></button>
+    <button type="button" class="mi" style="background:#4d96ff" data-game="compose"><span class="em" data-art="game-compose-card" data-art-small>🔺🟥</span><b>نركّب الشكل</b><small>Build with shapes</small></button>
+    <button type="button" class="mi" style="background:#2fb4a8" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b>أين أضعها؟</b><small dir="ltr">Where does it go?</small></button>
+    <button type="button" class="mi" style="background:#9b5de5" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b>نخطّط ثم نحرّك</b><small>Plan, then move</small></button>
+    <button type="button" class="mi" style="background:#f15bb5" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b>نرتّب القصة</b><small>Story order</small></button>
   </div>
 
   <div class="sec-title">🎮 نلعب · Play</div>
   <div class="menu">
-    <button class="mi" style="background:var(--pink)" data-game="letters"><span class="em" id="gLetEm">أ ؟</span><b>أين الحرف؟</b><small>Find the letter</small></button>
-    <button class="mi" style="background:var(--orange)" data-game="count"><span class="em" data-art="game-count-card" data-art-small>🍎🍎🍎</span><b>كم عددها؟</b><small>How many?</small></button>
-    <button class="mi" style="background:var(--grape)" data-game="col"><span class="em" data-art="game-col-card" data-art-small>🔴🔵</span><b>أين اللون؟</b><small>Find the color</small></button>
-    <button class="mi" style="background:var(--mint)" data-game="shp"><span class="em" data-art="game-shp-card" data-art-small>⭕🔺</span><b>أين الشكل؟</b><small>Find the shape</small></button>
-    <button class="mi" style="background:#e8a33d" data-game="ani"><span class="em" data-art="game-ani-card" data-art-small>🐈🐄</span><b>أين الحيوان؟</b><small>Find the animal</small></button>
-    <button class="mi" style="background:#ff6b6b" data-game="pat"><span class="em" data-art="game-pat-card" data-art-small>🔴🔵🔴❓</span><b>ماذا يأتي بعد؟</b><small>What comes next?</small></button>
-    <button class="mi" style="background:#5c7cfa" data-game="odd"><span class="em" data-art="game-odd-card" data-art-small>🍎🍌🐈</span><b>أيّهم مختلف؟</b><small>Odd one out</small></button>
-    <button class="mi" style="background:#2fb4a8" data-game="memory"><span class="em" data-art="game-memory-card" data-art-small>⭐❓⭐</span><b>لعبة الذاكرة</b><small>Memory</small></button>
-    <button class="mi" style="background:#c06cf0" data-game="basket"><span class="em" data-art="game-basket-card" data-art-small>🧺🍎</span><b>السلّة الصحيحة</b><small>Baskets</small></button>
-    <button class="mi" style="background:var(--sky)" data-game="first"><span class="em" data-art="game-first-card" data-art-small>🐇 ← أ</span><b>بأي حرف يبدأ؟</b><small>First letter</small></button>
+    <button type="button" class="mi" style="background:var(--pink)" data-game="letters"><span class="em" id="gLetEm">أ ؟</span><b>أين الحرف؟</b><small>Find the letter</small></button>
+    <button type="button" class="mi" style="background:var(--orange)" data-game="count"><span class="em" data-art="game-count-card" data-art-small>🍎🍎🍎</span><b>كم عددها؟</b><small>How many?</small></button>
+    <button type="button" class="mi" style="background:var(--grape)" data-game="col"><span class="em" data-art="game-col-card" data-art-small>🔴🔵</span><b>أين اللون؟</b><small>Find the color</small></button>
+    <button type="button" class="mi" style="background:var(--mint)" data-game="shp"><span class="em" data-art="game-shp-card" data-art-small>⭕🔺</span><b>أين الشكل؟</b><small>Find the shape</small></button>
+    <button type="button" class="mi" style="background:#e8a33d" data-game="ani"><span class="em" data-art="game-ani-card" data-art-small>🐈🐄</span><b>أين الحيوان؟</b><small>Find the animal</small></button>
+    <button type="button" class="mi" style="background:#ff6b6b" data-game="pat"><span class="em" data-art="game-pat-card" data-art-small>🔴🔵🔴❓</span><b>ماذا يأتي بعد؟</b><small>What comes next?</small></button>
+    <button type="button" class="mi" style="background:#5c7cfa" data-game="odd"><span class="em" data-art="game-odd-card" data-art-small>🍎🍌🐈</span><b>أيّهم مختلف؟</b><small>Odd one out</small></button>
+    <button type="button" class="mi" style="background:#2fb4a8" data-game="memory"><span class="em" data-art="game-memory-card" data-art-small>⭐❓⭐</span><b>لعبة الذاكرة</b><small>Memory</small></button>
+    <button type="button" class="mi" style="background:#c06cf0" data-game="basket"><span class="em" data-art="game-basket-card" data-art-small>🧺🍎</span><b>السلّة الصحيحة</b><small>Baskets</small></button>
+    <button type="button" class="mi" style="background:var(--sky)" data-game="first"><span class="em" data-art="game-first-card" data-art-small>🐇 ← أ</span><b>بأي حرف يبدأ؟</b><small>First letter</small></button>
   </div>
 
   <div class="parent">
     <b>👨‍👧 للأب:</b>
     <ul style="margin:6px 0 0;padding-inline-start:20px">
       <li>١٠ دقائق يوميًا تكفي في هذا العمر. اجلس معها في البداية وردّد الكلمات معها بصوت عالٍ.</li>
-      <li>ابدأوا بقسم «نتعلّم»، ثم العبوا. كل لعبة لها ٣ مستويات، والمستوى يتغيّر تلقائيًا: يصعد إذا أجابت جيدًا، وينزل إذا صعب عليها، حتى تبقى ناجحة في أغلب الأسئلة دون ملل.</li>
+      <li>ابدأوا بقسم «نتعلّم»، ثم العبوا. لكل لعبة <span id="kLvRange"></span> مستويات، والمستوى يتغيّر تلقائيًا: يصعد بعد إجابات جيدة، وينزل إذا صعبت الأسئلة، حتى ينجح الطفل في أغلب الأسئلة دون ملل. يمكنك اختيار المستوى بنفسك في «صفحة الأب».</li>
       <li>لا يوجد خطأ يحبطها: إذا اختارت غلط تحاول مرة ثانية. ويمكنها سحب البطاقات أو الضغط عليها ثم على السلّة.</li>
       <li>غيّر «لغة اللعب» بين عربي وEnglish لتسمع الأسئلة باللغتين.</li>
       <li>إعدادات الصوت ومتابعة تقدّمها في <b>«صفحة الأب»</b> من الصفحة الرئيسية.</li>
@@ -63,13 +60,13 @@
 <!-- LEARN -->
 <section class="view" id="k-learn">
   <h1 id="lTitle"></h1>
-  <p class="sub">اضغطي على أي بطاقة 👆 · Tap a card</p>
+  <p class="sub">نضغط على أي بطاقة 👆 · Tap a card</p>
   <div class="grid" id="lGrid"></div>
 </section>
 
 <!-- GAME -->
 <section class="view" id="k-game">
-  <div class="prompt"><div class="lv" id="gLv"></div><div class="q" id="gQ"></div><div class="show" id="gShow"></div><button type="button" class="speak" id="gSpeak" aria-label="أعد السؤال">🔊</button></div>
+  <div class="prompt"><div class="lv" id="gLv" aria-live="polite"></div><div class="q" id="gQ"></div><div class="show" id="gShow"></div><button type="button" class="speak" id="gSpeak" aria-label="اسمع السؤال مرة أخرى"><span aria-hidden="true">🔊</span><span class="speak-l">اسمع</span></button></div>
   <div id="gArea"></div>
   <div class="dots" id="gDots"></div>
 </section>

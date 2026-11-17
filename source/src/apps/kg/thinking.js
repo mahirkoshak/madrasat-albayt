@@ -322,14 +322,15 @@ function sessionTick() {
   if (lim && d.sess.sec >= lim && !$('kBreak')) showBreak();
 }
 function showBreak() {
-  clearTimeout(tmr); HS.stopSpeak(); show('home');
+  clearTimeout(tmr); HS.stopSpeak(); HS.nav.go('app-kg', true);   // back to the menu (replaces the game address)
   ROOT.insertAdjacentHTML('beforeend', `<div class="k-break" id="kBreak" role="dialog" aria-modal="true" aria-label="وقت الاستراحة"><div class="k-break-in">
-    <div class="big">${HS.mascot('sleep', { fb: '🧸🌳' })}</div><h2>وقت الاستراحة!</h2><p>أحسنتِ اليوم 🌟 هيا نلعب بعيدًا عن الشاشة.</p>
+    <div class="big">${HS.mascot('sleep', { fb: '🧸🌳' })}</div><h2>وقت الاستراحة!</h2><p>عمل رائع اليوم 🌟 هيا نلعب بعيدًا عن الشاشة.</p>
     <button type="button" class="k-hold" id="kHold"><i></i><span>للأب: اضغط مطوّلًا للمتابعة ١٠ دقائق</span></button></div></div>`);
   say([[tl(P.brk)(), lang()]]);
   const btn = $('kHold'); let t = null;
   const start = e => { e.preventDefault(); btn.classList.add('on'); t = setTimeout(() => { const d = K(); d.sess.sec = Math.max(0, sessionLimit() - 600); HS.save(); $('kBreak').remove(); }, 2000); };
   const stop = () => { btn.classList.remove('on'); clearTimeout(t); };
+  setTimeout(() => btn.focus(), 50);
   btn.addEventListener('pointerdown', start); ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => btn.addEventListener(ev, stop));
 }
 SESSION.iv = setInterval(sessionTick, 5000);

@@ -9,6 +9,7 @@ Reads:
   src/portal/theme.css     THE LOOK: colors, font, corners (CSS variables used everywhere)
   src/portal/portal.css    styles for the menu pages
   src/portal/catalog.js    the menu (years -> subjects -> units)
+  src/portal/nav.js        route model: parent, breadcrumbs, titles, counts (HS.nav)
   src/portal/i18n.js       English phrases for the menu pages (HS.tr), used when the interface language is English
   src/portal/portal.js     menu drawing + router + child picker + parent page
   src/core/                shared code for every app: core.js (profiles, spaced repetition, speech, drag & drop),
@@ -59,6 +60,8 @@ def scope_css(css, wrapper):
                 res.append(wrapper + ' *')
             elif s.startswith('body '):
                 res.append(wrapper + ' ' + s[5:])
+            elif s.startswith(':root.') or s.startswith(':root '):
+                res.append(wrapper + s[5:])   # ':root.focus .x' = a class on the app wrapper itself
             else:
                 res.append(wrapper + ' ' + s)
         return ','.join(dict.fromkeys(res))
@@ -174,7 +177,7 @@ def main():
         'APPS_HTML': '\n\n'.join(apps_html),
         'APPS_JS': '\n'.join(apps_js),
         'CATALOG_JS': cat,
-        'PORTAL_JS': read('portal', 'i18n.js') + '\n' + read('portal', 'portal.js'),
+        'PORTAL_JS': read('portal', 'i18n.js') + '\n' + read('portal', 'nav.js') + '\n' + read('portal', 'portal.js'),
     }.items():
         page = page.replace('{{%s}}' % key, val)
 

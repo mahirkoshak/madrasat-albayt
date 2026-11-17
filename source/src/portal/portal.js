@@ -23,7 +23,6 @@
     on: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11'), off: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9.5l5 5M21 9.5l-5 5') };
   /* sound on/off and language buttons, in the top bar of every page */
   const muteBtn = cls => `<button type="button" class="${cls} p-mute" data-mute aria-pressed="${HS.muted()}" aria-label="${HS.muted() ? 'تشغيل الصوت' : 'كتم الصوت'}">${HS.muted() ? I.off : I.on}</button>`;
-  const langBtn = cls => `<button type="button" class="${cls} p-lang" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'عربي' : 'English'}</button>`;
 
   const navOf = o => o.unit ? 'unit-' + o.unit : o.app ? 'app-' + o.app : null;
   // a catalog item's picture: its artwork when it exists (o.art), otherwise its emoji
@@ -31,41 +30,54 @@
   const card = (o, nav) => o.soon
     ? `<div class="p-card soon">${tile(o, true)}<span class="tx"><b>${o.name}</b></span><span class="tag">قريبًا</span></div>`
     : `<button type="button" class="p-card${HS.hasArt(o.art) ? ' has-art' : ''}" style="--c:${o.color}" data-nav="${nav}">${tile(o)}<span class="tx"><b>${o.name}</b><small>${o.desc || o.sub || ''}</small></span><span class="go">${I.fwd}</span></button>`;
-  const crumb = (back, trail) => `<nav class="p-crumb" aria-label="مكانك في الموقع"><button type="button" class="p-back" data-nav="${back}">${I.back}<span>رجوع</span></button><span class="p-trail">${trail}</span></nav>`;
-  /* the brand bar on every menu page: logo (back to the start) and the current child's stars */
-  function top() {
-    const me = HS.current(), named = me && me.id !== 'guest';
-    const stars = `⭐ <b>${ar(HS.stars())}</b>`;
-    return `<header class="p-top"><a class="p-brand" href="#home" data-nav="home">${HS.art('logo-mark', { eager: true, cls: 'p-logo', fb: '🏡' })}<span>مدرسة البيت</span></a>
-      <div class="p-me">${langBtn('p-tool')}${muteBtn('p-tool')}${named ? `${shopOn() ? `<button type="button" class="p-starpill" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">${stars}</button>` : `<span class="p-starpill">${stars}</span>`}
-        <span class="p-me-av" style="background:${HS.kidColor(me)}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}</div></header>`;
+  /* ---------- the one header of the site (menu pages and apps) ----------
+     global row: brand (home) · sound · stars (shop) · menu with the secondary utilities
+     context row: one Back (to the logical parent from HS.nav) + clickable breadcrumb, or the activity title in a game */
+  let menuOpen = false;
+  function bar(route) {
+    const c = HS.nav.chain(route), cur = c[c.length - 1], par = c.length > 1 ? c[c.length - 2] : null, focus = !!cur.focus;
+    const me = HS.current(), named = !!(me && me.id !== 'guest');
+    const crumbs = !focus && c.length > 2 ? `<nav class="gb-crumbs" aria-label="مسار التنقل"><ol>${c.map((n, i) => {
+        const li = i === c.length - 1 ? `<li class="cur"><span aria-current="page">${n.title}</span></li>`
+          : `<li${i > 0 ? ' class="mid"' : ''}><a href="#${n.route}" data-nav="${n.route}">${n.title}</a></li>`;
+        return li + (i === 0 && c.length > 3 ? '<li class="ell"><button type="button" class="gb-ell" aria-label="أظهر المسار كاملًا" aria-expanded="false">…</button></li>' : '');
+      }).join('')}</ol></nav>` : '';
+    const ctx = par ? `<div class="gb-ctx"><button type="button" class="gb-back" data-nav="${par.route}" aria-label="رجوع إلى ${esc(par.title)}">${I.back}<span>رجوع</span></button>
+      ${focus ? `<span class="gb-title">${cur.title}</span>` : crumbs}</div>` : '';
+    const who = named ? `<span class="gb-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span><span class="gb-who nm">${esc(me.name)}</span>`
+      : `<span class="gb-av gb-guest" aria-hidden="true">👤</span><span class="gb-who">ضيف</span>`;
+    BAR.className = 'appbar' + (focus ? ' focus' : '') + (par ? '' : ' at-home');
+    BAR.innerHTML = `<div class="gb-row">
+      <a class="gb-brand" href="#home" data-nav="home" aria-label="مدرسة البيت: الرئيسية">${HS.art('logo-mark', { eager: true, cls: 'gb-logo', fb: '🏡' })}<span>مدرسة البيت</span></a>
+      <div class="gb-tools">${muteBtn('gb-btn')}
+        ${named && shopOn() ? `<button type="button" class="gb-btn gb-stars" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}
+        <div class="gb-menu"><button type="button" class="gb-btn gb-me" id="gbMenuBtn" aria-expanded="${menuOpen}" aria-controls="gbMenu" aria-label="القائمة: ${named ? esc(me.name) : 'ضيف'}">${who}<span class="gb-caret" aria-hidden="true">▾</span></button>
+          <div class="gb-pop" id="gbMenu" ${menuOpen ? '' : 'hidden'}>
+            <p class="gb-pop-h">${named ? `يتعلّم الآن: <b class="nm">${esc(me.name)}</b>` : 'تتعلّم الآن كضيف: التقدّم لا يُحفظ باسم طفل'}</p>
+            <button type="button" data-nav="home" data-menu>🏠 الرئيسية</button>
+            <button type="button" data-nav="home" data-menu>👧 ${HS.profiles().length ? 'تبديل الطفل أو إضافة طفل' : 'إضافة طفل'}</button>
+            ${named && shopOn() ? '<button type="button" data-nav="shop" data-menu>⭐ متجر النجوم</button>' : ''}
+            <button type="button" data-nav="parent" data-menu>👨‍👩‍👧 صفحة الأب</button>
+            <button type="button" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" data-menu>🌐 لغة الواجهة: <span lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'العربية' : 'English'}</span></button>
+          </div></div></div></div>${ctx}`;
+    document.title = HS.tr(par ? cur.title + ' – مدرسة البيت' : 'مدرسة البيت');
   }
-
-  // where does an app/unit sit in the catalog? -> back link + breadcrumb for its top bar
-  function locate(kind, id) {
-    const hit = o => (kind === 'unit' ? o.unit : o.app) === id;
-    for (const y of CATALOG) if (y.app && hit(y)) return { back: 'home', trail: y.name };
-    for (const y of CATALOG) for (const s of y.subjects || []) {
-      if (hit(s)) return { back: 'y-' + y.id, trail: `${y.name} ‹ ${s.name}` };
-      for (const u of s.units || []) if (hit(u)) return { back: `s-${y.id}-${s.id}`, trail: `${y.name} ‹ ${s.name} ‹ ${u.name}` };
-    }
-    return { back: 'home', trail: '' };
-  }
+  const closeMenu = focusBtn => { if (!menuOpen) return; menuOpen = false; const m = document.getElementById('gbMenu'), b = document.getElementById('gbMenuBtn');
+    if (m) m.hidden = true; if (b) { b.setAttribute('aria-expanded', 'false'); if (focusBtn) b.focus(); } };
 
   let current = null;   // app id currently open
-  function showScreen(id, title) {
+  let shown = '';
+  function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === id));
-    BAR.style.display = id === 'portal' ? 'none' : 'flex';
-    document.title = HS.tr(title ? title + ' – مدرسة البيت' : 'مدرسة البيت');
-    window.scrollTo(0, 0);
+    if (shown !== id) window.scrollTo(0, 0);
+    shown = id;
   }
   function closeApp() { if (current && APPS[current]) { try { APPS[current].close(); } catch (e) {} } current = null; }
-  function openApp(appId, sub, loc) {
-    if (current !== appId) closeApp();
+  /** open an app page. The same app stays open between its own pages (they are routes too), it is only re-drawn */
+  function openApp(appId, sub) {
+    if (current !== appId) { closeApp(); window.scrollTo(0, 0); }
     current = appId;
-    const me = HS.current();
-    BAR.innerHTML = `<button type="button" class="bar-back" data-nav="${loc.back}">${I.back}<span>رجوع</span></button><button type="button" class="bar-home" data-nav="home">${HS.art('logo-mark', { cls: 'bar-logo', fb: '' }) || I.home}<span>الرئيسية</span></button><span class="bar-trail">${loc.trail}</span>${muteBtn('bar-mute')}${shopOn() ? `<button type="button" class="bar-shop" data-nav="shop" aria-label="متجر النجوم">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}${me ? `<span class="bar-me" style="background:${HS.kidColor(me)}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}`;
-    showScreen('scr-' + appId, loc.trail.split(' ‹ ').pop());
+    showScreen('scr-' + appId);
     APPS[appId].open(sub);
   }
 
@@ -136,7 +148,7 @@
     const state = r => { const c = HS.cantBuy(r); return c === 'week' ? `<span class="sh-need">✋ خلصت هذا الأسبوع (${ar(HS.boughtWeek(r.id))}/${ar(r.week)})</span>`
       : c === 'stars' ? `<span class="sh-need">باقي ⭐ ${ar(r.cost - bal)}</span>`
       : `<button type="button" class="p-btn ${buying === r.id ? 'warn' : ''}" data-buy="${r.id}">${buying === r.id ? 'متأكد؟ اضغط مرة ثانية ✅' : 'اشترِ'}</button>`; };
-    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ المتجر') + `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
+    P.innerHTML = `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
         <div><h2 class="p-title">🛒 متجر النجوم</h2><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
       ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
       ${goal ? `<div class="sh-goal"><span class="em">${HS.rewardArt(goal)}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
@@ -275,11 +287,11 @@
     if (!list.length && !skip) {   // first visit: Koko asks who will learn here
       const sc = !!heroScene(), form = `${avForm(list)}<button type="button" class="p-link" id="pSkip">المتابعة بدون إضافة</button>`;
       // with the full scene the form goes in a card below it, so it never covers Koko
-      P.innerHTML = top() + heroWrap('p-onb', `<div class="p-hero-tx"><h1 id="pHi">أهلًا! أنا كوكو</h1>
+      P.innerHTML = heroWrap('p-onb', `<div class="p-hero-tx"><h1 id="pHi">أهلًا! أنا كوكو</h1>
           <p class="p-hero-sub">من سيتعلّم معي؟ أضف كل طفل ليُحفظ تقدّمه ونجومه وأخطاؤه وحده.</p>${sc ? '' : form}</div>`) + (sc ? `<div class="p-onb-form">${form}</div>` : '');
       return bindPicker();
     }
-    P.innerHTML = top() + hero() + kidsRow() + today() + `
+    P.innerHTML = hero() + kidsRow() + today() + `
       <section class="p-sec" aria-labelledby="pGr"><h2 id="pGr" class="p-h2">ماذا نتعلّم اليوم؟</h2>
         <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div></section>
       <footer class="p-foot">${HS.sync && HS.sync.family() ? `<p class="p-cloud" id="pCloud">${HS.sync.status() === 'on' ? '☁️ محفوظ أونلاين' : ''}</p>` : ''}<button type="button" class="p-parent" data-nav="parent"><span aria-hidden="true">👨‍👩‍👧</span> صفحة الأب: التقدّم والإعدادات${HS.waitingCount() ? ` <span class="p-badge" aria-label="${ar(HS.waitingCount())} كوبون ينتظر">🎟️ ${ar(HS.waitingCount())}</span>` : ''}</button>
@@ -297,7 +309,7 @@
   function gate(next) {
     const pin = HS.settings().pin; let ok = false; try { ok = sessionStorage.getItem('hs-pin') === '1'; } catch (e) {}
     if (!pin || ok) return next();
-    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ صفحة الأب') + `<form class="p-form pin" id="pinF"><h2 class="p-title">🔒 صفحة الأب</h2><label for="pinI">الرقم السري</label>
+    P.innerHTML = `<form class="p-form pin" id="pinF"><h2 class="p-title">🔒 صفحة الأب</h2><label for="pinI">الرقم السري</label>
       <input id="pinI" inputmode="numeric" type="password" maxlength="8" autocomplete="off"><button type="submit" class="p-btn">دخول</button><p class="pp-note" id="pinE"></p></form>`;
     const i = document.getElementById('pinI'); i.focus();
     document.getElementById('pinF').onsubmit = e => { e.preventDefault();
@@ -308,11 +320,19 @@
   /* ---------- parent page ---------- */
   const meter = x => `<div class="hs-meter ${x < .4 ? 'low' : x < .8 ? 'mid' : ''}" role="img" aria-label="${Math.round(x * 100)}٪"><i style="width:${Math.max(3, Math.round(x * 100))}%"></i></div>`;
   let confirmKey = '';
+  // Kindergarten: the child never sees numbered levels. Difficulty adapts by itself;
+  // a parent can move a game to a different starting level here.
+  function kgLevels(pid) {
+    const cur = (HS.data('kg', pid).lv) || {};
+    return `<details class="pp-unit pp-kglv"><summary>🎚️ صعوبة ألعاب الروضة</summary>
+      <p class="pp-note">الألعاب تصعب وتسهل تلقائيًا حسب إجابات الطفل. غيّر المستوى هنا فقط إذا كانت لعبة سهلة جدًا أو صعبة جدًا.</p>
+      ${APPS.kg.levels().map(g => `<label class="pp-lv"><span>${esc(g.name)}</span><select data-kglv="${pid}|${g.k}" aria-label="مستوى ${esc(g.name)}">${Array.from({ length: g.max }, (_, i) => `<option value="${i + 1}" ${(cur[g.k] || 1) === i + 1 ? 'selected' : ''}>المستوى ${ar(i + 1)} من ${ar(g.max)}</option>`).join('')}</select></label>`).join('')}</details>`;
+  }
   function parent() {
     const kids = HS.profiles().length ? HS.profiles() : [{ id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' }];
     const units = Object.keys(window.UNITS || {});
     const s = HS.settings(), voices = HS.arVoices(), cur = s.arVoice;
-    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ صفحة الأب') + `<h2 class="p-title">👨‍👩‍👧 صفحة الأب</h2><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
+    P.innerHTML = `<h2 class="p-title">👨‍👩‍👧 صفحة الأب</h2><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
     ${kids.map(k => {
       const d = HS.profileData(k.id);
       const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && r.answered);
@@ -332,6 +352,7 @@
           ${r.missed.length ? `<details><summary>⚠️ أكثر ما يخطئ فيه (${ar(r.missed.length)})</summary><ul>${r.missed.map(m => `<li>${m.q} <small>(أخطأ ${ar(m.w)} · أصاب ${ar(m.c)})</small></li>`).join('')}</ul></details>` : ''}</div>`).join('')}
         ${dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}${dr.spell && (dr.spell.en || dr.spell.ar) ? `<div class="m-row"><span>✍️ تحدّي الإملاء: أتقن ${ar(dr.spell.en)} كلمة إنجليزية${dr.spell.ar ? ` و${ar(dr.spell.ar)} عربية` : ''} · أطول سلسلة ${ar(dr.spell.best)}</span></div>` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}
         ${kg.length ? `<div class="pp-unit"><h4>🔤 عربي و English (الروضة)</h4><table class="pp-t"><thead><tr><th>اللعبة</th><th>المستوى</th><th>صح من أول مرة</th></tr></thead><tbody>${kg.map(g => `<tr><td>${g.name}</td><td>${g.max > 3 ? ar(g.lv || 1) + ' / ' + ar(g.max) : '⭐'.repeat(g.lv || 1)}</td><td>${ar(Math.round(g.c / (g.c + g.w) * 100))}٪ <small>(${ar(g.c + g.w)})</small></td></tr>`).join('')}</tbody></table></div>` : ''}
+        ${APPS.kg ? kgLevels(k.id) : ''}
         ${k.id !== 'guest' ? `<div class="pp-actions"><button type="button" class="p-btn sec" data-ren="${k.id}">✏️ تعديل الاسم</button>
           <button type="button" class="p-btn sec" data-reset="${k.id}">${confirmKey === 'r' + k.id ? '⚠️ اضغط مرة ثانية لمسح التقدّم' : '🔄 مسح التقدّم'}</button>
           <button type="button" class="p-btn sec danger" data-del="${k.id}">${confirmKey === 'd' + k.id ? '⚠️ اضغط مرة ثانية للحذف' : '🗑️ حذف الطفل'}</button></div>` : ''}
@@ -381,6 +402,9 @@ ${syncBox()}
         <li><b>أندرويد:</b> الإعدادات ← تحويل النص إلى كلام ← محرك Google ← تثبيت بيانات الصوت ← العربية.</li>
         <li>الأفضل: توليد مقاطع صوتية بالذكاء الاصطناعي مرة واحدة (انظر README، قسم الصوت).</li></ul></details>
     </section>`;
+    P.querySelectorAll('[data-kglv]').forEach(sel => sel.onchange = () => {
+      const [pid, k] = sel.dataset.kglv.split('|'); APPS.kg.setLevel(pid, k, +sel.value); HS.toast('✓ تم حفظ المستوى');
+    });
     P.querySelectorAll('[data-ren]').forEach(b => b.onclick = () => {
       const k = HS.profiles().find(x => x.id === b.dataset.ren); const sec = b.closest('.pp-kid').querySelector('h3');
       sec.innerHTML = `<form class="p-inline"><input value="${esc(k.name)}" maxlength="20" aria-label="الاسم الجديد"><button type="submit" class="p-btn">حفظ</button></form>`;
@@ -423,28 +447,35 @@ ${syncBox()}
     }
     if (LEGACY[h]) { h = 'unit-g4scieco-' + LEGACY[h]; try { history.replaceState(null, '', '#' + h); } catch (e) {} }
     let m;
-    if ((m = h.match(/^app-([a-z0-9]+)(?:-(.+))?$/i)) && APPS[m[1]]) return openApp(m[1], m[2], locate('app', m[1]));
-    if ((m = h.match(/^unit-([a-z0-9]+)(?:-(.+))?$/i)) && APPS.unit && window.UNITS && UNITS[m[1]]) return openApp('unit', m[1] + (m[2] ? '-' + m[2] : ''), locate('unit', m[1]));
+    closeMenu();
+    if ((m = h.match(/^app-([a-z0-9]+)(?:-(.+))?$/i)) && APPS[m[1]]) { openApp(m[1], m[2] || ''); return bar(h); }
+    if ((m = h.match(/^unit-([a-z0-9]+)(?:-(.+))?$/i)) && APPS.unit && window.UNITS && UNITS[m[1]]) { openApp('unit', m[1] + (m[2] ? '-' + m[2] : '')); return bar(h); }
     closeApp(); confirmKey = '';
-    if (h === 'parent') { showScreen('portal', 'صفحة الأب'); return gate(parent); }
+    const draw = r => { if (r !== h) { try { history.replaceState(null, '', '#' + r); } catch (e) {} } bar(r); };
+    if (h === 'parent') { showScreen('portal'); draw('parent'); return gate(parent); }
     if (h !== 'shop') buying = '';
-    if (h === 'shop') { showScreen('portal', 'المتجر'); return shopOn() ? shop() : home(); }
+    if (h === 'shop') { showScreen('portal'); if (shopOn()) { draw('shop'); return shop(); } draw('home'); return home(); }
     showScreen('portal');
     if ((m = h.match(/^y-(\w+)$/))) {
-      const y = CATALOG.find(x => x.id === m[1]); if (!y) return home();
-      P.innerHTML = top() + crumb('home', 'الرئيسية ‹ ' + y.name) +
-        `<div class="p-head">${tile(y)}<div><h2 class="p-title">${y.name}</h2><p class="p-sub">اختر المادة</p></div></div><div class="p-grid">${
+      const y = CATALOG.find(x => x.id === m[1]); if (!y) { draw('home'); return home(); }
+      draw(h);
+      P.innerHTML =         `<div class="p-head">${tile(y)}<div><h2 class="p-title">${y.name}</h2><p class="p-sub">اختر المادة</p></div></div><div class="p-grid">${
           y.subjects.map(s => card(s, navOf(s) || `s-${y.id}-${s.id}`)).join('')}</div>`;
     } else if ((m = h.match(/^s-(\w+)-(\w+)$/))) {
       const y = CATALOG.find(x => x.id === m[1]); const s = y && y.subjects.find(x => x.id === m[2]);
-      if (!s || !s.units) return home();
-      P.innerHTML = top() + crumb('y-' + y.id, `الرئيسية ‹ ${y.name} ‹ ${s.name}`) +
-        `<div class="p-head">${tile(s)}<div><h2 class="p-title">${s.name}</h2><p class="p-sub">اختر الوحدة</p></div></div><div class="p-grid">${
+      if (!s || !s.units) { draw('home'); return home(); }
+      draw(h);
+      P.innerHTML =         `<div class="p-head">${tile(s)}<div><h2 class="p-title">${s.name}</h2><p class="p-sub">اختر الوحدة</p></div></div><div class="p-grid">${
           s.units.map(u => card(u, navOf(u))).join('')}</div>`;
-    } else home();
+    } else { draw('home'); home(); }
   }
 
   document.addEventListener('click', e => {
+    const mb = e.target.closest('#gbMenuBtn');
+    if (mb) { menuOpen = !menuOpen; const m = document.getElementById('gbMenu'); m.hidden = !menuOpen; mb.setAttribute('aria-expanded', menuOpen); if (menuOpen) { const f = m.querySelector('button'); if (f) f.focus(); } return; }
+    if (menuOpen && !e.target.closest('#gbMenu')) closeMenu();
+    const el = e.target.closest('.gb-ell');
+    if (el) { const nav = el.closest('.gb-crumbs'); nav.classList.add('open'); el.setAttribute('aria-expanded', 'true'); const a = nav.querySelector('li.mid a'); if (a) a.focus(); return; }
     const mu = e.target.closest('[data-mute]');
     if (mu) { HS.setMute(!HS.muted()); if (!HS.muted()) HS.fx('tap'); return; }
     const lg = e.target.closest('[data-lang-ui]');
@@ -453,6 +484,7 @@ ${syncBox()}
     if (b) { e.preventDefault(); if (('#' + b.dataset.nav) === location.hash) route(); else location.hash = b.dataset.nav; }
   });
   window.addEventListener('hashchange', route);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu(true); });
   HS.on('mute', m => document.querySelectorAll('[data-mute]').forEach(b => { b.setAttribute('aria-pressed', m); b.setAttribute('aria-label', HS.tr(m ? 'تشغيل الصوت' : 'كتم الصوت')); b.innerHTML = m ? I.off : I.on; }));
   HS.trWatch();
   route();

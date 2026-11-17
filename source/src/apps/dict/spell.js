@@ -37,7 +37,7 @@ function spellPick() {
 const spHead = () => `<div class="sp-head"><b>✍️ ${HS.L('تحدّي الإملاء', 'Spelling challenge')}</b>
   <span class="sp-chip" aria-label="${HS.L('كلمات متتالية صحيحة', 'words right in a row')}">🔥 ${HS.num(SG.streak)}</span>
   <button type="button" class="sp-chip sp-donebtn" data-sp="list">✓ ${HS.num(spDone().length)} <span>${HS.L('أتقنتها', 'done')}</span></button>
-  <button type="button" class="d-x" data-a="home" aria-label="${HS.L('إنهاء', 'Stop')}">✕</button></div>`;
+</div>`;   // leave with the site header's Back
 function spellNext() {
   const p = spellPick();
   if (!p) return spellAllDone();

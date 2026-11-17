@@ -18,19 +18,20 @@ let LANG = 'ar';
 const K = () => HS.data('kg');                 // this child's saved data for this app
 const ROUNDS = 5;
 
-function refreshStars() { $('sc').textContent = HS.toAr(HS.stars()); }
-HS.on('stars', refreshStars);
+function refreshStars() {}   // stars show in the site header
 
 /* ---------- nav ---------- */
 let tmr = null;
 function show(v) { ROOT.querySelectorAll('.view').forEach(s => s.classList.toggle('on', s.id === 'k-' + v)); window.scrollTo(0, 0); clearTimeout(tmr); HS.stopSpeak(); }
-$('homeBtn').onclick = () => show('home');
 ROOT.querySelectorAll('[data-lang]').forEach(b => b.onclick = () => {
-  LANG = b.dataset.lang; ROOT.querySelectorAll('[data-lang]').forEach(x => x.classList.toggle('on', x === b));
+  LANG = b.dataset.lang; ROOT.querySelectorAll('[data-lang]').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
   $('gLetEm').textContent = LANG === 'ar' ? 'أ ؟' : 'A ?'; $('gLetEm').style.direction = LANG === 'ar' ? 'rtl' : 'ltr';
 });
-ROOT.querySelectorAll('[data-learn]').forEach(b => b.onclick = () => learn(b.dataset.learn));
-ROOT.querySelectorAll('[data-game]').forEach(b => b.onclick = () => startGame(b.dataset.game));
+/* every screen is a route: #app-kg · #app-kg-learn-<set> · #app-kg-game-<game> (refresh and Back work) */
+ROOT.querySelectorAll('[data-learn]').forEach(b => b.onclick = () => HS.nav.go('app-kg-learn-' + b.dataset.learn));
+ROOT.querySelectorAll('[data-game]').forEach(b => b.onclick = () => HS.nav.go('app-kg-game-' + b.dataset.game));
+const gameName = k => { const b = ROOT.querySelector(`[data-game="${k}"] b`); return b ? b.textContent : ''; };
+const learnName = k => ({ ar: 'الحروف العربية', en: 'English Letters', num: 'الأرقام · Numbers', col: 'الألوان · Colors', shp: 'الأشكال · Shapes', ani: 'الحيوانات · Animals' })[k];
 
 const swatch = (c, size = 84) => `<div class="swatch" style="width:${size}px;height:${size}px;background:${c[0]};${c[0] === '#fff' ? 'border:3px solid #ddd' : ''}"></div>`;
 const shape = (s, i, size = 84) => `<div class="shape"><svg viewBox="0 0 100 100" style="width:${size}px;height:${size}px" fill="${SHPC[i % SHPC.length]}" aria-hidden="true">${s[3]}</svg></div>`;
@@ -43,8 +44,7 @@ const PAT_UNITS = { 1: [[0, 1]], 2: [[0, 1, 2], [0, 0, 1], [0, 1, 1]], 3: [[0, 0
 const EN_FIRST = EN.filter(x => x[0] !== 'X');
 const SETS = { ar: AR, en: EN, num: NUM, col: COL, shp: SHP, ani: ANI };
 function learn(k) {
-  const T = { ar: 'الحروف العربية', en: 'English Letters', num: 'الأرقام · Numbers', col: 'الألوان · Colors', shp: 'الأشكال · Shapes', ani: 'الحيوانات · Animals' };
-  $('lTitle').textContent = T[k]; LD = k;
+  $('lTitle').textContent = learnName(k); LD = k;
   const cell = {
     ar: x => `<span class="big">${x[0]}</span><span class="em">${x[3]}</span>`,
     en: x => `<span class="big" style="direction:ltr">${x[0]}${x[0].toLowerCase()}</span><span class="em">${x[2]}</span>`,
@@ -90,9 +90,11 @@ function startGame(k) {
 }
 function setLevel(l, silent) { G.lv = l; K().lv[G.k] = l; HS.save(); G.round = 0; G.hist = []; if (!silent) restart(); }
 function restart() { if (THINK_ROUNDS[G.k]) thinkStart(G.k); else if (G.k === 'memory') memoryGame(); else if (G.k === 'basket') basketGame(); else nextQ(); }
+/** the child sees how far along the path they are, not level numbers to pick from (levels adapt by themselves;
+    a parent can set one on the parent page) */
 function levelBar() {
-  $('gLv').innerHTML = Array.from({ length: G.max || 3 }, (_, i) => i + 1).map(l => `<button type="button" class="pill ${l === G.lv ? 'on' : ''}" data-l="${l}" aria-label="المستوى ${l}" aria-pressed="${l === G.lv}">${(G.max || 3) > 3 ? HS.toAr(l) : '⭐'.repeat(l)}</button>`).join('');
-  $('gLv').querySelectorAll('[data-l]').forEach(b => b.onclick = () => setLevel(+b.dataset.l));
+  const max = G.max || 3, n = Math.min(G.lv, max);
+  $('gLv').innerHTML = `<span class="kg-path" role="img" aria-label="التحدي ${HS.toAr(n)} من ${HS.toAr(max)}">${Array.from({ length: max }, (_, i) => `<i class="${i < n ? 'f' : ''}${i === n - 1 ? ' now' : ''}"></i>`).join('')}</span>`;
 }
 function dots() { $('gDots').innerHTML = Array.from({ length: G.roundN || ROUNDS }, (_, i) => `<i class="${i < G.round ? 'f' : ''}"></i>`).join(''); }
 /** record one finished question: firstTry = answered right with no wrong taps */
@@ -106,7 +108,7 @@ function track(firstTry) {
 function endOfRound() {
   const acc = G.hist.reduce((a, b) => a + b, 0) / Math.max(1, G.hist.length);
   HS.party();
-  if (acc >= .8 && G.lv < (G.max || 3)) { setLevel(G.lv + 1, true); setTimeout(() => say([[HS_PHRASES.levelUp[lang()], lang()]]), 400); HS.toast('⭐ مستوى جديد!'); }
+  if (acc >= .8 && G.lv < (G.max || 3)) { setLevel(G.lv + 1, true); setTimeout(() => say([[HS_PHRASES.levelUp[lang()], lang()]]), 400); HS.toast('⭐ تحدٍّ جديد أصعب قليلًا!'); }
   else if (acc < .5 && G.lv > 1) { setLevel(G.lv - 1, true); setTimeout(() => say([[HS_PHRASES.levelDown[lang()], lang()]]), 400); }
   G.round = 0; G.hist = [];
 }
@@ -256,10 +258,28 @@ function basketGame() {
 }
 
 APPS.kg = {
-  open() { HS.hydrateArt(ROOT); show('home'); refreshStars(); },
+  open(sub) {
+    const mx = APPS.kg.levels().map(x => x.max); $('kLvRange').textContent = HS.toAr(Math.min(...mx)) + '–' + HS.toAr(Math.max(...mx));
+    HS.hydrateArt(ROOT); clearTimeout(tmr); HS.stopSpeak(); $('ov').classList.remove('on');
+    const m = /^(learn|game)-([a-z]+)$/.exec(sub || '');
+    if (m && m[1] === 'learn' && SETS[m[2]]) return learn(m[2]);
+    if (m && m[1] === 'game' && ROOT.querySelector(`[data-game="${m[2]}"]`)) return startGame(m[2]);
+    show('home');
+  },
+  /** pages below the kindergarten menu, for the site header (see src/portal/nav.js) */
+  nav(sub) {
+    const m = /^(learn|game)-([a-z]+)$/.exec(sub || ''); if (!m) return [];
+    if (m[1] === 'learn' && SETS[m[2]]) return [{ route: 'app-kg-' + sub, title: learnName(m[2]) }];
+    const n = gameName(m[2]); return n ? [{ route: 'app-kg-' + sub, title: n, focus: true }] : [];
+  },
+  /** counted from the menu itself, so the card on the home page never goes out of date */
+  counts: () => ({ games: ROOT.querySelectorAll('[data-game]').length, learn: ROOT.querySelectorAll('[data-learn]').length }),
+  /** the parent can set the level of a game (otherwise it adapts by itself) */
+  levels: () => [...ROOT.querySelectorAll('[data-game]')].map(b => ({ k: b.dataset.game, name: b.querySelector('b').textContent, max: THINK_ROUNDS[b.dataset.game] ? THINK_MAX[b.dataset.game] : 3 })),
+  setLevel(profileId, k, lv) { const d = HS.data('kg', profileId); d.lv = d.lv || {}; d.lv[k] = lv; HS.save(); },
   close() { HS.stopSpeak(); clearTimeout(tmr); $('ov').classList.remove('on'); },
   report(profileId) {
-    const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'ركّبي الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'وجّهي الروبوت 🤖', story: 'رتّبي القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال' };
-    return Object.keys(names).map(k => ({ name: names[k], max: THINK_ROUNDS[k] ? THINK_MAX[k] : 3, lv: (d.lv || {})[k] || 0, c: ((d.stats || {})[k] || {}).c || 0, w: ((d.stats || {})[k] || {}).w || 0 }));
+    const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'نركّب الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'نخطّط ثم نحرّك 🤖', story: 'نرتّب القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال' };
+    return Object.keys(names).map(k => ({ k, name: names[k], max: THINK_ROUNDS[k] ? THINK_MAX[k] : 3, lv: (d.lv || {})[k] || 0, c: ((d.stats || {})[k] || {}).c || 0, w: ((d.stats || {})[k] || {}).w || 0 }));
   }
 };

@@ -5,9 +5,9 @@ window.HS_PHRASES = {
     ar: ['أحسنت!', 'ممتاز!', 'رائع!', 'برافو!', 'إجابة صحيحة!'],
     en: ['Great job!', 'Well done!', 'Super!', 'Yes!', 'Amazing!']
   },
-  praiseF: { ar: ['أحسنتِ!', 'ممتاز!', 'شاطرة!', 'برافو!', 'رائع!'] },
+  praiseF: { ar: ['ممتاز!', 'رائع!', 'برافو!', 'عمل رائع!', 'إجابة صحيحة!'] },   // kindergarten praise: fits boys and girls
   retry: { ar: 'حاول مرة ثانية', en: 'Try again' },
-  retryF: { ar: 'حاولي مرة ثانية' },
+  retryF: { ar: 'لنحاول مرة ثانية' },
   levelUp: { ar: 'مستوى جديد!', en: 'New level!' },
   levelDown: { ar: 'لنتدرّب أكثر هنا', en: "Let's practice a bit more" },
   combo: { ar: 'سلسلة رائعة!', en: 'On a roll!' }

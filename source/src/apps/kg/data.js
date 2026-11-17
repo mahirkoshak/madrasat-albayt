@@ -87,7 +87,7 @@ APPDATA.kg = {
     oddWhy: { ar: g => 'لأن البقية ' + g[0], en: g => 'The others are ' + g[1] },
     pattern: { ar: () => 'ماذا يأتي بعد ذلك؟', en: () => 'What comes next?' },
     memory: { ar: () => 'اقلبي بطاقتين وابحثي عن الأزواج', en: () => 'Flip two cards and find the pairs' },
-    basket: { ar: () => 'ضعي كل شيء في سلّته', en: () => 'Put each one in the right basket' }
+    basket: { ar: () => 'لنضع كل شيء في سلّته', en: () => 'Put each one in the right basket' }
   };
   /** every string the app can say, as [text, lang] (for tools/speech_list.js) */
   K.speakables = function () {
@@ -182,25 +182,25 @@ APPDATA.kg = {
 
   const P = K.P, W = K.WHERE;
   Object.assign(P, {
-    puzzle: { ar: () => 'ركّبي الصورة', en: () => 'Put the picture together' },
-    compose: { ar: d => 'ركّبي ' + d.ar + ' من الأشكال', en: d => 'Build a ' + d.en + ' with the shapes' },
-    where: { ar: (t, s, p) => 'ضعي ' + t[1] + ' ' + W.preps[p][0] + ' ' + W.scenes[s].ar, en: (t, s, p) => 'Put the ' + t[2] + ' ' + W.preps[p][1] + ' ' + W.scenes[s].en },
+    puzzle: { ar: () => 'هيا نركّب الصورة', en: () => 'Put the picture together' },
+    compose: { ar: d => 'لنركّب ' + d.ar + ' من الأشكال', en: d => 'Build a ' + d.en + ' with the shapes' },
+    where: { ar: (t, s, p) => 'لنضع ' + t[1] + ' ' + W.preps[p][0] + ' ' + W.scenes[s].ar, en: (t, s, p) => 'Put the ' + t[2] + ' ' + W.preps[p][1] + ' ' + W.scenes[s].en },
     wherePick: { ar: (t, s, p) => 'أين ' + t[1] + ' ' + W.preps[p][0] + ' ' + W.scenes[s].ar + '؟', en: (t, s, p) => 'Where is the ' + t[2] + ' ' + W.preps[p][1] + ' ' + W.scenes[s].en + '?' },
-    robot: { ar: () => 'وجّهي الروبوت إلى التفاحة', en: () => 'Help the robot get to the apple' },
+    robot: { ar: () => 'لنخطّط طريق الروبوت إلى التفاحة', en: () => 'Help the robot get to the apple' },
     robotStar: { ar: () => 'خذي النجمة أولًا، ثم اذهبي إلى التفاحة', en: () => 'Get the star first, then go to the apple' },
     robotStars: { ar: () => 'خذي كل النجوم، ثم اذهبي إلى التفاحة', en: () => 'Get all the stars, then go to the apple' },
-    robotLimit: { ar: n => 'عندك ' + n + (n <= 10 ? ' أسهم' : ' سهمًا') + ' فقط. اختاري أقصر طريق', en: n => 'You have only ' + n + ' arrows. Find the shortest way' },
+    robotLimit: { ar: n => 'عندك ' + n + (n <= 10 ? ' أسهم' : ' سهمًا') + ' فقط. لنجد أقصر طريق', en: n => 'You have only ' + n + ' arrows. Find the shortest way' },
     robotMissed: { ar: () => 'وصلتِ! لكن نسيتِ نجمة', en: () => 'You got there, but you missed a star' },
     notMine: { ar: () => 'هذه القطعة ليست من هذه الصورة', en: () => 'This piece is not from this picture' },
-    robotRun: { ar: () => 'اضغطي زر التشغيل', en: () => 'Press play' },
-    robotBump: { ar: () => 'أوه! اصطدم الروبوت. جرّبي طريقًا آخر', en: () => 'Oops! The robot bumped. Try another way' },
+    robotRun: { ar: () => 'الآن نضغط زر التشغيل', en: () => 'Press play' },
+    robotBump: { ar: () => 'أوه! اصطدم الروبوت. لنجرّب طريقًا آخر', en: () => 'Oops! The robot bumped. Try another way' },
     robotShort: { ar: () => 'لم يصل بعد. أضيفي أسهمًا', en: () => 'Not there yet. Add more arrows' },
-    story: { ar: () => 'رتّبي القصة: ماذا حدث أولًا؟', en: () => 'Put the story in order: what happened first?' },
+    story: { ar: () => 'لنرتّب القصة: ماذا حدث أولًا؟', en: () => 'Put the story in order: what happened first?' },
     storyNext: { ar: () => 'ماذا يحدث بعد ذلك؟', en: () => 'What happens next?' },
-    up: { ar: () => 'جرّبي في الأعلى', en: () => 'Try near the top' },
-    mid: { ar: () => 'جرّبي في الوسط', en: () => 'Try in the middle' },
-    down: { ar: () => 'جرّبي في الأسفل', en: () => 'Try near the bottom' },
-    brk: { ar: () => 'أحسنتِ اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة', en: () => 'Great work today! Time for a break away from the screen' }
+    up: { ar: () => 'لنجرّب في الأعلى', en: () => 'Try near the top' },
+    mid: { ar: () => 'لنجرّب في الوسط', en: () => 'Try in the middle' },
+    down: { ar: () => 'لنجرّب في الأسفل', en: () => 'Try near the bottom' },
+    brk: { ar: () => 'عمل رائع اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة', en: () => 'Great work today! Time for a break away from the screen' }
   });
   const base = K.speakables;
   K.speakables = function () {

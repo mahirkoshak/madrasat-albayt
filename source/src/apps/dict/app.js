@@ -52,10 +52,54 @@ const LEVEL = { 3: '🟢 سهل', 4: '🟡 متوسط', 5: '🔴 صعب' };
 function sayEn(t) { HS.speak([[t, 'en']]); }   // the device's English voice, for English words only
 function refreshStars() { const s = $('dStars'); if (s) s.textContent = ar(HS.stars()); }
 HS.on('stars', refreshStars);
-let back = [];   // simple history for the in-app back button
-function go(fn, ...args) { back.push([fn, args]); fn(...args); window.scrollTo(0, 0); }
-function goBack() { back.pop(); const p = back.pop(); if (p) go(p[0], ...p[1]); else go(home); }
-const backBtn = () => `<button type="button" class="d-back" data-a="back">→ رجوع</button>`;
+/* every page is a route (refresh, Back and Forward work; the site header has the only Back button):
+     #app-dict · -topics · -t-<topic> · -az · -l-<letter> · -mine · -q-<search> · -w-<word id> · -practice[-<word id>] · -spell · -done */
+let lastIds = null, keepTyping = false;   // keepTyping: the search box keeps the cursor while results update   // the list a word was opened from (for ‹ › between words); not part of the address
+const enc = encodeURIComponent, dec = s => { try { return decodeURIComponent(s); } catch (e) { return s; } };
+function routeFor(fn, args) {
+  if (fn === home) return '';
+  if (fn === topics) return 'topics';
+  if (fn === az) return 'az';
+  if (fn === practice) return 'practice' + (args[0] ? '-' + enc(args[0]) : '');
+  if (fn === word) { lastIds = args[1] || null; return 'w-' + enc(args[0]); }
+  if (fn === list) return args[0] === 'mine' ? 'mine' : args[0] + '-' + enc(args[1]);
+  if (typeof spellStart === 'function' && fn === spellStart) return 'spell';
+  if (typeof spellList === 'function' && fn === spellList) return 'done';
+  return '';
+}
+function go(fn, ...args) { const r = routeFor(fn, args); HS.nav.go('app-dict' + (r ? '-' + r : '')); }
+/** draw the page of a route (called by APPS.dict.open) */
+function show(sub) {
+  let m;
+  if (!sub) return home();
+  if (sub === 'topics') return topics();
+  if (sub === 'az') return az();
+  if (sub === 'mine') return list('mine');
+  if (sub === 'spell') return spellStart();
+  if (sub === 'done') return spellList();
+  if ((m = /^practice(?:-(.+))?$/.exec(sub))) return practice(m[1] && BY_ID[dec(m[1])] ? dec(m[1]) : undefined);
+  if ((m = /^w-(.+)$/.exec(sub)) && BY_ID[dec(m[1])]) { const id = dec(m[1]); return word(id, lastIds && lastIds.includes(id) ? lastIds : null); }
+  if ((m = /^([tlq])-(.+)$/.exec(sub)) && (m[1] !== 't' || TOPICS[dec(m[2])])) { const k = keepTyping; keepTyping = false; return list(m[1], dec(m[2]), k); }
+  home();
+}
+/** where a page sits below the dictionary, for the site header (see src/portal/nav.js) */
+function chainFor(sub) {
+  const R = s => 'app-dict-' + s; let m;
+  if (!sub) return [];
+  if (sub === 'topics') return [{ route: R(sub), title: 'المواضيع' }];
+  if (sub === 'az') return [{ route: R(sub), title: 'الحروف' }];
+  if (sub === 'mine') return [{ route: R(sub), title: 'كلماتي' }];
+  if (sub === 'spell') return [{ route: R(sub), title: 'تحدّي الإملاء', focus: true }];
+  if (sub === 'done') return [{ route: R(sub), title: 'كلمات أتقنتها' }];
+  if ((m = /^practice/.exec(sub))) return [{ route: R(sub), title: 'تدرّب', focus: true }];
+  if ((m = /^t-(.+)$/.exec(sub)) && TOPICS[dec(m[1])]) return [{ route: R('topics'), title: 'المواضيع' }, { route: R(sub), title: TOPICS[dec(m[1])][2] }];
+  if ((m = /^l-(.+)$/.exec(sub))) return [{ route: R('az'), title: 'الحروف' }, { route: R(sub), title: dec(m[1]) }];
+  if ((m = /^q-(.+)$/.exec(sub))) return [{ route: R(sub), title: 'بحث: ' + dec(m[1]) }];
+  if ((m = /^w-(.+)$/.exec(sub)) && BY_ID[dec(m[1])]) { const x = BY_ID[dec(m[1])];   // a word sits in its topic
+    return [{ route: R('topics'), title: 'المواضيع' }, { route: R('t-' + enc(x.t)), title: TOPICS[x.t] ? TOPICS[x.t][2] : x.t }, { route: R(sub), title: x.w }]; }
+  return [];
+}
+const backBtn = () => '';   // Back lives in the site header
 /** question text: Arabic, plus an English line in Arabic mode (these children read English more easily) */
 const askT = (a, e) => AR() ? `${a}<small dir="ltr">${e}</small>` : a;
 const sayBtn = (t, cls = '') => AR() && /[؀-ۿ]/.test(t) ? '' : `<button type="button" class="d-say ${cls}" data-say="${esc(t)}" aria-label="استمع للنطق">🔊</button>`;
@@ -101,7 +145,7 @@ function home() {
     <button type="button" class="d-tile" style="background:var(--t-purple)" data-a="az"><span class="em" dir="${tDir()}">${AR() ? 'أ–ي' : 'A–Z'}</span><b>الحروف</b><small dir="ltr">Letters</small></button>
   </div>`;
   $('dSearch').onsubmit = e => { e.preventDefault(); const q = $('dQ').value.trim(); if (q) go(list, 'q', q); };
-  $('dQ').oninput = () => { const q = $('dQ').value.trim(); if (q.length >= 2) { back.push([list, ['q', q]]); list('q', q, true); } };
+  $('dQ').oninput = () => { const q = $('dQ').value.trim(); if (q.length >= 2) { keepTyping = true; HS.nav.go('app-dict-q-' + enc(q)); } };
 }
 function search(q) {
   const en = q.toLowerCase(), a = normAr(q).replace(/^ال/, '');
@@ -124,8 +168,8 @@ function list(kind, v, keepFocus) {
     ${ws.length ? `<div class="d-list">${ws.map(x => `<button type="button" class="d-row" data-w="${esc(x.id)}"><span class="em">${x.em}</span><span class="tg" dir="${tDir()}">${esc(tgt(x))}</span><span class="sc" dir="${sDir()}">${esc(src(x))}</span><span class="st" aria-label="مستوى الحفظ">${learned(x.id) ? '✅' : d.mine.includes(x.id) ? '⭐' : ''}</span></button>`).join('')}</div>`
       : `<p class="d-empty">${kind === 'mine' ? 'لم تحفظ كلمات بعد. افتح أي كلمة واضغط ⭐ لتضيفها هنا.' : 'لم أجد هذه الكلمة. جرّب كلمة أخرى أو تأكّد من الكتابة.'}</p>`}`;
   M().dataset.ids = ids.join('\n');
-  const f = $('dSearch'); if (f) { f.onsubmit = e => { e.preventDefault(); const q = $('dQ').value.trim(); if (q) { back.pop(); go(list, 'q', q); } };
-    $('dQ').oninput = () => { const q = $('dQ').value.trim(); if (q.length >= 2) { back.pop(); back.push([list, ['q', q]]); list('q', q, true); } };
+  const f = $('dSearch'); if (f) { f.onsubmit = e => { e.preventDefault(); const q = $('dQ').value.trim(); if (q) HS.nav.go('app-dict-q-' + enc(q), true); };
+    $('dQ').oninput = () => { const q = $('dQ').value.trim(); if (q.length >= 2) { try { history.replaceState(null, '', '#app-dict-q-' + enc(q)); } catch (e) {} list('q', q, true); } };
     if (keepFocus) { const i = $('dQ'); i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }
 }
 function topics() {
@@ -216,7 +260,7 @@ function nextItem() {
   if (mode === 'pick' && T.length < (AR() ? 3 : 4)) mode = 'tiles';
   if (mode === 'pick' && misspell(T).length < 2) mode = 'tiles';
   P.cur = { x, mode, first: true }; ROOT._dbg = T;   // read by the automated tests
-  const head = `<div class="d-qhead"><span>${ar(P.i + 1)} / ${ar(P.ids.length)}${AR() ? ' · 📝 عربي' : ''}</span>${P.again ? '<span>🔁 مرة ثانية</span>' : ''}<button type="button" class="d-x" data-a="home" aria-label="إنهاء">✕</button></div>`;
+  const head = `<div class="d-qhead"><span>${ar(P.i + 1)} / ${ar(P.ids.length)}${AR() ? ' · 📝 عربي' : ''}</span>${P.again ? '<span>🔁 مرة ثانية</span>' : ''}</div>`;   // leave with the site header's Back
   // the clue must not give the spelling away: in English mode hide the word (and its forms) inside the definition
   const hide = s => AR() ? esc(s) : esc(s).replace(new RegExp('\\b' + x.w.split(' ')[0].slice(0, Math.max(3, x.w.split(' ')[0].length - 2)).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\w*', 'gi'), '___');
   const clue = `<div class="d-clue"><span class="em">${x.em}</span><b dir="${sDir()}">${esc(src(x))}</b><p dir="ltr">${hide(x.def)}</p></div>`;
@@ -298,9 +342,7 @@ ROOT.addEventListener('click', e => {
   const t = e.target.closest('button,[data-w]'); if (!t || !ROOT.contains(t)) return;
   const ds = t.dataset;
   if (ds.say) { e.stopPropagation(); return sayEn(ds.say); }
-  if (t.id === 'dHome') { back = []; return go(home); }
-  if (ds.a === 'back') return goBack();
-  if (ds.a === 'home') { back = []; return go(home); }
+  if (ds.a === 'home') return go(home);
   if (ds.a === 'practice') return go(practice);
   if (ds.a === 'mine') return go(list, 'mine');
   if (ds.a === 'topics') return go(topics);
@@ -308,13 +350,13 @@ ROOT.addEventListener('click', e => {
   if (ds.a === 'dice') {          // 🎲 another random word: on the home card it swaps the card, on a word page it opens the new word
     e.stopPropagation(); HS.fx('tap');
     if (t.closest('.d-wod')) { wodPick = randomWord(wordOfDay().id).id; return home(); }
-    const cur = M().querySelector('[data-mine]'); back.pop(); return go(word, randomWord(cur && cur.dataset.mine).id);
+    const cur = M().querySelector('[data-mine]'); return go(word, randomWord(cur && cur.dataset.mine).id);
   }
   if (ds.mode) { D().mode = ds.mode; HS.save(); HS.fx('tap'); return home(); }
   if (ds.lv !== undefined) { D().diff = +ds.lv; wodPick = null; HS.save(); return home(); }
   if (ds.t) return go(list, 't', ds.t);
   if (ds.l) return go(list, 'l', ds.l);
-  if (ds.navW) { back.pop(); return go(word, ds.navW, (M().dataset.ids || '').split('\n')); }
+  if (ds.navW) return go(word, ds.navW, (M().dataset.ids || '').split('\n'));
   if (ds.w) return go(word, ds.w, t.classList.contains('d-row') ? (M().dataset.ids || '').split('\n') : null);
   if (ds.mine) { const d = D(), i = d.mine.indexOf(ds.mine); if (i >= 0) d.mine.splice(i, 1); else { d.mine.push(ds.mine); HS.toast('⭐ أُضيفت إلى كلماتي'); } HS.save(); return word(ds.mine, (M().dataset.ids || '').split('\n')); }
   if (ds.one) return go(practice, ds.one);
@@ -324,7 +366,8 @@ ROOT.addEventListener('click', e => {
 });
 
 APPS.dict = {
-  open() { refreshStars(); back = []; wodPick = null; go(home); },
+  open(sub) { refreshStars(); show(sub || ''); if (!keepTyping) window.scrollTo(0, 0); },
+  nav: chainFor,
   close() { HS.stopSpeak(); },
   /** parent page: words seen / learned and accuracy, for each direction */
   report(pid) {
