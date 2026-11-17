@@ -18,6 +18,7 @@
   li{margin:4px 0}
   label{display:block;font-weight:700;margin:12px 0 4px}
   label.chk{display:flex;gap:8px;align-items:center;font-weight:600}
+  .note{font-size:.9rem;color:#555}.linkbtn{background:none;border:0;color:#1c7ed6;text-decoration:underline;cursor:pointer;font:inherit;padding:0}
   input,select{font:inherit;width:100%;min-height:46px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink)}
   input:focus,select:focus{outline:none;border-color:var(--blue)}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -59,6 +60,8 @@
         <option value="northeurope">North Europe</option><option value="westus2">West US 2</option><option value="southeastasia">Southeast Asia</option>
         <option value="centralindia">Central India</option><option value="francecentral">France Central</option></select></div>
     </div>
+    <label class="chk"><input type="checkbox" id="remember"> تذكّر المفتاح والمنطقة في هذا المتصفح</label>
+    <p class="note" id="rememberNote" hidden>المفتاح محفوظ في هذا المتصفح فقط. <button type="button" id="forget" class="linkbtn">انسَ المفتاح</button></p>
     <div class="row">
       <div><label for="voiceAr">الصوت العربي</label><select id="voiceAr" dir="ltr">
         <option value="ar-SA-ZariyahNeural">Zariyah: سعودية، أنثى</option><option value="ar-SA-HamedNeural">Hamed: سعودي، ذكر</option>
@@ -167,6 +170,17 @@ $('go').onclick = async () => {
   } catch (e) { msg(e.message === 'Failed to fetch' ? 'تعذّر الاتصال بـ Azure. تأكد من المنطقة والإنترنت.' : e.message, 'err'); }
   $('go').disabled = false;
 };
+/* remember the key (on this browser only, in localStorage) when the box is ticked */
+(() => {
+  const K = 'madrasat-azure', store = v => { try { v ? localStorage.setItem(K, JSON.stringify(v)) : localStorage.removeItem(K); } catch (e) {} };
+  let saved = null; try { saved = JSON.parse(localStorage.getItem(K) || 'null'); } catch (e) {}
+  const save = () => { if ($('remember').checked && $('key').value.trim()) store({ key: $('key').value.trim(), region: $('region').value }); };
+  if (saved && saved.key) { $('key').value = saved.key; if (saved.region) $('region').value = saved.region; $('remember').checked = true; $('rememberNote').hidden = false; }
+  $('remember').onchange = () => { if ($('remember').checked) { save(); $('rememberNote').hidden = !$('key').value.trim(); } else { store(null); $('rememberNote').hidden = true; } };
+  $('key').addEventListener('input', () => { save(); if ($('remember').checked) $('rememberNote').hidden = !$('key').value.trim(); });
+  $('region').addEventListener('change', save);
+  $('forget').onclick = () => { store(null); $('key').value = ''; $('remember').checked = false; $('rememberNote').hidden = true; };
+})();
 </script>
 </body>
 </html>
