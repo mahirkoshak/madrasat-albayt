@@ -222,6 +222,8 @@ function renderTest() {
 let Q = null;
 /** thinking labs per unit: LABS[unitId][labId] = { title, em, sub, kind: 'think', run(el, lab) } (see labs-*.js) */
 const LABS = {};
+/** written hints per unit: HINTS[unitId][qid] = [hint1, hint2, { option index: misconception }] (hints-<unit>.js) */
+const HINTS = {};
 function pickQuestions(mode, l) {
   const all = S.u.questions, byId = id => all.find(q => q.id === id);
   if (mode === 'lesson') return HS.srs.choose(S.ns, qIds(l), 8).map(byId);
@@ -336,6 +338,8 @@ function termOf(text) {   // the glossary entry an option names, if any
   return S.u.glossary.find(g => norm(g.term) === t || bare(g.term) === bare(t)) || null;
 }
 function coachHint(q, n, pickedText, used, i) {
+  const h = (HINTS[S.id] || {})[q.id];   // written hints fill in what the question itself does not have
+  if (h) q = Object.assign({ hint1: h[0], hint2: h[1], mis: h[2] }, q);
   const mis = q.mis && q.mis[i];   // authored: what this wrong choice usually means
   const rightWords = q.t === 'tf' ? '' : bare(q.t === 'pic' && q.labels ? q.labels[q.a] : q.o[q.a]);
   const safe = t => t && (!rightWords || !norm(t).includes(rightWords));

@@ -354,3 +354,176 @@ function foodWebLab(el, lab) {
 
 LABS.g3sciearth = { erosion: { id: 'erosion', title: '🌧️ مختبر التعرية', em: '🌧️⛰️', sub: 'توقّع، جرّب، فسّر', kind: 'think', lesson: 'l2', run: erosionLab, challenges: ER.C } };
 LABS.g4scieco = { web: { id: 'web', title: '🕸️ صدمة الشبكة الغذائية', em: '🕸️🦅', sub: 'ماذا يحدث إذا تغيّر مخلوق واحد؟', kind: 'think', lesson: 'l2', run: foodWebLab, challenges: FW.C, spread: (s, g) => FW.spread(s, g) } };
+
+/* ============================================================
+   🔎 OUTBREAK DETECTIVE (grade 4, human health, lessons 1–2: diseases, infection)
+   Fictional cases. A register lists sick AND healthy children and what each did. The child predicts how the
+   illness spread, finds the one thing every sick child shares and no healthy child has (feedback names a real
+   counter-example from the register), names the route, then chooses how to stop it.
+   Routes are the lesson's five ways of infection; the last case is not infectious at all (lesson 1).
+   Every case is marked for educator review: the cases are invented, the facts come from the lessons.
+   ============================================================ */
+const OB = {
+  ROUTES: ['الاتصال المباشر', 'الهواء (الرذاذ)', 'الطعام والشراب', 'الأدوات الملوثة', 'النواقل (حشرات وحيوانات)', 'ليس مرضًا معديًا'],
+  C: [
+    { id: 'ob-trip', route: 2, difficulty: 1, review: true,
+      title: 'رحلة المزرعة', report: 'بعد رحلة المزرعة، أصيب عدد من الطلاب بإسهال وقيء في اليوم التالي.',
+      cols: ['الحافلة', 'الغداء', 'من أين شرب؟'],
+      rows: [['سلمى', 'أ', 'فطيرة', 'خزّان مكشوف', 1], ['يوسف', 'ب', 'شطيرة', 'خزّان مكشوف', 1], ['ريم', 'أ', 'شطيرة', 'خزّان مكشوف', 1],
+             ['عمر', 'ب', 'فطيرة', 'قارورة مغلقة', 0], ['لين', 'أ', 'فطيرة', 'قارورة مغلقة', 0], ['خالد', 'ب', 'شطيرة', 'قارورة مغلقة', 0]],
+      key: 2,
+      learningObjective: 'يتعرّف انتقال العدوى بالطعام والشراب من مقارنة المرضى بالأصحّاء.', cognitiveSkill: 'إيجاد العامل المشترك (مقارنة بمجموعة ضابطة)',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درس «العدوى وانتقالها»: الطعام والشراب', 
+      prompt: 'لماذا نقول إن المرض انتقل بالشراب وليس بالغداء؟',
+      correctAnswer: 'لأن كل من مرض شرب من الخزّان المكشوف، ولم يمرض أحد شرب من قارورة مغلقة',
+      distractors: ['لأن الفطيرة لا تنقل المرض أبدًا', 'لأن الطلاب في الحافلة أ مرضوا كلهم', 'لأن الإسهال يأتي من التعب في الرحلة'],
+      misconceptions: ['الطعام قد ينقل المرض أيضًا. لكن انظر إلى الجدول: هل كل من أكل الفطيرة مرض؟', 'لين ركبت الحافلة أ ولم تمرض. فالحافلة ليست السبب.', 'لو كان السبب التعب لمرض الجميع، فكلهم ذهبوا إلى الرحلة.'],
+      hint1: 'قارن عمودًا عمودًا: أيّ عمود يفصل المرضى عن الأصحّاء تمامًا؟', hint2: 'انظر إلى عمود الشراب.',
+      explanation: 'كل المرضى شربوا من الخزّان المكشوف، وكل من شرب من قارورة مغلقة بقي سليمًا. الماء الملوث والأطعمة المكشوفة من طرق انتقال العدوى.',
+      stop: { q: 'كيف نمنع تكرار ذلك في الرحلة القادمة؟', a: 'نشرب من ماء نظيف مغلق، ولا نأكل الأطعمة المكشوفة', o: ['نجلس في الحافلة ب فقط', 'لا نأكل الغداء في الرحلات', 'نلبس الكمامة في الحافلة'],
+        mis: ['الحافلة لم تكن السبب: مرض طلاب من الحافلتين.', 'الغداء لم يكن السبب هنا، والجسم يحتاج الطعام.', 'المرض لم ينتقل بالهواء هنا، بل بالشراب.'] },
+      transferPrompt: 'لماذا يُطلب منّا ألّا نشتري الأطعمة المكشوفة من الباعة؟' },
+    { id: 'ob-class', route: 1, difficulty: 1, review: true,
+      title: 'الفصل الرابع', report: 'كان أحد الطلاب يعطس ويسعل دون منديل. بعد أيام أصيب بعض زملائه بحرارة وعطاس وسعال.',
+      cols: ['أين يجلس؟', 'وجبة المقصف', 'شارك الأقلام؟'],
+      rows: [['نورة', 'بجانبه', 'تمر', 'نعم', 1], ['فهد', 'أمامه', 'خبز', 'لا', 1], ['هيا', 'بجانبه', 'خبز', 'لا', 1],
+             ['سعد', 'آخر الفصل', 'تمر', 'نعم', 0], ['جود', 'آخر الفصل', 'خبز', 'نعم', 0], ['ماجد', 'آخر الفصل', 'تمر', 'لا', 0]],
+      key: 0, same: { 'بجانبه': 'near', 'أمامه': 'near' },
+      learningObjective: 'يتعرّف انتقال العدوى بالرذاذ في الهواء عند العطاس والسعال.', cognitiveSkill: 'إيجاد العامل المشترك وربطه بالسبب',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درس «العدوى وانتقالها»: الهواء', 
+      prompt: 'لماذا مرض من جلس قريبًا من الطالب المريض؟',
+      correctAnswer: 'لأن الرذاذ خرج مع العطاس والسعال ووصل إلى عيون القريبين منه وأنوفهم وأفواههم',
+      distractors: ['لأنهم شاركوه الأقلام', 'لأنهم أكلوا التمر من المقصف', 'لأن المكان القريب من السبورة بارد'],
+      misconceptions: ['جود شاركت الأقلام ولم تمرض، وفهد لم يشارك ومرض.', 'فهد وهيا أكلا خبزًا ومرضا، وماجد أكل تمرًا ولم يمرض.', 'البرد لا يسبّب العدوى؛ الذي ينقلها شيء خرج من الطالب المريض.'],
+      hint1: 'أيّ عمود يفصل المرضى عن الأصحّاء؟', hint2: 'ماذا يخرج من الفم والأنف عند العطاس دون منديل؟',
+      explanation: 'عند السعال أو العطاس ينتقل الرذاذ في الهواء فيصل إلى عين الشخص القريب أو أنفه أو فمه. لذلك مرض الجالسون بقربه.',
+      stop: { q: 'ماذا كان يجب أن يفعل الطالب المريض؟', a: 'يغطّي فمه وأنفه بمنديل ورقي عند العطاس والسعال', o: ['يتوقّف عن شرب الماء', 'يجلس في آخر الفصل ويعطس كما يريد', 'يشارك منديله مع زملائه'],
+        mis: ['الماء لا علاقة له بالرذاذ، والجسم يحتاج الماء.', 'الرذاذ قد يصل إلى غيره أينما جلس.', 'المنديل المستعمل يحمل الجراثيم.'] },
+      transferPrompt: 'لماذا يرتاح المريض في البيت ولا يخرج إلا للضرورة؟' },
+    { id: 'ob-pool', route: 3, difficulty: 2, review: true,
+      title: 'نادي السباحة', report: 'ظهر عند بعض أعضاء نادي السباحة طفح جلدي بين أصابع القدم.',
+      cols: ['أيّ يوم يسبح؟', 'نعال المسبح', 'يجفّف قدميه؟'],
+      rows: [['زياد', 'السبت', 'نعال النادي المشترك', 'أحيانًا', 1], ['دانة', 'الإثنين', 'نعال النادي المشترك', 'دائمًا', 1], ['بدر', 'الإثنين', 'نعال النادي المشترك', 'أحيانًا', 1],
+             ['رهف', 'السبت', 'نعاله الخاصة', 'أحيانًا', 0], ['تركي', 'الإثنين', 'نعاله الخاصة', 'دائمًا', 0], ['ملك', 'السبت', 'نعالها الخاصة', 'دائمًا', 0]],
+      key: 1, same: { 'نعاله الخاصة': 'own', 'نعالها الخاصة': 'own' },
+      learningObjective: 'يتعرّف انتقال العدوى باستعمال أدوات الآخرين.', cognitiveSkill: 'إيجاد العامل المشترك وتطبيقه على العادات الشخصية',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درسا «الأمراض» (القدم الرياضي) و«العدوى وانتقالها» (الأدوات الملوثة)', 
+      prompt: 'لماذا أصيب من لبس نعال النادي المشترك؟',
+      correctAnswer: 'لأن الأدوات المشتركة تنقل العدوى من شخص إلى آخر',
+      distractors: ['لأنهم سبحوا يوم الإثنين', 'لأن ماء المسبح يسبّب الطفح لكل من يسبح', 'لأنهم لا يجفّفون أقدامهم أبدًا'],
+      misconceptions: ['زياد سبح يوم السبت ومرض، وتركي سبح يوم الإثنين ولم يمرض.', 'كلهم سبحوا في الماء نفسه، ولم يمرض الجميع.', 'دانة تجفّف قدميها دائمًا ومرضت. فهذا ليس الفرق.'],
+      hint1: 'كلهم سبحوا. ما الشيء الذي استعمله المرضى فقط؟', hint2: 'من طرق انتقال العدوى: استعمال أدوات الآخرين.',
+      explanation: 'كل المرضى لبسوا نعالًا مشتركة، وكل من لبس نعاله الخاصة بقي سليمًا. الأدوات المتسخة وأدوات الآخرين تنقل العدوى، والطفح بين الأصابع ينتشر في الأماكن الدافئة التي يكثر فيها التعرّق.',
+      stop: { q: 'ما أفضل نصيحة لأعضاء النادي؟', a: 'كل شخص يستعمل نعاله ومنشفته الخاصة', o: ['يسبح الجميع يوم السبت فقط', 'نتوقّف عن السباحة', 'نتبادل النعال بعد كل سباحة'],
+        mis: ['اليوم لم يكن السبب: مرض أعضاء من اليومين.', 'السباحة رياضة مفيدة، والمشكلة في الأدوات المشتركة.', 'تبادل النعال هو الذي نقل العدوى.'] },
+      transferPrompt: 'لماذا يكون لكل فرد في البيت فرشاة أسنان خاصة به؟' },
+    { id: 'ob-camp', route: 4, difficulty: 2, review: true,
+      title: 'مخيّم البركة', report: 'في مخيّم قرب بركة ماء، أصيب بعض المخيّمين بالحمّى بعد أيام. لاحظوا لسعات بعوض على أذرعهم.',
+      cols: ['أين نام؟', 'العشاء', 'من أين شرب؟'],
+      rows: [['حمد', 'خارج الخيمة قرب البركة', 'أرز', 'قارورة', 1], ['شهد', 'خارج الخيمة قرب البركة', 'دجاج', 'قارورة', 1], ['ناصر', 'خارج الخيمة قرب البركة', 'أرز', 'إبريق المخيّم', 1],
+             ['أروى', 'داخل الخيمة المغلقة', 'أرز', 'إبريق المخيّم', 0], ['سامي', 'داخل الخيمة المغلقة', 'دجاج', 'قارورة', 0], ['غدير', 'داخل الخيمة المغلقة', 'دجاج', 'إبريق المخيّم', 0]],
+      key: 0,
+      learningObjective: 'يتعرّف النواقل الحيوية (البعوض) طريقًا لانتقال العدوى.', cognitiveSkill: 'ربط الدليل (اللسعات) بالعامل المشترك',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درس «العدوى وانتقالها»: النواقل والملاريا', 
+      prompt: 'لماذا نقول إن البعوض هو الذي نقل المرض؟',
+      correctAnswer: 'لأن المرضى ناموا في الخارج حيث البعوض، والبعوض من نواقل الأمراض',
+      distractors: ['لأن المرضى أكلوا الأرز', 'لأن الإبريق كان ملوثًا', 'لأن الحمّى تنتقل بالمصافحة'],
+      misconceptions: ['شهد أكلت الدجاج ومرضت، وأروى أكلت الأرز ولم تمرض.', 'حمد وشهد شربا من قارورة ومرضا، وأروى شربت من الإبريق ولم تمرض.', 'لو انتقلت بالمصافحة لما كان مكان النوم هو الفرق. ولاحظ اللسعات.'],
+      hint1: 'أين كان المرضى ليلًا؟', hint2: 'ما الحشرة التي تلسع وتنقل أمراضًا مثل الملاريا؟',
+      explanation: 'كل المرضى ناموا خارج الخيمة قرب البركة، وكل من نام داخل الخيمة المغلقة بقي سليمًا. البعوض من النواقل الحيوية التي تحمل مسبّبات الأمراض وتنقلها.',
+      stop: { q: 'ما الذي يحمي المخيّمين في المرة القادمة؟', a: 'النوم داخل الخيمة المغلقة بعيدًا عن البعوض', o: ['تغيير العشاء إلى الدجاج', 'الشرب من القوارير فقط', 'النوم خارج الخيمة قرب البركة'],
+        mis: ['العشاء لم يكن الفرق بين المرضى والأصحّاء.', 'من شربوا من القوارير مرضوا أيضًا.', 'هذا هو المكان الذي كثرت فيه اللسعات.'] },
+      transferPrompt: 'الكلاب والفئران والطيور والذباب نواقل أيضًا. كيف نحمي طعامنا من الذباب؟' },
+    { id: 'ob-sugar', route: 5, difficulty: 3, review: true,
+      title: 'هل ينتقل؟', report: 'عرف الطلاب أن زميلتهم مصابة بالسكري، فقال بعضهم: «لا تصافحوها حتى لا نمرض». مرّ شهر.',
+      cols: ['صافحها؟', 'جلس بجانبها؟', 'لعب معها؟'],
+      rows: [['أمل', 'نعم', 'نعم', 'نعم', 0], ['مشاري', 'نعم', 'لا', 'نعم', 0], ['وعد', 'لا', 'نعم', 'نعم', 0],
+             ['راشد', 'نعم', 'نعم', 'لا', 0], ['لمى', 'لا', 'لا', 'نعم', 0], ['عبدالله', 'نعم', 'نعم', 'نعم', 0]],
+      key: -1,
+      learningObjective: 'يميّز المرض غير المعدي ويصحّح فكرة خاطئة شائعة.', cognitiveSkill: 'استخدام الدليل لرفض فرضية',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درس «الأمراض»: السكري مرض غير معدٍ', 
+      prompt: 'لماذا لم يمرض أحد ممّن صافحها؟',
+      correctAnswer: 'لأن السكري مرض غير معدٍ؛ سببه خلل في مستوى الأنسولين داخل الجسم',
+      distractors: ['لأنهم غسلوا أيديهم بعد المصافحة', 'لأن السكري ينتقل بالهواء فقط', 'لأن الشهر مدة قصيرة'],
+      misconceptions: ['حتى من غير غسل اليدين لا ينتقل هذا المرض. ما سببه؟', 'لو انتقل بالهواء لمرض من جلس بجانبها.', 'الأمراض المعدية التي درسناها تظهر في أيام. والسكري سببه داخل الجسم.'],
+      hint1: 'انظر: هل في الجدول أي مريض؟', hint2: 'ما سبب السكري: جرثومة أم شيء داخل الجسم؟',
+      explanation: 'لم يمرض أحد مهما فعل، لأن السكري مرض غير معدٍ: ينتج عن خلل في مستوى الأنسولين الذي يفرزه البنكرياس، ولا ينتقل من شخص إلى آخر.',
+      stop: { q: 'ماذا نقول للطلاب؟', a: 'صافحوها والعبوا معها كالعادة، فالسكري لا ينتقل', o: ['ابتعدوا عنها حتى تشفى', 'ضعوا الكمامة عندما تكونون معها', 'لا تأكلوا معها في المقصف'],
+        mis: ['الابتعاد عنها يجرحها ولا يحمي أحدًا: السكري لا ينتقل.', 'الكمامة تحمي من الرذاذ في الأمراض المعدية، والسكري ليس منها.', 'الأكل معها لا ينقل السكري.'] },
+      transferPrompt: 'اذكر مرضًا آخر غير معدٍ من الدرس.' }
+  ]
+};
+function outbreakLab(el, lab) {
+  const r = labRec(lab.id);
+  const valOf = (c, row, k) => { const v = row[k + 1]; return (c.same && c.same[v]) || v; };
+  const intro = () => {
+    el.innerHTML = `<div class="card lab"><h2>🔎 محقّق العدوى</h2>
+      <p class="lead">في كل قضية مرض بعض الناس. اقرأ السجلّ وقارن <b>المرضى</b> بـ<b>الأصحّاء</b>: ما الشيء الذي يشترك فيه كل المرضى ولا يوجد عند أيّ سليم؟</p>
+      <p class="lab-note">القضايا والأسماء خيالية. المعلومات من دروس الوحدة.</p>
+      <ol class="lab-list">${OB.C.map(c => `<li class="${r.done.includes(c.id) ? 'ok' : ''}">${r.done.includes(c.id) ? '✅' : '🗂️'} ${c.title}</li>`).join('')}</ol>
+      <div class="row center"><button type="button" class="btn" id="labGo">${r.done.length ? 'القضية التالية' : 'افتح القضية الأولى'}</button></div></div>`;
+    const i = OB.C.findIndex(c => !r.done.includes(c.id));
+    $('labGo').onclick = () => caseView(OB.C[i < 0 ? 0 : i]);
+  };
+  function caseView(c) {
+    const sick = c.rows.filter(x => x[4]), well = c.rows.filter(x => !x[4]);
+    el.innerHTML = `<div class="card lab">${labSteps(0)}<h2>🗂️ ${c.title}</h2><p class="ob-report">${c.report}</p>
+      <fieldset class="lab-pred"><legend>توقّع قبل أن تفتح السجلّ: كيف انتقل المرض؟</legend>
+        <div class="col">${OB.ROUTES.map((t, i) => `<button type="button" class="btn sec" data-pr="${i}" aria-pressed="false">${t}</button>`).join('')}</div></fieldset>
+      <div class="row center"><button type="button" class="btn" id="labRun" disabled>📋 افتح السجلّ</button></div><div class="lab-res"></div></div>`;
+    let pred = null;
+    el.querySelectorAll('[data-pr]').forEach(b => b.onclick = () => { pred = +b.dataset.pr; el.querySelectorAll('[data-pr]').forEach(x => { x.setAttribute('aria-pressed', x === b); x.classList.toggle('on', x === b); }); $('labRun').disabled = false; });
+    $('labRun').onclick = () => {
+      $('labRun').disabled = true; el.querySelectorAll('[data-pr]').forEach(x => x.disabled = true); r.runs++;
+      el.querySelector('.lab-steps').outerHTML = labSteps(1);
+      const res = el.querySelector('.lab-res');
+      res.innerHTML = `<div class="ob-wrap"><table class="ob-t"><caption>سجلّ القضية</caption><thead><tr><th scope="col">الاسم</th><th scope="col">الحالة</th>${c.cols.map((h, k) => `<th scope="col"><button type="button" class="ob-col" data-k="${k}" aria-pressed="false">${h}</button></th>`).join('')}</tr></thead>
+        <tbody>${c.rows.map(x => `<tr class="${x[4] ? 'sick' : ''}"><th scope="row">${x[0]}</th><td class="st">${x[4] ? '🤒 مريض' : '🙂 سليم'}</td>${c.cols.map((_, k) => `<td data-k="${k}">${x[k + 1]}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+        <p class="ob-ask" id="obAsk"><b>${c.key < 0 ? 'هل يشترك المرضى في شيء؟ اضغط على العمود الذي يفصل المرضى عن الأصحّاء، أو اختر:' : 'اضغط على العمود الذي يفصل المرضى عن الأصحّاء:'}</b></p>
+        ${c.key < 0 ? '<div class="row center"><button type="button" class="btn sec" id="obNone">لا يوجد مريض أصلًا</button></div>' : ''}
+        <div class="coach" id="obCoach" role="status" hidden></div>`;
+      let tries = 0;
+      const found = () => {
+        el.querySelectorAll('.ob-col,#obNone').forEach(x => x.disabled = true); $('obCoach').hidden = true;
+        if (c.key >= 0) el.querySelectorAll(`td[data-k="${c.key}"]`).forEach(td => td.classList.add('key'));
+        el.querySelector('.lab-steps').outerHTML = labSteps(2);
+        const ok = pred === c.route; r.pred++; if (ok) r.predOk++; if (tries === 0) star(1); HS.save();
+        res.insertAdjacentHTML('beforeend', `<div class="lab-cmp ${ok ? 'ok' : ''}"><b>${c.key < 0 ? 'لم يمرض أحد مهما فعل.' : `كل المرضى يشتركون في «${c.cols[c.key]}»، ولا يشترك فيه أي سليم.`}</b>
+          ${ok ? 'وتوقّعك كان صحيحًا! 🌟' : `توقّعت «${OB.ROUTES[pred]}». الدليل يقول شيئًا آخر، وهكذا يعمل المحقّقون.`}</div>`);
+        later(() => { el.querySelector('.lab-steps').outerHTML = labSteps(3); labWhy(el, lab, c, () => stopIt(c)); }, 500);
+      };
+      // a wrong column: name a real counter-example from the register
+      const why = k => {
+        const vals = sick.map(x => valOf(c, x, k)), common = vals.sort((a, b) => vals.filter(v => v === b).length - vals.filter(v => v === a).length)[0];
+        const w = well.find(x => valOf(c, x, k) === common), s = sick.find(x => valOf(c, x, k) !== common);
+        if (w) return `في السجلّ: ${w[0]}، «${c.cols[k]}»: ${w[k + 1]} مثل المرضى، لكن الحالة «سليم». فهذا العمود لا يفسّر المرض.`;
+        if (s) return `في السجلّ: ${s[0]}، «${c.cols[k]}»: ${s[k + 1]}، وهذا يختلف عن بقية المرضى، لكن الحالة «مريض». فهذا العمود لا يفسّر المرض.`;
+        return 'قارن المرضى بالأصحّاء في هذا العمود.';
+      };
+      el.querySelectorAll('.ob-col').forEach(b => b.onclick = () => {
+        const k = +b.dataset.k;
+        if (k === c.key) { b.classList.add('ok'); return found(); }
+        tries++; b.classList.add('no'); b.disabled = true; HS.fx('no');
+        const box = $('obCoach'); box.hidden = false;
+        box.innerHTML = `<span class="coach-ic" aria-hidden="true">💡</span><span>${c.key < 0 ? 'انظر إلى عمود الحالة: هل مرض أحد؟' : why(k)}${tries >= 2 ? ' ' + c.hint2 : ''}</span>`;
+      });
+      if ($('obNone')) $('obNone').onclick = found;
+      res.querySelector('.ob-t').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    };
+  }
+  function stopIt(c) {
+    const box = document.createElement('div'); box.className = 'card lab-why'; el.appendChild(box);
+    box.innerHTML = `<h3>🛡️ نوقف المرض</h3><div class="lab-q"></div><div class="fb" aria-live="polite"></div>`;
+    const q = { id: 'lab:' + c.id + ':stop', t: 'mcq', q: c.stop.q, o: [c.stop.a, ...c.stop.o], a: 0, mis: Object.fromEntries(c.stop.mis.map((m, i) => [i + 1, m])), hint1: 'تذكّر ما وجدته في السجلّ.', hint2: 'الحل يمنع الشيء المشترك بين المرضى.' };
+    renderQuestion(q, box.querySelector('.lab-q'), (ok, info) => {
+      if (ok || info.fixed) star(1);
+      const fb = box.querySelector('.fb'); fb.className = 'fb ' + (ok || info.fixed ? 'ok' : 'no');
+      fb.innerHTML = `<b>${ok ? 'أحسنت أيها المحقّق! 🔎' : info.fixed ? 'وجدت الحل بنفسك! 👏' : 'هذا هو الحل:'}</b><div>${c.stop.a}.</div>`;
+      if (!r.done.includes(c.id)) r.done.push(c.id); r.last = Date.now(); HS.save();
+      const i = OB.C.indexOf(c); labNext(el, i + 1 < OB.C.length ? 'القضية التالية ←' : 'إلى بداية المختبر', () => i + 1 < OB.C.length ? caseView(OB.C[i + 1]) : intro());
+    }, { coach: true });
+    box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  intro();
+}
+LABS.g4scihealth = { outbreak: { id: 'outbreak', title: '🔎 محقّق العدوى', em: '🔎🦠', sub: 'من السجلّ إلى السبب', kind: 'think', lesson: 'l2', run: outbreakLab, challenges: OB.C } };

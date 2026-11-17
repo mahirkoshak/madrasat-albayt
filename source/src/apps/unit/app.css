@@ -320,3 +320,18 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 .fw-n.s1,.fw-n.s2{animation:fwpulse .9s ease-out 1}
 @keyframes fwpulse{0%{transform-box:fill-box}50%{opacity:.4}100%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.hill .gr,.lab-meter i{transition:none}.hill.raining .rain line,.fw-n.s1,.fw-n.s2{animation:none}}
+/* outbreak detective */
+.ob-report{font-weight:600;line-height:1.8;background:#f8f9fa;border-radius:12px;padding:10px 14px}
+.ob-wrap{overflow-x:auto;margin:12px 0;-webkit-overflow-scrolling:touch}
+.ob-t{border-collapse:collapse;width:100%;font-size:.88rem}
+.ob-t td.st{font-weight:800;white-space:nowrap}.ob-t tr.sick td.st{color:var(--t-red-ink)}
+@media (max-width:420px){.ob-t{font-size:.78rem;table-layout:fixed}.ob-t td.st{white-space:normal}.ob-t th,.ob-t td{padding:5px 3px}.ob-col{padding:4px 2px}}
+.ob-t caption{text-align:start;font-weight:800;padding:4px 0}
+.ob-t th,.ob-t td{border:1px solid #dee2e6;padding:6px 6px;text-align:center}
+.ob-t tbody th{font-weight:700;background:#fff}
+.ob-t tr.sick td,.ob-t tr.sick th{background:#fff5f5}
+.ob-t td.key{outline:3px solid var(--t-green);outline-offset:-3px;font-weight:800}
+.ob-col{min-height:44px;width:100%;font:inherit;font-weight:800;border:2px solid var(--t-blue);color:var(--t-blue);background:#fff;border-radius:10px;cursor:pointer;padding:4px 6px}
+.ob-col.no{border-color:var(--t-red-edge);color:var(--t-red-ink);background:var(--t-red-soft);text-decoration:line-through}
+.ob-col.ok{background:var(--t-green);border-color:var(--t-green);color:#fff}
+.ob-ask{margin:8px 0}
