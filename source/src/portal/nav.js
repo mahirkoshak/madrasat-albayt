@@ -91,6 +91,13 @@
       if (item.app && window.APPS && APPS[item.app] && typeof APPS[item.app].counts === 'function') return APPS[item.app].counts();
       return null;
     },
+    /** the line under a menu card: topic text from the catalog + counts from the data, never typed by hand */
+    desc(item) {
+      const c = this.count(item); if (!c) return item.desc || item.sub || '';
+      if (item.unit) { const u = UNITS[item.unit];
+        return [HS.count(c.lessons, HS.N.lesson), HS.count(u.glossary.length, HS.N.term), HS.count(c.games, HS.N.game), HS.count(c.questions, HS.N.q)].join(' · '); }
+      return [item.desc, HS.count(c.games, HS.N.game)].filter(Boolean).join(' · ');
+    },
     routeOf,
   };
 })();

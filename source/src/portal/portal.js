@@ -29,7 +29,7 @@
   const tile = (o, small) => `<span class="p-tile" aria-hidden="true">${HS.art(o.art, { fb: o.em, small, eager: true })}</span>`;
   const card = (o, nav) => o.soon
     ? `<div class="p-card soon">${tile(o, true)}<span class="tx"><b>${o.name}</b></span><span class="tag">قريبًا</span></div>`
-    : `<button type="button" class="p-card${HS.hasArt(o.art) ? ' has-art' : ''}" style="--c:${o.color}" data-nav="${nav}">${tile(o)}<span class="tx"><b>${o.name}</b><small>${o.desc || o.sub || ''}</small></span><span class="go">${I.fwd}</span></button>`;
+    : `<button type="button" class="p-card${HS.hasArt(o.art) ? ' has-art' : ''}" style="--c:${o.color}" data-nav="${nav}">${tile(o)}<span class="tx"><b>${o.name}</b><small>${HS.nav.desc(o)}</small></span><span class="go">${I.fwd}</span></button>`;
   /* ---------- the one header of the site (menu pages and apps) ----------
      global row: brand (home) · sound · stars (shop) · menu with the secondary utilities
      context row: one Back (to the logical parent from HS.nav) + clickable breadcrumb, or the activity title in a game */
@@ -348,6 +348,11 @@
         ${!ur.length && !kg.length && !(dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar)) ? '<p class="pp-empty">لا يوجد نشاط بعد.</p>' : ''}
         ${ur.map(r => `<div class="pp-unit"><h4>${r.em} ${r.title}</h4><div class="m-row"><span>إتقان الوحدة</span><b>${ar(Math.round(r.total * 100))}٪</b></div>${meter(r.total)}
           <div class="pp-ls">${r.lessons.map(L => `<div class="m-row"><span>${L.em} ${L.title}</span><b>${ar(Math.round(L.m * 100))}٪</b></div>${meter(L.m)}`).join('')}</div>
+          ${r.learn ? `<div class="pp-learn"><div class="m-row"><span>صح من أول محاولة</span><b>${ar(Math.round(r.learn.first * 100))}٪</b></div>${meter(r.learn.first)}
+            <p class="pp-note">صُحّحت بعد تلميح: ${ar(r.learn.fixed)} مرة · عُرضت الإجابة بعد ٣ محاولات: ${ar(r.learn.revealed)} مرة · تلميحات: ${ar(r.learn.hints)}</p>
+            ${r.lessons.some(L => L.n) ? `<table class="pp-t"><thead><tr><th>الفكرة (الدرس)</th><th>صح من أول مرة</th><th>الإتقان</th></tr></thead><tbody>${r.lessons.filter(L => L.n).map(L => `<tr><td>${L.em} ${L.title}</td><td>${ar(Math.round(L.first * 100))}٪ <small>(${ar(L.n)})</small></td><td>${ar(Math.round(L.m * 100))}٪</td></tr>`).join('')}</tbody></table>` : ''}
+            ${r.mis.length ? `<details><summary>🧩 أفكار خاطئة تكرّر اختيارها (${ar(r.mis.length)})</summary><ul>${r.mis.map(x => `<li>${x.q}<br><small>الاختيار: «${x.chose}»${x.n > 1 ? ` (${ar(x.n)} مرات)` : ''} · الصحيح: «${x.right}»</small></li>`).join('')}</ul></details>` : ''}
+            ${r.next ? `<p class="pp-next">➡️ ${r.next}</p>` : ''}</div>` : ''}
           <p class="pp-note">أجاب عن ${ar(r.answered)} من ${ar(r.count)} سؤالًا${r.best.final ? ` · أفضل نتيجة في الاختبار الشامل ${ar(r.best.final.s)}/${ar(r.best.final.t)}` : ''}${r.best.speed ? ` · تحدّي السرعة ${ar(r.best.speed.s)}` : ''}</p>
           ${r.missed.length ? `<details><summary>⚠️ أكثر ما يخطئ فيه (${ar(r.missed.length)})</summary><ul>${r.missed.map(m => `<li>${m.q} <small>(أخطأ ${ar(m.w)} · أصاب ${ar(m.c)})</small></li>`).join('')}</ul></details>` : ''}</div>`).join('')}
         ${dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}${dr.spell && (dr.spell.en || dr.spell.ar) ? `<div class="m-row"><span>✍️ تحدّي الإملاء: أتقن ${ar(dr.spell.en)} كلمة إنجليزية${dr.spell.ar ? ` و${ar(dr.spell.ar)} عربية` : ''} · أطول سلسلة ${ar(dr.spell.best)}</span></div>` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}

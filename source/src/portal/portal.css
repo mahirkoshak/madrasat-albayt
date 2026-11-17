@@ -326,3 +326,5 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .pp-kglv summary{cursor:pointer;font-weight:800}
 .pp-lv{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-top:1px solid var(--line,#e5e7eb)}
 .pp-lv select{min-height:44px;font:inherit;border-radius:10px;padding:0 8px}
+.pp-learn{margin-top:10px;padding-top:8px;border-top:1px dashed var(--t-line,#e5e7eb)}
+.pp-next{font-weight:800;margin:8px 0 0}

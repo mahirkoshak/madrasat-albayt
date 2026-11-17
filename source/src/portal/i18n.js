@@ -23,7 +23,7 @@
     ['اختر صورته', 'Pick a picture'], ['صورة الطفل', 'Child’s picture'], ['كلماتي في القاموس', 'My dictionary words'], ['محفوظ أونلاين', 'Saved online'], ['بدون إنترنت', 'Offline'],
     // catalog
     ['الروضة', 'Kindergarten'], ['KG2 · عمر ٤–٥ سنوات', 'KG2 · ages 4–5'], ['عربي و English', 'Arabic & English'], ['قصص وأناشيد', 'Stories & songs'],
-    ['الحروف، الأرقام، الألوان، الأشكال، الحيوانات + ٨ ألعاب بالصوت', 'Letters, numbers, colours, shapes, animals + 8 voice games'],
+    ['حروف وأرقام وألوان وأشكال وحيوانات، كلها بالصوت', 'Letters, numbers, colours, shapes and animals, all with sound'],
     ['الصف الثالث', 'Grade 3'], ['الصف الرابع', 'Grade 4'], ['ابتدائي · المنهج السعودي', 'Primary · Saudi curriculum'], ['العلوم', 'Science'], ['الرياضيات', 'Math'], ['لغتي', 'Arabic (Lughati)'],
     ['مراجعة الوحدات بالملخصات والألعاب والاختبارات', 'Unit review with summaries, games and tests'],
     ['الوحدة ١: المخلوقات الحية', 'Unit 1: Living things'], ['الوحدة ٢: النظام البيئي', 'Unit 2: Ecosystems'], ['الوحدة ٣: الأرض ومواردها', 'Unit 3: Earth and its resources'], ['الوحدة ٤: الطقس والمناخ', 'Unit 4: Weather and climate'],
@@ -86,6 +86,8 @@
     // short words (matched as whole words only)
     ['حفظ', 'Save'], ['إلغاء', 'Cancel'], ['حذف', 'Delete'], ['أرسل 🎁', 'Send 🎁'], ['أرسل', 'Send'], ['تم', 'Done'], ['عندك', 'You have'], ['باقي', 'need'], ['حتى', 'up to'], ['تقريبًا:', 'about:'], ['تقريبًا', 'about'],
     ['من', 'of'], ['نجمة.', 'stars.'], ['نجمة', 'stars'], ['تعلّم', 'Learned'], ['كلمة', 'words'], ['كلمتان', '2 words'], ['كلمات', 'words'], ['كلمة واحدة', '1 word'],
+    ['درس واحد', '1 lesson'], ['درسان', '2 lessons'], ['دروس', 'lessons'], ['درسًا', 'lessons'], ['لعبة واحدة', '1 game'], ['لعبتان', '2 games'], ['ألعاب', 'games'],
+    ['مصطلح واحد', '1 term'], ['مصطلحان', '2 terms'], ['مصطلحات', 'terms'], ['مصطلحًا', 'terms'],
     ['يوم واحد', '1 day'], ['يومان', '2 days'], ['أيام', 'days'], ['يومًا', 'days'], ['سؤال واحد', '1 question'], ['سؤالان', '2 questions'], ['أسئلة', 'questions'], ['سؤالًا', 'questions'],
   ];
   const AR_RE = /[؀-ۿ]/;

@@ -247,27 +247,44 @@ function renderQ() {
   }
   const q = list[Q.i];
   M().innerHTML = `<div class="card quiz">
-    <div class="q-top"><h2>${quizTitle()}</h2><span class="combo ${Q.combo.n >= 2 ? 'on' : ''}" aria-live="polite">${Q.combo.n >= 2 ? '🔥 ' + ar(Q.combo.n) : ''}</span></div>
+    <div class="q-top"><h2 class="sr">${quizTitle()}</h2><span class="combo ${Q.combo.n >= 2 ? 'on' : ''}" aria-live="polite">${Q.combo.n >= 2 ? '🔥 ' + ar(Q.combo.n) : ''}</span></div>
     ${Q.phase === 'retry' ? '<p class="retry-tag">🔁 محاولة ثانية: سؤال أخطأت فيه</p>' : ''}
     <div class="meta"><span>سؤال ${ar(Q.i + 1)} من ${ar(list.length)}</span><span>✅ ${ar(Q.score)}</span></div>
     <div class="bar"><i style="width:${Q.i / list.length * 100}%"></i></div>
     <div id="uQ"></div><div class="fb" id="uFb" aria-live="polite"></div></div>`;
-  renderQuestion(q, $('uQ'), ok => onAnswer(q, ok));
+  renderQuestion(q, $('uQ'), (ok, info) => onAnswer(q, ok, info), { coach: true });
 }
-function onAnswer(q, ok) {
+function onAnswer(q, ok, info = {}) {
+  // ok = right on the first try. info.fixed = found it after a hint, info.revealed = we showed it after three tries
   const main = Q.phase === 'main';
+  trackLearning(q, ok, info);
   if (main) {
     HS.srs.record(S.ns, q.id, ok);
-    if (ok) { Q.score++; star(1 + Q.combo.hit()); } else { Q.combo.miss(); Q.retry.push(q); Q.wrong.push(q); }
-  } else if (ok) star();
-  HS.fx(ok ? 'ok' : 'no');
-  const fb = $('uFb'); fb.className = 'fb ' + (ok ? 'ok' : 'no');
+    if (ok) { Q.score++; star(1 + Q.combo.hit()); } else { Q.combo.miss(); Q.retry.push(q); Q.wrong.push(q); if (info.fixed) star(); }
+  } else if (ok || info.fixed) star();
+  HS.fx(ok || info.fixed ? 'ok' : 'no');
+  const fb = $('uFb'); fb.className = 'fb ' + (ok ? 'ok' : info.fixed ? 'ok fixed' : 'no');
   const right = answerText(q);
-  fb.innerHTML = `<b>${ok ? HS.one(HS_PHRASES.praise.ar) : 'ليست هذه 🙂'}</b>${!ok && right ? `<div class="right">الإجابة الصحيحة: <b>${right}</b></div>` : ''}<div>${q.ex || ''}</div>
+  const head = ok ? HS.one(HS_PHRASES.praise.ar) : info.fixed ? 'صحّحتها بنفسك! 👏' : 'لنتعلّمها معًا';
+  fb.innerHTML = `<b>${head}</b>${info.revealed && right ? `<div class="right">الإجابة الصحيحة: <b>${right}</b></div>` : ''}<div>${q.ex || ''}</div>
     <div class="row"><button type="button" class="btn" id="uNext">${nextLabel()}</button></div>`;
   $('uNext').onclick = () => { Q.i++; renderQ(); };
   $('uNext').focus({ preventScroll: true });
   fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+/* ---------------- learning record (per child, per unit) ----------------
+   D().learn = { n, first, fixed, revealed, hints, L: {lessonId: {n, first}}, mis: {qid: {choice: count}}, last } */
+function learnRec() { const d = D(); d.learn = d.learn || { n: 0, first: 0, fixed: 0, revealed: 0, hints: 0, L: {}, mis: {} }; return d.learn; }
+function onCoach(q, i, tries) {
+  const r = learnRec(); r.hints++;
+  const k = q.t === 'tf' ? (i === 0 ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[i] : q.o[i];
+  const m = r.mis[q.id] = r.mis[q.id] || {}; m[k] = (m[k] || 0) + 1;
+}
+function trackLearning(q, ok, info) {
+  if (Q && Q.phase !== 'main') return;          // second attempts at the end of a quiz are practice, not measurement
+  const r = learnRec(); r.n++; if (ok) r.first++; if (info.fixed) r.fixed++; if (info.revealed) r.revealed++;
+  const L = r.L[q.l] = r.L[q.l] || { n: 0, first: 0 }; L.n++; if (ok) L.first++;
+  r.last = Date.now(); HS.save();
 }
 function nextLabel() { const list = Q.phase === 'main' ? Q.list : Q.retry; return Q.i + 1 < list.length ? 'التالي ←' : (Q.phase === 'main' && Q.retry.length ? 'التالي ←' : 'النتيجة 🎯'); }
 function answerText(q) {
@@ -299,30 +316,71 @@ function quizResult() {
   tabs();
 }
 
+/* ---------------- coach: hints instead of answers ----------------
+   A wrong first answer never shows the right one. 1st mistake: a hint about the choice the child made
+   (authored q.hint1 / q.mis[i], or the unit's own glossary definition of the chosen term). 2nd: one wrong
+   option is removed + a second hint. 3rd: the answer and the explanation. Hints made from the glossary are
+   dropped if they contain the right answer's words, so a hint never gives the answer away. */
+const norm = t => String(t || '').replace(/[\u064B-\u0652\u0640]/g, '').replace(/\([^)]*\)/g, '').replace(/[«»:.،؟?!]/g, '').trim();
+const bare = t => norm(t).replace(/^ال/, '');
+function termOf(text) {   // the glossary entry an option names, if any
+  const t = norm(text); if (!t) return null;
+  return S.u.glossary.find(g => norm(g.term) === t || bare(g.term) === bare(t)) || null;
+}
+function coachHint(q, n, pickedText, used) {
+  const rightWords = q.t === 'tf' ? '' : bare(q.t === 'pic' && q.labels ? q.labels[q.a] : q.o[q.a]);
+  const safe = t => t && (!rightWords || !norm(t).includes(rightWords));
+  const lesson = S.u.lessons.find(L => L.id === q.l);
+  const inQuestion = S.u.glossary.filter(g => norm(q.q).includes(bare(g.term)) && !used.has(g.term) && safe(g.def));
+  if (n === 1) {
+    if (q.hint1) return q.hint1;
+    const g = termOf(pickedText);
+    if (g && safe(g.def)) { used.add(g.term); return `اخترت «${pickedText}». تذكّر معنى «${g.term}»: ${g.def} هل هذا ما يصفه السؤال؟`; }
+    if (inQuestion[0]) { used.add(inQuestion[0].term); return `تذكّر: ${inQuestion[0].term}: ${inQuestion[0].def} اقرأ السؤال مرة ثانية.`; }
+    return `فكّر مرة ثانية. هذا السؤال من درس «${lesson ? lesson.title : ''}»: اقرأه كلمة كلمة وابحث عن الكلمة المهمة.`;
+  }
+  if (q.hint2) return q.hint2;
+  if (inQuestion[0]) { used.add(inQuestion[0].term); return `تلميح ثانٍ: ${inQuestion[0].term}: ${inQuestion[0].def}`; }
+  return 'تلميح ثانٍ: أبعدنا خيارًا خاطئًا. قارن الخيارات الباقية بالسؤال.';
+}
+
 /* ---------------- question renderers ----------------
    Each draws question q into el and calls done(correct) once. */
 function renderQuestion(q, el, done, opt = {}) {
   // grade 3–4 units are read, not listened to: no speech buttons (the parent asked for it)
   const head = txt => `<div class="q-line"><div class="q">${txt}</div></div>`;
   let answered = false;
-  const finish = ok => { if (answered) return; answered = true; done(ok); };
+  const finish = (ok, info) => { if (answered) return; answered = true; done(ok, info || {}); };
   const choice = (opts, a, render, cls = '') => {
     const order = opt.keep ? opts.map((_, i) => i) : HS.shuffle(opts.map((_, i) => i));
     el.insertAdjacentHTML('beforeend', `<div class="opts ${cls}">${order.map((i, k) => `<button type="button" class="opt" data-i="${i}">${render(opts[i], i, k)}</button>`).join('')}</div>`);
+    let tries = 0; const used = new Set();
+    const reveal = () => el.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.i === a) x.classList.add('ok'); });
     el.querySelectorAll('.opt').forEach(b => b.onclick = () => {
-      if (answered) return;
+      if (answered || b.disabled) return;
       const i = +b.dataset.i, ok = i === a;
-      el.querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.i === a) x.classList.add('ok'); });
-      if (!ok) b.classList.add('no');
       if (opt.onPick) opt.onPick(i, ok);
-      finish(ok);
+      if (!opt.coach) { reveal(); if (!ok) b.classList.add('no'); return finish(ok); }
+      if (ok) { reveal(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
+      tries++; b.classList.add('no'); b.disabled = true; b.setAttribute('aria-label', b.textContent.trim() + ' (ليست الإجابة)');
+      HS.fx('no'); if (opt.onWrong) opt.onWrong(i);
+      const left = () => [...el.querySelectorAll('.opt:not([disabled])')];
+      if (tries >= 3 || (tries >= 2 && left().length <= 1)) { reveal(); return finish(false, { tries, revealed: true }); }
+      if (tries === 2 && left().length >= 3) { const g = left().find(x => +x.dataset.i !== a); g.disabled = true; g.classList.add('gone'); g.setAttribute('aria-label', g.textContent.trim() + ' (أُبعد)'); }
+      const pickedText = q.t === 'pic' && q.labels ? q.labels[i] : q.t === 'tf' ? '' : opts[i];
+      let box = el.querySelector('.coach'); if (!box) { el.insertAdjacentHTML('beforeend', '<div class="coach" role="status"></div>'); box = el.querySelector('.coach'); }
+      box.innerHTML = `<span class="coach-ic" aria-hidden="true">💡</span><span>${coachHint(q, tries, pickedText, used)}</span>`;
+      box.classList.remove('hs-pop'); void box.offsetWidth; box.classList.add('hs-pop');
+      onCoach(q, i, tries);
+      const first = left()[0]; if (first) first.focus({ preventScroll: true });
     });
   };
   if (q.t === 'mcq') { el.innerHTML = head(q.q); choice(q.o, q.a, (o, i, k) => `<span class="ltr-badge">${LETTERS[k]}</span>${o}`); }
   else if (q.t === 'tf') { el.innerHTML = head(q.q) + '<p class="hint">هل العبارة صحيحة؟</p>'; opt.keep = true; choice(['صح ✔️', 'خطأ ✖️'], q.a ? 0 : 1, o => o, 'tf'); }
   else if (q.t === 'fill') {
     el.innerHTML = head(q.q.replace('____', '<span class="blank" id="uBlank">؟</span>'));
-    opt.onPick = (i, ok) => { const b = $('uBlank'); b.textContent = q.o[i]; b.classList.add(ok ? 'ok' : 'no'); if (!ok) later(() => { b.textContent = q.o[q.a]; b.className = 'blank ok'; }, 900); };
+    opt.onPick = (i, ok) => { const b = $('uBlank'); b.textContent = q.o[i]; b.className = 'blank ' + (ok ? 'ok' : 'no');
+      if (!ok) later(() => { if (b.classList.contains('ok')) return; b.textContent = opt.coach ? '؟' : q.o[q.a]; b.className = opt.coach ? 'blank' : 'blank ok'; }, 900); };
     choice(q.o, q.a, o => o, 'chips-opts');
   }
   else if (q.t === 'pic') { el.innerHTML = head(q.q); choice(q.o, q.a, (o, i) => `<span class="pic">${o}</span>${q.labels ? `<small>${q.labels[i]}</small>` : ''}`, 'pics'); }
@@ -516,6 +574,16 @@ APPS.unit = {
     const m = (l) => { if (!ids(l).length) return 0; const s = (d.srs || {}); return ids(l).reduce((a, id) => a + Math.min(4, (s[id] || { b: 0 }).b) / 4, 0) / ids(l).length; };
     const s = d.srs || {};
     const missed = Object.keys(s).filter(id => s[id].w > 0).sort((a, b) => (s[b].w - s[b].c * .5) - (s[a].w - s[a].c * .5)).slice(0, 5).map(id => ({ q: (u.questions.find(q => q.id === id) || {}).q, w: s[id].w, c: s[id].c })).filter(x => x.q);
-    return { title: u.title, em: u.em, total: m(), lessons: u.lessons.map(L => ({ title: L.title, em: L.em, m: m(L.id) })), best: d.best || {}, missed, answered: Object.keys(s).length, count: u.questions.length };
+    // how the child learns, not only what: first-try accuracy, self-corrections, and the wrong ideas chosen most
+    const lr = d.learn || null, byQ = id => u.questions.find(q => q.id === id) || {};
+    const rightOf = q => q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
+    const mis = lr ? Object.entries(lr.mis || {}).flatMap(([id, ch]) => Object.entries(ch).map(([c, n]) => ({ q: byQ(id).q, chose: c, right: rightOf(byQ(id)), n, l: byQ(id).l })))
+      .filter(x => x.q).sort((a, b) => b.n - a.n).slice(0, 4) : [];
+    const lessons = u.lessons.map(L => { const r = lr && lr.L && lr.L[L.id]; return { title: L.title, em: L.em, m: m(L.id), first: r && r.n ? r.first / r.n : null, n: r ? r.n : 0 }; });
+    const weak = lessons.filter(L => L.n >= 3).sort((a, b) => a.first - b.first)[0];
+    const next = !Object.keys(s).length ? null : weak && weak.first < .7 ? `ابدؤوا بدرس «${weak.title}»: فيه أقل نسبة صح من أول مرة.`
+      : lessons.find(L => L.m < .8) ? `الدرس التالي للتثبيت: «${lessons.find(L => L.m < .8).title}».` : 'جاهز للاختبار الشامل.';
+    const learn = lr && lr.n ? { n: lr.n, first: lr.first / lr.n, fixed: lr.fixed, revealed: lr.revealed, hints: lr.hints, last: lr.last } : null;
+    return { title: u.title, em: u.em, total: m(), lessons, best: d.best || {}, missed, mis, learn, next, answered: Object.keys(s).length, count: u.questions.length };
   }
 };

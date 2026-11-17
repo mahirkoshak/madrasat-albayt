@@ -270,3 +270,8 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 /* focus mode: during a game or quiz only the task shows (the site header keeps Back and the activity title) */
 :root.focus .u-head,:root.focus .u-nav,:root.focus > footer{display:none}
 :root.focus .u-main-pad{padding-top:12px}
+/* coach: a hint after a wrong answer (the right answer is not shown yet) */
+.coach{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:16px;background:var(--t-gold-soft);border:2px solid var(--t-gold);color:var(--t-gold-ink);font-weight:600;line-height:1.7}
+.coach-ic{font-size:1.3em;line-height:1}
+.opt.gone{opacity:.35;text-decoration:line-through}
+.fb.ok.fixed{background:var(--t-blue-soft,#e6f0ff);color:var(--t-ink)}

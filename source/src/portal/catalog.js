@@ -23,7 +23,7 @@ window.CATALOG = [
     color: 'var(--t-pink)',
     subjects: [
       { id: 'early', name: 'عربي و English', em: '🔤', art: 'subject-early',
-        desc: 'الحروف، الأرقام، الألوان، الأشكال، الحيوانات + ٨ ألعاب بالصوت',
+        desc: 'حروف وأرقام وألوان وأشكال وحيوانات، كلها بالصوت',
         color: 'var(--t-orange)', app: 'kg' },
       { name: 'قصص وأناشيد', em: '📖', art: 'subject-stories', soon: true }
     ]
@@ -37,7 +37,7 @@ window.CATALOG = [
         units: [
           { name: 'الوحدة ١: المخلوقات الحية', em: '🌱', art: 'unit-g3sci-living-cover', soon: true },
           { name: 'الوحدة ٢: النظام البيئي', em: '🦁', art: 'unit-g3sci-eco-cover', soon: true },
-          { name: 'الوحدة ٣: الأرض ومواردها', em: '🌎', art: 'unit-g3sciearth-cover', desc: '٤ دروس: تغيرات الأرض الفجائية، التجوية والتعرية، التربة، الأحافير والوقود الأحفوري',
+          { name: 'الوحدة ٣: الأرض ومواردها', em: '🌎', art: 'unit-g3sciearth-cover',
             color: 'var(--t-orange)', unit: 'g3sciearth' },
           { name: 'الوحدة ٤: الطقس والمناخ', em: '⛅', art: 'unit-g3sci-weather-cover', soon: true }
         ] },
@@ -52,9 +52,9 @@ window.CATALOG = [
       { id: 'sci', name: 'العلوم', em: '🔬', art: 'subject-science', desc: 'مراجعة الوحدات بالملخصات والألعاب والاختبارات',
         color: 'var(--t-blue)',
         units: [
-          { name: 'الأنظمة البيئية', em: '🌍', art: 'unit-g4scieco-cover', desc: '٣ دروس · بطاقات · ٦ ألعاب · اختبار نهائي',
+          { name: 'الأنظمة البيئية', em: '🌍', art: 'unit-g4scieco-cover',
             color: 'var(--t-purple)', unit: 'g4scieco' },
-          { name: 'صحة الإنسان', em: '🩺', art: 'unit-g4scihealth-cover', desc: '٤ دروس · بطاقات · ٦ ألعاب · اختبار نهائي',
+          { name: 'صحة الإنسان', em: '🩺', art: 'unit-g4scihealth-cover',
             color: 'var(--t-pink)', unit: 'g4scihealth' },
           { name: 'الخلايا وتصنيف المخلوقات', em: '🦠', art: 'unit-g4sci-cells-cover', soon: true },
           { name: 'الحيوانات وأجهزة أجسامها', em: '🐾', art: 'unit-g4sci-animals-cover', soon: true }
