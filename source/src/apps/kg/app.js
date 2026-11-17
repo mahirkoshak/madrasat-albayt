@@ -256,7 +256,7 @@ function basketGame() {
 }
 
 APPS.kg = {
-  open() { show('home'); refreshStars(); },
+  open() { HS.hydrateArt(ROOT); show('home'); refreshStars(); },
   close() { HS.stopSpeak(); clearTimeout(tmr); $('ov').classList.remove('on'); },
   report(profileId) {
     const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'ركّبي الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'وجّهي الروبوت 🤖', story: 'رتّبي القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال' };

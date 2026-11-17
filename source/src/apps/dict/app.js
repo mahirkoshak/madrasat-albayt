@@ -81,7 +81,7 @@ const dueIds = () => HS.srs.due(NS(), D().mine);
 function home() {
   const d = D(), wod = wordOfDay(), n = WORDS.filter(inLevel).length, ln = WORDS.filter(x => inLevel(x) && learned(x.id)).length, due = dueIds().length;
   M().innerHTML = `
-  <h1 class="d-h1">📖 قاموسي <span dir="ltr">My Dictionary</span></h1>
+  <div class="d-hello">${HS.mascot('read', { small: true, cls: 'd-koko' })}<h1 class="d-h1">${HS.hasArt('mascot-read') ? '' : '📖 '}قاموسي <span dir="ltr">My Dictionary</span></h1></div>
   <div class="d-mode" role="radiogroup" aria-label="ماذا أتعلّم؟">
     <button type="button" role="radio" aria-checked="${!AR()}" class="${AR() ? '' : 'on'}" data-mode="en"><b dir="ltr">🔤 Learn English</b><small>أتعلّم الإنجليزي</small></button>
     <button type="button" role="radio" aria-checked="${AR()}" class="${AR() ? 'on' : ''}" data-mode="ar"><b>📝 أتعلّم العربي</b><small dir="ltr">Learn Arabic</small></button>

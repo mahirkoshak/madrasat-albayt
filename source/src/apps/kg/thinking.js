@@ -324,7 +324,7 @@ function sessionTick() {
 function showBreak() {
   clearTimeout(tmr); HS.stopSpeak(); show('home');
   ROOT.insertAdjacentHTML('beforeend', `<div class="k-break" id="kBreak" role="dialog" aria-modal="true" aria-label="وقت الاستراحة"><div class="k-break-in">
-    <div class="big">🧸🌳</div><h2>وقت الاستراحة!</h2><p>أحسنتِ اليوم 🌟 هيا نلعب بعيدًا عن الشاشة.</p>
+    <div class="big">${HS.mascot('sleep', { fb: '🧸🌳' })}</div><h2>وقت الاستراحة!</h2><p>أحسنتِ اليوم 🌟 هيا نلعب بعيدًا عن الشاشة.</p>
     <button type="button" class="k-hold" id="kHold"><i></i><span>للأب: اضغط مطوّلًا للمتابعة ١٠ دقائق</span></button></div></div>`);
   say([[tl(P.brk)(), lang()]]);
   const btn = $('kHold'); let t = null;

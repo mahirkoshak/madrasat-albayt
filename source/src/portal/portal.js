@@ -17,11 +17,25 @@
   const BAR = document.getElementById('appbar');
   const esc = HS.esc, ar = HS.toAr;
 
+  /* small interface icons (drawn here: no picture files). RTL: "forward" points left, "back" points right. */
+  const svg = d => `<svg class="p-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const I = { fwd: svg('M14.5 6l-6 6 6 6'), back: svg('M9.5 6l6 6-6 6'), home: svg('M4 11.5L12 5l8 6.5M6.5 10v8.5h11V10') };
+
   const navOf = o => o.unit ? 'unit-' + o.unit : o.app ? 'app-' + o.app : null;
+  // a catalog item's picture: its artwork when it exists (o.art), otherwise its emoji
+  const tile = (o, small) => `<span class="p-tile" aria-hidden="true">${HS.art(o.art, { fb: o.em, small, eager: true })}</span>`;
   const card = (o, nav) => o.soon
-    ? `<div class="p-card soon"><span class="em" aria-hidden="true">${o.em}</span><b>${o.name}</b><span class="tag">قريبًا</span></div>`
-    : `<button type="button" class="p-card" style="background:${o.color}" data-nav="${nav}"><span class="em" aria-hidden="true">${o.em}</span><span class="tx"><b>${o.name}</b><small>${o.desc || o.sub || ''}</small></span><span class="go" aria-hidden="true">←</span></button>`;
-  const crumb = (back, trail) => `<div class="p-crumb"><button type="button" class="p-back" data-nav="${back}">→ رجوع</button><span>${trail}</span></div>`;
+    ? `<div class="p-card soon">${tile(o, true)}<span class="tx"><b>${o.name}</b></span><span class="tag">قريبًا</span></div>`
+    : `<button type="button" class="p-card${HS.hasArt(o.art) ? ' has-art' : ''}" style="--c:${o.color}" data-nav="${nav}">${tile(o)}<span class="tx"><b>${o.name}</b><small>${o.desc || o.sub || ''}</small></span><span class="go">${I.fwd}</span></button>`;
+  const crumb = (back, trail) => `<nav class="p-crumb" aria-label="مكانك في الموقع"><button type="button" class="p-back" data-nav="${back}">${I.back}<span>رجوع</span></button><span class="p-trail">${trail}</span></nav>`;
+  /* the brand bar on every menu page: logo (back to the start) and the current child's stars */
+  function top() {
+    const me = HS.current(), named = me && me.id !== 'guest';
+    const stars = `⭐ <b>${ar(HS.stars())}</b>`;
+    return `<header class="p-top"><a class="p-brand" href="#home" data-nav="home">${HS.art('logo-mark', { eager: true, cls: 'p-logo', fb: '🏡' })}<span>مدرسة البيت</span></a>
+      ${named ? `<div class="p-me">${shopOn() ? `<button type="button" class="p-starpill" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">${stars}</button>` : `<span class="p-starpill">${stars}</span>`}
+        <span class="p-me-av" style="background:${me.color}" title="${esc(me.name)}">${HS.avatar(me)}</span></div>` : ''}</header>`;
+  }
 
   // where does an app/unit sit in the catalog? -> back link + breadcrumb for its top bar
   function locate(kind, id) {
@@ -46,7 +60,7 @@
     if (current !== appId) closeApp();
     current = appId;
     const me = HS.current();
-    BAR.innerHTML = `<button type="button" data-nav="${loc.back}">→ رجوع</button><button type="button" data-nav="home">🏠 الرئيسية</button><span>${loc.trail}</span>${shopOn() ? `<button type="button" class="bar-shop" data-nav="shop" aria-label="المتجر">🛒 ⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}${me ? `<span class="bar-me" title="${esc(me.name)}">${me.avatar}</span>` : ''}`;
+    BAR.innerHTML = `<button type="button" class="bar-back" data-nav="${loc.back}">${I.back}<span>رجوع</span></button><button type="button" class="bar-home" data-nav="home">${HS.art('logo-mark', { cls: 'bar-logo', fb: '' }) || I.home}<span>الرئيسية</span></button><span class="bar-trail">${loc.trail}</span>${shopOn() ? `<button type="button" class="bar-shop" data-nav="shop" aria-label="متجر النجوم">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}${me ? `<span class="bar-me" style="background:${me.color}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}`;
     showScreen('scr-' + appId, loc.trail.split(' ‹ ').pop());
     APPS[appId].open(sub);
   }
@@ -54,7 +68,7 @@
   const shopOn = () => HS.settings().shop !== false;
   /** "≈ 2 days for X · 1 for Y": how long each child needs to earn a reward, from their recent stars per day */
   function daysHint(r) {
-    const ks = HS.profiles().filter(p => !r.for || r.for === p.id).map(p => { const rate = HS.earnRate(p.id); return rate ? `${p.avatar} ${HS.count(Math.max(1, Math.ceil(r.cost / rate)), HS.N.day)}` : ''; }).filter(Boolean);
+    const ks = HS.profiles().filter(p => !r.for || r.for === p.id).map(p => { const rate = HS.earnRate(p.id); return rate ? `${esc(p.name)}: ${HS.count(Math.max(1, Math.ceil(r.cost / rate)), HS.N.day)}` : ''; }).filter(Boolean);
     return ks.length ? '⏳ تقريبًا: ' + ks.join(' · ') : '';
   }
   HS.on('stars', () => { const b = document.getElementById('barStars'); if (b) b.textContent = ar(HS.stars()); });
@@ -107,7 +121,7 @@
     const g = HS.unseenGifts(me.id); if (!g.length) return;
     const n = g.reduce((a, x) => a + x.n, 0), msgs = g.map(x => x.msg).filter(Boolean);
     document.body.insertAdjacentHTML('beforeend', `<div class="sh-gift" id="shGift" role="dialog" aria-modal="true" aria-label="مفاجأة"><div class="sh-gift-in">
-      <div class="big">🎁</div><h2>مفاجأة!</h2><p class="sh-gift-n">+ ⭐ ${ar(n)}</p>${msgs.map(m => `<p class="sh-gift-m">«${esc(m)}»</p>`).join('')}
+      <div class="big">${HS.art('gift-box', { fb: '🎁' })}</div><h2>مفاجأة!</h2><p class="sh-gift-n">+ ⭐ ${ar(n)}</p>${msgs.map(m => `<p class="sh-gift-m">«${esc(m)}»</p>`).join('')}
       <button type="button" class="p-btn" id="shGiftOk">شكرًا! 💛</button></div></div>`);
     HS.fx('win'); HS.party(); HS.speak([['مفاجأة! حصلت على ' + n + ' نجمة', 'ar']]);
     document.getElementById('shGiftOk').onclick = () => { HS.seeGifts(me.id); document.getElementById('shGift').remove(); route(); };
@@ -118,19 +132,19 @@
     const state = r => { const c = HS.cantBuy(r); return c === 'week' ? `<span class="sh-need">✋ خلصت هذا الأسبوع (${ar(HS.boughtWeek(r.id))}/${ar(r.week)})</span>`
       : c === 'stars' ? `<span class="sh-need">باقي ⭐ ${ar(r.cost - bal)}</span>`
       : `<button type="button" class="p-btn ${buying === r.id ? 'warn' : ''}" data-buy="${r.id}">${buying === r.id ? 'متأكد؟ اضغط مرة ثانية ✅' : 'اشترِ'}</button>`; };
-    P.innerHTML = crumb('home', 'الرئيسية ‹ المتجر') + `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${me.color}">${me.avatar}</span>` : ''}
+    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ المتجر') + `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${me.color}">${HS.avatar(me)}</span>` : ''}
         <div><h2 class="p-title">🛒 متجر النجوم</h2><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
-      ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${o.em}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
-      ${goal ? `<div class="sh-goal"><span class="em">${goal.em}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
+      ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
+      ${goal ? `<div class="sh-goal"><span class="em">${HS.rewardArt(goal)}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
           <div class="hs-meter ${bal >= goal.cost ? '' : 'mid'}"><i style="width:${pct(bal, goal.cost)}%"></i></div>
           <span>${bal >= goal.cost ? '🎉 تقدر تشتريه الآن!' : `⭐ ${ar(bal)} من ${ar(goal.cost)} · باقي ${ar(goal.cost - bal)}`}</span></div>
           <button type="button" class="sh-x" data-goal="" aria-label="إلغاء الهدف">✕</button></div>`
         : `<p class="sh-tip">🎯 اختر مكافأة واضغط «🎯 هدفي» لتجمع لها النجوم.</p>`}
       <div class="sh-grid">${rs.map(r => { const c = HS.cantBuy(r), isGoal = goal && goal.id === r.id;
-        return `<div class="sh-card ${c ? '' : 'can'} ${isGoal ? 'goal' : ''}" data-say="${r.id}"><span class="em">${r.em}</span><b>${esc(r.name)}</b><span class="sh-price">⭐ ${ar(r.cost)}</span>
+        return `<div class="sh-card ${c ? '' : 'can'} ${isGoal ? 'goal' : ''}" data-say="${r.id}"><span class="em">${HS.rewardArt(r)}</span><b>${esc(r.name)}</b><span class="sh-price">⭐ ${ar(r.cost)}</span>
           <div class="hs-meter ${c ? 'mid' : ''}"><i style="width:${pct(bal, r.cost)}%"></i></div>${state(r)}
           ${r.week ? `<small class="sh-lim">حتى ${ar(r.week)} في الأسبوع</small>` : ''}
-          ${isGoal ? '' : `<button type="button" class="sh-goalbtn" data-goal="${r.id}">🎯 هدفي</button>`}</div>`; }).join('') || '<p class="pp-empty">لا توجد مكافآت بعد. اطلبها من بابا أو ماما.</p>'}</div>
+          ${isGoal ? '' : `<button type="button" class="sh-goalbtn" data-goal="${r.id}">🎯 هدفي</button>`}</div>`; }).join('') || `<div class="p-empty">${HS.mascot('point', { small: true, fb: '' })}<p>لا توجد مكافآت بعد. اطلبها من بابا أو ماما.</p></div>`}</div>
       <div class="sh-idea">${ideaOpen ? `<form class="p-inline" id="shIdeaF"><input id="shIdea" maxlength="60" placeholder="مثال: رحلة إلى البحر" aria-label="فكرتك"><button type="submit" class="p-btn">أرسل</button></form>`
         : `<button type="button" class="p-btn sec" id="shIdeaB">💡 عندي فكرة مكافأة</button>`}</div>
       ${old.length ? `<h3 class="sh-h small">آخر المكافآت</h3><ul class="sh-old">${old.map(o => `<li>${o.em} ${esc(o.name)} · ${o.st === 'done' ? '✅ استلمتها' : '↩️ رجعت النجوم'}</li>`).join('')}</ul>` : ''}`;
@@ -151,42 +165,120 @@
   }
 
   /* ---------- child picker ---------- */
-  let adding = false, newAv = HS.AVATARS[0];
-  function picker() {
-    const list = HS.profiles(), cur = HS.current();
-    const form = `<form class="p-form" id="pAdd"><label for="pName">اسم الطفل</label><input id="pName" maxlength="20" autocomplete="off" required placeholder="مثال: محمد">
-      <div class="p-avs" role="radiogroup" aria-label="اختر صورة">${HS.AVATARS.map(a => `<button type="button" role="radio" aria-checked="${a === newAv}" class="p-av ${a === newAv ? 'on' : ''}" data-av="${a}">${a}</button>`).join('')}</div>
+  let adding = false, newAv = null;
+  const avChoices = () => HS.avatarChoices();
+  function avForm(list) {
+    const ch = avChoices(); if (!ch.includes(newAv)) newAv = ch[list.length % ch.length];
+    return `<form class="p-form" id="pAdd"><label for="pName">اسم الطفل</label><input id="pName" maxlength="20" autocomplete="off" required placeholder="مثال: محمد">
+      <fieldset class="p-avpick"><legend>اختر صورته</legend><div class="p-avs" role="radiogroup" aria-label="صورة الطفل">${ch.map(a => `<button type="button" role="radio" aria-checked="${a === newAv}" tabindex="${a === newAv ? 0 : -1}" class="p-av ${a === newAv ? 'on' : ''}" data-av="${esc(a)}" aria-label="${esc(HS.avatarName(a))}">${HS.avatar({ avatar: a })}</button>`).join('')}</div></fieldset>
       <div class="p-form-row"><button type="submit" class="p-btn">حفظ</button>${list.length ? '<button type="button" class="p-btn sec" id="pCancel">إلغاء</button>' : ''}</div></form>`;
-    if (!list.length) return `<div class="p-kids first"><h2>👋 من سيتعلّم هنا؟</h2><p>أضف كل طفل ليُحفظ تقدّمه ونجومه وأخطاؤه وحده.</p>${form}<button type="button" class="p-link" id="pSkip">المتابعة بدون إضافة ←</button></div>`;
-    return `<div class="p-kids"><span class="p-kids-t">من يتعلّم الآن؟</span><div class="p-chips">${list.map(p => `<button type="button" class="p-kid ${cur && cur.id === p.id ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${!!(cur && cur.id === p.id)}"><span class="p-kid-av" style="background:${p.color}">${p.avatar}</span><span class="p-kid-n">${esc(p.name)}</span><span class="p-kid-s">⭐ ${ar(HS.stars(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`).join('')}
-      <button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">طفل جديد</span></button></div>${adding ? form : ''}</div>`;
+  }
+  /** "who is learning now?": one chip per child (tap to switch), plus "new child" */
+  function kidsRow() {
+    const list = HS.profiles(), cur = HS.current();
+    if (!list.length) return `<div class="p-kids"><button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">أضف طفلًا</span></button>${adding ? avForm(list) : ''}</div>`;
+    return `<div class="p-kids"><h2 class="p-kids-t">من يتعلّم الآن؟</h2><div class="p-chips">${list.map(p => { const on = !!(cur && cur.id === p.id);
+        return `<button type="button" class="p-kid ${on ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${on}"><span class="p-kid-av" style="background:${p.color}">${HS.avatar(p)}</span><span class="p-kid-n">${esc(p.name)}</span><span class="p-kid-s">⭐ ${ar(HS.stars(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`; }).join('')}
+      <button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">طفل جديد</span></button></div>${adding ? avForm(list) : ''}</div>`;
   }
   function bindPicker() {
     P.querySelectorAll('[data-kid]').forEach(b => b.onclick = () => { HS.setCurrent(b.dataset.kid); home(); });
     const nw = document.getElementById('pNew'); if (nw) nw.onclick = () => { adding = !adding; home(); if (adding) setTimeout(() => document.getElementById('pName').focus(), 50); };
-    P.querySelectorAll('[data-av]').forEach(b => b.onclick = () => { newAv = b.dataset.av; P.querySelectorAll('[data-av]').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-checked', x === b); }); });
+    const pick = b => { newAv = b.dataset.av; P.querySelectorAll('[data-av]').forEach(x => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); x.tabIndex = on ? 0 : -1; }); };
+    P.querySelectorAll('[data-av]').forEach(b => b.onclick = () => { pick(b); HS.fx('tap'); });
+    const grp = P.querySelector('.p-avs');
+    if (grp) grp.onkeydown = e => {   // radio group keys; in right-to-left order "next" is the left arrow
+      const all = [...grp.querySelectorAll('[data-av]')], i = all.indexOf(document.activeElement); if (i < 0) return;
+      const step = { ArrowLeft: 1, ArrowDown: 1, ArrowRight: -1, ArrowUp: -1 }[e.key]; if (!step && e.key !== 'Home' && e.key !== 'End') return;
+      e.preventDefault(); const j = e.key === 'Home' ? 0 : e.key === 'End' ? all.length - 1 : (i + step + all.length) % all.length; pick(all[j]); all[j].focus();
+    };
     const f = document.getElementById('pAdd');
-    if (f) f.onsubmit = e => { e.preventDefault(); const n = document.getElementById('pName').value.trim(); if (!n) return; const used = HS.profiles().length; HS.addProfile({ name: n, avatar: newAv, color: HS.COLORS[used % HS.COLORS.length] }); adding = false; newAv = HS.AVATARS[(used + 1) % HS.AVATARS.length]; home(); };
+    if (f) f.onsubmit = e => { e.preventDefault(); const n = document.getElementById('pName').value.trim(); if (!n) return; const used = HS.profiles().length; HS.addProfile({ name: n, avatar: newAv, color: HS.COLORS[used % HS.COLORS.length] }); adding = false; newAv = null; home(); };
     const c = document.getElementById('pCancel'); if (c) c.onclick = () => { adding = false; home(); };
     const sk = document.getElementById('pSkip'); if (sk) sk.onclick = () => { try { sessionStorage.setItem('hs-skip', '1'); } catch (e) {} home(); };
   }
 
+  /* ---------- what the current child did, read from their saved answers (nothing is made up) ---------- */
+  function catalogEntry(kind, id) {   // the menu item for a unit/app, with the name of the subject it sits in
+    for (const y of CATALOG) {
+      if (y.app && kind === 'app' && y.app === id) return { o: y, where: '' };
+      for (const s of y.subjects || []) {
+        if (kind === 'app' && s.app === id) return { o: s, where: y.name };
+        for (const u of s.units || []) if ((kind === 'unit' ? u.unit : u.app) === id) return { o: u, where: `${y.name} · ${s.name}` };
+      }
+    }
+    return null;
+  }
+  const lastT = d => Object.values((d && d.srs) || {}).reduce((m, r) => Math.max(m, r.t || 0), 0);
+  /** the place this child last practised: newest answer in a unit or the dictionary, or the last kindergarten session */
+  function lastPlace() {
+    const ns = HS.profileData().ns || {}, found = [];
+    Object.keys(window.UNITS || {}).forEach(id => found.push({ t: Math.max(lastT(ns['u:' + id]), lastT(ns['fc:' + id])), kind: 'unit', id }));
+    if (APPS.dict) found.push({ t: Math.max(lastT(ns.dict), lastT(ns.dictar)), kind: 'app', id: 'dict' });
+    if (APPS.kg) found.push({ t: (ns.kg && ns.kg.sess && ns.kg.sess.last) || 0, kind: 'app', id: 'kg' });
+    const best = found.filter(x => x.t).sort((a, b) => b.t - a.t)[0]; if (!best) return null;
+    const c = catalogEntry(best.kind, best.id); if (!c) return null;
+    return { nav: navOf(c.o), name: c.o.name, where: c.where, em: c.o.em, art: c.o.art };
+  }
+  /** questions and words due for review today, per unit and for the dictionary */
+  function reviews() {
+    const ns = HS.profileData().ns || {}, items = []; let seen = false;
+    Object.keys(window.UNITS || {}).forEach(id => {
+      const d = ns['u:' + id]; if (!d || !d.srs || !Object.keys(d.srs).length) return; seen = true;
+      const n = HS.srs.due('u:' + id, UNITS[id].questions.map(q => q.id)).length, c = catalogEntry('unit', id);
+      if (n) items.push({ nav: 'unit-' + id, name: c ? c.o.name : UNITS[id].title, n, noun: HS.N.q });
+    });
+    const mine = (ns.dict && ns.dict.mine) || [];
+    if (mine.length) {
+      ['dict', 'dictar'].forEach(k => { if (ns[k] && ns[k].srs && Object.keys(ns[k].srs).length) seen = true; });
+      const n = new Set([...HS.srs.due('dict', mine), ...HS.srs.due('dictar', mine)]).size;
+      if (n) items.push({ nav: 'app-dict', name: 'كلماتي في القاموس', n, noun: ['كلمة', 'كلمتان', 'كلمات', 'كلمة'] });
+    }
+    return { items, seen };
+  }
+
+  /* ---------- home ---------- */
+  function hero() {
+    const me = HS.current(), named = me && me.id !== 'guest', st = HS.dayStreak(), go = lastPlace();
+    return `<section class="p-hero" aria-labelledby="pHi">
+      <div class="p-hero-tx">
+        <h1 id="pHi">${named ? `أهلًا يا ${esc(me.name)}` : 'أهلًا بك في مدرسة البيت'}</h1>
+        <p class="p-hero-sub">${st ? `🔥 تعلّم متواصل: ${HS.count(st, HS.N.day)}` : 'هيا نتعلّم شيئًا جديدًا اليوم.'}</p>
+        ${go ? `<button type="button" class="p-go" data-nav="${go.nav}"><span class="p-go-tile" aria-hidden="true">${HS.art(go.art, { fb: go.em, small: true })}</span>
+            <span class="p-go-tx"><small>أكمل من حيث توقفت${go.where ? ` · ${go.where}` : ''}</small><b>${go.name}</b></span><span class="go">${I.fwd}</span></button>` : ''}
+      </div>
+      <div class="p-hero-art" aria-hidden="true">${HS.mascot('welcome', { eager: true, fb: '🐨' })}</div>
+    </section>`;
+  }
+  function today() {
+    const r = reviews(), out = [];
+    if (r.items.length) out.push(`<section class="p-panel p-review" aria-labelledby="pRv"><h2 id="pRv"><span aria-hidden="true">📅</span> مراجعة اليوم</h2>
+        <p>أسئلة أخطأت فيها أو حان وقت تذكّرها:</p><div class="p-rv-list">${r.items.map(i => `<button type="button" class="p-rv" data-nav="${i.nav}"><span>${i.name}</span><b>${HS.count(i.n, i.noun)}</b><span class="go">${I.fwd}</span></button>`).join('')}</div></section>`);
+    else if (r.seen) out.push(`<section class="p-panel p-review ok" aria-labelledby="pRv"><h2 id="pRv"><span aria-hidden="true">✅</span> لا توجد مراجعة اليوم</h2><p>كل ما تعلّمته في موعده. جرّب درسًا جديدًا أو اختبارًا.</p></section>`);
+    if (shopOn() && HS.current()) out.push(shopButton());
+    return out.length ? `<div class="p-today">${out.join('')}</div>` : '';
+  }
   function home() {
     let skip = false; try { skip = sessionStorage.getItem('hs-skip') === '1'; } catch (e) {}
-    const noKids = !HS.profiles().length;
-    P.innerHTML = `<div class="p-hero"><div class="logo" aria-hidden="true">🏡📚</div><h1>مدرسة البيت</h1></div>
-      ${noKids && skip ? '' : picker()}
-      ${shopOn() && (HS.current() || skip) ? shopButton() : ''}
-      ${noKids && !skip ? '' : `<p class="p-sub center">اختر الصف أو القاموس</p><div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div>`}
-      <div class="p-foot">${HS.sync && HS.sync.family() ? `<p class="p-cloud" id="pCloud">${HS.sync.status() === 'on' ? '☁️ محفوظ أونلاين' : ''}</p>` : ''}<button type="button" class="p-back" data-nav="parent">👨‍👩‍👧 صفحة الأب: التقدّم والإعدادات${HS.waitingCount() ? ` <span class="p-badge">🎟️ ${ar(HS.waitingCount())}</span>` : ''}</button>
-      <p>التقدّم والنجوم تُحفظ على هذا الجهاز · افتح الصفحة في Chrome أو Edge أو Safari للحصول على الصوت</p></div>`;
+    const list = HS.profiles();
+    if (!list.length && !skip) {   // first visit: Koko asks who will learn here
+      P.innerHTML = top() + `<section class="p-hero p-onb" aria-labelledby="pHi"><div class="p-hero-tx"><h1 id="pHi">أهلًا! أنا كوكو</h1>
+          <p class="p-hero-sub">من سيتعلّم معي؟ أضف كل طفل ليُحفظ تقدّمه ونجومه وأخطاؤه وحده.</p>${avForm(list)}
+          <button type="button" class="p-link" id="pSkip">المتابعة بدون إضافة</button></div>
+        <div class="p-hero-art" aria-hidden="true">${HS.mascot('welcome', { eager: true, fb: '🐨' })}</div></section>`;
+      return bindPicker();
+    }
+    P.innerHTML = top() + hero() + kidsRow() + today() + `
+      <section class="p-sec" aria-labelledby="pGr"><h2 id="pGr" class="p-h2">ماذا نتعلّم اليوم؟</h2>
+        <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div></section>
+      <footer class="p-foot">${HS.sync && HS.sync.family() ? `<p class="p-cloud" id="pCloud">${HS.sync.status() === 'on' ? '☁️ محفوظ أونلاين' : ''}</p>` : ''}<button type="button" class="p-parent" data-nav="parent"><span aria-hidden="true">👨‍👩‍👧</span> صفحة الأب: التقدّم والإعدادات${HS.waitingCount() ? ` <span class="p-badge" aria-label="${ar(HS.waitingCount())} كوبون ينتظر">🎟️ ${ar(HS.waitingCount())}</span>` : ''}</button>
+      <p>${HS.sync && HS.sync.family() ? 'التقدّم والنجوم محفوظة على هذا الجهاز وأونلاين' : 'التقدّم والنجوم تُحفظ على هذا الجهاز'} · للصوت افتح الصفحة في Chrome أو Edge أو Safari</p></footer>`;
     bindPicker(); giftPopup();
   }
   function shopButton() {
     const g = HS.goal(), bal = HS.stars(), w = HS.orders().some(o => o.st === 'wait');
-    return `<button type="button" class="p-shop" data-nav="shop"><span class="em">${g ? g.em : '🛒'}</span><span class="tx"><b>${g ? '🎯 ' + esc(g.name) : 'متجر النجوم'}</b>
-      <small>${g ? (bal >= g.cost ? '🎉 تقدر تشتريه الآن!' : `⭐ ${ar(bal)} من ${ar(g.cost)}`) : `عندك ⭐ ${ar(bal)}`}${w ? ' · 🎟️ عندك كوبون' : ''}</small>
-      ${g ? `<span class="hs-meter"><i style="width:${pct(bal, g.cost)}%"></i></span>` : ''}</span><span class="go">←</span></button>`;
+    return `<button type="button" class="p-shop" data-nav="shop"><span class="em" aria-hidden="true">${g ? HS.rewardArt(g) : '🛒'}</span><span class="tx"><small>${g ? '🎯 هدفك' : 'متجر النجوم'}</small><b>${g ? esc(g.name) : `عندك ⭐ ${ar(bal)}`}</b>
+      ${g ? `<span class="hs-meter ${bal >= g.cost ? '' : 'mid'}"><i style="width:${pct(bal, g.cost)}%"></i></span>` : ''}<span class="p-shop-s">${g ? (bal >= g.cost ? '🎉 تقدر تشتريه الآن!' : `⭐ ${ar(bal)} من ${ar(g.cost)}`) : 'اشترِ مكافأة بنجومك'}${w ? ' · 🎟️ عندك كوبون' : ''}</span></span><span class="go">${I.fwd}</span></button>`;
   }
 
   /* ---------- parent PIN (optional) ----------
@@ -194,7 +286,7 @@
   function gate(next) {
     const pin = HS.settings().pin; let ok = false; try { ok = sessionStorage.getItem('hs-pin') === '1'; } catch (e) {}
     if (!pin || ok) return next();
-    P.innerHTML = crumb('home', 'الرئيسية ‹ صفحة الأب') + `<form class="p-form pin" id="pinF"><h2 class="p-title">🔒 صفحة الأب</h2><label for="pinI">الرقم السري</label>
+    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ صفحة الأب') + `<form class="p-form pin" id="pinF"><h2 class="p-title">🔒 صفحة الأب</h2><label for="pinI">الرقم السري</label>
       <input id="pinI" inputmode="numeric" type="password" maxlength="8" autocomplete="off"><button type="submit" class="p-btn">دخول</button><p class="pp-note" id="pinE"></p></form>`;
     const i = document.getElementById('pinI'); i.focus();
     document.getElementById('pinF').onsubmit = e => { e.preventDefault();
@@ -209,16 +301,16 @@
     const kids = HS.profiles().length ? HS.profiles() : [{ id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' }];
     const units = Object.keys(window.UNITS || {});
     const s = HS.settings(), voices = HS.arVoices(), cur = s.arVoice;
-    P.innerHTML = crumb('home', 'الرئيسية ‹ صفحة الأب') + `<h2 class="p-title">👨‍👩‍👧 صفحة الأب</h2><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
+    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ صفحة الأب') + `<h2 class="p-title">👨‍👩‍👧 صفحة الأب</h2><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
     ${kids.map(k => {
       const d = HS.profileData(k.id);
       const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && r.answered);
       const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
       const dr = APPS.dict ? APPS.dict.report(k.id) : null;
-      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${k.color}">${k.avatar}</span><div><h3>${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
-        ${HS.orders(k.id).filter(o => o.st === 'wait').map(o => `<div class="pp-order"><span class="em">${o.em}</span><span><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></span>
+      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${k.color}">${HS.avatar(k)}</span><div><h3>${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
+        ${HS.orders(k.id).filter(o => o.st === 'wait').map(o => `<div class="pp-order"><span class="em">${HS.rewardArt(o)}</span><span><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></span>
           <button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع النجوم</button></div>`).join('')}
-        ${shopOn() ? `<div class="pp-gift"><span>${HS.goal(k.id) ? `🎯 يجمع لـ ${HS.goal(k.id).em} ${esc(HS.goal(k.id).name)} (${ar(HS.stars(k.id))}/${ar(HS.goal(k.id).cost)})` : '🎯 لم يختر هدفًا بعد'}</span>
+        ${shopOn() ? `<div class="pp-gift"><span>${HS.goal(k.id) ? `🎯 يجمع لـ ${esc(HS.goal(k.id).em)} ${esc(HS.goal(k.id).name)} (${ar(HS.stars(k.id))}/${ar(HS.goal(k.id).cost)})` : '🎯 لم يختر هدفًا بعد'}</span>
           <details><summary>🎁 أعطه نجومًا مفاجأة</summary><form class="pp-gift-f" data-gift="${k.id}"><select aria-label="عدد النجوم">${[5, 10, 20, 50].map(n => `<option value="${n}">⭐ ${ar(n)}</option>`).join('')}</select>
             <input maxlength="60" placeholder="رسالة قصيرة، مثال: فخور فيك لأنك ساعدت أختك" aria-label="رسالة"><button type="submit" class="p-btn">أرسل 🎁</button></form>
             <p class="pp-note">المفاجآت التي لا يتوقعها الطفل لا تُضعف حبّه للتعلّم، بعكس المكافأة الموعودة. استعملها لمدح جهد محدد.</p></details></div>` : ''}
@@ -251,7 +343,7 @@ ${syncBox()}
       <div class="pp-rw">${HS.rewards().map((r, i) => `<div class="pp-rw-row" data-i="${i}"><input class="em" value="${esc(r.em)}" maxlength="4" aria-label="الرمز"><input class="nm" value="${esc(r.name)}" maxlength="40" aria-label="المكافأة">
           <button type="button" class="p-btn sec danger" data-rdel="${i}" aria-label="حذف">🗑️</button>
           <div class="pp-rw-2"><label>⭐ <input class="ct" type="number" min="1" max="9999" inputmode="numeric" value="${r.cost}" aria-label="السعر"></label>
-            <label>لمن <select class="fr" aria-label="لمن">${[['', 'الكل'], ...HS.profiles().map(p => [p.id, p.avatar + ' ' + p.name])].map(([v, t]) => `<option value="${v}" ${(r.for || '') === v ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
+            <label>لمن <select class="fr" aria-label="لمن">${[['', 'الكل'], ...HS.profiles().map(p => [p.id, [HS.avatarText(p), p.name].filter(Boolean).join(' ')])].map(([v, t]) => `<option value="${v}" ${(r.for || '') === v ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
             <label>حد أسبوعي <input class="wk" type="number" min="0" max="50" inputmode="numeric" value="${r.week || ''}" placeholder="—" aria-label="حد أسبوعي"></label></div>
           <small class="pp-days">${daysHint(r)}</small></div>`).join('')}</div>
       <div class="pp-actions"><button type="button" class="p-btn sec" id="ppRAdd">＋ مكافأة جديدة</button><button type="button" class="p-btn" id="ppRSave">💾 حفظ المكافآت</button></div>
@@ -329,14 +421,14 @@ ${syncBox()}
     showScreen('portal');
     if ((m = h.match(/^y-(\w+)$/))) {
       const y = CATALOG.find(x => x.id === m[1]); if (!y) return home();
-      P.innerHTML = crumb('home', 'الرئيسية ‹ ' + y.name) +
-        `<h2 class="p-title">${y.em} ${y.name}</h2><p class="p-sub">اختر المادة</p><div class="p-grid">${
+      P.innerHTML = top() + crumb('home', 'الرئيسية ‹ ' + y.name) +
+        `<div class="p-head">${tile(y)}<div><h2 class="p-title">${y.name}</h2><p class="p-sub">اختر المادة</p></div></div><div class="p-grid">${
           y.subjects.map(s => card(s, navOf(s) || `s-${y.id}-${s.id}`)).join('')}</div>`;
     } else if ((m = h.match(/^s-(\w+)-(\w+)$/))) {
       const y = CATALOG.find(x => x.id === m[1]); const s = y && y.subjects.find(x => x.id === m[2]);
       if (!s || !s.units) return home();
-      P.innerHTML = crumb('y-' + y.id, `الرئيسية ‹ ${y.name} ‹ ${s.name}`) +
-        `<h2 class="p-title">${s.em} ${s.name}</h2><p class="p-sub">اختر الوحدة</p><div class="p-grid">${
+      P.innerHTML = top() + crumb('y-' + y.id, `الرئيسية ‹ ${y.name} ‹ ${s.name}`) +
+        `<div class="p-head">${tile(s)}<div><h2 class="p-title">${s.name}</h2><p class="p-sub">اختر الوحدة</p></div></div><div class="p-grid">${
           s.units.map(u => card(u, navOf(u))).join('')}</div>`;
     } else home();
   }

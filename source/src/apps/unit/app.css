@@ -97,7 +97,8 @@ section.view.on{display:block}
 .bar i{display:block;height:100%;background:var(--t-green);border-radius:99px;transition:width .3s}
 .meta{display:flex;justify-content:space-between;color:var(--muted);font-size:16px}
 .result{text-align:center}
-.result .big{font-size:56px;line-height:1.1}
+.result .big{font-size:56px;line-height:1.1;display:grid;place-items:center}
+.result .big .hs-art{width:min(190px,52vw)}
 .review-item{border-radius:16px;background:var(--sun-l);padding:10px 14px;margin:8px 0;font-size:16.5px}
 
 /* flashcards */
@@ -136,16 +137,20 @@ section.view.on{display:block}
 @keyframes pop{50%{transform:scale(1.08)}}
 
 .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.badge{background:#fff;border-radius:18px;padding:10px 14px;margin-bottom:6px;text-align:center;min-width:120px;box-shadow:var(--shadow);opacity:.35;filter:grayscale(1)}
-.badge.got{opacity:1;filter:none}
-.badge .em{font-size:34px;display:block}
+.badge{background:#fff;border-radius:18px;padding:10px 14px;margin-bottom:6px;text-align:center;min-width:120px;box-shadow:var(--shadow)}
+.badge:not(.got){background:var(--t-sand-soft);box-shadow:inset 0 0 0 2px var(--t-line)}
+.badge:not(.got) .em{opacity:.4;filter:grayscale(1)}
+.badge:not(.got) small{color:var(--t-muted)}
+.badge .em{font-size:34px;display:grid;place-items:center;height:64px}
+.badge .em .hs-art{width:64px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .badge small{font-weight:700}
 footer{color:var(--muted);font-size:14px;text-align:center;padding:20px 16px 40px}
 @media (max-width:560px){header h1{font-size:27px}.card{padding:16px}.q{font-size:19px}}
 
 /* ===================== unit engine additions ===================== */
 .u-me{display:flex;align-items:center;gap:8px}
-.u-av{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:26px}
+.u-av{overflow:hidden;width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:26px}
 .small{font-size:15px}
 .row.center{justify-content:center}
 .btn.small{padding:6px 14px;font-size:16px}
@@ -154,7 +159,7 @@ footer{color:var(--muted);font-size:14px;text-align:center;padding:20px 16px 40p
 
 /* home */
 .hello-row{display:flex;gap:14px;align-items:center;margin-bottom:10px}
-.big-av{flex:0 0 64px;height:64px;border-radius:20px;background:var(--t-blue-soft);display:grid;place-items:center;font-size:38px}
+.big-av{overflow:hidden;flex:0 0 64px;height:64px;border-radius:999px;background:var(--t-blue-soft);display:grid;place-items:center;font-size:38px}
 .card.due{box-shadow:0 0 0 2px #f3d98a,0 5px 0 2px #f3d98a;background:var(--t-gold-soft)}
 .card.due.ok{box-shadow:0 0 0 2px #b9e88f,0 5px 0 2px #b9e88f;background:var(--t-green-soft)}
 .card.due h3{color:var(--t-ink-strong)}
@@ -255,3 +260,8 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 }
 
 .set-title{text-align:center;margin:6px 0 10px;font-size:22px;color:var(--t-ink-strong)}
+
+/* Koko on the review card (sits at the end side, never over the text or the button) */
+.card.due{overflow:hidden}
+.due-art{float:left;width:112px;margin:-6px 0 4px 8px}
+@media(max-width:480px){.due-art{width:84px}}

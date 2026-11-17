@@ -27,7 +27,7 @@ function header() {
   const p = HS.current() || { avatar: '🙂' };
   $('uTitle').textContent = `${S.u.em} ${S.u.title}`;
   $('uSub').textContent = S.u.subtitle || '';
-  $('uAv').textContent = p.avatar;
+  $('uAv').innerHTML = HS.avatar(p);
   $('uStars').textContent = `⭐ ${ar(HS.stars())}`;
 }
 HS.on('stars', () => { if (S.u) $('uStars').textContent = `⭐ ${ar(HS.stars())}`; });
@@ -67,21 +67,21 @@ function badges() {
   const d = D(); const best = (d.best || {}).final;
   return [
     ...S.u.lessons.map((l, i) => [l.em, `إتقان الدرس ${ar(i + 1)}`, mastery(l.id) >= .8]),
-    ['🏆', 'بطل الاختبار الشامل', best && best.s / best.t >= .85],
-    ['🔥', '٣ أيام متتالية', HS.dayStreak() >= 3],
-    ['⭐', '١٠٠ نجمة', HS.earned() >= 100]
+    [HS.art('badge-champion-earned', { small: true, fb: '🏆' }), 'بطل الاختبار الشامل', best && best.s / best.t >= .85],
+    [HS.art('badge-streak3-earned', { small: true, fb: '🔥' }), '٣ أيام متتالية', HS.dayStreak() >= 3],
+    [HS.art('badge-stars100-earned', { small: true, fb: '⭐' }), '١٠٠ نجمة', HS.earned() >= 100]
   ];
 }
 function renderHome() {
   const p = HS.current() || { name: '', avatar: '🙂' };
   const all = qIds(), due = HS.srs.due(S.ns, all), seen = all.filter(id => HS.srs.seen(S.ns, id)).length, streak = HS.dayStreak();
   let review;
-  if (due.length) review = `<div class="card due"><h3>📅 مراجعة اليوم</h3><p class="lead">${HS.count(due.length, HS.N.q)} ${due.length > 1 ? 'تحتاج' : 'يحتاج'} مراجعة الآن (أخطأت فيها أو حان وقت تذكّرها).</p><button type="button" class="btn" data-act="quiz" data-mode="review">ابدأ المراجعة (${HS.count(Math.min(10, due.length), HS.N.q)})</button></div>`;
-  else if (!seen) review = `<div class="card due"><h3>🚀 ابدأ من هنا</h3><p class="lead">اقرأ الدرس الأول، ثم أجب عن أسئلته. سنحفظ ما تحتاج مراجعته.</p><button type="button" class="btn" data-p="${S.u.lessons[0].id}">افتح الدرس الأول</button></div>`;
+  if (due.length) review = `<div class="card due">${HS.mascot('thinking', { small: true, cls: 'due-art' })}<h3>📅 مراجعة اليوم</h3><p class="lead">${HS.count(due.length, HS.N.q)} ${due.length > 1 ? 'تحتاج' : 'يحتاج'} مراجعة الآن (أخطأت فيها أو حان وقت تذكّرها).</p><button type="button" class="btn" data-act="quiz" data-mode="review">ابدأ المراجعة (${HS.count(Math.min(10, due.length), HS.N.q)})</button></div>`;
+  else if (!seen) review = `<div class="card due">${HS.mascot('point', { small: true, cls: 'due-art' })}<h3>🚀 ابدأ من هنا</h3><p class="lead">اقرأ الدرس الأول، ثم أجب عن أسئلته. سنحفظ ما تحتاج مراجعته.</p><button type="button" class="btn" data-p="${S.u.lessons[0].id}">افتح الدرس الأول</button></div>`;
   else review = `<div class="card due ok"><h3>✅ لا توجد مراجعة مطلوبة الآن</h3><p class="lead">أحسنت! جرّب الاختبار الشامل أو تحدّي السرعة.</p><div class="row"><button type="button" class="btn" data-act="quiz" data-mode="final">الاختبار الشامل</button><button type="button" class="btn sky" data-act="speed">⚡ تحدّي السرعة</button></div></div>`;
   const total = mastery();
   M().innerHTML = `
-  <div class="card hello"><div class="hello-row"><span class="big-av" aria-hidden="true">${p.avatar}</span><div><h2>أهلًا ${p.name ? 'يا ' + esc(p.name) : 'يا بطل'}! 👋</h2>
+  <div class="card hello"><div class="hello-row"><span class="big-av" aria-hidden="true">${HS.avatar(p)}</span><div><h2>أهلًا ${p.name ? 'يا ' + esc(p.name) : 'يا بطل'}! 👋</h2>
     <p class="lead">${streak ? `🔥 تعلّم متواصل: ${HS.count(streak, HS.N.day)} · ` : ''}إتقان الوحدة ${ar(pct(total))}٪</p></div></div>${meter(total)}</div>
   ${review}
   <div class="path">${S.u.lessons.map((l, i) => { const m = mastery(l.id); return `
@@ -90,7 +90,7 @@ function renderHome() {
     <button type="button" class="step" data-p="cards"><span class="num" aria-hidden="true">🃏</span><span class="txt"><b>بطاقات المصطلحات</b><span>${HS.count(S.u.glossary.length, HS.N.term)}</span></span></button>
     <button type="button" class="step" data-p="test"><span class="num" aria-hidden="true">🏆</span><span class="txt"><b>الاختبارات</b><span>اختبار شامل، اختبار لكل درس، تحدّي السرعة</span></span></button>
   </div>
-  <div class="card"><h3>🏅 أوسمتك</h3><p class="lead small">الأوسمة تأتي من الإتقان الحقيقي: ٨٠٪ أو أكثر في الدرس.</p><div class="badges">${badges().map(([e, n, g]) => `<div class="badge ${g ? 'got' : ''}"><span class="em">${e}</span><small>${n}</small></div>`).join('')}</div></div>
+  <div class="card"><h3>🏅 أوسمتك</h3><p class="lead small">الأوسمة تأتي من الإتقان الحقيقي: ٨٠٪ أو أكثر في الدرس.</p><div class="badges">${badges().map(([e, n, g]) => `<div class="badge ${g ? 'got' : ''}"><span class="em" aria-hidden="true">${e}</span><small>${n}</small>${g ? '' : '<span class="sr">لم تحصل عليه بعد</span>'}</div>`).join('')}</div></div>
   ${(S.u.parentTips || []).length ? `<details class="parent"><summary>👨‍👦 نصائح للأب</summary><ul>${S.u.parentTips.map(t => `<li>${t}</li>`).join('')}</ul></details>` : ''}`;
 }
 
@@ -245,7 +245,7 @@ function answerText(q) {
   return '';
 }
 function retryIntro() {
-  M().innerHTML = `<div class="card result"><div class="big">🔁</div><h2>محاولة ثانية</h2><p class="lead">لنُعد الأسئلة التي أخطأت فيها (${ar(Q.retry.length)}). المحاولة الثانية تثبّت المعلومة.</p>
+  M().innerHTML = `<div class="card result"><div class="big">${HS.mascot('encourage', { fb: '🔁' })}</div><h2>محاولة ثانية</h2><p class="lead">لنُعد الأسئلة التي أخطأت فيها (${ar(Q.retry.length)}). المحاولة الثانية تثبّت المعلومة.</p>
     <div class="row center"><button type="button" class="btn" id="uGoRetry">هيا!</button></div></div>`;
   $('uGoRetry').onclick = () => { Q.phase = 'retry'; Q.i = 0; Q.retry = HS.shuffle(Q.retry); renderQ(); };
 }
@@ -256,9 +256,10 @@ function quizResult() {
   HS.save();
   if (p >= .85) HS.party();
   const face = p === 1 ? '🏆' : p >= .85 ? '🌟' : p >= .7 ? '😊' : '💪';
+  const pose = p === 1 ? 'celebrate' : p >= .85 ? 'cheer' : p >= .7 ? 'encourage' : 'sad-soft';   // Koko: big win, success, keep going, kind low score
   const msg = p === 1 ? 'علامة كاملة!' : p >= .85 ? 'ممتاز جدًا!' : p >= .7 ? 'جيد! الأخطاء ستعود لك للمراجعة.' : 'لا بأس: الأسئلة التي أخطأت فيها ستعود لك غدًا لتثبيتها.';
   const ls = [...new Set(Q.list.map(q => q.l))];
-  M().innerHTML = `<div class="card result"><div class="big">${face}</div><h2>${ar(s)} من ${ar(t)}</h2><p class="lead">${msg}</p>
+  M().innerHTML = `<div class="card result"><div class="big">${HS.mascot(pose, { fb: face })}</div><h2>${ar(s)} من ${ar(t)}</h2><p class="lead">${msg}</p>
     <div class="ml">${ls.map(l => { const L = S.u.lessons.find(x => x.id === l), i = S.u.lessons.indexOf(L), m = mastery(l); return `<div class="m-row"><span>${L.em} الدرس ${ar(i + 1)}</span><b>${ar(pct(m))}٪</b></div>${meter(m)}`; }).join('')}</div>
     <div class="row center"><button type="button" class="btn" id="uAgain">🔁 اختبار جديد</button>${Q.l ? `<button type="button" class="btn sec" data-p="${Q.l}">📖 الدرس</button>` : ''}<button type="button" class="btn sec" data-p="home">🗺️ الرحلة</button></div></div>
   ${Q.wrong.length ? `<div class="card"><h3>📝 للمراجعة</h3>${Q.wrong.map(q => `<div class="review-item"><b>${q.q}</b>${answerText(q) ? `<br>✅ ${answerText(q)}` : ''}<br>${q.ex || ''}</div>`).join('')}</div>` : ''}`;
@@ -382,7 +383,7 @@ function gameSort(g) {
 }
 function sortDone(g, s, t) {
   if (s === t) HS.party();
-  M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${s === t ? '🎉' : '👍'}</div><h2>${ar(s)} من ${ar(t)} من أول محاولة</h2><p class="lead">${s === t ? 'كلها صحيحة!' : 'العب مرة ثانية لتصل للكامل.'}</p>
+  M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.mascot(s === t ? 'cheer' : 'encourage', { fb: s === t ? '🎉' : '👍' })}</div><h2>${ar(s)} من ${ar(t)} من أول محاولة</h2><p class="lead">${s === t ? 'كلها صحيحة!' : 'العب مرة ثانية لتصل للكامل.'}</p>
     <div class="row center"><button type="button" class="btn" data-act="sort" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
   bindBack();
 }
@@ -396,7 +397,7 @@ function gameOrder(g) {
   const round = () => {
     if (k >= order.length) {
       if (perfect === order.length) HS.party();
-      M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">🏆</div><h2>${ar(perfect)} من ${ar(order.length)} بدون أخطاء</h2><div class="row center"><button type="button" class="btn" data-act="order" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
+      M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.mascot('cheer', { fb: '🏆' })}</div><h2>${ar(perfect)} من ${ar(order.length)} بدون أخطاء</h2><div class="row center"><button type="button" class="btn" data-act="order" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
       return bindBack();
     }
     const raw = g.sets[order[k]], set = Array.isArray(raw) ? raw : raw.items, stitle = Array.isArray(raw) ? '' : raw.title; let placed = 0, mistakes = 0;
@@ -445,7 +446,7 @@ function gameMemory(l) {
     if (same) {
       a.classList.add('got'); c.classList.add('got'); open = []; found++; star(); HS.fx('ok');
       $('uSc').textContent = `✅ ${ar(found)} / ${ar(pairs.length)}`;
-      if (found === pairs.length) later(() => { HS.party(); M().innerHTML = `<div class="card result">${gameHead('🧠 لعبة الذاكرة')}<div class="big">🧠</div><h2>وجدت كل الأزواج!</h2><p class="lead">في ${ar(moves)} محاولة${moves <= pairs.length + 2 ? ' – ذاكرة ممتازة!' : ''}</p><div class="row center"><button type="button" class="btn" data-act="memory" ${l ? `data-l="${l}"` : ''}>🔁 العب مرة أخرى</button></div></div>`; bindBack(); }, 700);
+      if (found === pairs.length) later(() => { HS.party(); M().innerHTML = `<div class="card result">${gameHead('🧠 لعبة الذاكرة')}<div class="big">${HS.mascot('cheer', { fb: '🧠' })}</div><h2>وجدت كل الأزواج!</h2><p class="lead">في ${ar(moves)} محاولة${moves <= pairs.length + 2 ? ' – ذاكرة ممتازة!' : ''}</p><div class="row center"><button type="button" class="btn" data-act="memory" ${l ? `data-l="${l}"` : ''}>🔁 العب مرة أخرى</button></div></div>`; bindBack(); }, 700);
     } else { lock = true; later(() => { a.classList.remove('up'); c.classList.remove('up'); open = []; lock = false; }, 1000); }
   });
 }

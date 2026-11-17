@@ -13,6 +13,8 @@ Reads:
   src/core/                shared code for every app: core.js (profiles, spaced repetition, speech, drag & drop),
                            core.css, phrases.js, sync.js (online sync through Firebase) + firebase-config.js
   src/units/<id>.js        one file per school unit: content only, drawn by the unit engine (src/apps/unit)
+  dist/assets/art.json     finished artwork made by tools/art_process.py: {id: {src, sm?}}. Becomes window.HS_ART;
+                           HS.art(id, …) shows a picture only when it is listed here, otherwise the emoji fallback.
   src/audio/manifest.json  optional recorded voice clips: {"ar|text": "file.mp3"}, files in src/audio/clips/
                            (made by tools/make_audio.py); missing clips fall back to the device voice
   src/apps/<folder>/       one folder per app:
@@ -131,12 +133,33 @@ def main():
                         audio[key] = 'data:audio/mpeg;base64,' + base64.b64encode(af.read()).decode()
     audio_js = '<script>window.HS_AUDIO = ' + json.dumps(audio, ensure_ascii=False) + ';</script>'
 
+    # ---- finished artwork (tools/art_process.py): only pictures whose files exist are offered to the site
+    art, missing = {}, []
+    reg = os.path.join(DIST, 'assets', 'art.json')
+    if os.path.isfile(reg):
+        with open(reg, encoding='utf-8') as f:
+            for k, v in json.load(f).items():
+                files = list(v.values()) if isinstance(v, dict) else []
+                if all(os.path.isfile(os.path.join(DIST, x)) for x in files): art[k] = v
+                else: missing.append(k)
+    for k in missing:
+        print(f'WARNING: artwork "{k}" is in art.json but its file is missing; run tools/art_process.py')
+    icons = art.pop('_icons', {})
+    head = ''
+    if icons:
+        head = (f'<link rel="icon" type="image/png" sizes="64x64" href="{icons["favicon-64"]}">\n'
+                f'<link rel="apple-touch-icon" href="{icons["apple-touch-icon"]}">\n'
+                '<meta name="apple-mobile-web-app-title" content="مدرسة البيت">')
+    art_js = '<script>window.HS_ART = ' + json.dumps(art, ensure_ascii=False, sort_keys=True) + ';</script>'
+
     page = read('portal', 'shell.html')
     for key, val in {
         'THEME_CSS': read('portal', 'theme.css'),
         'CORE_CSS': read('core', 'core.css'),
         'PORTAL_CSS': read('portal', 'portal.css'),
         'AUDIO_JS': audio_js,
+        'ART_JS': art_js,
+        'HEAD_ICONS': head,
         'CORE_JS': '<script>\n' + read('core', 'phrases.js') + '\n' + read('core', 'core.js') + '\n' + read('core', 'firebase-config.js') + '\n' + read('core', 'sync.js') + '\n</script>',
         'UNITS_JS': '\n'.join(units_js),
         'APPS_CSS': '\n\n'.join(apps_css),
@@ -151,7 +174,7 @@ def main():
     out = os.path.join(DIST, 'index.html')
     with open(out, 'w', encoding='utf-8') as f:
         f.write(page)
-    print(f'Built {out}  ({len(page)//1024} KB, apps: {", ".join(ids)}; units: {", ".join(unit_ids)}; voice clips: {len(audio)})')
+    print(f'Built {out}  ({len(page)//1024} KB, apps: {", ".join(ids)}; units: {", ".join(unit_ids)}; voice clips: {len(audio)}; artwork: {len(art)})')
 
 if __name__ == '__main__':
     main()

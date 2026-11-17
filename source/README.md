@@ -140,3 +140,13 @@ The design follows well-established learning research:
   never overwrite each other. Sound/voice settings stay per device.
 - Parent page → «المزامنة»: create family code on one device, then «انضم بكود العائلة» or open the join link on others.
 - Hosting: GitHub Pages (`mahirkoshak.github.io/madrasat-albayt`). Update = rebuild + push `dist/index.html` as `index.html`.
+
+## Artwork and publishing
+- Approved artwork lives in `../art-source/raw/<id>.png` (ids from `art-source/manifest-core.json`). Never edit it here.
+- `python3 tools/art_process.py` makes the site's pictures in `dist/assets/` (WebP; `-sm` 192px copies; `-face` head-and-shoulders
+  copies for avatar circles; home-screen icons) and the registry `dist/assets/art.json`. It removes leftover green edges only.
+- `build.py` turns the registry into `window.HS_ART`. Code asks for pictures by id through `HS.art(id, {fb: '🧩'})`,
+  `HS.mascot(pose)`, `HS.avatar(profile)`, `HS.rewardArt(reward)` or `data-art="id"` in markup; when a picture does not exist yet,
+  the old emoji stays. Menu items take `art: '<id>'` in `catalog.js`. A new picture appears after: add PNG → publish.
+- Profiles still store `avatar` as one string: old emoji, or a picture id like `avatar-fox`. No data migration.
+- `python3 tools/publish.py` = process art + build + copy `index.html` and `assets/` to the repository root (GitHub Pages).

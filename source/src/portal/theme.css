@@ -1,31 +1,49 @@
 /* ============================================================
-   THEME: one place for the site's look ("playful & bold").
-   Colors, font and corner sizes used by the menu and all apps.
+   THEME: one place for the site's look ("Desert Daylight", see art-source/STYLE.md).
+   Colors, type, spacing, corners and shadows used by the menu and all apps.
    Change a value here, run build.py, and the whole site follows.
+   The 3D characters are the focal points; everything around them stays flat, warm and calm.
    ============================================================ */
 :root{
-  --t-font:'Baloo Bhaijaan 2','Tajawal',system-ui,sans-serif;
+  --t-font:'Baloo Bhaijaan 2','Tajawal',system-ui,sans-serif;   /* rounded Arabic + Latin, friendly at every size */
+  --t-font-text:'Tajawal','Baloo Bhaijaan 2',system-ui,sans-serif; /* long adult text (parent page) */
 
-  /* surfaces & text */
-  --t-page:#fff8e7;        /* warm cream page background */
+  /* surfaces & text: warm, never pure grey or black */
+  --t-page:#fff8e7;        /* cream page */
+  --t-sand:#f3e2c3;        /* ground under characters, quiet panels */
+  --t-sand-soft:#fbf1dc;
+  --t-sky:#e3f1fb;         /* the hero's daylight */
   --t-surface:#ffffff;
-  --t-line:#e5e5e5;        /* card borders */
-  --t-ink:#3c3c3c;
-  --t-ink-strong:#2b2b2b;
-  --t-muted:#6b6b6b;
+  --t-line:#ecdfc6;        /* borders and empty meters */
+  --t-ink:#3d3428;
+  --t-ink-strong:#2a2219;
+  --t-muted:#6c604f;       /* 5.3:1 on cream */
 
-  /* the "chunky" look: a 2px outline plus a thicker bottom edge */
-  --t-raise:0 0 0 2px var(--t-line), 0 5px 0 2px var(--t-line);
-  --t-r-card:24px;
+  /* corners: small controls, cards, big panels */
+  --t-r-sm:12px;
   --t-r-btn:16px;
+  --t-r-card:22px;
+  --t-r-lg:32px;
 
-  /* brand colors: <name> = fill, <name>-sh = the darker bottom edge */
+  /* spacing scale */
+  --t-s1:4px; --t-s2:8px; --t-s3:12px; --t-s4:16px; --t-s5:24px; --t-s6:32px; --t-s7:48px;
+
+  /* depth: a 1.5px warm outline, a short tactile edge and one soft warm shadow */
+  --t-raise:0 0 0 1.5px var(--t-line), 0 3px 0 1.5px var(--t-line), 0 12px 24px -16px rgba(110,74,20,.35);
+  --t-lift:0 0 0 1.5px var(--t-line), 0 4px 0 1.5px var(--t-line), 0 18px 30px -16px rgba(110,74,20,.42);
+  --t-press:0 0 0 1.5px var(--t-line), 0 1px 0 1.5px var(--t-line);
+  --t-focus:0 0 0 3px var(--t-page), 0 0 0 6px var(--t-blue);
+
+  /* brand colors: <name> = fill, <name>-sh = its pressed edge, -soft = tint, -ink = text on the tint */
   --t-green:#58cc02;  --t-green-btn:#2b7a0b; --t-green-sh:#1d5507;
   --t-green-soft:#d7ffb8; --t-green-edge:#58a700; --t-green-ink:#2b5d00;
   --t-red-soft:#ffdfe0; --t-red-edge:#ff4b4b; --t-red-ink:#a51d1d;
   --t-blue:#1c7ed6;   --t-blue-sh:#135ea3;  --t-blue-soft:#ddf4ff;
   --t-pink:#ff6f91;   --t-pink-sh:#c94a6a;
-  --t-gold:#ffc800;   --t-gold-sh:#d9a400;  --t-gold-soft:#fff4cc; --t-gold-ink:#8a5a00;
+  --t-gold:#ffc800;   --t-gold-sh:#d9a400;  --t-gold-soft:#fff4cc; --t-gold-ink:#7a4f00;
   --t-purple:#8e5cf7; --t-purple-sh:#6a3fd1;
   --t-orange:#ff9600; --t-orange-sh:#cc7800;
+
+  /* type scale (px): 15 · 17 · 19 · 23 · 28 · 36 · 48 */
+  --t-fs-xs:15px; --t-fs-sm:17px; --t-fs-md:19px; --t-fs-lg:23px; --t-fs-xl:28px; --t-fs-2xl:36px; --t-fs-3xl:48px;
 }

@@ -63,6 +63,62 @@
   const GUEST = { id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' };
   HS.AVATARS = ['🦁', '🐯', '🐼', '🦊', '🐨', '🐰', '🦄', '🐬', '🦋', '🐢', '🚀', '⭐'];
   HS.COLORS = ['var(--t-blue)', 'var(--t-pink)', 'var(--t-green-btn)', 'var(--t-purple)', 'var(--t-orange)'];
+
+  /* ---------- artwork ----------
+     window.HS_ART comes from the build (tools/art_process.py → dist/assets/art.json): only pictures that exist.
+     Everything asks for art by its id (the "id" in art-source/manifest-core.json) and passes the emoji it used
+     before as the fallback, so a picture that is not made yet keeps showing its emoji, and a new picture
+     appears everywhere as soon as it is processed and the site is rebuilt. */
+  HS.ART = window.HS_ART || {};
+  HS.hasArt = id => !!(id && HS.ART[id]);
+  /** <img> for artwork `id`, or the fallback when there is no picture.
+      o.alt: '' = decorative (default), or a short Arabic description · o.small: the 192px copy · o.cls · o.size (px)
+      o.face: the head-and-shoulders copy (avatars) · o.fb: fallback (emoji or text) · o.eager: load now (above the fold) */
+  HS.art = (id, o = {}) => {
+    const a = HS.ART[id], fb = o.fb == null ? '' : String(o.fb);
+    if (!a) return fb ? `<span class="hs-fb ${o.fbCls || ''}" aria-hidden="true">${fb}</span>` : '';
+    const src = (o.face && a.face) || (o.small && a.sm) || a.src, sz = o.size ? ` width="${o.size}" height="${o.size}"` : '';
+    return `<img class="hs-art ${o.cls || ''}" src="${src}" alt="${HS.esc(o.alt || '')}"${sz} decoding="async"${o.eager ? '' : ' loading="lazy"'} draggable="false" data-fb="${HS.esc(fb)}" onerror="HS.artFail(this)">`;
+  };
+  /** a listed picture failed to load (e.g. offline before it was cached): show its fallback instead of a broken image */
+  HS.artFail = img => { const s = document.createElement('span'); s.className = 'hs-fb'; s.setAttribute('aria-hidden', 'true'); s.textContent = img.dataset.fb || ''; img.replaceWith(s); };
+  /** static markup: <span data-art="id">🧩</span> becomes the picture when it exists (the emoji stays otherwise) */
+  HS.hydrateArt = root => (root || document).querySelectorAll('[data-art]').forEach(el => {
+    if (!HS.hasArt(el.dataset.art) || el.querySelector('img')) return;
+    el.innerHTML = HS.art(el.dataset.art, { small: el.hasAttribute('data-art-small'), fb: el.textContent.trim() }); el.classList.add('has-art');
+  });
+  HS.mascot = (pose, o = {}) => HS.art('mascot-' + pose, o);
+
+  /* avatars: a profile's `avatar` is still one string. Old profiles keep their emoji; new ones store a picture id
+     (e.g. "avatar-fox"). Nothing is migrated, so synced devices and saved data stay the same. */
+  const AV_FROM_EMOJI = { '🦊': 'avatar-fox', '🐼': 'avatar-panda', '🦁': 'avatar-lion', '🐰': 'avatar-bunny', '🦄': 'avatar-unicorn' };   // only exact matches
+  const isAvId = v => /^avatar-[a-z0-9-]+$/.test(v || '');
+  /** picture choices for a new child: children first, then animals and friends; the emoji list if no pictures exist */
+  HS.avatarChoices = () => {
+    const ids = Object.keys(HS.ART).filter(k => isAvId(k) && !/-happy$/.test(k));
+    const kid = k => /^avatar-(boy|girl)-/.test(k);
+    return ids.length ? [...ids.filter(kid), ...ids.filter(k => !kid(k))] : HS.AVATARS;
+  };
+  HS.avatarArt = v => isAvId(v) ? (HS.ART[v] ? v : null) : (AV_FROM_EMOJI[v] && HS.ART[AV_FROM_EMOJI[v]] ? AV_FROM_EMOJI[v] : null);
+  /** the avatar of profile p as HTML (picture or emoji); o.big uses the 512px picture */
+  HS.avatar = (p, o = {}) => {
+    const v = (p && p.avatar) || '🙂', id = HS.avatarArt(v);
+    if (id) return `<span class="hs-av">${HS.art(id, { face: !o.big, small: !o.big, cls: 'hs-av-img', fb: '🙂', eager: o.eager })}</span>`;
+    return `<span class="hs-av-em" aria-hidden="true">${HS.esc(isAvId(v) ? '🙂' : v)}</span>`;
+  };
+  /** for plain text (a <select> option, a sentence): the emoji, or nothing for a picture avatar */
+  HS.avatarText = p => { const v = (p && p.avatar) || ''; return isAvId(v) ? '' : v; };
+  /** spoken/read names of the picture avatars, for screen readers in the picker */
+  HS.AVATAR_NAMES = { 'boy-cap': 'ولد بقبعة', 'boy-curly': 'ولد بشعر مجعّد', 'boy-glasses': 'ولد بنظارة', 'boy-thobe': 'ولد بثوب',
+    'girl-bob': 'بنت بشعر قصير', 'girl-braids': 'بنت بضفيرتين', 'girl-ponytail': 'بنت بذيل حصان', 'girl-waves': 'بنت بشعر مموّج',
+    cat: 'قطة', dragon: 'تنين صغير', fox: 'ثعلب', panda: 'باندا', lion: 'شبل', bunny: 'أرنب', robot: 'روبوت', unicorn: 'حصان وحيد القرن', 'star-sprite': 'نجمة سحرية', 'cloud-pal': 'غيمة' };
+  HS.avatarName = v => isAvId(v) ? HS.AVATAR_NAMES[v.slice(7)] || 'صورة' : v;
+
+  /* reward pictures: the parent can rename rewards and change their emoji, so a default reward shows its
+     picture only while it still has its original emoji (r = a reward, or a bought coupon with .rid) */
+  const RW_ART = { r1: ['📱', 'reward-ipad'], r2: ['🎮', 'reward-playstation'], r3: ['🍦', 'reward-icecream'], r5: ['🎬', 'reward-movie'],
+    r6: ['🏞️', 'reward-park'], r7: ['📖', 'reward-story'], r8: ['🎲', 'reward-boardgame'], r9: ['🍽️', 'reward-dinner'], r10: ['🧸', 'reward-toy'] };
+  HS.rewardArt = (r, o = {}) => { const m = RW_ART[r.rid || r.id]; return HS.art(m && m[0] === r.em ? m[1] : null, Object.assign({ small: true, fb: HS.esc(r.em || '🎁') }, o)); };
   HS.profiles = () => S.profiles.slice();
   HS.current = () => S.profiles.find(p => p.id === S.current) || (S.profiles.length ? null : GUEST);
   HS.setCurrent = id => { S.current = id; HS.save(); emit('profile'); };

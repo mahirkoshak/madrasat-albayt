@@ -172,8 +172,11 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 /* break screen */
 .k-break{position:fixed;inset:0;z-index:50;background:rgba(30,40,60,.6);display:flex;align-items:center;justify-content:center;padding:20px}
 .k-break-in{background:#fff;border-radius:28px;padding:28px 22px;max-width:380px;text-align:center}
-.k-break-in .big{font-size:72px}.k-break-in h2{margin:6px 0;font-size:30px}.k-break-in p{font-size:20px}
+.k-break-in .big{font-size:72px;display:grid;place-items:center}.k-break-in .big .hs-art{width:180px}.k-break-in h2{margin:6px 0;font-size:30px}.k-break-in p{font-size:20px}
 .k-hold{position:relative;overflow:hidden;margin-top:14px;padding:12px 16px;border:2px solid #d0d7e2;border-radius:14px;background:#f3f5f8;font:inherit;font-size:14px;color:#555;touch-action:none;user-select:none;-webkit-user-select:none}
 .k-hold i{position:absolute;inset:0;background:#d7f5c0;transform:scaleX(0);transform-origin:right;transition:transform 0s}
 .k-hold.on i{transform:scaleX(1);transition:transform 2s linear}
 .k-hold span{position:relative}
+
+.mi .em.has-art{display:grid;place-items:center;height:clamp(64px,16vw,84px)}
+.mi .em .hs-art{height:100%;width:auto}

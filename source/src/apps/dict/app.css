@@ -87,3 +87,8 @@ button:disabled{color:var(--t-ink);-webkit-text-fill-color:currentColor}
 .d-dice{margin-top:10px;background:#fff;border-radius:999px;padding:6px 18px;font-weight:800;font-size:17px;box-shadow:0 4px 0 var(--t-gold-sh)}
 .d-dice:active{transform:translateY(3px)}
 .d-ask small{display:block;font-size:16px;font-weight:700;color:var(--t-muted);margin-top:2px}
+
+.d-hello{display:flex;align-items:center;justify-content:center;gap:10px;margin:4px 0 10px}
+.d-hello .d-h1{margin:0}
+.d-koko{width:92px;flex:none}
+@media(max-width:420px){.d-koko{width:72px}.d-hello .d-h1{font-size:26px}}

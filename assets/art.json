@@ -1,0 +1,116 @@
+{
+ "_icons": {
+  "apple-touch-icon": "assets/brand/apple-touch-icon.png",
+  "favicon-64": "assets/brand/favicon-64.png",
+  "icon-192": "assets/brand/icon-192.png"
+ },
+ "app-icon": {
+  "src": "assets/brand/app-icon.webp"
+ },
+ "avatar-boy-cap": {
+  "face": "assets/avatars/avatar-boy-cap-face.webp",
+  "sm": "assets/avatars/avatar-boy-cap-sm.webp",
+  "src": "assets/avatars/avatar-boy-cap.webp"
+ },
+ "avatar-boy-curly": {
+  "face": "assets/avatars/avatar-boy-curly-face.webp",
+  "sm": "assets/avatars/avatar-boy-curly-sm.webp",
+  "src": "assets/avatars/avatar-boy-curly.webp"
+ },
+ "avatar-boy-glasses": {
+  "face": "assets/avatars/avatar-boy-glasses-face.webp",
+  "sm": "assets/avatars/avatar-boy-glasses-sm.webp",
+  "src": "assets/avatars/avatar-boy-glasses.webp"
+ },
+ "avatar-boy-thobe": {
+  "face": "assets/avatars/avatar-boy-thobe-face.webp",
+  "sm": "assets/avatars/avatar-boy-thobe-sm.webp",
+  "src": "assets/avatars/avatar-boy-thobe.webp"
+ },
+ "avatar-cat": {
+  "face": "assets/avatars/avatar-cat-face.webp",
+  "sm": "assets/avatars/avatar-cat-sm.webp",
+  "src": "assets/avatars/avatar-cat.webp"
+ },
+ "avatar-dragon": {
+  "face": "assets/avatars/avatar-dragon-face.webp",
+  "sm": "assets/avatars/avatar-dragon-sm.webp",
+  "src": "assets/avatars/avatar-dragon.webp"
+ },
+ "avatar-fox": {
+  "face": "assets/avatars/avatar-fox-face.webp",
+  "sm": "assets/avatars/avatar-fox-sm.webp",
+  "src": "assets/avatars/avatar-fox.webp"
+ },
+ "avatar-girl-bob": {
+  "face": "assets/avatars/avatar-girl-bob-face.webp",
+  "sm": "assets/avatars/avatar-girl-bob-sm.webp",
+  "src": "assets/avatars/avatar-girl-bob.webp"
+ },
+ "avatar-girl-braids": {
+  "face": "assets/avatars/avatar-girl-braids-face.webp",
+  "sm": "assets/avatars/avatar-girl-braids-sm.webp",
+  "src": "assets/avatars/avatar-girl-braids.webp"
+ },
+ "avatar-girl-ponytail": {
+  "face": "assets/avatars/avatar-girl-ponytail-face.webp",
+  "sm": "assets/avatars/avatar-girl-ponytail-sm.webp",
+  "src": "assets/avatars/avatar-girl-ponytail.webp"
+ },
+ "avatar-girl-waves": {
+  "face": "assets/avatars/avatar-girl-waves-face.webp",
+  "sm": "assets/avatars/avatar-girl-waves-sm.webp",
+  "src": "assets/avatars/avatar-girl-waves.webp"
+ },
+ "avatar-panda": {
+  "face": "assets/avatars/avatar-panda-face.webp",
+  "sm": "assets/avatars/avatar-panda-sm.webp",
+  "src": "assets/avatars/avatar-panda.webp"
+ },
+ "badge-champion-earned": {
+  "sm": "assets/badges/badge-champion-earned-sm.webp",
+  "src": "assets/badges/badge-champion-earned.webp"
+ },
+ "logo-mark": {
+  "src": "assets/brand/logo-mark.webp"
+ },
+ "mascot-celebrate": {
+  "sm": "assets/mascot/mascot-celebrate-sm.webp",
+  "src": "assets/mascot/mascot-celebrate.webp"
+ },
+ "mascot-cheer": {
+  "sm": "assets/mascot/mascot-cheer-sm.webp",
+  "src": "assets/mascot/mascot-cheer.webp"
+ },
+ "mascot-encourage": {
+  "sm": "assets/mascot/mascot-encourage-sm.webp",
+  "src": "assets/mascot/mascot-encourage.webp"
+ },
+ "mascot-point": {
+  "sm": "assets/mascot/mascot-point-sm.webp",
+  "src": "assets/mascot/mascot-point.webp"
+ },
+ "mascot-read": {
+  "sm": "assets/mascot/mascot-read-sm.webp",
+  "src": "assets/mascot/mascot-read.webp"
+ },
+ "mascot-sad-soft": {
+  "sm": "assets/mascot/mascot-sad-soft-sm.webp",
+  "src": "assets/mascot/mascot-sad-soft.webp"
+ },
+ "mascot-sleep": {
+  "sm": "assets/mascot/mascot-sleep-sm.webp",
+  "src": "assets/mascot/mascot-sleep.webp"
+ },
+ "mascot-thinking": {
+  "sm": "assets/mascot/mascot-thinking-sm.webp",
+  "src": "assets/mascot/mascot-thinking.webp"
+ },
+ "mascot-welcome": {
+  "sm": "assets/mascot/mascot-welcome-sm.webp",
+  "src": "assets/mascot/mascot-welcome.webp"
+ },
+ "subject-science": {
+  "src": "assets/catalog/subject-science.webp"
+ }
+}
