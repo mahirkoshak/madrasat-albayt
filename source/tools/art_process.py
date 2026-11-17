@@ -142,6 +142,10 @@ def icons(img):
     return out
 
 
+# art/fixes/<id>.png: corrections made after generation (e.g. game-story-card: the eggs were drawn too thin).
+# They replace the raw picture when the site is built; the raw files are never changed.
+HERE_FIXES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'art', 'fixes')
+
 def main(raw_dir):
     mdir = manifest_dir()
     entries = []
@@ -152,6 +156,8 @@ def main(raw_dir):
     for e in entries:
         rel = e['file'] if e['file'].startswith('assets/') else EXTRA.get(e['id'])
         src = os.path.join(raw_dir, e['id'] + '.png')
+        fix = os.path.join(HERE_FIXES, e['id'] + '.png')   # a corrected version made here (the raw file stays as generated)
+        if os.path.exists(fix): src = fix
         if not rel or not os.path.exists(src): continue
         smrel = rel.replace('.webp', '-sm.webp') if any(k in rel for k in SMALL) else None
         facerel = rel.replace('.webp', '-face.webp') if '/avatars/' in rel and not e['id'].endswith('-happy') else None
