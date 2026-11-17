@@ -211,7 +211,7 @@ function memoryGame() {
   levelBar(); $('gDots').innerHTML = '';
   $('gQ').textContent = P.memory[l](); $('gQ').style.direction = ar ? 'rtl' : 'ltr'; $('gShow').innerHTML = '';
   G.sp = [[P.memory[l](), l]];
-  $('gArea').innerHTML = `<div class="kmem c${cards.length}">${cards.map((c, k) => `<button type="button" class="mc" data-k="${k}" aria-label="بطاقة ${k + 1}"><span class="mc-in"><span class="mc-back" aria-hidden="true">⭐</span><span class="mc-face">${c.face}</span></span></button>`).join('')}</div>`;
+  $('gArea').innerHTML = `<div class="kmem c${cards.length}">${cards.map((c, k) => `<button type="button" class="mc" data-k="${k}" aria-label="بطاقة ${k + 1}"><span class="mc-in"><span class="mc-back${HS.ART['game-card-back'] ? ' art' : ''}" aria-hidden="true">${HS.art('game-card-back', { small: true, eager: true, fb: '⭐', cls: 'mc-back-img' })}</span><span class="mc-face">${c.face}</span></span></button>`).join('')}</div>`;
   say(G.sp);
   $('gArea').querySelectorAll('.mc').forEach(b => b.onclick = () => {
     if (lock || b.classList.contains('up') || b.classList.contains('got')) return;

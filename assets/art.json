@@ -201,8 +201,23 @@
  "game-ani-card": {
   "src": "assets/games/kg/game-ani-card.webp"
  },
+ "game-apple-goal": {
+  "src": "assets/games/kg/game-apple-goal.webp"
+ },
+ "game-ball": {
+  "src": "assets/games/kg/game-ball.webp"
+ },
+ "game-basket": {
+  "src": "assets/games/kg/game-basket.webp"
+ },
  "game-basket-card": {
   "src": "assets/games/kg/game-basket-card.webp"
+ },
+ "game-box": {
+  "src": "assets/games/kg/game-box.webp"
+ },
+ "game-card-back": {
+  "src": "assets/games/kg/game-card-back.webp"
  },
  "game-col-card": {
   "src": "assets/games/kg/game-col-card.webp"
@@ -243,11 +258,29 @@
  "game-robot-card": {
   "src": "assets/games/kg/game-robot-card.webp"
  },
+ "game-robot-happy": {
+  "src": "assets/games/kg/game-robot-happy.webp"
+ },
+ "game-robot-idle": {
+  "src": "assets/games/kg/game-robot-idle.webp"
+ },
+ "game-rock": {
+  "src": "assets/games/kg/game-rock.webp"
+ },
  "game-shp-card": {
   "src": "assets/games/kg/game-shp-card.webp"
  },
+ "game-star-pickup": {
+  "src": "assets/games/kg/game-star-pickup.webp"
+ },
  "game-story-card": {
   "src": "assets/games/kg/game-story-card.webp"
+ },
+ "game-table": {
+  "src": "assets/games/kg/game-table.webp"
+ },
+ "game-tile": {
+  "src": "assets/games/kg/game-tile.webp"
  },
  "game-where-card": {
   "src": "assets/games/kg/game-where-card.webp"

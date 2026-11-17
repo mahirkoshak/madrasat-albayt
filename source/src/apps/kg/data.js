@@ -86,7 +86,7 @@ APPDATA.kg = {
     odd: { ar: () => 'أيّهم مختلف؟', en: () => 'Which one is different?' },
     oddWhy: { ar: g => 'لأن البقية ' + g[0], en: g => 'The others are ' + g[1] },
     pattern: { ar: () => 'ماذا يأتي بعد ذلك؟', en: () => 'What comes next?' },
-    memory: { ar: () => 'اقلبي بطاقتين وابحثي عن الأزواج', en: () => 'Flip two cards and find the pairs' },
+    memory: { ar: () => 'لنقلب بطاقتين ونبحث عن الأزواج', en: () => 'Flip two cards and find the pairs' },
     basket: { ar: () => 'لنضع كل شيء في سلّته', en: () => 'Put each one in the right basket' }
   };
   /** every string the app can say, as [text, lang] (for tools/speech_list.js) */

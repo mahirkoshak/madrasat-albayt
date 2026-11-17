@@ -133,6 +133,8 @@ function composeGame() {
 }
 
 /* ---------------- 🧭 where is it? (position words) ---------------- */
+/** the thing to place: the ball has a drawn picture, the animals stay as they are */
+const tgt = t => t[2] === 'ball' ? HS.art('game-ball', { small: true, eager: true, fb: t[0], cls: 'wt-img' }) : t[0];
 const ZONE_POS = {   // where each spot is drawn in the 300×240 scene (centre x,y) and its layer
   table: { on: [150, 62, 3], under: [150, 182, 3], beside: [262, 150, 3] },
   basket: { in: [150, 140, 1], on: [150, 46, 3], beside: [262, 150, 3] },
@@ -141,10 +143,10 @@ const ZONE_POS = {   // where each spot is drawn in the 300×240 scene (centre x
 };
 function sceneHtml(s, mini, extra = '') {
   const ref = {
-    table: `<div class="wt-table"><i></i><b class="l"></b><b class="r"></b></div>`,
-    basket: `<div class="wt-basket">🧺</div>`,
-    box: `<div class="wt-box">📦</div>`,
-    boxes: `<div class="wt-box two a">📦</div><div class="wt-box two b">📦</div>`
+    table: HS.ART['game-table'] ? `<div class="wt-table art">${HS.art('game-table', { small: true, eager: true, fb: '', cls: 'wt-img' })}</div>` : `<div class="wt-table"><i></i><b class="l"></b><b class="r"></b></div>`,
+    basket: `<div class="wt-basket">${HS.art('game-basket', { small: true, eager: true, fb: '🧺', cls: 'wt-img' })}</div>`,
+    box: `<div class="wt-box">${HS.art('game-box', { small: true, eager: true, fb: '📦', cls: 'wt-img' })}</div>`,
+    boxes: `<div class="wt-box two a">${HS.art('game-box', { small: true, eager: true, fb: '📦', cls: 'wt-img' })}</div><div class="wt-box two b">${HS.art('game-box', { small: true, eager: true, fb: '📦', cls: 'wt-img' })}</div>`
   }[s];
   return `<div class="wt-scene ${mini ? 'mini' : ''}" data-s="${s}">${ref}${extra}</div>`;
 }
@@ -152,7 +154,7 @@ function whereGame() {
   const L = G.lv, ar = LANG === 'ar', t = HS.bag('wt-t', WHERE.targets);
   if (WHERE.levels[L] === 'pick') return wherePick(t);
   const [s, p] = HS.bag('wt' + L, WHERE.levels[L]), zones = WHERE.scenes[s].zones;
-  const root = fresh(`<div class="wt-wrap">${sceneHtml(s)}</div><div class="wt-pool"><button type="button" class="wt-target hs-drag" aria-label="${t[1]}">${t[0]}</button></div>`);
+  const root = fresh(`<div class="wt-wrap">${sceneHtml(s)}</div><div class="wt-pool"><button type="button" class="wt-target hs-drag" aria-label="${t[1]}">${tgt(t)}</button></div>`);
   const sc = root.querySelector('.wt-scene');
   zones.forEach(z => { const [x, y, zi] = ZONE_POS[s][z]; sc.insertAdjacentHTML('beforeend', `<div class="wt-zone" data-z="${z}" style="left:${x - 34}px;top:${y - 34}px;z-index:${zi}"></div>`); });
   ROOT._dbg = p;
@@ -161,7 +163,7 @@ function whereGame() {
   HS.dnd(root, { item: '.wt-target', target: '.wt-zone', onDrop(el, zone) {
     if (zone.dataset.z === p) {
       const [x, y, zi] = ZONE_POS[s][p];
-      sc.insertAdjacentHTML('beforeend', `<div class="wt-placed hs-pop" style="left:${x - 30}px;top:${y - 30}px;z-index:${zi === 0 ? 0 : 5}">${t[0]}</div>`);
+      sc.insertAdjacentHTML('beforeend', `<div class="wt-placed hs-pop" style="left:${x - 30}px;top:${y - 30}px;z-index:${zi === 0 ? 0 : 5}">${tgt(t)}</div>`);
       el.classList.add('hs-done'); el.style.visibility = 'hidden'; sc.querySelectorAll('.wt-zone').forEach(z => z.remove()); HS.fx('ok');
       later(() => thinkDone(mistakes === 0), 300); return true;
     }
@@ -229,10 +231,11 @@ function robotGame() {
   const L = G.lv, lv = makeLevel(L), direct = L === 1, k = p => p[0] + ',' + p[1], loop = L >= 6;
   const cell = Math.min(64, Math.floor((Math.min(360, window.innerWidth - 50)) / lv.N) - 4);
   const starAt = p => lv.stars.findIndex(t => k(t) === k(p));
-  const root = fresh(`<div class="rb-board" dir="ltr" style="grid-template-columns:repeat(${lv.N},${cell}px);grid-auto-rows:${cell}px">
+  const tile = HS.ART['game-tile'] ? `--tile:url('${HS.ART['game-tile'].sm || HS.ART['game-tile'].src}');` : '';
+  const root = fresh(`<div class="rb-board${tile ? ' tiled' : ''}" dir="ltr" style="${tile}grid-template-columns:repeat(${lv.N},${cell}px);grid-auto-rows:${cell}px">
       ${Array.from({ length: lv.N * lv.N }, (_, i) => { const p = [i % lv.N, Math.floor(i / lv.N)], si = starAt(p);
-        return `<div class="rb-cell" style="font-size:${cell * .62}px">${lv.rocks.has(k(p)) ? '🪨' : si >= 0 ? `<span class="rb-star" data-s="${si}">⭐${lv.stars.length > 1 ? `<b>${HS.toAr(si + 1)}</b>` : ''}</span>` : k(p) === k(lv.b) ? '🍎' : ''}</div>`; }).join('')}
-      <div class="rb-bot" style="width:${cell}px;height:${cell}px;font-size:${cell * .7}px"><span>🤖</span></div></div>
+        return `<div class="rb-cell" style="font-size:${cell * .62}px">${lv.rocks.has(k(p)) ? HS.art('game-rock', { small: true, eager: true, fb: '🪨', cls: 'rb-img' }) : si >= 0 ? `<span class="rb-star" data-s="${si}">${HS.art('game-star-pickup', { small: true, eager: true, fb: '⭐', cls: 'rb-img' })}${lv.stars.length > 1 ? `<b>${HS.toAr(si + 1)}</b>` : ''}</span>` : k(p) === k(lv.b) ? HS.art('game-apple-goal', { small: true, eager: true, fb: '🍎', cls: 'rb-img' }) : ''}</div>`; }).join('')}
+      <div class="rb-bot" style="width:${cell}px;height:${cell}px;font-size:${cell * .7}px"><span>${HS.art('game-robot-idle', { small: true, eager: true, fb: '🤖', cls: 'rb-img' })}</span></div></div>
     ${direct ? '' : `<div class="rb-prog" dir="ltr" role="list" aria-label="الخطة"></div>${lv.limit < 20 ? `<div class="rb-limit" aria-live="polite"></div>` : ''}`}
     <div class="rb-keys" dir="ltr">${['l', 'u', 'd', 'r'].map(d => `<button type="button" class="rb-k" data-d="${d}" aria-label="${DIRS[d][3]}">${DIRS[d][2]}</button>`).join('')}
       ${loop ? '<button type="button" class="rb-k rep" aria-label="كرّر آخر سهم مرتين">×٢</button>' : ''}</div>
@@ -246,6 +249,8 @@ function robotGame() {
   let pos = lv.a.slice(), got = new Set(), runs = 0, busy = false, stepAt = 0;
   const place = (p, anim) => { botBox.style.left = (6 + p[0] * (cell + 4)) + 'px'; botBox.style.top = (6 + p[1] * (cell + 4)) + 'px'; if (anim) { bot.classList.remove('hs-pop'); void bot.offsetWidth; bot.classList.add('hs-pop'); } };
   place(pos);
+  // the robot cheers when it reaches the apple
+  const cheer = () => { const im = bot.querySelector('img'), a = HS.ART['game-robot-happy']; if (im && a) im.src = a.sm || a.src; };
   const ok = p => p[0] >= 0 && p[1] >= 0 && p[0] < lv.N && p[1] < lv.N && !lv.rocks.has(k(p));
   // stars are taken in order: star 2 does not count before star 1
   const star = p => { const si = starAt(p); if (si < 0 || got.has(si)) return;
@@ -265,7 +270,7 @@ function robotGame() {
       const n = [pos[0] + DIRS[d][0], pos[1] + DIRS[d][1]];
       if (!ok(n)) { HS.fx('no'); shake(bot); runs++; return; }
       pos = n; place(pos, true); HS.fx('tap'); runs++;
-      if (win(pos)) { busy = true; HS.fx('win'); thinkDone(runs <= lv.d + 1); }
+      if (win(pos)) { busy = true; HS.fx('win'); cheer(); thinkDone(runs <= lv.d + 1); }
       return;
     }
     if (prog.length >= lv.limit) { HS.fx('no'); shake(root.querySelector(lv.limit < 20 ? '.rb-limit' : '.rb-prog')); if (lv.limit < 20) say([[tl(P.robotLimit)(lv.limit), lang()]]); return; }
@@ -283,7 +288,7 @@ function robotGame() {
   // one command = its moves (×2 → two moves)
   const moves = c => Array(c.n).fill(c.d);
   const fail = msg => { HS.fx('no'); say([[tl(msg)(), lang()]]); later(() => { stepAt = 0; pos = lv.a.slice(); resetStars(); place(pos); progView(); busy = false; }, 900); };
-  const end = () => { if (win(pos)) { HS.fx('win'); busy = true; thinkDone(runs === 1); } else fail(k(pos) === k(lv.b) ? P.robotMissed : P.robotShort); };
+  const end = () => { if (win(pos)) { HS.fx('win'); busy = true; cheer(); thinkDone(runs === 1); } else fail(k(pos) === k(lv.b) ? P.robotMissed : P.robotShort); };
   /** run command j; then(true) when it went fine, after the animation */
   const runCmd = (j, then) => {
     const ms = moves(prog[j]); let m = 0;

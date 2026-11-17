@@ -229,3 +229,14 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 .bd-c{width:44px;height:44px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #d0d7e2;cursor:pointer}.bd-c.on{box-shadow:0 0 0 4px #212529}
 .bd-a{width:56px;height:56px;font-size:26px;border:3px solid #e1e6ee;border-radius:16px;background:#fff;cursor:pointer}.bd-a.done{background:var(--t-green,#58cc02);border-color:var(--t-green,#58cc02)}
 .cp-fill,.cp-fill *{pointer-events:none}   /* placed pieces let taps through to the space under them (the 2nd triangle)*/
+/* phase 6 game pictures */
+.rb-img{width:88%;height:88%;object-fit:contain;display:block;margin:auto}
+.rb-bot .rb-img{width:100%;height:100%}
+.rb-board.tiled .rb-cell{background:var(--tile) center/cover no-repeat,#c9e7a7}
+.rb-star .rb-img{width:100%;height:100%}
+.wt-img{display:block;width:100%;height:100%;object-fit:contain}
+.wt-basket,.wt-box{width:120px;height:120px}.wt-box.two{width:96px;height:96px}
+.wt-table.art{width:200px;height:140px;left:50px;top:78px}
+.wt-target .wt-img,.wt-placed .wt-img{width:58px;height:58px;margin:auto}
+.mc-back.art{background:none;box-shadow:none}
+.mc-back-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 0 rgba(0,0,0,.18))}
