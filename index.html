@@ -768,7 +768,9 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-kg .k-hold.on i{transform:scaleX(1);transition:transform 2s linear}
 #app-kg .k-hold span{position:relative}
 #app-kg .mi .em.has-art{display:grid;place-items:center;height:clamp(64px,16vw,84px)}
-#app-kg .mi .em .hs-art{height:100%;width:auto}
+#app-kg .mi .em.has-art .hs-art{height:clamp(64px,16vw,84px);width:auto;max-width:100%;object-fit:contain}
+#app-kg .mi b,#app-kg .mi small{text-shadow:0 1px 0 rgba(0,0,0,.28),0 0 8px rgba(0,0,0,.18)}
+#app-kg .mi small{opacity:1;font-weight:600;unicode-bidi:plaintext}
 #app-kg .kg-path{display:inline-flex;gap:6px;align-items:center;padding:4px 0}
 #app-kg .kg-path i{width:14px;height:14px;border-radius:99px;background:rgba(0,0,0,.12)}
 #app-kg .kg-path i.f{background:var(--t-gold)}

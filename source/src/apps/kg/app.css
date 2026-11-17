@@ -179,7 +179,9 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 .k-hold span{position:relative}
 
 .mi .em.has-art{display:grid;place-items:center;height:clamp(64px,16vw,84px)}
-.mi .em .hs-art{height:100%;width:auto}
+.mi .em.has-art .hs-art{height:clamp(64px,16vw,84px);width:auto;max-width:100%;object-fit:contain}   /* an explicit height: a % height does not resolve in the grid, and the square picture spilled over the title */
+.mi b,.mi small{text-shadow:0 1px 0 rgba(0,0,0,.28),0 0 8px rgba(0,0,0,.18)}   /* white text stays readable on the lighter tiles */
+.mi small{opacity:1;font-weight:600;unicode-bidi:plaintext}   /* English labels: "How many?" not "?How many" */
 
 /* progress path in a game (replaces the level buttons): filled dots up to the current challenge */
 .kg-path{display:inline-flex;gap:6px;align-items:center;padding:4px 0}
