@@ -178,8 +178,8 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 .k-hold.on i{transform:scaleX(1);transition:transform 2s linear}
 .k-hold span{position:relative}
 
-.mi .em.has-art{display:grid;place-items:center;height:clamp(64px,16vw,84px)}
-.mi .em.has-art .hs-art{height:clamp(64px,16vw,84px);width:auto;max-width:100%;object-fit:contain}   /* an explicit height: a % height does not resolve in the grid, and the square picture spilled over the title */
+.mi .em.has-art{display:grid;place-items:center;height:clamp(84px,24vw,124px)}
+.mi .em.has-art .hs-art{height:clamp(84px,24vw,124px);width:auto;max-width:100%;object-fit:contain}   /* an explicit height: a % height does not resolve in the grid, and the square picture spilled over the title */
 .mi b,.mi small{text-shadow:0 1px 0 rgba(0,0,0,.28),0 0 8px rgba(0,0,0,.18)}   /* white text stays readable on the lighter tiles */
 .mi small{opacity:1;font-weight:600;unicode-bidi:plaintext}   /* English labels: "How many?" not "?How many" */
 
@@ -197,3 +197,8 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 .rb-prog span.did{opacity:.45}
 .rb-star{position:relative;display:inline-block}.rb-star b{position:absolute;inset-inline-end:-6px;bottom:-4px;font-size:.42em;background:#fff;border-radius:50%;width:1.5em;height:1.5em;line-height:1.5em;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.25);font-family:var(--t-font);color:var(--t-ink)}
 .rb-star.got{opacity:.35;filter:grayscale(1)}
+
+/* one name per card, in the activity language (عربي / English) */
+:root.L-ar .mi .en,:root.L-ar .sec-title .en,:root.L-ar .sub .en{display:none}
+:root.L-en .mi .ar,:root.L-en .sec-title .ar,:root.L-en .sub .ar{display:none}
+.mi b.en{font-family:inherit}

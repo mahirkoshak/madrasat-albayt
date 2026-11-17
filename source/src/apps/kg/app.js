@@ -23,15 +23,20 @@ function refreshStars() {}   // stars show in the site header
 /* ---------- nav ---------- */
 let tmr = null;
 function show(v) { ROOT.querySelectorAll('.view').forEach(s => s.classList.toggle('on', s.id === 'k-' + v)); window.scrollTo(0, 0); clearTimeout(tmr); HS.stopSpeak(); }
-ROOT.querySelectorAll('[data-lang]').forEach(b => b.onclick = () => {
-  LANG = b.dataset.lang; ROOT.querySelectorAll('[data-lang]').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+/* the activity language also decides which name the cards show (one language at a time) */
+function showLang() { ROOT.classList.toggle('L-en', LANG === 'en'); ROOT.classList.toggle('L-ar', LANG !== 'en'); }
+function setLang(l, save) {
+  LANG = l === 'en' ? 'en' : 'ar'; if (save) { K().lang = LANG; HS.save(); } showLang();
+  ROOT.querySelectorAll('[data-lang]').forEach(x => { x.classList.toggle('on', x.dataset.lang === LANG); x.setAttribute('aria-pressed', x.dataset.lang === LANG); });
   $('gLetEm').textContent = LANG === 'ar' ? 'أ ؟' : 'A ?'; $('gLetEm').style.direction = LANG === 'ar' ? 'rtl' : 'ltr';
-});
+}
+ROOT.querySelectorAll('[data-lang]').forEach(b => b.onclick = () => setLang(b.dataset.lang, true));
 /* every screen is a route: #app-kg · #app-kg-learn-<set> · #app-kg-game-<game> (refresh and Back work) */
 ROOT.querySelectorAll('[data-learn]').forEach(b => b.onclick = () => HS.nav.go('app-kg-learn-' + b.dataset.learn));
 ROOT.querySelectorAll('[data-game]').forEach(b => b.onclick = () => HS.nav.go('app-kg-game-' + b.dataset.game));
-const gameName = k => { const b = ROOT.querySelector(`[data-game="${k}"] b`); return b ? b.textContent : ''; };
-const learnName = k => ({ ar: 'الحروف العربية', en: 'English Letters', num: 'الأرقام · Numbers', col: 'الألوان · Colors', shp: 'الأشكال · Shapes', ani: 'الحيوانات · Animals' })[k];
+const gameName = k => { const b = ROOT.querySelector(`[data-game="${k}"] b.ar`); return b ? b.textContent : ''; };   // header and parent page: Arabic interface
+const LEARN_NAMES = { ar: ['الحروف العربية', 'Arabic Letters'], en: ['الحروف الإنجليزية', 'English Letters'], num: ['الأرقام', 'Numbers'], col: ['الألوان', 'Colors'], shp: ['الأشكال', 'Shapes'], ani: ['الحيوانات', 'Animals'] };
+const learnName = (k, l = 'ar') => (LEARN_NAMES[k] || [])[l === 'en' ? 1 : 0];
 
 const swatch = (c, size = 84) => `<div class="swatch" style="width:${size}px;height:${size}px;background:${c[0]};${c[0] === '#fff' ? 'border:3px solid #ddd' : ''}"></div>`;
 const shape = (s, i, size = 84) => `<div class="shape"><svg viewBox="0 0 100 100" style="width:${size}px;height:${size}px" fill="${SHPC[i % SHPC.length]}" aria-hidden="true">${s[3]}</svg></div>`;
@@ -44,7 +49,7 @@ const PAT_UNITS = { 1: [[0, 1]], 2: [[0, 1, 2], [0, 0, 1], [0, 1, 1]], 3: [[0, 0
 const EN_FIRST = EN.filter(x => x[0] !== 'X');
 const SETS = { ar: AR, en: EN, num: NUM, col: COL, shp: SHP, ani: ANI };
 function learn(k) {
-  $('lTitle').textContent = learnName(k); LD = k;
+  $('lTitle').textContent = learnName(k, LANG); LD = k;
   const cell = {
     ar: x => `<span class="big">${x[0]}</span><span class="em">${x[3]}</span>`,
     en: x => `<span class="big" style="direction:ltr">${x[0]}${x[0].toLowerCase()}</span><span class="em">${x[2]}</span>`,
@@ -260,6 +265,7 @@ function basketGame() {
 APPS.kg = {
   open(sub) {
     const mx = APPS.kg.levels().map(x => x.max); $('kLvRange').textContent = HS.toAr(Math.min(...mx)) + '–' + HS.toAr(Math.max(...mx));
+    setLang(K().lang || LANG);   // each child's last choice
     HS.hydrateArt(ROOT); clearTimeout(tmr); HS.stopSpeak(); $('ov').classList.remove('on');
     const m = /^(learn|game)-([a-z]+)$/.exec(sub || '');
     if (m && m[1] === 'learn' && SETS[m[2]]) return learn(m[2]);
@@ -275,7 +281,7 @@ APPS.kg = {
   /** counted from the menu itself, so the card on the home page never goes out of date */
   counts: () => ({ games: ROOT.querySelectorAll('[data-game]').length, learn: ROOT.querySelectorAll('[data-learn]').length }),
   /** the parent can set the level of a game (otherwise it adapts by itself) */
-  levels: () => [...ROOT.querySelectorAll('[data-game]')].map(b => ({ k: b.dataset.game, name: b.querySelector('b').textContent, max: THINK_ROUNDS[b.dataset.game] ? THINK_MAX[b.dataset.game] : 3 })),
+  levels: () => [...ROOT.querySelectorAll('[data-game]')].map(b => ({ k: b.dataset.game, name: b.querySelector('b.ar').textContent, max: THINK_ROUNDS[b.dataset.game] ? THINK_MAX[b.dataset.game] : 3 })),
   setLevel(profileId, k, lv) { const d = HS.data('kg', profileId); d.lv = d.lv || {}; d.lv[k] = lv; HS.save(); },
   close() { HS.stopSpeak(); clearTimeout(tmr); $('ov').classList.remove('on'); },
   report(profileId) {
