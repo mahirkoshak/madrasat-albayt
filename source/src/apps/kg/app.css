@@ -235,10 +235,11 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 .rb-star .rb-img{width:100%;height:100%}
 .wt-img{display:block;width:100%;height:100%;object-fit:contain}
 .wt-basket,.wt-box{width:120px;height:120px}.wt-box.two{width:96px;height:96px}
-.wt-table.art{width:200px;height:140px;left:50px;top:78px}
+.wt-table.art{width:260px;height:240px;left:20px;top:0}
 .wt-target .wt-img,.wt-placed .wt-img{width:58px;height:58px;margin:auto}
+.wt-target.art{background:transparent;border:0;box-shadow:none;padding:0}
 .mc-back.art{background:none;box-shadow:none}
-.mc-back-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 0 rgba(0,0,0,.18))}
+.mc-back-img{width:100%;height:100%;object-fit:contain}
 
 /* listen buttons: drawn icon, and the label stays inside the yellow */
 .speak{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;min-width:64px;height:56px;padding:0 20px;color:var(--t-gold-ink);font-size:20px;border:0;cursor:pointer}

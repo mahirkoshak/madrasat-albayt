@@ -829,10 +829,11 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-kg .wt-img{display:block;width:100%;height:100%;object-fit:contain}
 #app-kg .wt-basket,#app-kg .wt-box{width:120px;height:120px}
 #app-kg .wt-box.two{width:96px;height:96px}
-#app-kg .wt-table.art{width:200px;height:140px;left:50px;top:78px}
+#app-kg .wt-table.art{width:260px;height:240px;left:20px;top:0}
 #app-kg .wt-target .wt-img,#app-kg .wt-placed .wt-img{width:58px;height:58px;margin:auto}
+#app-kg .wt-target.art{background:transparent;border:0;box-shadow:none;padding:0}
 #app-kg .mc-back.art{background:none;box-shadow:none}
-#app-kg .mc-back-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 0 rgba(0,0,0,.18))}
+#app-kg .mc-back-img{width:100%;height:100%;object-fit:contain}
 #app-kg .speak{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;min-width:64px;height:56px;padding:0 20px;color:var(--t-gold-ink);font-size:20px;border:0;cursor:pointer}
 #app-kg .speak .hs-spk{width:30px;height:30px}
 #app-kg .speak-l{font-size:19px;font-weight:800;white-space:nowrap}
@@ -5087,7 +5088,7 @@ function whereGame() {
   const L = G.lv, ar = LANG === 'ar', t = HS.bag('wt-t', WHERE.targets);
   if (WHERE.levels[L] === 'pick') return wherePick(t);
   const [s, p] = HS.bag('wt' + L, WHERE.levels[L]), zones = WHERE.scenes[s].zones;
-  const root = fresh(`<div class="wt-wrap">${sceneHtml(s)}</div><div class="wt-pool"><button type="button" class="wt-target hs-drag" aria-label="${t[1]}">${tgt(t)}</button></div>`);
+  const root = fresh(`<div class="wt-wrap">${sceneHtml(s)}</div><div class="wt-pool"><button type="button" class="wt-target${t[2] === 'ball' ? ' art' : ''} hs-drag" aria-label="${t[1]}">${tgt(t)}</button></div>`);
   const sc = root.querySelector('.wt-scene');
   zones.forEach(z => { const [x, y, zi] = ZONE_POS[s][z]; sc.insertAdjacentHTML('beforeend', `<div class="wt-zone" data-z="${z}" style="left:${x - 34}px;top:${y - 34}px;z-index:${zi}"></div>`); });
   ROOT._dbg = p;
