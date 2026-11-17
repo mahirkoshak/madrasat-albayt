@@ -43,6 +43,8 @@
   --t-gold:#ffc800;   --t-gold-sh:#d9a400;  --t-gold-soft:#fff4cc; --t-gold-ink:#7a4f00;
   --t-purple:#8e5cf7; --t-purple-sh:#6a3fd1;
   --t-orange:#ff9600; --t-orange-sh:#cc7800;
+  /* the main action colour (buttons, progress): a deep daylight blue. Green is kept for "correct" only */
+  --t-primary:#1769c4; --t-primary-sh:#0e4a8f; --t-primary-soft:#e2effd; --t-primary-ink:#0e4a8f;
 
   /* type scale (px): 15 · 17 · 19 · 23 · 28 · 36 · 48 */
   --t-fs-xs:15px; --t-fs-sm:17px; --t-fs-md:19px; --t-fs-lg:23px; --t-fs-xl:28px; --t-fs-2xl:36px; --t-fs-3xl:48px;

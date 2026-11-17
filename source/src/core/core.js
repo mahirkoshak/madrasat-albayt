@@ -50,8 +50,24 @@
   const flush = () => { if (saveT) { clearTimeout(saveT); saveT = null; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} if (HS.onSaved) HS.onSaved(true); } };
   addEventListener('pagehide', flush); document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); });
   HS.settings = () => S.settings;
+
+  /* ---------- interface language (this device only): 'ar' (default) or 'en' ----------
+     HS.L('عربي', 'English') picks the text for the current language. The menu pages and the top bar follow it;
+     school lessons stay in Arabic (they follow the Saudi student book). */
+  HS.lang = () => S.settings.lang === 'en' ? 'en' : 'ar';
+  HS.L = (a, e) => HS.lang() === 'en' ? e : a;
+  HS.num = n => HS.lang() === 'en' ? String(n) : HS.toAr(n);
+  /** counted noun in the current language: HS.cnt(3, HS.N.day, ['day', 'days']) */
+  HS.cnt = (n, arN, en) => HS.lang() === 'en' ? `${n} ${n === 1 ? en[0] : en[1]}` : HS.count(n, arN);
+  const applyLang = () => { const r = document.documentElement; r.lang = HS.lang(); r.dir = HS.lang() === 'en' ? 'ltr' : 'rtl'; };
+  HS.setLang = l => { S.settings.lang = l === 'en' ? 'en' : 'ar'; applyLang(); HS.save(); emit('lang'); };
+
+  /* ---------- mute (this device only): silences speech and sound effects everywhere ---------- */
+  HS.muted = () => !!S.settings.mute;
+  HS.setMute = v => { S.settings.mute = !!v; if (v) HS.stopSpeak(); HS.save(); emit('mute', !!v); };
   HS.setSetting = (k, v) => { S.settings[k] = v; HS.save(); };
   HS.exportAll = () => JSON.stringify(S);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => applyLang()); else setTimeout(() => applyLang());
 
   /* one-time: stars earned on the first version of the ecosystem page carry over */
   try {
@@ -62,7 +78,9 @@
   /* ---------- profiles ---------- */
   const GUEST = { id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' };
   HS.AVATARS = ['🦁', '🐯', '🐼', '🦊', '🐨', '🐰', '🦄', '🐬', '🦋', '🐢', '🚀', '⭐'];
-  HS.COLORS = ['var(--t-blue)', 'var(--t-pink)', 'var(--t-green-btn)', 'var(--t-purple)', 'var(--t-orange)'];
+  HS.COLORS = ['var(--t-blue)', 'var(--t-pink)', 'var(--t-gold)', 'var(--t-purple)', 'var(--t-orange)'];
+  /** a child's circle colour; children saved with the old green are shown in purple (nothing is rewritten) */
+  HS.kidColor = p => !p || !p.color ? 'var(--t-blue)' : p.color === 'var(--t-green-btn)' ? 'var(--t-purple)' : p.color;
 
   /* ---------- artwork ----------
      window.HS_ART comes from the build (tools/art_process.py → dist/assets/art.json): only pictures that exist.
@@ -283,7 +301,7 @@
   HS.stopSpeak = () => { token++; clearTimeout(sayT); try { synth && synth.cancel(); } catch (e) {} if (curAudio) { try { curAudio.pause(); } catch (e) {} curAudio = null; } };
   /** parts: [["text","ar"|"en"], ...] spoken one after another */
   HS.speak = (parts) => {
-    HS.stopSpeak(); const my = token; let i = 0;
+    HS.stopSpeak(); if (S.settings.mute) return; const my = token; let i = 0;
     const next = () => {
       if (my !== token || i >= parts.length) return;
       const [text, lang] = parts[i++];
@@ -311,7 +329,7 @@
   /* ---------- sound effects (tiny synthesized tones, no files) ---------- */
   let ac = null;
   HS.fx = kind => {
-    if (!S.settings.sound) return;
+    if (!S.settings.sound || S.settings.mute) return;
     try {
       ac = ac || new (window.AudioContext || window.webkitAudioContext)();
       const seq = { ok: [[660, .08], [880, .12]], no: [[220, .16]], win: [[523, .1], [659, .1], [784, .1], [1047, .2]], tap: [[440, .04]], combo: [[784, .07], [988, .07], [1175, .12]] }[kind] || [];

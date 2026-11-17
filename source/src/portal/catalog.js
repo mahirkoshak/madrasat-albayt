@@ -33,7 +33,7 @@ window.CATALOG = [
     color: 'var(--t-orange)',
     subjects: [
       { id: 'sci', name: 'العلوم', em: '🔬', art: 'subject-science', desc: 'مراجعة الوحدات بالملخصات والألعاب والاختبارات',
-        color: 'var(--t-green-btn)',
+        color: 'var(--t-blue)',
         units: [
           { name: 'الوحدة ١: المخلوقات الحية', em: '🌱', art: 'unit-g3sci-living-cover', soon: true },
           { name: 'الوحدة ٢: النظام البيئي', em: '🦁', art: 'unit-g3sci-eco-cover', soon: true },
@@ -50,10 +50,10 @@ window.CATALOG = [
     color: 'var(--t-blue)',
     subjects: [
       { id: 'sci', name: 'العلوم', em: '🔬', art: 'subject-science', desc: 'مراجعة الوحدات بالملخصات والألعاب والاختبارات',
-        color: 'var(--t-green-btn)',
+        color: 'var(--t-blue)',
         units: [
           { name: 'الأنظمة البيئية', em: '🌍', art: 'unit-g4scieco-cover', desc: '٣ دروس · بطاقات · ٦ ألعاب · اختبار نهائي',
-            color: 'var(--t-green-btn)', unit: 'g4scieco' },
+            color: 'var(--t-purple)', unit: 'g4scieco' },
           { name: 'صحة الإنسان', em: '🩺', art: 'unit-g4scihealth-cover', desc: '٤ دروس · بطاقات · ٦ ألعاب · اختبار نهائي',
             color: 'var(--t-pink)', unit: 'g4scihealth' },
           { name: 'الخلايا وتصنيف المخلوقات', em: '🦠', art: 'unit-g4sci-cells-cover', soon: true },

@@ -9,6 +9,7 @@ Reads:
   src/portal/theme.css     THE LOOK: colors, font, corners (CSS variables used everywhere)
   src/portal/portal.css    styles for the menu pages
   src/portal/catalog.js    the menu (years -> subjects -> units)
+  src/portal/i18n.js       English phrases for the menu pages (HS.tr), used when the interface language is English
   src/portal/portal.js     menu drawing + router + child picker + parent page
   src/core/                shared code for every app: core.js (profiles, spaced repetition, speech, drag & drop),
                            core.css, phrases.js, sync.js (online sync through Firebase) + firebase-config.js
@@ -100,7 +101,8 @@ def main():
             sys.exit(f'duplicate app id "{aid}"')
         ids.append(aid)
         apps_css.append(f'/* ===== app: {aid} ({folder}) ===== */\n' + scope_css(read(*base, 'app.css'), '#app-' + aid))
-        apps_html.append(f'<!-- ===== app: {aid} ===== -->\n<div class="screen" id="scr-{aid}"><div id="app-{aid}">\n{read(*base, "app.html")}\n</div></div>')
+        # apps keep right-to-left even when the menu is in English (their lessons are Arabic)
+        apps_html.append(f'<!-- ===== app: {aid} ===== -->\n<div class="screen" id="scr-{aid}" dir="rtl" lang="ar"><div id="app-{aid}">\n{read(*base, "app.html")}\n</div></div>')
         apps_js.append(f'<script>/* ===== data: {aid} ===== */\n{read(*base, "data.js")}\n</script>')
         apps_js.append(f'<script>/* ===== app: {aid} ===== */\n(function () {{\nconst ROOT = document.getElementById("app-{aid}");\n{read(*base, "app.js")}\n{extra_js(base)}\n}})();\n</script>')
 
@@ -166,7 +168,7 @@ def main():
         'APPS_HTML': '\n\n'.join(apps_html),
         'APPS_JS': '\n'.join(apps_js),
         'CATALOG_JS': cat,
-        'PORTAL_JS': read('portal', 'portal.js'),
+        'PORTAL_JS': read('portal', 'i18n.js') + '\n' + read('portal', 'portal.js'),
     }.items():
         page = page.replace('{{%s}}' % key, val)
 

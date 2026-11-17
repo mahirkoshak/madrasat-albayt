@@ -7,14 +7,14 @@
      One document per child, so two children playing on two iPads never overwrite each other.
    - If the same child changed on two devices at once, the changes are MERGED (three-way, against the last
      synced copy): stars add up, days and coupons are combined, spaced-repetition cards keep the newest review.
-   - Device-only settings (sound, which Arabic voice) are not shared.
+   - Device-only settings (sound, mute, which Arabic voice, interface language) are not shared.
    Needs window.HS_FIREBASE (firebase-config.js). Without it, nothing here runs.
    ============================================================ */
 (function () {
   const CFG = window.HS_FIREBASE, HS = window.HS;
   const FKEY = 'hs-family', MKEY = 'hs-sync-meta';
   const SDK = 'https://www.gstatic.com/firebasejs/10.12.2/';
-  const LOCAL_ONLY = ['sound', 'arVoice'];
+  const LOCAL_ONLY = ['sound', 'arVoice', 'mute', 'lang'];
   const ls = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} } };
   let fam = ls.get(FKEY), meta = {}, db = null, famRef = null, unsub = [], status = 'off', lastSync = 0, pushT = null, starting = null;
   try { meta = JSON.parse(ls.get(MKEY) || '{}'); } catch (e) { meta = {}; }

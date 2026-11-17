@@ -19,7 +19,11 @@
 
   /* small interface icons (drawn here: no picture files). RTL: "forward" points left, "back" points right. */
   const svg = d => `<svg class="p-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  const I = { fwd: svg('M14.5 6l-6 6 6 6'), back: svg('M9.5 6l6 6-6 6'), home: svg('M4 11.5L12 5l8 6.5M6.5 10v8.5h11V10') };
+  const I = { fwd: svg('M14.5 6l-6 6 6 6').replace('p-i', 'p-i flip'), back: svg('M9.5 6l6 6-6 6').replace('p-i', 'p-i flip'), home: svg('M4 11.5L12 5l8 6.5M6.5 10v8.5h11V10'),
+    on: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11'), off: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9.5l5 5M21 9.5l-5 5') };
+  /* sound on/off and language buttons, in the top bar of every page */
+  const muteBtn = cls => `<button type="button" class="${cls} p-mute" data-mute aria-pressed="${HS.muted()}" aria-label="${HS.muted() ? 'تشغيل الصوت' : 'كتم الصوت'}">${HS.muted() ? I.off : I.on}</button>`;
+  const langBtn = cls => `<button type="button" class="${cls} p-lang" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'عربي' : 'English'}</button>`;
 
   const navOf = o => o.unit ? 'unit-' + o.unit : o.app ? 'app-' + o.app : null;
   // a catalog item's picture: its artwork when it exists (o.art), otherwise its emoji
@@ -33,8 +37,8 @@
     const me = HS.current(), named = me && me.id !== 'guest';
     const stars = `⭐ <b>${ar(HS.stars())}</b>`;
     return `<header class="p-top"><a class="p-brand" href="#home" data-nav="home">${HS.art('logo-mark', { eager: true, cls: 'p-logo', fb: '🏡' })}<span>مدرسة البيت</span></a>
-      ${named ? `<div class="p-me">${shopOn() ? `<button type="button" class="p-starpill" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">${stars}</button>` : `<span class="p-starpill">${stars}</span>`}
-        <span class="p-me-av" style="background:${me.color}" title="${esc(me.name)}">${HS.avatar(me)}</span></div>` : ''}</header>`;
+      <div class="p-me">${langBtn('p-tool')}${muteBtn('p-tool')}${named ? `${shopOn() ? `<button type="button" class="p-starpill" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">${stars}</button>` : `<span class="p-starpill">${stars}</span>`}
+        <span class="p-me-av" style="background:${HS.kidColor(me)}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}</div></header>`;
   }
 
   // where does an app/unit sit in the catalog? -> back link + breadcrumb for its top bar
@@ -52,7 +56,7 @@
   function showScreen(id, title) {
     document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === id));
     BAR.style.display = id === 'portal' ? 'none' : 'flex';
-    document.title = title ? title + ' – مدرسة البيت' : 'مدرسة البيت';
+    document.title = HS.tr(title ? title + ' – مدرسة البيت' : 'مدرسة البيت');
     window.scrollTo(0, 0);
   }
   function closeApp() { if (current && APPS[current]) { try { APPS[current].close(); } catch (e) {} } current = null; }
@@ -60,7 +64,7 @@
     if (current !== appId) closeApp();
     current = appId;
     const me = HS.current();
-    BAR.innerHTML = `<button type="button" class="bar-back" data-nav="${loc.back}">${I.back}<span>رجوع</span></button><button type="button" class="bar-home" data-nav="home">${HS.art('logo-mark', { cls: 'bar-logo', fb: '' }) || I.home}<span>الرئيسية</span></button><span class="bar-trail">${loc.trail}</span>${shopOn() ? `<button type="button" class="bar-shop" data-nav="shop" aria-label="متجر النجوم">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}${me ? `<span class="bar-me" style="background:${me.color}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}`;
+    BAR.innerHTML = `<button type="button" class="bar-back" data-nav="${loc.back}">${I.back}<span>رجوع</span></button><button type="button" class="bar-home" data-nav="home">${HS.art('logo-mark', { cls: 'bar-logo', fb: '' }) || I.home}<span>الرئيسية</span></button><span class="bar-trail">${loc.trail}</span>${muteBtn('bar-mute')}${shopOn() ? `<button type="button" class="bar-shop" data-nav="shop" aria-label="متجر النجوم">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}${me ? `<span class="bar-me" style="background:${HS.kidColor(me)}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}`;
     showScreen('scr-' + appId, loc.trail.split(' ‹ ').pop());
     APPS[appId].open(sub);
   }
@@ -132,7 +136,7 @@
     const state = r => { const c = HS.cantBuy(r); return c === 'week' ? `<span class="sh-need">✋ خلصت هذا الأسبوع (${ar(HS.boughtWeek(r.id))}/${ar(r.week)})</span>`
       : c === 'stars' ? `<span class="sh-need">باقي ⭐ ${ar(r.cost - bal)}</span>`
       : `<button type="button" class="p-btn ${buying === r.id ? 'warn' : ''}" data-buy="${r.id}">${buying === r.id ? 'متأكد؟ اضغط مرة ثانية ✅' : 'اشترِ'}</button>`; };
-    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ المتجر') + `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${me.color}">${HS.avatar(me)}</span>` : ''}
+    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ المتجر') + `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
         <div><h2 class="p-title">🛒 متجر النجوم</h2><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
       ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
       ${goal ? `<div class="sh-goal"><span class="em">${HS.rewardArt(goal)}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
@@ -178,7 +182,7 @@
     const list = HS.profiles(), cur = HS.current();
     if (!list.length) return `<div class="p-kids"><button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">أضف طفلًا</span></button>${adding ? avForm(list) : ''}</div>`;
     return `<div class="p-kids"><h2 class="p-kids-t">من يتعلّم الآن؟</h2><div class="p-chips">${list.map(p => { const on = !!(cur && cur.id === p.id);
-        return `<button type="button" class="p-kid ${on ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${on}"><span class="p-kid-av" style="background:${p.color}">${HS.avatar(p)}</span><span class="p-kid-n">${esc(p.name)}</span><span class="p-kid-s">⭐ ${ar(HS.stars(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`; }).join('')}
+        return `<button type="button" class="p-kid ${on ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${on}"><span class="p-kid-av" style="background:${HS.kidColor(p)}">${HS.avatar(p)}</span><span class="p-kid-n nm">${esc(p.name)}</span><span class="p-kid-s">⭐ ${ar(HS.stars(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`; }).join('')}
       <button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">طفل جديد</span></button></div>${adding ? avForm(list) : ''}</div>`;
   }
   function bindPicker() {
@@ -242,7 +246,7 @@
     const me = HS.current(), named = me && me.id !== 'guest', st = HS.dayStreak(), go = lastPlace();
     return `<section class="p-hero" aria-labelledby="pHi">
       <div class="p-hero-tx">
-        <h1 id="pHi">${named ? `أهلًا يا ${esc(me.name)}` : 'أهلًا بك في مدرسة البيت'}</h1>
+        <h1 id="pHi">${named ? `أهلًا يا <span class="nm">${esc(me.name)}</span>` : 'أهلًا بك في مدرسة البيت'}</h1>
         <p class="p-hero-sub">${st ? `🔥 تعلّم متواصل: ${HS.count(st, HS.N.day)}` : 'هيا نتعلّم شيئًا جديدًا اليوم.'}</p>
         ${go ? `<button type="button" class="p-go" data-nav="${go.nav}"><span class="p-go-tile" aria-hidden="true">${HS.art(go.art, { fb: go.em, small: true })}</span>
             <span class="p-go-tx"><small>أكمل من حيث توقفت${go.where ? ` · ${go.where}` : ''}</small><b>${go.name}</b></span><span class="go">${I.fwd}</span></button>` : ''}
@@ -307,19 +311,19 @@
       const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && r.answered);
       const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
       const dr = APPS.dict ? APPS.dict.report(k.id) : null;
-      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${k.color}">${HS.avatar(k)}</span><div><h3>${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
+      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span><div><h3 class="nm">${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
         ${HS.orders(k.id).filter(o => o.st === 'wait').map(o => `<div class="pp-order"><span class="em">${HS.rewardArt(o)}</span><span><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></span>
           <button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع النجوم</button></div>`).join('')}
         ${shopOn() ? `<div class="pp-gift"><span>${HS.goal(k.id) ? `🎯 يجمع لـ ${esc(HS.goal(k.id).em)} ${esc(HS.goal(k.id).name)} (${ar(HS.stars(k.id))}/${ar(HS.goal(k.id).cost)})` : '🎯 لم يختر هدفًا بعد'}</span>
           <details><summary>🎁 أعطه نجومًا مفاجأة</summary><form class="pp-gift-f" data-gift="${k.id}"><select aria-label="عدد النجوم">${[5, 10, 20, 50].map(n => `<option value="${n}">⭐ ${ar(n)}</option>`).join('')}</select>
             <input maxlength="60" placeholder="رسالة قصيرة، مثال: فخور فيك لأنك ساعدت أختك" aria-label="رسالة"><button type="submit" class="p-btn">أرسل 🎁</button></form>
             <p class="pp-note">المفاجآت التي لا يتوقعها الطفل لا تُضعف حبّه للتعلّم، بعكس المكافأة الموعودة. استعملها لمدح جهد محدد.</p></details></div>` : ''}
-        ${!ur.length && !kg.length && !(dr && (dr.seen || dr.ar.seen)) ? '<p class="pp-empty">لا يوجد نشاط بعد.</p>' : ''}
+        ${!ur.length && !kg.length && !(dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar)) ? '<p class="pp-empty">لا يوجد نشاط بعد.</p>' : ''}
         ${ur.map(r => `<div class="pp-unit"><h4>${r.em} ${r.title}</h4><div class="m-row"><span>إتقان الوحدة</span><b>${ar(Math.round(r.total * 100))}٪</b></div>${meter(r.total)}
           <div class="pp-ls">${r.lessons.map(L => `<div class="m-row"><span>${L.em} ${L.title}</span><b>${ar(Math.round(L.m * 100))}٪</b></div>${meter(L.m)}`).join('')}</div>
           <p class="pp-note">أجاب عن ${ar(r.answered)} من ${ar(r.count)} سؤالًا${r.best.final ? ` · أفضل نتيجة في الاختبار الشامل ${ar(r.best.final.s)}/${ar(r.best.final.t)}` : ''}${r.best.speed ? ` · تحدّي السرعة ${ar(r.best.speed.s)}` : ''}</p>
           ${r.missed.length ? `<details><summary>⚠️ أكثر ما يخطئ فيه (${ar(r.missed.length)})</summary><ul>${r.missed.map(m => `<li>${m.q} <small>(أخطأ ${ar(m.w)} · أصاب ${ar(m.c)})</small></li>`).join('')}</ul></details>` : ''}</div>`).join('')}
-        ${dr && (dr.seen || dr.ar.seen) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}
+        ${dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}${dr.spell && (dr.spell.en || dr.spell.ar) ? `<div class="m-row"><span>✍️ تحدّي الإملاء: أتقن ${ar(dr.spell.en)} كلمة إنجليزية${dr.spell.ar ? ` و${ar(dr.spell.ar)} عربية` : ''} · أطول سلسلة ${ar(dr.spell.best)}</span></div>` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}
         ${kg.length ? `<div class="pp-unit"><h4>🔤 عربي و English (الروضة)</h4><table class="pp-t"><thead><tr><th>اللعبة</th><th>المستوى</th><th>صح من أول مرة</th></tr></thead><tbody>${kg.map(g => `<tr><td>${g.name}</td><td>${g.max > 3 ? ar(g.lv || 1) + ' / ' + ar(g.max) : '⭐'.repeat(g.lv || 1)}</td><td>${ar(Math.round(g.c / (g.c + g.w) * 100))}٪ <small>(${ar(g.c + g.w)})</small></td></tr>`).join('')}</tbody></table></div>` : ''}
         ${k.id !== 'guest' ? `<div class="pp-actions"><button type="button" class="p-btn sec" data-ren="${k.id}">✏️ تعديل الاسم</button>
           <button type="button" class="p-btn sec" data-reset="${k.id}">${confirmKey === 'r' + k.id ? '⚠️ اضغط مرة ثانية لمسح التقدّم' : '🔄 مسح التقدّم'}</button>
@@ -434,9 +438,15 @@ ${syncBox()}
   }
 
   document.addEventListener('click', e => {
+    const mu = e.target.closest('[data-mute]');
+    if (mu) { HS.setMute(!HS.muted()); if (!HS.muted()) HS.fx('tap'); return; }
+    const lg = e.target.closest('[data-lang-ui]');
+    if (lg) { HS.setLang(lg.dataset.langUi); return route(); }
     const b = e.target.closest('[data-nav]');
     if (b) { e.preventDefault(); if (('#' + b.dataset.nav) === location.hash) route(); else location.hash = b.dataset.nav; }
   });
   window.addEventListener('hashchange', route);
+  HS.on('mute', m => document.querySelectorAll('[data-mute]').forEach(b => { b.setAttribute('aria-pressed', m); b.setAttribute('aria-label', HS.tr(m ? 'تشغيل الصوت' : 'كتم الصوت')); b.innerHTML = m ? I.off : I.on; }));
+  HS.trWatch();
   route();
 })();

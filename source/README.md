@@ -150,3 +150,13 @@ The design follows well-established learning research:
   the old emoji stays. Menu items take `art: '<id>'` in `catalog.js`. A new picture appears after: add PNG → publish.
 - Profiles still store `avatar` as one string: old emoji, or a picture id like `avatar-fox`. No data migration.
 - `python3 tools/publish.py` = process art + build + copy `index.html` and `assets/` to the repository root (GitHub Pages).
+
+## Spelling challenge, English menus, mute
+- Dictionary → «✍️ تحدّي الإملاء» (`src/apps/dict/spell.js`): endless, one word after another. Hear/see the word, type it into
+  letter boxes, instant letter-by-letter feedback; after a miss the word is shown, hidden, and written again from memory
+  (cover-copy-compare); missed words come back 3 words later. Right first time without a hint = "done": it moves to the
+  ✓ list and stops coming up (↩️ puts it back). Saved per child in `HS.data('spell')`; shown on the parent page.
+- English interface: the «English / عربي» button in the top bar (this device only). `src/portal/i18n.js` holds the English
+  phrases for the menu pages, top bar, toasts and pop-ups; lessons stay Arabic (Saudi book). Add a missing phrase there.
+- Mute: the speaker button in every top bar silences speech and sound effects on this device (`HS.setMute`).
+- Colours: the main action colour is `--t-primary` (blue); green is used only for "correct".

@@ -58,6 +58,8 @@
   --t-gold:#ffc800;   --t-gold-sh:#d9a400;  --t-gold-soft:#fff4cc; --t-gold-ink:#7a4f00;
   --t-purple:#8e5cf7; --t-purple-sh:#6a3fd1;
   --t-orange:#ff9600; --t-orange-sh:#cc7800;
+  /* the main action colour (buttons, progress): a deep daylight blue. Green is kept for "correct" only */
+  --t-primary:#1769c4; --t-primary-sh:#0e4a8f; --t-primary-soft:#e2effd; --t-primary-ink:#0e4a8f;
 
   /* type scale (px): 15 · 17 · 19 · 23 · 28 · 36 · 48 */
   --t-fs-xs:15px; --t-fs-sm:17px; --t-fs-md:19px; --t-fs-lg:23px; --t-fs-xl:28px; --t-fs-2xl:36px; --t-fs-3xl:48px;
@@ -86,7 +88,7 @@
 
 /* mastery bar */
 .hs-meter{height:12px;border-radius:99px;background:var(--t-line);overflow:hidden}
-.hs-meter i{display:block;height:100%;border-radius:99px;background:var(--t-green);transition:width .4s}
+.hs-meter i{display:block;height:100%;border-radius:99px;background:var(--t-primary);transition:width .4s}
 .hs-meter.mid i{background:var(--t-gold)}
 .hs-meter.low i{background:var(--t-orange)}
 
@@ -144,8 +146,8 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .p-hero-art .hs-art{width:100%;filter:drop-shadow(0 10px 12px rgba(110,74,20,.18))}
 .p-hero-art .hs-fb{font-size:120px;display:block;text-align:center}
 #portal .p-go{display:flex;align-items:center;gap:var(--t-s3);width:min(100%,520px);margin-top:var(--t-s5);padding:10px 12px;text-align:start;
-  border-radius:var(--t-r-card);background:var(--t-green-btn);color:#fff;box-shadow:0 4px 0 var(--t-green-sh),0 16px 26px -14px rgba(29,85,7,.7);transition:transform .12s ease}
-.p-go:active{transform:translateY(3px);box-shadow:0 1px 0 var(--t-green-sh)}
+  border-radius:var(--t-r-card);background:var(--t-primary);color:#fff;box-shadow:0 4px 0 var(--t-primary-sh),0 16px 26px -14px rgba(14,74,143,.7);transition:transform .12s ease}
+.p-go:active{transform:translateY(3px);box-shadow:0 1px 0 var(--t-primary-sh)}
 .p-go-tile{flex:0 0 60px;height:60px;border-radius:16px;background:#fff;display:grid;place-items:center;font-size:34px;overflow:hidden}
 .p-go-tile .hs-art{width:56px}
 .p-go-tx{display:flex;flex-direction:column;min-width:0}
@@ -177,8 +179,8 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .p-panel{background:var(--t-surface);border-radius:var(--t-r-card);box-shadow:var(--t-raise);padding:var(--t-s4) var(--t-s5)}
 #portal .p-panel h2{margin:0;font-size:var(--t-fs-lg)}
 .p-panel p{margin:var(--t-s1) 0 var(--t-s3);color:var(--t-muted);font-size:var(--t-fs-sm)}
-.p-review.ok{background:var(--t-green-soft);box-shadow:0 0 0 1.5px var(--t-green-edge)}
-.p-review.ok p{color:var(--t-green-ink);margin-bottom:0}
+.p-review.ok{background:var(--t-primary-soft);box-shadow:0 0 0 1.5px #b9d6f7}
+.p-review.ok p{color:var(--t-primary-ink);margin-bottom:0}
 .p-rv-list{display:grid;gap:var(--t-s2)}
 #portal .p-rv{display:flex;align-items:center;gap:var(--t-s3);min-height:52px;padding:6px 8px 6px 12px;border-radius:var(--t-r-btn);background:var(--t-sand-soft);text-align:start;box-shadow:inset 0 0 0 1.5px var(--t-line)}
 .p-rv span:first-child{flex:1;font-weight:700;min-width:0}
@@ -254,8 +256,8 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #portal .p-av.on::after{content:"✓";position:absolute;top:-4px;inset-inline-start:-4px;width:28px;height:28px;border-radius:999px;display:grid;place-items:center;
   background:var(--t-blue);color:#fff;font-size:17px;font-weight:800;box-shadow:0 0 0 3px #fff}
 .p-form-row,.pp-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-#portal .p-btn{min-height:48px;background:var(--t-green-btn);color:#fff;border-radius:var(--t-r-btn);padding:8px 22px;font-weight:800;box-shadow:0 4px 0 var(--t-green-sh);margin-bottom:4px}
-#portal .p-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--t-green-sh)}
+#portal .p-btn{min-height:48px;background:var(--t-primary);color:#fff;border-radius:var(--t-r-btn);padding:8px 22px;font-weight:800;box-shadow:0 4px 0 var(--t-primary-sh);margin-bottom:4px}
+#portal .p-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--t-primary-sh)}
 #portal .p-btn.sec{background:var(--t-surface);color:var(--t-ink);box-shadow:var(--t-raise)}
 #portal .p-btn.danger{color:var(--t-red-ink)}
 #portal .p-link{background:none;color:var(--t-blue-sh);font-weight:700;margin-top:var(--t-s3);text-decoration:underline;min-height:44px;padding:0 4px}
@@ -310,7 +312,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .sh-bal{margin:0;font-size:var(--t-fs-lg)}.sh-bal b{color:var(--t-gold-ink);font-size:var(--t-fs-xl)}
 .sh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--t-s4);margin-top:var(--t-s4)}
 .sh-card{background:var(--t-surface);border-radius:var(--t-r-card);box-shadow:var(--t-raise);padding:16px 12px 14px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
-.sh-card.can{box-shadow:0 0 0 2.5px var(--t-green),0 4px 0 2.5px var(--t-green-edge),0 12px 24px -16px rgba(43,122,11,.5)}
+.sh-card.can{box-shadow:0 0 0 2.5px var(--t-primary),0 4px 0 2.5px var(--t-primary-sh),0 12px 24px -16px rgba(14,74,143,.5)}
 .sh-card .em,.sh-coupon .em,.sh-goal .em,.pp-order .em{display:grid;place-items:center;line-height:1}
 .sh-card .em{width:84px;height:84px;font-size:52px}.sh-card .em .hs-art{width:84px}
 .sh-card b{font-size:var(--t-fs-md);line-height:1.3}
@@ -365,7 +367,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .sh-gift-in{background:#fff;border-radius:28px;padding:26px 24px;max-width:360px;text-align:center;animation:hspop .4s}
 .sh-gift-in .big{font-size:80px;line-height:1;display:grid;place-items:center}.sh-gift-in .big .hs-art{width:130px}.sh-gift-in h2{margin:6px 0;font-size:32px}
 .sh-gift-n{font-size:30px;font-weight:800;color:var(--t-gold-ink);margin:0}.sh-gift-m{font-size:20px;margin:8px 0}
-.sh-gift .p-btn{font:inherit;font-size:20px;border:none;color:#fff;background:var(--t-green-btn);border-radius:16px;padding:10px 26px;box-shadow:0 5px 0 var(--t-green-sh);margin-top:10px;cursor:pointer}
+.sh-gift .p-btn{font:inherit;font-size:20px;border:none;color:#fff;background:var(--t-primary);border-radius:16px;padding:10px 26px;box-shadow:0 5px 0 var(--t-primary-sh);margin-top:10px;cursor:pointer}
 .pp-gift{display:flex;flex-direction:column;gap:6px;margin:10px 0;padding:10px 12px;border-radius:14px;background:var(--t-blue-soft);font-size:16px}
 .pp-gift-f{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
 .pp-gift-f select,.pp-gift-f input{font:inherit;font-size:16px;border:2px solid var(--t-line);border-radius:10px;padding:5px 8px;background:#fff}
@@ -380,6 +382,13 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .pp-code{font-size:22px;letter-spacing:2px;background:#fff;border-radius:8px;padding:0 8px}
 #ppSyncCode{font:inherit;font-size:18px;letter-spacing:1px;border:2px solid var(--t-line);border-radius:10px;padding:5px 10px;width:190px;text-transform:uppercase}
 .p-cloud{text-align:center;color:var(--t-muted);font-size:var(--t-fs-xs);margin:0 0 10px}
+
+/* sound and language buttons */
+#portal .p-tool{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;padding:4px 12px;border-radius:999px;background:var(--t-surface);color:var(--t-ink);font-weight:800;font-size:var(--t-fs-sm);box-shadow:var(--t-raise)}
+#portal .p-mute[aria-pressed="true"],.appbar .bar-mute[aria-pressed="true"]{background:var(--t-red-soft);color:var(--t-red-ink)}
+.appbar .bar-mute{padding:4px 10px}
+[dir="ltr"] .p-i.flip{transform:scaleX(-1)}
+@media (max-width:640px){.p-top{flex-wrap:wrap}.p-me{gap:6px}#portal .p-tool{padding:4px 10px}}
 
 /* ===== app: dict (dict) ===== */
 #app-dict *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -438,13 +447,13 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-dict .d-sec small{font-weight:800;color:var(--t-muted);font-size:14px}
 #app-dict .d-sec p{margin:4px 0 0;font-size:20px}
 #app-dict .d-sec .arm{font-size:26px;font-weight:800;color:var(--t-ink-strong)}
-#app-dict .ex b{color:var(--t-green-btn)}
+#app-dict .ex b{color:var(--t-primary)}
 #app-dict .d-say{background:var(--t-gold);border-radius:12px;width:44px;height:44px;font-size:21px;box-shadow:0 4px 0 var(--t-gold-sh);vertical-align:middle}
 #app-dict .d-say.sm{width:34px;height:34px;font-size:16px;box-shadow:0 3px 0 var(--t-gold-sh)}
 #app-dict .d-know{margin:6px 0;color:var(--t-gold-ink);font-weight:700}
 #app-dict .d-know span{letter-spacing:2px;font-size:22px}
 #app-dict .d-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
-#app-dict .d-btn{background:var(--t-green-btn);color:#fff;-webkit-text-fill-color:#fff;border-radius:var(--t-r-btn);padding:10px 20px;font-weight:800;box-shadow:0 5px 0 var(--t-green-sh);font-size:18px}
+#app-dict .d-btn{background:var(--t-primary);color:#fff;-webkit-text-fill-color:#fff;border-radius:var(--t-r-btn);padding:10px 20px;font-weight:800;box-shadow:0 5px 0 var(--t-primary-sh);font-size:18px}
 #app-dict .d-btn.sec{background:#fff;color:var(--t-ink);-webkit-text-fill-color:var(--t-ink);box-shadow:var(--t-raise)}
 #app-dict .d-nav{display:flex;justify-content:space-between;margin-top:16px}
 #app-dict .d-qhead{display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--t-muted);margin-bottom:8px}
@@ -493,6 +502,47 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-dict .d-koko{width:92px;flex:none}
 @media(max-width:420px){#app-dict .d-koko{width:72px}
 #app-dict .d-hello .d-h1{font-size:26px}}
+#app-dict .sp-tile{display:flex;align-items:center;gap:14px;width:100%;margin:14px 0 4px;padding:16px 18px;border:none;border-radius:24px;cursor:pointer;text-align:start;font:inherit;
+  background:var(--t-purple-sh);color:#fff;box-shadow:0 5px 0 #4b2a9c}
+#app-dict .sp-tile:active{transform:translateY(3px);box-shadow:0 2px 0 #4b2a9c}
+#app-dict .sp-tile .em{font-size:46px;line-height:1}
+#app-dict .sp-tile .tx{flex:1;min-width:0;display:flex;flex-direction:column}
+#app-dict .sp-tile b{font-size:26px;line-height:1.2}
+#app-dict .sp-tile small{font-size:16px;opacity:.95}
+#app-dict .sp-tile-n{flex:none;background:#fff;color:var(--t-purple-sh);border-radius:999px;padding:8px 14px;font-weight:800;min-height:44px;display:grid;place-items:center}
+#app-dict .sp-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+#app-dict .sp-head > b{font-size:22px;color:var(--t-ink-strong);margin-inline-end:auto}
+#app-dict .sp-chip{background:#fff;border:none;border-radius:999px;padding:6px 14px;font:inherit;font-weight:800;box-shadow:var(--t-raise);min-height:44px}
+#app-dict .sp-donebtn{cursor:pointer;color:var(--t-green-ink)}
+#app-dict .sp-card{text-align:center}
+#app-dict .sp-clue{display:flex;align-items:center;gap:14px;text-align:start;background:var(--t-sand-soft);border-radius:18px;padding:12px 14px}
+#app-dict .sp-clue .em{font-size:64px;line-height:1;flex:none}
+#app-dict .sp-clue div{flex:1;min-width:0}
+#app-dict .sp-clue b{display:block;font-size:24px;color:var(--t-ink-strong)}
+#app-dict .sp-clue p{margin:2px 0 0;color:var(--t-muted);font-size:16px}
+#app-dict .sp-hear{flex:none;width:60px;height:60px;font-size:28px}
+#app-dict .sp-back{margin:10px 0 0;font-weight:800;color:var(--t-blue-sh)}
+#app-dict .sp-boxes{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:12px 0;cursor:text}
+#app-dict .sp-boxes i{font-style:normal;width:44px;height:54px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 2px var(--t-line);display:grid;place-items:center;font-size:30px;font-weight:800;color:var(--t-ink-strong)}
+#app-dict .sp-boxes i.f{box-shadow:inset 0 0 0 2.5px var(--t-blue);background:var(--t-blue-soft)}
+#app-dict .sp-boxes i.hint{box-shadow:inset 0 0 0 2.5px var(--t-gold);background:var(--t-gold-soft)}
+#app-dict .sp-boxes i.now{box-shadow:inset 0 0 0 3px var(--t-purple);animation:spblink 1.1s infinite}
+@keyframes spblink{50%{box-shadow:inset 0 0 0 3px rgba(142,92,247,.25)}}
+#app-dict .sp-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+#app-dict .sp-form input{font:inherit;font-size:30px;font-weight:800;text-align:center;letter-spacing:4px;width:min(100%,360px);min-height:60px;border-radius:16px;border:3px solid var(--t-purple);padding:4px 12px;background:#fff;color:var(--t-ink-strong)}
+#app-dict .sp-form input:focus{outline:none;box-shadow:0 0 0 4px rgba(142,92,247,.25)}
+#app-dict .sp-form input:disabled{opacity:.5}
+#app-dict .sp-go{min-height:60px;font-size:22px}
+#app-dict .sp-tools{margin-top:10px}
+#app-dict .sp-next{margin-top:10px}
+#app-dict .sp-list{display:grid;gap:8px}
+#app-dict .sp-row{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:8px 12px;box-shadow:var(--t-raise)}
+#app-dict .sp-row .em{font-size:30px}
+#app-dict .sp-row b{font-size:21px}
+#app-dict .sp-src{flex:1;color:var(--t-muted);text-align:end}
+@media(max-width:420px){#app-dict .sp-boxes i{width:34px;height:46px;font-size:24px}
+#app-dict .sp-clue .em{font-size:48px}
+#app-dict .sp-form input{font-size:24px}}
 
 /* ===== app: kg (kg) ===== */
 #app-kg{--ink:var(--t-ink);--bg:var(--t-page);--pink:var(--t-pink);--sky:var(--t-blue);--sun:var(--t-gold);--mint:var(--t-green-btn);--grape:var(--t-purple);--orange:var(--t-orange);--shadow:var(--t-raise)}
@@ -535,7 +585,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-kg .bigcard .W{font-size:34px;font-weight:800}
 #app-kg .bigcard .W2{font-size:26px;opacity:.7;direction:ltr}
 #app-kg .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-#app-kg .btn{border-radius:var(--t-r-btn);padding:10px 22px;font-size:22px;font-weight:800;color:#fff;background:var(--mint);box-shadow:0 5px 0 var(--t-green-sh)}
+#app-kg .btn{border-radius:var(--t-r-btn);padding:10px 22px;font-size:22px;font-weight:800;color:#fff;background:var(--t-primary);box-shadow:0 5px 0 var(--t-primary-sh)}
 #app-kg .btn.gr{background:var(--grape);box-shadow:0 5px 0 var(--t-purple-sh)}
 #app-kg .btn.pk{background:var(--pink);box-shadow:0 5px 0 var(--t-pink-sh)}
 #app-kg .btn:active{transform:translateY(3px);box-shadow:none}
@@ -676,7 +726,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 /* ===== app: unit (unit) ===== */
 #app-unit{
   --bg:var(--t-page); --card:var(--t-surface); --ink:var(--t-ink); --muted:var(--t-muted);
-  --green:var(--t-green-btn); --green-l:var(--t-green-soft); --sky:var(--t-blue); --sky-l:var(--t-blue-soft);
+  --green:var(--t-primary); --green-l:var(--t-primary-soft); --sky:var(--t-blue); --sky-l:var(--t-blue-soft);
   --sun:var(--t-gold); --sun-l:var(--t-gold-soft); --berry:var(--t-red-edge); --berry-l:var(--t-red-soft);
   --earth:#8a5a35; --earth-l:#f2e6da; --violet:#7a5bd1; --violet-l:#ece6fb;
   --radius:var(--t-r-card); --shadow:var(--t-raise);
@@ -689,7 +739,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-unit button:disabled{color:var(--ink);-webkit-text-fill-color:currentColor;opacity:1}
 #app-unit .choice:disabled{color:#fff}
 #app-unit .wrap{max-width:980px;margin:0 auto;padding:16px}
-#app-unit header{background:var(--t-green-btn);color:#fff;padding:22px 16px 70px;position:relative;overflow:hidden}
+#app-unit header{background:var(--t-primary);color:#fff;padding:22px 16px 70px;position:relative;overflow:hidden}
 #app-unit header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 16px}
 #app-unit header h1{margin:0;font-size:34px;line-height:1.2}
 #app-unit header p{margin:4px 0 0;opacity:.92}
@@ -724,9 +774,9 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-unit .remember{background:var(--t-blue);color:#fff;border-radius:var(--t-r-card);padding:16px 18px;margin:14px 0 20px;box-shadow:0 6px 0 var(--t-blue-sh)}
 #app-unit .remember h3{color:var(--t-gold-soft);margin:0 0 6px}
 #app-unit .remember ul{margin:0;padding-inline-start:20px}
-#app-unit .term{background:var(--green-l);color:var(--t-green-ink);padding:0 6px;border-radius:6px;font-weight:700}
-#app-unit .btn{border:none;border-radius:var(--t-r-btn);padding:12px 22px;font-size:19px;background:var(--green);color:#fff;box-shadow:0 5px 0 var(--t-green-sh);transition:transform .08s;margin-bottom:5px}
-#app-unit .btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--t-green-sh)}
+#app-unit .term{background:var(--green-l);color:var(--t-primary-ink);padding:0 6px;border-radius:6px;font-weight:700}
+#app-unit .btn{border:none;border-radius:var(--t-r-btn);padding:12px 22px;font-size:19px;background:var(--green);color:#fff;box-shadow:0 5px 0 var(--t-primary-sh);transition:transform .08s;margin-bottom:5px}
+#app-unit .btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--t-primary-sh)}
 #app-unit .btn.sec{background:#fff;color:var(--ink);box-shadow:var(--t-raise)}
 #app-unit .btn.sky{background:var(--sky);box-shadow:0 5px 0 var(--t-blue-sh)}
 #app-unit .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -734,7 +784,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-unit .step{display:flex;gap:14px;align-items:center;background:#fff;border-radius:20px;padding:14px;margin:0 2px 6px;box-shadow:var(--shadow);cursor:pointer}
 #app-unit .step:hover{box-shadow:0 0 0 2px var(--t-blue),0 5px 0 2px var(--t-blue)}
 #app-unit .step .num{flex:0 0 52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:26px;background:var(--green-l)}
-#app-unit .step.done .num{background:var(--t-green);color:#fff}
+#app-unit .step.done .num{background:var(--t-primary);color:#fff}
 #app-unit .step .txt > b{font-weight:800;font-size:20px;display:block;line-height:1.3}
 #app-unit .step .txt span{color:var(--muted);font-size:16px}
 #app-unit .parent{background:var(--violet-l);border-radius:var(--t-r-card);padding:14px 18px;margin-top:14px}
@@ -757,7 +807,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-unit .fb.ok{display:block;background:var(--t-green-soft);color:var(--t-green-ink)}
 #app-unit .fb.no{display:block;background:var(--t-red-soft);color:var(--t-red-ink)}
 #app-unit .bar{height:16px;background:var(--t-line);border-radius:99px;overflow:hidden;margin:6px 0 12px}
-#app-unit .bar i{display:block;height:100%;background:var(--t-green);border-radius:99px;transition:width .3s}
+#app-unit .bar i{display:block;height:100%;background:var(--t-primary);border-radius:99px;transition:width .3s}
 #app-unit .meta{display:flex;justify-content:space-between;color:var(--muted);font-size:16px}
 #app-unit .result{text-align:center}
 #app-unit .result .big{font-size:56px;line-height:1.1;display:grid;place-items:center}
@@ -767,7 +817,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-unit .fc-in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
 #app-unit .fc.flip .fc-in{transform:rotateY(180deg)}
 #app-unit .fc-f,#app-unit .fc-b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;box-shadow:var(--shadow)}
-#app-unit .fc-f{background:var(--t-green-btn);color:#fff;box-shadow:0 6px 0 var(--t-green-sh)}
+#app-unit .fc-f{background:var(--t-primary);color:#fff;box-shadow:0 6px 0 var(--t-primary-sh)}
 #app-unit .fc-f .em{font-size:56px;line-height:1.1}
 #app-unit .fc-f b{font-size:32px;font-weight:800}
 #app-unit .fc-b{background:#fff;transform:rotateY(180deg);font-size:21px;font-weight:600}
@@ -909,7 +959,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 <nav class="appbar" id="appbar" aria-label="التنقل" style="display:none"></nav>
 <main id="portal" class="screen on"><div class="p-wrap" id="pView"></div></main>
 <!-- ===== app: dict ===== -->
-<div class="screen" id="scr-dict"><div id="app-dict">
+<div class="screen" id="scr-dict" dir="rtl" lang="ar"><div id="app-dict">
 <header class="d-top">
   <button type="button" class="d-chip" id="dHome" aria-label="القاموس">📖 My Dictionary</button>
   <span id="dStars" hidden></span>
@@ -919,7 +969,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 </div></div>
 
 <!-- ===== app: kg ===== -->
-<div class="screen" id="scr-kg"><div id="app-kg">
+<div class="screen" id="scr-kg" dir="rtl" lang="ar"><div id="app-kg">
 <header>
   <button type="button" class="home-btn" id="homeBtn" aria-label="قائمة الروضة">🏠</button>
   <div class="stars" aria-live="polite" aria-label="النجوم">⭐ <span id="sc">٠</span></div>
@@ -1003,7 +1053,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 </div></div>
 
 <!-- ===== app: unit ===== -->
-<div class="screen" id="scr-unit"><div id="app-unit">
+<div class="screen" id="scr-unit" dir="rtl" lang="ar"><div id="app-unit">
 <header class="u-head">
   <div class="wrap">
     <div>
@@ -1093,8 +1143,24 @@ window.HS_PHRASES = {
   const flush = () => { if (saveT) { clearTimeout(saveT); saveT = null; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} if (HS.onSaved) HS.onSaved(true); } };
   addEventListener('pagehide', flush); document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); });
   HS.settings = () => S.settings;
+
+  /* ---------- interface language (this device only): 'ar' (default) or 'en' ----------
+     HS.L('عربي', 'English') picks the text for the current language. The menu pages and the top bar follow it;
+     school lessons stay in Arabic (they follow the Saudi student book). */
+  HS.lang = () => S.settings.lang === 'en' ? 'en' : 'ar';
+  HS.L = (a, e) => HS.lang() === 'en' ? e : a;
+  HS.num = n => HS.lang() === 'en' ? String(n) : HS.toAr(n);
+  /** counted noun in the current language: HS.cnt(3, HS.N.day, ['day', 'days']) */
+  HS.cnt = (n, arN, en) => HS.lang() === 'en' ? `${n} ${n === 1 ? en[0] : en[1]}` : HS.count(n, arN);
+  const applyLang = () => { const r = document.documentElement; r.lang = HS.lang(); r.dir = HS.lang() === 'en' ? 'ltr' : 'rtl'; };
+  HS.setLang = l => { S.settings.lang = l === 'en' ? 'en' : 'ar'; applyLang(); HS.save(); emit('lang'); };
+
+  /* ---------- mute (this device only): silences speech and sound effects everywhere ---------- */
+  HS.muted = () => !!S.settings.mute;
+  HS.setMute = v => { S.settings.mute = !!v; if (v) HS.stopSpeak(); HS.save(); emit('mute', !!v); };
   HS.setSetting = (k, v) => { S.settings[k] = v; HS.save(); };
   HS.exportAll = () => JSON.stringify(S);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => applyLang()); else setTimeout(() => applyLang());
 
   /* one-time: stars earned on the first version of the ecosystem page carry over */
   try {
@@ -1105,7 +1171,9 @@ window.HS_PHRASES = {
   /* ---------- profiles ---------- */
   const GUEST = { id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' };
   HS.AVATARS = ['🦁', '🐯', '🐼', '🦊', '🐨', '🐰', '🦄', '🐬', '🦋', '🐢', '🚀', '⭐'];
-  HS.COLORS = ['var(--t-blue)', 'var(--t-pink)', 'var(--t-green-btn)', 'var(--t-purple)', 'var(--t-orange)'];
+  HS.COLORS = ['var(--t-blue)', 'var(--t-pink)', 'var(--t-gold)', 'var(--t-purple)', 'var(--t-orange)'];
+  /** a child's circle colour; children saved with the old green are shown in purple (nothing is rewritten) */
+  HS.kidColor = p => !p || !p.color ? 'var(--t-blue)' : p.color === 'var(--t-green-btn)' ? 'var(--t-purple)' : p.color;
 
   /* ---------- artwork ----------
      window.HS_ART comes from the build (tools/art_process.py → dist/assets/art.json): only pictures that exist.
@@ -1326,7 +1394,7 @@ window.HS_PHRASES = {
   HS.stopSpeak = () => { token++; clearTimeout(sayT); try { synth && synth.cancel(); } catch (e) {} if (curAudio) { try { curAudio.pause(); } catch (e) {} curAudio = null; } };
   /** parts: [["text","ar"|"en"], ...] spoken one after another */
   HS.speak = (parts) => {
-    HS.stopSpeak(); const my = token; let i = 0;
+    HS.stopSpeak(); if (S.settings.mute) return; const my = token; let i = 0;
     const next = () => {
       if (my !== token || i >= parts.length) return;
       const [text, lang] = parts[i++];
@@ -1354,7 +1422,7 @@ window.HS_PHRASES = {
   /* ---------- sound effects (tiny synthesized tones, no files) ---------- */
   let ac = null;
   HS.fx = kind => {
-    if (!S.settings.sound) return;
+    if (!S.settings.sound || S.settings.mute) return;
     try {
       ac = ac || new (window.AudioContext || window.webkitAudioContext)();
       const seq = { ok: [[660, .08], [880, .12]], no: [[220, .16]], win: [[523, .1], [659, .1], [784, .1], [1047, .2]], tap: [[440, .04]], combo: [[784, .07], [988, .07], [1175, .12]] }[kind] || [];
@@ -1477,14 +1545,14 @@ window.HS_FIREBASE = {
      One document per child, so two children playing on two iPads never overwrite each other.
    - If the same child changed on two devices at once, the changes are MERGED (three-way, against the last
      synced copy): stars add up, days and coupons are combined, spaced-repetition cards keep the newest review.
-   - Device-only settings (sound, which Arabic voice) are not shared.
+   - Device-only settings (sound, mute, which Arabic voice, interface language) are not shared.
    Needs window.HS_FIREBASE (firebase-config.js). Without it, nothing here runs.
    ============================================================ */
 (function () {
   const CFG = window.HS_FIREBASE, HS = window.HS;
   const FKEY = 'hs-family', MKEY = 'hs-sync-meta';
   const SDK = 'https://www.gstatic.com/firebasejs/10.12.2/';
-  const LOCAL_ONLY = ['sound', 'arVoice'];
+  const LOCAL_ONLY = ['sound', 'arVoice', 'mute', 'lang'];
   const ls = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} } };
   let fam = ls.get(FKEY), meta = {}, db = null, famRef = null, unsub = [], status = 'off', lastSync = 0, pushT = null, starting = null;
   try { meta = JSON.parse(ls.get(MKEY) || '{}'); } catch (e) { meta = {}; }
@@ -3667,8 +3735,11 @@ function home() {
   <div class="d-wod" data-w="${esc(wod.id)}"><small>${wodPick ? '🎲 كلمة عشوائية · Random word' : '🌟 كلمة اليوم · Word of the day'}</small><span class="em">${wod.em}</span><b dir="${tDir()}">${esc(tgt(wod))}</b><span class="ar" dir="${sDir()}">${esc(src(wod))}</span>
     <button type="button" class="d-dice" data-a="dice" aria-label="كلمة عشوائية أخرى">🎲 كلمة أخرى</button></div>
   <div class="d-progress"><div class="m-row"><span>${AR() ? 'كتبت بالعربي' : 'تعلّمت'} ${ar(ln)} من ${ar(n)} كلمة</span><b>${ar(Math.round(ln / n * 100))}٪</b></div><div class="hs-meter"><i style="width:${Math.max(3, Math.round(ln / n * 100))}%"></i></div></div>
+  <button type="button" class="sp-tile" data-sp="start"><span class="em" aria-hidden="true">✍️</span><span class="tx"><b>${HS.L('تحدّي الإملاء', 'Spelling challenge')}</b>
+    <small>${AR() ? 'خمّن كيف تُكتب الكلمة بالعربي، كلمة بعد كلمة' : HS.L('خمّن كيف تُكتب الكلمة، كلمة بعد كلمة', 'Guess how each word is spelled, one after another')}</small></span>
+    <span class="sp-tile-n" data-sp="list" role="button" tabindex="0" aria-label="${HS.L('الكلمات التي أتقنتها', 'Words I can spell')}">✓ ${HS.num(spDone().length)}</span></button>
   <div class="d-menu">
-    <button type="button" class="d-tile" style="background:var(--t-green-btn)" data-a="practice"><span class="em">🧠</span><b>${AR() ? 'تدرّب على العربي' : 'تدرّب'}</b><small>${due ? `${ar(due)} كلمة حان وقت مراجعتها` : 'معاني وكتابة'}</small></button>
+    <button type="button" class="d-tile" style="background:var(--t-pink-sh)" data-a="practice"><span class="em">🧠</span><b>${AR() ? 'تدرّب على العربي' : 'تدرّب'}</b><small>${due ? `${ar(due)} كلمة حان وقت مراجعتها` : 'معاني وكتابة'}</small></button>
     <button type="button" class="d-tile" style="background:var(--t-gold-sh)" data-a="mine"><span class="em">⭐</span><b>كلماتي</b><small>${ar(d.mine.length)} كلمة</small></button>
     <button type="button" class="d-tile" style="background:var(--t-blue)" data-a="topics"><span class="em">🗂️</span><b>المواضيع</b><small dir="ltr">Topics</small></button>
     <button type="button" class="d-tile" style="background:var(--t-purple)" data-a="az"><span class="em" dir="${tDir()}">${AR() ? 'أ–ي' : 'A–Z'}</span><b>الحروف</b><small dir="ltr">Letters</small></button>
@@ -3905,10 +3976,162 @@ APPS.dict = {
       const c = ids.reduce((a, id) => a + s[id].c, 0), w = ids.reduce((a, id) => a + s[id].w, 0);
       return { seen: ids.length, learned: ids.filter(id => s[id].b >= 3).length, acc: c + w ? c / (c + w) : 0 }; };
     const d = HS.data('dict', pid), en = one('dict'), arr = one('dictar');
-    return { ...en, ar: arr, mine: (d.mine || []).length, total: WORDS.length };
+    return { ...en, ar: arr, mine: (d.mine || []).length, total: WORDS.length, spell: spellReport(pid) };
   }
 };
 
+/* ---- spell.js ---- */
+/* ============================================================
+   ✍️ SPELLING CHALLENGE (تحدّي الإملاء): guess how a word is written, one word after another.
+   Runs inside the dictionary app (same scope as app.js: WORDS, AR(), tgt(), src(), diffHtml()…).
+   Research behind it:
+   - writing from memory (retrieval) beats copying, but only with immediate corrective feedback
+     (da Silva, Ekuni & Jaeger 2023, grade 5) → every answer is checked at once, letter by letter;
+   - cover-copy-compare: look at the right spelling, hide it, write it again from memory, compare
+     → after a miss the word is shown, then hidden, and the child writes it again before going on;
+   - mixing words (interleaving) helps more than drilling one → a missed word comes back after 3 others,
+     between new words, never straight away;
+   - a word counts as DONE when it is written right from memory without a hint and without having just
+     seen it. Done words go to the "done" list and stop coming up (they can be put back from that list).
+   The screen never changes shape: picture and meaning on top, letter boxes, one input, one button.
+   Saved per child in HS.data('spell'): { en: { done: [ids] }, ar: { done: [ids] }, best }
+   ============================================================ */
+const SPN = () => { const d = HS.data('spell'); const k = AR() ? 'ar' : 'en'; d[k] = d[k] || { done: [] }; d.best = d.best || 0; return d; };
+const spDone = () => SPN()[AR() ? 'ar' : 'en'].done;
+/** words that fit the game: one word, letters only, not too long */
+const spellable = x => { const t = tgtPlain(x); return !t.includes(' ') && t.length >= 2 && t.length <= 12 && (AR() || /^[a-z]+$/i.test(t)); };
+let SG = null;   // current game
+function spellPool() { const done = new Set(spDone()); return WORDS.filter(x => inLevel(x) && spellable(x) && !done.has(x.id)); }
+function spellStart() {
+  SG = { again: [], seen: 0, streak: 0, n: 0, combo: HS.makeCombo(), last: null };
+  HS.markPractice(); spellNext();
+}
+/** next word: a missed word whose turn has come back, otherwise a new one (never the one just played) */
+function spellPick() {
+  SG.again.forEach(a => a.wait--);
+  const back = SG.again.findIndex(a => a.wait <= 0);
+  if (back >= 0) return { x: BY_ID[SG.again.splice(back, 1)[0].id], back: true };
+  const pool = spellPool().filter(x => x.id !== SG.last && !SG.again.some(a => a.id === x.id));
+  if (!pool.length) return SG.again.length ? { x: BY_ID[SG.again.shift().id], back: true } : null;
+  return { x: HS.one(pool), back: false };
+}
+const spHead = () => `<div class="sp-head"><b>✍️ ${HS.L('تحدّي الإملاء', 'Spelling challenge')}</b>
+  <span class="sp-chip" aria-label="${HS.L('كلمات متتالية صحيحة', 'words right in a row')}">🔥 ${HS.num(SG.streak)}</span>
+  <button type="button" class="sp-chip sp-donebtn" data-sp="list">✓ ${HS.num(spDone().length)} <span>${HS.L('أتقنتها', 'done')}</span></button>
+  <button type="button" class="d-x" data-a="home" aria-label="${HS.L('إنهاء', 'Stop')}">✕</button></div>`;
+function spellNext() {
+  const p = spellPick();
+  if (!p) return spellAllDone();
+  const x = p.x, T = tgtPlain(x);
+  SG.cur = { x, T, back: p.back, tries: 0, hint: 0, phase: 'guess' }; SG.last = x.id; ROOT._dbg = T;
+  const hide = s => AR() ? esc(s) : esc(s).replace(new RegExp('\\b' + x.w.slice(0, Math.max(3, x.w.length - 2)).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\w*', 'gi'), '___');
+  M().innerHTML = spHead() + `<div class="d-card sp-card">
+    <div class="sp-clue"><span class="em" aria-hidden="true">${x.em}</span>
+      <div><b dir="${sDir()}">${esc(src(x))}</b><p dir="ltr">${hide(x.def)}</p></div>
+      ${AR() ? '' : `<button type="button" class="d-say sp-hear" data-say="${esc(x.w)}" aria-label="${HS.L('استمع للكلمة', 'Hear the word')}">🔊</button>`}</div>
+    ${p.back ? `<p class="sp-back">🔁 ${HS.L('عادت لك هذه الكلمة: اكتبها من ذاكرتك', 'This word is back: write it from memory')}</p>` : ''}
+    <p class="d-ask" id="spAsk">${AR() ? 'اكتب الكلمة بالعربي <small dir="ltr">Write it in Arabic</small>' : HS.L('كيف تُكتب بالإنجليزي؟', 'How do you spell it?')}</p>
+    <div class="sp-boxes" id="spBoxes" dir="${tDir()}" aria-hidden="true">${[...T].map(() => '<i></i>').join('')}</div>
+    <form class="sp-form" id="spF" dir="${tDir()}" autocomplete="off">
+      <input id="spIn" dir="${tDir()}" lang="${AR() ? 'ar' : 'en'}" maxlength="${T.length}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
+        aria-label="${HS.L('اكتب الكلمة هنا', 'Type the word here')} (${HS.num(T.length)} ${HS.L('حروف', 'letters')})" placeholder="${HS.L('اكتب هنا', 'Type here')}">
+      <button type="submit" class="d-btn sp-go">${HS.L('تحقّق', 'Check')} ✅</button></form>
+    <div class="sp-tools"><button type="button" class="d-btn sec" data-sp="hint">💡 ${HS.L('أعطني حرفًا', 'Give me a letter')}</button></div>
+    ${AR() ? '<p class="d-note">على الآيباد: اضغط 🌐 في لوحة المفاتيح لتغيّرها إلى العربية</p>' : ''}
+    <div id="spFb" class="d-fb" aria-live="polite"></div></div>`;
+  spBind();
+  if (!AR()) setTimeout(() => sayEn(x.w), 250);
+}
+/** the letter boxes mirror what is typed, so it is always clear where the next letter goes */
+function spBoxes() {
+  const v = $('spIn').value, c = SG.cur, boxes = $('spBoxes').querySelectorAll('i');
+  boxes.forEach((b, k) => { b.textContent = v[k] || ''; b.classList.toggle('f', !!v[k]); b.classList.toggle('now', k === v.length); b.classList.toggle('hint', k < c.hint); });
+}
+function spBind() {
+  const inp = $('spIn');
+  inp.oninput = spBoxes; spBoxes();
+  $('spBoxes').onclick = () => inp.focus();
+  $('spF').onsubmit = e => { e.preventDefault(); const v = inp.value.trim(); if (v) spCheck(v); else inp.focus(); };
+  setTimeout(() => inp.focus(), 60);
+}
+function spCheck(v) {
+  const c = SG.cur, x = c.x, ok = same(v, c.T);
+  c.tries++;
+  const fb = $('spFb');
+  if (c.phase === 'cover') {   // writing it again from memory after seeing it
+    if (ok) {
+      HS.fx('ok'); SG.again.push({ id: x.id, wait: 3 });
+      fb.innerHTML = `<div class="good">👍 ${HS.L('صح! سترجع لك بعد قليل لتثبت', 'Right! It will come back soon to stick')}</div>`;
+      return spAfter(900);
+    }
+    HS.fx('no');
+    fb.innerHTML = `${diffHtml(v, c.T)}<p class="d-note">${HS.L('قارن ثم جرّب مرة أخرى', 'Compare, then try again')}</p>`;
+    $('spIn').value = ''; spBoxes(); $('spIn').focus(); return;
+  }
+  if (ok) {
+    const clean = !c.hint && c.tries === 1;
+    SG.n++;
+    if (clean) {
+      spDone().push(x.id); SG.streak++; SPN().best = Math.max(SPN().best, SG.streak);
+      HS.addStars(1 + SG.combo.hit()); HS.fx('ok');
+      fb.innerHTML = `<div class="good">🎉 ${HS.one(AR() ? ['ممتاز!', 'أحسنت!', 'رائع!'] : ['Great!', 'Well done!', 'Super!', 'Excellent!'])} <span dir="${tDir()}">${esc(tgt(x))}</span> ✓ ${HS.L('أُضيفت إلى «أتقنتها»', 'added to “done”')}</div>`;
+      if (SG.n % 10 === 0) { HS.party(); HS.toast(`🎉 ${HS.num(SG.n)} ${HS.L('كلمات!', 'words!')}`); }
+    } else {
+      HS.fx('ok'); SG.again.push({ id: x.id, wait: 3 });
+      fb.innerHTML = `<div class="good">👍 ${HS.L('صح! بمساعدة، لذلك سترجع لك مرة ثانية', 'Right, with help, so it will come back once more')}</div>`;
+    }
+    HS.save(); return spAfter(clean ? 1100 : 1300);
+  }
+  // wrong: show the right spelling (look), then hide it and write it again (cover, write, compare)
+  SG.streak = 0; SG.combo.miss(); HS.fx('no');
+  c.phase = 'cover';
+  fb.innerHTML = `<div class="bad">✋ ${HS.L('الصحيح:', 'The right spelling:')}</div>${diffHtml(v, c.T)}
+    <p class="d-note">${HS.L('انظر جيدًا… ستختفي بعد لحظة، ثم اكتبها من ذاكرتك', 'Look carefully… it hides in a moment, then write it from memory')}</p>`;
+  $('spIn').value = ''; $('spIn').disabled = true; spBoxes(); HS.save();
+  setTimeout(() => {
+    if (!SG || SG.cur !== c) return;
+    fb.innerHTML = `<p class="d-note">🙈 ${HS.L('الآن اكتبها من ذاكرتك', 'Now write it from memory')}</p>`;
+    const i = $('spIn'); i.disabled = false; i.focus();
+  }, 2600);
+}
+function spAfter(ms) {
+  const c = SG.cur; $('spIn').disabled = true;
+  const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'd-btn sp-next'; btn.textContent = HS.L('الكلمة التالية ←', 'Next word →');
+  btn.onclick = () => { if (SG && SG.cur === c) spellNext(); };
+  $('spFb').appendChild(btn);
+  setTimeout(() => { if (SG && SG.cur === c && document.activeElement !== btn) spellNext(); }, ms);   // keeps going by itself
+}
+function spHint() {
+  const c = SG.cur; if (!c || c.phase !== 'guess' || c.hint >= c.T.length - 1) return;
+  c.hint++; const inp = $('spIn'); inp.value = c.T.slice(0, c.hint); spBoxes(); inp.focus(); HS.fx('tap');
+}
+function spellAllDone() {
+  HS.party();
+  M().innerHTML = spHead() + `<div class="d-card center"><div class="d-bigem">${HS.mascot('celebrate', { fb: '🏆' })}</div><h2>${HS.L('أتقنت كل كلمات هذا المستوى!', 'You spelled every word at this level!')}</h2>
+    <p>${HS.L('اختر مستوى أصعب من صفحة القاموس، أو أعد كلمات من قائمة «أتقنتها».', 'Pick a harder level on the dictionary page, or put words back from the “done” list.')}</p>
+    <div class="d-actions"><button type="button" class="d-btn" data-sp="list">✓ ${HS.L('أتقنتها', 'Done words')}</button><button type="button" class="d-btn sec" data-a="home">📖 ${HS.L('القاموس', 'Dictionary')}</button></div></div>`;
+}
+/** the "done" list: every word written right from memory, newest first; any word can go back into the game */
+function spellList() {
+  const ids = spDone().slice().reverse(), all = WORDS.filter(x => inLevel(x) && spellable(x)).length;
+  M().innerHTML = `${backBtn()}<h2 class="d-h2">✓ ${HS.L('كلمات أتقنتها', 'Words I can spell')} <small>(${HS.num(ids.length)})</small></h2>
+    <p class="d-note">${HS.L('هذه الكلمات لا تأتي في التحدّي. اضغط ↩️ لتعيد كلمة للتمرين.', 'These words no longer come up. Tap ↩️ to practise one again.')} ${HS.L('في هذا المستوى', 'At this level')}: ${HS.num(Math.min(ids.filter(id => BY_ID[id] && inLevel(BY_ID[id])).length, all))} / ${HS.num(all)}</p>
+    ${ids.length ? `<div class="sp-list">${ids.map(id => { const x = BY_ID[id]; if (!x) return '';
+      return `<div class="sp-row"><span class="em" aria-hidden="true">${x.em}</span><b dir="${tDir()}">${esc(tgt(x))}</b><span class="sp-src" dir="${sDir()}">${esc(src(x))}</span>
+        <button type="button" class="d-btn sec" data-sp-back="${esc(id)}" aria-label="${HS.L('أعدها للتمرين', 'Practise again')}: ${esc(tgt(x))}">↩️</button></div>`; }).join('')}</div>`
+      : `<div class="d-card center"><p>${HS.L('لا توجد كلمات بعد. كل كلمة تكتبها صحيحة من أول مرة تظهر هنا.', 'No words yet. Every word you spell right the first time shows up here.')}</p></div>`}
+    <div class="d-actions"><button type="button" class="d-btn" data-sp="start">✍️ ${HS.L('العب تحدّي الإملاء', 'Play the spelling challenge')}</button></div>`;
+}
+ROOT.addEventListener('click', e => {
+  const t = e.target.closest('[data-sp],[data-sp-back]'); if (!t || !ROOT.contains(t)) return;
+  if (t.dataset.spBack) { const d = spDone(), i = d.indexOf(t.dataset.spBack); if (i >= 0) d.splice(i, 1); HS.save(); HS.toast('↩️ ' + HS.L('عادت للتمرين', 'Back in the game')); return spellList(); }
+  const a = t.dataset.sp;
+  if (a === 'start') return go(spellStart);
+  if (a === 'list') return go(spellList);
+  if (a === 'hint') return spHint();
+});
+/** for the parent page */
+const spellReport = pid => { const d = HS.data('spell', pid); return { en: ((d.en || {}).done || []).length, ar: ((d.ar || {}).done || []).length, best: d.best || 0 }; };
 
 })();
 </script>
@@ -5262,7 +5485,7 @@ window.CATALOG = [
     color: 'var(--t-orange)',
     subjects: [
       { id: 'sci', name: 'العلوم', em: '🔬', art: 'subject-science', desc: 'مراجعة الوحدات بالملخصات والألعاب والاختبارات',
-        color: 'var(--t-green-btn)',
+        color: 'var(--t-blue)',
         units: [
           { name: 'الوحدة ١: المخلوقات الحية', em: '🌱', art: 'unit-g3sci-living-cover', soon: true },
           { name: 'الوحدة ٢: النظام البيئي', em: '🦁', art: 'unit-g3sci-eco-cover', soon: true },
@@ -5279,10 +5502,10 @@ window.CATALOG = [
     color: 'var(--t-blue)',
     subjects: [
       { id: 'sci', name: 'العلوم', em: '🔬', art: 'subject-science', desc: 'مراجعة الوحدات بالملخصات والألعاب والاختبارات',
-        color: 'var(--t-green-btn)',
+        color: 'var(--t-blue)',
         units: [
           { name: 'الأنظمة البيئية', em: '🌍', art: 'unit-g4scieco-cover', desc: '٣ دروس · بطاقات · ٦ ألعاب · اختبار نهائي',
-            color: 'var(--t-green-btn)', unit: 'g4scieco' },
+            color: 'var(--t-purple)', unit: 'g4scieco' },
           { name: 'صحة الإنسان', em: '🩺', art: 'unit-g4scihealth-cover', desc: '٤ دروس · بطاقات · ٦ ألعاب · اختبار نهائي',
             color: 'var(--t-pink)', unit: 'g4scihealth' },
           { name: 'الخلايا وتصنيف المخلوقات', em: '🦠', art: 'unit-g4sci-cells-cover', soon: true },
@@ -5300,6 +5523,123 @@ window.CATALOG = [
 
 </script>
 <script>
+/* ============================================================
+   ENGLISH INTERFACE (HS.lang() === 'en')
+   The menu pages are written in Arabic. In English mode, after a menu page, the top bar, a toast or a
+   pop-up is drawn, its Arabic phrases are swapped for the English ones below and Arabic digits become 0–9.
+   Only these places are translated: lessons, dictionary meanings and children's names are never touched.
+   To translate a new phrase: add ['Arabic', 'English'] to EN. Anything missing simply stays in Arabic.
+   Longer phrases are matched first; phrases of one short word only match as a whole word.
+   ============================================================ */
+(function () {
+  const EN = [
+    // brand, navigation, home
+    ['مدرسة البيت', 'Home School'], ['مكانك في الموقع', 'Where you are'], ['الرئيسية', 'Home'], ['رجوع', 'Back'],
+    ['أهلًا بك في مدرسة البيت', 'Welcome to Home School'], ['أهلًا يا', 'Hi'], ['أهلًا! أنا كوكو', 'Hi! I’m Koko'],
+    ['من سيتعلّم معي؟ أضف كل طفل ليُحفظ تقدّمه ونجومه وأخطاؤه وحده.', 'Who will learn with me? Add each child so their progress, stars and mistakes are saved separately.'],
+    ['المتابعة بدون إضافة', 'Continue without adding'], ['تعلّم متواصل:', 'Learning streak:'], ['هيا نتعلّم شيئًا جديدًا اليوم.', 'Let’s learn something new today.'],
+    ['أكمل من حيث توقفت', 'Continue where you stopped'], ['مراجعة اليوم', 'Today’s review'], ['أسئلة أخطأت فيها أو حان وقت تذكّرها:', 'Questions you missed or that are due again:'],
+    ['لا توجد مراجعة اليوم', 'Nothing to review today'], ['كل ما تعلّمته في موعده. جرّب درسًا جديدًا أو اختبارًا.', 'Everything you learned is on track. Try a new lesson or a test.'],
+    ['ماذا نتعلّم اليوم؟', 'What shall we learn today?'], ['صفحة الأب: التقدّم والإعدادات', 'Parent page: progress and settings'], ['كوبون ينتظر', 'coupon waiting'],
+    ['التقدّم والنجوم محفوظة على هذا الجهاز وأونلاين', 'Progress and stars are saved on this device and online'], ['التقدّم والنجوم تُحفظ على هذا الجهاز', 'Progress and stars are saved on this device'],
+    ['للصوت افتح الصفحة في Chrome أو Edge أو Safari', 'For sound, open the page in Chrome, Edge or Safari'],
+    ['اختر المادة', 'Choose a subject'], ['اختر الوحدة', 'Choose a unit'], ['قريبًا', 'Soon'],
+    ['من يتعلّم الآن؟', 'Who is learning now?'], ['طفل جديد', 'New child'], ['أضف طفلًا', 'Add a child'], ['اسم الطفل', 'Child’s name'], ['مثال: محمد', 'e.g. Sam'],
+    ['اختر صورته', 'Pick a picture'], ['صورة الطفل', 'Child’s picture'], ['كلماتي في القاموس', 'My dictionary words'], ['محفوظ أونلاين', 'Saved online'], ['بدون إنترنت', 'Offline'],
+    // catalog
+    ['الروضة', 'Kindergarten'], ['KG2 · عمر ٤–٥ سنوات', 'KG2 · ages 4–5'], ['عربي و English', 'Arabic & English'], ['قصص وأناشيد', 'Stories & songs'],
+    ['الحروف، الأرقام، الألوان، الأشكال، الحيوانات + ٨ ألعاب بالصوت', 'Letters, numbers, colours, shapes, animals + 8 voice games'],
+    ['الصف الثالث', 'Grade 3'], ['الصف الرابع', 'Grade 4'], ['ابتدائي · المنهج السعودي', 'Primary · Saudi curriculum'], ['العلوم', 'Science'], ['الرياضيات', 'Math'], ['لغتي', 'Arabic (Lughati)'],
+    ['مراجعة الوحدات بالملخصات والألعاب والاختبارات', 'Unit review with summaries, games and tests'],
+    ['الوحدة ١: المخلوقات الحية', 'Unit 1: Living things'], ['الوحدة ٢: النظام البيئي', 'Unit 2: Ecosystems'], ['الوحدة ٣: الأرض ومواردها', 'Unit 3: Earth and its resources'], ['الوحدة ٤: الطقس والمناخ', 'Unit 4: Weather and climate'],
+    ['٤ دروس: تغيرات الأرض الفجائية، التجوية والتعرية، التربة، الأحافير والوقود الأحفوري', '4 lessons: sudden changes, weathering and erosion, soil, fossils and fossil fuels'],
+    ['الأنظمة البيئية', 'Ecosystems'], ['صحة الإنسان', 'Human health'], ['الخلايا وتصنيف المخلوقات', 'Cells and classifying living things'], ['الحيوانات وأجهزة أجسامها', 'Animals and their body systems'],
+    ['٣ دروس · بطاقات · ٦ ألعاب · اختبار نهائي', '3 lessons · cards · 6 games · final test'], ['٤ دروس · بطاقات · ٦ ألعاب · اختبار نهائي', '4 lessons · cards · 6 games · final test'],
+    ['قاموسي', 'My Dictionary'], ['إنجليزي وعربي · أكثر من ١١٠٠ كلمة', 'English and Arabic · over 1100 words'],
+    // shop
+    ['متجر النجوم: عندك', 'Star shop: you have'], ['متجر النجوم', 'Star shop'], ['المتجر', 'Shop'], ['اشترِ مكافأة بنجومك', 'Buy a reward with your stars'], ['عندك كوبون', 'you have a coupon'],
+    ['كوبوناتك: اعرضها على بابا أو ماما', 'Your coupons: show them to Mum or Dad'], ['اشتريتها', 'Bought'], ['ينتظر', 'Waiting'], ['هدفك', 'Your goal'], ['تقدر تشتريه الآن!', 'You can buy it now!'],
+    ['إلغاء الهدف', 'Remove goal'], ['اختر مكافأة واضغط «🎯 هدفي» لتجمع لها النجوم.', 'Pick a reward and tap “🎯 My goal” to save stars for it.'], ['هدفي', 'My goal'],
+    ['لا توجد مكافآت بعد. اطلبها من بابا أو ماما.', 'No rewards yet. Ask Mum or Dad.'], ['مثال: رحلة إلى البحر', 'e.g. a trip to the beach'], ['فكرتك', 'Your idea'], ['عندي فكرة مكافأة', 'I have a reward idea'],
+    ['آخر المكافآت', 'Latest rewards'], ['استلمتها', 'received'], ['رجعت النجوم', 'stars returned'], ['صار هدفك', 'is your goal now'], ['وصلت فكرتك لبابا وماما', 'Your idea went to Mum and Dad'],
+    ['متأكد؟ اضغط مرة ثانية ✅', 'Sure? Tap again ✅'], ['متأكد؟ اضغط مرة ثانية', 'Sure? Tap again'], ['اشترِ', 'Buy'], ['خلصت هذا الأسبوع', 'used up this week'], ['باقي ⭐', 'still need ⭐'],
+    ['في الأسبوع', 'a week'], ['مبروك! اعرض الكوبون على بابا أو ماما', 'Congratulations! Show the coupon to Mum or Dad'],
+    ['مفاجأة!', 'Surprise!'], ['مفاجأة', 'Surprise'], ['شكرًا! 💛', 'Thank you! 💛'],
+    ['قصة إضافية قبل النوم', 'Extra bedtime story'], ['لعبة مع بابا أو ماما ١٥ دقيقة', '15 minutes of a game with Mum or Dad'], ['تختار عشاء العائلة', 'Choose the family dinner'],
+    ['١٥ دقيقة آيباد', '15 minutes of iPad'], ['آيس كريم', 'Ice cream'], ['٣٠ دقيقة بلايستيشن', '30 minutes of PlayStation'], ['فيلم مع العائلة', 'Family movie'], ['طلعة للحديقة', 'Trip to the park'],
+    ['لعبة صغيرة جديدة', 'A small new toy'], ['مكافأة جديدة', 'New reward'],
+    // parent page
+    ['صفحة الأب', 'Parent page'], ['الرقم السري', 'PIN'], ['دخول', 'Enter'], ['رقم غير صحيح', 'Wrong PIN'], ['ضيف', 'Guest'],
+    ['تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.', 'Each child’s progress, what needs review, and settings.'], ['للصرف (جمع', 'to spend (earned'], ['في اليوم · 🔥 متواصل:', 'a day · 🔥 streak:'],
+    ['تعلّم في', 'learned on'], ['آخر مرة', 'last time'], ['اشتراها', 'bought'], ['أعطيته', 'Given'], ['إرجاع النجوم', 'Return the stars'], ['يجمع لـ', 'saving for'], ['لم يختر هدفًا بعد', 'no goal yet'],
+    ['أعطه نجومًا مفاجأة', 'Give surprise stars'], ['عدد النجوم', 'Number of stars'], ['رسالة قصيرة، مثال: فخور فيك لأنك ساعدت أختك', 'A short note, e.g. proud of you for helping your sister'], ['رسالة', 'Note'],
+    ['المفاجآت التي لا يتوقعها الطفل لا تُضعف حبّه للتعلّم، بعكس المكافأة الموعودة. استعملها لمدح جهد محدد.', 'Rewards a child doesn’t expect don’t weaken their love of learning, unlike promised ones. Use them to praise a specific effort.'],
+    ['لا يوجد نشاط بعد.', 'No activity yet.'], ['إتقان الوحدة', 'Unit mastery'], ['أجاب عن', 'Answered'], ['أفضل نتيجة في الاختبار الشامل', 'best final test'], ['تحدّي السرعة', 'speed challenge'],
+    ['أكثر ما يخطئ فيه', 'Most missed'], ['أخطأ', 'wrong'], ['أصاب', 'right'], ['تحدّي الإملاء: أتقن', 'Spelling challenge: mastered'], ['كلمة إنجليزية', 'English words'], ['عربية', 'Arabic'], ['أطول سلسلة', 'longest streak'],
+    ['«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.', '“Learned” = written correctly from memory in several spaced reviews.'], ['عربي و English (الروضة)', 'Arabic & English (Kindergarten)'],
+    ['اللعبة', 'Game'], ['المستوى', 'Level'], ['صح من أول مرة', 'Right first time'], ['تعديل الاسم', 'Rename'], ['اضغط مرة ثانية لمسح التقدّم', 'Tap again to clear progress'], ['مسح التقدّم', 'Clear progress'],
+    ['اضغط مرة ثانية للحذف', 'Tap again to delete'], ['حذف الطفل', 'Delete child'], ['الإعدادات', 'Settings'], ['مؤثرات صوتية عند الإجابة', 'Sound effects on answers'], ['إظهار المتجر للأطفال', 'Show the shop to the children'],
+    ['كيف تجعل المتجر ينجح؟ (من الأبحاث)', 'How to make the shop work (from research)'], ['أسعار صغيرة ومتوسطة وكبيرة:', 'Small, medium and large prices:'],
+    ['أول مكافأة يجب أن يصل لها خلال يوم أو يومين، وإلا يفقد الحماس. تحت كل مكافأة تجد كم يومًا يحتاج كل طفل.', 'The first reward should be reachable in a day or two, or the excitement fades. Under each reward you see how many days each child needs.'],
+    ['أعطِ الكوبون بسرعة:', 'Give coupons quickly:'], ['كلما تأخرت المكافأة بعد الشراء ضعف أثرها. عدد الكوبونات المنتظرة يظهر على زر صفحة الأب.', 'The longer a reward waits after buying, the weaker it works. Waiting coupons show on the parent page button.'],
+    ['قلّل مكافآت الشاشة:', 'Limit screen rewards:'], ['دراسة من جامعة Guelph وجدت أن الأطفال الذين تُستعمل الشاشة كمكافأة لهم يقضون وقتًا أطول أمامها. لذلك عليها حد أسبوعي، والأفضل الوقت معكم والتجارب.', 'A University of Guelph study found children given screen time as a reward spend more time on screens. So these have a weekly limit; time together and experiences work better.'],
+    ['لا تأخذ النجوم عقابًا:', 'Never take stars away:'], ['النجوم تُكسب ولا تُسحب.', 'Stars are earned, never removed.'], ['المدح أولًا:', 'Praise first:'],
+    ['امدح الجهد بكلام محدد، واستعمل «🎁 المفاجأة» أحيانًا بدل الوعود.', 'Praise effort with specific words, and sometimes use “🎁 surprise” instead of promises.'], ['دعهم يقترحون:', 'Let them suggest:'],
+    ['اقتراحاتهم تظهر هنا، والطفل يعمل أكثر لمكافأة اختارها.', 'Their ideas appear here, and children work harder for a reward they chose.'],
+    ['في الخانة الأولى رمز تعبيري (إيموجي). «لمن» يجعل المكافأة لطفل واحد، لأن الروضة والصف الرابع يجمعون بسرعات مختلفة. «حد أسبوعي» = أكثر عدد يشتريه في ٧ أيام (فارغ = بلا حد).', 'The first box is an emoji. “For” makes a reward for one child, since kindergarten and grade 4 earn at different speeds. “Weekly limit” = the most they can buy in 7 days (empty = no limit).'],
+    ['أفكار من الأطفال', 'Ideas from the children'], ['للمتجر', 'to the shop'], ['الرمز', 'Emoji'], ['المكافأة', 'Reward'], ['السعر', 'Price'], ['لمن', 'For'], ['الكل', 'Everyone'], ['حد أسبوعي', 'Weekly limit'],
+    ['حفظ المكافآت', 'Save rewards'], ['رقم سري لصفحة الأب', 'PIN for the parent page'], ['حتى لا يغيّر الأطفال الأسعار أو يوافقون على كوبوناتهم بأنفسهم. اتركه فارغًا لإلغائه.', 'So children can’t change prices or approve their own coupons. Leave empty to turn it off.'],
+    ['مثال: 2580', 'e.g. 2580'], ['حفظ الرقم', 'Save PIN'], ['وقت الروضة', 'Kindergarten time'],
+    ['بعد هذه المدة من اللعب في اليوم تظهر شاشة «وقت الاستراحة». منظمة الصحة العالمية تنصح بساعة شاشة كحد أقصى يوميًا لعمر ٢–٤ سنوات، والأقل أفضل.', 'After this much play in a day, a “break time” screen appears. The WHO advises at most one hour of screen time a day for ages 2–4, and less is better.'],
+    ['١٠ دقائق', '10 minutes'], ['١٥ دقيقة', '15 minutes'], ['٢٠ دقيقة', '20 minutes'], ['٣٠ دقيقة', '30 minutes'], ['بدون حد', 'No limit'],
+    ['العب معها: أسئلة قصيرة لألعاب «نفكّر»', 'Play along: short questions for the “Think” games'], ['الصوت العربي', 'Arabic voice'], ['في الموقع', 'The site has'],
+    ['صوتية مسجّلة بصوت ذكاء اصطناعي، تُستخدم قبل صوت الجهاز.', 'recorded AI voice clips, used before the device voice.'], ['مقطعًا', 'clips'], ['مقاطع', 'clips'],
+    ['الأصوات العربية في هذا الجهاز (⭐ = صوت حديث وطبيعي):', 'Arabic voices on this device (⭐ = modern, natural voice):'],
+    ['لا يوجد صوت عربي في هذا الجهاز/المتصفح، لذلك العربية بلا صوت إلا في المقاطع المسجّلة.', 'This device/browser has no Arabic voice, so Arabic is silent except for the recorded clips.'],
+    ['جرّب العربي', 'Test Arabic'], ['كيف أحصل على صوت عربي أوضح؟', 'How do I get a clearer Arabic voice?'],
+    ['الحفظ أونلاين بين الأجهزة', 'Save online across devices'], ['الحالة:', 'Status:'], ['آخر مزامنة', 'last sync'], ['كود العائلة:', 'Family code:'], ['كود العائلة', 'Family code'],
+    ['انسخ رابط الانضمام', 'Copy join link'], ['زامن الآن', 'Sync now'], ['إيقاف المزامنة على هذا الجهاز', 'Stop syncing on this device'], ['احتفظ بالكود سرًا: من يعرفه يرى تقدّم أطفالك.', 'Keep the code secret: anyone who has it can see your children’s progress.'],
+    ['ابدأ: أنشئ كود عائلة', 'Start: create a family code'], ['انضم بكود العائلة', 'Join with a family code'], ['غير مفعّلة', 'off'], ['جاري الاتصال…', 'connecting…'], ['متزامن', 'synced'],
+    ['بدون إنترنت: يحفظ هنا ويرسل لاحقًا', 'offline: saved here, sent later'], ['تعذّر الاتصال، سنحاول مرة أخرى', 'couldn’t connect, will retry'],
+    ['احفظ الأطفال والنجوم والتقدّم أونلاين، لتظهر على كل الأجهزة (آيباد، لابتوب…). يعمل بدون إنترنت أيضًا ويرسل التغييرات عند الاتصال.', 'Save children, stars and progress online so they appear on every device (iPad, laptop…). Works offline too and sends changes when connected.'],
+    ['على أي جهاز آخر: افتح الموقع ← صفحة الأب ← «انضم بكود العائلة» واكتب الكود، أو افتح رابط الانضمام. الأطفال بنفس الاسم يُدمجون تلقائيًا ولا تضيع النجوم.', 'On any other device: open the site → Parent page → “Join with a family code” and type the code, or open the join link. Children with the same name are merged and no stars are lost.'],
+    ['الاسم الجديد', 'New name'], ['أُضيفت. عدّل السعر ثم احفظ', 'Added. Set the price, then save'], ['تم حفظ المكافآت', 'Rewards saved'], ['تم حفظ الرقم السري', 'PIN saved'], ['تم إلغاء الرقم السري', 'PIN removed'],
+    ['انضممت للعائلة', 'Joined the family'], ['هذا الجهاز صار متزامنًا مع العائلة', 'This device now syncs with the family'], ['نُسخ الرابط', 'Link copied'], ['جاري المزامنة', 'Syncing'], ['أُوقفت المزامنة على هذا الجهاز', 'Sync stopped on this device'],
+    ['الكود ١٢ حرفًا ورقمًا، مثل ABCD-EFGH-JKLM', 'The code is 12 letters and digits, like ABCD-EFGH-JKLM'], ['، ستظهر له كمفاجأة', ', it will appear as a surprise'], ['أُرسلت', 'Sent'],
+    ['تشغيل الصوت', 'Sound on'], ['كتم الصوت', 'Mute'], ['تحدّي الإملاء', 'Spelling challenge'],
+    // short words (matched as whole words only)
+    ['حفظ', 'Save'], ['إلغاء', 'Cancel'], ['حذف', 'Delete'], ['أرسل 🎁', 'Send 🎁'], ['أرسل', 'Send'], ['تم', 'Done'], ['عندك', 'You have'], ['باقي', 'need'], ['حتى', 'up to'], ['تقريبًا:', 'about:'], ['تقريبًا', 'about'],
+    ['من', 'of'], ['نجمة.', 'stars.'], ['نجمة', 'stars'], ['تعلّم', 'Learned'], ['كلمة', 'words'], ['كلمتان', '2 words'], ['كلمات', 'words'], ['كلمة واحدة', '1 word'],
+    ['يوم واحد', '1 day'], ['يومان', '2 days'], ['أيام', 'days'], ['يومًا', 'days'], ['سؤال واحد', '1 question'], ['سؤالان', '2 questions'], ['أسئلة', 'questions'], ['سؤالًا', 'questions'],
+  ];
+  const AR_RE = /[؀-ۿ]/;
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const LIST = EN.slice().sort((a, b) => b[0].length - a[0].length).map(([a, e]) => {
+    const short = !/\s/.test(a) && a.length <= 6;
+    return [short ? new RegExp(`(^|[\\s(«:·،])${esc(a)}(?=$|[\\s)»:·،.!؟?,])`, 'g') : new RegExp(esc(a), 'g'), e, short];
+  });
+  const DIG = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/٪/g, '%').replace(/،/g, ',').replace(/؟/g, '?').replace(/‹/g, '›').replace(/←/g, '→');
+  HS.tr = s => {
+    if (HS.lang() !== 'en' || !s || !AR_RE.test(s)) return HS.lang() === 'en' && s ? DIG(s) : s;
+    for (const [re, e, short] of LIST) s = s.replace(re, short ? (m, p1) => p1 + e : e);
+    return DIG(s);
+  };
+  const KEEP = '.nm,[data-keep]';   // children's names (marked where they are drawn)
+  HS.trDom = root => {
+    if (HS.lang() !== 'en' || !root) return;
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = []; while (w.nextNode()) nodes.push(w.currentNode);
+    nodes.forEach(n => { if (n.parentElement && n.parentElement.closest(KEEP)) return; const t = HS.tr(n.nodeValue); if (t !== n.nodeValue) n.nodeValue = t; });
+    root.querySelectorAll('[aria-label],[placeholder],[title]').forEach(el => ['aria-label', 'placeholder', 'title'].forEach(a => {
+      const v = el.getAttribute(a); if (v && !el.closest(KEEP)) { const t = HS.tr(v); if (t !== v) el.setAttribute(a, t); } }));
+  };
+  // toasts and the page title follow the language too
+  const toast = HS.toast; HS.toast = (h, ms) => toast(HS.tr(h), ms);
+  const obs = new MutationObserver(ms => { if (HS.lang() !== 'en') return; obs.disconnect(); ms.forEach(m => HS.trDom(m.target.nodeType === 1 ? m.target : m.target.parentElement)); watch(); });
+  const watch = () => ['pView', 'appbar'].forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el, { childList: true, subtree: true, characterData: true }); });
+  HS.trWatch = () => { watch(); document.body && new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1 && n.matches('.sh-gift')) HS.trDom(n); }))).observe(document.body, { childList: true }); };
+})();
+
 /* ============================================================
    PORTAL + ROUTER
    Draws the menu from CATALOG, the child picker, and the parent page,
@@ -5321,7 +5661,11 @@ window.CATALOG = [
 
   /* small interface icons (drawn here: no picture files). RTL: "forward" points left, "back" points right. */
   const svg = d => `<svg class="p-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  const I = { fwd: svg('M14.5 6l-6 6 6 6'), back: svg('M9.5 6l6 6-6 6'), home: svg('M4 11.5L12 5l8 6.5M6.5 10v8.5h11V10') };
+  const I = { fwd: svg('M14.5 6l-6 6 6 6').replace('p-i', 'p-i flip'), back: svg('M9.5 6l6 6-6 6').replace('p-i', 'p-i flip'), home: svg('M4 11.5L12 5l8 6.5M6.5 10v8.5h11V10'),
+    on: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11'), off: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9.5l5 5M21 9.5l-5 5') };
+  /* sound on/off and language buttons, in the top bar of every page */
+  const muteBtn = cls => `<button type="button" class="${cls} p-mute" data-mute aria-pressed="${HS.muted()}" aria-label="${HS.muted() ? 'تشغيل الصوت' : 'كتم الصوت'}">${HS.muted() ? I.off : I.on}</button>`;
+  const langBtn = cls => `<button type="button" class="${cls} p-lang" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'عربي' : 'English'}</button>`;
 
   const navOf = o => o.unit ? 'unit-' + o.unit : o.app ? 'app-' + o.app : null;
   // a catalog item's picture: its artwork when it exists (o.art), otherwise its emoji
@@ -5335,8 +5679,8 @@ window.CATALOG = [
     const me = HS.current(), named = me && me.id !== 'guest';
     const stars = `⭐ <b>${ar(HS.stars())}</b>`;
     return `<header class="p-top"><a class="p-brand" href="#home" data-nav="home">${HS.art('logo-mark', { eager: true, cls: 'p-logo', fb: '🏡' })}<span>مدرسة البيت</span></a>
-      ${named ? `<div class="p-me">${shopOn() ? `<button type="button" class="p-starpill" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">${stars}</button>` : `<span class="p-starpill">${stars}</span>`}
-        <span class="p-me-av" style="background:${me.color}" title="${esc(me.name)}">${HS.avatar(me)}</span></div>` : ''}</header>`;
+      <div class="p-me">${langBtn('p-tool')}${muteBtn('p-tool')}${named ? `${shopOn() ? `<button type="button" class="p-starpill" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">${stars}</button>` : `<span class="p-starpill">${stars}</span>`}
+        <span class="p-me-av" style="background:${HS.kidColor(me)}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}</div></header>`;
   }
 
   // where does an app/unit sit in the catalog? -> back link + breadcrumb for its top bar
@@ -5354,7 +5698,7 @@ window.CATALOG = [
   function showScreen(id, title) {
     document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === id));
     BAR.style.display = id === 'portal' ? 'none' : 'flex';
-    document.title = title ? title + ' – مدرسة البيت' : 'مدرسة البيت';
+    document.title = HS.tr(title ? title + ' – مدرسة البيت' : 'مدرسة البيت');
     window.scrollTo(0, 0);
   }
   function closeApp() { if (current && APPS[current]) { try { APPS[current].close(); } catch (e) {} } current = null; }
@@ -5362,7 +5706,7 @@ window.CATALOG = [
     if (current !== appId) closeApp();
     current = appId;
     const me = HS.current();
-    BAR.innerHTML = `<button type="button" class="bar-back" data-nav="${loc.back}">${I.back}<span>رجوع</span></button><button type="button" class="bar-home" data-nav="home">${HS.art('logo-mark', { cls: 'bar-logo', fb: '' }) || I.home}<span>الرئيسية</span></button><span class="bar-trail">${loc.trail}</span>${shopOn() ? `<button type="button" class="bar-shop" data-nav="shop" aria-label="متجر النجوم">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}${me ? `<span class="bar-me" style="background:${me.color}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}`;
+    BAR.innerHTML = `<button type="button" class="bar-back" data-nav="${loc.back}">${I.back}<span>رجوع</span></button><button type="button" class="bar-home" data-nav="home">${HS.art('logo-mark', { cls: 'bar-logo', fb: '' }) || I.home}<span>الرئيسية</span></button><span class="bar-trail">${loc.trail}</span>${muteBtn('bar-mute')}${shopOn() ? `<button type="button" class="bar-shop" data-nav="shop" aria-label="متجر النجوم">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}${me ? `<span class="bar-me" style="background:${HS.kidColor(me)}" title="${esc(me.name)}">${HS.avatar(me)}</span>` : ''}`;
     showScreen('scr-' + appId, loc.trail.split(' ‹ ').pop());
     APPS[appId].open(sub);
   }
@@ -5434,7 +5778,7 @@ window.CATALOG = [
     const state = r => { const c = HS.cantBuy(r); return c === 'week' ? `<span class="sh-need">✋ خلصت هذا الأسبوع (${ar(HS.boughtWeek(r.id))}/${ar(r.week)})</span>`
       : c === 'stars' ? `<span class="sh-need">باقي ⭐ ${ar(r.cost - bal)}</span>`
       : `<button type="button" class="p-btn ${buying === r.id ? 'warn' : ''}" data-buy="${r.id}">${buying === r.id ? 'متأكد؟ اضغط مرة ثانية ✅' : 'اشترِ'}</button>`; };
-    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ المتجر') + `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${me.color}">${HS.avatar(me)}</span>` : ''}
+    P.innerHTML = top() + crumb('home', 'الرئيسية ‹ المتجر') + `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
         <div><h2 class="p-title">🛒 متجر النجوم</h2><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
       ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
       ${goal ? `<div class="sh-goal"><span class="em">${HS.rewardArt(goal)}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
@@ -5480,7 +5824,7 @@ window.CATALOG = [
     const list = HS.profiles(), cur = HS.current();
     if (!list.length) return `<div class="p-kids"><button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">أضف طفلًا</span></button>${adding ? avForm(list) : ''}</div>`;
     return `<div class="p-kids"><h2 class="p-kids-t">من يتعلّم الآن؟</h2><div class="p-chips">${list.map(p => { const on = !!(cur && cur.id === p.id);
-        return `<button type="button" class="p-kid ${on ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${on}"><span class="p-kid-av" style="background:${p.color}">${HS.avatar(p)}</span><span class="p-kid-n">${esc(p.name)}</span><span class="p-kid-s">⭐ ${ar(HS.stars(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`; }).join('')}
+        return `<button type="button" class="p-kid ${on ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${on}"><span class="p-kid-av" style="background:${HS.kidColor(p)}">${HS.avatar(p)}</span><span class="p-kid-n nm">${esc(p.name)}</span><span class="p-kid-s">⭐ ${ar(HS.stars(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`; }).join('')}
       <button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">طفل جديد</span></button></div>${adding ? avForm(list) : ''}</div>`;
   }
   function bindPicker() {
@@ -5544,7 +5888,7 @@ window.CATALOG = [
     const me = HS.current(), named = me && me.id !== 'guest', st = HS.dayStreak(), go = lastPlace();
     return `<section class="p-hero" aria-labelledby="pHi">
       <div class="p-hero-tx">
-        <h1 id="pHi">${named ? `أهلًا يا ${esc(me.name)}` : 'أهلًا بك في مدرسة البيت'}</h1>
+        <h1 id="pHi">${named ? `أهلًا يا <span class="nm">${esc(me.name)}</span>` : 'أهلًا بك في مدرسة البيت'}</h1>
         <p class="p-hero-sub">${st ? `🔥 تعلّم متواصل: ${HS.count(st, HS.N.day)}` : 'هيا نتعلّم شيئًا جديدًا اليوم.'}</p>
         ${go ? `<button type="button" class="p-go" data-nav="${go.nav}"><span class="p-go-tile" aria-hidden="true">${HS.art(go.art, { fb: go.em, small: true })}</span>
             <span class="p-go-tx"><small>أكمل من حيث توقفت${go.where ? ` · ${go.where}` : ''}</small><b>${go.name}</b></span><span class="go">${I.fwd}</span></button>` : ''}
@@ -5609,19 +5953,19 @@ window.CATALOG = [
       const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && r.answered);
       const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
       const dr = APPS.dict ? APPS.dict.report(k.id) : null;
-      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${k.color}">${HS.avatar(k)}</span><div><h3>${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
+      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span><div><h3 class="nm">${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
         ${HS.orders(k.id).filter(o => o.st === 'wait').map(o => `<div class="pp-order"><span class="em">${HS.rewardArt(o)}</span><span><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></span>
           <button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع النجوم</button></div>`).join('')}
         ${shopOn() ? `<div class="pp-gift"><span>${HS.goal(k.id) ? `🎯 يجمع لـ ${esc(HS.goal(k.id).em)} ${esc(HS.goal(k.id).name)} (${ar(HS.stars(k.id))}/${ar(HS.goal(k.id).cost)})` : '🎯 لم يختر هدفًا بعد'}</span>
           <details><summary>🎁 أعطه نجومًا مفاجأة</summary><form class="pp-gift-f" data-gift="${k.id}"><select aria-label="عدد النجوم">${[5, 10, 20, 50].map(n => `<option value="${n}">⭐ ${ar(n)}</option>`).join('')}</select>
             <input maxlength="60" placeholder="رسالة قصيرة، مثال: فخور فيك لأنك ساعدت أختك" aria-label="رسالة"><button type="submit" class="p-btn">أرسل 🎁</button></form>
             <p class="pp-note">المفاجآت التي لا يتوقعها الطفل لا تُضعف حبّه للتعلّم، بعكس المكافأة الموعودة. استعملها لمدح جهد محدد.</p></details></div>` : ''}
-        ${!ur.length && !kg.length && !(dr && (dr.seen || dr.ar.seen)) ? '<p class="pp-empty">لا يوجد نشاط بعد.</p>' : ''}
+        ${!ur.length && !kg.length && !(dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar)) ? '<p class="pp-empty">لا يوجد نشاط بعد.</p>' : ''}
         ${ur.map(r => `<div class="pp-unit"><h4>${r.em} ${r.title}</h4><div class="m-row"><span>إتقان الوحدة</span><b>${ar(Math.round(r.total * 100))}٪</b></div>${meter(r.total)}
           <div class="pp-ls">${r.lessons.map(L => `<div class="m-row"><span>${L.em} ${L.title}</span><b>${ar(Math.round(L.m * 100))}٪</b></div>${meter(L.m)}`).join('')}</div>
           <p class="pp-note">أجاب عن ${ar(r.answered)} من ${ar(r.count)} سؤالًا${r.best.final ? ` · أفضل نتيجة في الاختبار الشامل ${ar(r.best.final.s)}/${ar(r.best.final.t)}` : ''}${r.best.speed ? ` · تحدّي السرعة ${ar(r.best.speed.s)}` : ''}</p>
           ${r.missed.length ? `<details><summary>⚠️ أكثر ما يخطئ فيه (${ar(r.missed.length)})</summary><ul>${r.missed.map(m => `<li>${m.q} <small>(أخطأ ${ar(m.w)} · أصاب ${ar(m.c)})</small></li>`).join('')}</ul></details>` : ''}</div>`).join('')}
-        ${dr && (dr.seen || dr.ar.seen) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}
+        ${dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}${dr.spell && (dr.spell.en || dr.spell.ar) ? `<div class="m-row"><span>✍️ تحدّي الإملاء: أتقن ${ar(dr.spell.en)} كلمة إنجليزية${dr.spell.ar ? ` و${ar(dr.spell.ar)} عربية` : ''} · أطول سلسلة ${ar(dr.spell.best)}</span></div>` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}
         ${kg.length ? `<div class="pp-unit"><h4>🔤 عربي و English (الروضة)</h4><table class="pp-t"><thead><tr><th>اللعبة</th><th>المستوى</th><th>صح من أول مرة</th></tr></thead><tbody>${kg.map(g => `<tr><td>${g.name}</td><td>${g.max > 3 ? ar(g.lv || 1) + ' / ' + ar(g.max) : '⭐'.repeat(g.lv || 1)}</td><td>${ar(Math.round(g.c / (g.c + g.w) * 100))}٪ <small>(${ar(g.c + g.w)})</small></td></tr>`).join('')}</tbody></table></div>` : ''}
         ${k.id !== 'guest' ? `<div class="pp-actions"><button type="button" class="p-btn sec" data-ren="${k.id}">✏️ تعديل الاسم</button>
           <button type="button" class="p-btn sec" data-reset="${k.id}">${confirmKey === 'r' + k.id ? '⚠️ اضغط مرة ثانية لمسح التقدّم' : '🔄 مسح التقدّم'}</button>
@@ -5736,10 +6080,16 @@ ${syncBox()}
   }
 
   document.addEventListener('click', e => {
+    const mu = e.target.closest('[data-mute]');
+    if (mu) { HS.setMute(!HS.muted()); if (!HS.muted()) HS.fx('tap'); return; }
+    const lg = e.target.closest('[data-lang-ui]');
+    if (lg) { HS.setLang(lg.dataset.langUi); return route(); }
     const b = e.target.closest('[data-nav]');
     if (b) { e.preventDefault(); if (('#' + b.dataset.nav) === location.hash) route(); else location.hash = b.dataset.nav; }
   });
   window.addEventListener('hashchange', route);
+  HS.on('mute', m => document.querySelectorAll('[data-mute]').forEach(b => { b.setAttribute('aria-pressed', m); b.setAttribute('aria-label', HS.tr(m ? 'تشغيل الصوت' : 'كتم الصوت')); b.innerHTML = m ? I.off : I.on; }));
+  HS.trWatch();
   route();
 })();
 

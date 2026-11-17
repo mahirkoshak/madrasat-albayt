@@ -91,8 +91,11 @@ function home() {
   <div class="d-wod" data-w="${esc(wod.id)}"><small>${wodPick ? '🎲 كلمة عشوائية · Random word' : '🌟 كلمة اليوم · Word of the day'}</small><span class="em">${wod.em}</span><b dir="${tDir()}">${esc(tgt(wod))}</b><span class="ar" dir="${sDir()}">${esc(src(wod))}</span>
     <button type="button" class="d-dice" data-a="dice" aria-label="كلمة عشوائية أخرى">🎲 كلمة أخرى</button></div>
   <div class="d-progress"><div class="m-row"><span>${AR() ? 'كتبت بالعربي' : 'تعلّمت'} ${ar(ln)} من ${ar(n)} كلمة</span><b>${ar(Math.round(ln / n * 100))}٪</b></div><div class="hs-meter"><i style="width:${Math.max(3, Math.round(ln / n * 100))}%"></i></div></div>
+  <button type="button" class="sp-tile" data-sp="start"><span class="em" aria-hidden="true">✍️</span><span class="tx"><b>${HS.L('تحدّي الإملاء', 'Spelling challenge')}</b>
+    <small>${AR() ? 'خمّن كيف تُكتب الكلمة بالعربي، كلمة بعد كلمة' : HS.L('خمّن كيف تُكتب الكلمة، كلمة بعد كلمة', 'Guess how each word is spelled, one after another')}</small></span>
+    <span class="sp-tile-n" data-sp="list" role="button" tabindex="0" aria-label="${HS.L('الكلمات التي أتقنتها', 'Words I can spell')}">✓ ${HS.num(spDone().length)}</span></button>
   <div class="d-menu">
-    <button type="button" class="d-tile" style="background:var(--t-green-btn)" data-a="practice"><span class="em">🧠</span><b>${AR() ? 'تدرّب على العربي' : 'تدرّب'}</b><small>${due ? `${ar(due)} كلمة حان وقت مراجعتها` : 'معاني وكتابة'}</small></button>
+    <button type="button" class="d-tile" style="background:var(--t-pink-sh)" data-a="practice"><span class="em">🧠</span><b>${AR() ? 'تدرّب على العربي' : 'تدرّب'}</b><small>${due ? `${ar(due)} كلمة حان وقت مراجعتها` : 'معاني وكتابة'}</small></button>
     <button type="button" class="d-tile" style="background:var(--t-gold-sh)" data-a="mine"><span class="em">⭐</span><b>كلماتي</b><small>${ar(d.mine.length)} كلمة</small></button>
     <button type="button" class="d-tile" style="background:var(--t-blue)" data-a="topics"><span class="em">🗂️</span><b>المواضيع</b><small dir="ltr">Topics</small></button>
     <button type="button" class="d-tile" style="background:var(--t-purple)" data-a="az"><span class="em" dir="${tDir()}">${AR() ? 'أ–ي' : 'A–Z'}</span><b>الحروف</b><small dir="ltr">Letters</small></button>
@@ -329,6 +332,6 @@ APPS.dict = {
       const c = ids.reduce((a, id) => a + s[id].c, 0), w = ids.reduce((a, id) => a + s[id].w, 0);
       return { seen: ids.length, learned: ids.filter(id => s[id].b >= 3).length, acc: c + w ? c / (c + w) : 0 }; };
     const d = HS.data('dict', pid), en = one('dict'), arr = one('dictar');
-    return { ...en, ar: arr, mine: (d.mine || []).length, total: WORDS.length };
+    return { ...en, ar: arr, mine: (d.mine || []).length, total: WORDS.length, spell: spellReport(pid) };
   }
 };

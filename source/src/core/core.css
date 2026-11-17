@@ -21,7 +21,7 @@
 
 /* mastery bar */
 .hs-meter{height:12px;border-radius:99px;background:var(--t-line);overflow:hidden}
-.hs-meter i{display:block;height:100%;border-radius:99px;background:var(--t-green);transition:width .4s}
+.hs-meter i{display:block;height:100%;border-radius:99px;background:var(--t-primary);transition:width .4s}
 .hs-meter.mid i{background:var(--t-gold)}
 .hs-meter.low i{background:var(--t-orange)}
 
