@@ -160,3 +160,11 @@ The design follows well-established learning research:
   phrases for the menu pages, top bar, toasts and pop-ups; lessons stay Arabic (Saudi book). Add a missing phrase there.
 - Mute: the speaker button in every top bar silences speech and sound effects on this device (`HS.setMute`).
 - Colours: the main action colour is `--t-primary` (blue); green is used only for "correct".
+
+## Natural Arabic voices (Azure)
+- Why: Arabic lines without a recorded clip used the device voice (robotic on iPad), and the old SILMA clips were thin.
+- `voice-maker.html` (made by `tools/publish.py` from `tools/voice_maker/template.html` + `tools/speech_list.js`): the parent
+  pastes a free Azure Speech key (stays in their browser), previews Saudi voices (Zariyah / Hamed), records every sentence and
+  downloads `madrasat-voices.zip`. Free tier = 500,000 characters/month; the whole site is ~16,000.
+- `python3 tools/import_voices.py madrasat-voices.zip` then `python3 tools/publish.py`.
+- Clips are now separate files in `assets/audio/` (the page went from 4.5 MB to ~0.6 MB).

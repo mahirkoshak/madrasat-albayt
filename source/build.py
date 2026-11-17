@@ -132,7 +132,13 @@ def main():
                 fp = os.path.join(SRC, 'audio', 'clips', fn)
                 if os.path.isfile(fp):
                     with open(fp, 'rb') as af:
-                        audio[key] = 'data:audio/mpeg;base64,' + base64.b64encode(af.read()).decode()
+                        data = af.read()
+                    # served as files next to the page (GitHub Pages), so the page itself stays small
+                    dst = os.path.join(DIST, 'assets', 'audio', fn)
+                    os.makedirs(os.path.dirname(dst), exist_ok=True)
+                    if not os.path.isfile(dst) or open(dst, 'rb').read() != data:
+                        with open(dst, 'wb') as wf: wf.write(data)
+                    audio[key] = 'assets/audio/' + fn
     audio_js = '<script>window.HS_AUDIO = ' + json.dumps(audio, ensure_ascii=False) + ';</script>'
 
     # ---- finished artwork (tools/art_process.py): only pictures whose files exist are offered to the site

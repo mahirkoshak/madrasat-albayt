@@ -81,6 +81,7 @@
     ['الاسم الجديد', 'New name'], ['أُضيفت. عدّل السعر ثم احفظ', 'Added. Set the price, then save'], ['تم حفظ المكافآت', 'Rewards saved'], ['تم حفظ الرقم السري', 'PIN saved'], ['تم إلغاء الرقم السري', 'PIN removed'],
     ['انضممت للعائلة', 'Joined the family'], ['هذا الجهاز صار متزامنًا مع العائلة', 'This device now syncs with the family'], ['نُسخ الرابط', 'Link copied'], ['جاري المزامنة', 'Syncing'], ['أُوقفت المزامنة على هذا الجهاز', 'Sync stopped on this device'],
     ['الكود ١٢ حرفًا ورقمًا، مثل ABCD-EFGH-JKLM', 'The code is 12 letters and digits, like ABCD-EFGH-JKLM'], ['، ستظهر له كمفاجأة', ', it will appear as a surprise'], ['أُرسلت', 'Sent'],
+    ['🎙️ صانع الأصوات', '🎙️ Voice maker'], [': يسجّل كل جمل الموقع بصوت Microsoft الطبيعي (سعودي) مجانًا، بدل صوت الجهاز.', ': records every sentence on the site with a natural Microsoft (Saudi) voice for free, instead of the device voice.'],
     ['تشغيل الصوت', 'Sound on'], ['كتم الصوت', 'Mute'], ['تحدّي الإملاء', 'Spelling challenge'],
     // short words (matched as whole words only)
     ['حفظ', 'Save'], ['إلغاء', 'Cancel'], ['حذف', 'Delete'], ['أرسل 🎁', 'Send 🎁'], ['أرسل', 'Send'], ['تم', 'Done'], ['عندك', 'You have'], ['باقي', 'need'], ['حتى', 'up to'], ['تقريبًا:', 'about:'], ['تقريبًا', 'about'],

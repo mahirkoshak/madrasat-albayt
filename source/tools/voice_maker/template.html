@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>صانع الأصوات · مدرسة البيت</title>
+<style>
+  :root{--ink:#3d3428;--muted:#6c604f;--line:#ecdfc6;--page:#fff8e7;--blue:#1769c4;--blue-sh:#0e4a8f;--soft:#e2effd;--red:#a51d1d;--ok:#2b5d00}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);font:17px/1.55 'Tajawal',system-ui,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:24px 16px 60px}
+  h1{font-size:30px;margin:0 0 4px}
+  h2{font-size:20px;margin:0 0 8px}
+  .sub{color:var(--muted);margin:0 0 20px}
+  section{background:#fff;border-radius:20px;padding:18px 20px;margin:0 0 16px;box-shadow:0 0 0 1.5px var(--line),0 3px 0 1.5px var(--line)}
+  ol{margin:6px 0 0;padding-inline-start:22px}
+  li{margin:4px 0}
+  label{display:block;font-weight:700;margin:12px 0 4px}
+  input,select{font:inherit;width:100%;min-height:46px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink)}
+  input:focus,select:focus{outline:none;border-color:var(--blue)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  button{font:inherit;font-weight:800;min-height:46px;padding:8px 18px;border:none;border-radius:14px;cursor:pointer;background:var(--blue);color:#fff;box-shadow:0 4px 0 var(--blue-sh)}
+  button.sec{background:#fff;color:var(--ink);box-shadow:0 0 0 1.5px var(--line),0 3px 0 1.5px var(--line)}
+  button:disabled{opacity:.5;cursor:default}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .note{color:var(--muted);font-size:15px}
+  .bar{height:14px;background:var(--line);border-radius:99px;overflow:hidden;margin:12px 0 6px}
+  .bar i{display:block;height:100%;width:0;background:var(--blue);transition:width .2s}
+  #msg{font-weight:700;min-height:1.5em}
+  #msg.err{color:var(--red)} #msg.ok{color:var(--ok)}
+  code{background:var(--soft);padding:1px 6px;border-radius:6px;direction:ltr;unicode-bidi:embed}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <h1>🎙️ صانع الأصوات</h1>
+  <p class="sub">يسجّل كل جمل الموقع ({{COUNT}} جملة، {{CHARS}} حرف) بأصوات Microsoft Azure الطبيعية، ثم ينزّلها ملفًا واحدًا لتضيفه للموقع.</p>
+
+  <section>
+    <h2>١. احصل على مفتاح مجاني (مرة واحدة)</h2>
+    <ol>
+      <li>افتح <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank" rel="noopener">إنشاء خدمة Speech في Azure</a> وسجّل دخولك (أو أنشئ حسابًا مجانيًا).</li>
+      <li>اختر المنطقة <b>UAE North</b> (الأقرب)، والسعر <b>Free F0</b>، وأي اسم، ثم <b>Create</b>.</li>
+      <li>بعد الإنشاء افتح <b>Keys and Endpoint</b> وانسخ <b>KEY 1</b>.</li>
+    </ol>
+    <p class="note">الخطة المجانية فيها ٥٠٠ ألف حرف في الشهر، وكل جمل الموقع تحتاج حوالي {{CHARS}} حرفًا فقط. المفتاح يبقى في هذه الصفحة على جهازك ولا يُحفظ ولا يُرسل لأي مكان غير Microsoft.</p>
+  </section>
+
+  <section>
+    <h2>٢. اختر الأصوات</h2>
+    <div class="row">
+      <div><label for="key">المفتاح (KEY 1)</label><input id="key" type="password" autocomplete="off" spellcheck="false" dir="ltr" placeholder="••••••••••••••••"></div>
+      <div><label for="region">المنطقة</label><select id="region" dir="ltr">
+        <option value="uaenorth">UAE North</option><option value="westeurope">West Europe</option><option value="eastus">East US</option>
+        <option value="northeurope">North Europe</option><option value="westus2">West US 2</option><option value="southeastasia">Southeast Asia</option>
+        <option value="centralindia">Central India</option><option value="francecentral">France Central</option></select></div>
+    </div>
+    <div class="row">
+      <div><label for="voiceAr">الصوت العربي</label><select id="voiceAr" dir="ltr">
+        <option value="ar-SA-ZariyahNeural">Zariyah: سعودية، أنثى</option><option value="ar-SA-HamedNeural">Hamed: سعودي، ذكر</option>
+        <option value="ar-AE-FatimaNeural">Fatima: إماراتية، أنثى</option><option value="ar-KW-NouraNeural">Noura: كويتية، أنثى</option></select></div>
+      <div><label for="voiceEn">الصوت الإنجليزي</label><select id="voiceEn" dir="ltr">
+        <option value="en-US-AvaMultilingualNeural">Ava (US, female)</option><option value="en-US-AnaNeural">Ana (US, child)</option>
+        <option value="en-US-AndrewMultilingualNeural">Andrew (US, male)</option><option value="en-GB-SoniaNeural">Sonia (UK, female)</option></select></div>
+    </div>
+    <div class="row">
+      <div><label for="rateAr">سرعة العربي</label><select id="rateAr"><option value="-15%">أبطأ (للصغار)</option><option value="-8%" selected>أبطأ قليلًا</option><option value="0%">عادية</option></select></div>
+      <div><label for="rateEn">سرعة الإنجليزي</label><select id="rateEn"><option value="-12%">أبطأ (للصغار)</option><option value="-6%" selected>أبطأ قليلًا</option><option value="0%">عادية</option></select></div>
+    </div>
+    <div class="btns"><button type="button" class="sec" id="tryAr">▶️ جرّب العربي</button><button type="button" class="sec" id="tryEn">▶️ Try English</button></div>
+  </section>
+
+  <section>
+    <h2>٣. سجّل كل الجمل</h2>
+    <label style="display:flex;gap:10px;align-items:center;font-weight:600"><input type="checkbox" id="withEn" style="width:auto;min-height:0"> سجّل الجمل الإنجليزية أيضًا ({{COUNT_EN}} جملة). صوت الآيباد الإنجليزي جيد، فهذا اختياري.</label>
+    <div class="btns"><button type="button" id="go">🎙️ سجّل ونزّل الملف</button></div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <p id="msg" role="status" aria-live="polite"></p>
+    <p class="note">العربي ({{COUNT_AR}} جملة) يأخذ من ١٠ إلى ٢٥ دقيقة في الخطة المجانية لأنها تسمح بعدد محدود من الطلبات في الدقيقة. أبقِ الصفحة مفتوحة. في النهاية ينزل ملف <code>madrasat-voices.zip</code>. أرسله لـ Claude في المحادثة ليضيفه للموقع.</p>
+  </section>
+</main>
+<script>
+const LINES = {{LINES}};
+const $ = id => document.getElementById(id);
+const msg = (t, cls) => { $('msg').textContent = t; $('msg').className = cls || ''; };
+const xml = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+let token = null, tokenAt = 0;
+async function getToken() {
+  if (token && Date.now() - tokenAt < 8 * 60e3) return token;   // tokens last 10 minutes
+  const key = $('key').value.trim(); if (!key) throw new Error('اكتب المفتاح أولًا');
+  const r = await fetch(`https://${$('region').value}.api.cognitive.microsoft.com/sts/v1.0/issueToken`, { method: 'POST', headers: { 'Ocp-Apim-Subscription-Key': key } });
+  if (!r.ok) throw new Error(r.status === 401 ? 'المفتاح أو المنطقة غير صحيحة (401)' : 'تعذّر الحصول على إذن من Azure (' + r.status + ')');
+  token = await r.text(); tokenAt = Date.now(); return token;
+}
+let slow = false, waits = 0;
+async function synth(text, lang) { waits = 0;
+  const voice = lang === 'ar' ? $('voiceAr').value : $('voiceEn').value, rate = lang === 'ar' ? $('rateAr').value : $('rateEn').value;
+  const loc = voice.slice(0, 5);
+  const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${loc}"><voice name="${voice}"><prosody rate="${rate}">${xml(text)}</prosody></voice></speak>`;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const r = await fetch(`https://${$('region').value}.tts.speech.microsoft.com/cognitiveservices/v1`, { method: 'POST',
+      headers: { Authorization: 'Bearer ' + await getToken(), 'Content-Type': 'application/ssml+xml', 'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3' }, body: ssml });
+    if (r.ok) return new Uint8Array(await r.arrayBuffer());
+    if (r.status === 401) { token = null; continue; }
+    if (r.status === 429 || r.status >= 500) {   // the free tier allows only so many requests a minute: wait, then go on
+      slow = true; const wait = (parseInt(r.headers.get('Retry-After'), 10) || 8) * 1000;
+      msg(`Azure طلب الانتظار قليلًا (الخطة المجانية)… سنكمل تلقائيًا`); await new Promise(k => setTimeout(k, wait)); attempt--; if (++waits > 60) break; continue;
+    }
+    throw new Error('Azure رفض الطلب (' + r.status + ')');
+  }
+  throw new Error('Azure مشغول، جرّب مرة أخرى بعد قليل');
+}
+async function play(text, lang) {
+  try { msg('…'); const b = await synth(text, lang); new Audio(URL.createObjectURL(new Blob([b], { type: 'audio/mpeg' }))).play(); msg(''); }
+  catch (e) { msg(e.message === 'Failed to fetch' ? 'تعذّر الاتصال بـ Azure. تأكد من المنطقة والإنترنت.' : e.message, 'err'); }
+}
+$('tryAr').onclick = () => play('هيا نلعب! ركّبي الصورة، ثم وجّهي الروبوت إلى التفاحة. أحسنتِ!', 'ar');
+$('tryEn').onclick = () => play('Great job! Can you find the red apple?', 'en');
+
+/* the file names are the same as tools/make_audio.py: first 16 hex digits of sha1("lang|text") */
+async function name(key) { const h = new Uint8Array(await crypto.subtle.digest('SHA-1', new TextEncoder().encode(key))); return [...h].map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 16) + '.mp3'; }
+
+/* a small "stored" zip writer (no compression: mp3 is already compressed) */
+const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+const crc32 = b => { let c = 0xFFFFFFFF; for (let i = 0; i < b.length; i++) c = CRC[(c ^ b[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+function zip(files) {
+  const enc = new TextEncoder(), parts = [], central = []; let off = 0;
+  for (const [fname, data] of files) {
+    const n = enc.encode(fname), c = crc32(data), h = new DataView(new ArrayBuffer(30));
+    h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true); h.setUint32(14, c, true); h.setUint32(18, data.length, true); h.setUint32(22, data.length, true); h.setUint16(26, n.length, true);
+    parts.push(new Uint8Array(h.buffer), n, data);
+    const d = new DataView(new ArrayBuffer(46));
+    d.setUint32(0, 0x02014b50, true); d.setUint16(4, 20, true); d.setUint16(6, 20, true); d.setUint16(8, 0x0800, true); d.setUint32(16, c, true); d.setUint32(20, data.length, true); d.setUint32(24, data.length, true); d.setUint16(28, n.length, true); d.setUint32(42, off, true);
+    central.push(new Uint8Array(d.buffer), n); off += 30 + n.length + data.length;
+  }
+  const size = central.reduce((s, p) => s + p.length, 0), e = new DataView(new ArrayBuffer(22));
+  e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true); e.setUint16(10, files.length, true); e.setUint32(12, size, true); e.setUint32(16, off, true);
+  return new Blob([...parts, ...central, new Uint8Array(e.buffer)], { type: 'application/zip' });
+}
+$('go').onclick = async () => {
+  $('go').disabled = true; const files = [], manifest = {}; let done = 0, failed = [];
+  try {
+    await getToken();
+    const todo = LINES.filter(l => l.lang === 'ar' || $('withEn').checked), queue = todo.slice(), worker = async () => {
+      while (queue.length) {
+        if (slow && worker.n > 1) { worker.n--; return; }   // throttled: one request at a time
+        const l = queue.shift(), key = l.lang + '|' + l.text;
+        try { const fn = await name(key); files.push(['clips/' + fn, await synth(l.text, l.lang)]); manifest[key] = fn; }
+        catch (e) { failed.push(key); if (/401|المفتاح/.test(e.message)) throw e; }
+        done++; $('bar').style.width = (100 * done / todo.length) + '%'; msg(`سُجّلت ${done} من ${todo.length}…`);
+      }
+    };
+    worker.n = 3; await Promise.all([worker(), worker(), worker()]);
+    const info = { voices: { ar: $('voiceAr').value, en: $('voiceEn').value }, rate: { ar: $('rateAr').value, en: $('rateEn').value }, made: new Date().toISOString(), failed };
+    files.push(['manifest.json', new TextEncoder().encode(JSON.stringify(manifest, null, 1))], ['voices.json', new TextEncoder().encode(JSON.stringify(info, null, 1))]);
+    const a = document.createElement('a'); a.href = URL.createObjectURL(zip(files)); a.download = 'madrasat-voices.zip'; document.body.appendChild(a); a.click(); a.remove();
+    msg(failed.length ? `نزل الملف. ${failed.length} جملة لم تُسجّل (ستبقى بصوت الجهاز).` : '✅ نزل الملف madrasat-voices.zip. أرسله لـ Claude ليضيفه للموقع.', failed.length ? 'err' : 'ok');
+  } catch (e) { msg(e.message === 'Failed to fetch' ? 'تعذّر الاتصال بـ Azure. تأكد من المنطقة والإنترنت.' : e.message, 'err'); }
+  $('go').disabled = false;
+};
+</script>
+</body>
+</html>
