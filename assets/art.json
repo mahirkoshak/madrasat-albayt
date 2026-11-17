@@ -71,6 +71,18 @@
   "sm": "assets/badges/badge-champion-earned-sm.webp",
   "src": "assets/badges/badge-champion-earned.webp"
  },
+ "home-hero-koko": {
+  "h": 897,
+  "sm": "assets/hero/home-hero-koko-800.webp",
+  "src": "assets/hero/home-hero-koko.webp",
+  "w": 1752
+ },
+ "home-hero-koko-en": {
+  "h": 897,
+  "sm": "assets/hero/home-hero-koko-en-800.webp",
+  "src": "assets/hero/home-hero-koko-en.webp",
+  "w": 1752
+ },
  "logo-mark": {
   "src": "assets/brand/logo-mark.webp"
  },

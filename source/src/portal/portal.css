@@ -282,3 +282,21 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .appbar .bar-mute{padding:4px 10px}
 [dir="ltr"] .p-i.flip{transform:scaleX(-1)}
 @media (max-width:640px){.p-top{flex-wrap:wrap}.p-me{gap:6px}#portal .p-tool{padding:4px 10px}}
+
+/* ---------- hero with the full Koko scene (assets/hero): text on the free sky, where reading starts ---------- */
+.p-hero.scene{display:flex;align-items:center;padding:var(--t-s5) 0;aspect-ratio:1752/897;background:#dcecfe}
+.p-hero.scene::after{display:none}
+.p-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.p-hero.scene .p-hero-tx{width:min(46%,520px);margin-inline:5% auto;padding:0}
+.p-onb-form{max-width:720px;margin:var(--t-s5) auto 0}
+.p-onb-form .p-form{max-width:none;background:var(--t-surface);border-radius:var(--t-r-card);padding:var(--t-s4) var(--t-s5);box-shadow:var(--t-raise)}
+[dir="ltr"] .p-hero-bg{object-position:right center}
+[dir="rtl"] .p-hero-bg{object-position:left center}
+@media (max-width:900px){.p-hero.scene .p-hero-tx{width:50%;margin-inline:4% auto}.p-hero.scene h1{font-size:32px}.p-hero.scene .p-go{margin-top:var(--t-s3)}.p-hero.scene .p-go-tx small{display:none}}
+@media (max-width:640px){
+  .p-hero.scene{display:block;aspect-ratio:auto;padding:0;background:#dcecfe}
+  .p-hero.scene .p-hero-bg{position:static;display:block;height:auto;aspect-ratio:1752/897}
+  .p-hero.scene .p-hero-tx,.p-hero.scene.p-onb .p-hero-tx{width:auto;margin:0;padding:var(--t-s3) var(--t-s4) var(--t-s4)}
+  .p-hero.scene h1,.p-hero.scene .p-hero-sub{margin-inline-end:0}
+  .p-hero.scene .p-hero-sub{min-height:0}
+}

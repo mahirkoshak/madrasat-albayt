@@ -141,7 +141,7 @@ def main():
     if os.path.isfile(reg):
         with open(reg, encoding='utf-8') as f:
             for k, v in json.load(f).items():
-                files = list(v.values()) if isinstance(v, dict) else []
+                files = [x for x in v.values() if isinstance(x, str)] if isinstance(v, dict) else []
                 if all(os.path.isfile(os.path.join(DIST, x)) for x in files): art[k] = v
                 else: missing.append(k)
     for k in missing:

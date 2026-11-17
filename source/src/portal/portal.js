@@ -242,17 +242,24 @@
   }
 
   /* ---------- home ---------- */
+  /** the full Koko scene for the current language (its free sky is where the text starts), or null */
+  function heroScene() {
+    const id = HS.lang() === 'en' && HS.ART['home-hero-koko-en'] ? 'home-hero-koko-en' : HS.ART['home-hero-koko'] ? 'home-hero-koko' : null;
+    if (!id) return null; const a = HS.ART[id];
+    return `<img class="p-hero-bg" src="${a.src}" srcset="${a.sm} 800w, ${a.src} 1600w" sizes="(max-width: 640px) 100vw, 1080px" width="${a.w}" height="${a.h}" alt="" decoding="async" fetchpriority="high" onerror="this.closest('.p-hero').classList.remove('scene');this.remove()">`;
+  }
+  /** the hero frame: the scene when it exists, otherwise Koko standing on the sand */
+  const heroWrap = (cls, inner) => { const sc = heroScene();
+    return `<section class="p-hero ${cls}${sc ? ' scene' : ''}" aria-labelledby="pHi">${sc || ''}${inner}${sc ? '' : `<div class="p-hero-art" aria-hidden="true">${HS.mascot('welcome', { eager: true, fb: '🐨' })}</div>`}</section>`; };
   function hero() {
     const me = HS.current(), named = me && me.id !== 'guest', st = HS.dayStreak(), go = lastPlace();
-    return `<section class="p-hero" aria-labelledby="pHi">
+    return heroWrap('', `
       <div class="p-hero-tx">
         <h1 id="pHi">${named ? `أهلًا يا <span class="nm">${esc(me.name)}</span>` : 'أهلًا بك في مدرسة البيت'}</h1>
         <p class="p-hero-sub">${st ? `🔥 تعلّم متواصل: ${HS.count(st, HS.N.day)}` : 'هيا نتعلّم شيئًا جديدًا اليوم.'}</p>
         ${go ? `<button type="button" class="p-go" data-nav="${go.nav}"><span class="p-go-tile" aria-hidden="true">${HS.art(go.art, { fb: go.em, small: true })}</span>
             <span class="p-go-tx"><small>أكمل من حيث توقفت${go.where ? ` · ${go.where}` : ''}</small><b>${go.name}</b></span><span class="go">${I.fwd}</span></button>` : ''}
-      </div>
-      <div class="p-hero-art" aria-hidden="true">${HS.mascot('welcome', { eager: true, fb: '🐨' })}</div>
-    </section>`;
+      </div>`);
   }
   function today() {
     const r = reviews(), out = [];
@@ -266,10 +273,10 @@
     let skip = false; try { skip = sessionStorage.getItem('hs-skip') === '1'; } catch (e) {}
     const list = HS.profiles();
     if (!list.length && !skip) {   // first visit: Koko asks who will learn here
-      P.innerHTML = top() + `<section class="p-hero p-onb" aria-labelledby="pHi"><div class="p-hero-tx"><h1 id="pHi">أهلًا! أنا كوكو</h1>
-          <p class="p-hero-sub">من سيتعلّم معي؟ أضف كل طفل ليُحفظ تقدّمه ونجومه وأخطاؤه وحده.</p>${avForm(list)}
-          <button type="button" class="p-link" id="pSkip">المتابعة بدون إضافة</button></div>
-        <div class="p-hero-art" aria-hidden="true">${HS.mascot('welcome', { eager: true, fb: '🐨' })}</div></section>`;
+      const sc = !!heroScene(), form = `${avForm(list)}<button type="button" class="p-link" id="pSkip">المتابعة بدون إضافة</button>`;
+      // with the full scene the form goes in a card below it, so it never covers Koko
+      P.innerHTML = top() + heroWrap('p-onb', `<div class="p-hero-tx"><h1 id="pHi">أهلًا! أنا كوكو</h1>
+          <p class="p-hero-sub">من سيتعلّم معي؟ أضف كل طفل ليُحفظ تقدّمه ونجومه وأخطاؤه وحده.</p>${sc ? '' : form}</div>`) + (sc ? `<div class="p-onb-form">${form}</div>` : '');
       return bindPicker();
     }
     P.innerHTML = top() + hero() + kidsRow() + today() + `

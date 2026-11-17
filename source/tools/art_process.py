@@ -23,6 +23,9 @@ DIST = os.path.join(ROOT, 'dist')
 SMALL = ('/avatars/', '/badges/', '/rewards/', '/mascot/')
 # brand art that the asset lists keep outside assets/ (it was meant as a source), and where the site uses it
 EXTRA = {'logo-mark': 'assets/brand/logo-mark.webp'}
+# full scenes (not in the asset lists): kept whole, only resized. Each language has its own mirror image:
+# the free sky is on the side where reading starts, so the greeting sits there.
+SCENES = {'home-hero-koko': 'assets/hero/home-hero-koko.webp', 'home-hero-koko-en': 'assets/hero/home-hero-koko-en.webp'}
 CREAM = (255, 248, 231, 255)
 
 
@@ -168,6 +171,15 @@ def main(raw_dir):
             f.resize((192, 192), Image.LANCZOS).save(os.path.join(DIST, facerel), 'WEBP', quality=88, method=6)
         if e['id'] == 'app-icon':
             reg['_icons'] = icons(img)
+    for sid, rel in SCENES.items():
+        src = os.path.join(raw_dir, sid + '.png')
+        if not os.path.exists(src): continue
+        sm = rel.replace('.webp', '-800.webp'); reg[sid] = {'src': rel, 'sm': sm, 'w': 0, 'h': 0}
+        im = Image.open(src).convert('RGB'); reg[sid]['w'], reg[sid]['h'] = im.size
+        for r, w in ((rel, 1600), (sm, 800)):
+            dst = os.path.join(DIST, r); os.makedirs(os.path.dirname(dst), exist_ok=True)
+            if os.path.exists(dst) and os.path.getmtime(dst) >= max(os.path.getmtime(src), os.path.getmtime(__file__)): continue
+            im.resize((w, round(im.height * w / im.width)), Image.LANCZOS).save(dst, 'WEBP', quality=84, method=6)
     os.makedirs(os.path.join(DIST, 'assets'), exist_ok=True)
     with open(os.path.join(DIST, 'assets', 'art.json'), 'w', encoding='utf-8') as f:
         json.dump(reg, f, ensure_ascii=False, indent=1, sort_keys=True)
