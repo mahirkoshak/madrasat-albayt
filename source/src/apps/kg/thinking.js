@@ -13,6 +13,7 @@ const { SCENES, DESIGNS, WHERE, STORIES } = APPDATA.kg;
 const THINK_ROUNDS = { puzzle: 3, compose: 3, where: 5, robot: 4, story: 4 };
 const THINK_MAX = { puzzle: 8, robot: 8, compose: 5, where: 5, story: 5 };   // number of levels
 const tl = fn => fn[lang()];
+const THINK_GAMES = {};   // filled at the end of this file and by thinking2.js
 const fresh = html => { $('gArea').innerHTML = `<div class="tk">${html}</div>`; return $('gArea').firstElementChild; };
 const POOLS = {};   // filtered lists kept stable so HS.bag can remember what was shown
 let GEN = 0;   // bumps on every new puzzle, so timers from an old puzzle never touch the new one
@@ -21,7 +22,7 @@ const later = (fn, ms) => { const g = GEN; setTimeout(() => { if (g === GEN && $
 function thinkStart(k) {
   GEN++; G.max = THINK_MAX[k]; G.roundN = THINK_ROUNDS[k];
   levelBar(); dots(); $('gShow').innerHTML = '';
-  ({ puzzle: puzzleGame, compose: composeGame, where: whereGame, robot: robotGame, story: storyGame })[k]();
+  THINK_GAMES[k]();
 }
 /** one puzzle finished: record, then next puzzle (or end of round → level check) */
 function thinkDone(firstTry) {
@@ -82,7 +83,8 @@ function puzzleGame() {
 function shapeSvg(t, x, y, w, h, attrs) {
   const pts = { triU: `${x + w / 2},${y} ${x + w},${y + h} ${x},${y + h}`, triD: `${x},${y} ${x + w},${y} ${x + w / 2},${y + h}`,
     triL: `${x},${y + h / 2} ${x + w},${y} ${x + w},${y + h}`, triR: `${x},${y} ${x + w},${y + h / 2} ${x},${y + h}`,
-    rtBR: `${x + w},${y} ${x + w},${y + h} ${x},${y + h}`, rtBL: `${x},${y} ${x + w},${y + h} ${x},${y + h}` }[t];
+    rtBR: `${x + w},${y} ${x + w},${y + h} ${x},${y + h}`, rtBL: `${x},${y} ${x + w},${y + h} ${x},${y + h}`,
+    rtTR: `${x},${y} ${x + w},${y} ${x + w},${y + h}` }[t];   // rtBL + rtTR together cover a rectangle
   if (t === 'rect') return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1.5" ${attrs}/>`;
   if (t === 'circle') return `<ellipse cx="${x + w / 2}" cy="${y + h / 2}" rx="${w / 2}" ry="${h / 2}" ${attrs}/>`;
   return `<polygon points="${pts}" ${attrs}/>`;
@@ -92,19 +94,37 @@ function composeGame() {
   const L = G.lv, tier = L <= 2 ? 1 : L <= 3 ? 2 : 3;    // L1-2 coloured guide, L3 outlines, L4-5 silhouette
   const pool = POOLS['cp' + L] = POOLS['cp' + L] || DESIGNS.filter(d => d.lv <= Math.min(3, Math.ceil(L / 1.7))), d = HS.bag('cp' + L, pool);
   const S = Math.min(300, window.innerWidth - 70), k = S / 100;
+  // from level 3 there is more than one right answer: one rectangle can also be made from two right triangles
+  const rect = L >= 3 ? d.p.find(p => p[0] === 'rect' && p[3] >= 12 && p[4] >= 12) : null;
+  const alt = rect ? [{ t: 'rtBL', p: rect }, { t: 'rtTR', p: rect }] : [];
   const slot = (p, i) => shapeSvg(p[0], p[1], p[2], p[3], p[4], `class="cp-slot" data-i="${i}" data-k="${keyOf(p)}" ` +
     (tier === 1 ? `fill="${p[5]}" fill-opacity=".28" stroke="${p[5]}" stroke-width="1" stroke-dasharray="2 1.5"`
       : tier === 2 ? `fill="#ffffff" stroke="#9aa4b2" stroke-width="1" stroke-dasharray="2 1.5"` : `fill="#c9ced6" stroke="#c9ced6" stroke-width=".6"`));
   const root = fresh(`<svg class="cp-board" viewBox="0 0 100 100" style="width:${S}px;height:${S}px">${d.p.map(slot).join('')}<g class="cp-fill"></g></svg>
-    <div class="cp-pool">${HS.shuffle(d.p.map((p, i) => i)).map(i => { const p = d.p[i]; return `<button type="button" class="cp-piece hs-drag" data-i="${i}" data-k="${keyOf(p)}" aria-label="شكل"><svg viewBox="${p[1] - 1} ${p[2] - 1} ${p[3] + 2} ${p[4] + 2}" style="width:${(p[3] + 2) * k}px;height:${(p[4] + 2) * k}px">${shapeSvg(p[0], p[1], p[2], p[3], p[4], `fill="${p[5]}" stroke="rgba(0,0,0,.25)" stroke-width=".8"`)}</svg></button>`; }).join('')}</div>`);
+    <div class="cp-pool">${HS.shuffle([...d.p.map((p, i) => i), ...alt]).map(i => { const p = typeof i === 'number' ? d.p[i] : i.p, t = typeof i === 'number' ? p[0] : i.t;
+      return `<button type="button" class="cp-piece hs-drag" ${typeof i === 'number' ? `data-i="${i}" data-k="${keyOf(p)}"` : `data-half="${keyOf(p)}" data-part="${i.t}" data-col="${p[5]}"`} aria-label="${typeof i === 'number' ? 'شكل' : 'مثلث'}"><svg viewBox="${p[1] - 1} ${p[2] - 1} ${p[3] + 2} ${p[4] + 2}" style="width:${(p[3] + 2) * k}px;height:${(p[4] + 2) * k}px">${shapeSvg(t, p[1], p[2], p[3], p[4], `fill="${p[5]}" stroke="rgba(0,0,0,.25)" stroke-width=".8"`)}</svg></button>`; }).join('')}</div>`);
   ask(tl(P.compose)(d), lang());
   let placed = 0, mistakes = 0;
   HS.dnd(root, { item: '.cp-piece', target: '.cp-slot', onDrop(pc, sl) {
     if (sl.classList.contains('done')) return false;
+    if (pc.dataset.half && pc.dataset.half === sl.dataset.k && !(sl.dataset.h || '').includes(pc.dataset.part)) {   // half of a rectangle
+      const p = d.p[+sl.dataset.i];
+      root.querySelector('.cp-fill').insertAdjacentHTML('beforeend', shapeSvg(pc.dataset.part, p[1], p[2], p[3], p[4], `fill="${pc.dataset.col}" stroke="rgba(0,0,0,.25)" stroke-width=".8" class="hs-pop"`));
+      sl.dataset.h = (sl.dataset.h || '') + pc.dataset.part; pc.classList.add('hs-done'); pc.style.display = 'none'; HS.fx('ok');
+      if (sl.dataset.h.length > 4) {   // both halves: the slot is full
+        sl.classList.add('done');
+        if (!root.querySelector(`.cp-slot[data-k="${sl.dataset.k}"]:not(.done)`)) root.querySelectorAll(`.cp-piece[data-k="${sl.dataset.k}"]`).forEach(x => { if (!x.classList.contains('hs-done')) { x.classList.add('hs-done'); x.style.display = 'none'; } });
+        later(() => say([[tl(P.twoTri)(), lang()]]), 300);
+        if (++placed === d.p.length) later(() => thinkDone(mistakes <= 1), 1800);
+      }
+      return true;
+    }
+    if (pc.dataset.k === sl.dataset.k && sl.dataset.h) { HS.fx('no'); shake(pc); return false; }   // half built with a triangle: finish with the other one
     if (pc.dataset.k === sl.dataset.k) {             // any slot with the same shape and size fits
       const p = d.p[+sl.dataset.i], col = d.p[+pc.dataset.i][5];
       sl.classList.add('done'); root.querySelector('.cp-fill').insertAdjacentHTML('beforeend', shapeSvg(p[0], p[1], p[2], p[3], p[4], `fill="${col}" stroke="rgba(0,0,0,.25)" stroke-width=".8" class="hs-pop"`));
       pc.classList.add('hs-done'); pc.style.display = 'none'; HS.fx('ok');
+      root.querySelectorAll(`.cp-piece[data-half="${sl.dataset.k}"]`).forEach(x => { if (!x.classList.contains('hs-done') && !root.querySelector(`.cp-slot[data-k="${sl.dataset.k}"]:not(.done)`)) { x.classList.add('hs-done'); x.style.display = 'none'; } });
       if (++placed === d.p.length) later(() => thinkDone(mistakes <= 1), 400);
       return true;
     }
@@ -361,3 +381,5 @@ function showBreak() {
   btn.addEventListener('pointerdown', start); ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => btn.addEventListener(ev, stop));
 }
 SESSION.iv = setInterval(sessionTick, 5000);
+
+Object.assign(THINK_GAMES, { puzzle: puzzleGame, compose: composeGame, where: whereGame, robot: robotGame, story: storyGame });

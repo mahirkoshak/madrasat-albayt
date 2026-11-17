@@ -202,14 +202,43 @@ APPDATA.kg = {
     up: { ar: () => 'لنجرّب في الأعلى', en: () => 'Try near the top' },
     mid: { ar: () => 'لنجرّب في الوسط', en: () => 'Try in the middle' },
     down: { ar: () => 'لنجرّب في الأسفل', en: () => 'Try near the bottom' },
-    brk: { ar: () => 'عمل رائع اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة', en: () => 'Great work today! Time for a break away from the screen' }
+    brk: { ar: () => 'عمل رائع اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة', en: () => 'Great work today! Time for a break away from the screen' },
+    // change the rule
+    ruleColor: { ar: () => 'لنرتّب حسب اللون', en: () => 'Sort by colour' },
+    ruleShape: { ar: () => 'لنرتّب حسب الشكل', en: () => 'Sort by shape' },
+    ruleSize: { ar: () => 'لنرتّب حسب الحجم', en: () => 'Sort by size' },
+    ruleNew: { ar: () => 'تغيّرت القاعدة!', en: () => 'The rule changed!' },
+    ruleFrame: { ar: () => 'البطاقة التي لها إطار نرتّبها حسب الشكل، والبطاقة بلا إطار حسب اللون', en: () => 'Cards with a frame go by shape. Cards without a frame go by colour' },
+    // free build and shapes
+    build: { ar: () => 'لنبنِ ما نحب من الأشكال', en: () => 'Build anything you like with shapes' },
+    buildDone: { ar: () => 'ما أجمل هذا البناء!', en: () => 'What a lovely build!' },
+    twoTri: { ar: () => 'مثلثان يصنعان مستطيلًا!', en: () => 'Two triangles make a rectangle!' },
+    // story workshop
+    taleWho: { ar: () => 'من بطل قصتنا؟', en: () => 'Who is in our story?' },
+    taleWhere: { ar: () => 'أين تحدث القصة؟', en: () => 'Where does it happen?' },
+    taleProblem: { ar: () => 'ماذا حدث فجأة؟', en: () => 'What happened suddenly?' },
+    taleFix: { ar: () => 'كيف نحلّ المشكلة؟', en: () => 'How do we fix it?' },
+    taleNotFix: { ar: () => 'هل هذا يحلّ المشكلة؟ لنجرّب شيئًا آخر', en: () => 'Does that fix it? Let’s try something else' },
+    taleEnd: { ar: () => 'وانتهت القصة بابتسامة كبيرة', en: () => 'And the story ended with a big smile' },
+    taleStart: { ar: (w, p) => 'هذه قصة ' + w[1] + ' ' + p[3], en: (w, p) => 'This is the story of ' + w[2] + ' ' + p[4] }
   });
+  /* story workshop pieces: [picture, Arabic, English] · problems and fixes: [picture, Arabic sentence, English sentence] */
+  K.TALE = {
+    who: [['🐇', 'الأرنب', 'the rabbit'], ['🐱', 'القطة', 'the cat'], ['🤖', 'الروبوت', 'the robot'], ['🐘', 'الفيل', 'the elephant']],
+    where: [['🌳', 'الحديقة', 'the park', 'في الحديقة', 'in the park'], ['🏖️', 'الشاطئ', 'the beach', 'على الشاطئ', 'at the beach'], ['🏠', 'البيت', 'home', 'في البيت', 'at home']],   // [picture, name, name, «in/at …» for the story]
+    problem: [['🌧️', 'وفجأة نزل مطر غزير!', 'Suddenly, heavy rain started!'], ['😋', 'وبعد اللعب جاء الجوع!', 'After playing, everyone got hungry!'],
+      ['⚽', 'وفجأة ضاعت الكرة!', 'Suddenly, the ball was lost!'], ['🌙', 'وفجأة صار المكان مظلمًا!', 'Suddenly, it got dark!']],
+    fix: [['☂️', 'فجاءت المظلة الكبيرة!', 'So out came a big umbrella!'], ['🍎', 'فجاء طبق من الفاكهة!', 'So a plate of fruit arrived!'],
+      ['🔎', 'فساعد الأصدقاء في البحث، ووجدوا الكرة!', 'Friends helped look, and found the ball!'], ['🔦', 'فأضاء المصباح المكان!', 'So a lamp lit everything up!']]
+  };   // fix[i] solves problem[i]
   const base = K.speakables;
   K.speakables = function () {
     const out = base(), add = (t, l) => out.push([t, l]);
-    ['puzzle', 'robot', 'robotStar', 'robotStars', 'robotOrder', 'robotRepeat', 'robotMissed', 'notMine', 'robotRun', 'robotBump', 'robotShort', 'story', 'storyNext', 'up', 'mid', 'down', 'brk'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
+    ['ruleColor', 'ruleShape', 'ruleSize', 'ruleNew', 'ruleFrame', 'build', 'buildDone', 'twoTri', 'taleWho', 'taleWhere', 'taleProblem', 'taleFix', 'taleNotFix', 'taleEnd', 'puzzle', 'robot', 'robotStar', 'robotStars', 'robotOrder', 'robotRepeat', 'robotMissed', 'notMine', 'robotRun', 'robotBump', 'robotShort', 'story', 'storyNext', 'up', 'mid', 'down', 'brk'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
     for (let n = 9; n <= 14; n++) { add(P.robotLimit.ar(n), 'ar'); add(P.robotLimit.en(n), 'en'); }
     K.DESIGNS.forEach(d => { add(P.compose.ar(d), 'ar'); add(P.compose.en(d), 'en'); });
+    K.TALE.who.forEach(w => K.TALE.where.forEach(p => { add(P.taleStart.ar(w, p), 'ar'); add(P.taleStart.en(w, p), 'en'); }));
+    [...K.TALE.problem, ...K.TALE.fix].forEach(x => { add(x[1], 'ar'); add(x[2], 'en'); });
     W.targets.forEach(t => Object.keys(W.scenes).forEach(s => W.scenes[s].zones.forEach(p => {
       add(P.where.ar(t, s, p), 'ar'); add(P.where.en(t, s, p), 'en'); add(P.wherePick.ar(t, s, p), 'ar'); add(P.wherePick.en(t, s, p), 'en');
     })));

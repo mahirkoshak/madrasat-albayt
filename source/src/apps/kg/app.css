@@ -202,3 +202,30 @@ h1{margin:4px 0;font-size:36px;font-weight:800;color:var(--t-ink-strong);text-al
 :root.L-ar .mi .en,:root.L-ar .sec-title .en,:root.L-ar .sub .en{display:none}
 :root.L-en .mi .ar,:root.L-en .sec-title .ar,:root.L-en .sub .ar{display:none}
 .mi b.en{font-family:inherit}
+/* change the rule */
+.rl-rule{font-size:34px;min-height:44px;text-align:center}
+.rl-card{display:grid;place-items:center;min-height:150px}
+.rl-c{width:140px;height:140px;background:#fff;border-radius:22px;box-shadow:0 4px 0 #d0d7e2;display:grid;place-items:center;border:4px solid transparent}
+.rl-c.frame{border:6px dashed #212529}
+.rl-c svg{width:110px;height:110px}
+.rl-bins{display:flex;gap:18px;justify-content:center;margin-top:14px}
+.rl-bin{width:140px;height:150px;border:0;border-radius:22px;background:#ffe8cc;box-shadow:0 6px 0 #e8c39e;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:8px}
+.rl-bin svg{width:72px;height:72px}
+.rl-basket{width:96px;height:26px;margin-top:6px;border-radius:0 0 18px 18px;background:repeating-linear-gradient(90deg,#c08552 0 8px,#a86b3c 8px 16px)}
+/* story workshop */
+.tl-story{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.tl-line{margin:0;background:#fff;border-radius:16px;padding:10px 14px;font-size:20px;font-weight:700;box-shadow:0 3px 0 #e1e6ee}
+.tl-line .em{font-size:28px}
+.tl-opts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.tl-o{width:112px;min-height:112px;border:3px solid #e1e6ee;border-radius:20px;background:#fff;box-shadow:0 4px 0 #d0d7e2;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.tl-o .em{font-size:52px;line-height:1}.tl-o small{font-size:16px;font-weight:700}
+.tl-o:disabled{opacity:.35}
+/* free build */
+.bd-board{background:#fff;border-radius:18px;box-shadow:inset 0 0 0 3px #e1e6ee;touch-action:none;display:block;margin:0 auto}
+.bd-it{cursor:grab;outline:none}.bd-it:focus-visible > *{stroke:#1c7ed6;stroke-width:1.6}
+.bd-tools{display:flex;flex-direction:column;gap:10px;margin-top:12px;align-items:center}
+.bd-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.bd-s{width:56px;height:56px;border:3px solid #e1e6ee;border-radius:14px;background:#fff;padding:6px;cursor:pointer}.bd-s svg{width:100%;height:100%}
+.bd-c{width:44px;height:44px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #d0d7e2;cursor:pointer}.bd-c.on{box-shadow:0 0 0 4px #212529}
+.bd-a{width:56px;height:56px;font-size:26px;border:3px solid #e1e6ee;border-radius:16px;background:#fff;cursor:pointer}.bd-a.done{background:var(--t-green,#58cc02);border-color:var(--t-green,#58cc02)}
+.cp-fill,.cp-fill *{pointer-events:none}   /* placed pieces let taps through to the space under them (the 2nd triangle)*/

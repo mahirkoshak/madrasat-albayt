@@ -281,7 +281,7 @@ APPS.kg = {
   /** counted from the menu itself, so the card on the home page never goes out of date */
   counts: () => ({ games: ROOT.querySelectorAll('[data-game]').length, learn: ROOT.querySelectorAll('[data-learn]').length }),
   /** the parent can set the level of a game (otherwise it adapts by itself) */
-  levels: () => [...ROOT.querySelectorAll('[data-game]')].map(b => ({ k: b.dataset.game, name: b.querySelector('b.ar').textContent, max: THINK_ROUNDS[b.dataset.game] ? THINK_MAX[b.dataset.game] : 3 })),
+  levels: () => [...ROOT.querySelectorAll('[data-game]:not([data-free])')].map(b => ({ k: b.dataset.game, name: b.querySelector('b.ar').textContent, max: THINK_ROUNDS[b.dataset.game] ? THINK_MAX[b.dataset.game] : 3 })),
   setLevel(profileId, k, lv) { const d = HS.data('kg', profileId); d.lv = d.lv || {}; d.lv[k] = lv; HS.save(); },
   close() { HS.stopSpeak(); clearTimeout(tmr); $('ov').classList.remove('on'); },
   report(profileId) {
