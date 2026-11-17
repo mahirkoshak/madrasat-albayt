@@ -551,7 +551,8 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-dict .sp-form input:focus{outline:none;box-shadow:0 0 0 4px rgba(142,92,247,.25)}
 #app-dict .sp-form input:disabled{opacity:.5}
 #app-dict .sp-go{min-height:60px;font-size:22px}
-#app-dict .sp-tools{margin-top:10px}
+#app-dict .sp-tools{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+#app-dict .sp-help-note{margin:6px 0 0;font-size:14px}
 #app-dict .sp-next{margin-top:10px}
 #app-dict .sp-list{display:grid;gap:8px}
 #app-dict .sp-row{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:8px 12px;box-shadow:var(--t-raise)}
@@ -4011,6 +4012,8 @@ APPS.dict = {
      between new words, never straight away;
    - a word counts as DONE when it is written right from memory without a hint and without having just
      seen it. Done words go to the "done" list and stop coming up (they can be put back from that list).
+   The word is not read out before the guess (that would give the spelling away): 🔊 is a help, like
+   "give me a letter"; a word guessed with any help comes back and is not counted as done.
    The screen never changes shape: picture and meaning on top, letter boxes, one input, one button.
    Saved per child in HS.data('spell'): { en: { done: [ids] }, ar: { done: [ids] }, best }
    ============================================================ */
@@ -4045,8 +4048,7 @@ function spellNext() {
   const hide = s => AR() ? esc(s) : esc(s).replace(new RegExp('\\b' + x.w.slice(0, Math.max(3, x.w.length - 2)).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\w*', 'gi'), '___');
   M().innerHTML = spHead() + `<div class="d-card sp-card">
     <div class="sp-clue"><span class="em" aria-hidden="true">${x.em}</span>
-      <div><b dir="${sDir()}">${esc(src(x))}</b><p dir="ltr">${hide(x.def)}</p></div>
-      ${AR() ? '' : `<button type="button" class="d-say sp-hear" data-say="${esc(x.w)}" aria-label="${HS.L('استمع للكلمة', 'Hear the word')}">🔊</button>`}</div>
+      <div><b dir="${sDir()}">${esc(src(x))}</b><p dir="ltr">${hide(x.def)}</p></div></div>
     ${p.back ? `<p class="sp-back">🔁 ${HS.L('عادت لك هذه الكلمة: اكتبها من ذاكرتك', 'This word is back: write it from memory')}</p>` : ''}
     <p class="d-ask" id="spAsk">${AR() ? 'اكتب الكلمة بالعربي <small dir="ltr">Write it in Arabic</small>' : HS.L('كيف تُكتب بالإنجليزي؟', 'How do you spell it?')}</p>
     <div class="sp-boxes" id="spBoxes" dir="${tDir()}" aria-hidden="true">${[...T].map(() => '<i></i>').join('')}</div>
@@ -4054,11 +4056,12 @@ function spellNext() {
       <input id="spIn" dir="${tDir()}" lang="${AR() ? 'ar' : 'en'}" maxlength="${T.length}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
         aria-label="${HS.L('اكتب الكلمة هنا', 'Type the word here')} (${HS.num(T.length)} ${HS.L('حروف', 'letters')})" placeholder="${HS.L('اكتب هنا', 'Type here')}">
       <button type="submit" class="d-btn sp-go">${HS.L('تحقّق', 'Check')} ✅</button></form>
-    <div class="sp-tools"><button type="button" class="d-btn sec" data-sp="hint">💡 ${HS.L('أعطني حرفًا', 'Give me a letter')}</button></div>
+    <div class="sp-tools"><button type="button" class="d-btn sec" data-sp="hint">💡 ${HS.L('أعطني حرفًا', 'Give me a letter')}</button>
+      ${AR() ? '' : `<button type="button" class="d-btn sec" data-sp="hear">🔊 ${HS.L('اسمعها (مساعدة)', 'Hear it (help)')}</button>`}</div>
+    <p class="d-note sp-help-note">${HS.L('المساعدة متاحة، لكن الكلمة لا تدخل «أتقنتها» إلا إذا كتبتها بدونها.', 'Help is there if you need it, but a word only goes to “done” when you spell it without help.')}</p>
     ${AR() ? '<p class="d-note">على الآيباد: اضغط 🌐 في لوحة المفاتيح لتغيّرها إلى العربية</p>' : ''}
     <div id="spFb" class="d-fb" aria-live="polite"></div></div>`;
-  spBind();
-  if (!AR()) setTimeout(() => sayEn(x.w), 250);
+  spBind();   // the word is NOT read out at the start: hearing it would give the spelling away (🔊 is a help button)
 }
 /** the letter boxes mirror what is typed, so it is always clear where the next letter goes */
 function spBoxes() {
@@ -4087,7 +4090,8 @@ function spCheck(v) {
     $('spIn').value = ''; spBoxes(); $('spIn').focus(); return;
   }
   if (ok) {
-    const clean = !c.hint && c.tries === 1;
+    const clean = !c.hint && !c.heard && c.tries === 1;
+    if (!AR()) sayEn(x.w);   // after the guess, hearing it again helps it stick
     SG.n++;
     if (clean) {
       spDone().push(x.id); SG.streak++; SPN().best = Math.max(SPN().best, SG.streak);
@@ -4096,12 +4100,12 @@ function spCheck(v) {
       if (SG.n % 10 === 0) { HS.party(); HS.toast(`🎉 ${HS.num(SG.n)} ${HS.L('كلمات!', 'words!')}`); }
     } else {
       HS.fx('ok'); SG.again.push({ id: x.id, wait: 3 });
-      fb.innerHTML = `<div class="good">👍 ${HS.L('صح! بمساعدة، لذلك سترجع لك مرة ثانية', 'Right, with help, so it will come back once more')}</div>`;
+      fb.innerHTML = `<div class="good">👍 ${HS.L('صح! لكن بمساعدة، لذلك سترجع لك لتكتبها وحدك', 'Right, but with help, so it will come back for you to spell alone')}</div>`;
     }
     HS.save(); return spAfter(clean ? 1100 : 1300);
   }
   // wrong: show the right spelling (look), then hide it and write it again (cover, write, compare)
-  SG.streak = 0; SG.combo.miss(); HS.fx('no');
+  SG.streak = 0; SG.combo.miss(); HS.fx('no'); if (!AR()) setTimeout(() => sayEn(x.w), 400);
   c.phase = 'cover';
   fb.innerHTML = `<div class="bad">✋ ${HS.L('الصحيح:', 'The right spelling:')}</div>${diffHtml(v, c.T)}
     <p class="d-note">${HS.L('انظر جيدًا… ستختفي بعد لحظة، ثم اكتبها من ذاكرتك', 'Look carefully… it hides in a moment, then write it from memory')}</p>`;
@@ -4147,6 +4151,7 @@ ROOT.addEventListener('click', e => {
   if (a === 'start') return go(spellStart);
   if (a === 'list') return go(spellList);
   if (a === 'hint') return spHint();
+  if (a === 'hear' && SG && SG.cur) { SG.cur.heard = true; sayEn(SG.cur.x.w); const i = $('spIn'); if (i && !i.disabled) i.focus(); return; }
 });
 /** for the parent page */
 const spellReport = pid => { const d = HS.data('spell', pid); return { en: ((d.en || {}).done || []).length, ar: ((d.ar || {}).done || []).length, best: d.best || 0 }; };
