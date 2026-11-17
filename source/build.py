@@ -155,6 +155,14 @@ def main():
                 else: missing.append(k)
     for k in missing:
         print(f'WARNING: artwork "{k}" is in art.json but its file is missing; run tools/art_process.py')
+    # cache-busting: each picture URL carries a short fingerprint of its file, so a corrected picture
+    # (same file name, new content) is downloaded again instead of coming from the browser's cache
+    import hashlib
+    def stamp(x):
+        p = os.path.join(DIST, x)
+        return x + '?v=' + hashlib.sha1(open(p, 'rb').read()).hexdigest()[:8] if os.path.isfile(p) else x
+    for k, v in art.items():
+        if k != '_icons' and isinstance(v, dict): art[k] = {kk: stamp(vv) if isinstance(vv, str) else vv for kk, vv in v.items()}
     icons = art.pop('_icons', {})
     head = ''
     if icons:

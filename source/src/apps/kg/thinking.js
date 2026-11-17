@@ -136,7 +136,7 @@ function composeGame() {
 /** the thing to place: the ball has a drawn picture, the animals stay as they are */
 const tgt = t => t[2] === 'ball' ? HS.art('game-ball', { small: true, eager: true, fb: t[0], cls: 'wt-img' }) : t[0];
 const ZONE_POS = {   // where each spot is drawn in the 300×240 scene (centre x,y) and its layer
-  table: { on: [150, 62, 3], under: [150, 182, 3], beside: [262, 150, 3] },
+  table: { on: [110, 62, 3], under: [110, 172, 3], beside: [242, 170, 3] },   // from the table picture's own pixels: table x 29–191, top y 70–120, legs y 127–211
   basket: { in: [150, 140, 1], on: [150, 46, 3], beside: [262, 150, 3] },
   box: { on: [150, 52, 3], beside: [262, 150, 3], behind: [150, 92, 0], front: [150, 196, 4] },
   boxes: { between: [150, 158, 3], on: [70, 70, 3], beside: [272, 158, 3] }
