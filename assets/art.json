@@ -173,6 +173,22 @@
   "sm": "assets/badges/badge-champion-earned-sm.webp",
   "src": "assets/badges/badge-champion-earned.webp"
  },
+ "badge-lesson-earned": {
+  "sm": "assets/badges/badge-lesson-earned-sm.webp",
+  "src": "assets/badges/badge-lesson-earned.webp"
+ },
+ "badge-stars100-earned": {
+  "sm": "assets/badges/badge-stars100-earned-sm.webp",
+  "src": "assets/badges/badge-stars100-earned.webp"
+ },
+ "badge-streak3-earned": {
+  "sm": "assets/badges/badge-streak3-earned-sm.webp",
+  "src": "assets/badges/badge-streak3-earned.webp"
+ },
+ "coupon": {
+  "sm": "assets/rewards/coupon-sm.webp",
+  "src": "assets/rewards/coupon.webp"
+ },
  "dict-cover": {
   "src": "assets/catalog/dict-cover.webp"
  },
@@ -236,6 +252,14 @@
  "game-where-card": {
   "src": "assets/games/kg/game-where-card.webp"
  },
+ "gift-box": {
+  "sm": "assets/rewards/gift-box-sm.webp",
+  "src": "assets/rewards/gift-box.webp"
+ },
+ "goal-flag": {
+  "sm": "assets/rewards/goal-flag-sm.webp",
+  "src": "assets/rewards/goal-flag.webp"
+ },
  "grade-g3": {
   "src": "assets/catalog/grade-g3.webp"
  },
@@ -295,6 +319,146 @@
  "mascot-welcome": {
   "sm": "assets/mascot/mascot-welcome-sm.webp",
   "src": "assets/mascot/mascot-welcome.webp"
+ },
+ "reward-ball": {
+  "sm": "assets/rewards/reward-ball-sm.webp",
+  "src": "assets/rewards/reward-ball.webp"
+ },
+ "reward-beach": {
+  "sm": "assets/rewards/reward-beach-sm.webp",
+  "src": "assets/rewards/reward-beach.webp"
+ },
+ "reward-bike": {
+  "sm": "assets/rewards/reward-bike-sm.webp",
+  "src": "assets/rewards/reward-bike.webp"
+ },
+ "reward-boardgame": {
+  "sm": "assets/rewards/reward-boardgame-sm.webp",
+  "src": "assets/rewards/reward-boardgame.webp"
+ },
+ "reward-books": {
+  "sm": "assets/rewards/reward-books-sm.webp",
+  "src": "assets/rewards/reward-books.webp"
+ },
+ "reward-cake": {
+  "sm": "assets/rewards/reward-cake-sm.webp",
+  "src": "assets/rewards/reward-cake.webp"
+ },
+ "reward-camera": {
+  "sm": "assets/rewards/reward-camera-sm.webp",
+  "src": "assets/rewards/reward-camera.webp"
+ },
+ "reward-cinema": {
+  "sm": "assets/rewards/reward-cinema-sm.webp",
+  "src": "assets/rewards/reward-cinema.webp"
+ },
+ "reward-crafts": {
+  "sm": "assets/rewards/reward-crafts-sm.webp",
+  "src": "assets/rewards/reward-crafts.webp"
+ },
+ "reward-dinner": {
+  "sm": "assets/rewards/reward-dinner-sm.webp",
+  "src": "assets/rewards/reward-dinner.webp"
+ },
+ "reward-friend": {
+  "sm": "assets/rewards/reward-friend-sm.webp",
+  "src": "assets/rewards/reward-friend.webp"
+ },
+ "reward-icecream": {
+  "sm": "assets/rewards/reward-icecream-sm.webp",
+  "src": "assets/rewards/reward-icecream.webp"
+ },
+ "reward-ipad": {
+  "sm": "assets/rewards/reward-ipad-sm.webp",
+  "src": "assets/rewards/reward-ipad.webp"
+ },
+ "reward-juice": {
+  "sm": "assets/rewards/reward-juice-sm.webp",
+  "src": "assets/rewards/reward-juice.webp"
+ },
+ "reward-lego": {
+  "sm": "assets/rewards/reward-lego-sm.webp",
+  "src": "assets/rewards/reward-lego.webp"
+ },
+ "reward-money": {
+  "sm": "assets/rewards/reward-money-sm.webp",
+  "src": "assets/rewards/reward-money.webp"
+ },
+ "reward-movie": {
+  "sm": "assets/rewards/reward-movie-sm.webp",
+  "src": "assets/rewards/reward-movie.webp"
+ },
+ "reward-music": {
+  "sm": "assets/rewards/reward-music-sm.webp",
+  "src": "assets/rewards/reward-music.webp"
+ },
+ "reward-outing": {
+  "sm": "assets/rewards/reward-outing-sm.webp",
+  "src": "assets/rewards/reward-outing.webp"
+ },
+ "reward-park": {
+  "sm": "assets/rewards/reward-park-sm.webp",
+  "src": "assets/rewards/reward-park.webp"
+ },
+ "reward-pet": {
+  "sm": "assets/rewards/reward-pet-sm.webp",
+  "src": "assets/rewards/reward-pet.webp"
+ },
+ "reward-pizza": {
+  "sm": "assets/rewards/reward-pizza-sm.webp",
+  "src": "assets/rewards/reward-pizza.webp"
+ },
+ "reward-plant": {
+  "sm": "assets/rewards/reward-plant-sm.webp",
+  "src": "assets/rewards/reward-plant.webp"
+ },
+ "reward-playstation": {
+  "sm": "assets/rewards/reward-playstation-sm.webp",
+  "src": "assets/rewards/reward-playstation.webp"
+ },
+ "reward-restaurant": {
+  "sm": "assets/rewards/reward-restaurant-sm.webp",
+  "src": "assets/rewards/reward-restaurant.webp"
+ },
+ "reward-shopping": {
+  "sm": "assets/rewards/reward-shopping-sm.webp",
+  "src": "assets/rewards/reward-shopping.webp"
+ },
+ "reward-sleepover": {
+  "sm": "assets/rewards/reward-sleepover-sm.webp",
+  "src": "assets/rewards/reward-sleepover.webp"
+ },
+ "reward-stayup": {
+  "sm": "assets/rewards/reward-stayup-sm.webp",
+  "src": "assets/rewards/reward-stayup.webp"
+ },
+ "reward-story": {
+  "sm": "assets/rewards/reward-story-sm.webp",
+  "src": "assets/rewards/reward-story.webp"
+ },
+ "reward-sweets": {
+  "sm": "assets/rewards/reward-sweets-sm.webp",
+  "src": "assets/rewards/reward-sweets.webp"
+ },
+ "reward-swim": {
+  "sm": "assets/rewards/reward-swim-sm.webp",
+  "src": "assets/rewards/reward-swim.webp"
+ },
+ "reward-toy": {
+  "sm": "assets/rewards/reward-toy-sm.webp",
+  "src": "assets/rewards/reward-toy.webp"
+ },
+ "reward-trip": {
+  "sm": "assets/rewards/reward-trip-sm.webp",
+  "src": "assets/rewards/reward-trip.webp"
+ },
+ "star": {
+  "sm": "assets/rewards/star-sm.webp",
+  "src": "assets/rewards/star.webp"
+ },
+ "star-burst": {
+  "sm": "assets/rewards/star-burst-sm.webp",
+  "src": "assets/rewards/star-burst.webp"
  },
  "subject-arabic": {
   "src": "assets/catalog/subject-arabic.webp"
