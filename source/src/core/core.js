@@ -95,6 +95,13 @@
       o.face: the head-and-shoulders copy (avatars) · o.fb: fallback (emoji or text) · o.eager: load now (above the fold) */
   /** the listen icon used on every 🔊 button (drawn, so it matches the header icons) */
   HS.SPK = '<svg class="hs-spk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 9.2h3.8L12 5.3v13.4l-4.7-3.9H3.5z" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15.4 9.1a4.2 4.2 0 010 5.8M18.1 6.4a8 8 0 010 11.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+  /** content picture for an emoji (manifest-sheets: ids like kg-u1f407, sci-u26f0-2b07), or the emoji itself
+      while that picture does not exist yet. area: 'kg' | 'sci' | 'math' */
+  HS.picId = (em, area) => area + '-u' + [...String(em)].map(c => c.codePointAt(0).toString(16)).filter(h => h !== 'fe0f' && h !== '200d').join('-');
+  HS.pic = (em, area, o = {}) => {
+    const id = ((window.HS_PICMAP || {})[area] || {})[em] || HS.picId(em, area);
+    return HS.ART && HS.ART[id] ? HS.art(id, Object.assign({ fb: em }, o)) : em;
+  };
   HS.art = (id, o = {}) => {
     const a = HS.ART[id], fb = o.fb == null ? '' : String(o.fb);
     if (!a) return fb ? `<span class="hs-fb ${o.fbCls || ''}" aria-hidden="true">${fb}</span>` : '';

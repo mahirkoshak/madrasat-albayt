@@ -9,6 +9,10 @@ For every RAW_DIR/<id>.png that the lists send to an 'assets/...' path:
   3. saves dist/<file> (WebP, 512 px) and, for avatars, mascot, badges and rewards, a '-sm' copy (192 px);
      avatars also get a '-face' copy (192 px, head and shoulders) for the small round avatar spots.
 Also makes the brand files the lists keep outside assets/ (logo-mark) and the home-screen icons.
+Sprite sheets (manifest-sheets.json, made by tools/make_sheets.py): RAW_DIR/sheet-<name>.png holds a grid of
+small pictures. Each separate object goes to the cell its centre is in (so a picture that strays a little over a
+cell edge is still cut whole), then it is trimmed and saved like a single picture, at 256 px (4×4) or 320 px (3×3).
+A labelled check image per sheet goes to art/check/ (not published) and problems are listed.
 Writes dist/assets/art.json: {id: {src, sm?}}. build.py reads it, so the site only shows pictures that exist
 and keeps its emoji for the rest. Adding a new picture = put its PNG in RAW_DIR, run this, run build.py.
 The artwork itself is never changed: only background removal (when needed), trimming and resizing.
@@ -146,6 +150,51 @@ def icons(img):
 # They replace the raw picture when the site is built; the raw files are never changed.
 HERE_FIXES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'art', 'fixes')
 
+def slice_sheet(sheet, src, reg, problems, check_dir):
+    """cut one sprite sheet into its pictures; returns the number of pictures saved"""
+    from scipy import ndimage
+    from PIL import ImageDraw
+    img = load(src); W, H = img.size; g = sheet['grid']; cw, ch = W / g, H / g
+    alpha = np.asarray(img.getchannel('A'))
+    lab, n = ndimage.label(alpha > 24)
+    if not n: problems.append(f"{sheet['id']}: the sheet is empty"); return 0
+    cents = ndimage.center_of_mass(alpha > 24, lab, range(1, n + 1)); sizes = ndimage.sum(alpha > 24, lab, range(1, n + 1))
+    cell_of = {}
+    for k, (cy, cx) in enumerate(cents):
+        cell_of[k + 1] = min(g - 1, int(cy // ch)) * g + min(g - 1, int(cx // cw))
+    size = 256 if g >= 4 else 320
+    rgba = np.asarray(img)
+    sheet_check = img.copy(); dr = ImageDraw.Draw(sheet_check)
+    saved = 0
+    for i, cell in enumerate(sheet['cells']):
+        mine = [k for k, c in cell_of.items() if c == i]
+        r, c = divmod(i, g); box = (c * cw, r * ch, (c + 1) * cw, (r + 1) * ch)
+        flag = None
+        if not mine or sum(sizes[k - 1] for k in mine) < cw * ch * .01: flag = 'empty'
+        else:
+            m = np.isin(lab, mine)
+            m = ndimage.binary_dilation(m, iterations=2) & (alpha > 0)        # keep the soft edge
+            out = rgba.copy(); out[..., 3] = np.where(m, rgba[..., 3], 0)
+            pic = Image.fromarray(out, 'RGBA'); bb = pic.getbbox()
+            if bb and (bb[0] < box[0] - cw * .15 or bb[2] > box[2] + cw * .15 or bb[1] < box[1] - ch * .15 or bb[3] > box[3] + ch * .15):
+                flag = 'spills into the next cell'
+            big = sorted((sizes[k - 1] for k in mine), reverse=True)
+            if len(big) > 1 and big[1] > big[0] * .6 and 'pair' not in cell['draw'] and 'two' not in cell['draw']: flag = flag or 'two separate objects?'
+            rel = cell['file']; dst = os.path.join(DIST, rel)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            finish(pic.crop(bb), size).save(dst, 'WEBP', quality=88, method=6)
+            reg[cell['id']] = {'src': rel}; saved += 1
+        if flag: problems.append(f"{sheet['id']} cell {i + 1} ({cell['id']}): {flag}")
+        dr.rectangle(box, outline=(220, 40, 40) if flag else (120, 140, 160), width=3)
+        dr.text((box[0] + 6, box[1] + 4), f"{i + 1} {cell['id']}" + (f'  ! {flag}' if flag else ''), fill=(200, 0, 0) if flag else (60, 60, 60))
+    for i in range(len(sheet['cells']), g * g):
+        if any(c == i for c in cell_of.values()): problems.append(f"{sheet['id']}: something drawn in empty cell {i + 1}")
+    os.makedirs(check_dir, exist_ok=True)
+    bg = Image.new('RGBA', sheet_check.size, (255, 248, 231, 255)); bg.alpha_composite(sheet_check)
+    bg.convert('RGB').save(os.path.join(check_dir, sheet['id'] + '.png'))
+    return saved
+
+
 def main(raw_dir):
     mdir = manifest_dir()
     entries = []
@@ -177,6 +226,24 @@ def main(raw_dir):
             f.resize((192, 192), Image.LANCZOS).save(os.path.join(DIST, facerel), 'WEBP', quality=88, method=6)
         if e['id'] == 'app-icon':
             reg['_icons'] = icons(img)
+    # sprite sheets: many small pictures in one image (a single picture with the same id wins)
+    sp = os.path.join(mdir, 'manifest-sheets.json')
+    if os.path.exists(sp):
+        cut = 0
+        for sh in json.load(open(sp, encoding='utf-8')):
+            src = os.path.join(raw_dir, sh['id'] + '.png')
+            fix = os.path.join(HERE_FIXES, sh['id'] + '.png')
+            if os.path.exists(fix): src = fix
+            if not os.path.exists(src): continue
+            todo = [c for c in sh['cells'] if c['id'] not in reg]
+            fresh = all(os.path.exists(os.path.join(DIST, c['file'])) and os.path.getmtime(os.path.join(DIST, c['file'])) >= max(os.path.getmtime(src), os.path.getmtime(__file__)) for c in todo)
+            if fresh:
+                for c in todo: reg[c['id']] = {'src': c['file']}
+                continue
+            keep = {c['id']: reg[c['id']] for c in sh['cells'] if c['id'] in reg}
+            cut += slice_sheet(sh, src, reg, problems, os.path.join(ROOT, 'art', 'check'))
+            reg.update(keep)
+        if cut: print(f'{cut} pictures cut from sprite sheets (check images: art/check/)')
     for sid, rel in SCENES.items():
         src = os.path.join(raw_dir, sid + '.png')
         if not os.path.exists(src): continue

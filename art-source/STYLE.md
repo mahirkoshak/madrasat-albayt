@@ -32,7 +32,7 @@ Two families of art share one palette and one light direction, so they always lo
 
 ## Rules for every image
 - **No text, letters, numbers or logos inside the art**: the site adds all text itself, in Arabic and English.
-- **Background:** a perfectly flat, uniform chroma green **#00FF00** with no shadow, gradient, floor or texture on it.
+- **Background: transparent** (the image model makes it directly). Earlier phases used a flat chroma green **#00FF00** that was removed afterwards; that is no longer needed.
   **No shadow on the background**: no contact shadow, no floor. The site removes the green and adds its own soft shadow.
   Never use green #00FF00 inside the subject itself; use the palette green #58CC02 instead.
 - Square 1024 × 1024 unless the asset list says otherwise.

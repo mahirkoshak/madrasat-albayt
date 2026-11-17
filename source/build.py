@@ -169,7 +169,15 @@ def main():
         head = (f'<link rel="icon" type="image/png" sizes="64x64" href="{icons["favicon-64"]}">\n'
                 f'<link rel="apple-touch-icon" href="{icons["apple-touch-icon"]}">\n'
                 '<meta name="apple-mobile-web-app-title" content="مدرسة البيت">')
-    art_js = '<script>window.HS_ART = ' + json.dumps(art, ensure_ascii=False, sort_keys=True) + ';</script>'
+    # emoji → content picture id (manifest-content 'replaces'), only for pictures that exist: HS.pic() uses it
+    picmap = {}
+    mc = os.path.join(os.path.dirname(HERE), 'art-source', 'manifest-content.json')
+    if os.path.isfile(mc):
+        for e in json.load(open(mc, encoding='utf-8')):
+            area = e['id'].split('-')[0]
+            if e['id'] in art and e.get('replaces'): picmap.setdefault(area, {}).setdefault(e['replaces'], e['id'])
+    art_js = ('<script>window.HS_ART = ' + json.dumps(art, ensure_ascii=False, sort_keys=True) + ';'
+              'window.HS_PICMAP = ' + json.dumps(picmap, ensure_ascii=False) + ';</script>')
 
     page = read('portal', 'shell.html')
     for key, val in {
