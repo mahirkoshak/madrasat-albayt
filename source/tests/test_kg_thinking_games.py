@@ -31,7 +31,7 @@ with sync_playwright() as p:
             for i in range(n): tap(f'.pz-piece[data-i="{i}"]',f'.pz-slot[data-i="{i}"]')
         elif g=='compose':
             for _ in range(10):
-                pc=pg.locator('.cp-piece:not(.hs-done)')
+                pc=pg.locator('.cp-piece[data-k]:not(.hs-done)')
                 if not pc.count(): break
                 k=pc.first.get_attribute('data-k'); tap(f'.cp-piece:not(.hs-done)[data-k="{k}"]',f'.cp-slot:not(.done)[data-k="{k}"]')
         elif g=='where':

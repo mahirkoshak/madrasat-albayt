@@ -790,6 +790,35 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-kg.L-ar .mi .en,#app-kg.L-ar .sec-title .en,#app-kg.L-ar .sub .en{display:none}
 #app-kg.L-en .mi .ar,#app-kg.L-en .sec-title .ar,#app-kg.L-en .sub .ar{display:none}
 #app-kg .mi b.en{font-family:inherit}
+#app-kg .rl-rule{font-size:34px;min-height:44px;text-align:center}
+#app-kg .rl-card{display:grid;place-items:center;min-height:150px}
+#app-kg .rl-c{width:140px;height:140px;background:#fff;border-radius:22px;box-shadow:0 4px 0 #d0d7e2;display:grid;place-items:center;border:4px solid transparent}
+#app-kg .rl-c.frame{border:6px dashed #212529}
+#app-kg .rl-c svg{width:110px;height:110px}
+#app-kg .rl-bins{display:flex;gap:18px;justify-content:center;margin-top:14px}
+#app-kg .rl-bin{width:140px;height:150px;border:0;border-radius:22px;background:#ffe8cc;box-shadow:0 6px 0 #e8c39e;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:8px}
+#app-kg .rl-bin svg{width:72px;height:72px}
+#app-kg .rl-basket{width:96px;height:26px;margin-top:6px;border-radius:0 0 18px 18px;background:repeating-linear-gradient(90deg,#c08552 0 8px,#a86b3c 8px 16px)}
+#app-kg .tl-story{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+#app-kg .tl-line{margin:0;background:#fff;border-radius:16px;padding:10px 14px;font-size:20px;font-weight:700;box-shadow:0 3px 0 #e1e6ee}
+#app-kg .tl-line .em{font-size:28px}
+#app-kg .tl-opts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+#app-kg .tl-o{width:112px;min-height:112px;border:3px solid #e1e6ee;border-radius:20px;background:#fff;box-shadow:0 4px 0 #d0d7e2;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+#app-kg .tl-o .em{font-size:52px;line-height:1}
+#app-kg .tl-o small{font-size:16px;font-weight:700}
+#app-kg .tl-o:disabled{opacity:.35}
+#app-kg .bd-board{background:#fff;border-radius:18px;box-shadow:inset 0 0 0 3px #e1e6ee;touch-action:none;display:block;margin:0 auto}
+#app-kg .bd-it{cursor:grab;outline:none}
+#app-kg .bd-it:focus-visible > *{stroke:#1c7ed6;stroke-width:1.6}
+#app-kg .bd-tools{display:flex;flex-direction:column;gap:10px;margin-top:12px;align-items:center}
+#app-kg .bd-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+#app-kg .bd-s{width:56px;height:56px;border:3px solid #e1e6ee;border-radius:14px;background:#fff;padding:6px;cursor:pointer}
+#app-kg .bd-s svg{width:100%;height:100%}
+#app-kg .bd-c{width:44px;height:44px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #d0d7e2;cursor:pointer}
+#app-kg .bd-c.on{box-shadow:0 0 0 4px #212529}
+#app-kg .bd-a{width:56px;height:56px;font-size:26px;border:3px solid #e1e6ee;border-radius:16px;background:#fff;cursor:pointer}
+#app-kg .bd-a.done{background:var(--t-green,#58cc02);border-color:var(--t-green,#58cc02)}
+#app-kg .cp-fill,#app-kg .cp-fill *{pointer-events:none}
 
 /* ===== app: unit (unit) ===== */
 #app-unit{
@@ -1092,6 +1121,24 @@ body{font-family:var(--t-font);background:var(--t-page)}
 @keyframes fwpulse{0%{transform-box:fill-box}50%{opacity:.4}100%{opacity:1}}
 @media (prefers-reduced-motion:reduce){#app-unit .hill .gr,#app-unit .lab-meter i{transition:none}
 #app-unit .hill.raining .rain line,#app-unit .fw-n.s1,#app-unit .fw-n.s2{animation:none}}
+#app-unit .ob-report{font-weight:600;line-height:1.8;background:#f8f9fa;border-radius:12px;padding:10px 14px}
+#app-unit .ob-wrap{overflow-x:auto;margin:12px 0;-webkit-overflow-scrolling:touch}
+#app-unit .ob-t{border-collapse:collapse;width:100%;font-size:.88rem}
+#app-unit .ob-t td.st{font-weight:800;white-space:nowrap}
+#app-unit .ob-t tr.sick td.st{color:var(--t-red-ink)}
+@media (max-width:420px){#app-unit .ob-t{font-size:.78rem;table-layout:fixed}
+#app-unit .ob-t td.st{white-space:normal}
+#app-unit .ob-t th,#app-unit .ob-t td{padding:5px 3px}
+#app-unit .ob-col{padding:4px 2px}}
+#app-unit .ob-t caption{text-align:start;font-weight:800;padding:4px 0}
+#app-unit .ob-t th,#app-unit .ob-t td{border:1px solid #dee2e6;padding:6px 6px;text-align:center}
+#app-unit .ob-t tbody th{font-weight:700;background:#fff}
+#app-unit .ob-t tr.sick td,#app-unit .ob-t tr.sick th{background:#fff5f5}
+#app-unit .ob-t td.key{outline:3px solid var(--t-green);outline-offset:-3px;font-weight:800}
+#app-unit .ob-col{min-height:44px;width:100%;font:inherit;font-weight:800;border:2px solid var(--t-blue);color:var(--t-blue);background:#fff;border-radius:10px;cursor:pointer;padding:4px 6px}
+#app-unit .ob-col.no{border-color:var(--t-red-edge);color:var(--t-red-ink);background:var(--t-red-soft);text-decoration:line-through}
+#app-unit .ob-col.ok{background:var(--t-green);border-color:var(--t-green);color:#fff}
+#app-unit .ob-ask{margin:8px 0}
 </style>
 </head>
 <body>
@@ -1137,6 +1184,9 @@ body{font-family:var(--t-font);background:var(--t-page)}
     <button type="button" class="mi" style="background:#2fb4a8" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b class="ar">أين أضعها؟</b><b class="en" lang="en" dir="ltr">Where does it go?</b></button>
     <button type="button" class="mi" style="background:#9b5de5" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b class="ar">نخطّط ثم نحرّك</b><b class="en" lang="en" dir="ltr">Plan, then move</b></button>
     <button type="button" class="mi" style="background:#f15bb5" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b class="ar">نرتّب القصة</b><b class="en" lang="en" dir="ltr">Story order</b></button>
+    <button type="button" class="mi" style="background:#e76f51" data-game="rule"><span class="em">🔀🎨</span><b class="ar">غيّر القاعدة</b><b class="en" lang="en" dir="ltr">Change the rule</b></button>
+    <button type="button" class="mi" style="background:#3a86ff" data-game="tale"><span class="em">📚✨</span><b class="ar">ورشة القصة</b><b class="en" lang="en" dir="ltr">Story workshop</b></button>
+    <button type="button" class="mi" style="background:#2a9d8f" data-game="build" data-free><span class="em">🎨🏗️</span><b class="ar">نبني ما نحب</b><b class="en" lang="en" dir="ltr">Free build</b></button>
   </div>
 
   <div class="sec-title">🎮 <span class="ar">نلعب</span><span class="en" lang="en" dir="ltr">Play</span></div>
@@ -4517,14 +4567,43 @@ APPDATA.kg = {
     up: { ar: () => 'لنجرّب في الأعلى', en: () => 'Try near the top' },
     mid: { ar: () => 'لنجرّب في الوسط', en: () => 'Try in the middle' },
     down: { ar: () => 'لنجرّب في الأسفل', en: () => 'Try near the bottom' },
-    brk: { ar: () => 'عمل رائع اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة', en: () => 'Great work today! Time for a break away from the screen' }
+    brk: { ar: () => 'عمل رائع اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة', en: () => 'Great work today! Time for a break away from the screen' },
+    // change the rule
+    ruleColor: { ar: () => 'لنرتّب حسب اللون', en: () => 'Sort by colour' },
+    ruleShape: { ar: () => 'لنرتّب حسب الشكل', en: () => 'Sort by shape' },
+    ruleSize: { ar: () => 'لنرتّب حسب الحجم', en: () => 'Sort by size' },
+    ruleNew: { ar: () => 'تغيّرت القاعدة!', en: () => 'The rule changed!' },
+    ruleFrame: { ar: () => 'البطاقة التي لها إطار نرتّبها حسب الشكل، والبطاقة بلا إطار حسب اللون', en: () => 'Cards with a frame go by shape. Cards without a frame go by colour' },
+    // free build and shapes
+    build: { ar: () => 'لنبنِ ما نحب من الأشكال', en: () => 'Build anything you like with shapes' },
+    buildDone: { ar: () => 'ما أجمل هذا البناء!', en: () => 'What a lovely build!' },
+    twoTri: { ar: () => 'مثلثان يصنعان مستطيلًا!', en: () => 'Two triangles make a rectangle!' },
+    // story workshop
+    taleWho: { ar: () => 'من بطل قصتنا؟', en: () => 'Who is in our story?' },
+    taleWhere: { ar: () => 'أين تحدث القصة؟', en: () => 'Where does it happen?' },
+    taleProblem: { ar: () => 'ماذا حدث فجأة؟', en: () => 'What happened suddenly?' },
+    taleFix: { ar: () => 'كيف نحلّ المشكلة؟', en: () => 'How do we fix it?' },
+    taleNotFix: { ar: () => 'هل هذا يحلّ المشكلة؟ لنجرّب شيئًا آخر', en: () => 'Does that fix it? Let’s try something else' },
+    taleEnd: { ar: () => 'وانتهت القصة بابتسامة كبيرة', en: () => 'And the story ended with a big smile' },
+    taleStart: { ar: (w, p) => 'هذه قصة ' + w[1] + ' ' + p[3], en: (w, p) => 'This is the story of ' + w[2] + ' ' + p[4] }
   });
+  /* story workshop pieces: [picture, Arabic, English] · problems and fixes: [picture, Arabic sentence, English sentence] */
+  K.TALE = {
+    who: [['🐇', 'الأرنب', 'the rabbit'], ['🐱', 'القطة', 'the cat'], ['🤖', 'الروبوت', 'the robot'], ['🐘', 'الفيل', 'the elephant']],
+    where: [['🌳', 'الحديقة', 'the park', 'في الحديقة', 'in the park'], ['🏖️', 'الشاطئ', 'the beach', 'على الشاطئ', 'at the beach'], ['🏠', 'البيت', 'home', 'في البيت', 'at home']],   // [picture, name, name, «in/at …» for the story]
+    problem: [['🌧️', 'وفجأة نزل مطر غزير!', 'Suddenly, heavy rain started!'], ['😋', 'وبعد اللعب جاء الجوع!', 'After playing, everyone got hungry!'],
+      ['⚽', 'وفجأة ضاعت الكرة!', 'Suddenly, the ball was lost!'], ['🌙', 'وفجأة صار المكان مظلمًا!', 'Suddenly, it got dark!']],
+    fix: [['☂️', 'فجاءت المظلة الكبيرة!', 'So out came a big umbrella!'], ['🍎', 'فجاء طبق من الفاكهة!', 'So a plate of fruit arrived!'],
+      ['🔎', 'فساعد الأصدقاء في البحث، ووجدوا الكرة!', 'Friends helped look, and found the ball!'], ['🔦', 'فأضاء المصباح المكان!', 'So a lamp lit everything up!']]
+  };   // fix[i] solves problem[i]
   const base = K.speakables;
   K.speakables = function () {
     const out = base(), add = (t, l) => out.push([t, l]);
-    ['puzzle', 'robot', 'robotStar', 'robotStars', 'robotOrder', 'robotRepeat', 'robotMissed', 'notMine', 'robotRun', 'robotBump', 'robotShort', 'story', 'storyNext', 'up', 'mid', 'down', 'brk'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
+    ['ruleColor', 'ruleShape', 'ruleSize', 'ruleNew', 'ruleFrame', 'build', 'buildDone', 'twoTri', 'taleWho', 'taleWhere', 'taleProblem', 'taleFix', 'taleNotFix', 'taleEnd', 'puzzle', 'robot', 'robotStar', 'robotStars', 'robotOrder', 'robotRepeat', 'robotMissed', 'notMine', 'robotRun', 'robotBump', 'robotShort', 'story', 'storyNext', 'up', 'mid', 'down', 'brk'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
     for (let n = 9; n <= 14; n++) { add(P.robotLimit.ar(n), 'ar'); add(P.robotLimit.en(n), 'en'); }
     K.DESIGNS.forEach(d => { add(P.compose.ar(d), 'ar'); add(P.compose.en(d), 'en'); });
+    K.TALE.who.forEach(w => K.TALE.where.forEach(p => { add(P.taleStart.ar(w, p), 'ar'); add(P.taleStart.en(w, p), 'en'); }));
+    [...K.TALE.problem, ...K.TALE.fix].forEach(x => { add(x[1], 'ar'); add(x[2], 'en'); });
     W.targets.forEach(t => Object.keys(W.scenes).forEach(s => W.scenes[s].zones.forEach(p => {
       add(P.where.ar(t, s, p), 'ar'); add(P.where.en(t, s, p), 'en'); add(P.wherePick.ar(t, s, p), 'ar'); add(P.wherePick.en(t, s, p), 'en');
     })));
@@ -4820,7 +4899,7 @@ APPS.kg = {
   /** counted from the menu itself, so the card on the home page never goes out of date */
   counts: () => ({ games: ROOT.querySelectorAll('[data-game]').length, learn: ROOT.querySelectorAll('[data-learn]').length }),
   /** the parent can set the level of a game (otherwise it adapts by itself) */
-  levels: () => [...ROOT.querySelectorAll('[data-game]')].map(b => ({ k: b.dataset.game, name: b.querySelector('b.ar').textContent, max: THINK_ROUNDS[b.dataset.game] ? THINK_MAX[b.dataset.game] : 3 })),
+  levels: () => [...ROOT.querySelectorAll('[data-game]:not([data-free])')].map(b => ({ k: b.dataset.game, name: b.querySelector('b.ar').textContent, max: THINK_ROUNDS[b.dataset.game] ? THINK_MAX[b.dataset.game] : 3 })),
   setLevel(profileId, k, lv) { const d = HS.data('kg', profileId); d.lv = d.lv || {}; d.lv[k] = lv; HS.save(); },
   close() { HS.stopSpeak(); clearTimeout(tmr); $('ov').classList.remove('on'); },
   report(profileId) {
@@ -4845,6 +4924,7 @@ const { SCENES, DESIGNS, WHERE, STORIES } = APPDATA.kg;
 const THINK_ROUNDS = { puzzle: 3, compose: 3, where: 5, robot: 4, story: 4 };
 const THINK_MAX = { puzzle: 8, robot: 8, compose: 5, where: 5, story: 5 };   // number of levels
 const tl = fn => fn[lang()];
+const THINK_GAMES = {};   // filled at the end of this file and by thinking2.js
 const fresh = html => { $('gArea').innerHTML = `<div class="tk">${html}</div>`; return $('gArea').firstElementChild; };
 const POOLS = {};   // filtered lists kept stable so HS.bag can remember what was shown
 let GEN = 0;   // bumps on every new puzzle, so timers from an old puzzle never touch the new one
@@ -4853,7 +4933,7 @@ const later = (fn, ms) => { const g = GEN; setTimeout(() => { if (g === GEN && $
 function thinkStart(k) {
   GEN++; G.max = THINK_MAX[k]; G.roundN = THINK_ROUNDS[k];
   levelBar(); dots(); $('gShow').innerHTML = '';
-  ({ puzzle: puzzleGame, compose: composeGame, where: whereGame, robot: robotGame, story: storyGame })[k]();
+  THINK_GAMES[k]();
 }
 /** one puzzle finished: record, then next puzzle (or end of round → level check) */
 function thinkDone(firstTry) {
@@ -4914,7 +4994,8 @@ function puzzleGame() {
 function shapeSvg(t, x, y, w, h, attrs) {
   const pts = { triU: `${x + w / 2},${y} ${x + w},${y + h} ${x},${y + h}`, triD: `${x},${y} ${x + w},${y} ${x + w / 2},${y + h}`,
     triL: `${x},${y + h / 2} ${x + w},${y} ${x + w},${y + h}`, triR: `${x},${y} ${x + w},${y + h / 2} ${x},${y + h}`,
-    rtBR: `${x + w},${y} ${x + w},${y + h} ${x},${y + h}`, rtBL: `${x},${y} ${x + w},${y + h} ${x},${y + h}` }[t];
+    rtBR: `${x + w},${y} ${x + w},${y + h} ${x},${y + h}`, rtBL: `${x},${y} ${x + w},${y + h} ${x},${y + h}`,
+    rtTR: `${x},${y} ${x + w},${y} ${x + w},${y + h}` }[t];   // rtBL + rtTR together cover a rectangle
   if (t === 'rect') return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1.5" ${attrs}/>`;
   if (t === 'circle') return `<ellipse cx="${x + w / 2}" cy="${y + h / 2}" rx="${w / 2}" ry="${h / 2}" ${attrs}/>`;
   return `<polygon points="${pts}" ${attrs}/>`;
@@ -4924,19 +5005,37 @@ function composeGame() {
   const L = G.lv, tier = L <= 2 ? 1 : L <= 3 ? 2 : 3;    // L1-2 coloured guide, L3 outlines, L4-5 silhouette
   const pool = POOLS['cp' + L] = POOLS['cp' + L] || DESIGNS.filter(d => d.lv <= Math.min(3, Math.ceil(L / 1.7))), d = HS.bag('cp' + L, pool);
   const S = Math.min(300, window.innerWidth - 70), k = S / 100;
+  // from level 3 there is more than one right answer: one rectangle can also be made from two right triangles
+  const rect = L >= 3 ? d.p.find(p => p[0] === 'rect' && p[3] >= 12 && p[4] >= 12) : null;
+  const alt = rect ? [{ t: 'rtBL', p: rect }, { t: 'rtTR', p: rect }] : [];
   const slot = (p, i) => shapeSvg(p[0], p[1], p[2], p[3], p[4], `class="cp-slot" data-i="${i}" data-k="${keyOf(p)}" ` +
     (tier === 1 ? `fill="${p[5]}" fill-opacity=".28" stroke="${p[5]}" stroke-width="1" stroke-dasharray="2 1.5"`
       : tier === 2 ? `fill="#ffffff" stroke="#9aa4b2" stroke-width="1" stroke-dasharray="2 1.5"` : `fill="#c9ced6" stroke="#c9ced6" stroke-width=".6"`));
   const root = fresh(`<svg class="cp-board" viewBox="0 0 100 100" style="width:${S}px;height:${S}px">${d.p.map(slot).join('')}<g class="cp-fill"></g></svg>
-    <div class="cp-pool">${HS.shuffle(d.p.map((p, i) => i)).map(i => { const p = d.p[i]; return `<button type="button" class="cp-piece hs-drag" data-i="${i}" data-k="${keyOf(p)}" aria-label="شكل"><svg viewBox="${p[1] - 1} ${p[2] - 1} ${p[3] + 2} ${p[4] + 2}" style="width:${(p[3] + 2) * k}px;height:${(p[4] + 2) * k}px">${shapeSvg(p[0], p[1], p[2], p[3], p[4], `fill="${p[5]}" stroke="rgba(0,0,0,.25)" stroke-width=".8"`)}</svg></button>`; }).join('')}</div>`);
+    <div class="cp-pool">${HS.shuffle([...d.p.map((p, i) => i), ...alt]).map(i => { const p = typeof i === 'number' ? d.p[i] : i.p, t = typeof i === 'number' ? p[0] : i.t;
+      return `<button type="button" class="cp-piece hs-drag" ${typeof i === 'number' ? `data-i="${i}" data-k="${keyOf(p)}"` : `data-half="${keyOf(p)}" data-part="${i.t}" data-col="${p[5]}"`} aria-label="${typeof i === 'number' ? 'شكل' : 'مثلث'}"><svg viewBox="${p[1] - 1} ${p[2] - 1} ${p[3] + 2} ${p[4] + 2}" style="width:${(p[3] + 2) * k}px;height:${(p[4] + 2) * k}px">${shapeSvg(t, p[1], p[2], p[3], p[4], `fill="${p[5]}" stroke="rgba(0,0,0,.25)" stroke-width=".8"`)}</svg></button>`; }).join('')}</div>`);
   ask(tl(P.compose)(d), lang());
   let placed = 0, mistakes = 0;
   HS.dnd(root, { item: '.cp-piece', target: '.cp-slot', onDrop(pc, sl) {
     if (sl.classList.contains('done')) return false;
+    if (pc.dataset.half && pc.dataset.half === sl.dataset.k && !(sl.dataset.h || '').includes(pc.dataset.part)) {   // half of a rectangle
+      const p = d.p[+sl.dataset.i];
+      root.querySelector('.cp-fill').insertAdjacentHTML('beforeend', shapeSvg(pc.dataset.part, p[1], p[2], p[3], p[4], `fill="${pc.dataset.col}" stroke="rgba(0,0,0,.25)" stroke-width=".8" class="hs-pop"`));
+      sl.dataset.h = (sl.dataset.h || '') + pc.dataset.part; pc.classList.add('hs-done'); pc.style.display = 'none'; HS.fx('ok');
+      if (sl.dataset.h.length > 4) {   // both halves: the slot is full
+        sl.classList.add('done');
+        if (!root.querySelector(`.cp-slot[data-k="${sl.dataset.k}"]:not(.done)`)) root.querySelectorAll(`.cp-piece[data-k="${sl.dataset.k}"]`).forEach(x => { if (!x.classList.contains('hs-done')) { x.classList.add('hs-done'); x.style.display = 'none'; } });
+        later(() => say([[tl(P.twoTri)(), lang()]]), 300);
+        if (++placed === d.p.length) later(() => thinkDone(mistakes <= 1), 1800);
+      }
+      return true;
+    }
+    if (pc.dataset.k === sl.dataset.k && sl.dataset.h) { HS.fx('no'); shake(pc); return false; }   // half built with a triangle: finish with the other one
     if (pc.dataset.k === sl.dataset.k) {             // any slot with the same shape and size fits
       const p = d.p[+sl.dataset.i], col = d.p[+pc.dataset.i][5];
       sl.classList.add('done'); root.querySelector('.cp-fill').insertAdjacentHTML('beforeend', shapeSvg(p[0], p[1], p[2], p[3], p[4], `fill="${col}" stroke="rgba(0,0,0,.25)" stroke-width=".8" class="hs-pop"`));
       pc.classList.add('hs-done'); pc.style.display = 'none'; HS.fx('ok');
+      root.querySelectorAll(`.cp-piece[data-half="${sl.dataset.k}"]`).forEach(x => { if (!x.classList.contains('hs-done') && !root.querySelector(`.cp-slot[data-k="${sl.dataset.k}"]:not(.done)`)) { x.classList.add('hs-done'); x.style.display = 'none'; } });
       if (++placed === d.p.length) later(() => thinkDone(mistakes <= 1), 400);
       return true;
     }
@@ -5194,6 +5293,169 @@ function showBreak() {
 }
 SESSION.iv = setInterval(sessionTick, 5000);
 
+Object.assign(THINK_GAMES, { puzzle: puzzleGame, compose: composeGame, where: whereGame, robot: robotGame, story: storyGame });
+
+/* ---- thinking2.js ---- */
+/* ============================================================
+   MORE THINKING GAMES (loaded after thinking.js, same scope)
+   - rule:  Change the Rule (card sorting with a rule switch, after Zelazo's DCCS task)
+            1 colour → shape · 2 colour → shape → colour · 3 frame = shape, no frame = colour (mixed)
+            4 colour → shape → size · 5 the rule changes and only «the rule changed!» is said
+            Configurations: 2 of 4 colours × 2 of 5 shapes × which rule first = 120.
+   - tale:  Story Workshop: choose a hero and a place (1), a problem and its fix (2, 3 with more fixes).
+            A fix that does not solve the problem is questioned, never just accepted.
+   - build: free building with shapes (no right answer, no levels)
+   ============================================================ */
+Object.assign(THINK_ROUNDS, { rule: 3, tale: 2, build: 1 });
+Object.assign(THINK_MAX, { rule: 5, tale: 3, build: 1 });
+
+/* ---------------- 🔀 change the rule ---------------- */
+const RULE_COL = [['#e63946', 'red'], ['#1c7ed6', 'blue'], ['#f4b400', 'yellow'], ['#2f9e44', 'green']];
+const RULE_SHP = ['circle', 'star', 'tri', 'square', 'heart'];
+function ruleShape(t, c, big) {
+  const s = big ? 1 : .62, g = `transform="translate(50 50) scale(${s}) translate(-50 -50)" fill="${c}" stroke="rgba(0,0,0,.22)" stroke-width="2"`;
+  const d = { circle: '<circle cx="50" cy="50" r="34"/>', square: '<rect x="18" y="18" width="64" height="64" rx="6"/>', tri: '<polygon points="50,12 88,84 12,84"/>',
+    star: '<polygon points="50,8 61,38 93,38 67,57 77,89 50,70 23,89 33,57 7,38 39,38"/>', heart: '<path d="M50 86 C10 58 8 30 28 20 C40 14 48 22 50 30 C52 22 60 14 72 20 C92 30 90 58 50 86Z"/>' }[t];
+  return `<svg viewBox="0 0 100 100" aria-hidden="true"><g ${g}>${d.replace('/>', '/>')}</g></svg>`;
+}
+function ruleGame() {
+  const L = G.lv, l = lang();
+  const [ca, cb] = HS.shuffle(RULE_COL.slice()).slice(0, 2), [sa, sb] = HS.shuffle(RULE_SHP.slice()).slice(0, 2);
+  // the two baskets: A = colour a + shape a (+ big), B = colour b + shape b (+ small)
+  const bins = [{ c: ca[0], s: sa, big: true, cn: ca[1] }, { c: cb[0], s: sb, big: L < 4, cn: cb[1] }];   // size only matters from level 4
+  const first = Math.random() < .5 ? 'col' : 'shp', other = first === 'col' ? 'shp' : 'col';
+  const plan = { 1: [first, first, first, other, other, other], 2: [first, first, other, other, first, first],
+    3: ['mix', 'mix', 'mix', 'mix', 'mix', 'mix'], 4: ['col', 'col', 'shp', 'shp', 'size', 'size'], 5: [first, first, other, other, first, other] }[L];
+  // each card conflicts: its colour points to one basket, its shape (and size) to the other
+  const cards = plan.map((r, i) => { const to = Math.random() < .5 ? 0 : 1, frame = r === 'mix' ? Math.random() < .5 : false;
+    const rule = r === 'mix' ? (frame ? 'shp' : 'col') : r;
+    return rule === 'col' ? { c: bins[to].c, s: bins[1 - to].s, big: bins[1 - to].big, to, rule, frame } : rule === 'shp' ? { c: bins[1 - to].c, s: bins[to].s, big: bins[1 - to].big, to, rule, frame }
+      : { c: bins[1 - to].c, s: bins[1 - to].s, big: bins[to].big, to, rule, frame }; });
+  const say1 = r => tl({ col: P.ruleColor, shp: P.ruleShape, size: P.ruleSize }[r])();
+  const icon = r => ({ col: '🎨', shp: '🔷', size: '📏' })[r];
+  const root = fresh(`<div class="rl-rule" aria-live="polite"></div><div class="rl-card" aria-live="polite"></div>
+    <div class="rl-bins">${bins.map((b, i) => `<button type="button" class="rl-bin" data-b="${i}" aria-label="السلة ${HS.toAr(i + 1)}">${ruleShape(b.s, b.c, b.big)}<span class="rl-basket" aria-hidden="true"></span></button>`).join('')}</div>`);
+  ROOT._dbg = { cards, plan };   // read by the automated tests
+  let i = 0, mistakes = 0, shownRule = null;
+  const show = () => {
+    const c = cards[i], ruleEl = root.querySelector('.rl-rule');
+    const changed = i > 0 && cards[i - 1].rule !== c.rule && L !== 3;
+    if (L === 3) { if (i === 0) { ruleEl.textContent = '🖼️ = 🔷   ·   🎨'; ask(tl(P.ruleFrame)(), l); } }
+    else if (L === 5) { ruleEl.textContent = changed || i === 0 ? '❓' : ruleEl.textContent; if (i === 0) ask(say1(c.rule), l); else if (changed) ask(tl(P.ruleNew)(), l); }
+    else if (i === 0 || changed) { ruleEl.textContent = icon(c.rule);
+      if (!changed) ask(say1(c.rule), l);
+      else { const a = tl(P.ruleNew)(), b = say1(c.rule); $('gQ').textContent = a + ' ' + b; G.sp = [[a, l], [b, l]]; say(G.sp); } }   // two recorded sentences
+    shownRule = c.rule;
+    root.querySelector('.rl-card').innerHTML = `<div class="rl-c ${c.frame ? 'frame' : ''} hs-pop" role="img" aria-label="بطاقة">${ruleShape(c.s, c.c, c.big)}</div>`;
+  };
+  root.querySelectorAll('.rl-bin').forEach(b => b.onclick = () => {
+    const c = cards[i]; if (!c) return;
+    if (+b.dataset.b === c.to) {
+      HS.fx('ok'); b.classList.remove('hs-pop'); void b.offsetWidth; b.classList.add('hs-pop');
+      if (L === 5) root.querySelector('.rl-rule').textContent = icon(c.rule);
+      if (++i >= cards.length) return later(() => thinkDone(mistakes <= 1), 300);
+      return later(show, 450);
+    }
+    mistakes++; HS.fx('no'); shake(root.querySelector('.rl-c'));
+    say([[say1(c.rule), l]]);    // remind the rule, never point at the basket
+    if (L === 5 || L === 3) root.querySelector('.rl-rule').textContent = icon(c.rule) + (c.frame ? ' 🖼️' : '');
+  });
+  show();
+}
+
+/* ---------------- 📚 story workshop ---------------- */
+function taleGame() {
+  const L = G.lv, l = lang(), T = APPDATA.kg.TALE, en = l === 'en';
+  const pick = { who: null, where: null, problem: null };
+  let wrong = 0;
+  const root = fresh(`<div class="tl-story" aria-live="polite"></div><div class="tl-choose"></div>`);
+  const story = root.querySelector('.tl-story'), area = root.querySelector('.tl-choose');
+  const line = (em, t) => story.insertAdjacentHTML('beforeend', `<p class="tl-line hs-pop"><span class="em">${em}</span> ${t}</p>`);
+  const choose = (q, list, cb, opt = {}) => {
+    ask(tl(q)(), l);
+    area.innerHTML = `<div class="tl-opts">${list.map(([em, ar, e], i) => `<button type="button" class="tl-o" data-i="${opt.idx ? opt.idx[i] : i}"><span class="em">${em}</span><small>${opt.noText ? '' : (en ? e : ar)}</small></button>`).join('')}</div>`;
+    area.querySelectorAll('.tl-o').forEach(b => b.onclick = () => cb(+b.dataset.i, b));
+  };
+  const finish = () => {
+    area.innerHTML = '';
+    later(() => { line('😊', tl(P.taleEnd)()); say([...story.querySelectorAll('.tl-line')].map(p => [p.textContent.replace(/^\S+\s/, ''), l])); }, 300);
+    later(() => thinkDone(wrong === 0), 1500 + 1800 * story.querySelectorAll('.tl-line').length);
+  };
+  choose(P.taleWho, T.who, i => {
+    pick.who = T.who[i];
+    choose(P.taleWhere, T.where, j => {
+      pick.where = T.where[j];
+      line(pick.who[0] + pick.where[0], tl(P.taleStart)(pick.who, pick.where));
+      say([[tl(P.taleStart)(pick.who, pick.where), l]]);
+      if (L === 1) return finish();
+      later(() => choose(P.taleProblem, T.problem, k => {
+        pick.problem = k; line(T.problem[k][0], en ? T.problem[k][2] : T.problem[k][1]); say([[en ? T.problem[k][2] : T.problem[k][1], l]]);
+        // fixes to choose from: the right one + 1 (level 2) or 3 (level 3) others
+        const idx = HS.shuffle([k, ...HS.shuffle(T.fix.map((_, x) => x).filter(x => x !== k)).slice(0, L === 2 ? 1 : 3)]);
+        later(() => choose(P.taleFix, idx.map(x => T.fix[x]), (f, b) => {
+          if (f !== k) { wrong++; HS.fx('no'); shake(b); b.disabled = true; say([[tl(P.taleNotFix)(), l]]); return; }
+          HS.fx('ok'); line(T.fix[f][0], en ? T.fix[f][2] : T.fix[f][1]); say([[en ? T.fix[f][2] : T.fix[f][1], l]]);
+          later(finish, 2400);
+        }, { idx, noText: true }), 2600);
+      }, { noText: true }), 2600);
+    });
+  });
+}
+
+/* ---------------- 🎨 free build ---------------- */
+const BUILD_COLS = ['#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#9b5de5', '#f4a261', '#8a5a35'];
+const BUILD_SHAPES = [['rect', 20, 20], ['rect', 30, 12], ['circle', 20, 20], ['triU', 22, 20], ['rtBL', 20, 20], ['triD', 22, 20]];
+function buildGame() {
+  const l = lang(), S = Math.min(340, window.innerWidth - 40);
+  let col = 0, sel = null, n = 0, praised = false;
+  const items = [];
+  const root = fresh(`<svg class="bd-board" viewBox="0 0 100 100" style="width:${S}px;height:${S}px" role="img" aria-label="لوحة البناء"></svg>
+    <div class="bd-tools">
+      <div class="bd-row" role="group" aria-label="الأشكال">${BUILD_SHAPES.map((x, i) => `<button type="button" class="bd-s" data-s="${i}" aria-label="أضف شكلًا"><svg viewBox="-2 -2 ${x[1] + 4} ${x[2] + 4}" aria-hidden="true">${shapeSvg(x[0], 0, 0, x[1], x[2], `fill="${BUILD_COLS[col]}"`)}</svg></button>`).join('')}</div>
+      <div class="bd-row" role="group" aria-label="الألوان">${BUILD_COLS.map((c, i) => `<button type="button" class="bd-c ${i === col ? 'on' : ''}" data-c="${i}" style="background:${c}" aria-label="لون ${HS.toAr(i + 1)}" aria-pressed="${i === col}"></button>`).join('')}</div>
+      <div class="bd-row"><button type="button" class="rk bd-a" data-a="big" aria-label="أكبر">➕</button><button type="button" class="rk bd-a" data-a="small" aria-label="أصغر">➖</button>
+        <button type="button" class="rk bd-a" data-a="del" aria-label="احذف الشكل">🗑️</button><button type="button" class="rk bd-a" data-a="clear" aria-label="امسح اللوحة">🧹</button>
+        <button type="button" class="rk bd-a done" data-a="done" aria-label="انتهيت">✅</button></div></div>`);
+  ask(tl(P.build)(), l);
+  const svg = root.querySelector('.bd-board');
+  const draw = () => {
+    svg.innerHTML = items.map((it, i) => `<g class="bd-it ${sel === i ? 'sel' : ''}" data-i="${i}" tabindex="0" role="button" aria-label="شكل ${HS.toAr(i + 1)}">${shapeSvg(it.t, it.x, it.y, it.w, it.h, `fill="${it.c}" stroke="${sel === i ? '#212529' : 'rgba(0,0,0,.2)'}" stroke-width="${sel === i ? 1.2 : .6}"`)}</g>`).join('');
+    root.querySelectorAll('.bd-s svg *').forEach(e => e.setAttribute('fill', BUILD_COLS[col]));
+  };
+  root.querySelectorAll('.bd-s').forEach(b => b.onclick = () => {
+    const [t, w, h] = BUILD_SHAPES[+b.dataset.s];
+    items.push({ t, w, h, x: 50 - w / 2 + (n % 5) * 3 - 6, y: 50 - h / 2 + (n % 5) * 3 - 6, c: BUILD_COLS[col] }); n++; sel = items.length - 1; HS.fx('tap'); draw();
+  });
+  root.querySelectorAll('.bd-c').forEach(b => b.onclick = () => {
+    col = +b.dataset.c; root.querySelectorAll('.bd-c').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+    if (sel != null && items[sel]) items[sel].c = BUILD_COLS[col]; draw();
+  });
+  root.querySelectorAll('.bd-a').forEach(b => b.onclick = () => {
+    const a = b.dataset.a, it = items[sel];
+    if (a === 'clear') { items.length = 0; sel = null; }
+    else if (a === 'done') { if (items.length >= 2) { say([[tl(P.buildDone)(), l]]); HS.party && HS.party(); if (!praised) { praised = true; HS.addStars(1); } } return draw(); }
+    else if (!it) return;
+    else if (a === 'del') { items.splice(sel, 1); sel = null; }
+    else { const f = a === 'big' ? 1.2 : 1 / 1.2, cx = it.x + it.w / 2, cy = it.y + it.h / 2;
+      it.w = Math.max(6, Math.min(80, it.w * f)); it.h = Math.max(6, Math.min(80, it.h * f)); it.x = cx - it.w / 2; it.y = cy - it.h / 2; }
+    HS.fx('tap'); draw();
+  });
+  // drag a shape (pointer), or select it and move it with the arrow keys
+  let drag = null;
+  const pt = e => { const r = svg.getBoundingClientRect(); return [(e.clientX - r.left) * 100 / r.width, (e.clientY - r.top) * 100 / r.height]; };
+  svg.addEventListener('pointerdown', e => { const g = e.target.closest('.bd-it'); if (!g) { sel = null; return draw(); }
+    sel = +g.dataset.i; const [x, y] = pt(e); drag = { dx: x - items[sel].x, dy: y - items[sel].y, id: e.pointerId }; try { svg.setPointerCapture(e.pointerId); } catch (x) {} draw(); e.preventDefault(); });
+  svg.addEventListener('pointermove', e => { if (!drag || e.pointerId !== drag.id) return; const it = items[sel], [x, y] = pt(e);
+    it.x = Math.max(-it.w / 2, Math.min(100 - it.w / 2, x - drag.dx)); it.y = Math.max(-it.h / 2, Math.min(100 - it.h / 2, y - drag.dy));
+    const g = svg.querySelector(`.bd-it[data-i="${sel}"] > *`); if (g) g.outerHTML = shapeSvg(it.t, it.x, it.y, it.w, it.h, `fill="${it.c}" stroke="#212529" stroke-width="1.2"`); });
+  const up = () => { drag = null; }; svg.addEventListener('pointerup', up); svg.addEventListener('pointercancel', up);
+  svg.addEventListener('keydown', e => { const g = e.target.closest('.bd-it'); if (!g) return; sel = +g.dataset.i; const it = items[sel];
+    const m = { ArrowLeft: [-3, 0], ArrowRight: [3, 0], ArrowUp: [0, -3], ArrowDown: [0, 3] }[e.key]; if (!m) return;
+    e.preventDefault(); it.x += m[0]; it.y += m[1]; draw(); svg.querySelector(`.bd-it[data-i="${sel}"]`).focus(); });
+  draw();
+}
+Object.assign(THINK_GAMES, { rule: ruleGame, tale: taleGame, build: buildGame });
+
 })();
 </script>
 <script>/* ===== data: unit ===== */
@@ -5428,6 +5690,8 @@ function renderTest() {
 let Q = null;
 /** thinking labs per unit: LABS[unitId][labId] = { title, em, sub, kind: 'think', run(el, lab) } (see labs-*.js) */
 const LABS = {};
+/** written hints per unit: HINTS[unitId][qid] = [hint1, hint2, { option index: misconception }] (hints-<unit>.js) */
+const HINTS = {};
 function pickQuestions(mode, l) {
   const all = S.u.questions, byId = id => all.find(q => q.id === id);
   if (mode === 'lesson') return HS.srs.choose(S.ns, qIds(l), 8).map(byId);
@@ -5542,6 +5806,8 @@ function termOf(text) {   // the glossary entry an option names, if any
   return S.u.glossary.find(g => norm(g.term) === t || bare(g.term) === bare(t)) || null;
 }
 function coachHint(q, n, pickedText, used, i) {
+  const h = (HINTS[S.id] || {})[q.id];   // written hints fill in what the question itself does not have
+  if (h) q = Object.assign({ hint1: h[0], hint2: h[1], mis: h[2] }, q);
   const mis = q.mis && q.mis[i];   // authored: what this wrong choice usually means
   const rightWords = q.t === 'tf' ? '' : bare(q.t === 'pic' && q.labels ? q.labels[q.a] : q.o[q.a]);
   const safe = t => t && (!rightWords || !norm(t).includes(rightWords));
@@ -5806,6 +6072,297 @@ APPS.unit = {
     const labs = Object.entries(d.labs || {}).map(([id, x]) => ({ title: (LABS[unitId] && LABS[unitId][id] || {}).title || id, ...x, total: ((LABS[unitId] && LABS[unitId][id] || {}).challenges || []).length })).filter(x => x.runs);
     return { title: u.title, em: u.em, total: m(), lessons, best: d.best || {}, missed, mis, learn, next, labs, answered: Object.keys(s).length, count: u.questions.length };
   }
+};
+
+/* ---- hints-g3sciearth.js ---- */
+/* Hints for «الأرض ومواردها» (grade 3). Only facts from the unit's own lessons.
+   qid: [hint1, hint2, { option index: what choosing it usually means }]. A hint never names the right answer
+   (tests/test_hints_never_reveal.py checks every one). Merged into the questions by hints.js. */
+HINTS.g3sciearth = {
+  h1: ['ابحث عن كلمتين: «فجائية» و«القشرة الأرضية».', 'الأرض تهتزّ فجأة تحت أقدامنا.',
+    { 1: 'التجوية تفتّت الصخور ببطء شديد، والسؤال عن حركة فجائية.', 2: 'الترسيب هو تجمّع الفتات في مكان جديد، وليس حركة فجائية.', 3: 'التعرية نقل بطيء للفتات، والسؤال عن حركة فجائية.' }],
+  h2: ['السؤال عن «فتحة» يخرج منها شيء منصهر وحارّ جدًا.', 'تخرج منها الصهارة والرماد والغازات، وقد تبني جبالًا.',
+    { 0: 'الوادي يحفره الماء الجاري ببطء، ولا تخرج منه صخور منصهرة.', 2: 'الكثيب تلّ من الرمل تبنيه الرياح.', 3: 'النهر ماء جارٍ، وليس فتحة تخرج منها صخور منصهرة.' }],
+  h3: ['الكلمة المهمة: «بعد خروجها إلى سطح الأرض».', 'للصخور المنصهرة اسمان: اسم تحت الأرض واسم فوقها.',
+    { 0: 'الدبال بقايا نباتات وحيوانات متحلّلة في التربة.', 1: 'هذا اسمها وهي ما زالت تحت سطح الأرض. والسؤال عنها بعد أن تخرج.', 3: 'الأحفورة أثر مخلوق قديم في الصخر.' }],
+  h4: ['ابحث عن كلمتين: «بسرعة» و«منحدر».', 'التربة والصخور تنهار وتنزل على جانب التل.',
+    { 1: 'التجوية بطيئة جدًا، والسؤال عن انهيار سريع.', 2: 'الزلزال اهتزاز للقشرة الأرضية، وقد يسبّب الانهيار، لكنه ليس الانهيار نفسه.', 3: 'الترسيب تجمّع الفتات في مكان جديد ببطء.' }],
+  h5: ['الكلمة المهمة: «الخارجية الصلبة».', 'هي الطبقة التي نمشي فوقها، وتهتزّ في الزلزال.',
+    { 0: 'الصهارة صخور منصهرة تحت سطح الأرض، وليست صلبة.', 2: 'التربة الطينية نوع من التربة، والسؤال عن طبقة الأرض كلها من الخارج.', 3: 'اللابة صخور منصهرة خرجت إلى السطح، وليست طبقة الأرض.' }],
+  h6: ['لنتذكّر: كم يحتاج البركان أو الزلزال ليغيّر سطح الأرض؟', 'الزلزال يحدث في ثوانٍ، والتجوية تحتاج سنوات طويلة.',
+    { 0: 'البراكين والزلازل تحدث فجأة. فهل هي بطيئة؟' }],
+  h7: ['ماذا يحدث لشيء منصهر عندما يبرد؟', 'لنتذكّر: البراكين قد تبني جبالًا وجزرًا من هذه الصخور.',
+    { 1: 'فكّر في الشمع الذائب عندما يبرد: هل يبقى سائلًا؟' }],
+  h8: ['ابحث عن الإجابة التي تحمي رأسك من الأشياء التي قد تسقط.', 'الزجاج قد ينكسر، والدرج مكان خطر أثناء الاهتزاز.',
+    { 1: 'زجاج النافذة قد ينكسر أثناء الزلزال، فالوقوف بجانبه خطر.', 2: 'الكرسي يهتزّ فقد تسقط عنه.', 3: 'الركض على الدرج أثناء الاهتزاز قد يُسقطك.' }],
+  h9: ['الكلمة المهمة: «تحت سطح الأرض».', 'للصخور المنصهرة اسم تحت الأرض واسم آخر بعد خروجها.',
+    { 1: 'هذا اسمها بعد أن تخرج إلى سطح الأرض. والسؤال عنها وهي تحت السطح.', 2: 'الدبال بقايا نباتات وحيوانات في التربة.' }],
+  h10: ['ابحث عن تغيّر يحدث في يوم واحد، لا في آلاف السنين.', 'ثلاثة من الخيارات تغيّرات بطيئة جدًا.',
+    { 1: 'النهر يحفر الوادي ببطء عبر آلاف السنين.', 2: 'الرياح تنحت الصخر ببطء شديد.', 3: 'الجليد يتحرك ببطء، والسؤال عن تغيّر سريع.' }],
+  h12: ['الكلمة المهمة: «تفتّت».', 'الخطوة الأولى من الخطوات البطيئة الثلاث: تكسير.',
+    { 0: 'التعرية نقل الفتات من مكان إلى آخر، والسؤال عن تكسير الصخور.', 2: 'الترسيب وضع الفتات في مكان جديد.', 3: 'الزلزال اهتزاز فجائي، وليس تفتّتًا بطيئًا.' }],
+  h13: ['الكلمة المهمة: «نقل».', 'الخطوة الثانية: بعد التكسير يأتي النقل بالماء أو الرياح.',
+    { 1: 'التجوية تكسير الصخور، والسؤال عن نقل الفتات.', 2: 'البركان فتحة تخرج منها الصهارة.', 3: 'الدبال بقايا متحلّلة في التربة.' }],
+  h14: ['الكلمة المهمة: «تجمّع في مكان جديد».', 'الخطوة الثالثة: بعد التكسير والنقل يأتي الوضع.',
+    { 0: 'التجوية تكسير الصخور، وهي الخطوة الأولى.', 1: 'الزلزال اهتزاز فجائي للقشرة.', 3: 'التعرية نقل الفتات، وهي الخطوة الثانية. والسؤال عمّا يحدث بعد النقل.' }],
+  h15: ['ماذا حدث للصخرة: انتقلت أم انكسرت؟', 'الجذور تنمو في الشقوق وتوسّعها.',
+    { 0: 'التعرية نقل الفتات. هل انتقلت الصخرة هنا أم انكسرت؟', 1: 'الترسيب تجمّع الفتات في مكان جديد، والصخرة هنا انكسرت.', 3: 'البركان تغيّر فجائي، والجذور تعمل ببطء.' }],
+  h16: ['ماذا تفعل الرياح بالرمال هنا: تكسرها أم تحملها؟', 'الكلمة المهمة: «تحمل من مكان إلى آخر».',
+    { 0: 'التجوية تكسير الصخور، والرياح هنا تحمل الرمال.', 2: 'الزلزال اهتزاز فجائي للقشرة.', 3: 'الانزلاق الأرضي انهيار سريع على منحدر.' }],
+  h17: ['من يحمل الرمل في الصحراء ثم يتركه يتجمّع؟', 'الكثيب تلّ من الرمل، يتجمّع بعد أن يُنقل.',
+    { 1: 'الزلازل تهزّ القشرة الأرضية، ولا تبني تلالًا من الرمل.', 2: 'البراكين تُخرج صخورًا منصهرة، لا رملًا ناعمًا.', 3: 'تجمّد الماء يكسر الصخور، ولا يجمع الرمال.' }],
+  h18: ['كم يحتاج السيل ليحفر واديًا؟', 'الدرس سمّاها «ثلاث خطوات بطيئة».',
+    { 1: 'لنتذكّر: الوادي يحتاج آلاف السنين ليتكوّن.' }],
+  h19: ['ماذا يحدث للماء عندما يتجمّد؟', 'الماء يتمدّد عندما يتجمّد. أين هو هنا؟',
+    { 1: 'تجمّد الماء من أسباب التجوية التي درسناها.' }],
+  h20: ['الماء الجاري يحفر الأرض ببطء. ماذا يصنع؟', 'شكل منخفض طويل بين الجبال يجري فيه السيل.',
+    { 1: 'البركان تخرج منه الصهارة، والسيل لا يصنعه.', 2: 'الزلزال اهتزاز فجائي، والسؤال عن حفر بطيء.' }],
+  h23: ['عامل التعرية «ينقل» الفتات. أيّها يتحرك وينقل؟', 'الماء الجاري والأمواج والجليد من عوامل التعرية، ومعها عامل آخر.',
+    { 1: 'الصخرة لا تنقل شيئًا، بل هي التي تتفتّت وتُنقل.', 2: 'الأحفورة أثر مخلوق قديم في الصخر.', 3: 'الوقود يُحرق للحصول على الطاقة.' }],
+  h24: ['ابحث عن شيء فيه فتات صخور وبقايا مخلوقات معًا.', 'تنمو فيه النباتات، وفيه أيضًا ماء وهواء.',
+    { 1: 'الصهارة صخور منصهرة تحت الأرض.', 2: 'الوقود مادة تُحرق للطاقة.', 3: 'القشرة طبقة الأرض الخارجية الصلبة كلها.' }],
+  h25: ['الكلمة المهمة: «متحلّلة».', 'هذه البقايا تجعل التربة غنية للنباتات.',
+    { 1: 'الطين حبيبات ناعمة جدًا من الصخور، وليس بقايا مخلوقات.', 2: 'الرمل حبيبات كبيرة من الصخور.', 3: 'الفحم وقود أحفوري، تكوّن عبر ملايين السنين.' }],
+  h26: ['أيّ تربة حبيباتها ناعمة جدًا؟', 'الحبيبات الناعمة تمسك الماء، والكبيرة تتركه يمرّ.',
+    { 0: 'حبيبات الرمل كبيرة فيمرّ منها الماء بسرعة.', 2: 'الصخور لا تحتفظ بالماء مثل التربة.', 3: 'الحصى كبير جدًا، فيمرّ الماء بينه.' }],
+  h27: ['أين تنمو الجذور وتسقط الأوراق؟', 'الدبال من بقايا النباتات، فأين تكون هذه البقايا؟',
+    { 0: 'في الأسفل صخور صلبة لم تتفتّت، ولا دبال فيها.', 1: 'هذه الطبقة تحت الأولى، وفيها دبال أقل.', 3: 'الطبقات مختلفة: كل طبقة فيها مواد مختلفة.' }],
+  h28: ['الكلمة المهمة: «أسفل».', 'في الأسفل صخور صلبة لم تتفتّت بعد.',
+    { 0: 'هذه الطبقة في الأعلى، والسؤال عن الأسفل.', 2: 'الدبال يكون قرب السطح، والسؤال عن الأسفل.', 3: 'الرمل نوع من التربة، والسؤال عن طبقة.' }],
+  h29: ['هل صنع الإنسان التربة؟', 'المورد الطبيعي نأخذه من الطبيعة ولا نصنعه.',
+    { 0: 'التربة تتكوّن في الطبيعة من الصخور والدبال. هل صنعها الإنسان؟' }],
+  h30: ['حبيبات الرمل كبيرة. ماذا يفعل الماء بينها؟', 'جرّب أن تتذكّر الشاطئ: أين يذهب الماء على الرمل؟',
+    { 1: 'لنتذكّر: أيّ تربة تحتفظ بالماء، الرملية أم الطينية؟' }],
+  h31: ['الدبال من بقايا النباتات. أين تكون؟', 'الطبقة الصخرية في أسفل التربة.',
+    { 0: 'الطبقة الصخرية صخور صلبة في الأسفل. هل تصلها بقايا النباتات؟' }],
+  h32: ['ما العملية التي «تفتّت» الصخور؟', 'هي الخطوة الأولى من الخطوات البطيئة الثلاث.',
+    { 1: 'الترسيب يضع الفتات في مكان جديد، ولا يفتّت الصخور.', 2: 'الزلزال اهتزاز فجائي، والتربة تتكوّن ببطء.' }],
+  h34: ['ما الذي يمسك التربة فلا تجرفها الرياح والماء؟', 'شيء له جذور.',
+    { 1: 'قطع الأشجار يترك التربة مكشوفة فتجرفها الأمطار.', 2: 'النفايات تلوّث التربة ولا تحميها.', 3: 'العشب يمسك التربة، فإزالته تكشفها للتعرية.' }],
+  h36: ['الكلمات المهمة: «عاش منذ زمن بعيد» و«في الصخور».', 'تخبرنا عن مخلوقات الماضي مثل الديناصورات.',
+    { 1: 'الدبال بقايا متحلّلة في التربة اليوم، لا محفوظة في الصخور.', 2: 'الصهارة صخور منصهرة، لا تحفظ أثر المخلوقات.', 3: 'التربة مخلوط من فتات الصخور والدبال.' }],
+  h37: ['الكلمة المهمة: «أثر فارغ».', 'جسم المخلوق اختفى وبقي مكانه فراغ على شكله.',
+    { 1: 'الوقود مادة تُحرق للطاقة.', 2: 'الدبال بقايا متحلّلة في التربة.', 3: 'الكثيب تلّ من الرمل تبنيه الرياح.' }],
+  h38: ['الكلمة المهمة: «تُحرق للحصول على الطاقة».', 'النفط والفحم والغاز أمثلة عليه.',
+    { 0: 'التربة تنمو فيها النباتات، ولا نحرقها للطاقة.', 2: 'الأحفورة أثر مخلوق قديم في الصخر، والسؤال عن مادة نحرقها.', 3: 'الصخر لا يُحرق للحصول على الطاقة.' }],
+  h39: ['الوقود الأحفوري تكوّن من بقايا مخلوقات قديمة. أيّها كذلك؟', 'الفحم والغاز الطبيعي من هذا النوع، ومعهما سائل أسود.',
+    { 0: 'الرياح مورد متجدد، ولم تتكوّن من بقايا مخلوقات.', 2: 'الشمس مصدر طاقة متجدد.', 3: 'الماء مورد طبيعي، وليس وقودًا يُحرق.' }],
+  h40: ['المورد المتجدد لا ينفد. أيّها لا ينفد مهما استعملناه؟', 'ثلاثة خيارات وقود أحفوري قد ينفد.',
+    { 0: 'الفحم يحتاج ملايين السنين ليتكوّن، فقد ينفد.', 1: 'النفط يحتاج ملايين السنين ليتكوّن، فقد ينفد.', 3: 'الغاز الطبيعي وقود أحفوري قد ينفد.' }],
+  h41: ['غير متجدد = قد ينفد. لماذا قد ينفد؟', 'قارن: كم نحتاج لنستعمله، وكم يحتاج ليتكوّن؟',
+    { 1: 'اللون لا يجعل المورد ينفد أو لا ينفد.', 2: 'الماء سائل أيضًا، وهو مورد متجدد.', 3: 'مكان المورد لا يجعله ينفد.' }],
+  h42: ['لنتذكّر الأمثلة: حشرة في الكهرمان، وماموث في الجليد.', 'بعض الأحافير قوالب فارغة، وبعضها شيء آخر.',
+    { 1: 'تذكّر الحشرة المحفوظة في الكهرمان: ماذا بقي منها؟' }],
+  h43: ['الوقود الأحفوري تكوّن من بقايا مخلوقات قديمة.', 'لنتذكّر نباتات المستنقعات القديمة التي دُفنت.',
+    { 1: 'الفحم وقود أحفوري. ممّ تكوّن الوقود الأحفوري؟' }],
+  h44: ['هذه المواد تكوّنت من بقايا مخلوقات قديمة جدًا.', 'اسمها يشبه اسم آثار المخلوقات القديمة في الصخور.',
+    { 1: 'المتجدد لا ينفد، وهذه المواد قد تنفد.', 2: 'الطين نوع من التربة، وليس نوعًا من الوقود.' }],
+  h45: ['أيّها لا ينفد مهما استعملناه؟', 'ثلاثة منها وقود أحفوري يحتاج ملايين السنين ليتكوّن.',
+    { 1: 'النفط وقود أحفوري قد ينفد.', 2: 'الفحم وقود أحفوري قد ينفد.', 3: 'الغاز وقود أحفوري قد ينفد.' }],
+  h48: ['الأحافير من الماضي البعيد. ماذا تخبرنا عنه؟', 'لنتذكّر الديناصورات: كيف عرفنا أشكالها؟',
+    { 1: 'الطقس غدًا شيء في المستقبل، والأحافير من الماضي.', 2: 'الرياح لا تُحفظ في الصخور.', 3: 'الأحافير قديمة، فلا تخبرنا بما يحدث اليوم.' }]
+};
+
+/* ---- hints-g4scieco.js ---- */
+/* Hints for «الأنظمة البيئية» (grade 4). Only facts from the unit's own lessons.
+   qid: [hint1, hint2, { option index: what choosing it usually means }]. A hint never names the right answer. */
+HINTS.g4scieco = {
+  e1: ['ابحث عن الاسم الذي يجمع الحيّ وغير الحيّ معًا.', 'هو أكبر من الموطن، وفيه الماء والتربة والمخلوقات كلها.',
+    { 1: 'الموطن مكان يعيش فيه مخلوق واحد ويجد ما يحتاجه.', 2: 'الجماعة الحيوية مخلوقات من نوع واحد فقط، بلا أشياء غير حيّة.', 3: 'السلسلة الغذائية مسار انتقال الطاقة بالغذاء.' }],
+  e2: ['لاحيوي = غير حيّ. أيّها لا ينمو ولا يتغذّى؟', 'ثلاثة خيارات مخلوقات حيّة.',
+    { 0: 'السلحفاة حيوان يتغذّى وينمو، فهي حيّة.', 1: 'العشب نبات ينمو، فهو حيّ.', 3: 'الطائر حيوان حيّ.' }],
+  e3: ['حيوي = حيّ. أيّها ينمو ويتغذّى؟', 'ثلاثة خيارات أشياء غير حيّة.',
+    { 0: 'الماء مهم للحياة، لكنه ليس حيًّا.', 1: 'ضوء الشمس ليس حيًّا.', 2: 'التربة ليست حيّة، مع أن فيها مخلوقات حيّة.' }],
+  e4: ['الكلمات المهمة: «يعيش فيه» و«يجد ما يحتاج إليه».', 'هو مثل «بيت» المخلوق.',
+    { 0: 'المجتمع الحيوي كل الجماعات معًا، وليس مكانًا.', 2: 'المنطقة الحيوية منطقة كبيرة جدًا مثل الصحراء، والسؤال عن بيت المخلوق.', 3: 'الهرم يوضّح الطاقة في كل مستوى.' }],
+  e5: ['الكلمة المهمة: «من النوع نفسه».', 'مثل قطيع غزلان: نوع واحد فقط.',
+    { 0: 'المجتمع الحيوي فيه أنواع كثيرة معًا، والسؤال عن نوع واحد.', 1: 'هذا فيه حيّ وغير حيّ معًا.', 3: 'الشبكة الغذائية سلاسل غذائية متداخلة.' }],
+  e6: ['الكلمة المهمة: «كل الجماعات» أي كل الأنواع معًا.', 'جماعة = نوع واحد. فما اسم كل الأنواع معًا؟',
+    { 0: 'الموطن بيت المخلوق، وليس مجموعة الجماعات.', 1: 'العوامل اللاحيوية أشياء غير حيّة، والجماعات حيّة.', 3: 'العلاقات طرق تعامل المخلوقات، وليست اسم مجموعتها.' }],
+  e7: ['تذكّر صور المناطق الحيوية: أين ترى أشجارًا كثيفة؟', 'خاصة المطيرة منها.',
+    { 0: 'الصحراء جافة ومطرها قليل، فأشجارها قليلة.', 1: 'المنطقة العشبية فيها حشائش كثيرة وأشجار قليلة.', 3: 'المنطقة القطبية باردة جدًا وتربتها متجمّدة.' }],
+  e8: ['ابحث عن المنطقة الجافة.', 'الجمل والصبّار يتحمّلان قلّة الماء.',
+    { 1: 'الغابة المطيرة أمطارها كثيرة.', 2: 'التندرا باردة جدًا وتربتها متجمّدة.', 3: 'الغابة المعتدلة فيها مطر وأشجار كثيرة.' }],
+  e9: ['النظام المائي يكون في الماء. أيّها ماء؟', 'مياه عذبة يعيش فيها السمك.',
+    { 0: 'الجبال يابسة، وليست ماء.', 2: 'الوادي يحفره السيل، لكنه أرض.', 3: 'الصحراء جافة جدًا.' }],
+  e10: ['الكلمات المهمة: «باردة جدًا» و«متجمّدة».', 'هي المنطقة القطبية.',
+    { 0: 'المنطقة العشبية تغطيها الحشائش، وليست متجمّدة.', 2: 'الصحراء جافة، وكثيرًا ما تكون حارة.', 3: 'الغابة المطيرة حارة وممطرة.' }],
+  e11: ['هل يجب أن يكون النظام البيئي كبيرًا؟', 'في الجذع حشرات وفطريات ورطوبة: حيّ وغير حيّ معًا.',
+    { 1: 'النظام البيئي قد يكون صغيرًا جدًا، مثل بركة.' }],
+  e12: ['الكلمات المهمة: «حشائش كثيرة» و«أشجار قليلة».', 'اسمها مأخوذ من العشب.',
+    { 0: 'الغابة المطيرة فيها أشجار كثيرة جدًا.', 2: 'التندرا باردة وتربتها متجمّدة.', 3: 'المحيط نظام مائي.' }],
+  e35: ['هل ضوء الشمس ينمو ويتغذّى؟', 'العوامل الحيوية هي المخلوقات الحيّة فقط.',
+    { 0: 'ضوء الشمس مهم جدًا للحياة، لكن هل هو مخلوق حيّ؟' }],
+  e36: ['قطيع الجمال كله من نوع واحد.', 'نوع واحد في مكان واحد: ما اسمه؟',
+    { 1: 'المجتمع الحيوي فيه أنواع كثيرة، والقطيع نوع واحد.', 2: 'المنطقة الحيوية مكان كبير مثل الصحراء، وليست قطيعًا.' }],
+  e37: ['لاحيوي = غير حيّ. أيّها لا ينمو ولا يتغذّى؟', 'ثلاثة منها مخلوقات حيّة: نبات وحيوانان.',
+    { 0: 'الصبّار نبات حيّ.', 1: 'الجمل حيوان حيّ.', 3: 'السحلية حيوان حيّ.' }],
+  e13: ['من أين تأتي الطاقة التي يستعملها النبات ليصنع غذاءه؟', 'كل السلاسل الغذائية تبدأ بالطاقة من مصدر واحد في السماء.',
+    { 0: 'النبات يحتاج الماء، لكن الماء ليس مصدر الطاقة.', 1: 'التربة تعطي النبات موادّ، لا طاقة.', 3: 'الحيوانات تأخذ طاقتها ممّا تأكله، فليست المصدر الأول.' }],
+  e14: ['من يصنع غذاءه دون أن يأكل غيره؟', 'هي النباتات.',
+    { 0: 'المستهلكات لا تصنع غذاءها، بل تأكل غيرها.', 2: 'المحلّلات تحلّل البقايا الميتة.', 3: 'المفترسات تصطاد حيوانات أخرى وتأكلها.' }],
+  e15: ['السلسلة تبدأ بمن يصنع غذاءه بنفسه.', 'تبدأ بالنبات، لا بالحيوان.',
+    { 0: 'المستهلك يأكل غيره، فلا بدّ أن يأتي بعد ما يأكله.', 1: 'آكلات اللحوم تأتي متأخرة في السلسلة.', 3: 'المحلّلات تعمل في النهاية على البقايا.' }],
+  e16: ['سلاسل كثيرة متداخلة تشبه شيئًا تنسجه العنكبوت.', 'لأن الحيوان قد يأكل أكثر من نوع.',
+    { 0: 'النظام البيئي هو المكان كله بما فيه، وليس اتحاد السلاسل.', 2: 'المجتمع الحيوي كل الجماعات في المكان.', 3: 'الهرم يوضّح كمية الطاقة في كل مستوى.' }],
+  e17: ['الكلمة المهمة: «صراع على الطعام والماء والمكان».', 'مثل أسدين يريدان الفريسة نفسها.',
+    { 0: 'البيئة هي المكان وما فيه.', 1: 'الموطن بيت المخلوق.', 3: 'المنتجات تصنع غذاءها، والسؤال عن صراع.' }],
+  e18: ['الكلمة المهمة: «تحلّل بقايا المخلوقات الميتة».', 'مثل البكتيريا وبعض المخلوقات التي تنمو على الخشب القديم.',
+    { 1: 'المنتجات تصنع غذاءها بضوء الشمس.', 2: 'آكلات الأعشاب تأكل نباتات حيّة.', 3: 'الفرائس حيوانات تُصطاد.' }],
+  e19: ['يأكل النباتات والحيوانات معًا.', 'الإنسان مثله يأكل الاثنين.',
+    { 0: 'آكل الأعشاب يأكل النباتات فقط، والدب يأكل الحيوانات أيضًا.', 1: 'آكل اللحوم يأكل الحيوانات فقط، والدب يأكل النباتات أيضًا.', 3: 'المنتج يصنع غذاءه بنفسه، والدب يأكل غيره.' }],
+  e20: ['يأكل النباتات فقط.', 'مثل الجمل والغزال.',
+    { 1: 'آكل اللحوم يأكل الحيوانات، والأرنب يأكل النباتات.', 2: 'المحلّل يحلّل البقايا الميتة.', 3: 'المنتج يصنع غذاءه بنفسه، والأرنب يأكل.' }],
+  e21: ['الكلمة المهمة: «يصطاد».', 'الحيوان الذي يُصطاد له اسم، والذي يصطاد له اسم آخر.',
+    { 0: 'الفريسة هي التي تُصطاد، لا التي تصطاد.', 2: 'المنتج نبات يصنع غذاءه.', 3: 'المحلّل يحلّل البقايا الميتة.' }],
+  e22: ['المنتجات في أسفل الهرم. وماذا يحدث للطاقة كلما صعدنا؟', 'الطاقة تقلّ كلما صعدنا.',
+    { 0: 'في القمّة أقل طاقة، لأنها تقلّ كلما صعدنا.', 1: 'آكلات اللحوم في أعلى الهرم، وطاقتها قليلة.', 3: 'المنتصف أقل من الأسفل.' }],
+  e24: ['أين المنتجات في الهرم، وأين أكبر طاقة؟', 'وكلما صعدنا يقلّ عدد المخلوقات أيضًا.',
+    { 0: 'المنتجات في القاعدة وفيها أكبر طاقة. ماذا يحدث كلما صعدنا؟' }],
+  e25: ['أيّها يحلّل بقايا المخلوقات الميتة؟', 'ثلاثة منها: مفترسان ونبات.',
+    { 1: 'الأسد آكل لحوم يصطاد الحيوانات.', 2: 'العشب منتج يصنع غذاءه.', 3: 'الصقر آكل لحوم يصطاد.' }],
+  e40: ['ماذا يأكل الأسد؟', 'آكل الأعشاب يأكل النباتات فقط.',
+    { 0: 'الأسد يصطاد الحيوانات. هل يأكل النباتات فقط؟' }],
+  e41: ['النباتات تصنع غذاءها بنفسها. ما اسم من يفعل ذلك؟', 'هي في أول السلسلة الغذائية.',
+    { 1: 'المستهلكات تأكل غيرها ولا تصنع غذاءها.', 2: 'المحلّلات تحلّل البقايا الميتة.' }],
+  e43: ['المنتج يصنع غذاءه بنفسه. أيّها نبات؟', 'ثلاثة منها تأكل غيرها أو تحلّل البقايا.',
+    { 0: 'البقرة تأكل العشب، فهي مستهلك.', 2: 'الثعبان يصطاد، فهو مستهلك.', 3: 'هذا محلّل يحلّل البقايا الميتة.' }],
+  e44: ['من يصطاد من في هذه السلسلة؟', 'الثعبان يأكل الفأر.',
+    { 1: 'الفريسة هي التي تُصطاد. من يُصطاد هنا: الفأر أم الثعبان؟', 2: 'المنتج في السلسلة هو العشب.' }],
+  e26: ['الكلمة المهمة: «أشياء ضارة».', 'مثل دخان المصانع والنفايات.',
+    { 0: 'التدوير يقلّل النفايات ويحمي البيئة.', 2: 'التنافس صراع بين المخلوقات على الطعام.', 3: 'التكيّف تغيّر المخلوق ليعيش في بيئته.' }],
+  e27: ['الكلمات المهمة: «تمامًا» و«من الأرض».', 'مثل الديناصورات: لم يبقَ منها أي فرد.',
+    { 0: 'الهجرة انتقال إلى مكان آخر، والمخلوق ما زال موجودًا.', 2: 'التنافس صراع على الطعام والمكان.', 3: 'الافتراس اصطياد حيوان لآخر.' }],
+  e28: ['أيّها يحدث من الطبيعة دون أن يفعله الإنسان؟', 'ثلاثة منها من فعل الإنسان.',
+    { 0: 'قطع الأشجار يفعله الإنسان.', 1: 'المصانع يبنيها الإنسان.', 3: 'رمي النفايات يفعله الإنسان.' }],
+  e29: ['من بنى السدّ هنا؟', 'القندس حيوان.',
+    { 0: 'القندس هو الذي بنى السدّ، لا الإنسان.', 2: 'البركان تغيّر طبيعي، والسدّ بناه حيوان.', 3: 'الزلزال تغيّر طبيعي، والسدّ بناه حيوان.' }],
+  e30: ['لنتذكّر: المخلوق إما يتكيّف، أو...؟', 'إذا لم يتكيّف فأمامه خياران.',
+    { 1: 'الحيوان لا يصير نباتًا.', 2: 'الحيوان لا يصنع غذاءه بنفسه، فهو مستهلك.', 3: 'تغيّر البيئة يؤثّر في المخلوقات التي تعيش فيها.' }],
+  e31: ['أيّها بقي منه عدد قليل جدًا؟', 'حيوان مفترس من فصيلة القطط الكبيرة.',
+    { 0: 'الجمل كثير في جزيرة العرب.', 2: 'الدجاجة يربّيها الناس بأعداد كبيرة.', 3: 'القطط كثيرة.' }],
+  e32: ['أيّها يقلّل النفايات؟', 'استعمال الأشياء مرة أخرى بدل رميها.',
+    { 0: 'قطع الأشجار يضرّ البيئة.', 2: 'الصيد الجائر قد يؤدي إلى الانقراض.', 3: 'رمي النفايات في البحر يلوّثه.' }],
+  e33: ['أيّها يفعله الإنسان؟', 'ثلاثة منها من الطبيعة.',
+    { 0: 'البركان تغيّر طبيعي.', 1: 'الجفاف تغيّر طبيعي.', 3: 'الزلزال تغيّر طبيعي.' }],
+  e34: ['هل بقي من الديناصورات أي فرد اليوم؟', 'المهدّد ما زال موجودًا لكنه قليل.',
+    { 0: 'المهدّد ما زال يعيش لكن عدده قليل. هل ما زالت الديناصورات تعيش؟' }],
+  e45: ['لنتذكّر القندس.', 'المخلوقات يمكن أن تكون سببًا للتغيّر، مثل الطبيعة والإنسان.',
+    { 1: 'القندس بنى سدًّا فغيّر مجرى النهر.' }],
+  e46: ['الدخان مادة ضارة تُضاف إلى الهواء.', 'إضافة أشياء ضارة للبيئة لها اسم.',
+    { 1: 'التدوير يقلّل النفايات، والدخان يضرّ.', 2: 'التكيّف تغيّر المخلوق ليعيش في بيئته.' }],
+  e48: ['أيّها يقلّل النفايات؟', 'ثلاثة منها تضرّ البيئة.',
+    { 0: 'دخان المصانع يلوّث الهواء.', 2: 'قطع الأشجار يضرّ البيئة.', 3: 'رمي النفايات يلوّث البيئة.' }]
+};
+
+/* ---- hints-g4scihealth.js ---- */
+/* Hints for «صحة الإنسان» (grade 4). Only facts from the unit's own lessons.
+   qid: [hint1, hint2, { option index: what choosing it usually means }]. A hint never names the right answer. */
+HINTS.g4scihealth = {
+  m1: ['الكلمات المهمة: «حالة غير طبيعية» و«أعراض».', 'هو عكس أن يكون الجسم سليمًا.',
+    { 1: 'الصحة اكتمال السلامة، والسؤال عن حالة غير طبيعية.', 2: 'العدوى انتقال من المصاب إلى السليم، والسؤال عن الحالة نفسها.', 3: 'المناعة قدرة الجسم على مقاومة الأمراض.' }],
+  m2: ['إذا ارتفعت الحرارة فوق الطبيعية فقد يكون الإنسان مريضًا.', 'الرقم الطبيعي بين ٣٥ و٤٠، وليس قريبًا من أيّ طرف.',
+    { 1: 'هذه حرارة مرتفعة: قد تعني أن الإنسان مريض.', 2: 'هذه حرارة منخفضة جدًا للإنسان.', 3: 'هذه منخفضة جدًا للإنسان.' }],
+  m3: ['الأمراض المعدية تسبّبها مخلوقات حيّة دقيقة.', 'ابحث عن الخيار الذي فيه ثلاثة أنواع من المخلوقات الدقيقة.',
+    { 1: 'خلايا الدم البيضاء تحمي الجسم وتهاجم الجراثيم، فلا تسبّب المرض.', 2: 'الأنسولين يفرزه البنكرياس، ولا يسبّب العدوى.', 3: 'الفيتامينات والأملاح من الغذاء المفيد.' }],
+  m4: ['المرض غير المعدي لا ينتقل من شخص إلى آخر.', 'سببه خلل في مستوى مادة يفرزها البنكرياس.',
+    { 1: 'الزكام يسبّبه فيروس، فهو ينتقل من شخص إلى آخر.', 2: 'كورونا مرض فيروسي معدٍ.', 3: 'السل مرض بكتيري معدٍ.' }],
+  m5: ['هل ينتقل هذا المرض من المصاب إلى السليم؟', 'سببه خلل في الأنسولين، لا جراثيم.',
+    { 1: 'لنتذكّر: ما سبب السكري؟ هل هو جرثومة تنتقل؟' }],
+  m6: ['ابحث عن المادة التي يفرزها البنكرياس.', 'هي ليست معدنًا من الأملاح المعدنية.',
+    { 1: 'الحديد من الأملاح المعدنية في الغذاء، ونقصه يسبّب فقر الدم.', 2: 'الكالسيوم يدخل في تكوين العظام والأسنان.' }],
+  m7: ['الكلمة المهمة: «تراكم الدهون».', 'من أسبابها الإفراط في الأكل وقلة النشاط.',
+    { 1: 'فقر الدم نقص في خلايا الدم، لا زيادة في الدهون.', 2: 'الحساسية تفاعل شديد لجهاز المناعة.', 3: 'الإنفلونزا عدوى فيروسية.' }],
+  m8: ['هذه الخلايا تنقل الأكسجين والغذاء في الجسم.', 'من أسباب نقصها نقص الحديد.',
+    { 1: 'هذه الخلايا تهاجم الجراثيم، والسؤال عن خلايا تنقل الأكسجين.', 2: 'الأنسولين يرتبط بالسكري.', 3: 'الأجسام المضادة تحارب مسبّبات المرض.' }],
+  m9: ['ما سبب الحساسية: جرثومة أم جهاز المناعة؟', 'الحساسية تفاعل شديد لجهاز المناعة ضد مواد غريبة.',
+    { 0: 'هل تسبّب الحساسية جرثومة تنتقل من شخص لآخر؟' }],
+  m10: ['تذكّر وصف الكتاب للفيروسات.', 'هي ليست مثل البكتيريا تمامًا.',
+    { 1: 'الكتاب وصف الفيروسات بأنها محيّرة: تشبه الحيّ أحيانًا وغير الحيّ أحيانًا.' }],
+  m11: ['هذه الأمراض كلها من نوع واحد من المسبّبات.', 'ليست بكتيريا ولا فطريات.',
+    { 1: 'البكتيريا تسبّب أمراضًا مثل الكوليرا والسل.', 2: 'الفطريات تسبّب أمراضًا مثل القدم الرياضي.', 3: 'الأجسام المضادة يصنعها الجسم ليحمي نفسه.' }],
+  m12: ['الكلمات المهمة: «الماء الملوث» و«إسهال».', 'مرض بكتيري ينتقل بالماء.',
+    { 1: 'السكري غير معدٍ، ولا ينتقل بالماء.', 2: 'الحصبة مرض فيروسي.', 3: 'القدم الرياضي طفح جلدي تسبّبه الفطريات.' }],
+  m13: ['الكلمة المهمة: «جميع».', 'لنتذكّر بكتيريا اللبن وبكتيريا الجهاز الهضمي.',
+    { 0: 'هل هناك بكتيريا نافعة؟ تذكّر اللبن.' }],
+  m14: ['الكلمة المهمة: «جميع».', 'لنتذكّر الكمأة.',
+    { 0: 'الكمأة من الفطريات، وهي نافعة نأكلها.' }],
+  m15: ['الكلمات المهمة: «يصيب القدم» و«الفطريات».', 'ينتشر في الأماكن الدافئة التي يكثر فيها التعرّق.',
+    { 1: 'السل مرض بكتيري يصيب الرئتين، لا القدم.', 2: 'الكوليرا تنتقل بالماء الملوث وتسبّب الإسهال.', 3: 'فقر الدم نقص في خلايا الدم الحمراء.' }],
+  m16: ['هل الزكام والإنفلونزا يتشابهان؟', 'كلاهما فيروسي، لكن أحدهما أقوى.',
+    { 1: 'الزكام مرض معدٍ يسبّبه فيروس.', 2: 'الإنفلونزا يسبّبها فيروس، لا فطريات.', 3: 'الزكام يصيب الأنف والحلق، والقدم الرياضي هو الذي يصيب القدم.' }],
+  m17: ['لماذا نُبعد المريض بمرض معدٍ عن الناس؟', 'الأمراض المعدية تنتقل من المصاب إلى السليم.',
+    { 1: 'لو كان المرض غير معدٍ لما احتجنا إلى العزل.', 2: 'العزل لا علاقة له بالطعام.', 3: 'الطبيب يزور مرضى العزل ويعالجهم.' }],
+  m19: ['الكلمة المهمة: «انتقال المرض».', 'المرض يخرج من المصاب ويصل إلى السليم.',
+    { 1: 'المناعة قدرة الجسم على مقاومة المرض، لا انتقاله.', 2: 'التطعيم أخذ اللقاح ليكوّن الجسم مناعة.', 3: 'الحساسية تفاعل شديد لجهاز المناعة، ولا تنتقل.' }],
+  m20: ['خط الدفاع الأول يكون على السطح، قبل أن تدخل الجراثيم.', 'يغطّي جسمنا كله، ويساعده الدمع واللعاب.',
+    { 1: 'القلب داخل الجسم، يضخّ الدم.', 2: 'الأسنان لطحن الطعام.', 3: 'الشعر لا يمنع دخول الجراثيم إلى الجسم.' }],
+  m21: ['هذه الخلايا تتجوّل في الجسم وتحميه.', 'لها لون مختلف عن الخلايا التي تنقل الأكسجين.',
+    { 1: 'هذه الخلايا تنقل الأكسجين والغذاء.', 2: 'الخلايا العصبية تنقل الإحساس والأوامر.', 3: 'خلايا الجلد تكوّن خط الدفاع الأول من الخارج.' }],
+  m22: ['الملاريا تنتقل عن طريق حشرة تلسع.', 'الحشرة أنثى من نوع يسمّى «الأنوفليس».',
+    { 1: 'الماء الملوث ينقل أمراضًا مثل الكوليرا.', 2: 'المصافحة لا تنقل الملاريا.', 3: 'الوجبات السريعة ضارة، لكنها لا تنقل الملاريا.' }],
+  m23: ['الكلاب والفئران والبعوض: هل هي حيّة أم غير حيّة؟', 'ناقل حيّ = مخلوق حيّ يحمل الجراثيم.',
+    { 1: 'هذه مخلوقات حيّة، لم يصنعها الإنسان.', 2: 'لاحيوي يعني غير حيّ، وهذه الحيوانات حيّة.', 3: 'غذائية تعني من الطعام.' }],
+  m24: ['أيّها قد يحمل الجراثيم إلى أجسامنا؟', 'الذباب يقف على الطعام الذي لم نغطّه.',
+    { 1: 'غسل اليدين يحمي من العدوى.', 2: 'النوم المبكر عادة صحية.', 3: 'الماء النظيف لا ينقل الأمراض، بل الملوّث.' }],
+  m25: ['الكلمة المهمة: «تحمل وتنقل».', 'البعوض والذباب والفئران أمثلة.',
+    { 1: 'المنتجات نباتات تصنع غذاءها، وهذا من درس الأنظمة البيئية.', 2: 'الأجسام المضادة يصنعها الجسم ليحارب المرض.' }],
+  m26: ['قارن الخيارات: أيّها ينقل المرض أكثر؟', 'الماء النظيف والهواء النقي لا ينقلان المرض.',
+    { 1: 'الحيوانات قد تنقل المرض، لكن الكتاب ذكر أن غيرها أخطر.', 2: 'الماء النظيف لا ينقل المرض.', 3: 'الهواء النقي لا ينقل المرض.' }],
+  m27: ['بعد الإصابة يصنع الجسم أجسامًا مضادة.', 'المناعة الطبيعية تدوم طويلًا.',
+    { 1: 'تذكّر: ماذا يصنع الجسم بعد أن يُصاب، وكم تدوم المناعة الطبيعية؟' }],
+  m28: ['الكلمات المهمة: «التطعيم» و«اللقاحات».', 'المناعة نوعان: نوع يصنعه الجسم بعد المرض، ونوع يأتي من اللقاح.',
+    { 1: 'هذا النوع يأتي بعد الإصابة بالمرض، لا من اللقاح.', 2: 'الحساسية تفاعل شديد لجهاز المناعة.', 3: 'العدوى انتقال المرض.' }],
+  m29: ['ماذا يصنع الجسم ليحارب مسبّبات المرض؟', 'هي تحارب الجراثيم، وتجعل المناعة تدوم طويلًا.',
+    { 1: 'الأنسولين يفرزه البنكرياس، وليس للمناعة.', 2: 'الدهون غذاء للطاقة، لا للمناعة.', 3: 'اللقاحات نأخذها بالحقن أو بالفم، لا يصنعها الجسم.' }],
+  m30: ['تذكّر تعريف التطعيم.', 'اللقاح يُعطى بالحقن أو بالفم.',
+    { 1: 'هذا هو تعريف التطعيم في الكتاب.' }],
+  m31: ['هل السكري مرض معدٍ؟', 'المصافحة تنقل الأمراض المعدية فقط.',
+    { 0: 'السكري غير معدٍ. هل ينتقل بالمصافحة؟' }],
+  m32: ['الرذاذ ينتقل في الهواء ويصل إلى عين الآخرين وأنفهم.', 'ابحث عن الإجابة التي تمنع الرذاذ من الوصول إلى الآخرين.',
+    { 1: 'هكذا يصل الرذاذ إلى الآخرين.', 2: 'المنديل المستعمل يحمل الجراثيم.', 3: 'غسل اليدين يحمي من العدوى.' }],
+  m33: ['ابحث عن العادات الصحية.', 'ثلاثة خيارات عادات تُضعف الجسم.',
+    { 1: 'الحلويات الكثيرة غير صحية.', 2: 'الجسم يحتاج الإكثار من شرب الماء.', 3: 'الجسم يحتاج النوم الكافي ليلًا.' }],
+  m35: ['الكلمات المهمة: «جسديًا وعقليًا ونفسيًا».', 'هي أكثر من مجرّد عدم المرض.',
+    { 1: 'المرض حالة غير طبيعية، والسؤال عن اكتمال السلامة.', 2: 'العدوى انتقال المرض.', 3: 'الرياضة تساعد الجسم، لكنها ليست هي اكتمال السلامة.' }],
+  m36: ['الجسم يحتاج نومًا كافيًا ليلًا، لا قليلًا جدًا ولا كثيرًا جدًا.', 'العدد أكبر من ٥ وأقل من ١٢.',
+    { 1: 'هذا قليل جدًا: يتعب الجسم.', 2: 'هذا كثير، والسؤال عن نوم الليل تقريبًا.', 3: 'هذا أقل مما يحتاجه الجسم.' }],
+  m37: ['ماذا تلمس يداك طوال اليوم؟', 'نغسلهما قبل الطعام وبعده وبعد لمس الأشياء الملوثة.',
+    { 1: 'الماء لا يقوّي العضلات، الرياضة تفعل ذلك.', 2: 'غسل اليدين لا يغيّر طولهما.', 3: 'التسوّس يصيب الأسنان، ونمنعه بتنظيفها.' }],
+  m38: ['ابحث عن العادة الضارة.', 'ثلاثة خيارات عادات صحية.',
+    { 1: 'الرياضة عادة صحية.', 2: 'شرب الماء الكافي عادة صحية.', 3: 'النوم مبكرًا عادة صحية.' }],
+  m39: ['ماذا نفعل لنحمي أسناننا؟', 'ومعه زيارة طبيب الأسنان بانتظام.',
+    { 1: 'لنتذكّر: كيف نمنع التسوّس؟' }],
+  m40: ['هل الأدوات الشخصية تنقل العدوى؟', 'الأدوات الشخصية من أكثر وسائل نقل العدوى.',
+    { 0: 'المنشفة وفرشاة الأسنان قد تحمل جراثيم صاحبها.' }],
+  m41: ['الرياضة مفيدة. ابحث عن الفائدة.', 'ثلاثة خيارات أشياء ضارة.',
+    { 1: 'الرياضة تقوّي العضلات ولا تُضعفها.', 2: 'الرياضة تساعد على السيطرة على الوزن.', 3: 'الرياضة تزيد النشاط.' }],
+  m42: ['كلما تحرّكنا أسرع يحتاج الجسم إلى طاقة أكثر.', 'النبض أقل عند الراحة، ويزيد بالمشي.',
+    { 1: 'عند الراحة يكون النبض أقل.', 2: 'المشي البطيء يزيد النبض قليلًا، ونشاط آخر يزيده أكثر.', 3: 'عند النوم يكون النبض منخفضًا.' }],
+  m43: ['ماذا تفعل الرياضة بالعضلات؟', 'من فوائد الرياضة تقوية العضلات.',
+    { 0: 'الرياضة تقوّي العضلات. فهل تُضعفها؟' }],
+  m45: ['مثل الخبز والأرز والبطاطس والتمر.', 'هذه المجموعة في قاعدة الهرم الغذائي.',
+    { 1: 'الأملاح المعدنية تكوّن العظام والأسنان.', 2: 'الماء يساعد على الهضم، لكنه لا يعطي طاقة.', 3: 'الفيتامينات تحافظ على صحة الجسم وتقي من الأمراض.' }],
+  m46: ['توجد في اللحوم والأسماك والبيض والبقوليات.', 'الكلمة المهمة: «النمو وتعويض الخلايا».',
+    { 1: 'الدهون مصدر للطاقة، ونأكل منها أقل كمية.', 2: 'هذه المصدر الرئيس للطاقة.', 3: 'الماء يساعد على الهضم وثبات الحرارة.' }],
+  m47: ['يشكّل أكثر من نصف الجسم.', 'يساعد على الهضم والتخلّص من الفضلات.',
+    { 1: 'الدهون جزء صغير من الجسم.', 2: 'البروتينات تبني الجسم، لكنها ليست ثلثيه.', 3: 'الحديد معدن صغير الكمية في الجسم.' }],
+  m48: ['الكالسيوم والحديد من أيّ مجموعة؟', 'تكوّن العظام والأسنان وخلايا الدم.',
+    { 1: 'هذه مصدر للطاقة.', 2: 'الدهون مصدر للطاقة، ونأكل منها أقل كمية.', 3: 'الفيتامينات تقي من الأمراض، لكن الكالسيوم والحديد معادن.' }],
+  m49: ['الكلمة المهمة: «على شكل مثلث».', 'نأكل أكثر من القاعدة وأقل من القمة.',
+    { 1: 'السلسلة الغذائية من درس الأنظمة البيئية: مسار الطاقة بين المخلوقات.', 2: 'الغذاء السريع فيه دهون وسكريات كثيرة.' }],
+  m50: ['ما الذي يجب ألّا نكثر منه؟', 'الإكثار منه يسبّب السمنة وأمراض القلب.',
+    { 1: 'الحبوب في القاعدة: نأكل منها أكثر.', 2: 'الخضروات والفواكه نأكل منها كثيرًا.', 3: 'الحليب في وسط الهرم.' }],
+  m51: ['ماذا يسبّب الإكثار من الدهون؟', 'الدهون في قمة الهرم: نأكل منها أقل.',
+    { 0: 'الإكثار من الدهون يسبّب السمنة. هل نأكل منها كثيرًا؟' }],
+  m52: ['هل المشروبات الغازية من الغذاء الصحي؟', 'الإكثار منها يرتبط بالأمراض.',
+    { 0: 'هل نشربها كل يوم؟ لنتذكّر ما قاله الدرس عنها.' }],
+  m53: ['مثل فيتامين ج وفيتامين د من الفواكه والخضروات.', 'تحمي الجسم وتقيه من الأمراض.',
+    { 1: 'المصدر الرئيس للطاقة هو الكربوهيدرات.', 2: 'الماء هو الذي يشكّل ثلثي الجسم.', 3: 'الدهون الكثيرة هي التي تسبّب السمنة.' }],
+  m54: ['لماذا لا نأكل الوجبات السريعة كثيرًا؟', 'فيها قليل من الألياف والمواد الضرورية.',
+    { 1: 'الوجبات السريعة فيها ألياف قليلة.', 2: 'الماء النقي ليس في الوجبات السريعة.', 3: 'الخضروات قليلة في الوجبات السريعة.' }],
+  m55: ['هل يوجد طعام واحد فيه كل ما نحتاجه؟', 'لذلك نأكل غذاءً متوازنًا من كل المجموعات.',
+    { 1: 'لو وُجد طعام واحد فيه كل شيء، لما احتجنا الهرم الغذائي.' }]
 };
 
 /* ---- labs.js ---- */
@@ -6165,6 +6722,179 @@ function foodWebLab(el, lab) {
 
 LABS.g3sciearth = { erosion: { id: 'erosion', title: '🌧️ مختبر التعرية', em: '🌧️⛰️', sub: 'توقّع، جرّب، فسّر', kind: 'think', lesson: 'l2', run: erosionLab, challenges: ER.C } };
 LABS.g4scieco = { web: { id: 'web', title: '🕸️ صدمة الشبكة الغذائية', em: '🕸️🦅', sub: 'ماذا يحدث إذا تغيّر مخلوق واحد؟', kind: 'think', lesson: 'l2', run: foodWebLab, challenges: FW.C, spread: (s, g) => FW.spread(s, g) } };
+
+/* ============================================================
+   🔎 OUTBREAK DETECTIVE (grade 4, human health, lessons 1–2: diseases, infection)
+   Fictional cases. A register lists sick AND healthy children and what each did. The child predicts how the
+   illness spread, finds the one thing every sick child shares and no healthy child has (feedback names a real
+   counter-example from the register), names the route, then chooses how to stop it.
+   Routes are the lesson's five ways of infection; the last case is not infectious at all (lesson 1).
+   Every case is marked for educator review: the cases are invented, the facts come from the lessons.
+   ============================================================ */
+const OB = {
+  ROUTES: ['الاتصال المباشر', 'الهواء (الرذاذ)', 'الطعام والشراب', 'الأدوات الملوثة', 'النواقل (حشرات وحيوانات)', 'ليس مرضًا معديًا'],
+  C: [
+    { id: 'ob-trip', route: 2, difficulty: 1, review: true,
+      title: 'رحلة المزرعة', report: 'بعد رحلة المزرعة، أصيب عدد من الطلاب بإسهال وقيء في اليوم التالي.',
+      cols: ['الحافلة', 'الغداء', 'من أين شرب؟'],
+      rows: [['سلمى', 'أ', 'فطيرة', 'خزّان مكشوف', 1], ['يوسف', 'ب', 'شطيرة', 'خزّان مكشوف', 1], ['ريم', 'أ', 'شطيرة', 'خزّان مكشوف', 1],
+             ['عمر', 'ب', 'فطيرة', 'قارورة مغلقة', 0], ['لين', 'أ', 'فطيرة', 'قارورة مغلقة', 0], ['خالد', 'ب', 'شطيرة', 'قارورة مغلقة', 0]],
+      key: 2,
+      learningObjective: 'يتعرّف انتقال العدوى بالطعام والشراب من مقارنة المرضى بالأصحّاء.', cognitiveSkill: 'إيجاد العامل المشترك (مقارنة بمجموعة ضابطة)',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درس «العدوى وانتقالها»: الطعام والشراب', 
+      prompt: 'لماذا نقول إن المرض انتقل بالشراب وليس بالغداء؟',
+      correctAnswer: 'لأن كل من مرض شرب من الخزّان المكشوف، ولم يمرض أحد شرب من قارورة مغلقة',
+      distractors: ['لأن الفطيرة لا تنقل المرض أبدًا', 'لأن الطلاب في الحافلة أ مرضوا كلهم', 'لأن الإسهال يأتي من التعب في الرحلة'],
+      misconceptions: ['الطعام قد ينقل المرض أيضًا. لكن انظر إلى الجدول: هل كل من أكل الفطيرة مرض؟', 'لين ركبت الحافلة أ ولم تمرض. فالحافلة ليست السبب.', 'لو كان السبب التعب لمرض الجميع، فكلهم ذهبوا إلى الرحلة.'],
+      hint1: 'قارن عمودًا عمودًا: أيّ عمود يفصل المرضى عن الأصحّاء تمامًا؟', hint2: 'انظر إلى عمود الشراب.',
+      explanation: 'كل المرضى شربوا من الخزّان المكشوف، وكل من شرب من قارورة مغلقة بقي سليمًا. الماء الملوث والأطعمة المكشوفة من طرق انتقال العدوى.',
+      stop: { q: 'كيف نمنع تكرار ذلك في الرحلة القادمة؟', a: 'نشرب من ماء نظيف مغلق، ولا نأكل الأطعمة المكشوفة', o: ['نجلس في الحافلة ب فقط', 'لا نأكل الغداء في الرحلات', 'نلبس الكمامة في الحافلة'],
+        mis: ['الحافلة لم تكن السبب: مرض طلاب من الحافلتين.', 'الغداء لم يكن السبب هنا، والجسم يحتاج الطعام.', 'المرض لم ينتقل بالهواء هنا، بل بالشراب.'] },
+      transferPrompt: 'لماذا يُطلب منّا ألّا نشتري الأطعمة المكشوفة من الباعة؟' },
+    { id: 'ob-class', route: 1, difficulty: 1, review: true,
+      title: 'الفصل الرابع', report: 'كان أحد الطلاب يعطس ويسعل دون منديل. بعد أيام أصيب بعض زملائه بحرارة وعطاس وسعال.',
+      cols: ['أين يجلس؟', 'وجبة المقصف', 'شارك الأقلام؟'],
+      rows: [['نورة', 'بجانبه', 'تمر', 'نعم', 1], ['فهد', 'أمامه', 'خبز', 'لا', 1], ['هيا', 'بجانبه', 'خبز', 'لا', 1],
+             ['سعد', 'آخر الفصل', 'تمر', 'نعم', 0], ['جود', 'آخر الفصل', 'خبز', 'نعم', 0], ['ماجد', 'آخر الفصل', 'تمر', 'لا', 0]],
+      key: 0, same: { 'بجانبه': 'near', 'أمامه': 'near' },
+      learningObjective: 'يتعرّف انتقال العدوى بالرذاذ في الهواء عند العطاس والسعال.', cognitiveSkill: 'إيجاد العامل المشترك وربطه بالسبب',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درس «العدوى وانتقالها»: الهواء', 
+      prompt: 'لماذا مرض من جلس قريبًا من الطالب المريض؟',
+      correctAnswer: 'لأن الرذاذ خرج مع العطاس والسعال ووصل إلى عيون القريبين منه وأنوفهم وأفواههم',
+      distractors: ['لأنهم شاركوه الأقلام', 'لأنهم أكلوا التمر من المقصف', 'لأن المكان القريب من السبورة بارد'],
+      misconceptions: ['جود شاركت الأقلام ولم تمرض، وفهد لم يشارك ومرض.', 'فهد وهيا أكلا خبزًا ومرضا، وماجد أكل تمرًا ولم يمرض.', 'البرد لا يسبّب العدوى؛ الذي ينقلها شيء خرج من الطالب المريض.'],
+      hint1: 'أيّ عمود يفصل المرضى عن الأصحّاء؟', hint2: 'ماذا يخرج من الفم والأنف عند العطاس دون منديل؟',
+      explanation: 'عند السعال أو العطاس ينتقل الرذاذ في الهواء فيصل إلى عين الشخص القريب أو أنفه أو فمه. لذلك مرض الجالسون بقربه.',
+      stop: { q: 'ماذا كان يجب أن يفعل الطالب المريض؟', a: 'يغطّي فمه وأنفه بمنديل ورقي عند العطاس والسعال', o: ['يتوقّف عن شرب الماء', 'يجلس في آخر الفصل ويعطس كما يريد', 'يشارك منديله مع زملائه'],
+        mis: ['الماء لا علاقة له بالرذاذ، والجسم يحتاج الماء.', 'الرذاذ قد يصل إلى غيره أينما جلس.', 'المنديل المستعمل يحمل الجراثيم.'] },
+      transferPrompt: 'لماذا يرتاح المريض في البيت ولا يخرج إلا للضرورة؟' },
+    { id: 'ob-pool', route: 3, difficulty: 2, review: true,
+      title: 'نادي السباحة', report: 'ظهر عند بعض أعضاء نادي السباحة طفح جلدي بين أصابع القدم.',
+      cols: ['أيّ يوم يسبح؟', 'نعال المسبح', 'يجفّف قدميه؟'],
+      rows: [['زياد', 'السبت', 'نعال النادي المشترك', 'أحيانًا', 1], ['دانة', 'الإثنين', 'نعال النادي المشترك', 'دائمًا', 1], ['بدر', 'الإثنين', 'نعال النادي المشترك', 'أحيانًا', 1],
+             ['رهف', 'السبت', 'نعاله الخاصة', 'أحيانًا', 0], ['تركي', 'الإثنين', 'نعاله الخاصة', 'دائمًا', 0], ['ملك', 'السبت', 'نعالها الخاصة', 'دائمًا', 0]],
+      key: 1, same: { 'نعاله الخاصة': 'own', 'نعالها الخاصة': 'own' },
+      learningObjective: 'يتعرّف انتقال العدوى باستعمال أدوات الآخرين.', cognitiveSkill: 'إيجاد العامل المشترك وتطبيقه على العادات الشخصية',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درسا «الأمراض» (القدم الرياضي) و«العدوى وانتقالها» (الأدوات الملوثة)', 
+      prompt: 'لماذا أصيب من لبس نعال النادي المشترك؟',
+      correctAnswer: 'لأن الأدوات المشتركة تنقل العدوى من شخص إلى آخر',
+      distractors: ['لأنهم سبحوا يوم الإثنين', 'لأن ماء المسبح يسبّب الطفح لكل من يسبح', 'لأنهم لا يجفّفون أقدامهم أبدًا'],
+      misconceptions: ['زياد سبح يوم السبت ومرض، وتركي سبح يوم الإثنين ولم يمرض.', 'كلهم سبحوا في الماء نفسه، ولم يمرض الجميع.', 'دانة تجفّف قدميها دائمًا ومرضت. فهذا ليس الفرق.'],
+      hint1: 'كلهم سبحوا. ما الشيء الذي استعمله المرضى فقط؟', hint2: 'من طرق انتقال العدوى: استعمال أدوات الآخرين.',
+      explanation: 'كل المرضى لبسوا نعالًا مشتركة، وكل من لبس نعاله الخاصة بقي سليمًا. الأدوات المتسخة وأدوات الآخرين تنقل العدوى، والطفح بين الأصابع ينتشر في الأماكن الدافئة التي يكثر فيها التعرّق.',
+      stop: { q: 'ما أفضل نصيحة لأعضاء النادي؟', a: 'كل شخص يستعمل نعاله ومنشفته الخاصة', o: ['يسبح الجميع يوم السبت فقط', 'نتوقّف عن السباحة', 'نتبادل النعال بعد كل سباحة'],
+        mis: ['اليوم لم يكن السبب: مرض أعضاء من اليومين.', 'السباحة رياضة مفيدة، والمشكلة في الأدوات المشتركة.', 'تبادل النعال هو الذي نقل العدوى.'] },
+      transferPrompt: 'لماذا يكون لكل فرد في البيت فرشاة أسنان خاصة به؟' },
+    { id: 'ob-camp', route: 4, difficulty: 2, review: true,
+      title: 'مخيّم البركة', report: 'في مخيّم قرب بركة ماء، أصيب بعض المخيّمين بالحمّى بعد أيام. لاحظوا لسعات بعوض على أذرعهم.',
+      cols: ['أين نام؟', 'العشاء', 'من أين شرب؟'],
+      rows: [['حمد', 'خارج الخيمة قرب البركة', 'أرز', 'قارورة', 1], ['شهد', 'خارج الخيمة قرب البركة', 'دجاج', 'قارورة', 1], ['ناصر', 'خارج الخيمة قرب البركة', 'أرز', 'إبريق المخيّم', 1],
+             ['أروى', 'داخل الخيمة المغلقة', 'أرز', 'إبريق المخيّم', 0], ['سامي', 'داخل الخيمة المغلقة', 'دجاج', 'قارورة', 0], ['غدير', 'داخل الخيمة المغلقة', 'دجاج', 'إبريق المخيّم', 0]],
+      key: 0,
+      learningObjective: 'يتعرّف النواقل الحيوية (البعوض) طريقًا لانتقال العدوى.', cognitiveSkill: 'ربط الدليل (اللسعات) بالعامل المشترك',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درس «العدوى وانتقالها»: النواقل والملاريا', 
+      prompt: 'لماذا نقول إن البعوض هو الذي نقل المرض؟',
+      correctAnswer: 'لأن المرضى ناموا في الخارج حيث البعوض، والبعوض من نواقل الأمراض',
+      distractors: ['لأن المرضى أكلوا الأرز', 'لأن الإبريق كان ملوثًا', 'لأن الحمّى تنتقل بالمصافحة'],
+      misconceptions: ['شهد أكلت الدجاج ومرضت، وأروى أكلت الأرز ولم تمرض.', 'حمد وشهد شربا من قارورة ومرضا، وأروى شربت من الإبريق ولم تمرض.', 'لو انتقلت بالمصافحة لما كان مكان النوم هو الفرق. ولاحظ اللسعات.'],
+      hint1: 'أين كان المرضى ليلًا؟', hint2: 'ما الحشرة التي تلسع وتنقل أمراضًا مثل الملاريا؟',
+      explanation: 'كل المرضى ناموا خارج الخيمة قرب البركة، وكل من نام داخل الخيمة المغلقة بقي سليمًا. البعوض من النواقل الحيوية التي تحمل مسبّبات الأمراض وتنقلها.',
+      stop: { q: 'ما الذي يحمي المخيّمين في المرة القادمة؟', a: 'النوم داخل الخيمة المغلقة بعيدًا عن البعوض', o: ['تغيير العشاء إلى الدجاج', 'الشرب من القوارير فقط', 'النوم خارج الخيمة قرب البركة'],
+        mis: ['العشاء لم يكن الفرق بين المرضى والأصحّاء.', 'من شربوا من القوارير مرضوا أيضًا.', 'هذا هو المكان الذي كثرت فيه اللسعات.'] },
+      transferPrompt: 'الكلاب والفئران والطيور والذباب نواقل أيضًا. كيف نحمي طعامنا من الذباب؟' },
+    { id: 'ob-sugar', route: 5, difficulty: 3, review: true,
+      title: 'هل ينتقل؟', report: 'عرف الطلاب أن زميلتهم مصابة بالسكري، فقال بعضهم: «لا تصافحوها حتى لا نمرض». مرّ شهر.',
+      cols: ['صافحها؟', 'جلس بجانبها؟', 'لعب معها؟'],
+      rows: [['أمل', 'نعم', 'نعم', 'نعم', 0], ['مشاري', 'نعم', 'لا', 'نعم', 0], ['وعد', 'لا', 'نعم', 'نعم', 0],
+             ['راشد', 'نعم', 'نعم', 'لا', 0], ['لمى', 'لا', 'لا', 'نعم', 0], ['عبدالله', 'نعم', 'نعم', 'نعم', 0]],
+      key: -1,
+      learningObjective: 'يميّز المرض غير المعدي ويصحّح فكرة خاطئة شائعة.', cognitiveSkill: 'استخدام الدليل لرفض فرضية',
+      curriculumReference: 'علوم ٤، صحة الإنسان، درس «الأمراض»: السكري مرض غير معدٍ', 
+      prompt: 'لماذا لم يمرض أحد ممّن صافحها؟',
+      correctAnswer: 'لأن السكري مرض غير معدٍ؛ سببه خلل في مستوى الأنسولين داخل الجسم',
+      distractors: ['لأنهم غسلوا أيديهم بعد المصافحة', 'لأن السكري ينتقل بالهواء فقط', 'لأن الشهر مدة قصيرة'],
+      misconceptions: ['حتى من غير غسل اليدين لا ينتقل هذا المرض. ما سببه؟', 'لو انتقل بالهواء لمرض من جلس بجانبها.', 'الأمراض المعدية التي درسناها تظهر في أيام. والسكري سببه داخل الجسم.'],
+      hint1: 'انظر: هل في الجدول أي مريض؟', hint2: 'ما سبب السكري: جرثومة أم شيء داخل الجسم؟',
+      explanation: 'لم يمرض أحد مهما فعل، لأن السكري مرض غير معدٍ: ينتج عن خلل في مستوى الأنسولين الذي يفرزه البنكرياس، ولا ينتقل من شخص إلى آخر.',
+      stop: { q: 'ماذا نقول للطلاب؟', a: 'صافحوها والعبوا معها كالعادة، فالسكري لا ينتقل', o: ['ابتعدوا عنها حتى تشفى', 'ضعوا الكمامة عندما تكونون معها', 'لا تأكلوا معها في المقصف'],
+        mis: ['الابتعاد عنها يجرحها ولا يحمي أحدًا: السكري لا ينتقل.', 'الكمامة تحمي من الرذاذ في الأمراض المعدية، والسكري ليس منها.', 'الأكل معها لا ينقل السكري.'] },
+      transferPrompt: 'اذكر مرضًا آخر غير معدٍ من الدرس.' }
+  ]
+};
+function outbreakLab(el, lab) {
+  const r = labRec(lab.id);
+  const valOf = (c, row, k) => { const v = row[k + 1]; return (c.same && c.same[v]) || v; };
+  const intro = () => {
+    el.innerHTML = `<div class="card lab"><h2>🔎 محقّق العدوى</h2>
+      <p class="lead">في كل قضية مرض بعض الناس. اقرأ السجلّ وقارن <b>المرضى</b> بـ<b>الأصحّاء</b>: ما الشيء الذي يشترك فيه كل المرضى ولا يوجد عند أيّ سليم؟</p>
+      <p class="lab-note">القضايا والأسماء خيالية. المعلومات من دروس الوحدة.</p>
+      <ol class="lab-list">${OB.C.map(c => `<li class="${r.done.includes(c.id) ? 'ok' : ''}">${r.done.includes(c.id) ? '✅' : '🗂️'} ${c.title}</li>`).join('')}</ol>
+      <div class="row center"><button type="button" class="btn" id="labGo">${r.done.length ? 'القضية التالية' : 'افتح القضية الأولى'}</button></div></div>`;
+    const i = OB.C.findIndex(c => !r.done.includes(c.id));
+    $('labGo').onclick = () => caseView(OB.C[i < 0 ? 0 : i]);
+  };
+  function caseView(c) {
+    const sick = c.rows.filter(x => x[4]), well = c.rows.filter(x => !x[4]);
+    el.innerHTML = `<div class="card lab">${labSteps(0)}<h2>🗂️ ${c.title}</h2><p class="ob-report">${c.report}</p>
+      <fieldset class="lab-pred"><legend>توقّع قبل أن تفتح السجلّ: كيف انتقل المرض؟</legend>
+        <div class="col">${OB.ROUTES.map((t, i) => `<button type="button" class="btn sec" data-pr="${i}" aria-pressed="false">${t}</button>`).join('')}</div></fieldset>
+      <div class="row center"><button type="button" class="btn" id="labRun" disabled>📋 افتح السجلّ</button></div><div class="lab-res"></div></div>`;
+    let pred = null;
+    el.querySelectorAll('[data-pr]').forEach(b => b.onclick = () => { pred = +b.dataset.pr; el.querySelectorAll('[data-pr]').forEach(x => { x.setAttribute('aria-pressed', x === b); x.classList.toggle('on', x === b); }); $('labRun').disabled = false; });
+    $('labRun').onclick = () => {
+      $('labRun').disabled = true; el.querySelectorAll('[data-pr]').forEach(x => x.disabled = true); r.runs++;
+      el.querySelector('.lab-steps').outerHTML = labSteps(1);
+      const res = el.querySelector('.lab-res');
+      res.innerHTML = `<div class="ob-wrap"><table class="ob-t"><caption>سجلّ القضية</caption><thead><tr><th scope="col">الاسم</th><th scope="col">الحالة</th>${c.cols.map((h, k) => `<th scope="col"><button type="button" class="ob-col" data-k="${k}" aria-pressed="false">${h}</button></th>`).join('')}</tr></thead>
+        <tbody>${c.rows.map(x => `<tr class="${x[4] ? 'sick' : ''}"><th scope="row">${x[0]}</th><td class="st">${x[4] ? '🤒 مريض' : '🙂 سليم'}</td>${c.cols.map((_, k) => `<td data-k="${k}">${x[k + 1]}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+        <p class="ob-ask" id="obAsk"><b>${c.key < 0 ? 'هل يشترك المرضى في شيء؟ اضغط على العمود الذي يفصل المرضى عن الأصحّاء، أو اختر:' : 'اضغط على العمود الذي يفصل المرضى عن الأصحّاء:'}</b></p>
+        ${c.key < 0 ? '<div class="row center"><button type="button" class="btn sec" id="obNone">لا يوجد مريض أصلًا</button></div>' : ''}
+        <div class="coach" id="obCoach" role="status" hidden></div>`;
+      let tries = 0;
+      const found = () => {
+        el.querySelectorAll('.ob-col,#obNone').forEach(x => x.disabled = true); $('obCoach').hidden = true;
+        if (c.key >= 0) el.querySelectorAll(`td[data-k="${c.key}"]`).forEach(td => td.classList.add('key'));
+        el.querySelector('.lab-steps').outerHTML = labSteps(2);
+        const ok = pred === c.route; r.pred++; if (ok) r.predOk++; if (tries === 0) star(1); HS.save();
+        res.insertAdjacentHTML('beforeend', `<div class="lab-cmp ${ok ? 'ok' : ''}"><b>${c.key < 0 ? 'لم يمرض أحد مهما فعل.' : `كل المرضى يشتركون في «${c.cols[c.key]}»، ولا يشترك فيه أي سليم.`}</b>
+          ${ok ? 'وتوقّعك كان صحيحًا! 🌟' : `توقّعت «${OB.ROUTES[pred]}». الدليل يقول شيئًا آخر، وهكذا يعمل المحقّقون.`}</div>`);
+        later(() => { el.querySelector('.lab-steps').outerHTML = labSteps(3); labWhy(el, lab, c, () => stopIt(c)); }, 500);
+      };
+      // a wrong column: name a real counter-example from the register
+      const why = k => {
+        const vals = sick.map(x => valOf(c, x, k)), common = vals.sort((a, b) => vals.filter(v => v === b).length - vals.filter(v => v === a).length)[0];
+        const w = well.find(x => valOf(c, x, k) === common), s = sick.find(x => valOf(c, x, k) !== common);
+        if (w) return `في السجلّ: ${w[0]}، «${c.cols[k]}»: ${w[k + 1]} مثل المرضى، لكن الحالة «سليم». فهذا العمود لا يفسّر المرض.`;
+        if (s) return `في السجلّ: ${s[0]}، «${c.cols[k]}»: ${s[k + 1]}، وهذا يختلف عن بقية المرضى، لكن الحالة «مريض». فهذا العمود لا يفسّر المرض.`;
+        return 'قارن المرضى بالأصحّاء في هذا العمود.';
+      };
+      el.querySelectorAll('.ob-col').forEach(b => b.onclick = () => {
+        const k = +b.dataset.k;
+        if (k === c.key) { b.classList.add('ok'); return found(); }
+        tries++; b.classList.add('no'); b.disabled = true; HS.fx('no');
+        const box = $('obCoach'); box.hidden = false;
+        box.innerHTML = `<span class="coach-ic" aria-hidden="true">💡</span><span>${c.key < 0 ? 'انظر إلى عمود الحالة: هل مرض أحد؟' : why(k)}${tries >= 2 ? ' ' + c.hint2 : ''}</span>`;
+      });
+      if ($('obNone')) $('obNone').onclick = found;
+      res.querySelector('.ob-t').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    };
+  }
+  function stopIt(c) {
+    const box = document.createElement('div'); box.className = 'card lab-why'; el.appendChild(box);
+    box.innerHTML = `<h3>🛡️ نوقف المرض</h3><div class="lab-q"></div><div class="fb" aria-live="polite"></div>`;
+    const q = { id: 'lab:' + c.id + ':stop', t: 'mcq', q: c.stop.q, o: [c.stop.a, ...c.stop.o], a: 0, mis: Object.fromEntries(c.stop.mis.map((m, i) => [i + 1, m])), hint1: 'تذكّر ما وجدته في السجلّ.', hint2: 'الحل يمنع الشيء المشترك بين المرضى.' };
+    renderQuestion(q, box.querySelector('.lab-q'), (ok, info) => {
+      if (ok || info.fixed) star(1);
+      const fb = box.querySelector('.fb'); fb.className = 'fb ' + (ok || info.fixed ? 'ok' : 'no');
+      fb.innerHTML = `<b>${ok ? 'أحسنت أيها المحقّق! 🔎' : info.fixed ? 'وجدت الحل بنفسك! 👏' : 'هذا هو الحل:'}</b><div>${c.stop.a}.</div>`;
+      if (!r.done.includes(c.id)) r.done.push(c.id); r.last = Date.now(); HS.save();
+      const i = OB.C.indexOf(c); labNext(el, i + 1 < OB.C.length ? 'القضية التالية ←' : 'إلى بداية المختبر', () => i + 1 < OB.C.length ? caseView(OB.C[i + 1]) : intro());
+    }, { coach: true });
+    box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  intro();
+}
+LABS.g4scihealth = { outbreak: { id: 'outbreak', title: '🔎 محقّق العدوى', em: '🔎🦠', sub: 'من السجلّ إلى السبب', kind: 'think', lesson: 'l2', run: outbreakLab, challenges: OB.C } };
 
 })();
 </script>

@@ -92,6 +92,12 @@ is needed; existing profiles, stars and progress load unchanged (checked in `tes
 - **🌧️ مختبر التعرية (grade 3):** two-hillside experiments (slope, rain, plants), prediction required before the
   rain, SVG model with soil carried down and roots, compare, explain with hints, transfer question; a school-garden
   problem where a wrong fix visibly makes erosion worse; a free lab (change one thing at a time).
+- **🔎 محقّق العدوى (grade 4 health):** five fictional cases; a register of sick and healthy children; the child
+  finds the one thing all sick children share (a wrong column gets a real counter-example from the register),
+  names the route of infection and chooses how to stop it. The last case is diabetes: nobody gets sick, which
+  corrects the idea that it spreads by shaking hands.
+- **Kindergarten:** غيّر القاعدة (card sorting with a rule switch, 5 levels, 120 configurations), ورشة القصة
+  (hero, place, problem and a fix that must solve it), نبني ما نحب (free build).
 - **🕸️ صدمة الشبكة الغذائية (grade 4):** food web built only from the unit's chains; four stories (drought,
   pesticide, fewer snakes, fewer hawks); predict two organisms (one two steps away), watch step 1 and step 2, explain.
 
@@ -145,12 +151,13 @@ then `python3 tools/import_voices.py madrasat-voices.zip` and publish.
 new: `quiz-hint.png`, `robot-plan.png`, `erosion-lab.png`, `food-web-lab.png`.
 
 ## 12. Backlog (in priority order)
-1. Author `hint1`, `hint2` and `mis` for the unit questions (start with the most-missed questions on the parent page).
-2. Record the 88 new kindergarten sentences with the voice maker.
+Done since the first version of this report (17 Nov 2026): written hints for all 128 quiz choice questions
+(`src/apps/unit/hints-<unit>.js`), Outbreak Detective (grade 4 health, 5 fictional cases), and in kindergarten
+Change the Rule, Story Workshop, free build, and a second correct solution in shape building (two triangles = a rectangle).
+1. Record the 68 new kindergarten sentences with the voice maker (it lists only the new ones).
+2. A teacher reviews the written hints and the three labs (`review: true`).
 3. English translations for the new strings (hints, labs, parent summary).
-4. Outbreak Detective (grade 4 health, fictional cases), with an educator first.
-5. Change the Rule (KG, 20+ configurations) and Story Workshop.
-6. Shape building: several correct solutions and a free-build mode; puzzle rotation at the top levels only.
-7. Transfer questions as scored items (now they are prompts), and "concepts mastered" based on transfer.
-8. Replace emoji used as scientific pictures in the sorting games with drawn illustrations.
-9. Real-device testing on iPad and a phone; a full contrast audit.
+4. Transfer questions as scored items (now they are prompts), and "concepts mastered" based on transfer.
+5. Puzzle rotation at the top levels only.
+6. Replace emoji used as scientific pictures in the sorting games with drawn illustrations.
+7. Real-device testing on iPad and a phone; a full contrast audit.
