@@ -75,11 +75,12 @@
 
   <section>
     <h2>٣. سجّل كل الجمل</h2>
-    <label style="display:flex;gap:10px;align-items:center;font-weight:600"><input type="checkbox" id="withEn" style="width:auto;min-height:0"> سجّل الجمل الإنجليزية أيضًا ({{COUNT_EN}} جملة). صوت الآيباد الإنجليزي جيد، فهذا اختياري.</label>
+    <label for="what">ماذا تسجّل؟</label>
+    <select id="what"><option value="ar">العربي فقط ({{COUNT_AR}} جملة)</option><option value="en">الإنجليزي فقط ({{COUNT_EN}} جملة): لألعاب الروضة بالإنجليزي</option><option value="both">الاثنين معًا</option></select>
     <div class="btns"><button type="button" id="go">🎙️ سجّل ونزّل الملف</button></div>
     <div class="bar" aria-hidden="true"><i id="bar"></i></div>
     <p id="msg" role="status" aria-live="polite"></p>
-    <p class="note">العربي ({{COUNT_AR}} جملة) يأخذ من ١٠ إلى ٢٥ دقيقة في الخطة المجانية لأنها تسمح بعدد محدود من الطلبات في الدقيقة. أبقِ الصفحة مفتوحة. في النهاية ينزل ملف <code>madrasat-voices.zip</code>. أرسله لـ Claude في المحادثة ليضيفه للموقع.</p>
+    <p class="note">كل لغة تأخذ من ١٠ إلى ٢٥ دقيقة في الخطة المجانية لأنها تسمح بعدد محدود من الطلبات في الدقيقة. أبقِ الصفحة مفتوحة. في النهاية ينزل ملف <code>madrasat-voices.zip</code>. أرسله لـ Claude في المحادثة ليضيفه للموقع.</p>
   </section>
 </main>
 <script>
@@ -144,7 +145,7 @@ $('go').onclick = async () => {
   $('go').disabled = true; const files = [], manifest = {}; let done = 0, failed = [];
   try {
     await getToken();
-    const todo = LINES.filter(l => l.lang === 'ar' || $('withEn').checked), queue = todo.slice(), worker = async () => {
+    const w = $('what').value, todo = LINES.filter(l => w === 'both' || l.lang === w), queue = todo.slice(), worker = async () => {
       while (queue.length) {
         if (slow && worker.n > 1) { worker.n--; return; }   // throttled: one request at a time
         const l = queue.shift(), key = l.lang + '|' + l.text;
@@ -156,7 +157,7 @@ $('go').onclick = async () => {
     worker.n = 3; await Promise.all([worker(), worker(), worker()]);
     const info = { voices: { ar: $('voiceAr').value, en: $('voiceEn').value }, rate: { ar: $('rateAr').value, en: $('rateEn').value }, made: new Date().toISOString(), failed };
     files.push(['manifest.json', new TextEncoder().encode(JSON.stringify(manifest, null, 1))], ['voices.json', new TextEncoder().encode(JSON.stringify(info, null, 1))]);
-    const a = document.createElement('a'); a.href = URL.createObjectURL(zip(files)); a.download = 'madrasat-voices.zip'; document.body.appendChild(a); a.click(); a.remove();
+    const a = document.createElement('a'); a.href = URL.createObjectURL(zip(files)); a.download = w === 'en' ? 'madrasat-voices-en.zip' : w === 'ar' ? 'madrasat-voices.zip' : 'madrasat-voices-all.zip'; document.body.appendChild(a); a.click(); a.remove();
     msg(failed.length ? `نزل الملف. ${failed.length} جملة لم تُسجّل (ستبقى بصوت الجهاز).` : '✅ نزل الملف madrasat-voices.zip. أرسله لـ Claude ليضيفه للموقع.', failed.length ? 'err' : 'ok');
   } catch (e) { msg(e.message === 'Failed to fetch' ? 'تعذّر الاتصال بـ Azure. تأكد من المنطقة والإنترنت.' : e.message, 'err'); }
   $('go').disabled = false;

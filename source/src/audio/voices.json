@@ -1,0 +1,12 @@
+{
+ "voices": {
+  "ar": "ar-SA-ZariyahNeural",
+  "en": "en-US-AvaMultilingualNeural"
+ },
+ "rate": {
+  "ar": "-8%",
+  "en": "-6%"
+ },
+ "made": "2026-11-17T14:19:31.917Z",
+ "failed": []
+}
