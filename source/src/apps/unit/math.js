@@ -87,13 +87,16 @@ function readMistake(q, w) {
 }
 
 /* ---------------- keypad (one for the screen; it writes into the active slot) ---------------- */
+const PAD = {};
 function keypad(onKey) {
   const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'del', '0', 'ok'];
   const html = `<div class="m-pad" dir="ltr" role="group" aria-label="لوحة الأرقام">${keys.map(k => `<button type="button" class="m-k ${k === 'ok' ? 'ok' : k === 'del' ? 'del' : ''}" data-k="${k}" aria-label="${k === 'ok' ? 'تحقّق' : k === 'del' ? 'امسح رقمًا' : AR(k)}">${k === 'ok' ? '✓' : k === 'del' ? '⌫' : AR(k)}</button>`).join('')}</div>`;
   const bind = root => {
     root.querySelectorAll('.m-k').forEach(b => b.onclick = () => onKey(b.dataset.k));
+    const me = PAD.n = (PAD.n || 0) + 1;   // only the newest keypad on screen listens to the keyboard
     const kb = e => {
-      if (!root.isConnected) return document.removeEventListener('keydown', kb);
+      if (!root.isConnected || PAD.n !== me) return document.removeEventListener('keydown', kb);
+      if (e.ctrlKey || e.metaKey || e.altKey || root.querySelector('.m-k:disabled')) return;
       const d = '٠١٢٣٤٥٦٧٨٩'.indexOf(e.key); const k = d >= 0 ? String(d) : /^[0-9]$/.test(e.key) ? e.key : e.key === 'Backspace' ? 'del' : e.key === 'Enter' ? 'ok' : null;
       if (!k || (e.target.closest && e.target.closest('input,textarea'))) return;
       e.preventDefault(); onKey(k);
@@ -106,8 +109,9 @@ function keypad(onKey) {
 /* ---------------- typed number question { t:'num', q, a, f?:[a,b], model?, hint1?, hint2?, unit? } ----------------
    1st wrong: what the mistake says, or a strategy · 2nd: second hint + the model drawn · 3rd: the answer. */
 function numQuestion(q, el, finish, opt) {
-  let val = '', tries = 0;
+  let val = '', tries = 0, over = false;
   const pad = keypad(k => {
+    if (over) return;
     if (k === 'del') val = val.slice(0, -1);
     else if (k === 'ok') return check();
     else if (val.length < 6) val = (val === '0' ? '' : val) + k;
@@ -124,9 +128,9 @@ function numQuestion(q, el, finish, opt) {
   function check() {
     if (!val) return;
     const w = +val;
-    if (w === q.a) { out.classList.add('ok'); lock(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
+    if (w === q.a) { over = true; out.classList.add('ok'); lock(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
     tries++; out.classList.add('no'); HS.fx('no'); onCoach(q, w, tries);
-    if (!opt.coach || tries >= 3) { lock(); out.textContent = AR(q.a); out.classList.remove('no'); out.classList.add('ok'); return finish(false, { tries, revealed: true }); }
+    if (!opt.coach || tries >= 3) { over = true; lock(); out.textContent = AR(q.a); out.classList.remove('no'); out.classList.add('ok'); return finish(false, { tries, revealed: true }); }
     const why = readMistake(q, w);
     if (tries === 1) coach(why || q.hint1 || (q.f ? factStrategy(q.f[0], q.f[1]) : 'اقرأ السؤال مرة ثانية: ما العددان؟ وما العملية؟'));
     else coach((why ? why + '<br>' : '') + (q.hint2 || 'انظر إلى النموذج وعُدّ.') + (q.model && !q.modelFirst ? mathModel(q.model) : q.f && q.f[0] * q.f[1] <= 100 ? mathModel({ m: 'array', r: Math.min(...q.f), c: Math.max(...q.f) }) : ''));
@@ -203,6 +207,16 @@ const PG_LINES = (() => { const L = [], at = (r, c) => r * 5 + c;
   for (let r = 0; r < 5; r++) for (let c = 0; c < 5; c++) [[0, 1], [1, 0], [1, 1], [1, -1]].forEach(([dr, dc]) => {
     const cells = [0, 1, 2].map(i => [r + dr * i, c + dc * i]); if (cells.every(([a, b]) => a >= 0 && a < 5 && b >= 0 && b < 5)) L.push(cells.map(([a, b]) => at(a, b)));
   }); return L; })();
+/** the computer's move: win now > block the child > any move that covers something. null when no move covers a square */
+function pgPick(own, clip, careful = true) {
+  const moves = [];
+  [0, 1].forEach(j => [2, 3, 4, 5, 6, 7, 8, 9].forEach(f => {
+    if (f === clip[j]) return; const c = clip.slice(); c[j] = f;
+    PG_BOARD.forEach((n, i) => { if (n === c[0] * c[1] && !own[i]) moves.push({ j, f, i, c }); });
+  }));
+  const wins = who => moves.find(m => PG_LINES.some(l => l.includes(m.i) && l.every(i => i === m.i || own[i] === who)));
+  return wins(2) || (careful && wins(1)) || HS.shuffle(moves)[0] || null;
+}
 function productGame(el, lab) {
   const own = Array(25).fill(0);   // 0 free, 1 child, 2 computer
   const clip = [2 + Math.floor(Math.random() * 8), 2 + Math.floor(Math.random() * 8)];
@@ -227,17 +241,22 @@ function productGame(el, lab) {
       if (ok) star(1);
       const cells = free(a * b);
       if (!cells.length) return later(() => cpu(`ناتج ${AR(a * b)} ${PG_BOARD.includes(a * b) ? 'مغطّى' : 'ليس على اللوحة'}. دور الحاسوب.`), 900);
-      own[cells[0]] = 1; HS.fx('ok');
-      if (win(1)) return later(() => finish(1), 700);
-      later(() => cpu(`غطّيت ${AR(a * b)}. دور الحاسوب…`), 700);
+      const take = i => {
+        own[i] = 1; HS.fx('ok');
+        if (win(1)) return later(() => finish(1), 700);
+        if (own.every(Boolean)) return later(() => finish(0), 700);
+        later(() => cpu(`غطّيت ${AR(a * b)}. دور الحاسوب…`), 700);
+      };
+      if (cells.length === 1) return take(cells[0]);
+      draw(`العدد ${AR(a * b)} موجود ${cells.length === 2 ? 'مرتين' : AR(cells.length) + ' مرات'} على اللوحة. اضغط على المربع الذي تريد أن تغطيه.`);
+      cells.forEach(i => { const c = P.querySelector(`.pg-c[data-i="${i}"]`); c.classList.add('pick'); c.setAttribute('role', 'button'); c.tabIndex = 0;
+        c.onclick = c.onkeydown = e => { if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return; e.preventDefault && e.preventDefault(); take(i); }; });
+      P.querySelector('.pg-c.pick').focus({ preventScroll: true });
     });
   }
   function cpu(msg) {
     draw(msg);
-    // try every move of either clip: win > block > any free product
-    const moves = []; [0, 1].forEach(j => [2, 3, 4, 5, 6, 7, 8, 9].forEach(f => { if (f === clip[j]) return; const c = clip.slice(); c[j] = f; const fr = free(c[0] * c[1]); if (fr.length) moves.push({ j, f, i: fr[0], c }); }));
-    const wins = who => moves.find(m => PG_LINES.some(l => l.includes(m.i) && l.every(i => i === m.i || own[i] === who)));
-    const m = wins(2) || wins(1) || HS.shuffle(moves)[0];
+    const m = pgPick(own, clip, Math.random() < .7);   // blocks most of the time, so a child who plans can win
     later(() => {
       if (m) { clip[m.j] = m.f; own[m.i] = 2; }
       busy = false;
@@ -420,7 +439,7 @@ function regroupGame(el, lab) {
 
 LABS.g3math5 = {
   table: { id: 'table', title: '🔢 جدول الضرب', em: '🔢', sub: 'استكشف واملأ الفراغات', kind: 'math', lesson: 'l1', run: tableGame, challenges: [] },
-  pg: { id: 'pg', title: '🎯 ثلاثة على استقامة واحدة', em: '🎯📎', sub: 'لعبة الكتاب ضد الحاسوب', kind: 'math', lesson: 'l3', run: productGame, challenges: [] },
+  pg: { id: 'pg', title: '🎯 ثلاثة على استقامة واحدة', em: '🎯📎', sub: 'لعبة الكتاب ضد الحاسوب', kind: 'math', lesson: 'l3', run: productGame, challenges: [], test: { board: PG_BOARD, lines: PG_LINES, pick: pgPick } },
   break: { id: 'break', title: '🧩 نفكّك الحقيقة', em: '🧩', sub: '٧ = ٥ + ٢، و٩ = ١٠ − ١', kind: 'math', lesson: 'l5', run: breakGame, challenges: BREAK },
   pair: { id: 'pair', title: '🤝 الزوج السهل', em: '🤝', sub: 'الخاصية التجميعية', kind: 'math', lesson: 'l8', run: pairGame, challenges: PAIRS },
 };

@@ -90,9 +90,11 @@ with sync_playwright() as p:
         fs=pg.locator('#app-unit .pg-f:not(.has)')
         if fs.count()==0: pg.locator('#app-unit .pg-clip').nth(1).click();fs=pg.locator('#app-unit .pg-f:not(.has)')
         fs.nth(t%fs.count()).click();pg.wait_for_timeout(150)
-        typ(pg,ans_last(pg));pg.wait_for_timeout(2300)
+        typ(pg,ans_last(pg));pg.wait_for_timeout(300)
+        if pg.locator('#app-unit .pg-c.pick').count(): pg.locator('#app-unit .pg-c.pick').first.click()
+        pg.wait_for_timeout(2000)
         if t==2: pg.screenshot(path=OUT+'/math-pg.png',full_page=True)
-    print('pg end:',pg.locator('#app-unit .result .lead').inner_text() if pg.locator('#app-unit .result').count() else 'still playing')
+    assert pg.locator('#app-unit .result').count(), 'product game did not end';print('pg end:',pg.locator('#app-unit .result .lead').inner_text())
     # grade 4 games
     pg.evaluate("HS.nav.go('unit-g4math5-play-lab-factor')");pg.wait_for_timeout(300)
     for r in range(3):

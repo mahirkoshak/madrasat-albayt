@@ -436,7 +436,7 @@ function renderQuestion(q, el, done, opt = {}) {
 /* ---------------- speed round ---------------- */
 function speedRound() {
   stopAll();
-  const pool = HS.shuffle(S.u.questions.filter(q => ['mcq', 'tf', 'pic', 'fill'].includes(q.t)));
+  const pool = HS.shuffle(S.u.questions.filter(q => ['mcq', 'tf', 'pic', 'fill', 'num'].includes(q.t)));
   const G = { i: 0, score: 0, total: 0, end: Date.now() + 60000, combo: HS.makeCombo() };
   HS.markPractice();
   M().innerHTML = `<div class="card quiz"><div class="q-top"><h2>⚡ تحدّي السرعة</h2><span class="combo" id="uCombo"></span></div>
@@ -587,6 +587,8 @@ APPS.unit = {
   },
   labCount: id => Object.keys(LABS[id] || {}).length,
   labs: () => LABS,   // read by the automated tests
+  renderQ: (unitId, q, el, done, opt) => { S.id = S.id || unitId; S.u = S.u || UNITS[unitId]; renderQuestion(q, el, done, opt || { coach: true }); },   // tests
+  mathModel: s => mathModel(s),   // tests
   hintFor(q, n, i) { const t = q.t === 'pic' && q.labels ? q.labels[i] : q.t === 'tf' ? '' : q.o[i]; return coachHint(q, n, t, new Set(), i); },   // tests
   close() { stopAll(); },
   /** for the parent page */
