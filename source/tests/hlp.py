@@ -18,3 +18,23 @@ def pick(pg):
     for _ in range(4):
         if pg.locator('#uNext').count() or not pg.locator('#uQ .opt:not([disabled])').count(): break
         pg.locator('#uQ .opt:not([disabled])').first.click(); pg.wait_for_timeout(60)
+def addkid(pg, name, who='kid', grade='g4', focus=(), pin='2580'):
+    """add a child through the setup steps (#setup): who → name and picture → grade (→ focus → PIN for a parent)"""
+    if not pg.locator('[data-who]').count():
+        if pg.locator('#pNew').count(): pg.click('#pNew')
+        else: pg.evaluate("location.hash='setup'")
+        pg.wait_for_timeout(200)
+    pg.click(f'[data-who={who}]'); pg.wait_for_timeout(150)
+    if pg.locator('#pinI').count():   # a parent and a PIN exists: unlock
+        pg.fill('#pinI', pin); pg.click('#pinF button[type=submit]'); pg.wait_for_timeout(150)
+    pg.fill('#wzName', name); pg.locator('[data-av]').first.click(); pg.click('#wzNext'); pg.wait_for_timeout(120)
+    pg.click(f'[data-grade={grade}]'); pg.wait_for_timeout(100); pg.click('#wzNext'); pg.wait_for_timeout(120)
+    if who == 'parent':
+        for f in focus: pg.click(f'[data-f={f}]'); pg.wait_for_timeout(60)
+        pg.click('#wzNext'); pg.wait_for_timeout(120)
+        if pg.locator('#wzPin').count():
+            pg.fill('#wzPin', pin); pg.fill('#wzPin2', pin); pg.click('#wzNext'); pg.wait_for_timeout(120)
+    pg.click('#wzGo'); pg.wait_for_timeout(250)
+def unlock(pg, pin='2580'):
+    """parent page without typing: set the PIN and mark this browser session as unlocked"""
+    pg.evaluate(f"HS.setSetting('pin','{pin}');sessionStorage.setItem('hs-pin','1');sessionStorage.setItem('hs-focus-later','1')")

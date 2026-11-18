@@ -7,11 +7,11 @@ with sync_playwright() as p:
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:errs.append('CONSOLE '+m.text) if m.type=='error' else None)
     pg.goto(U);pg.wait_for_timeout(500);pg.screenshot(path=OUT+'/a1.png',full_page=True)
     # add profile
-    pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(300)
-    pg.click('#pNew');pg.fill('#pName','سارة');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(300)
+    addkid(pg,'محمد');pg.wait_for_timeout(300)
+    addkid(pg,'سارة');pg.wait_for_timeout(300)
     pg.screenshot(path=OUT+'/a2.png',full_page=True)
     pg.click('[data-kid]:has-text("محمد")')
-    pg.click('[data-nav="y-g4"]');pg.click('[data-nav="s-g4-sci"]');pg.click('[data-nav="unit-g4scieco"]');pg.wait_for_timeout(400)
+    pg.click('[data-nav="s-g4-sci"]');pg.click('[data-nav="unit-g4scieco"]');pg.wait_for_timeout(400)
     pg.screenshot(path=OUT+'/a3.png',full_page=True)
     # lesson
     sec(pg,'l2');pg.wait_for_timeout(200);pg.screenshot(path=OUT+'/a4.png',full_page=True)
@@ -68,7 +68,7 @@ with sync_playwright() as p:
         pg.wait_for_timeout(1200)
     pg.screenshot(path=OUT+'/a11.png',full_page=True)
     # KG
-    pg.click('#appbar [data-nav=home]');pg.click('[data-kid]:has-text("سارة")');pg.click('[data-nav="y-kg"]');pg.click('[data-nav="app-kg"]');pg.wait_for_timeout(300)
+    pg.click('#appbar [data-nav=home]');pg.click('[data-kid]:has-text("سارة")');pg.click('.p-explore');pg.click('[data-nav="y-kg"]');pg.click('[data-nav="app-kg"]');pg.wait_for_timeout(300)
     pg.click('#app-kg [data-game=basket]');pg.wait_for_timeout(200);pg.screenshot(path=OUT+'/a12.png',full_page=True)
     back(pg);pg.click('#app-kg [data-game=memory]');pg.wait_for_timeout(200)
     cards=pg.locator('.kmem .mc'); n=cards.count(); print('kg mem cards',n)

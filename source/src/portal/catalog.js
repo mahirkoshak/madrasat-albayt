@@ -69,7 +69,7 @@ window.CATALOG = [
           { name: 'الفصل ٥: الضرب في عدد من رقم واحد', em: '✖️', art: 'unit-g4math5-cover', color: 'var(--t-blue)', unit: 'g4math5' }
         ] },
       { name: 'لغتي', em: '📝', art: 'subject-arabic', soon: true },
-      { name: 'English', em: '🔠', art: 'subject-english', soon: true }
+      { id: 'en', name: 'English', em: '🔠', art: 'subject-english', soon: true }
     ]
   },
   /* Not a year: an app shown next to the years on the home page (for every child) */

@@ -18,8 +18,10 @@ with sync_playwright() as p:
     out['reduced motion transition']=pg.evaluate("getComputedStyle(document.querySelector('.p-card')).transitionDuration")
     out['emoji profile kept']=pg.evaluate("JSON.parse(localStorage.getItem('hs-v2')).profiles.map(p=>p.avatar)")
     # new child via keyboard picker
-    pg.click('#pNew'); pg.fill('#pName','ليان'); pg.focus('.p-av.on'); pg.keyboard.press('ArrowLeft'); pg.keyboard.press('ArrowLeft')
-    sel=pg.evaluate("document.activeElement.dataset.av"); pg.click('#pAdd button[type=submit]'); pg.wait_for_timeout(300)
+    pg.click('#pNew'); pg.wait_for_timeout(200); pg.click('[data-who=kid]'); pg.wait_for_timeout(150)
+    pg.fill('#wzName','ليان'); pg.focus('.p-av.on'); pg.keyboard.press('ArrowLeft'); pg.keyboard.press('ArrowLeft')
+    sel=pg.evaluate("document.activeElement.dataset.av"); pg.click('#wzNext'); pg.wait_for_timeout(150)
+    pg.click('[data-grade=g4]'); pg.click('#wzNext'); pg.wait_for_timeout(150); pg.click('#wzGo'); pg.wait_for_timeout(300)
     out['keyboard picked']=sel; out['saved avatar']=pg.evaluate("HS.current().avatar"); out['ids unchanged']=pg.evaluate("HS.profiles().map(p=>p.id)")
     out['stars kept']=pg.evaluate("[HS.stars('pa'),HS.stars('pb')]")
     # deep link refresh + back

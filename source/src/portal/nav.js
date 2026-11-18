@@ -47,7 +47,9 @@
     const p = parse(route);
     if (p.base === 'home' || !p.base) return [HOME];
     if (p.base === 'parent') return [HOME, { route: 'parent', title: 'صفحة الأب' }];
-    if (p.base === 'shop') return [HOME, { route: 'shop', title: 'متجر النجوم' }];
+    if (p.base === 'shop') return [HOME, { route: 'shop', title: 'متجر الهدايا' }];
+    if (p.base === 'explore') return [HOME, { route: 'explore', title: 'استكشف' }];
+    if (p.base === 'setup') return [HOME, { route: 'setup', title: 'تجهيز طفل' }];
     const path = catalogPath((o, r) => r === p.base);
     const out = [HOME, ...(path || []).map(({ route, title }) => ({ route, title }))];
     if (!path) {   // not in the menu (e.g. a unit opened by link): still give it a title

@@ -5,8 +5,8 @@ with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':400,'height':860})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:errs.append('CONSOLE '+m.text) if m.type=='error' else None)
     pg.goto(U);pg.wait_for_timeout(300)
-    pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
-    pg.click('[data-nav="y-g4"]');pg.click('[data-nav="s-g4-sci"]');pg.wait_for_timeout(200);pg.screenshot(path=OUT+'/h0.png',full_page=True)
+    addkid(pg,'محمد');pg.wait_for_timeout(200)
+    pg.click('[data-nav="s-g4-sci"]');pg.wait_for_timeout(200);pg.screenshot(path=OUT+'/h0.png',full_page=True)
     pg.click('[data-nav="unit-g4scihealth"]');pg.wait_for_timeout(300);pg.screenshot(path=OUT+'/h1.png',full_page=True)
     print('speak buttons',pg.locator('#scr-unit .say, #uFcSay').count())
     for l in ['l1','l2','l3','l4']:

@@ -1,9 +1,10 @@
+from hlp import *
 from playwright.sync_api import sync_playwright
 from _util import U, CHROME, OUT, FIX
 with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':390,'height':844})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:errs.append(m.text) if m.type=='error' else None)
-    pg.goto(U);pg.wait_for_timeout(300);pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    pg.goto(U);pg.wait_for_timeout(300);addkid(pg,'محمد');pg.wait_for_timeout(200)
     pg.evaluate("HS.nav.go('unit-g3sciearth-test-l1')");pg.wait_for_timeout(400)
     leaks=0; seen=0
     for k in range(8):
@@ -42,7 +43,7 @@ with sync_playwright() as p:
         pg.click('#uNext');pg.wait_for_timeout(200)
     print('leaks',leaks,'of',seen); assert leaks==0
     print('learn',pg.evaluate("HS.data('u:g3sciearth').learn||HS.data('g3sciearth').learn"))
-    pg.evaluate("HS.nav.go('parent')");pg.wait_for_timeout(400)
+    unlock(pg);pg.evaluate("HS.nav.go('parent')");pg.wait_for_timeout(400)
     if pg.locator('#pinI').count(): print('PIN gate')
     print(pg.locator('.pp-learn').first.inner_text()[:400]); pg.locator('.pp-learn details').first.click()
     pg.locator('.pp-learn').first.screenshot(path=OUT+'/pp-learn.png')

@@ -20,7 +20,7 @@
   /* small interface icons (drawn here: no picture files). RTL: "forward" points left, "back" points right. */
   const svg = d => `<svg class="p-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const I = { fwd: svg('M14.5 6l-6 6 6 6').replace('p-i', 'p-i flip'), back: svg('M9.5 6l6 6-6 6').replace('p-i', 'p-i flip'), home: svg('M4 11.5L12 5l8 6.5M6.5 10v8.5h11V10'),
-    on: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11'), off: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9.5l5 5M21 9.5l-5 5') };
+    on: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11'), lock: svg('M7.5 11V8a4.5 4.5 0 019 0v3M5.5 11h13v9h-13zM12 14.5v2'), off: svg('M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9.5l5 5M21 9.5l-5 5') };
   /* sound on/off and language buttons, in the top bar of every page */
   const muteBtn = cls => `<button type="button" class="${cls} p-mute" data-mute aria-pressed="${HS.muted()}" aria-label="${HS.muted() ? 'تشغيل الصوت' : 'كتم الصوت'}">${HS.muted() ? I.off : I.on}</button>`;
 
@@ -50,14 +50,15 @@
     BAR.innerHTML = `<div class="gb-row">
       <a class="gb-brand" href="#home" data-nav="home" aria-label="مدرسة البيت: الرئيسية">${HS.art('logo-mark', { eager: true, cls: 'gb-logo', fb: '🏡' })}<span>مدرسة البيت</span></a>
       <div class="gb-tools">${muteBtn('gb-btn')}
-        ${named && shopOn() ? `<button type="button" class="gb-btn gb-stars" data-nav="shop" aria-label="متجر النجوم: عندك ${ar(HS.stars())} نجمة">⭐ <b id="barStars">${ar(HS.stars())}</b></button>` : ''}
+        ${named ? `<button type="button" class="gb-btn gb-stars" data-nav="${shopOn() ? 'shop' : 'home'}" aria-label="${barLabel()}"><span class="gb-dia">💎 <b id="barDia">${ar(HS.diamonds())}</b></span><span class="gb-ys" aria-hidden="true">⭐<i id="barYs">${ar(HS.toNextDiamond())}</i>/${ar(HS.STARS_PER_DIAMOND)}</span></button>` : ''}
+        <button type="button" class="gb-btn gb-lock" data-nav="parent" aria-label="صفحة الأب (بالرقم السري)${HS.waitingCount() ? `: ${ar(HS.waitingCount())} هدية تنتظر موافقتك` : ''}">${I.lock}${HS.waitingCount() ? `<span class="gb-badge">${ar(HS.waitingCount())}</span>` : ''}</button>
         <div class="gb-menu"><button type="button" class="gb-btn gb-me" id="gbMenuBtn" aria-expanded="${menuOpen}" aria-controls="gbMenu" aria-label="القائمة: ${named ? esc(me.name) : 'ضيف'}">${who}<span class="gb-caret" aria-hidden="true">▾</span></button>
           <div class="gb-pop" id="gbMenu" ${menuOpen ? '' : 'hidden'}>
             <p class="gb-pop-h">${named ? `يتعلّم الآن: <b class="nm">${esc(me.name)}</b>` : 'تتعلّم الآن كضيف: التقدّم لا يُحفظ باسم طفل'}</p>
             <button type="button" data-nav="home" data-menu>🏠 الرئيسية</button>
             <button type="button" data-nav="home" data-menu>👧 ${HS.profiles().length ? 'تبديل الطفل أو إضافة طفل' : 'إضافة طفل'}</button>
-            ${named && shopOn() ? '<button type="button" data-nav="shop" data-menu>⭐ متجر النجوم</button>' : ''}
-            <button type="button" data-nav="parent" data-menu>👨‍👩‍👧 صفحة الأب</button>
+            ${named && shopOn() ? '<button type="button" data-nav="shop" data-menu>💎 متجر الهدايا</button>' : ''}
+            <button type="button" data-nav="explore" data-menu>🧭 استكشف كل الصفوف</button>
             <button type="button" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" data-menu>🌐 لغة الواجهة: <span lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'العربية' : 'English'}</span></button>
           </div></div></div></div>${ctx}`;
     document.title = HS.tr(par ? cur.title + ' – مدرسة البيت' : 'مدرسة البيت');
@@ -87,14 +88,37 @@
     const ks = HS.profiles().filter(p => !r.for || r.for === p.id).map(p => { const rate = HS.earnRate(p.id); return rate ? `${esc(p.name)}: ${HS.count(Math.max(1, Math.ceil(r.cost / rate)), HS.N.day)}` : ''; }).filter(Boolean);
     return ks.length ? '⏳ تقريبًا: ' + ks.join(' · ') : '';
   }
-  HS.on('stars', () => { const b = document.getElementById('barStars'); if (b) b.textContent = ar(HS.stars()); });
+  const barLabel = () => `متجر الهدايا: عندك ${ar(HS.diamonds())} ماسة، و${ar(HS.toNextDiamond())} نجمات من ${ar(HS.STARS_PER_DIAMOND)} للماسة التالية`;
+  HS.on('stars', () => { const b = document.getElementById('barDia'), y = document.getElementById('barYs'), btn = document.querySelector('.gb-stars');
+    if (b) b.textContent = ar(HS.diamonds()); if (y) y.textContent = ar(HS.toNextDiamond()); if (btn) btn.setAttribute('aria-label', barLabel()); });
+  /* the child's avatar in the top bar smiles for a moment: after a right answer, and longer for a new diamond */
+  let happyT = 0;
+  function smile(ms) {
+    const me = HS.current(), img = document.querySelector('.gb-av .hs-av-img'); if (!me || !img) return;
+    const id = HS.avatarArt(me.avatar || ''), a = id && HS.ART[id + '-happy'], n = id && HS.ART[id]; if (!a || !n) return;
+    img.src = a.face || a.sm || a.src; img.closest('.gb-av').classList.add('happy');
+    clearTimeout(happyT); happyT = setTimeout(() => { const i = document.querySelector('.gb-av .hs-av-img'); if (i) { i.src = n.face || n.sm || n.src; i.closest('.gb-av').classList.remove('happy'); } }, ms);
+  }
+  const fx0 = HS.fx; HS.fx = k => { fx0(k); if (k === 'ok' || k === 'win' || k === 'combo') smile(900); };
+  HS.on('diamond', n => { smile(2000); const b = document.querySelector('.gb-stars'); if (b) { b.classList.remove('hs-pop'); void b.offsetWidth; b.classList.add('hs-pop'); }
+    HS.toast(`💎 +${ar(n)} ماسة!`, 1600); });
 
   /* ---------- online sync (Firebase): one family code shared by every device ---------- */
   const SYNC_TXT = { off: 'غير مفعّلة', connecting: '⏳ جاري الاتصال…', on: '✅ متزامن', offline: '📴 بدون إنترنت: يحفظ هنا ويرسل لاحقًا', error: '⚠️ تعذّر الاتصال، سنحاول مرة أخرى' };
   function syncBox() {
     if (!HS.sync || !HS.sync.available()) return '';
-    const f = HS.sync.family(), st = HS.sync.status(), t = HS.sync.lastSync();
-    return `<h4>☁️ الحفظ أونلاين بين الأجهزة</h4>
+    const f = HS.sync.family(), st = HS.sync.status(), t = HS.sync.lastSync(), acc = HS.sync.account && HS.sync.account();
+    const G = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M23 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.2a5.3 5.3 0 01-2.3 3.5v2.9h3.7c2.2-2 3.4-5 3.4-8.5z"/><path fill="#34A853" d="M12 23.5c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.3 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.8v3A11.5 11.5 0 0012 23.5z"/><path fill="#FBBC05" d="M5.6 14.2a6.9 6.9 0 010-4.4v-3H1.8a11.5 11.5 0 000 10.4z"/><path fill="#EA4335" d="M12 5c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.5 11.5 0 001.8 6.8l3.8 3A6.9 6.9 0 0112 5z"/></svg>';
+    const A = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9a4.8 4.8 0 00-3.8-2c-1.6-.2-3.1.9-3.9.9s-2-.9-3.4-.9a5 5 0 00-4.2 2.6c-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.5 1.3-.1 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.5a10 10 0 001.4-2.8 4.3 4.3 0 01-2.1-4.1zM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>';
+    const signin = acc
+      ? `<div class="pp-acc"><p>✅ مسجّل الدخول: <b dir="ltr">${esc(acc.email || acc.name)}</b></p>
+          <p class="pp-note">📱 من جوالك تستطيع الآن: متابعة تقدّم كل طفل مباشرة، والموافقة على الهدايا التي يطلبها، وتغيير صفّه والمواد الصعبة. على جهاز الطفل سجّل الدخول مرة واحدة بنفس الحساب.</p>
+          <div class="pp-actions"><button type="button" class="p-btn sec" id="ppSignOut">تسجيل الخروج من هذا الجهاز</button></div></div>`
+      : `<div class="pp-acc"><p class="pp-note">سجّل الدخول مرة واحدة على كل جهاز (جوالك، آيباد الطفل، اللابتوب): يظهر الأطفال وماساتهم وتقدّمهم في كل مكان، وتتحكم من جوالك: تتابع التقدّم، توافق على الهدايا، وتغيّر المواد الصعبة.</p>
+          <div class="pp-actions"><button type="button" class="p-btn pp-g" id="ppSignG">${G} الدخول بحساب Google</button><button type="button" class="p-btn pp-a" id="ppSignA">${A} الدخول بحساب Apple</button></div>
+          <p class="pp-note" id="ppSignE" role="alert"></p></div>`;
+    return `<h4>☁️ حساب العائلة والحفظ بين الأجهزة</h4>${signin}
+      <details class="pp-other"${acc ? '' : ''}><summary>${acc ? 'حالة المزامنة وكود العائلة' : 'طرق أخرى: كود العائلة'}</summary>
       ${f ? `<div class="pp-sync"><p>الحالة: <b id="ppSyncSt">${SYNC_TXT[st] || st}</b>${t ? ` · آخر مزامنة ${new Date(t).toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' })}` : ''}</p>
           <p>كود العائلة: <b class="pp-code" dir="ltr">${HS.sync.pretty()}</b></p>
           <p class="pp-note">على أي جهاز آخر: افتح الموقع ← صفحة الأب ← «انضم بكود العائلة» واكتب الكود، أو افتح رابط الانضمام. الأطفال بنفس الاسم يُدمجون تلقائيًا ولا تضيع النجوم.</p>
@@ -103,7 +127,7 @@
         : `<div class="pp-sync"><p class="pp-note">احفظ الأطفال والنجوم والتقدّم أونلاين، لتظهر على كل الأجهزة (آيباد، لابتوب…). يعمل بدون إنترنت أيضًا ويرسل التغييرات عند الاتصال.</p>
           <div class="pp-actions"><button type="button" class="p-btn" id="ppSyncNew">☁️ ابدأ: أنشئ كود عائلة</button></div>
           <form class="pp-actions" id="ppSyncJoin"><input id="ppSyncCode" dir="ltr" maxlength="16" placeholder="XXXX-XXXX-XXXX" autocomplete="off" autocapitalize="characters" aria-label="كود العائلة"><button type="submit" class="p-btn sec">انضم بكود العائلة</button></form>
-          <p class="pp-note" id="ppSyncErr"></p></div>`}`;
+          <p class="pp-note" id="ppSyncErr"></p></div>`}</details>`;
   }
   let leaving = false;
   function bindSync() {
@@ -112,6 +136,12 @@
     if ($('ppSyncJoin')) $('ppSyncJoin').onsubmit = e => { e.preventDefault();
       HS.sync.join($('ppSyncCode').value).then(() => { HS.toast('✅ انضممت للعائلة'); parent(); }).catch(() => { $('ppSyncErr').textContent = 'الكود ١٢ حرفًا ورقمًا، مثل ABCD-EFGH-JKLM'; }); setTimeout(parent, 50); };
     if ($('ppSyncCopy')) $('ppSyncCopy').onclick = () => { const l = HS.sync.joinLink(); (navigator.clipboard ? navigator.clipboard.writeText(l) : Promise.reject()).then(() => HS.toast('📋 نُسخ الرابط'), () => HS.toast(l)); };
+    const sign = kind => () => { const e = $('ppSignE'); if (e) e.textContent = '⏳ جاري تسجيل الدخول…';
+      HS.sync.signIn(kind).then(u => { if (u) { HS.toast('✅ تم تسجيل الدخول'); parent(); } })
+        .catch(err => { if (e) e.textContent = /popup-closed|cancelled/.test((err && err.code) || '') ? '' : 'تعذّر تسجيل الدخول. تأكد من الإنترنت، أو استعمل كود العائلة.'; console.warn(err); }); };
+    if ($('ppSignG')) $('ppSignG').onclick = sign('google');
+    if ($('ppSignA')) $('ppSignA').onclick = sign('apple');
+    if ($('ppSignOut')) $('ppSignOut').onclick = () => HS.sync.signOut().then(() => { HS.toast('تم تسجيل الخروج'); parent(); });
     if ($('ppSyncNow')) $('ppSyncNow').onclick = () => { HS.sync.now(); HS.toast('🔄 جاري المزامنة'); };
     if ($('ppSyncLeave')) $('ppSyncLeave').onclick = () => { if (!leaving) { leaving = true; return parent(); } leaving = false; HS.sync.leave(); HS.toast('أُوقفت المزامنة على هذا الجهاز'); parent(); };
   }
@@ -137,33 +167,33 @@
     const g = HS.unseenGifts(me.id); if (!g.length) return;
     const n = g.reduce((a, x) => a + x.n, 0), msgs = g.map(x => x.msg).filter(Boolean);
     document.body.insertAdjacentHTML('beforeend', `<div class="sh-gift" id="shGift" role="dialog" aria-modal="true" aria-label="مفاجأة"><div class="sh-gift-in">
-      <div class="big">${HS.art('gift-box', { fb: '🎁' })}</div><h2>مفاجأة!</h2><p class="sh-gift-n">+ ⭐ ${ar(n)}</p>${msgs.map(m => `<p class="sh-gift-m">«${esc(m)}»</p>`).join('')}
+      <div class="big">${HS.art('gift-box', { fb: '🎁' })}</div><h2>مفاجأة!</h2><p class="sh-gift-n">+ 💎 ${ar(n)}</p>${msgs.map(m => `<p class="sh-gift-m">«${esc(m)}»</p>`).join('')}
       <button type="button" class="p-btn" id="shGiftOk">شكرًا! 💛</button></div></div>`);
-    HS.fx('win'); HS.party(); HS.speak([['مفاجأة! حصلت على ' + n + ' نجمة', 'ar']]);
+    HS.fx('win'); HS.party(); HS.speak([['مفاجأة! حصلت على ' + n + ' ماسة', 'ar']]);
     document.getElementById('shGiftOk').onclick = () => { HS.seeGifts(me.id); document.getElementById('shGift').remove(); route(); };
   }
   function shop() {
     const me = HS.current(), bal = HS.stars(), rs = HS.rewardsFor(), goal = HS.goal(), orders = HS.orders();
     const wait = orders.filter(o => o.st === 'wait'), old = orders.filter(o => o.st !== 'wait').slice(-5).reverse();
     const state = r => { const c = HS.cantBuy(r); return c === 'week' ? `<span class="sh-need">✋ خلصت هذا الأسبوع (${ar(HS.boughtWeek(r.id))}/${ar(r.week)})</span>`
-      : c === 'stars' ? `<span class="sh-need">باقي ⭐ ${ar(r.cost - bal)}</span>`
+      : c === 'stars' ? `<span class="sh-need">باقي 💎 ${ar(r.cost - bal)}</span>`
       : `<button type="button" class="p-btn ${buying === r.id ? 'warn' : ''}" data-buy="${r.id}">${buying === r.id ? 'متأكد؟ اضغط مرة ثانية ✅' : 'اشترِ'}</button>`; };
     P.innerHTML = `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
-        <div><h1 class="p-title">🛒 متجر النجوم</h1><p class="sh-bal">عندك <b>⭐ ${ar(bal)}</b></p></div></div>
-      ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
+        <div><h1 class="p-title">🛒 متجر الهدايا</h1><p class="sh-bal">عندك <b>💎 ${ar(bal)}</b> <small>· ⭐ ${ar(HS.toNextDiamond())} من ${ar(HS.STARS_PER_DIAMOND)} للماسة التالية</small></p></div></div>
+      ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · 💎 ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
       ${goal ? `<div class="sh-goal"><span class="em">${HS.rewardArt(goal)}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
           <div class="hs-meter ${bal >= goal.cost ? '' : 'mid'}"><i style="width:${pct(bal, goal.cost)}%"></i></div>
-          <span>${bal >= goal.cost ? '🎉 تقدر تشتريه الآن!' : `⭐ ${ar(bal)} من ${ar(goal.cost)} · باقي ${ar(goal.cost - bal)}`}</span></div>
+          <span>${bal >= goal.cost ? '🎉 تقدر تشتريه الآن!' : `💎 ${ar(bal)} من ${ar(goal.cost)} · باقي ${ar(goal.cost - bal)}`}</span></div>
           <button type="button" class="sh-x" data-goal="" aria-label="إلغاء الهدف">✕</button></div>`
-        : `<p class="sh-tip">🎯 اختر مكافأة واضغط «🎯 هدفي» لتجمع لها النجوم.</p>`}
+        : `<p class="sh-tip">🎯 اختر هدية واضغط «🎯 هدفي» لتجمع لها الماسات. 💎 تأتي من موادك المهمة، وكل ١٠ نجوم ⭐ تصير ماسة.</p>`}
       <div class="sh-grid">${rs.map(r => { const c = HS.cantBuy(r), isGoal = goal && goal.id === r.id;
-        return `<div class="sh-card ${c ? '' : 'can'} ${isGoal ? 'goal' : ''}" data-say="${r.id}"><span class="em">${HS.rewardArt(r)}</span><b>${esc(r.name)}</b><span class="sh-price">⭐ ${ar(r.cost)}</span>
+        return `<div class="sh-card ${c ? '' : 'can'} ${isGoal ? 'goal' : ''}" data-say="${r.id}"><span class="em">${HS.rewardArt(r)}</span><b>${esc(r.name)}</b><span class="sh-price">💎 ${ar(r.cost)}</span>
           <div class="hs-meter ${c ? 'mid' : ''}"><i style="width:${pct(bal, r.cost)}%"></i></div>${state(r)}
           ${r.week ? `<small class="sh-lim">حتى ${ar(r.week)} في الأسبوع</small>` : ''}
           ${isGoal ? '' : `<button type="button" class="sh-goalbtn" data-goal="${r.id}">🎯 هدفي</button>`}</div>`; }).join('') || `<div class="p-empty">${HS.mascot('point', { small: true, fb: '' })}<p>لا توجد مكافآت بعد. اطلبها من بابا أو ماما.</p></div>`}</div>
       <div class="sh-idea">${ideaOpen ? `<form class="p-inline" id="shIdeaF"><input id="shIdea" maxlength="60" placeholder="مثال: رحلة إلى البحر" aria-label="فكرتك"><button type="submit" class="p-btn">أرسل</button></form>`
         : `<button type="button" class="p-btn sec" id="shIdeaB">💡 عندي فكرة مكافأة</button>`}</div>
-      ${old.length ? `<h3 class="sh-h small">آخر المكافآت</h3><ul class="sh-old">${old.map(o => `<li>${o.em} ${esc(o.name)} · ${o.st === 'done' ? '✅ استلمتها' : '↩️ رجعت النجوم'}</li>`).join('')}</ul>` : ''}`;
+      ${old.length ? `<h3 class="sh-h small">آخر المكافآت</h3><ul class="sh-old">${old.map(o => `<li>${o.em} ${esc(o.name)} · ${o.st === 'done' ? '✅ استلمتها' : '↩️ رجعت الماسات'}</li>`).join('')}</ul>` : ''}`;
     P.querySelectorAll('[data-buy]').forEach(b => b.onclick = e => {
       e.stopPropagation(); const id = b.dataset.buy;
       if (buying !== id) { buying = id; HS.fx('tap'); return shop(); }
@@ -174,7 +204,7 @@
     P.querySelectorAll('[data-goal]').forEach(b => b.onclick = e => { e.stopPropagation(); HS.setGoal(b.dataset.goal); HS.fx('tap'); if (b.dataset.goal) HS.toast('🎯 صار هدفك'); shop(); window.scrollTo(0, 0); });
     // tap a card to hear it (for children who can't read yet)
     P.querySelectorAll('[data-say]').forEach(c => c.onclick = () => { const r = rs.find(x => x.id === c.dataset.say), k = HS.cantBuy(r);
-      HS.speak([[r.name + '. ' + r.cost + ' نجمة. ' + (k === 'stars' ? 'باقي ' + (r.cost - bal) + ' نجمة' : k === 'week' ? 'خلصت هذا الأسبوع' : 'تقدر تشتريها'), 'ar']]); });
+      HS.speak([[r.name + '. ' + r.cost + ' ماسة. ' + (k === 'stars' ? 'باقي ' + (r.cost - bal) + ' ماسة' : k === 'week' ? 'خلصت هذا الأسبوع' : 'تقدر تشتريها'), 'ar']]); });
     const ib = document.getElementById('shIdeaB'); if (ib) ib.onclick = () => { ideaOpen = true; shop(); document.getElementById('shIdea').focus(); };
     const f = document.getElementById('shIdeaF'); if (f) f.onsubmit = e => { e.preventDefault(); const v = document.getElementById('shIdea').value.trim(); if (v) { HS.addIdea(v); HS.toast('💡 وصلت فكرتك لبابا وماما'); } ideaOpen = false; shop(); };
     giftPopup();
@@ -194,12 +224,12 @@
     const list = HS.profiles(), cur = HS.current();
     if (!list.length) return `<div class="p-kids"><button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">أضف طفلًا</span></button>${adding ? avForm(list) : ''}</div>`;
     return `<div class="p-kids"><h2 class="p-kids-t">من يتعلّم الآن؟</h2><div class="p-chips">${list.map(p => { const on = !!(cur && cur.id === p.id);
-        return `<button type="button" class="p-kid ${on ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${on}"><span class="p-kid-av" style="background:${HS.kidColor(p)}">${HS.avatar(p)}</span><span class="p-kid-n nm">${esc(p.name)}</span><span class="p-kid-s">⭐ ${ar(HS.stars(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`; }).join('')}
+        return `<button type="button" class="p-kid ${on ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${on}"><span class="p-kid-av" style="background:${HS.kidColor(p)}">${HS.avatar(p)}</span><span class="p-kid-n nm">${esc(p.name)}</span><span class="p-kid-s">💎 ${ar(HS.diamonds(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`; }).join('')}
       <button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">طفل جديد</span></button></div>${adding ? avForm(list) : ''}</div>`;
   }
   function bindPicker() {
     P.querySelectorAll('[data-kid]').forEach(b => b.onclick = () => { HS.setCurrent(b.dataset.kid); home(); });
-    const nw = document.getElementById('pNew'); if (nw) nw.onclick = () => { adding = !adding; home(); if (adding) setTimeout(() => document.getElementById('pName').focus(), 50); };
+    const nw = document.getElementById('pNew'); if (nw) nw.onclick = () => setupGo({});
     const pick = b => { newAv = b.dataset.av; P.querySelectorAll('[data-av]').forEach(x => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); x.tabIndex = on ? 0 : -1; }); };
     P.querySelectorAll('[data-av]').forEach(b => b.onclick = () => { pick(b); HS.fx('tap'); });
     const grp = P.querySelector('.p-avs');
@@ -274,7 +304,10 @@
       </div>`);
   }
   function today() {
-    const r = reviews(), out = [];
+    const r = reviews(), out = [], me = HS.current(), nf = me && me.grade ? nextFocus(me) : null;
+    if (nf) out.push(`<section class="p-panel p-next" aria-labelledby="pNx"><h2 id="pNx"><span aria-hidden="true">💎</span> خطوتك التالية</h2>
+        <button type="button" class="p-go" data-nav="${nf.nav}"><span class="p-go-tile" aria-hidden="true">${HS.art(nf.art, { fb: nf.em, small: true })}</span>
+        <span class="p-go-tx"><small>${nf.where ? nf.where + ' · ' : ''}مادة تركيز: تعطي ماسات</small><b>${nf.name}</b></span><span class="go">${I.fwd}</span></button></section>`);
     if (r.items.length) out.push(`<section class="p-panel p-review" aria-labelledby="pRv"><h2 id="pRv"><span aria-hidden="true">📅</span> مراجعة اليوم</h2>
         <p>أسئلة أخطأت فيها أو حان وقت تذكّرها:</p><div class="p-rv-list">${r.items.map(i => `<button type="button" class="p-rv" data-nav="${i.nav}"><span>${i.name}</span><b>${HS.count(i.n, i.noun)}</b><span class="go">${I.fwd}</span></button>`).join('')}</div></section>`);
     else if (r.seen) out.push(`<section class="p-panel p-review ok" aria-labelledby="pRv"><h2 id="pRv"><span aria-hidden="true">✅</span> لا توجد مراجعة اليوم</h2><p>كل ما تعلّمته في موعده. جرّب درسًا جديدًا أو اختبارًا.</p></section>`);
@@ -284,37 +317,188 @@
   function home() {
     let skip = false; try { skip = sessionStorage.getItem('hs-skip') === '1'; } catch (e) {}
     const list = HS.profiles();
-    if (!list.length && !skip) {   // first visit: Koko asks who will learn here
-      const sc = !!heroScene(), form = `${avForm(list)}<button type="button" class="p-link" id="pSkip">المتابعة بدون إضافة</button>`;
-      // with the full scene the form goes in a card below it, so it never covers Koko
-      P.innerHTML = heroWrap('p-onb', `<div class="p-hero-tx"><h1 id="pHi">أهلًا! أنا كوكو</h1>
-          <p class="p-hero-sub">من سيتعلّم معي؟ أضف كل طفل ليُحفظ تقدّمه ونجومه وأخطاؤه وحده.</p>${sc ? '' : form}</div>`) + (sc ? `<div class="p-onb-form">${form}</div>` : '');
-      return bindPicker();
+    if (!list.length && !skip) { if (!W) W = { step: 'who', focus: [] }; return setup(); }   // first visit: who is setting up?
+    const me = HS.current(), named = me && me.id !== 'guest';
+    const foot = `<footer class="p-foot">${HS.sync && HS.sync.family() ? `<p class="p-cloud" id="pCloud">${HS.sync.status() === 'on' ? '☁️ محفوظ أونلاين' : ''}</p>` : ''}
+      <p>${HS.sync && HS.sync.family() ? 'التقدّم والماسات محفوظة على هذا الجهاز وأونلاين' : 'التقدّم والماسات تُحفظ على هذا الجهاز'} · صفحة الأب من القفل 🔒 في الأعلى</p></footer>`;
+    if (named && me.grade) {
+      P.innerHTML = hero() + kidsRow() + today() + myGrade(me) + `
+        <section class="p-sec" aria-label="المزيد"><div class="p-grid">${dictCard(me)}
+          <button type="button" class="p-card p-explore" data-nav="explore"><span class="p-tile" aria-hidden="true">🧭</span><span class="tx"><b>استكشف</b><small>صفوف ومواد أخرى، وألعاب الروضة</small></span><span class="go">${I.fwd}</span></button></div></section>` + foot;
+      return bindPicker(), giftPopup();
     }
-    P.innerHTML = hero() + kidsRow() + today() + `
+    P.innerHTML = hero() + kidsRow() + (named ? `<button type="button" class="p-panel p-pickgrade" id="pPickGrade"><span aria-hidden="true">🎒</span><span><b>في أي صف أنت؟</b><small>اختر صفّك لتظهر لك مواده هنا</small></span><span class="go">${I.fwd}</span></button>` : '') + today() + `
       <section class="p-sec" aria-labelledby="pGr"><h2 id="pGr" class="p-h2">ماذا نتعلّم اليوم؟</h2>
-        <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div></section>
-      <footer class="p-foot">${HS.sync && HS.sync.family() ? `<p class="p-cloud" id="pCloud">${HS.sync.status() === 'on' ? '☁️ محفوظ أونلاين' : ''}</p>` : ''}<button type="button" class="p-parent" data-nav="parent"><span aria-hidden="true">👨‍👩‍👧</span> صفحة الأب: التقدّم والإعدادات${HS.waitingCount() ? ` <span class="p-badge" aria-label="${ar(HS.waitingCount())} كوبون ينتظر">🎟️ ${ar(HS.waitingCount())}</span>` : ''}</button>
-      <p>${HS.sync && HS.sync.family() ? 'التقدّم والنجوم محفوظة على هذا الجهاز وأونلاين' : 'التقدّم والنجوم تُحفظ على هذا الجهاز'} · للصوت افتح الصفحة في Chrome أو Edge أو Safari</p></footer>`;
+        <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div></section>` + foot;
+    const pg = document.getElementById('pPickGrade'); if (pg) pg.onclick = () => setupGo({ step: 'grade', who: 'kid', pid: me.id, grade: me.grade });
     bindPicker(); giftPopup();
   }
   function shopButton() {
     const g = HS.goal(), bal = HS.stars(), w = HS.orders().some(o => o.st === 'wait');
-    return `<button type="button" class="p-shop" data-nav="shop"><span class="em" aria-hidden="true">${g ? HS.rewardArt(g) : '🛒'}</span><span class="tx"><small>${g ? '🎯 هدفك' : 'متجر النجوم'}</small><b>${g ? esc(g.name) : `عندك ⭐ ${ar(bal)}`}</b>
-      ${g ? `<span class="hs-meter ${bal >= g.cost ? '' : 'mid'}"><i style="width:${pct(bal, g.cost)}%"></i></span>` : ''}<span class="p-shop-s">${g ? (bal >= g.cost ? '🎉 تقدر تشتريه الآن!' : `⭐ ${ar(bal)} من ${ar(g.cost)}`) : 'اشترِ مكافأة بنجومك'}${w ? ' · 🎟️ عندك كوبون' : ''}</span></span><span class="go">${I.fwd}</span></button>`;
+    return `<button type="button" class="p-shop" data-nav="shop"><span class="em" aria-hidden="true">${g ? HS.rewardArt(g) : '🛒'}</span><span class="tx"><small>${g ? '🎯 هدفك' : 'متجر الهدايا'}</small><b>${g ? esc(g.name) : `عندك 💎 ${ar(bal)}`}</b>
+      ${g ? `<span class="hs-meter ${bal >= g.cost ? '' : 'mid'}"><i style="width:${pct(bal, g.cost)}%"></i></span>` : ''}<span class="p-shop-s">${g ? (bal >= g.cost ? '🎉 تقدر تشتريه الآن!' : `💎 ${ar(bal)} من ${ar(g.cost)}`) : 'هدايا تشتريها بالماس 💎'}${w ? ' · 🎟️ عندك كوبون' : ''}</span></span><span class="go">${I.fwd}</span></button>`;
   }
 
-  /* ---------- parent PIN (optional) ----------
-     Stops children from changing prices or approving their own coupons. Asked once per browser session. */
+
+  /* ---------- setting up a child (#setup) ----------
+     Whoever opens the site first sets up: a parent does name, picture, grade, the subjects that are hard (focus:
+     they earn diamonds) and the parent PIN; a child does name, picture and grade, and the parent is asked about the
+     hard subjects the next time they open the lock. The same steps edit a child later (W.pid). */
+  let W = null;
+  const GRADES = () => CATALOG.filter(y => y.subjects);
+  /** what a grade offers as focus: its subjects that have an id (kindergarten: groups of games) */
+  const focusChoices = g => g === 'kg' ? HS.KG_GROUPS.map(x => ({ id: x.id, name: x.name, em: x.em }))
+    : ((CATALOG.find(y => y.id === g) || {}).subjects || []).filter(x => x.id).map(x => ({ id: x.id, name: x.name, em: x.em, art: x.art, soon: !x.units && !x.app }));
+  const gradeName = g => (CATALOG.find(y => y.id === g) || {}).name || '';
+  function setupGo(w) { W = Object.assign({ step: 'who', focus: [] }, w); if (location.hash === '#setup') setup(); else location.hash = 'setup'; }
+  function wizStep(title, sub, body, o = {}) {
+    const steps = W.who === 'parent' ? ['who', 'kid', 'grade', 'focus', 'pin'] : ['who', 'kid', 'grade'], i = Math.max(0, steps.indexOf(W.step));
+    P.innerHTML = `<section class="wz" aria-labelledby="wzT">
+      ${W.pid ? '' : `<ol class="wz-dots" aria-label="الخطوة ${ar(i + 1)} من ${ar(steps.length)}">${steps.map((x, k) => `<li class="${k < i ? 'done' : k === i ? 'on' : ''}"></li>`).join('')}</ol>`}
+      <div class="wz-koko" aria-hidden="true">${HS.mascot(o.pose || 'welcome', { small: true, eager: true, fb: '🐨' })}</div>
+      <h1 class="p-title" id="wzT">${title}</h1>${sub ? `<p class="p-sub">${sub}</p>` : ''}
+      <div class="wz-body">${body}</div>
+      <div class="wz-nav">${o.next === false ? '' : `<button type="button" class="p-btn" id="wzNext" ${o.ready === false ? 'disabled' : ''}>${o.nextText || 'التالي ←'}</button>`}
+        ${o.back === false ? '' : '<button type="button" class="p-btn sec" id="wzBack">رجوع</button>'}</div></section>`;
+    const nx = document.getElementById('wzNext'); if (nx && o.onNext) nx.onclick = o.onNext;
+    const bk = document.getElementById('wzBack'); if (bk) bk.onclick = o.onBack || (() => { W.step = steps[Math.max(0, i - 1)]; if (W.pid && i <= 2) { W = null; return history.back(); } setup(); });
+  }
+  function setup() {
+    if (!W) W = { step: 'who', focus: [] };
+    const kid = W.pid ? HS.profiles().find(x => x.id === W.pid) : null;
+    if (W.step === 'who') return wizStep('أهلًا! أنا كوكو 👋', 'من يجهّز الحساب الآن؟', `<div class="wz-who">
+        <button type="button" class="wz-big" data-who="parent"><span class="em" aria-hidden="true">👨‍👩‍👧</span><b>أنا ولي الأمر</b><small>أختار صف الطفل والمواد التي يحتاج فيها مساعدة</small></button>
+        <button type="button" class="wz-big" data-who="kid"><span class="em" aria-hidden="true">🧒</span><b>أنا الطفل</b><small>أكتب اسمي وأختار صورتي وصفّي</small></button></div>
+        ${HS.profiles().length ? '' : '<button type="button" class="p-link" id="pSkip">المتابعة بدون إضافة</button>'}`, { next: false, back: !!HS.profiles().length, onBack: () => { W = null; location.hash = 'home'; } }),
+      P.querySelectorAll('[data-who]').forEach(b => b.onclick = () => { W.who = b.dataset.who; W.step = 'kid'; HS.fx('tap'); if (W.who === 'parent' && HS.settings().pin) gate(setup); else setup(); }),
+      bindSkip();
+    if (W.step === 'kid') {
+      if (!HS.avatarChoices().includes(W.avatar)) W.avatar = HS.avatarChoices()[HS.profiles().length % HS.avatarChoices().length];
+      wizStep(W.who === 'parent' ? 'اسم الطفل وصورته' : 'ما اسمك؟ واختر صورتك', '', `<label class="wz-l" for="wzName">${W.who === 'parent' ? 'اسم الطفل' : 'اسمي'}</label>
+        <input id="wzName" class="wz-in" maxlength="20" autocomplete="off" value="${esc(W.name || '')}" placeholder="مثال: محمد">
+        <fieldset class="p-avpick"><legend>${W.who === 'parent' ? 'اختر صورته' : 'اختر صورتك'}</legend><div class="p-avs" role="radiogroup" aria-label="الصورة">${HS.avatarChoices().map(a => `<button type="button" role="radio" aria-checked="${a === W.avatar}" tabindex="${a === W.avatar ? 0 : -1}" class="p-av ${a === W.avatar ? 'on' : ''}" data-av="${esc(a)}" aria-label="${esc(HS.avatarName(a))}">${HS.avatar({ avatar: a })}</button>`).join('')}</div></fieldset>`,
+        { onNext: () => { const v = document.getElementById('wzName').value.trim(); if (!v) { document.getElementById('wzName').focus(); HS.fx('no'); return; } W.name = v; W.step = 'grade'; setup(); } });
+      const nm = document.getElementById('wzName'); setTimeout(() => nm.focus(), 50);
+      nm.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); document.getElementById('wzNext').click(); } };
+      return bindAvPick(a => { W.avatar = a; });
+    }
+    if (W.step === 'grade') {
+      return wizStep(kid ? `صف <span class="nm">${esc(kid.name)}</span>` : W.who === 'parent' ? 'في أي صف؟' : 'في أي صف أنت؟', 'نعرض في الصفحة الرئيسية مواد هذا الصف فقط، والصفوف الأخرى في «استكشف».',
+        `<div class="wz-grades" role="radiogroup" aria-label="الصف">${GRADES().map(y => `<button type="button" role="radio" aria-checked="${W.grade === y.id}" class="wz-grade ${W.grade === y.id ? 'on' : ''}" data-grade="${y.id}">${tile(y, true)}<b>${y.name}</b><small>${y.sub || ''}</small></button>`).join('')}</div>`,
+        { ready: !!W.grade, nextText: W.who === 'parent' ? 'التالي ←' : 'تم ✓', onNext: () => { if (W.who === 'parent') { W.step = 'focus'; return setup(); } finish(); } }),
+        P.querySelectorAll('[data-grade]').forEach(b => b.onclick = () => { if (W.grade !== b.dataset.grade) W.focus = []; W.grade = b.dataset.grade; HS.fx('tap'); setup(); });
+    }
+    if (W.step === 'focus') {
+      const ch = focusChoices(W.grade), who = kid ? esc(kid.name) : esc(W.name || 'الطفل');
+      wizStep(`أي ${W.grade === 'kg' ? 'الألعاب' : 'المواد'} يحتاج فيها <span class="nm">${who}</span> مساعدة أكثر؟`,
+        `ما تختاره هنا يعطي <b>ماسات 💎</b> تُشترى بها الهدايا. باقي الأنشطة تعطي <b>نجومًا ⭐</b>، وكل ${ar(HS.STARS_PER_DIAMOND)} نجوم تصير ماسة واحدة.`,
+        `<div class="wz-focus" role="group" aria-label="مواد التركيز">${ch.map(c => `<button type="button" class="wz-f ${W.focus.includes(c.id) ? 'on' : ''}" aria-pressed="${W.focus.includes(c.id)}" data-f="${c.id}"><span class="em" aria-hidden="true">${c.art ? HS.art(c.art, { small: true, fb: c.em }) : c.em}</span><b>${c.name}</b>${c.soon ? '<small>دروسها قريبًا</small>' : ''}<span class="wz-tick" aria-hidden="true">💎</span></button>`).join('')}</div>
+        <p class="pp-note">يمكنك تغييرها في أي وقت من صفحة الأب 🔒.</p>${W.from === 'parent' && kid && kid.needFocus ? '<button type="button" class="p-link" id="wzLater">لاحقًا: افتح صفحة الأب الآن</button>' : ''}`,
+        { ready: W.focus.length > 0, nextText: HS.settings().pin ? 'تم ✓' : 'التالي ←', onNext: () => { if (!HS.settings().pin) { W.step = 'pin'; return setup(); } finish(); },
+          onBack: W.from === 'parent' ? () => { W = null; if (location.hash === '#parent') route(); else location.hash = 'parent'; } : undefined });
+      const lt = document.getElementById('wzLater'); if (lt) lt.onclick = () => { try { sessionStorage.setItem('hs-focus-later', '1'); } catch (e) {} W = null; parent(); };
+      return P.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { const f = b.dataset.f; W.focus = W.focus.includes(f) ? W.focus.filter(x => x !== f) : W.focus.concat(f); HS.fx('tap'); setup(); });
+    }
+    if (W.step === 'pin') {
+      wizStep('رقم سري لصفحة الأب 🔒', 'حتى لا يغيّر الأطفال المواد أو الأسعار أو يوافقوا على هداياهم بأنفسهم. يُطلب عند فتح القفل في أعلى الصفحة.',
+        `<label class="wz-l" for="wzPin">٤ أرقام على الأقل</label><input id="wzPin" class="wz-in pin" inputmode="numeric" type="password" maxlength="8" autocomplete="new-password">
+         <label class="wz-l" for="wzPin2">اكتبه مرة ثانية</label><input id="wzPin2" class="wz-in pin" inputmode="numeric" type="password" maxlength="8" autocomplete="new-password"><p class="pp-note" id="wzPinE" role="alert"></p>`,
+        { nextText: 'تم ✓', onNext: () => {
+          const a = document.getElementById('wzPin').value.trim(), b = document.getElementById('wzPin2').value.trim(), e = document.getElementById('wzPinE');
+          if (!/^\d{4,8}$/.test(a)) { e.textContent = 'اكتب ٤ أرقام على الأقل'; HS.fx('no'); return; }
+          if (a !== b) { e.textContent = 'الرقمان غير متطابقين'; HS.fx('no'); return; }
+          HS.setSetting('pin', a); try { sessionStorage.setItem('hs-pin', '1'); } catch (x) {} finish(); } });
+      return setTimeout(() => document.getElementById('wzPin').focus(), 50);
+    }
+    if (W.step === 'done') {
+      const me = HS.profiles().find(x => x.id === W.done) || HS.current();
+      P.innerHTML = `<section class="wz done" aria-labelledby="wzT"><div class="wz-done-av" style="background:${HS.kidColor(me)}">${HS.avatarHappy(me, { big: true })}</div>
+        <h1 class="p-title" id="wzT">جاهز يا <span class="nm">${esc(me.name)}</span>! 🎉</h1>
+        <p class="p-sub">${HS.focusOf(me).length ? `تركيزك: ${focusChoices(me.grade).filter(c => HS.focusOf(me).includes(c.id)).map(c => c.name).join('، ')}. فيها تجمع الماسات 💎.` : 'كل نشاط يعطيك نجومًا ⭐، وكل ١٠ نجوم تصير ماسة 💎 تشتري بها الهدايا.'}</p>
+        <div class="wz-nav"><button type="button" class="p-btn" id="wzGo">${W.from === 'parent' ? 'رجوع لصفحة الأب' : 'هيا نبدأ ←'}</button></div></section>`;
+      HS.party && HS.party(); HS.fx('win');
+      document.getElementById('wzGo').onclick = () => { const to = W.from === 'parent' ? 'parent' : 'home'; W = null; if (location.hash === '#' + to) route(); else location.hash = to; };
+    }
+  }
+  function finish() {
+    let id = W.pid;
+    if (id) HS.updateProfile(id, Object.assign({ grade: W.grade }, W.who === 'parent' ? { focus: W.focus.slice(), needFocus: false } : { needFocus: !HS.focusOf(HS.profiles().find(x => x.id === id)).length }));
+    else id = HS.addProfile({ name: W.name, avatar: W.avatar, color: HS.COLORS[HS.profiles().length % HS.COLORS.length], grade: W.grade, focus: W.who === 'parent' ? W.focus : [], needFocus: W.who !== 'parent' });
+    HS.setCurrent(id); W.done = id; W.step = 'done'; setup();
+  }
+  function bindAvPick(onPick) {
+    const pick = b => { onPick(b.dataset.av); P.querySelectorAll('[data-av]').forEach(x => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); x.tabIndex = on ? 0 : -1; }); };
+    P.querySelectorAll('[data-av]').forEach(b => b.onclick = () => { pick(b); HS.fx('tap'); });
+    const grp = P.querySelector('.p-avs');
+    if (grp) grp.onkeydown = e => {   // radio group keys; in right-to-left order "next" is the left arrow
+      const all = [...grp.querySelectorAll('[data-av]')], i = all.indexOf(document.activeElement); if (i < 0) return;
+      const step = { ArrowLeft: 1, ArrowDown: 1, ArrowRight: -1, ArrowUp: -1 }[e.key]; if (!step && e.key !== 'Home' && e.key !== 'End') return;
+      e.preventDefault(); const j = e.key === 'Home' ? 0 : e.key === 'End' ? all.length - 1 : (i + step + all.length) % all.length; pick(all[j]); all[j].focus();
+    };
+  }
+  function bindSkip() { const sk = document.getElementById('pSkip'); if (sk) sk.onclick = () => { try { sessionStorage.setItem('hs-skip', '1'); } catch (e) {} W = null; location.hash = 'home'; route(); }; }
+
+  /* ---------- the child's own grade on the main page ---------- */
+  function myGrade(me) {
+    const y = CATALOG.find(x => x.id === me.grade); if (!y) return '';
+    const f = HS.focusOf(me), subs = y.subjects.slice().sort((a, b) => (f.includes(b.id) ? 1 : 0) - (f.includes(a.id) ? 1 : 0));
+    const kgFocus = me.grade === 'kg' && f.length ? `<p class="p-focus-kg">💎 ألعاب التركيز: ${HS.KG_GROUPS.filter(g => f.includes(g.id)).map(g => g.em + ' ' + g.name).join(' · ')}</p>` : '';
+    return `<section class="p-sec" aria-labelledby="pMy"><h2 id="pMy" class="p-h2">${tile(y, true)} ${y.name}</h2>${kgFocus}
+      <div class="p-grid">${subs.map(sb => { const c = card(sb, navOf(sb) || `s-${y.id}-${sb.id}`); return f.includes(sb.id) && me.grade !== 'kg' ? c.replace('<span class="tx">', '<span class="p-focus" aria-label="مادة تركيز: تعطي ماسات">💎 تركيز</span><span class="tx">') : c; }).join('')}</div></section>`;
+  }
+  /** «خطوتك التالية»: the next unit in a focus subject (the one practised last, or the first not mastered) */
+  function nextFocus(me) {
+    const f = HS.focusOf(me); if (!f.length) return null;
+    if (me.grade === 'kg') return { nav: 'app-kg', name: HS.KG_GROUPS.filter(g => f.includes(g.id)).map(g => g.name).join(' · '), em: '🧸', art: 'grade-kg' };
+    const y = CATALOG.find(x => x.id === me.grade); if (!y) return null;
+    const ns = HS.profileData().ns || {}, cand = [];
+    y.subjects.filter(sb => f.includes(sb.id)).forEach(sb => (sb.units || []).filter(u => u.unit && window.UNITS && UNITS[u.unit]).forEach(u => cand.push({ u, sb, t: Math.max(lastT(ns['u:' + u.unit]), lastT(ns['fc:' + u.unit])) })));
+    if (!cand.length) return null;
+    const best = cand.slice().sort((a, b) => b.t - a.t)[0];
+    return { nav: navOf(best.u), name: best.u.name, where: best.sb.name, em: best.u.em, art: best.u.art };
+  }
+  function dictCard(me) {
+    const d = CATALOG.find(x => x.app === 'dict'); if (!d) return '';
+    const lv = { kg: 'سهل', g1: 'سهل', g2: 'سهل', g3: 'سهل', g4: 'متوسط', g5: 'متوسط', g6: 'صعب' }[me.grade];
+    return card(d, 'app-dict').replace('</small></span>', `</small>${lv ? `<small class="p-lv">مستواك المقترح: ${lv}</small>` : ''}</span>`);
+  }
+  function explore() {
+    P.innerHTML = `<div class="p-head"><span class="p-tile" aria-hidden="true">🧭</span><div><h1 class="p-title">استكشف</h1><p class="p-sub">كل الصفوف والمواد والألعاب. ما تتعلّمه هنا يعطيك نجومًا ⭐.</p></div></div>
+      <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div>`;
+  }
+
+  /* ---------- parent PIN (required) ----------
+     The lock in the top bar opens the parent page. Without a PIN yet, the parent sets one first.
+     Stops children from changing focus subjects or prices, or approving their own gifts. Asked once per browser session. */
   function gate(next) {
     const pin = HS.settings().pin; let ok = false; try { ok = sessionStorage.getItem('hs-pin') === '1'; } catch (e) {}
-    if (!pin || ok) return next();
+    if (pin && ok) return next();
+    if (!pin) {
+      P.innerHTML = `<form class="p-form pin" id="pinF"><h1 class="p-title">🔒 رقم سري لصفحة الأب</h1>
+        <p class="pp-note">اختر رقمًا سريًا (٤ أرقام على الأقل). يُطلب كلما فتحت القفل، حتى لا يغيّر الأطفال المواد أو الأسعار أو يوافقوا على هداياهم.</p>
+        <label for="pinI">الرقم السري</label><input id="pinI" inputmode="numeric" type="password" maxlength="8" autocomplete="new-password">
+        <label for="pinI2">اكتبه مرة ثانية</label><input id="pinI2" inputmode="numeric" type="password" maxlength="8" autocomplete="new-password">
+        <button type="submit" class="p-btn">حفظ والدخول</button><p class="pp-note" id="pinE" role="alert"></p></form>`;
+      const i = document.getElementById('pinI'); i.focus();
+      return document.getElementById('pinF').onsubmit = e => { e.preventDefault();
+        const a = i.value.trim(), b = document.getElementById('pinI2').value.trim(), er = document.getElementById('pinE');
+        if (!/^\d{4,8}$/.test(a)) { er.textContent = 'اكتب ٤ أرقام على الأقل'; HS.fx('no'); return; }
+        if (a !== b) { er.textContent = 'الرقمان غير متطابقين'; HS.fx('no'); return; }
+        HS.setSetting('pin', a); try { sessionStorage.setItem('hs-pin', '1'); } catch (x) {} next(); };
+    }
     P.innerHTML = `<form class="p-form pin" id="pinF"><h1 class="p-title">🔒 صفحة الأب</h1><label for="pinI">الرقم السري</label>
-      <input id="pinI" inputmode="numeric" type="password" maxlength="8" autocomplete="off"><button type="submit" class="p-btn">دخول</button><p class="pp-note" id="pinE"></p></form>`;
+      <input id="pinI" inputmode="numeric" type="password" maxlength="8" autocomplete="off"><button type="submit" class="p-btn">دخول</button><p class="pp-note" id="pinE" role="alert"></p></form>`;
     const i = document.getElementById('pinI'); i.focus();
     document.getElementById('pinF').onsubmit = e => { e.preventDefault();
       if (i.value === pin) { try { sessionStorage.setItem('hs-pin', '1'); } catch (x) {} next(); }
       else { i.value = ''; document.getElementById('pinE').textContent = 'رقم غير صحيح'; HS.fx('no'); } };
+  }
+  /** after the lock: a child who set themselves up is waiting for the parent to choose their hard subjects */
+  function parentFirst() {
+    let later = false; try { later = sessionStorage.getItem('hs-focus-later') === '1'; } catch (e) {}
+    const k = !later && HS.profiles().find(p => p.needFocus && p.grade);
+    if (k) { W = { step: 'focus', who: 'parent', pid: k.id, grade: k.grade, focus: HS.focusOf(k).slice(), from: 'parent' }; return setup(); }
+    parent();
   }
 
   /* ---------- parent page ---------- */
@@ -338,11 +522,13 @@
       const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && (r.answered || r.labs.length));
       const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
       const dr = APPS.dict ? APPS.dict.report(k.id) : null;
-      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span><div><h3 class="nm">${esc(k.name)}</h3><p>⭐ ${ar(HS.stars(k.id))} للصرف (جمع ${ar(d.stars)}) · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
-        ${HS.orders(k.id).filter(o => o.st === 'wait').map(o => `<div class="pp-order"><span class="em">${HS.rewardArt(o)}</span><span><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} · ⭐ ${ar(o.cost)}</small></span>
-          <button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع النجوم</button></div>`).join('')}
+      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span><div><h3 class="nm">${esc(k.name)}</h3><p>💎 ${ar(HS.diamonds(k.id))} للصرف (جمع ${ar(HS.earned(k.id))}) · ⭐ ${ar(HS.yellow(k.id))} نجمة · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
+        ${k.id !== 'guest' ? `<div class="pp-focus"><span>🎒 ${k.grade ? gradeName(k.grade) : 'لم يُختر الصف'}${k.grade ? ` · 💎 التركيز: ${focusChoices(k.grade).filter(c => HS.focusOf(k).includes(c.id)).map(c => c.name).join('، ') || '—'}` : ''}</span>
+          <button type="button" class="p-btn sec" data-setup="${k.id}">✏️ الصف والمواد الصعبة</button></div>` : ''}
+        ${HS.orders(k.id).filter(o => o.st === 'wait').map(o => `<div class="pp-order"><span class="em">${HS.rewardArt(o)}</span><span><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} · ${o.u === 'dia' ? '💎' : '⭐'} ${ar(o.cost)}</small></span>
+          <button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع الماسات</button></div>`).join('')}
         ${shopOn() ? `<div class="pp-gift"><span>${HS.goal(k.id) ? `🎯 يجمع لـ ${esc(HS.goal(k.id).em)} ${esc(HS.goal(k.id).name)} (${ar(HS.stars(k.id))}/${ar(HS.goal(k.id).cost)})` : '🎯 لم يختر هدفًا بعد'}</span>
-          <details><summary>🎁 أعطه نجومًا مفاجأة</summary><form class="pp-gift-f" data-gift="${k.id}"><select aria-label="عدد النجوم">${[5, 10, 20, 50].map(n => `<option value="${n}">⭐ ${ar(n)}</option>`).join('')}</select>
+          <details><summary>🎁 أعطه ماسات مفاجأة</summary><form class="pp-gift-f" data-gift="${k.id}"><select aria-label="عدد النجوم">${[5, 10, 20, 50].map(n => `<option value="${n}">💎 ${ar(n)}</option>`).join('')}</select>
             <input maxlength="60" placeholder="رسالة قصيرة، مثال: فخور فيك لأنك ساعدت أختك" aria-label="رسالة"><button type="submit" class="p-btn">أرسل 🎁</button></form>
             <p class="pp-note">المفاجآت التي لا يتوقعها الطفل لا تُضعف حبّه للتعلّم، بعكس المكافأة الموعودة. استعملها لمدح جهد محدد.</p></details></div>` : ''}
         ${!ur.length && !kg.length && !(dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar)) ? '<p class="pp-empty">لا يوجد نشاط بعد.</p>' : ''}
@@ -367,7 +553,7 @@
     <section class="pp-kid"><h3>⚙️ الإعدادات</h3>
       <label class="pp-sw"><input type="checkbox" id="ppSound" ${s.sound ? 'checked' : ''}> مؤثرات صوتية عند الإجابة</label>
 ${syncBox()}
-      <h4>🛒 متجر النجوم</h4>
+      <h4>🛒 متجر الهدايا (بالماس 💎)</h4>
       <label class="pp-sw"><input type="checkbox" id="ppShop" ${shopOn() ? 'checked' : ''}> إظهار المتجر للأطفال</label>
       <details class="pp-how"><summary>💡 كيف تجعل المتجر ينجح؟ (من الأبحاث)</summary><ul>
         <li><b>أسعار صغيرة ومتوسطة وكبيرة:</b> أول مكافأة يجب أن يصل لها خلال يوم أو يومين، وإلا يفقد الحماس. تحت كل مكافأة تجد كم يومًا يحتاج كل طفل.</li>
@@ -380,13 +566,13 @@ ${syncBox()}
       ${HS.ideas().length ? `<div class="pp-ideas"><b>💡 أفكار من الأطفال</b>${HS.ideas().map(i => `<div class="pp-idea"><span>${esc(i.name)}: «${esc(i.text)}»</span><button type="button" class="p-btn sec" data-idea-add="${i.id}">＋ للمتجر</button><button type="button" class="p-btn sec danger" data-idea-del="${i.id}" aria-label="حذف">🗑️</button></div>`).join('')}</div>` : ''}
       <div class="pp-rw">${HS.rewards().map((r, i) => `<div class="pp-rw-row" data-i="${i}"><input class="em" value="${esc(r.em)}" maxlength="4" aria-label="الرمز"><input class="nm" value="${esc(r.name)}" maxlength="40" aria-label="المكافأة">
           <button type="button" class="p-btn sec danger" data-rdel="${i}" aria-label="حذف">🗑️</button>
-          <div class="pp-rw-2"><label>⭐ <input class="ct" type="number" min="1" max="9999" inputmode="numeric" value="${r.cost}" aria-label="السعر"></label>
+          <div class="pp-rw-2"><label>💎 <input class="ct" type="number" min="1" max="9999" inputmode="numeric" value="${r.cost}" aria-label="السعر"></label>
             <label>لمن <select class="fr" aria-label="لمن">${[['', 'الكل'], ...HS.profiles().map(p => [p.id, [HS.avatarText(p), p.name].filter(Boolean).join(' ')])].map(([v, t]) => `<option value="${v}" ${(r.for || '') === v ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
             <label>حد أسبوعي <input class="wk" type="number" min="0" max="50" inputmode="numeric" value="${r.week || ''}" placeholder="—" aria-label="حد أسبوعي"></label></div>
           <small class="pp-days">${daysHint(r)}</small></div>`).join('')}</div>
       <div class="pp-actions"><button type="button" class="p-btn sec" id="ppRAdd">＋ مكافأة جديدة</button><button type="button" class="p-btn" id="ppRSave">💾 حفظ المكافآت</button></div>
       <h4>🔒 رقم سري لصفحة الأب</h4>
-      <p class="pp-note">حتى لا يغيّر الأطفال الأسعار أو يوافقون على كوبوناتهم بأنفسهم. اتركه فارغًا لإلغائه.</p>
+      <p class="pp-note">حتى لا يغيّر الأطفال المواد أو الأسعار أو يوافقوا على هداياهم بأنفسهم.</p>
       <div class="pp-actions"><input id="ppPin" inputmode="numeric" maxlength="8" placeholder="مثال: 2580" value="${esc(s.pin || '')}" aria-label="الرقم السري"><button type="button" class="p-btn sec" id="ppPinSave">حفظ الرقم</button></div>
       <h4>⏱️ وقت الروضة</h4>
       <p class="pp-note">بعد هذه المدة من اللعب في اليوم تظهر شاشة «وقت الاستراحة». منظمة الصحة العالمية تنصح بساعة شاشة كحد أقصى يوميًا لعمر ٢–٤ سنوات، والأقل أفضل.</p>
@@ -408,6 +594,8 @@ ${syncBox()}
         <li><b>أندرويد:</b> الإعدادات ← تحويل النص إلى كلام ← محرك Google ← تثبيت بيانات الصوت ← العربية.</li>
         <li>الأفضل: توليد مقاطع صوتية بالذكاء الاصطناعي مرة واحدة (انظر README، قسم الصوت).</li></ul></details>
     </section>`;
+    P.querySelectorAll('[data-setup]').forEach(b => b.onclick = () => { const k = HS.profiles().find(x => x.id === b.dataset.setup);
+      setupGo({ step: 'grade', who: 'parent', pid: k.id, grade: k.grade, focus: HS.focusOf(k).slice(), from: 'parent' }); });
     P.querySelectorAll('[data-kglv]').forEach(sel => sel.onchange = () => {
       const [pid, k] = sel.dataset.kglv.split('|'); APPS.kg.setLevel(pid, k, +sel.value); HS.toast('✓ تم حفظ المستوى');
     });
@@ -419,20 +607,20 @@ ${syncBox()}
     });
     P.querySelectorAll('[data-reset]').forEach(b => b.onclick = () => { const k = 'r' + b.dataset.reset; if (confirmKey === k) { HS.resetProgress(b.dataset.reset); confirmKey = ''; } else confirmKey = k; parent(); });
     P.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { const k = 'd' + b.dataset.del; if (confirmKey === k) { HS.removeProfile(b.dataset.del); confirmKey = ''; } else confirmKey = k; parent(); });
-    P.querySelectorAll('[data-ord]').forEach(b => b.onclick = () => { const [k, o, how] = b.dataset.ord.split('|'); HS.settleOrder(k, o, how); HS.toast(how === 'done' ? '✅ تم' : '↩️ رجعت النجوم'); parent(); });
+    P.querySelectorAll('[data-ord]').forEach(b => b.onclick = () => { const [k, o, how] = b.dataset.ord.split('|'); HS.settleOrder(k, o, how); HS.toast(how === 'done' ? '✅ تم' : '↩️ رجعت الماسات'); parent(); });
     document.getElementById('ppShop').onchange = e => HS.setSetting('shop', e.target.checked);
     const readRw = () => [...P.querySelectorAll('.pp-rw-row')].map((row, i) => { const r = { id: HS.rewards()[i] ? HS.rewards()[i].id : 'r' + Date.now().toString(36) + i,
       em: row.querySelector('.em').value.trim() || '🎁', name: row.querySelector('.nm').value.trim(), cost: Math.max(1, Math.round(+row.querySelector('.ct').value || 1)) };
       const fr = row.querySelector('.fr').value, wk = Math.round(+row.querySelector('.wk').value || 0); if (fr) r.for = fr; if (wk > 0) r.week = wk; return r; }).filter(r => r.name);
     P.querySelectorAll('[data-gift]').forEach(f => f.onsubmit = e => { e.preventDefault(); const n = +f.querySelector('select').value, m = f.querySelector('input').value.trim();
-      HS.gift(f.dataset.gift, n, m); HS.toast(`🎁 أُرسلت ⭐ ${ar(n)}، ستظهر له كمفاجأة`); parent(); });
+      HS.gift(f.dataset.gift, n, m); HS.toast(`🎁 أُرسلت 💎 ${ar(n)}، ستظهر له كمفاجأة`); parent(); });
     P.querySelectorAll('[data-idea-add]').forEach(b => b.onclick = () => { const i = HS.ideas().find(x => x.id === b.dataset.ideaAdd); const l = readRw();
       l.push({ id: 'r' + Date.now().toString(36), em: '💡', name: i.text, cost: 50 }); HS.setSetting('rewards', l); HS.setSetting('ideas', HS.ideas().filter(x => x !== i)); HS.toast('أُضيفت. عدّل السعر ثم احفظ'); parent(); });
     P.querySelectorAll('[data-idea-del]').forEach(b => b.onclick = () => { HS.setSetting('ideas', HS.ideas().filter(x => x.id !== b.dataset.ideaDel)); parent(); });
     document.getElementById('ppRSave').onclick = () => { HS.setSetting('rewards', readRw()); HS.toast('💾 تم حفظ المكافآت'); parent(); };
     document.getElementById('ppRAdd').onclick = () => { const l = readRw(); l.push({ id: 'r' + Date.now().toString(36), em: '🎁', name: 'مكافأة جديدة', cost: 50 }); HS.setSetting('rewards', l); parent(); };
     P.querySelectorAll('[data-rdel]').forEach(b => b.onclick = () => { const l = readRw(); l.splice(+b.dataset.rdel, 1); HS.setSetting('rewards', l); parent(); });
-    document.getElementById('ppPinSave').onclick = () => { const v = document.getElementById('ppPin').value.trim(); HS.setSetting('pin', v); try { sessionStorage.setItem('hs-pin', '1'); } catch (e) {} HS.toast(v ? '🔒 تم حفظ الرقم السري' : 'تم إلغاء الرقم السري'); };
+    document.getElementById('ppPinSave').onclick = () => { const v = document.getElementById('ppPin').value.trim(); if (!/^\d{4,8}$/.test(v)) { HS.toast('اكتب ٤ أرقام على الأقل'); HS.fx('no'); return; } HS.setSetting('pin', v); try { sessionStorage.setItem('hs-pin', '1'); } catch (e) {} HS.toast('🔒 تم حفظ الرقم السري'); };
     bindSync();
     document.getElementById('ppMin').onchange = e => HS.setSetting('kgMinutes', +e.target.value);
     document.getElementById('ppSound').onchange = e => HS.setSetting('sound', e.target.checked);
@@ -462,7 +650,9 @@ ${syncBox()}
     if ((m = h.match(/^unit-([a-z0-9]+)(?:-(.+))?$/i)) && APPS.unit && window.UNITS && UNITS[m[1]]) { openApp('unit', m[1] + (m[2] ? '-' + m[2] : '')); return bar(h); }
     closeApp(); confirmKey = '';
     const draw = r => { if (r !== h) { try { history.replaceState(null, '', '#' + r); } catch (e) {} } bar(r); };
-    if (h === 'parent') { showScreen('portal'); draw('parent'); return gate(parent); }
+    if (h === 'parent') { showScreen('portal'); draw('parent'); return gate(parentFirst); }
+    if (h === 'setup') { showScreen('portal'); draw('setup'); return setup(); }
+    if (h === 'explore') { showScreen('portal'); draw('explore'); return explore(); }
     if (h !== 'shop') buying = '';
     if (h === 'shop') { showScreen('portal'); if (shopOn()) { draw('shop'); return shop(); } draw('home'); return home(); }
     showScreen('portal');

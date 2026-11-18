@@ -34,7 +34,9 @@ const arFirst = x => { const c = normAr(x.ahs)[0]; return c === 'ي' && x.ahs[0]
 
 /* ---------- saved data ---------- */
 /* diff: 0 = all words, 3 = easy, 4 = medium, 5 = hard (the number in data.js) */
-const D = () => { const d = HS.data('dict'); d.mine = d.mine || []; d.diff = d.diff || 0; d.mode = d.mode || 'en'; return d; };
+/** the starting difficulty a child's grade suggests (3 easy · 4 medium · 5 hard); 0 = all */
+const SUGGEST = { kg: 3, g1: 3, g2: 3, g3: 3, g4: 4, g5: 4, g6: 5 };
+const D = () => { const d = HS.data('dict'); d.mine = d.mine || []; if (d.diff === undefined) d.diff = SUGGEST[HS.gradeOf(HS.current())] || 0; d.diff = d.diff || 0; d.mode = d.mode || 'en'; return d; };
 const AR = () => D().mode === 'ar';
 const NS = () => AR() ? 'dictar' : 'dict';          // separate progress for each direction
 const box = id => HS.srs.box(NS(), id);
@@ -52,7 +54,7 @@ const pos = x => `${POS[x.p][0]} · ${POS[x.p][1]}`;
 const stars = n => '★'.repeat(n) + '☆'.repeat(Math.max(0, 4 - n));
 const LEVEL = { 3: '🟢 سهل', 4: '🟡 متوسط', 5: '🔴 صعب' };
 function sayEn(t) { HS.speak([[t, 'en']]); }   // the device's English voice, for English words only
-function refreshStars() { const s = $('dStars'); if (s) s.textContent = ar(HS.stars()); }
+function refreshStars() { const s = $('dStars'); if (s) s.textContent = ar(HS.stars()); }   // diamonds to spend
 HS.on('stars', refreshStars);
 /* every page is a route (refresh, Back and Forward work; the site header has the only Back button):
      #app-dict · -topics · -t-<topic> · -az · -l-<letter> · -mine · -q-<search> · -w-<word id> · -practice[-<word id>] · -spell · -done */
@@ -334,7 +336,7 @@ function answer(ok, given) {
 }
 function endPractice() {
   HS.party();
-  M().innerHTML = `<div class="d-card center"><div class="d-bigem">🏆</div><h2>أحسنت!</h2><p>تدرّبت على كلمات جديدة. كل كلمة تعود لك بعد أيام حتى تثبت في ذاكرتك.</p>
+  M().innerHTML = `<div class="d-card center"><div class="d-bigem">${HS.kidCheer()}🏆</div><h2>أحسنت!</h2><p>تدرّبت على كلمات جديدة. كل كلمة تعود لك بعد أيام حتى تثبت في ذاكرتك.</p>
     <div class="d-actions"><button type="button" class="d-btn" data-a="practice">🔁 تدريب جديد</button><button type="button" class="d-btn sec" data-a="home">🏠 القاموس</button></div></div>`;
   P = null;
 }

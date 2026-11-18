@@ -5,7 +5,7 @@ with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':400,'height':860})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:errs.append('CONSOLE '+m.text) if m.type=='error' else None)
     pg.goto(U);pg.wait_for_timeout(300)
-    pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    addkid(pg,'محمد');pg.wait_for_timeout(200)
     pass
     pg.click('[data-nav="app-dict"]');pg.wait_for_timeout(300);pg.screenshot(path=OUT+'/x1.png',full_page=True)
     def w(): return pg.evaluate('document.documentElement.scrollWidth')
@@ -53,5 +53,5 @@ with sync_playwright() as p:
             pg.fill('#dType','wrnog');pg.click('#dTypeF button');pg.wait_for_timeout(200);pg.screenshot(path=OUT+'/xwrong.png',full_page=True)
         dhome(pg);pg.wait_for_timeout(150)
     print('modes',modes)
-    pg.goto('about:blank');pg.goto(U+'#parent');pg.wait_for_timeout(300);print('parent has dict',pg.locator('text=قاموسي').count())
+    unlock(pg);pg.goto('about:blank');pg.goto(U+'#parent');pg.wait_for_timeout(300);print('parent has dict',pg.locator('text=قاموسي').count())
     print(errs[:5])

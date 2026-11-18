@@ -1,3 +1,4 @@
+from hlp import *
 from playwright.sync_api import sync_playwright
 from _util import U, CHROME, OUT, FIX
 R=['home','y-g4','s-g4-sci','unit-g4scieco','unit-g4scieco-l2','unit-g4scieco-play','unit-g3sciearth-play-lab-erosion','unit-g4scieco-test-final','app-kg','app-kg-game-robot','app-dict','parent']
@@ -6,7 +7,7 @@ with sync_playwright() as p:
     b=p.chromium.launch(**CHROME)
     for w in [320,390,768,1024,1280]:
         pg=b.new_page(viewport={'width':w,'height':800});errs=[];pg.on('pageerror',lambda e:errs.append(str(e)))
-        pg.goto(U);pg.wait_for_timeout(300);pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+        pg.goto(U);pg.wait_for_timeout(300);addkid(pg,'محمد');pg.wait_for_timeout(200)
         for r in R:
             pg.evaluate(f"HS.nav.go('{r}')");pg.wait_for_timeout(350)
             sw=pg.evaluate('document.documentElement.scrollWidth')

@@ -16,7 +16,7 @@ with sync_playwright() as p:
     pg=b.new_page(viewport={'width':400,'height':860})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:errs.append('CONSOLE '+m.text) if m.type=='error' else None)
     pg.goto(U);pg.wait_for_timeout(400)
-    pg.fill('#pName','سارة');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    addkid(pg,'سارة');pg.wait_for_timeout(200)
     pg.goto(U+'#app-kg');pg.wait_for_timeout(400)
     pg.screenshot(path=OUT+'/k0.png',full_page=True)
     def lvl(l):

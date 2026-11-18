@@ -1,3 +1,4 @@
+from hlp import *
 import json
 from playwright.sync_api import sync_playwright
 from _util import U, CHROME, OUT, FIX
@@ -32,9 +33,9 @@ def mk(browser,name):
     queues[name]=[]
     pg.expose_function('__db',db)
     pg.goto(U);pg.wait_for_timeout(300); pages.append(pg); pg._errs=errs; return pg
+import hlp
 def addkid(pg,name,av):
-    if pg.locator('#pNew').count(): pg.click('#pNew')
-    pg.fill('#pName',name);pg.click(f'[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    hlp.addkid(pg,name);pg.wait_for_timeout(200)
 def stars(pg,name): return pg.evaluate("n=>{const p=HS.profiles().find(x=>x.name===n);return p?[HS.earned(p.id),HS.stars(p.id)]:null}",name)
 with sync_playwright() as p:
     b=p.chromium.launch(**CHROME)
@@ -44,7 +45,7 @@ with sync_playwright() as p:
     addkid(B,'محمد','🦁'); B.evaluate("HS.addStars(5)")
     A.wait_for_timeout(200);B.wait_for_timeout(200)
     # A creates family
-    A.goto(U+'#parent');A.wait_for_timeout(300);A.click('#ppSyncNew');A.wait_for_timeout(1200)
+    A.evaluate("HS.setSetting('pin','2580');sessionStorage.setItem('hs-pin','1');sessionStorage.setItem('hs-focus-later','1')");A.goto(U+'#parent');A.wait_for_timeout(300);A.click('.pp-other summary');A.click('#ppSyncNew');A.wait_for_timeout(1200)
     code=A.evaluate("HS.sync.family()");print('code',code,'status',A.evaluate("HS.sync.status()"),'docs',sorted(store))
     A.screenshot(path=OUT+'/sync_parent.png',full_page=True)
     # B joins via link

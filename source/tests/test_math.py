@@ -13,7 +13,7 @@ def ans_last(pg):   # read the product asked in the last open number question, e
 with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':390,'height':844})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)+' '+(e.stack or '')[:300]));pg.on('console',lambda m:errs.append(m.text) if m.type=='error' else None)
-    pg.goto(U);pg.wait_for_timeout(300);pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    pg.goto(U);pg.wait_for_timeout(300);addkid(pg,'محمد');pg.wait_for_timeout(200)
     # every lesson draws, with models
     for u in ['g3math5','g4math5']:
         n=pg.evaluate(f"UNITS.{u}.lessons.length")

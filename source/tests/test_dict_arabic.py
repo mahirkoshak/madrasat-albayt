@@ -5,7 +5,7 @@ with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':400,'height':860})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:errs.append('CONSOLE '+m.text) if m.type=='error' else None)
     pg.goto(U);pg.wait_for_timeout(300)
-    pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    addkid(pg,'محمد');pg.wait_for_timeout(200)
     pg.goto('about:blank');pg.goto(U+'#app-dict');pg.wait_for_timeout(400)
     W=lambda: pg.evaluate('document.documentElement.scrollWidth')
     # dice on home
@@ -43,5 +43,5 @@ with sync_playwright() as p:
             pg.wait_for_timeout(80)
         print('box',bx,modes,'finished',pg.locator('.d-bigem').count(),'w',W())
     print('ar progress',pg.evaluate("Object.keys(HS.data('dictar').srs).length"),'en untouched',pg.evaluate("Object.keys(HS.data('dict').srs||{}).length"))
-    pg.goto('about:blank');pg.goto(U+'#parent');pg.wait_for_timeout(300);print('parent ar line',pg.locator('text=📝 عربي').count())
+    unlock(pg);pg.goto('about:blank');pg.goto(U+'#parent');pg.wait_for_timeout(300);print('parent ar line',pg.locator('text=📝 عربي').count())
     print(errs[:5])

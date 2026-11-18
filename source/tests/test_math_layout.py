@@ -9,7 +9,7 @@ with sync_playwright() as p:
     for W,H in [(360,740),(768,1024),(1280,800)]:
         pg=b.new_page(viewport={'width':W,'height':H})
         errs=[];pg.on('pageerror',lambda e:errs.append(str(e)))
-        pg.goto(U);pg.wait_for_timeout(300);pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+        pg.goto(U);pg.wait_for_timeout(300);addkid(pg,'محمد');pg.wait_for_timeout(200)
         for u in ['g3math5','g4math5']:
             routes=pg.evaluate(f"""(()=>{{const U=UNITS.{u},r=['','-cards','-play','-test','-play-memory','-play-speed'];
               U.lessons.forEach(l=>r.push('-'+l.id));U.games.sort.forEach(g=>r.push('-play-s-'+g.id));U.games.order.forEach(g=>r.push('-play-o-'+g.id));

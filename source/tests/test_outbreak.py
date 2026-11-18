@@ -5,7 +5,7 @@ from _util import U, CHROME, OUT, FIX
 with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':390,'height':844})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:errs.append(m.text) if m.type=='error' else None)
-    pg.goto(U);pg.wait_for_timeout(300);pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    pg.goto(U);pg.wait_for_timeout(300);addkid(pg,'محمد');pg.wait_for_timeout(200)
     # data: the key column separates sick from healthy; no other column does
     bad=pg.evaluate("""(()=>{const out=[];for(const c of APPS.unit.labs().g4scihealth.outbreak.challenges){
       const val=(r,k)=>(c.same&&c.same[r[k+1]])||r[k+1], sick=c.rows.filter(r=>r[4]), well=c.rows.filter(r=>!r[4]);

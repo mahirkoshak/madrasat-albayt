@@ -152,6 +152,13 @@
     if (id) return `<span class="hs-av">${HS.art(id, { face: !o.big, small: !o.big, cls: 'hs-av-img', fb: '🙂', eager: o.eager })}</span>`;
     return `<span class="hs-av-em" aria-hidden="true">${HS.esc(isAvId(v) ? '🙂' : v)}</span>`;
   };
+  /** the child's happy face (avatar-…-happy) when it exists, otherwise the usual one: for results screens */
+  HS.avatarHappy = (p, o = {}) => {
+    const id = HS.avatarArt((p && p.avatar) || ''), h = id && HS.ART[id + '-happy'] ? id + '-happy' : null;
+    return h ? `<span class="hs-av">${HS.art(h, { face: !o.big, small: !o.big, cls: 'hs-av-img', fb: '🙂', eager: true })}</span>` : HS.avatar(p, o);
+  };
+  /** next to the mascot on a results screen: the child, smiling (nothing for a guest) */
+  HS.kidCheer = () => { const me = HS.current(); return me && me.id !== 'guest' ? `<span class="kid-cheer" style="background:${HS.kidColor(me)}">${HS.avatarHappy(me)}</span>` : ''; };
   /** for plain text (a <select> option, a sentence): the emoji, or nothing for a picture avatar */
   HS.avatarText = p => { const v = (p && p.avatar) || ''; return isAvId(v) ? '' : v; };
   /** spoken/read names of the picture avatars, for screen readers in the picker */
@@ -168,9 +175,13 @@
   HS.profiles = () => S.profiles.slice();
   HS.current = () => S.profiles.find(p => p.id === S.current) || (S.profiles.length ? null : GUEST);
   HS.setCurrent = id => { S.current = id; HS.save(); emit('profile'); };
-  HS.addProfile = ({ name, avatar, color }) => {
+  HS.addProfile = ({ name, avatar, color, grade, focus, needFocus }) => {
     const id = 'p' + Date.now().toString(36);
-    S.profiles.push({ id, name: (name || '').trim() || 'بطل', avatar: avatar || '⭐', color: color || HS.COLORS[0] });
+    const pr = { id, name: (name || '').trim() || 'بطل', avatar: avatar || '⭐', color: color || HS.COLORS[0] };
+    if (grade) pr.grade = grade;
+    if (focus) pr.focus = focus.slice();
+    if (needFocus) pr.needFocus = true;
+    S.profiles.push(pr);
     // first real profile inherits anything earned as guest
     if (S.profiles.length === 1 && S.p.guest) { S.p[id] = S.p.guest; delete S.p.guest; }
     S.current = id; HS.save(); emit('profile'); return id;
@@ -191,15 +202,57 @@
   HS.data = (ns, id) => { const p = prof(id); if (!p.ns[ns]) p.ns[ns] = {}; return p.ns[ns]; };
   HS.resetProgress = id => { S.p[id || (HS.current() || GUEST).id] = { stars: 0, days: [], ns: {} }; HS.save(); emit('stars'); };   // also clears shop coupons
 
-  /* ---------- stars & practice days ---------- */
-  /* p.stars = all stars ever earned; p.spent = stars spent in the shop. The child sees what is left to spend. */
-  HS.stars = id => { const p = prof(id); return p.stars - (p.spent || 0); };
-  HS.earned = id => prof(id).stars;
+  /* ---------- diamonds, stars & practice days ----------
+     Each child has a grade and focus subjects (the hard ones, chosen by the parent).
+     - Work in a focus subject (or a focus group of kindergarten games) earns blue diamonds 💎.
+     - Everything else earns yellow stars ⭐; every 10 stars turn into 1 diamond by themselves.
+     - Gifts in the shop are bought with diamonds only.
+     p.dia = diamonds ever earned · p.diaSpent = diamonds spent · p.cs = stars waiting to become a diamond (0–9)
+     p.stars = yellow stars ever earned (for fun; they no longer buy gifts) · p.spent = stars spent before diamonds existed */
+  HS.STARS_PER_DIAMOND = 10;
+  HS.diamonds = id => { const p = prof(id); return (p.dia || 0) - (p.diaSpent || 0); };
+  HS.stars = HS.diamonds;   // what the shop spends: diamonds (old name kept for the apps that read it)
+  HS.yellow = id => prof(id).stars;
+  HS.toNextDiamond = id => prof(id).cs || 0;
+  HS.earned = id => prof(id).dia || 0;
+  /** the grade a profile chose, and its focus list (subject ids of that grade, or kindergarten game groups) */
+  HS.gradeOf = p => (p && p.grade) || '';
+  HS.focusOf = p => (p && p.focus) || [];
+  /* kindergarten game groups a parent can pick as focus (game keys from src/apps/kg/app.html) */
+  HS.KG_GROUPS = [
+    { id: 'letters', name: 'الحروف (عربي وإنجليزي)', em: '🔤', games: ['letters', 'first'] },
+    { id: 'numbers', name: 'الأرقام والعدّ', em: '🔢', games: ['count'] },
+    { id: 'world', name: 'الألوان والأشكال والحيوانات', em: '🎨', games: ['col', 'shp', 'ani', 'basket'] },
+    { id: 'think', name: 'ألعاب التفكير', em: '🧠', games: ['puzzle', 'compose', 'where', 'robot', 'story', 'rule', 'tale', 'build', 'pat', 'odd', 'memory'] }
+  ];
+  /** where the child is right now, read from the address: { year, subject } for a unit, { kg: game } or { app } */
+  HS.place = (hash) => {
+    const h = (hash == null ? location.hash : hash).replace(/^#/, ''); let m;
+    if ((m = /^unit-([a-z0-9]+)/.exec(h))) {
+      for (const y of window.CATALOG || []) for (const sb of y.subjects || []) for (const u of sb.units || []) if (u.unit === m[1]) return { year: y.id, subject: sb.id };
+      return { unit: m[1] };
+    }
+    if ((m = /^app-kg-game-([a-z]+)/.exec(h))) return { year: 'kg', kg: m[1] };
+    if ((m = /^app-([a-z]+)/.exec(h))) return { app: m[1] };
+    return {};
+  };
+  /** does work at this place count as focus work for profile p? */
+  HS.isFocus = (p, pl) => {
+    const f = HS.focusOf(p); if (!f.length) return false; pl = pl || HS.place();
+    if (pl.kg) return HS.gradeOf(p) === 'kg' && HS.KG_GROUPS.some(g => f.includes(g.id) && g.games.includes(pl.kg));
+    if (pl.subject) return pl.year === HS.gradeOf(p) && f.includes(pl.subject);
+    if (pl.app === 'dict') return f.includes('en');   // the dictionary is English practice
+    return false;
+  };
+  const logDia = (p, n) => { const t = HS.today(); p.log = p.log || {}; p.log[t] = (p.log[t] || 0) + n; const ks = Object.keys(p.log); if (ks.length > 60) delete p.log[ks.sort()[0]]; };
   HS.addStars = (n = 1) => {
-    const p = prof(); p.stars += n; markDay(p);
-    const t = HS.today(); p.log = p.log || {}; p.log[t] = (p.log[t] || 0) + n;          // stars per day, for the parent's pricing
-    const ks = Object.keys(p.log); if (ks.length > 60) delete p.log[ks.sort()[0]];
+    const me = HS.current(), p = prof(); markDay(p);
+    let dia = 0;
+    if (me && HS.isFocus(me)) dia = n;
+    else { p.stars += n; p.cs = (p.cs || 0) + n; while (p.cs >= HS.STARS_PER_DIAMOND) { p.cs -= HS.STARS_PER_DIAMOND; dia++; } }
+    if (dia) { p.dia = (p.dia || 0) + dia; logDia(p, dia); }   // diamonds per day, for the parent's pricing
     HS.save(); emit('stars');
+    if (dia) emit('diamond', dia);
   };
   /** average stars a day over the last 7 days this child practised (0 if none) */
   HS.earnRate = id => { const v = Object.entries(prof(id).log || {}).sort().slice(-7).map(x => x[1]); return v.length ? Math.round(v.reduce((a, b) => a + b, 0) / v.length) : 0; };
@@ -236,8 +289,8 @@
   HS.buy = rid => {
     const r = HS.rewardsFor().find(x => x.id === rid), p = prof();
     if (!r || HS.cantBuy(r)) return null;
-    const o = { id: 'o' + Date.now().toString(36), rid: r.id, em: r.em, name: r.name, cost: r.cost, t: Date.now(), st: 'wait' };
-    HS.orders().push(o); p.spent = (p.spent || 0) + r.cost;
+    const o = { id: 'o' + Date.now().toString(36), rid: r.id, em: r.em, name: r.name, cost: r.cost, t: Date.now(), st: 'wait', u: 'dia' };
+    HS.orders().push(o); p.diaSpent = (p.diaSpent || 0) + r.cost;
     if (p.goal === rid) p.goal = '';
     if (p.orders.length > 80) p.orders.splice(0, p.orders.length - 80);
     HS.save(); emit('stars'); return o;
@@ -246,7 +299,7 @@
   HS.goal = id => { const g = prof(id).goal; return g ? HS.rewardsFor(id).find(r => r.id === g) || null : null; };
   HS.setGoal = rid => { prof().goal = rid || ''; HS.save(); emit('stars'); };
   /* surprise gift from the parent (unexpected rewards don't lower interest the way promised ones can) */
-  HS.gift = (pid, n, msg) => { const p = prof(pid); p.stars += n; (p.gifts = p.gifts || []).push({ n, msg: msg || '', t: Date.now(), seen: false }); if (p.gifts.length > 30) p.gifts.shift(); HS.save(); emit('stars'); };
+  HS.gift = (pid, n, msg) => { const p = prof(pid); p.dia = (p.dia || 0) + n; (p.gifts = p.gifts || []).push({ n, msg: msg || '', t: Date.now(), seen: false }); if (p.gifts.length > 30) p.gifts.shift(); HS.save(); emit('stars'); };
   HS.unseenGifts = id => (prof(id).gifts || []).filter(g => !g.seen);
   HS.seeGifts = id => { (prof(id).gifts || []).forEach(g => g.seen = true); HS.save(); };
   /* ideas: children can suggest a reward; the parent sees them on the parent page */
@@ -257,7 +310,7 @@
   HS.settleOrder = (pid, oid, how) => {
     const p = prof(pid), o = HS.orders(pid).find(x => x.id === oid);
     if (!o || o.st !== 'wait') return;
-    o.st = how; o.done = Date.now(); if (how === 'back') p.spent = Math.max(0, (p.spent || 0) - o.cost);
+    o.st = how; o.done = Date.now(); if (how === 'back') { if (o.u === 'dia') p.diaSpent = Math.max(0, (p.diaSpent || 0) - o.cost); else p.spent = Math.max(0, (p.spent || 0) - o.cost); }
     HS.save(); emit('stars');
   };
   function markDay(p) { const t = HS.today(); if (p.days[p.days.length - 1] !== t) { p.days.push(t); if (p.days.length > 400) p.days.shift(); } }

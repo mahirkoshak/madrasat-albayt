@@ -6,7 +6,7 @@ from _util import U, CHROME, OUT, FIX
 with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':390,'height':844})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:errs.append(m.text) if m.type=='error' else None)
-    pg.goto(U);pg.wait_for_timeout(300);pg.fill('#pName','سارة');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    pg.goto(U);pg.wait_for_timeout(300);addkid(pg,'سارة');pg.wait_for_timeout(200)
     def open_game(g,l):
         pg.evaluate(f"APPS.kg.setLevel(HS.current().id,'{g}',{l});HS.nav.go('app-kg');HS.nav.go('app-kg-game-{g}')");pg.wait_for_timeout(500)
     # --- change the rule: conflicting cards, correct basket per rule

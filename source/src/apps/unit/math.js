@@ -151,7 +151,7 @@ function mShell(el, lab, goal) {
 }
 function mEnd(el, lab, stars, line, again) {
   const r = mRec(lab.id); r.runs++; r.last = Date.now(); HS.save();
-  el.innerHTML = `<div class="card result"><div class="big">${HS.mascot('cheer', { fb: '🏅' })}</div><h2>أحسنت!</h2><p class="lead">${line}</p>
+  el.innerHTML = `<div class="card result"><div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏅' })}</div><h2>أحسنت!</h2><p class="lead">${line}</p>
     ${stars ? `<p class="mg-stars">${'⭐'.repeat(Math.min(stars, 10))}</p>` : ''}
     <div class="row center"><button type="button" class="btn" id="mgAgain">العب مرة ثانية</button><button type="button" class="btn sec" id="mgBack">إلى الألعاب</button></div></div>`;
   $('mgAgain').onclick = again; $('mgBack').onclick = () => HS.nav.go('unit-' + S.id + '-play');

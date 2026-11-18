@@ -228,6 +228,9 @@
  "dict-answer": {
   "src": "assets/content/dict/answer.webp"
  },
+ "dict-answer-2": {
+  "src": "assets/content/dict/answer-2.webp"
+ },
  "dict-ant": {
   "src": "assets/content/dict/ant.webp"
  },
@@ -240,11 +243,17 @@
  "dict-arm": {
   "src": "assets/content/dict/arm.webp"
  },
+ "dict-arrive": {
+  "src": "assets/content/dict/arrive.webp"
+ },
  "dict-art": {
   "src": "assets/content/dict/art.webp"
  },
  "dict-artist": {
   "src": "assets/content/dict/artist.webp"
+ },
+ "dict-ask": {
+  "src": "assets/content/dict/ask.webp"
  },
  "dict-astronaut": {
   "src": "assets/content/dict/astronaut.webp"
@@ -426,11 +435,17 @@
  "dict-brother": {
   "src": "assets/content/dict/brother.webp"
  },
+ "dict-brush": {
+  "src": "assets/content/dict/brush.webp"
+ },
  "dict-brush-2": {
   "src": "assets/content/dict/brush-2.webp"
  },
  "dict-bucket": {
   "src": "assets/content/dict/bucket.webp"
+ },
+ "dict-build": {
+  "src": "assets/content/dict/build.webp"
  },
  "dict-builder": {
   "src": "assets/content/dict/builder.webp"
@@ -461,6 +476,9 @@
  },
  "dict-button": {
   "src": "assets/content/dict/button.webp"
+ },
+ "dict-buy": {
+  "src": "assets/content/dict/buy.webp"
  },
  "dict-cage": {
   "src": "assets/content/dict/cage.webp"
@@ -516,6 +534,9 @@
  "dict-carrot": {
   "src": "assets/content/dict/carrot.webp"
  },
+ "dict-carry": {
+  "src": "assets/content/dict/carry.webp"
+ },
  "dict-cartoon": {
   "src": "assets/content/dict/cartoon.webp"
  },
@@ -524,6 +545,9 @@
  },
  "dict-cat": {
   "src": "assets/content/dict/cat.webp"
+ },
+ "dict-catch": {
+  "src": "assets/content/dict/catch.webp"
  },
  "dict-cave": {
   "src": "assets/content/dict/cave.webp"
@@ -591,14 +615,23 @@
  "dict-clean": {
   "src": "assets/content/dict/clean.webp"
  },
+ "dict-clean-2": {
+  "src": "assets/content/dict/clean-2.webp"
+ },
  "dict-clever": {
   "src": "assets/content/dict/clever.webp"
+ },
+ "dict-climb": {
+  "src": "assets/content/dict/climb.webp"
  },
  "dict-clinic": {
   "src": "assets/content/dict/clinic.webp"
  },
  "dict-clock": {
   "src": "assets/content/dict/clock.webp"
+ },
+ "dict-close": {
+  "src": "assets/content/dict/close.webp"
  },
  "dict-closed": {
   "src": "assets/content/dict/closed.webp"
@@ -639,8 +672,14 @@
  "dict-comb": {
   "src": "assets/content/dict/comb.webp"
  },
+ "dict-come": {
+  "src": "assets/content/dict/come.webp"
+ },
  "dict-cook": {
   "src": "assets/content/dict/cook.webp"
+ },
+ "dict-cook-2": {
+  "src": "assets/content/dict/cook-2.webp"
  },
  "dict-cookie": {
   "src": "assets/content/dict/cookie.webp"
@@ -795,6 +834,9 @@
  "dict-door": {
   "src": "assets/content/dict/door.webp"
  },
+ "dict-draw": {
+  "src": "assets/content/dict/draw.webp"
+ },
  "dict-draw-2": {
   "src": "assets/content/dict/draw-2.webp"
  },
@@ -803,6 +845,9 @@
  },
  "dict-dress": {
   "src": "assets/content/dict/dress.webp"
+ },
+ "dict-drink": {
+  "src": "assets/content/dict/drink.webp"
  },
  "dict-drive": {
   "src": "assets/content/dict/drive.webp"
@@ -836,6 +881,9 @@
  },
  "dict-easy": {
   "src": "assets/content/dict/easy.webp"
+ },
+ "dict-eat": {
+  "src": "assets/content/dict/eat.webp"
  },
  "dict-eat-out": {
   "src": "assets/content/dict/eat-out.webp"
@@ -948,8 +996,14 @@
  "dict-film": {
   "src": "assets/content/dict/film.webp"
  },
+ "dict-find": {
+  "src": "assets/content/dict/find.webp"
+ },
  "dict-finger": {
   "src": "assets/content/dict/finger.webp"
+ },
+ "dict-finish": {
+  "src": "assets/content/dict/finish.webp"
  },
  "dict-fire": {
   "src": "assets/content/dict/fire.webp"
@@ -987,6 +1041,9 @@
  "dict-flower": {
   "src": "assets/content/dict/flower.webp"
  },
+ "dict-fly": {
+  "src": "assets/content/dict/fly.webp"
+ },
  "dict-fly-2": {
   "src": "assets/content/dict/fly-2.webp"
  },
@@ -1001,6 +1058,9 @@
  },
  "dict-forest": {
   "src": "assets/content/dict/forest.webp"
+ },
+ "dict-forget": {
+  "src": "assets/content/dict/forget.webp"
  },
  "dict-fork": {
   "src": "assets/content/dict/fork.webp"
@@ -1083,6 +1143,9 @@
  "dict-girl": {
   "src": "assets/content/dict/girl.webp"
  },
+ "dict-give": {
+  "src": "assets/content/dict/give.webp"
+ },
  "dict-glass": {
   "src": "assets/content/dict/glass.webp"
  },
@@ -1097,6 +1160,9 @@
  },
  "dict-glue": {
   "src": "assets/content/dict/glue.webp"
+ },
+ "dict-go": {
+  "src": "assets/content/dict/go.webp"
  },
  "dict-goal": {
   "src": "assets/content/dict/goal.webp"
@@ -1130,6 +1196,9 @@
  },
  "dict-great": {
   "src": "assets/content/dict/great.webp"
+ },
+ "dict-grow": {
+  "src": "assets/content/dict/grow.webp"
  },
  "dict-guest": {
   "src": "assets/content/dict/guest.webp"
@@ -1178,6 +1247,9 @@
  },
  "dict-helmet": {
   "src": "assets/content/dict/helmet.webp"
+ },
+ "dict-help": {
+  "src": "assets/content/dict/help.webp"
  },
  "dict-helpful": {
   "src": "assets/content/dict/helpful.webp"
@@ -1305,6 +1377,9 @@
  "dict-juice": {
   "src": "assets/content/dict/juice.webp"
  },
+ "dict-jump": {
+  "src": "assets/content/dict/jump.webp"
+ },
  "dict-kangaroo": {
   "src": "assets/content/dict/kangaroo.webp"
  },
@@ -1313,6 +1388,9 @@
  },
  "dict-key": {
   "src": "assets/content/dict/key.webp"
+ },
+ "dict-kick": {
+  "src": "assets/content/dict/kick.webp"
  },
  "dict-kind": {
   "src": "assets/content/dict/kind.webp"
@@ -1337,6 +1415,9 @@
  },
  "dict-knife": {
   "src": "assets/content/dict/knife.webp"
+ },
+ "dict-know": {
+  "src": "assets/content/dict/know.webp"
  },
  "dict-koala": {
   "src": "assets/content/dict/koala.webp"
@@ -1367,6 +1448,9 @@
  },
  "dict-leaf": {
   "src": "assets/content/dict/leaf.webp"
+ },
+ "dict-learn": {
+  "src": "assets/content/dict/learn.webp"
  },
  "dict-left": {
   "src": "assets/content/dict/left.webp"
@@ -1401,6 +1485,9 @@
  "dict-lightning": {
   "src": "assets/content/dict/lightning.webp"
  },
+ "dict-like": {
+  "src": "assets/content/dict/like.webp"
+ },
  "dict-lion": {
   "src": "assets/content/dict/lion.webp"
  },
@@ -1409,6 +1496,9 @@
  },
  "dict-list": {
   "src": "assets/content/dict/list.webp"
+ },
+ "dict-listen": {
+  "src": "assets/content/dict/listen.webp"
  },
  "dict-little": {
   "src": "assets/content/dict/little.webp"
@@ -1425,8 +1515,17 @@
  "dict-long": {
   "src": "assets/content/dict/long.webp"
  },
+ "dict-look": {
+  "src": "assets/content/dict/look.webp"
+ },
+ "dict-lose": {
+  "src": "assets/content/dict/lose.webp"
+ },
  "dict-loud": {
   "src": "assets/content/dict/loud.webp"
+ },
+ "dict-love": {
+  "src": "assets/content/dict/love.webp"
  },
  "dict-low": {
   "src": "assets/content/dict/low.webp"
@@ -1566,6 +1665,9 @@
  "dict-necklace": {
   "src": "assets/content/dict/necklace.webp"
  },
+ "dict-need": {
+  "src": "assets/content/dict/need.webp"
+ },
  "dict-neighbor": {
   "src": "assets/content/dict/neighbor.webp"
  },
@@ -1649,6 +1751,9 @@
  },
  "dict-onion": {
   "src": "assets/content/dict/onion.webp"
+ },
+ "dict-open": {
+  "src": "assets/content/dict/open.webp"
  },
  "dict-open-2": {
   "src": "assets/content/dict/open-2.webp"
@@ -1794,6 +1899,9 @@
  "dict-plate": {
   "src": "assets/content/dict/plate.webp"
  },
+ "dict-play": {
+  "src": "assets/content/dict/play.webp"
+ },
  "dict-player": {
   "src": "assets/content/dict/player.webp"
  },
@@ -1902,6 +2010,9 @@
  "dict-rainy": {
   "src": "assets/content/dict/rainy.webp"
  },
+ "dict-read": {
+  "src": "assets/content/dict/read.webp"
+ },
  "dict-reading": {
   "src": "assets/content/dict/reading.webp"
  },
@@ -1910,6 +2021,9 @@
  },
  "dict-real": {
   "src": "assets/content/dict/real.webp"
+ },
+ "dict-remember": {
+  "src": "assets/content/dict/remember.webp"
  },
  "dict-repeat": {
   "src": "assets/content/dict/repeat.webp"
@@ -1961,6 +2075,9 @@
  },
  "dict-ruler": {
   "src": "assets/content/dict/ruler.webp"
+ },
+ "dict-run": {
+  "src": "assets/content/dict/run.webp"
  },
  "dict-running": {
   "src": "assets/content/dict/running.webp"
@@ -2043,8 +2160,14 @@
  "dict-seed": {
   "src": "assets/content/dict/seed.webp"
  },
+ "dict-sell": {
+  "src": "assets/content/dict/sell.webp"
+ },
  "dict-sentence": {
   "src": "assets/content/dict/sentence.webp"
+ },
+ "dict-share": {
+  "src": "assets/content/dict/share.webp"
  },
  "dict-shark": {
   "src": "assets/content/dict/shark.webp"
@@ -2103,6 +2226,9 @@
  "dict-sign": {
   "src": "assets/content/dict/sign.webp"
  },
+ "dict-sing": {
+  "src": "assets/content/dict/sing.webp"
+ },
  "dict-singer": {
   "src": "assets/content/dict/singer.webp"
  },
@@ -2111,6 +2237,9 @@
  },
  "dict-sister": {
   "src": "assets/content/dict/sister.webp"
+ },
+ "dict-sit": {
+  "src": "assets/content/dict/sit.webp"
  },
  "dict-size": {
   "src": "assets/content/dict/size.webp"
@@ -2126,6 +2255,9 @@
  },
  "dict-sky": {
   "src": "assets/content/dict/sky.webp"
+ },
+ "dict-sleep": {
+  "src": "assets/content/dict/sleep.webp"
  },
  "dict-slippers": {
   "src": "assets/content/dict/slippers.webp"
@@ -2190,6 +2322,9 @@
  "dict-spaceship": {
   "src": "assets/content/dict/spaceship.webp"
  },
+ "dict-speak": {
+  "src": "assets/content/dict/speak.webp"
+ },
  "dict-spell": {
   "src": "assets/content/dict/spell.webp"
  },
@@ -2217,11 +2352,17 @@
  "dict-stairs": {
   "src": "assets/content/dict/stairs.webp"
  },
+ "dict-stand": {
+  "src": "assets/content/dict/stand.webp"
+ },
  "dict-star": {
   "src": "assets/content/dict/star.webp"
  },
  "dict-starfish": {
   "src": "assets/content/dict/starfish.webp"
+ },
+ "dict-start": {
+  "src": "assets/content/dict/start.webp"
  },
  "dict-station": {
   "src": "assets/content/dict/station.webp"
@@ -2234,6 +2375,9 @@
  },
  "dict-stone": {
   "src": "assets/content/dict/stone.webp"
+ },
+ "dict-stop": {
+  "src": "assets/content/dict/stop.webp"
  },
  "dict-storm": {
   "src": "assets/content/dict/storm.webp"
@@ -2255,6 +2399,9 @@
  },
  "dict-student": {
   "src": "assets/content/dict/student.webp"
+ },
+ "dict-study": {
+  "src": "assets/content/dict/study.webp"
  },
  "dict-subject": {
   "src": "assets/content/dict/subject.webp"
@@ -2295,6 +2442,9 @@
  "dict-sweet": {
   "src": "assets/content/dict/sweet.webp"
  },
+ "dict-swim": {
+  "src": "assets/content/dict/swim.webp"
+ },
  "dict-swimming": {
   "src": "assets/content/dict/swimming.webp"
  },
@@ -2313,8 +2463,14 @@
  "dict-tailor": {
   "src": "assets/content/dict/tailor.webp"
  },
+ "dict-take": {
+  "src": "assets/content/dict/take.webp"
+ },
  "dict-take-off": {
   "src": "assets/content/dict/take-off.webp"
+ },
+ "dict-talk": {
+  "src": "assets/content/dict/talk.webp"
  },
  "dict-tall": {
   "src": "assets/content/dict/tall.webp"
@@ -2327,6 +2483,9 @@
  },
  "dict-tea": {
   "src": "assets/content/dict/tea.webp"
+ },
+ "dict-teach": {
+  "src": "assets/content/dict/teach.webp"
  },
  "dict-teacher": {
   "src": "assets/content/dict/teacher.webp"
@@ -2364,11 +2523,17 @@
  "dict-thin": {
   "src": "assets/content/dict/thin.webp"
  },
+ "dict-think": {
+  "src": "assets/content/dict/think.webp"
+ },
  "dict-thirsty": {
   "src": "assets/content/dict/thirsty.webp"
  },
  "dict-thobe": {
   "src": "assets/content/dict/thobe.webp"
+ },
+ "dict-throw": {
+  "src": "assets/content/dict/throw.webp"
  },
  "dict-thumb": {
   "src": "assets/content/dict/thumb.webp"
@@ -2442,6 +2607,9 @@
  "dict-train": {
   "src": "assets/content/dict/train.webp"
  },
+ "dict-travel": {
+  "src": "assets/content/dict/travel.webp"
+ },
  "dict-tree": {
   "src": "assets/content/dict/tree.webp"
  },
@@ -2456,6 +2624,9 @@
  },
  "dict-true": {
   "src": "assets/content/dict/true.webp"
+ },
+ "dict-try": {
+  "src": "assets/content/dict/try.webp"
  },
  "dict-turtle": {
   "src": "assets/content/dict/turtle.webp"
@@ -2502,6 +2673,9 @@
  "dict-village": {
   "src": "assets/content/dict/village.webp"
  },
+ "dict-visit": {
+  "src": "assets/content/dict/visit.webp"
+ },
  "dict-voice": {
   "src": "assets/content/dict/voice.webp"
  },
@@ -2511,8 +2685,14 @@
  "dict-volleyball": {
   "src": "assets/content/dict/volleyball.webp"
  },
+ "dict-wait": {
+  "src": "assets/content/dict/wait.webp"
+ },
  "dict-waiter": {
   "src": "assets/content/dict/waiter.webp"
+ },
+ "dict-walk": {
+  "src": "assets/content/dict/walk.webp"
  },
  "dict-wall": {
   "src": "assets/content/dict/wall.webp"
@@ -2520,8 +2700,14 @@
  "dict-wallet": {
   "src": "assets/content/dict/wallet.webp"
  },
+ "dict-want": {
+  "src": "assets/content/dict/want.webp"
+ },
  "dict-warm": {
   "src": "assets/content/dict/warm.webp"
+ },
+ "dict-wash": {
+  "src": "assets/content/dict/wash.webp"
  },
  "dict-washing-machine": {
   "src": "assets/content/dict/washing-machine.webp"
@@ -2574,6 +2760,9 @@
  "dict-wild": {
   "src": "assets/content/dict/wild.webp"
  },
+ "dict-win": {
+  "src": "assets/content/dict/win.webp"
+ },
  "dict-wind": {
   "src": "assets/content/dict/wind.webp"
  },
@@ -2618,6 +2807,9 @@
  },
  "dict-wrist": {
   "src": "assets/content/dict/wrist.webp"
+ },
+ "dict-write": {
+  "src": "assets/content/dict/write.webp"
  },
  "dict-writer": {
   "src": "assets/content/dict/writer.webp"

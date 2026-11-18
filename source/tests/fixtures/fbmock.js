@@ -22,7 +22,14 @@
       colRef(path).get().then(s => { const ch = []; s.forEach(d => ch.push({ type: 'added', doc: { id: d.id, data: d.data, metadata: { hasPendingWrites: false } } })); cb({ docChanges: () => ch }); }); return () => {}; } }; }
   setInterval(async () => { const q = JSON.parse(await window.__db('poll', '', '')); q.forEach(([p, d, t]) => window.__notify(p, d, t)); }, 250);
   window.firebase = { apps: [], initializeApp: () => window.firebase.apps.push(1),
-    auth: () => ({ signInAnonymously: async () => ({}) }),
+    auth: (() => {   // one auth object: anonymous by default; signInWithPopup signs in a parent (window.__parentUid)
+      const A = { currentUser: null, _l: [],
+        onAuthStateChanged(cb) { A._l.push(cb); setTimeout(() => cb(A.currentUser), 0); return () => { A._l = A._l.filter(x => x !== cb); }; },
+        async signInAnonymously() { A.currentUser = { uid: 'anon' + Math.random().toString(36).slice(2, 7), isAnonymous: true }; A._l.forEach(f => f(A.currentUser)); return { user: A.currentUser }; },
+        async signInWithPopup(p) { A.currentUser = { uid: window.__parentUid || 'parent1', isAnonymous: false, email: 'parent@example.com', displayName: 'Parent', provider: p.id }; A._l.forEach(f => f(A.currentUser)); return { user: A.currentUser }; },
+        async signOut() { A.currentUser = null; A._l.forEach(f => f(null)); } };
+      const f = () => A; f.GoogleAuthProvider = function () { this.id = 'google.com'; }; f.OAuthProvider = function (id) { this.id = id; this.addScope = () => {}; };
+      return f; })(),
     firestore: () => ({ collection: n => colRef(n),
       runTransaction: async fn => {   // like Firestore: if the doc changed after we read it, run fn again
         for (let i = 0; i < 6; i++) {

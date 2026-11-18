@@ -21,7 +21,7 @@ def compress(seq):
 with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':390,'height':844})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)))
-    pg.goto(U);pg.wait_for_timeout(300);pg.fill('#pName','سارة');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    pg.goto(U);pg.wait_for_timeout(300);addkid(pg,'سارة');pg.wait_for_timeout(200)
     def open_lv(l):
         pg.evaluate(f"APPS.kg.setLevel(HS.current().id,'robot',{l});HS.nav.go('app-kg');HS.nav.go('app-kg-game-robot')");pg.wait_for_timeout(400)
         return pg.evaluate("(()=>{const l=document.getElementById('app-kg')._dbg;return {N:l.N,a:l.a,b:l.b,st:l.stars,r:[...l.rocks],d:l.d,limit:l.limit}})()")

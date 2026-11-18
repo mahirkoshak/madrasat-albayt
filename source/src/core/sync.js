@@ -48,7 +48,7 @@
     if (b === undefined) return clone(a);
     if (typeof a === 'number' && typeof b === 'number') {
       if (typeof base === 'number') return b + (a - base);                  // both changes count (e.g. stars from two devices)
-      return key === 'stars' || key === 'spent' ? a + b : Math.max(a, b);   // first join: separate histories add up
+      return ['stars', 'spent', 'dia', 'diaSpent'].includes(key) ? a + b : Math.max(a, b);   // first join: separate histories add up
     }
     if (typeof a === 'boolean' && typeof b === 'boolean') return a || b;
     if (Array.isArray(a) && Array.isArray(b)) {
@@ -82,8 +82,46 @@
       await loadScript(SDK + 'firebase-firestore-compat.js');
     }
     if (!firebase.apps.length) firebase.initializeApp(CFG);
-    await firebase.auth().signInAnonymously();
+    const auth = firebase.auth();
+    // a parent who signed in with Google or Apple stays signed in on this device; otherwise an anonymous session
+    await new Promise(ok => {   // wait until Firebase knows whether someone is already signed in here
+      let done = false, un = null; const end = () => { if (done) return; done = true; if (typeof un === 'function') setTimeout(un, 0); ok(); };
+      if (!auth.onAuthStateChanged) return ok();
+      un = auth.onAuthStateChanged(end); setTimeout(end, 4000);
+    });
+    if (!auth.currentUser) await auth.signInAnonymously();
     db = firebase.firestore();
+  }
+  /* ---------- parent account (Google / Apple) ----------
+     parents/{uid} = { fam }: the family this parent belongs to. Signing in on any device joins that family,
+     so the children, diamonds and progress appear there, and the parent can approve gifts and change focus
+     subjects from their own phone. Rules: a parent can only read and write their own parents/{uid}. */
+  const account = () => { try { const u = firebase.auth().currentUser; return u && !u.isAnonymous ? u : null; } catch (e) { return null; } };
+  async function signIn(kind) {
+    if (!CFG) throw new Error('off');
+    await connect();
+    const auth = firebase.auth();
+    const prov = kind === 'apple' ? new firebase.auth.OAuthProvider('apple.com') : new firebase.auth.GoogleAuthProvider();
+    if (kind === 'apple') { prov.addScope('email'); prov.addScope('name'); }
+    let cred;
+    try { cred = await auth.signInWithPopup(prov); }
+    catch (e) { if (e && /popup-blocked|operation-not-supported/.test(e.code || '')) { try { sessionStorage.setItem('hs-signin', '1'); } catch (x) {} await auth.signInWithRedirect(prov); return null; } throw e; }
+    return afterSignIn(cred && cred.user);
+  }
+  async function afterSignIn(user) {
+    if (!user || user.isAnonymous) return null;
+    const ref = db.collection('parents').doc(user.uid), snap = await ref.get(), have = snap.exists && snap.data().fam;
+    if (have && have !== fam) { fam = have; ls.set(FKEY, fam); meta = { kids: {} }; saveMeta(); await start(false); }   // this parent's family: join it
+    else if (!have) {
+      if (!fam) { fam = newCode(); ls.set(FKEY, fam); await start(true); }                                            // first time: start a family
+      else if (!famRef) await start();
+      await ref.set({ fam, t: Date.now() });
+    } else if (!famRef) await start();
+    HS._emit('sync', status); return user;
+  }
+  // a redirect sign-in (used when a popup is blocked) finishes here when the page comes back
+  async function finishRedirect() {
+    try { await connect(); const r = firebase.auth().getRedirectResult ? await firebase.auth().getRedirectResult() : null; if (r && r.user) await afterSignIn(r.user); } catch (e) { console.warn('sign-in', e); }
   }
   const kidsRef = () => famRef.collection('kids');
   const wrap = json => ({ d: json, h: hash(json), t: Date.now() });
@@ -236,7 +274,14 @@
     join(code) { const c = clean(code); if (c.length !== 12) return Promise.reject(new Error('code')); fam = c; ls.set(FKEY, fam); return start(false); },
     /** stop syncing on this device (its data stays here) */
     leave() { unsub.forEach(u => u()); unsub = []; famRef = null; fam = null; ls.set(FKEY, null); meta = { kids: {} }; saveMeta(); setStatus('off'); },
-    now: () => schedulePush(true)
+    now: () => schedulePush(true),
+    /** the signed-in parent ({ name, email }) or null */
+    account: () => { const u = account(); return u ? { name: u.displayName || '', email: u.email || '' } : null; },
+    /** sign a parent in with 'google' or 'apple' and join (or start) their family */
+    signIn,
+    /** sign the parent out on this device; syncing goes on with the family code */
+    async signOut() { try { await firebase.auth().signOut(); await firebase.auth().signInAnonymously(); } catch (e) {} HS._emit('sync', status); }
   };
+  try { if (CFG && sessionStorage.getItem('hs-signin') === '1') { sessionStorage.removeItem('hs-signin'); setTimeout(finishRedirect, 0); } } catch (e) {}
   if (CFG && fam) setTimeout(() => start(), 0);
 })();

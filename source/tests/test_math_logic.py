@@ -8,7 +8,7 @@ toar=lambda n:''.join(AR[int(d)] for d in str(n))
 with sync_playwright() as p:
     b=p.chromium.launch(**CHROME);pg=b.new_page(viewport={'width':390,'height':844})
     errs=[];pg.on('pageerror',lambda e:errs.append(str(e)+' '+(e.stack or '')[:300]));pg.on('console',lambda m:errs.append(m.text) if m.type=='error' else None)
-    pg.goto(U);pg.wait_for_timeout(300);pg.fill('#pName','محمد');pg.click('[data-av]');pg.click('#pAdd button[type=submit]');pg.wait_for_timeout(200)
+    pg.goto(U);pg.wait_for_timeout(300);addkid(pg,'محمد');pg.wait_for_timeout(200)
     # A. content
     bad=pg.evaluate("""(()=>{const bad=[];
       for(const u of ['g3math5','g4math5']){const U=UNITS[u],ids=new Set(),L=new Set(U.lessons.map(l=>l.id));
@@ -79,11 +79,16 @@ with sync_playwright() as p:
     pg.evaluate("HS.nav.go('unit-g3math5-play-lab-pg')");pg.wait_for_timeout(300)
     for k in range(10):   # aim for 3×4 = 12, which is on the board twice
         clips=[int(''.join(str(AR.index(c)) for c in x.inner_text() if c in AR)) for x in pg.locator('#app-unit .pg-clip').all()]
-        if 3 in clips or 4 in clips: break
+        if any(x in clips for x in (2,3,4,6)): break
         pg.evaluate("HS.nav.go('unit-g3math5');");pg.evaluate("HS.nav.go('unit-g3math5-play-lab-pg')");pg.wait_for_timeout(200)
     clips=[int(''.join(str(AR.index(c)) for c in x.inner_text() if c in AR)) for x in pg.locator('#app-unit .pg-clip').all()]
-    keep=3 if 3 in clips else 4; other=4 if keep==3 else 3; j=1-clips.index(keep) if clips[0]!=clips[1] else 1
-    pg.locator('#app-unit .pg-clip').nth(j).click();pg.locator(f'#app-unit .pg-f[data-f="{other}"]').click();pg.wait_for_timeout(150)
+    mv=None
+    for a_,b_ in [(3,4),(4,3),(2,6),(6,2)]:   # 12 is on the board twice: 3×4 or 2×6
+        if a_ in clips:
+            j=1 if clips[0]==clips[1] else 1-clips.index(a_)
+            if clips[j]!=b_: mv=(j,b_); break
+    assert mv, clips
+    pg.locator('#app-unit .pg-clip').nth(mv[0]).click();pg.locator(f'#app-unit .pg-f[data-f="{mv[1]}"]').click();pg.wait_for_timeout(150)
     for d in '12': pg.locator(f'#app-unit .pg-ask .m-k[data-k="{d}"]').click()
     pg.locator('#app-unit .pg-ask .m-k.ok').click();pg.wait_for_timeout(200)
     picks=pg.locator('#app-unit .pg-c.pick').count();print('squares to choose from:',picks,pg.locator('#app-unit .mg-say').inner_text())
