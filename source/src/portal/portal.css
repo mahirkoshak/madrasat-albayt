@@ -181,7 +181,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .gb-btn:active,.gb-back:active{transform:translateY(2px);box-shadow:var(--t-press)}
 .gb-btn .p-i{width:22px;height:22px}
 .gb-btn.p-mute[aria-pressed="true"]{background:var(--t-red-soft);color:var(--t-red-ink)}
-.gb-stars{background:var(--t-gold-soft);color:var(--t-gold-ink);box-shadow:0 0 0 1.5px var(--t-gold),0 3px 0 1.5px var(--t-gold-sh)}
+.gb-stars{white-space:nowrap;background:var(--t-gold-soft);color:var(--t-gold-ink);box-shadow:0 0 0 1.5px var(--t-gold),0 3px 0 1.5px var(--t-gold-sh)}
 .gb-stars b{font-size:var(--t-fs-md)}
 .gb-menu{position:relative}
 .gb-me{padding:3px 10px 3px 4px}

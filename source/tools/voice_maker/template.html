@@ -224,12 +224,15 @@ $('go').onclick = async () => {
       if (w0 !== 'en' && !EL.ready('ar')) throw new Error('اختر الصوت العربي في ElevenLabs أولًا (حمّل الأصوات)');
       if (w0 !== 'ar' && !EL.ready('en')) throw new Error('اختر الصوت الإنجليزي في ElevenLabs أولًا');
     } else await getToken();
+    let quota = false;
     const w = $('what').value, todo = LINES.filter(l => (w === 'both' || l.lang === w) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text))), queue = todo.slice(), worker = async () => {
       while (queue.length) {
         if (slow && worker.n > 1) { worker.n--; return; }   // throttled: one request at a time
         const l = queue.shift(), key = l.lang + '|' + l.text;
         try { const fn = await name(key); files.push(['clips/' + fn, await synth(l.text, l.lang)]); manifest[key] = fn; }
-        catch (e) { failed.push(key); if (/401|المفتاح|مفتاح/.test(e.message)) throw e; }
+        catch (e) {
+          if (e.quota) { quota = true; failed.push(key, ...queue.splice(0).map(x => x.lang + '|' + x.text)); break; }   // out of credits: stop, but keep what is recorded
+          failed.push(key); if (/401|المفتاح|مفتاح/.test(e.message)) throw e; }
         done++; $('bar').style.width = (100 * done / todo.length) + '%'; msg(`سُجّلت ${done} من ${todo.length}…`);
       }
     };
@@ -238,6 +241,7 @@ $('go').onclick = async () => {
     const info = { provider: { ar: prov(), en: prov() }, voices: { ar: el ? EL.info('ar') : $('voiceAr').value, en: el ? EL.info('en') : $('voiceEn').value }, rate: { ar: el ? $('elSpeed').value : $('rateAr').value, en: el ? $('elSpeed').value : $('rateEn').value }, made: new Date().toISOString(), failed };
     files.push(['manifest.json', new TextEncoder().encode(JSON.stringify(manifest, null, 1))], ['voices.json', new TextEncoder().encode(JSON.stringify(info, null, 1))]);
     const a = document.createElement('a'); a.href = URL.createObjectURL(zip(files)); a.download = w === 'en' ? 'madrasat-voices-en.zip' : w === 'ar' ? 'madrasat-voices.zip' : 'madrasat-voices-all.zip'; document.body.appendChild(a); a.click(); a.remove();
+    if (quota) msg(`انتهى رصيد ElevenLabs. نزل الملف بما سُجّل (${Object.keys(manifest).length} جملة): أرسله لـ Claude، وأكمل الباقي لاحقًا بـ «الجديدة فقط».`, 'err'); else
     msg(failed.length ? `نزل الملف. ${failed.length} جملة لم تُسجّل (ستبقى بصوت الجهاز).` : '✅ نزل الملف madrasat-voices.zip. أرسله لـ Claude ليضيفه للموقع.', failed.length ? 'err' : 'ok');
   } catch (e) { msg(e.message === 'Failed to fetch' ? 'تعذّر الاتصال بـ Azure. تأكد من المنطقة والإنترنت.' : e.message, 'err'); }
   $('go').disabled = false;

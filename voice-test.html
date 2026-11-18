@@ -164,7 +164,11 @@ const EL = (() => {
     for (let a = 0; a < 6; a++) {
       const r = await fetch(`${API}/v1/text-to-speech/${id}?output_format=mp3_44100_64`, { method: 'POST', headers: Object.assign({ 'Content-Type': 'application/json', Accept: 'audio/mpeg' }, head()), body: JSON.stringify(body) });
       if (r.ok) return new Uint8Array(await r.arrayBuffer());
-      if (r.status === 401) throw new Error('مفتاح ElevenLabs غير صحيح (401)');
+      if (r.status === 401 || r.status === 402) {   // out of credits also answers 401 (detail.status quota_exceeded)
+        let d = ''; try { d = JSON.stringify((await r.json()).detail || ''); } catch (e) {}
+        if (/quota|credit|limit/i.test(d) || r.status === 402) { const e = new Error('انتهى رصيد ElevenLabs'); e.quota = true; throw e; }
+        throw new Error('مفتاح ElevenLabs غير صحيح (401)');
+      }
       if (r.status === 422 && body.voice_settings.speed !== undefined) { delete body.voice_settings.speed; continue; }   // a model without the speed setting
       if (r.status === 429 || r.status >= 500) { await new Promise(k => setTimeout(k, 2000 * (a + 1))); continue; }   // busy: wait a little
       let why = ''; try { why = (await r.json()).detail; why = why && (why.message || why.status || JSON.stringify(why)); } catch (e) {}

@@ -198,7 +198,7 @@ def main():
         'AUDIO_JS': audio_js,
         'ART_JS': art_js,
         'HEAD_ICONS': head,
-        'CORE_JS': '<script>\n' + read('core', 'phrases.js') + '\n' + read('core', 'core.js') + '\n' + read('core', 'firebase-config.js') + '\n' + read('core', 'sync.js') + '\n</script>',
+        'CORE_JS': '<script>\n' + read('core', 'phrases.js') + '\n' + read('core', 'core.js') + '\n' + read('core', 'unitsay.js') + '\n' + read('core', 'firebase-config.js') + '\n' + read('core', 'sync.js') + '\n</script>',
         'UNITS_JS': '\n'.join(units_js),
         'APPS_CSS': '\n\n'.join(apps_css),
         'APPS_HTML': '\n\n'.join(apps_html),

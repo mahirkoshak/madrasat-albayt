@@ -106,7 +106,10 @@ The design follows well-established learning research:
      !python build.py
      ```
    - After adding a unit, run it again. It only generates the new sentences.
-   - Only the kindergarten app speaks. The school units (grades 3–4) have no speech at all: the children read them (the parent asked for this).
+   - School units (grades 3–4) have 🔊 buttons for each part of a lesson's explanation, the main idea, «احفظ هذا», each question, the
+     explanation after an answer and each flashcard. The text each button reads is built in `src/core/unitsay.js` (shared with
+     `tools/speech_list.js`), and a button only appears once its sentence has a recorded clip (no device voice in the units).
+     The voice maker lists unit sentences by importance: explanations first, then answer explanations, questions, flashcards.
    - Size: about 550 sentences ≈ 4 MB added to the HTML.
    - The reference voice is copied, so you can record a parent's voice for the kids.
 

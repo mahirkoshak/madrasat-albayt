@@ -444,3 +444,20 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 /* a picture standing in for a tile's or card's emoji: drawings need more room than an emoji */
 .em > img.hs-pic:not(.inl){width:1.9em;height:1.9em;vertical-align:middle}
 .tile .em > img.hs-pic:not(.inl),.card .em > img.hs-pic:not(.inl){width:72px;height:72px}
+
+/* 🔊 listen buttons (only shown when the sentence has a recorded clip) */
+.u-say{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;border:0;border-radius:999px;padding:8px 14px;font:inherit;font-weight:800;font-size:.95rem;
+  background:var(--t-gold);color:var(--t-gold-ink);box-shadow:0 4px 0 var(--t-gold-sh);cursor:pointer}
+.u-say .hs-spk{width:22px;height:22px}
+.u-say:active{transform:translateY(3px);box-shadow:0 1px 0 var(--t-gold-sh)}
+.u-say:focus-visible{outline:3px solid var(--sky,#1c8ce0);outline-offset:2px}
+.u-say.sm{padding:6px 11px;font-size:.85rem}
+.u-say.top{float:inline-end;margin:0 0 8px 12px;margin-inline-start:12px;margin-inline-end:0}
+.u-say.on{animation:usay 1s ease-in-out infinite}
+.fb .u-say{margin-top:8px}
+@keyframes usay{50%{box-shadow:0 4px 0 var(--t-gold-sh),0 0 0 6px rgba(255,200,40,.35)}}
+@media (prefers-reduced-motion:reduce){.u-say.on{animation:none;outline:3px solid var(--t-gold-sh)}}
+@media (max-width:420px){.u-say span{display:none}.u-say{padding:8px 10px}}
+.fb .u-say{display:flex;width:max-content;margin-top:10px}
+.idea .u-say{margin-inline-start:auto}
+@media (max-width:520px){.idea{flex-wrap:wrap}.idea>div{flex:1 1 180px}.idea .u-say{flex-basis:auto;margin-inline-start:0;order:3}}

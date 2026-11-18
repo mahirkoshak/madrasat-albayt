@@ -3,7 +3,7 @@
    Used by make_audio.py to know which voice clips to generate.
    Run from anywhere:  node tools/speech_list.js > speech.json
    It reads the same content files the site uses, so new words are picked up automatically.
-   By default only the kindergarten app and shared phrases are included (add --units for school units). */
+   Includes the kindergarten app, the dictionary, shared phrases and the school units. */
 const fs = require('fs'), path = require('path'), vm = require('vm');
 const SRC = path.join(__dirname, '..', 'src');
 const ctx = { APPDATA: {}, UNITS: {}, console }; ctx.window = ctx; vm.createContext(ctx);
@@ -26,12 +26,13 @@ for (const dir of fs.readdirSync(path.join(SRC, 'apps'))) {
   for (const d of Object.values(ctx.APPDATA)) if (d && typeof d.speakables === 'function') d.speakables().forEach(([t, l]) => add(t, l));
 }
 
-// units (grades 3+): skipped by default, older kids read; their 🔊 buttons use the device voice.
-// To record clips for units too, run:  node tools/speech_list.js --units   (and make_audio.py --units)
-if (process.argv.includes('--units')) for (const f of fs.readdirSync(path.join(SRC, 'units'))) if (f.endsWith('.js') && !f.startsWith('_')) run(path.join(SRC, 'units', f));
-for (const u of Object.values(ctx.UNITS)) {   // empty unless --units
-  u.lessons.forEach(L => { add('الفكرة الرئيسة: ' + strip(L.idea), 'ar'); add(L.remember.join('. '), 'ar'); });
-  u.glossary.forEach(g => { add(g.term, 'ar'); add(g.def, 'ar'); });
-  u.questions.forEach(q => add(q.q.replace('____', 'فراغ'), 'ar'));
-}
+// school units (grades 3+): lesson explanations, questions, answer explanations, flashcards (src/core/unitsay.js)
+run(path.join(SRC, 'core', 'unitsay.js'));
+for (const f of fs.readdirSync(path.join(SRC, 'units'))) if (f.endsWith('.js') && !f.startsWith('_')) run(path.join(SRC, 'units', f));
+const US = ctx.HS_UNIT_SAY, UL = Object.values(ctx.UNITS);
+UL.forEach(u => u.lessons.forEach(L => { add(US.idea(L), 'ar'); US.cards(L).forEach(c => add(US.card(c), 'ar')); if (L.remember && L.remember.length) add(US.remember(L), 'ar'); }));   // 1. lesson explanations
+UL.forEach(u => (u.questions || []).forEach(q => q.ex && add(US.ex(q), 'ar')));     // 2. the explanation after an answer
+UL.forEach(u => (u.questions || []).forEach(q => add(US.q(q), 'ar')));             // 3. the questions
+UL.forEach(u => (u.glossary || []).forEach(g => add(US.term(g), 'ar')));           // 4. flashcards
+US.all(UL[0] || { lessons: [] }).forEach(([t]) => { if (!out.has('ar|' + t)) throw new Error('unitsay.all and speech_list disagree: ' + t); });
 process.stdout.write(JSON.stringify([...out.values()], null, 1));

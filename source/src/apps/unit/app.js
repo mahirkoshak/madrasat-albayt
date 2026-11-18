@@ -15,6 +15,14 @@ const S = { u: null, id: '', ns: '', fcns: '', page: 'home', timers: [], iv: nul
 /** a science picture for an emoji when one exists (the science sprite sheets), otherwise the emoji */
 const P = em => S.id && /sci/.test(S.id) && em ? HS.pic(em, 'sci', { small: true, cls: 'hs-pic' }) : em;
 const later = (f, ms) => S.timers.push(setTimeout(f, ms));
+/* 🔊 buttons: what each one reads comes from src/core/unitsay.js (the same text the voice maker records).
+   A button only shows once its sentence has a recorded clip, so the units never fall back to the device voice. */
+const SAY = window.HS_UNIT_SAY, SAYS = [], sayIx = new Map();
+function sayBtn(text, label = 'استمع', cls = '') {
+  if (!text || !HS.AUDIO['ar|' + text]) return '';
+  if (!sayIx.has(text)) { sayIx.set(text, SAYS.length); SAYS.push(text); }
+  return `<button type="button" class="u-say ${cls}" data-say="${sayIx.get(text)}" aria-label="${label}">${HS.SPK}<span>${label}</span></button>`;
+}
 function stopAll() { S.timers.forEach(clearTimeout); S.timers = []; clearInterval(S.iv); S.iv = null; HS.stopSpeak(); }
 const M = () => $('uMain');
 const D = () => HS.data(S.ns);                       // this child's saved data for this unit
@@ -37,6 +45,15 @@ function tabs() {
   $('uTabs').innerHTML = SECTIONS().map(([id, label, ok]) => `<li><a class="tab ${id === S.page ? 'on' : ''}" href="#unit-${S.id}-${id}" data-p="${id}"${id === S.page ? ' aria-current="page"' : ''}>${label}${ok ? ' <span class="ck" aria-label="متقن">✓</span>' : ''}</a></li>`).join('');
 }
 ROOT.addEventListener('click', e => {
+  const sb = e.target.closest('[data-say]');
+  if (sb) {
+    e.stopPropagation(); const on = sb.classList.contains('on');
+    ROOT.querySelectorAll('.u-say.on').forEach(x => x.classList.remove('on')); HS.stopSpeak(); if (on) return;
+    sb.classList.add('on'); HS.speak([[SAYS[+sb.dataset.say], 'ar']]);
+    const clip = HS.AUDIO['ar|' + SAYS[+sb.dataset.say]], a = new Audio(clip);   // light the button for as long as the clip plays
+    a.onloadedmetadata = () => later(() => sb.classList.remove('on'), a.duration * 1000 + 400); a.onerror = () => sb.classList.remove('on');
+    return;
+  }
   const b = e.target.closest('[data-p]'); if (b) { e.preventDefault(); go(b.dataset.p); return; }
   const a = e.target.closest('[data-act]'); if (a) go(actRoute(a.dataset.act, a.dataset));
 });
@@ -142,15 +159,14 @@ function renderLesson(L) {
   const games = [...S.u.games.sort.filter(g => g.l === L.id).map(g => `<button type="button" class="btn sky" data-act="sort" data-g="${g.id}">🎮 ${g.title}</button>`),
     ...S.u.games.order.filter(g => g.l === L.id).map(g => `<button type="button" class="btn sky" data-act="order" data-g="${g.id}">🎮 ${g.title}</button>`),
     ...Object.values(LABS[S.id] || {}).filter(x => x.lesson === L.id).map(x => `<button type="button" class="btn sky" data-act="lab" data-g="${x.id}">${x.title}</button>`)];
-  const cards = []; let cur = null;
-  L.blocks.forEach(b => { if (cur && b.t === 'tiles' && !b.h) cur.push(b); else { cur = [b]; cards.push(cur); } });
+  const cards = SAY.cards(L);
   M().innerHTML = `
   <div class="card"><h2>${L.em} الدرس ${ar(i + 1)}: ${L.title}</h2>
-    <div class="idea"><span class="em" aria-hidden="true">💡</span><div><b>الفكرة الرئيسة:</b> ${L.idea}</div>
+    <div class="idea"><span class="em" aria-hidden="true">💡</span><div><b>الفكرة الرئيسة:</b> ${L.idea}</div>${sayBtn(SAY.idea(L), 'استمع', 'sm')}
 </div>
     <div class="m-row"><span>إتقانك لهذا الدرس</span><b>${ar(pct(m))}٪</b></div>${meter(m)}</div>
-  ${cards.map(c => `<div class="card">${c.map(block).join('')}</div>`).join('')}
-  <div class="remember"><div class="rem-head"><h3>🧠 احفظ هذا</h3></div><ul>${L.remember.map(r => `<li>${r}</li>`).join('')}</ul></div>
+  ${cards.map(c => `<div class="card">${sayBtn(SAY.card(c), 'استمع للشرح', 'top')}${c.map(block).join('')}</div>`).join('')}
+  <div class="remember"><div class="rem-head"><h3>🧠 احفظ هذا</h3>${sayBtn(SAY.remember(L), 'استمع', 'sm')}</div><ul>${L.remember.map(r => `<li>${r}</li>`).join('')}</ul></div>
   <div class="row"><button type="button" class="btn" data-act="quiz" data-mode="lesson" data-l="${L.id}">✏️ اختبر نفسك في الدرس ${ar(i + 1)}</button>${games.join('')}
     <button type="button" class="btn sec" data-act="memory" data-l="${L.id}">🧠 لعبة الذاكرة</button></div>`;
 }
@@ -173,7 +189,7 @@ function renderCards() {
     <div class="row chips">${['', ...S.u.lessons.map(l => l.id)].map((l, i) => `<button type="button" class="chip ${FC.l === l ? 'on' : ''}" data-fcl="${l}">${l ? 'الدرس ' + ar(i) : 'الكل'}</button>`).join('')}</div>
     <div class="m-row"><span>تعرف ${ar(known)} من ${ar(all.length)}</span></div>${meter(all.length ? known / all.length : 0)}</div>
   <div class="fc" id="uFc" role="button" tabindex="0" aria-label="اقلب البطاقة"><div class="fc-in"><div class="fc-f"><span class="em" id="uFcEm"></span><b id="uFcT"></b><small>اضغط للقلب 👆</small></div><div class="fc-b"><p id="uFcD"></p></div></div></div>
-  <p class="hint" id="uFcPos"></p>
+  <p class="hint" id="uFcPos"></p><div class="row center" id="uFcSay"></div>
   <div class="row center"><button type="button" class="btn sky" id="uFcAgain">🔁 لم أعرفها</button><button type="button" class="btn" id="uFcKnow">👍 عرفتها</button></div>`;
   ROOT.querySelectorAll('[data-fcl]').forEach(b => b.onclick = () => { FC.l = b.dataset.fcl; renderCards(); });
   const fc = $('uFc'); fc.onclick = () => fc.classList.toggle('flip');
@@ -186,6 +202,7 @@ function showCard() {
   const g = FC.list[FC.i], fc = $('uFc'); if (!g) return;
   fc.classList.remove('flip');
   later(() => { $('uFcEm').innerHTML = P(g.em); $('uFcT').textContent = g.term; $('uFcD').textContent = g.def; }, 120);
+  $('uFcSay').innerHTML = sayBtn(SAY.term(g), 'استمع للمصطلح ومعناه');
   $('uFcPos').textContent = `بطاقة ${ar(FC.i + 1)} من ${ar(FC.list.length)}`;
 }
 
@@ -281,7 +298,7 @@ function onAnswer(q, ok, info = {}) {
   const fb = $('uFb'); fb.className = 'fb ' + (ok ? 'ok' : info.fixed ? 'ok fixed' : 'no');
   const right = answerText(q);
   const head = ok ? HS.one(HS_PHRASES.praise.ar) : info.fixed ? 'صحّحتها بنفسك! 👏' : 'لنتعلّمها معًا';
-  fb.innerHTML = `<b>${head}</b>${info.revealed && right ? `<div class="right">الإجابة الصحيحة: <b>${right}</b></div>` : ''}<div>${q.ex || ''}</div>
+  fb.innerHTML = `<b>${head}</b>${info.revealed && right ? `<div class="right">الإجابة الصحيحة: <b>${right}</b></div>` : ''}<div>${q.ex || ''}${q.ex ? sayBtn(SAY.ex(q), 'استمع للشرح', 'sm') : ''}</div>
     <div class="row"><button type="button" class="btn" id="uNext">${nextLabel()}</button></div>`;
   $('uNext').onclick = () => { Q.i++; renderQ(); };
   $('uNext').focus({ preventScroll: true });
@@ -368,8 +385,7 @@ function coachHint(q, n, pickedText, used, i) {
 /* ---------------- question renderers ----------------
    Each draws question q into el and calls done(correct) once. */
 function renderQuestion(q, el, done, opt = {}) {
-  // grade 3–4 units are read, not listened to: no speech buttons (the parent asked for it)
-  const head = txt => `<div class="q-line"><div class="q">${txt}</div></div>`;
+  const head = txt => `<div class="q-line"><div class="q">${txt}</div>${sayBtn(SAY.q(q), 'اقرأ لي السؤال', 'sm')}</div>`;
   let answered = false;
   const finish = (ok, info) => { if (answered) return; answered = true; done(ok, info || {}); };
   const choice = (opts, a, render, cls = '') => {
