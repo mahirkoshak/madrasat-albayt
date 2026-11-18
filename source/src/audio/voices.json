@@ -1,12 +1,22 @@
 {
+ "provider": {
+  "ar": "eleven",
+  "en": "eleven"
+ },
  "voices": {
-  "ar": "ar-SA-ZariyahNeural",
-  "en": "en-US-AvaMultilingualNeural"
+  "ar": {
+   "voice": "Jumana - Hijazi, Warm (مدرسة البيت)",
+   "model": "eleven_v4"
+  },
+  "en": {
+   "voice": "Jessica - Playful, Bright, Warm",
+   "model": "eleven_v4"
+  }
  },
  "rate": {
-  "ar": "-8%",
-  "en": "-6%"
+  "ar": "0.92",
+  "en": "0.92"
  },
- "made": "2026-11-17T22:28:51.025Z",
+ "made": "2026-11-18T13:40:50.657Z",
  "failed": []
 }
