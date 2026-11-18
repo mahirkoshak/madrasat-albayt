@@ -150,6 +150,9 @@ The design follows well-established learning research:
   `HS.mascot(pose)`, `HS.avatar(profile)`, `HS.rewardArt(reward)` or `data-art="id"` in markup; when a picture does not exist yet,
   the old emoji stays. Menu items take `art: '<id>'` in `catalog.js`. A new picture appears after: add PNG → publish.
 - Profiles still store `avatar` as one string: old emoji, or a picture id like `avatar-fox`. No data migration.
+- **Picture inventory: `docs/PICTURES.md`** (and `docs/pictures.json`): every existing picture with id, emoji, Arabic/English name,
+  what is drawn and where it is already used. Rebuilt by `tools/make_inventory.py` on every publish. Check it before planning a new
+  game, quiz or unit, or before asking Codex for new art.
 - `python3 tools/publish.py` = process art + build + copy `index.html` and `assets/` to the repository root (GitHub Pages).
 
 ## Spelling challenge, English menus, mute

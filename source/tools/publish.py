@@ -15,6 +15,7 @@ REPO = os.path.dirname(HERE)
 run = lambda *a: subprocess.run([sys.executable, *a], cwd=HERE, check=True)
 run(os.path.join('tools', 'art_process.py'))
 run('build.py')
+run(os.path.join('tools', 'make_inventory.py'))   # docs/PICTURES.md: every picture, for planning new games/units
 
 # the voice maker page (tools/voice_maker): every spoken sentence, for recording natural voices with Azure
 try:
