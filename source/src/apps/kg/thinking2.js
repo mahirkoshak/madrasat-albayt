@@ -72,7 +72,7 @@ function taleGame() {
   let wrong = 0;
   const root = fresh(`<div class="tl-story" aria-live="polite"></div><div class="tl-choose"></div>`);
   const story = root.querySelector('.tl-story'), area = root.querySelector('.tl-choose');
-  const line = (em, t) => story.insertAdjacentHTML('beforeend', `<p class="tl-line hs-pop"><span class="em">${em}</span> ${t}</p>`);
+  const line = (em, t) => story.insertAdjacentHTML('beforeend', `<p class="tl-line hs-pop" data-t="${HS.esc(t)}"><span class="em">${em}</span> ${t}</p>`);
   const choose = (q, list, cb, opt = {}) => {
     ask(tl(q)(), l);
     area.innerHTML = `<div class="tl-opts">${list.map(([em, ar, e], i) => `<button type="button" class="tl-o" data-i="${opt.idx ? opt.idx[i] : i}"><span class="em">${em}</span><small>${opt.noText ? '' : (en ? e : ar)}</small></button>`).join('')}</div>`;
@@ -80,7 +80,7 @@ function taleGame() {
   };
   const finish = () => {
     area.innerHTML = '';
-    later(() => { line('😊', tl(P.taleEnd)()); say([...story.querySelectorAll('.tl-line')].map(p => [p.textContent.replace(/^\S+\s/, ''), l])); }, 300);
+    later(() => { line('😊', tl(P.taleEnd)()); say([...story.querySelectorAll('.tl-line')].map(p => [p.dataset.t, l])); }, 300);
     later(() => thinkDone(wrong === 0), 1500 + 1800 * story.querySelectorAll('.tl-line').length);
   };
   choose(P.taleWho, T.who, i => {

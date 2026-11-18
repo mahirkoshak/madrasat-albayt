@@ -189,14 +189,884 @@
   "sm": "assets/rewards/coupon-sm.webp",
   "src": "assets/rewards/coupon.webp"
  },
+ "dict-adult": {
+  "src": "assets/content/dict/adult.webp"
+ },
+ "dict-ant": {
+  "src": "assets/content/dict/ant.webp"
+ },
+ "dict-apple": {
+  "src": "assets/content/dict/apple.webp"
+ },
+ "dict-arm": {
+  "src": "assets/content/dict/arm.webp"
+ },
+ "dict-aunt": {
+  "src": "assets/content/dict/aunt.webp"
+ },
+ "dict-baby": {
+  "src": "assets/content/dict/baby.webp"
+ },
+ "dict-back": {
+  "src": "assets/content/dict/back.webp"
+ },
+ "dict-banana": {
+  "src": "assets/content/dict/banana.webp"
+ },
+ "dict-bat": {
+  "src": "assets/content/dict/bat.webp"
+ },
+ "dict-bathroom": {
+  "src": "assets/content/dict/bathroom.webp"
+ },
+ "dict-beans": {
+  "src": "assets/content/dict/beans.webp"
+ },
+ "dict-bear": {
+  "src": "assets/content/dict/bear.webp"
+ },
+ "dict-bed": {
+  "src": "assets/content/dict/bed.webp"
+ },
+ "dict-bedroom": {
+  "src": "assets/content/dict/bedroom.webp"
+ },
+ "dict-bee": {
+  "src": "assets/content/dict/bee.webp"
+ },
+ "dict-bird": {
+  "src": "assets/content/dict/bird.webp"
+ },
+ "dict-blood": {
+  "src": "assets/content/dict/blood.webp"
+ },
+ "dict-body": {
+  "src": "assets/content/dict/body.webp"
+ },
+ "dict-bone": {
+  "src": "assets/content/dict/bone.webp"
+ },
+ "dict-bottle": {
+  "src": "assets/content/dict/bottle.webp"
+ },
+ "dict-bowl": {
+  "src": "assets/content/dict/bowl.webp"
+ },
+ "dict-boy": {
+  "src": "assets/content/dict/boy.webp"
+ },
+ "dict-brain": {
+  "src": "assets/content/dict/brain.webp"
+ },
+ "dict-bread": {
+  "src": "assets/content/dict/bread.webp"
+ },
+ "dict-breakfast": {
+  "src": "assets/content/dict/breakfast.webp"
+ },
+ "dict-breathe": {
+  "src": "assets/content/dict/breathe.webp"
+ },
+ "dict-broccoli": {
+  "src": "assets/content/dict/broccoli.webp"
+ },
+ "dict-brother": {
+  "src": "assets/content/dict/brother.webp"
+ },
+ "dict-burger": {
+  "src": "assets/content/dict/burger.webp"
+ },
+ "dict-butter": {
+  "src": "assets/content/dict/butter.webp"
+ },
+ "dict-butterfly": {
+  "src": "assets/content/dict/butterfly.webp"
+ },
+ "dict-cage": {
+  "src": "assets/content/dict/cage.webp"
+ },
+ "dict-cake": {
+  "src": "assets/content/dict/cake.webp"
+ },
+ "dict-calf": {
+  "src": "assets/content/dict/calf.webp"
+ },
+ "dict-camel": {
+  "src": "assets/content/dict/camel.webp"
+ },
+ "dict-candy": {
+  "src": "assets/content/dict/candy.webp"
+ },
+ "dict-carrot": {
+  "src": "assets/content/dict/carrot.webp"
+ },
+ "dict-cat": {
+  "src": "assets/content/dict/cat.webp"
+ },
+ "dict-cereal": {
+  "src": "assets/content/dict/cereal.webp"
+ },
+ "dict-chair": {
+  "src": "assets/content/dict/chair.webp"
+ },
+ "dict-cheek": {
+  "src": "assets/content/dict/cheek.webp"
+ },
+ "dict-cheese": {
+  "src": "assets/content/dict/cheese.webp"
+ },
+ "dict-cheetah": {
+  "src": "assets/content/dict/cheetah.webp"
+ },
+ "dict-cherry": {
+  "src": "assets/content/dict/cherry.webp"
+ },
+ "dict-chest": {
+  "src": "assets/content/dict/chest.webp"
+ },
+ "dict-chick": {
+  "src": "assets/content/dict/chick.webp"
+ },
+ "dict-chicken": {
+  "src": "assets/content/dict/chicken.webp"
+ },
+ "dict-child": {
+  "src": "assets/content/dict/child.webp"
+ },
+ "dict-chin": {
+  "src": "assets/content/dict/chin.webp"
+ },
+ "dict-chocolate": {
+  "src": "assets/content/dict/chocolate.webp"
+ },
+ "dict-classmate": {
+  "src": "assets/content/dict/classmate.webp"
+ },
+ "dict-coconut": {
+  "src": "assets/content/dict/coconut.webp"
+ },
+ "dict-coffee": {
+  "src": "assets/content/dict/coffee.webp"
+ },
+ "dict-cold-2": {
+  "src": "assets/content/dict/cold-2.webp"
+ },
+ "dict-cookie": {
+  "src": "assets/content/dict/cookie.webp"
+ },
+ "dict-corn": {
+  "src": "assets/content/dict/corn.webp"
+ },
+ "dict-cough": {
+  "src": "assets/content/dict/cough.webp"
+ },
+ "dict-cousin": {
+  "src": "assets/content/dict/cousin.webp"
+ },
  "dict-cover": {
   "src": "assets/catalog/dict-cover.webp"
+ },
+ "dict-cow": {
+  "src": "assets/content/dict/cow.webp"
+ },
+ "dict-crab": {
+  "src": "assets/content/dict/crab.webp"
+ },
+ "dict-crocodile": {
+  "src": "assets/content/dict/crocodile.webp"
+ },
+ "dict-crow": {
+  "src": "assets/content/dict/crow.webp"
+ },
+ "dict-cucumber": {
+  "src": "assets/content/dict/cucumber.webp"
+ },
+ "dict-cut": {
+  "src": "assets/content/dict/cut.webp"
+ },
+ "dict-dates": {
+  "src": "assets/content/dict/dates.webp"
+ },
+ "dict-daughter": {
+  "src": "assets/content/dict/daughter.webp"
+ },
+ "dict-deer": {
+  "src": "assets/content/dict/deer.webp"
+ },
+ "dict-delicious": {
+  "src": "assets/content/dict/delicious.webp"
+ },
+ "dict-dessert": {
+  "src": "assets/content/dict/dessert.webp"
+ },
+ "dict-dinner": {
+  "src": "assets/content/dict/dinner.webp"
+ },
+ "dict-dog": {
+  "src": "assets/content/dict/dog.webp"
+ },
+ "dict-dolphin": {
+  "src": "assets/content/dict/dolphin.webp"
+ },
+ "dict-donkey": {
+  "src": "assets/content/dict/donkey.webp"
+ },
+ "dict-door": {
+  "src": "assets/content/dict/door.webp"
+ },
+ "dict-duck": {
+  "src": "assets/content/dict/duck.webp"
+ },
+ "dict-eagle": {
+  "src": "assets/content/dict/eagle.webp"
+ },
+ "dict-ear": {
+  "src": "assets/content/dict/ear.webp"
+ },
+ "dict-eat-out": {
+  "src": "assets/content/dict/eat-out.webp"
+ },
+ "dict-egg": {
+  "src": "assets/content/dict/egg.webp"
+ },
+ "dict-eggplant": {
+  "src": "assets/content/dict/eggplant.webp"
+ },
+ "dict-elbow": {
+  "src": "assets/content/dict/elbow.webp"
+ },
+ "dict-elephant": {
+  "src": "assets/content/dict/elephant.webp"
+ },
+ "dict-exercise": {
+  "src": "assets/content/dict/exercise.webp"
+ },
+ "dict-eye": {
+  "src": "assets/content/dict/eye.webp"
+ },
+ "dict-eyebrow": {
+  "src": "assets/content/dict/eyebrow.webp"
+ },
+ "dict-face": {
+  "src": "assets/content/dict/face.webp"
+ },
+ "dict-falcon": {
+  "src": "assets/content/dict/falcon.webp"
+ },
+ "dict-family": {
+  "src": "assets/content/dict/family.webp"
+ },
+ "dict-father": {
+  "src": "assets/content/dict/father.webp"
+ },
+ "dict-feather": {
+  "src": "assets/content/dict/feather.webp"
+ },
+ "dict-fever": {
+  "src": "assets/content/dict/fever.webp"
+ },
+ "dict-fig": {
+  "src": "assets/content/dict/fig.webp"
+ },
+ "dict-finger": {
+  "src": "assets/content/dict/finger.webp"
+ },
+ "dict-fish": {
+  "src": "assets/content/dict/fish.webp"
+ },
+ "dict-flamingo": {
+  "src": "assets/content/dict/flamingo.webp"
+ },
+ "dict-floor": {
+  "src": "assets/content/dict/floor.webp"
+ },
+ "dict-flour": {
+  "src": "assets/content/dict/flour.webp"
+ },
+ "dict-fly-2": {
+  "src": "assets/content/dict/fly-2.webp"
+ },
+ "dict-foot": {
+  "src": "assets/content/dict/foot.webp"
+ },
+ "dict-fox": {
+  "src": "assets/content/dict/fox.webp"
+ },
+ "dict-fresh": {
+  "src": "assets/content/dict/fresh.webp"
+ },
+ "dict-fried": {
+  "src": "assets/content/dict/fried.webp"
+ },
+ "dict-friend": {
+  "src": "assets/content/dict/friend.webp"
+ },
+ "dict-fries": {
+  "src": "assets/content/dict/fries.webp"
+ },
+ "dict-frog": {
+  "src": "assets/content/dict/frog.webp"
+ },
+ "dict-fruit": {
+  "src": "assets/content/dict/fruit.webp"
+ },
+ "dict-fur": {
+  "src": "assets/content/dict/fur.webp"
+ },
+ "dict-garden": {
+  "src": "assets/content/dict/garden.webp"
+ },
+ "dict-garlic": {
+  "src": "assets/content/dict/garlic.webp"
+ },
+ "dict-gazelle": {
+  "src": "assets/content/dict/gazelle.webp"
+ },
+ "dict-giraffe": {
+  "src": "assets/content/dict/giraffe.webp"
+ },
+ "dict-girl": {
+  "src": "assets/content/dict/girl.webp"
+ },
+ "dict-glass": {
+  "src": "assets/content/dict/glass.webp"
+ },
+ "dict-goat": {
+  "src": "assets/content/dict/goat.webp"
+ },
+ "dict-gorilla": {
+  "src": "assets/content/dict/gorilla.webp"
+ },
+ "dict-grandfather": {
+  "src": "assets/content/dict/grandfather.webp"
+ },
+ "dict-grandmother": {
+  "src": "assets/content/dict/grandmother.webp"
+ },
+ "dict-grandparents": {
+  "src": "assets/content/dict/grandparents.webp"
+ },
+ "dict-grapes": {
+  "src": "assets/content/dict/grapes.webp"
+ },
+ "dict-guest": {
+  "src": "assets/content/dict/guest.webp"
+ },
+ "dict-hair": {
+  "src": "assets/content/dict/hair.webp"
+ },
+ "dict-hand": {
+  "src": "assets/content/dict/hand.webp"
+ },
+ "dict-head": {
+  "src": "assets/content/dict/head.webp"
+ },
+ "dict-headache": {
+  "src": "assets/content/dict/headache.webp"
+ },
+ "dict-healthy": {
+  "src": "assets/content/dict/healthy.webp"
+ },
+ "dict-hear": {
+  "src": "assets/content/dict/hear.webp"
+ },
+ "dict-heart": {
+  "src": "assets/content/dict/heart.webp"
+ },
+ "dict-hedgehog": {
+  "src": "assets/content/dict/hedgehog.webp"
+ },
+ "dict-hen": {
+  "src": "assets/content/dict/hen.webp"
+ },
+ "dict-hero": {
+  "src": "assets/content/dict/hero.webp"
+ },
+ "dict-hippo": {
+  "src": "assets/content/dict/hippo.webp"
+ },
+ "dict-honey": {
+  "src": "assets/content/dict/honey.webp"
+ },
+ "dict-horn": {
+  "src": "assets/content/dict/horn.webp"
+ },
+ "dict-horse": {
+  "src": "assets/content/dict/horse.webp"
+ },
+ "dict-house": {
+  "src": "assets/content/dict/house.webp"
+ },
+ "dict-hungry": {
+  "src": "assets/content/dict/hungry.webp"
+ },
+ "dict-hurt": {
+  "src": "assets/content/dict/hurt.webp"
+ },
+ "dict-husband": {
+  "src": "assets/content/dict/husband.webp"
+ },
+ "dict-ice-cream": {
+  "src": "assets/content/dict/ice-cream.webp"
+ },
+ "dict-insect": {
+  "src": "assets/content/dict/insect.webp"
+ },
+ "dict-jam": {
+  "src": "assets/content/dict/jam.webp"
+ },
+ "dict-jellyfish": {
+  "src": "assets/content/dict/jellyfish.webp"
+ },
+ "dict-juice": {
+  "src": "assets/content/dict/juice.webp"
+ },
+ "dict-kangaroo": {
+  "src": "assets/content/dict/kangaroo.webp"
+ },
+ "dict-king": {
+  "src": "assets/content/dict/king.webp"
+ },
+ "dict-kitchen": {
+  "src": "assets/content/dict/kitchen.webp"
+ },
+ "dict-kitten": {
+  "src": "assets/content/dict/kitten.webp"
+ },
+ "dict-kiwi": {
+  "src": "assets/content/dict/kiwi.webp"
+ },
+ "dict-knee": {
+  "src": "assets/content/dict/knee.webp"
+ },
+ "dict-koala": {
+  "src": "assets/content/dict/koala.webp"
+ },
+ "dict-ladybird": {
+  "src": "assets/content/dict/ladybird.webp"
+ },
+ "dict-lamb": {
+  "src": "assets/content/dict/lamb.webp"
+ },
+ "dict-leader": {
+  "src": "assets/content/dict/leader.webp"
+ },
+ "dict-leg": {
+  "src": "assets/content/dict/leg.webp"
+ },
+ "dict-lemon": {
+  "src": "assets/content/dict/lemon.webp"
+ },
+ "dict-lemonade": {
+  "src": "assets/content/dict/lemonade.webp"
+ },
+ "dict-leopard": {
+  "src": "assets/content/dict/leopard.webp"
+ },
+ "dict-lettuce": {
+  "src": "assets/content/dict/lettuce.webp"
+ },
+ "dict-lion": {
+  "src": "assets/content/dict/lion.webp"
+ },
+ "dict-lip": {
+  "src": "assets/content/dict/lip.webp"
+ },
+ "dict-living-room": {
+  "src": "assets/content/dict/living-room.webp"
+ },
+ "dict-lizard": {
+  "src": "assets/content/dict/lizard.webp"
+ },
+ "dict-lunch": {
+  "src": "assets/content/dict/lunch.webp"
+ },
+ "dict-lungs": {
+  "src": "assets/content/dict/lungs.webp"
+ },
+ "dict-man": {
+  "src": "assets/content/dict/man.webp"
+ },
+ "dict-mango": {
+  "src": "assets/content/dict/mango.webp"
+ },
+ "dict-meal": {
+  "src": "assets/content/dict/meal.webp"
+ },
+ "dict-meat": {
+  "src": "assets/content/dict/meat.webp"
+ },
+ "dict-medicine": {
+  "src": "assets/content/dict/medicine.webp"
+ },
+ "dict-melon": {
+  "src": "assets/content/dict/melon.webp"
+ },
+ "dict-milk": {
+  "src": "assets/content/dict/milk.webp"
  },
  "dict-mode-ar": {
   "src": "assets/catalog/dict-mode-ar.webp"
  },
  "dict-mode-en": {
   "src": "assets/catalog/dict-mode-en.webp"
+ },
+ "dict-monkey": {
+  "src": "assets/content/dict/monkey.webp"
+ },
+ "dict-mosquito": {
+  "src": "assets/content/dict/mosquito.webp"
+ },
+ "dict-mother": {
+  "src": "assets/content/dict/mother.webp"
+ },
+ "dict-mouse": {
+  "src": "assets/content/dict/mouse.webp"
+ },
+ "dict-mouth": {
+  "src": "assets/content/dict/mouth.webp"
+ },
+ "dict-muscle": {
+  "src": "assets/content/dict/muscle.webp"
+ },
+ "dict-mushroom": {
+  "src": "assets/content/dict/mushroom.webp"
+ },
+ "dict-nail": {
+  "src": "assets/content/dict/nail.webp"
+ },
+ "dict-name": {
+  "src": "assets/content/dict/name.webp"
+ },
+ "dict-neck": {
+  "src": "assets/content/dict/neck.webp"
+ },
+ "dict-neighbor": {
+  "src": "assets/content/dict/neighbor.webp"
+ },
+ "dict-nephew": {
+  "src": "assets/content/dict/nephew.webp"
+ },
+ "dict-nest": {
+  "src": "assets/content/dict/nest.webp"
+ },
+ "dict-niece": {
+  "src": "assets/content/dict/niece.webp"
+ },
+ "dict-noodles": {
+  "src": "assets/content/dict/noodles.webp"
+ },
+ "dict-nose": {
+  "src": "assets/content/dict/nose.webp"
+ },
+ "dict-nuts": {
+  "src": "assets/content/dict/nuts.webp"
+ },
+ "dict-octopus": {
+  "src": "assets/content/dict/octopus.webp"
+ },
+ "dict-oil": {
+  "src": "assets/content/dict/oil.webp"
+ },
+ "dict-olive": {
+  "src": "assets/content/dict/olive.webp"
+ },
+ "dict-onion": {
+  "src": "assets/content/dict/onion.webp"
+ },
+ "dict-orange": {
+  "src": "assets/content/dict/orange.webp"
+ },
+ "dict-ostrich": {
+  "src": "assets/content/dict/ostrich.webp"
+ },
+ "dict-owl": {
+  "src": "assets/content/dict/owl.webp"
+ },
+ "dict-pain": {
+  "src": "assets/content/dict/pain.webp"
+ },
+ "dict-panda": {
+  "src": "assets/content/dict/panda.webp"
+ },
+ "dict-parents": {
+  "src": "assets/content/dict/parents.webp"
+ },
+ "dict-parrot": {
+  "src": "assets/content/dict/parrot.webp"
+ },
+ "dict-pasta": {
+  "src": "assets/content/dict/pasta.webp"
+ },
+ "dict-peach": {
+  "src": "assets/content/dict/peach.webp"
+ },
+ "dict-peacock": {
+  "src": "assets/content/dict/peacock.webp"
+ },
+ "dict-pear": {
+  "src": "assets/content/dict/pear.webp"
+ },
+ "dict-peas": {
+  "src": "assets/content/dict/peas.webp"
+ },
+ "dict-penguin": {
+  "src": "assets/content/dict/penguin.webp"
+ },
+ "dict-people": {
+  "src": "assets/content/dict/people.webp"
+ },
+ "dict-pepper": {
+  "src": "assets/content/dict/pepper.webp"
+ },
+ "dict-person": {
+  "src": "assets/content/dict/person.webp"
+ },
+ "dict-pet": {
+  "src": "assets/content/dict/pet.webp"
+ },
+ "dict-pigeon": {
+  "src": "assets/content/dict/pigeon.webp"
+ },
+ "dict-pineapple": {
+  "src": "assets/content/dict/pineapple.webp"
+ },
+ "dict-pizza": {
+  "src": "assets/content/dict/pizza.webp"
+ },
+ "dict-pomegranate": {
+  "src": "assets/content/dict/pomegranate.webp"
+ },
+ "dict-popcorn": {
+  "src": "assets/content/dict/popcorn.webp"
+ },
+ "dict-potato": {
+  "src": "assets/content/dict/potato.webp"
+ },
+ "dict-prince": {
+  "src": "assets/content/dict/prince.webp"
+ },
+ "dict-puppy": {
+  "src": "assets/content/dict/puppy.webp"
+ },
+ "dict-queen": {
+  "src": "assets/content/dict/queen.webp"
+ },
+ "dict-rabbit": {
+  "src": "assets/content/dict/rabbit.webp"
+ },
+ "dict-rhino": {
+  "src": "assets/content/dict/rhino.webp"
+ },
+ "dict-rice": {
+  "src": "assets/content/dict/rice.webp"
+ },
+ "dict-roof": {
+  "src": "assets/content/dict/roof.webp"
+ },
+ "dict-room": {
+  "src": "assets/content/dict/room.webp"
+ },
+ "dict-salad": {
+  "src": "assets/content/dict/salad.webp"
+ },
+ "dict-salt": {
+  "src": "assets/content/dict/salt.webp"
+ },
+ "dict-salty": {
+  "src": "assets/content/dict/salty.webp"
+ },
+ "dict-sandwich": {
+  "src": "assets/content/dict/sandwich.webp"
+ },
+ "dict-scorpion": {
+  "src": "assets/content/dict/scorpion.webp"
+ },
+ "dict-seal": {
+  "src": "assets/content/dict/seal.webp"
+ },
+ "dict-see": {
+  "src": "assets/content/dict/see.webp"
+ },
+ "dict-shark": {
+  "src": "assets/content/dict/shark.webp"
+ },
+ "dict-sheep": {
+  "src": "assets/content/dict/sheep.webp"
+ },
+ "dict-shell": {
+  "src": "assets/content/dict/shell.webp"
+ },
+ "dict-shoulder": {
+  "src": "assets/content/dict/shoulder.webp"
+ },
+ "dict-sick": {
+  "src": "assets/content/dict/sick.webp"
+ },
+ "dict-sister": {
+  "src": "assets/content/dict/sister.webp"
+ },
+ "dict-skin": {
+  "src": "assets/content/dict/skin.webp"
+ },
+ "dict-smell": {
+  "src": "assets/content/dict/smell.webp"
+ },
+ "dict-snack": {
+  "src": "assets/content/dict/snack.webp"
+ },
+ "dict-snail": {
+  "src": "assets/content/dict/snail.webp"
+ },
+ "dict-snake": {
+  "src": "assets/content/dict/snake.webp"
+ },
+ "dict-son": {
+  "src": "assets/content/dict/son.webp"
+ },
+ "dict-soup": {
+  "src": "assets/content/dict/soup.webp"
+ },
+ "dict-sour": {
+  "src": "assets/content/dict/sour.webp"
+ },
+ "dict-spicy": {
+  "src": "assets/content/dict/spicy.webp"
+ },
+ "dict-spider": {
+  "src": "assets/content/dict/spider.webp"
+ },
+ "dict-spinach": {
+  "src": "assets/content/dict/spinach.webp"
+ },
+ "dict-squirrel": {
+  "src": "assets/content/dict/squirrel.webp"
+ },
+ "dict-stairs": {
+  "src": "assets/content/dict/stairs.webp"
+ },
+ "dict-starfish": {
+  "src": "assets/content/dict/starfish.webp"
+ },
+ "dict-stomach": {
+  "src": "assets/content/dict/stomach.webp"
+ },
+ "dict-stranger": {
+  "src": "assets/content/dict/stranger.webp"
+ },
+ "dict-strawberry": {
+  "src": "assets/content/dict/strawberry.webp"
+ },
+ "dict-sugar": {
+  "src": "assets/content/dict/sugar.webp"
+ },
+ "dict-swan": {
+  "src": "assets/content/dict/swan.webp"
+ },
+ "dict-sweet": {
+  "src": "assets/content/dict/sweet.webp"
+ },
+ "dict-table": {
+  "src": "assets/content/dict/table.webp"
+ },
+ "dict-tail": {
+  "src": "assets/content/dict/tail.webp"
+ },
+ "dict-taste": {
+  "src": "assets/content/dict/taste.webp"
+ },
+ "dict-tea": {
+  "src": "assets/content/dict/tea.webp"
+ },
+ "dict-team": {
+  "src": "assets/content/dict/team.webp"
+ },
+ "dict-teeth": {
+  "src": "assets/content/dict/teeth.webp"
+ },
+ "dict-thirsty": {
+  "src": "assets/content/dict/thirsty.webp"
+ },
+ "dict-thumb": {
+  "src": "assets/content/dict/thumb.webp"
+ },
+ "dict-tiger": {
+  "src": "assets/content/dict/tiger.webp"
+ },
+ "dict-tired": {
+  "src": "assets/content/dict/tired.webp"
+ },
+ "dict-toe": {
+  "src": "assets/content/dict/toe.webp"
+ },
+ "dict-tomato": {
+  "src": "assets/content/dict/tomato.webp"
+ },
+ "dict-tongue": {
+  "src": "assets/content/dict/tongue.webp"
+ },
+ "dict-toothache": {
+  "src": "assets/content/dict/toothache.webp"
+ },
+ "dict-touch": {
+  "src": "assets/content/dict/touch.webp"
+ },
+ "dict-turtle": {
+  "src": "assets/content/dict/turtle.webp"
+ },
+ "dict-twin": {
+  "src": "assets/content/dict/twin.webp"
+ },
+ "dict-uncle": {
+  "src": "assets/content/dict/uncle.webp"
+ },
+ "dict-vegetable": {
+  "src": "assets/content/dict/vegetable.webp"
+ },
+ "dict-voice": {
+  "src": "assets/content/dict/voice.webp"
+ },
+ "dict-wall": {
+  "src": "assets/content/dict/wall.webp"
+ },
+ "dict-water": {
+  "src": "assets/content/dict/water.webp"
+ },
+ "dict-watermelon": {
+  "src": "assets/content/dict/watermelon.webp"
+ },
+ "dict-whale": {
+  "src": "assets/content/dict/whale.webp"
+ },
+ "dict-wife": {
+  "src": "assets/content/dict/wife.webp"
+ },
+ "dict-wild": {
+  "src": "assets/content/dict/wild.webp"
+ },
+ "dict-window": {
+  "src": "assets/content/dict/window.webp"
+ },
+ "dict-wing": {
+  "src": "assets/content/dict/wing.webp"
+ },
+ "dict-wolf": {
+  "src": "assets/content/dict/wolf.webp"
+ },
+ "dict-woman": {
+  "src": "assets/content/dict/woman.webp"
+ },
+ "dict-worm": {
+  "src": "assets/content/dict/worm.webp"
+ },
+ "dict-wrist": {
+  "src": "assets/content/dict/wrist.webp"
+ },
+ "dict-yogurt": {
+  "src": "assets/content/dict/yogurt.webp"
+ },
+ "dict-zebra": {
+  "src": "assets/content/dict/zebra.webp"
  },
  "game-ani-card": {
   "src": "assets/games/kg/game-ani-card.webp"
@@ -314,6 +1184,282 @@
   "src": "assets/hero/home-hero-koko-en.webp",
   "w": 1752
  },
+ "kg-ball": {
+  "src": "assets/content/kg/ball.webp"
+ },
+ "kg-black-cat": {
+  "src": "assets/content/kg/black-cat.webp"
+ },
+ "kg-blueberries": {
+  "src": "assets/content/kg/blueberries.webp"
+ },
+ "kg-box": {
+  "src": "assets/content/kg/box.webp"
+ },
+ "kg-butterfly": {
+  "src": "assets/content/kg/butterfly.webp"
+ },
+ "kg-chicken": {
+  "src": "assets/content/kg/chicken.webp"
+ },
+ "kg-chocolate": {
+  "src": "assets/content/kg/chocolate.webp"
+ },
+ "kg-cow": {
+  "src": "assets/content/kg/cow.webp"
+ },
+ "kg-cucumber": {
+  "src": "assets/content/kg/cucumber.webp"
+ },
+ "kg-dog": {
+  "src": "assets/content/kg/dog.webp"
+ },
+ "kg-eggplant": {
+  "src": "assets/content/kg/eggplant.webp"
+ },
+ "kg-hat": {
+  "src": "assets/content/kg/hat.webp"
+ },
+ "kg-ice-cream": {
+  "src": "assets/content/kg/ice-cream.webp"
+ },
+ "kg-juice": {
+  "src": "assets/content/kg/juice.webp"
+ },
+ "kg-kite": {
+  "src": "assets/content/kg/kite.webp"
+ },
+ "kg-lion": {
+  "src": "assets/content/kg/lion.webp"
+ },
+ "kg-milk": {
+  "src": "assets/content/kg/milk.webp"
+ },
+ "kg-monkey": {
+  "src": "assets/content/kg/monkey.webp"
+ },
+ "kg-moon": {
+  "src": "assets/content/kg/moon.webp"
+ },
+ "kg-nest": {
+  "src": "assets/content/kg/nest.webp"
+ },
+ "kg-orange": {
+  "src": "assets/content/kg/orange.webp"
+ },
+ "kg-pig": {
+  "src": "assets/content/kg/pig.webp"
+ },
+ "kg-queen": {
+  "src": "assets/content/kg/queen.webp"
+ },
+ "kg-strawberry": {
+  "src": "assets/content/kg/strawberry.webp"
+ },
+ "kg-tree": {
+  "src": "assets/content/kg/tree.webp"
+ },
+ "kg-u1f305": {
+  "src": "assets/content/kg/u1f305.webp"
+ },
+ "kg-u1f307": {
+  "src": "assets/content/kg/u1f307.webp"
+ },
+ "kg-u1f308": {
+  "src": "assets/content/kg/u1f308.webp"
+ },
+ "kg-u1f30a": {
+  "src": "assets/content/kg/u1f30a.webp"
+ },
+ "kg-u1f327": {
+  "src": "assets/content/kg/u1f327.webp"
+ },
+ "kg-u1f330": {
+  "src": "assets/content/kg/u1f330.webp"
+ },
+ "kg-u1f331": {
+  "src": "assets/content/kg/u1f331.webp"
+ },
+ "kg-u1f338": {
+  "src": "assets/content/kg/u1f338.webp"
+ },
+ "kg-u1f339": {
+  "src": "assets/content/kg/u1f339.webp"
+ },
+ "kg-u1f33b": {
+  "src": "assets/content/kg/u1f33b.webp"
+ },
+ "kg-u1f33d": {
+  "src": "assets/content/kg/u1f33d.webp"
+ },
+ "kg-u1f347": {
+  "src": "assets/content/kg/u1f347.webp"
+ },
+ "kg-u1f34b": {
+  "src": "assets/content/kg/u1f34b.webp"
+ },
+ "kg-u1f34c": {
+  "src": "assets/content/kg/u1f34c.webp"
+ },
+ "kg-u1f34e": {
+  "src": "assets/content/kg/u1f34e.webp"
+ },
+ "kg-u1f34f": {
+  "src": "assets/content/kg/u1f34f.webp"
+ },
+ "kg-u1f373": {
+  "src": "assets/content/kg/u1f373.webp"
+ },
+ "kg-u1f381": {
+  "src": "assets/content/kg/u1f381.webp"
+ },
+ "kg-u1f382": {
+  "src": "assets/content/kg/u1f382.webp"
+ },
+ "kg-u1f392": {
+  "src": "assets/content/kg/u1f392.webp"
+ },
+ "kg-u1f3d6": {
+  "src": "assets/content/kg/u1f3d6.webp"
+ },
+ "kg-u1f3eb": {
+  "src": "assets/content/kg/u1f3eb.webp"
+ },
+ "kg-u1f3f0": {
+  "src": "assets/content/kg/u1f3f0.webp"
+ },
+ "kg-u1f407": {
+  "src": "assets/content/kg/u1f407.webp"
+ },
+ "kg-u1f408": {
+  "src": "assets/content/kg/u1f408.webp"
+ },
+ "kg-u1f411": {
+  "src": "assets/content/kg/u1f411.webp"
+ },
+ "kg-u1f418": {
+  "src": "assets/content/kg/u1f418.webp"
+ },
+ "kg-u1f41d": {
+  "src": "assets/content/kg/u1f41d.webp"
+ },
+ "kg-u1f41f": {
+  "src": "assets/content/kg/u1f41f.webp"
+ },
+ "kg-u1f423": {
+  "src": "assets/content/kg/u1f423.webp"
+ },
+ "kg-u1f425": {
+  "src": "assets/content/kg/u1f425.webp"
+ },
+ "kg-u1f42a": {
+  "src": "assets/content/kg/u1f42a.webp"
+ },
+ "kg-u1f430": {
+  "src": "assets/content/kg/u1f430.webp"
+ },
+ "kg-u1f431": {
+  "src": "assets/content/kg/u1f431.webp"
+ },
+ "kg-u1f434": {
+  "src": "assets/content/kg/u1f434.webp"
+ },
+ "kg-u1f436": {
+  "src": "assets/content/kg/u1f436.webp"
+ },
+ "kg-u1f438": {
+  "src": "assets/content/kg/u1f438.webp"
+ },
+ "kg-u1f43b": {
+  "src": "assets/content/kg/u1f43b.webp"
+ },
+ "kg-u1f4a7": {
+  "src": "assets/content/kg/u1f4a7.webp"
+ },
+ "kg-u1f4d6": {
+  "src": "assets/content/kg/u1f4d6.webp"
+ },
+ "kg-u1f525": {
+  "src": "assets/content/kg/u1f525.webp"
+ },
+ "kg-u1f573": {
+  "src": "assets/content/kg/u1f573.webp"
+ },
+ "kg-u1f60b": {
+  "src": "assets/content/kg/u1f60b.webp"
+ },
+ "kg-u1f62e": {
+  "src": "assets/content/kg/u1f62e.webp"
+ },
+ "kg-u1f634": {
+  "src": "assets/content/kg/u1f634.webp"
+ },
+ "kg-u1f6dd": {
+  "src": "assets/content/kg/u1f6dd.webp"
+ },
+ "kg-u1f95a": {
+  "src": "assets/content/kg/u1f95a.webp"
+ },
+ "kg-u1f963": {
+  "src": "assets/content/kg/u1f963.webp"
+ },
+ "kg-u1f985": {
+  "src": "assets/content/kg/u1f985.webp"
+ },
+ "kg-u1f986": {
+  "src": "assets/content/kg/u1f986.webp"
+ },
+ "kg-u1f98a": {
+  "src": "assets/content/kg/u1f98a.webp"
+ },
+ "kg-u1f992": {
+  "src": "assets/content/kg/u1f992.webp"
+ },
+ "kg-u1f9f8": {
+  "src": "assets/content/kg/u1f9f8.webp"
+ },
+ "kg-u1faa3": {
+  "src": "assets/content/kg/u1faa3.webp"
+ },
+ "kg-u1faa5": {
+  "src": "assets/content/kg/u1faa5.webp"
+ },
+ "kg-u1fab6": {
+  "src": "assets/content/kg/u1fab6.webp"
+ },
+ "kg-u2600": {
+  "src": "assets/content/kg/u2600.webp"
+ },
+ "kg-u2601": {
+  "src": "assets/content/kg/u2601.webp"
+ },
+ "kg-u26bd": {
+  "src": "assets/content/kg/u26bd.webp"
+ },
+ "kg-u2708": {
+  "src": "assets/content/kg/u2708.webp"
+ },
+ "kg-u2709": {
+  "src": "assets/content/kg/u2709.webp"
+ },
+ "kg-u270b": {
+  "src": "assets/content/kg/u270b.webp"
+ },
+ "kg-umbrella": {
+  "src": "assets/content/kg/umbrella.webp"
+ },
+ "kg-van": {
+  "src": "assets/content/kg/van.webp"
+ },
+ "kg-watermelon": {
+  "src": "assets/content/kg/watermelon.webp"
+ },
+ "kg-yo-yo": {
+  "src": "assets/content/kg/yo-yo.webp"
+ },
+ "kg-zebra": {
+  "src": "assets/content/kg/zebra.webp"
+ },
  "logo-mark": {
   "src": "assets/brand/logo-mark.webp"
  },
@@ -353,8 +1499,14 @@
   "sm": "assets/mascot/mascot-welcome-sm.webp",
   "src": "assets/mascot/mascot-welcome.webp"
  },
+ "math-ant": {
+  "src": "assets/content/math/ant.webp"
+ },
  "math-apple": {
   "src": "assets/content/math/apple.webp"
+ },
+ "math-bag": {
+  "src": "assets/content/math/bag.webp"
  },
  "math-ball": {
   "src": "assets/content/math/ball.webp"
@@ -362,32 +1514,95 @@
  "math-balloon": {
   "src": "assets/content/math/balloon.webp"
  },
+ "math-basket": {
+  "src": "assets/content/math/basket.webp"
+ },
+ "math-bicycle": {
+  "src": "assets/content/math/bicycle.webp"
+ },
  "math-bird": {
   "src": "assets/content/math/bird.webp"
  },
  "math-book": {
   "src": "assets/content/math/book.webp"
  },
+ "math-box": {
+  "src": "assets/content/math/box.webp"
+ },
+ "math-car": {
+  "src": "assets/content/math/car.webp"
+ },
+ "math-chair": {
+  "src": "assets/content/math/chair.webp"
+ },
+ "math-clock": {
+  "src": "assets/content/math/clock.webp"
+ },
+ "math-clover": {
+  "src": "assets/content/math/clover.webp"
+ },
  "math-cookie": {
   "src": "assets/content/math/cookie.webp"
+ },
+ "math-counter": {
+  "src": "assets/content/math/counter.webp"
+ },
+ "math-counter-yellow": {
+  "src": "assets/content/math/counter-yellow.webp"
  },
  "math-crayon": {
   "src": "assets/content/math/crayon.webp"
  },
+ "math-cube": {
+  "src": "assets/content/math/cube.webp"
+ },
+ "math-cup": {
+  "src": "assets/content/math/cup.webp"
+ },
  "math-date": {
   "src": "assets/content/math/date.webp"
+ },
+ "math-die": {
+  "src": "assets/content/math/die.webp"
  },
  "math-egg": {
   "src": "assets/content/math/egg.webp"
  },
+ "math-eggbox": {
+  "src": "assets/content/math/eggbox.webp"
+ },
  "math-fish": {
   "src": "assets/content/math/fish.webp"
+ },
+ "math-flat": {
+  "src": "assets/content/math/flat.webp"
  },
  "math-flower": {
   "src": "assets/content/math/flower.webp"
  },
+ "math-glove": {
+  "src": "assets/content/math/glove.webp"
+ },
+ "math-hand": {
+  "src": "assets/content/math/hand.webp"
+ },
+ "math-jar": {
+  "src": "assets/content/math/jar.webp"
+ },
+ "math-ladybird": {
+  "src": "assets/content/math/ladybird.webp"
+ },
+ "math-linkcube": {
+  "src": "assets/content/math/linkcube.webp"
+ },
  "math-marble": {
   "src": "assets/content/math/marble.webp"
+ },
+ "math-nest": {
+  "src": "assets/content/math/nest.webp"
+ },
+ "math-octopus": {
+  "src": "assets/content/math/octopus.webp"
  },
  "math-orange": {
   "src": "assets/content/math/orange.webp"
@@ -395,11 +1610,44 @@
  "math-pencil": {
   "src": "assets/content/math/pencil.webp"
  },
+ "math-pencilcase": {
+  "src": "assets/content/math/pencilcase.webp"
+ },
+ "math-plate": {
+  "src": "assets/content/math/plate.webp"
+ },
+ "math-rod": {
+  "src": "assets/content/math/rod.webp"
+ },
+ "math-ruler": {
+  "src": "assets/content/math/ruler.webp"
+ },
+ "math-shoe": {
+  "src": "assets/content/math/shoe.webp"
+ },
+ "math-sock": {
+  "src": "assets/content/math/sock.webp"
+ },
+ "math-spider": {
+  "src": "assets/content/math/spider.webp"
+ },
  "math-star": {
   "src": "assets/content/math/star.webp"
  },
+ "math-starfish": {
+  "src": "assets/content/math/starfish.webp"
+ },
+ "math-stool": {
+  "src": "assets/content/math/stool.webp"
+ },
  "math-toycar": {
   "src": "assets/content/math/toycar.webp"
+ },
+ "math-tray": {
+  "src": "assets/content/math/tray.webp"
+ },
+ "math-wheel": {
+  "src": "assets/content/math/wheel.webp"
  },
  "reward-ball": {
   "sm": "assets/rewards/reward-ball-sm.webp",
@@ -532,6 +1780,588 @@
  "reward-trip": {
   "sm": "assets/rewards/reward-trip-sm.webp",
   "src": "assets/rewards/reward-trip.webp"
+ },
+ "sci-u1f30a": {
+  "src": "assets/content/sci/u1f30a.webp"
+ },
+ "sci-u1f30a-1f420": {
+  "src": "assets/content/sci/u1f30a-1f420.webp"
+ },
+ "sci-u1f30b": {
+  "src": "assets/content/sci/u1f30b.webp"
+ },
+ "sci-u1f30b-1f9ab-1f3d7": {
+  "src": "assets/content/sci/u1f30b-1f9ab-1f3d7.webp"
+ },
+ "sci-u1f30d": {
+  "src": "assets/content/sci/u1f30d.webp"
+ },
+ "sci-u1f30e": {
+  "src": "assets/content/sci/u1f30e.webp"
+ },
+ "sci-u1f319": {
+  "src": "assets/content/sci/u1f319.webp"
+ },
+ "sci-u1f321": {
+  "src": "assets/content/sci/u1f321.webp"
+ },
+ "sci-u1f32a-1f30b-1f525": {
+  "src": "assets/content/sci/u1f32a-1f30b-1f525.webp"
+ },
+ "sci-u1f32c": {
+  "src": "assets/content/sci/u1f32c.webp"
+ },
+ "sci-u1f32c-1f69a": {
+  "src": "assets/content/sci/u1f32c-1f69a.webp"
+ },
+ "sci-u1f331": {
+  "src": "assets/content/sci/u1f331.webp"
+ },
+ "sci-u1f331-1f334": {
+  "src": "assets/content/sci/u1f331-1f334.webp"
+ },
+ "sci-u1f331-1f407-1f344": {
+  "src": "assets/content/sci/u1f331-1f407-1f344.webp"
+ },
+ "sci-u1f331-1f7eb": {
+  "src": "assets/content/sci/u1f331-1f7eb.webp"
+ },
+ "sci-u1f333": {
+  "src": "assets/content/sci/u1f333.webp"
+ },
+ "sci-u1f334": {
+  "src": "assets/content/sci/u1f334.webp"
+ },
+ "sci-u1f334-1f99c": {
+  "src": "assets/content/sci/u1f334-1f99c.webp"
+ },
+ "sci-u1f335": {
+  "src": "assets/content/sci/u1f335.webp"
+ },
+ "sci-u1f33b": {
+  "src": "assets/content/sci/u1f33b.webp"
+ },
+ "sci-u1f33e": {
+  "src": "assets/content/sci/u1f33e.webp"
+ },
+ "sci-u1f33e-1f981": {
+  "src": "assets/content/sci/u1f33e-1f981.webp"
+ },
+ "sci-u1f33f": {
+  "src": "assets/content/sci/u1f33f.webp"
+ },
+ "sci-u1f33f-1f997-1f985": {
+  "src": "assets/content/sci/u1f33f-1f997-1f985.webp"
+ },
+ "sci-u1f342": {
+  "src": "assets/content/sci/u1f342.webp"
+ },
+ "sci-u1f342-1f98c": {
+  "src": "assets/content/sci/u1f342-1f98c.webp"
+ },
+ "sci-u1f343": {
+  "src": "assets/content/sci/u1f343.webp"
+ },
+ "sci-u1f344": {
+  "src": "assets/content/sci/u1f344.webp"
+ },
+ "sci-u1f344-1f9a0": {
+  "src": "assets/content/sci/u1f344-1f9a0.webp"
+ },
+ "sci-u1f34a-1f966": {
+  "src": "assets/content/sci/u1f34a-1f966.webp"
+ },
+ "sci-u1f357": {
+  "src": "assets/content/sci/u1f357.webp"
+ },
+ "sci-u1f35a": {
+  "src": "assets/content/sci/u1f35a.webp"
+ },
+ "sci-u1f35e": {
+  "src": "assets/content/sci/u1f35e.webp"
+ },
+ "sci-u1f35e-1f35a-1f954": {
+  "src": "assets/content/sci/u1f35e-1f35a-1f954.webp"
+ },
+ "sci-u1f35e-1f95a-1f9c8": {
+  "src": "assets/content/sci/u1f35e-1f95a-1f9c8.webp"
+ },
+ "sci-u1f36c": {
+  "src": "assets/content/sci/u1f36c.webp"
+ },
+ "sci-u1f36d": {
+  "src": "assets/content/sci/u1f36d.webp"
+ },
+ "sci-u1f372-1f6b0": {
+  "src": "assets/content/sci/u1f372-1f6b0.webp"
+ },
+ "sci-u1f372-274c": {
+  "src": "assets/content/sci/u1f372-274c.webp"
+ },
+ "sci-u1f37d": {
+  "src": "assets/content/sci/u1f37d.webp"
+ },
+ "sci-u1f3c3": {
+  "src": "assets/content/sci/u1f3c3.webp"
+ },
+ "sci-u1f3d6": {
+  "src": "assets/content/sci/u1f3d6.webp"
+ },
+ "sci-u1f3d6-1f3fa-1f33b": {
+  "src": "assets/content/sci/u1f3d6-1f3fa-1f33b.webp"
+ },
+ "sci-u1f3d6-1f4e5": {
+  "src": "assets/content/sci/u1f3d6-1f4e5.webp"
+ },
+ "sci-u1f3d7": {
+  "src": "assets/content/sci/u1f3d7.webp"
+ },
+ "sci-u1f3d7-1fa93-1f3ed": {
+  "src": "assets/content/sci/u1f3d7-1fa93-1f3ed.webp"
+ },
+ "sci-u1f3dc": {
+  "src": "assets/content/sci/u1f3dc.webp"
+ },
+ "sci-u1f3dc-1f334": {
+  "src": "assets/content/sci/u1f3dc-1f334.webp"
+ },
+ "sci-u1f3dd": {
+  "src": "assets/content/sci/u1f3dd.webp"
+ },
+ "sci-u1f3de": {
+  "src": "assets/content/sci/u1f3de.webp"
+ },
+ "sci-u1f3de-1f438": {
+  "src": "assets/content/sci/u1f3de-1f438.webp"
+ },
+ "sci-u1f3ed": {
+  "src": "assets/content/sci/u1f3ed.webp"
+ },
+ "sci-u1f3fa": {
+  "src": "assets/content/sci/u1f3fa.webp"
+ },
+ "sci-u1f404": {
+  "src": "assets/content/sci/u1f404.webp"
+ },
+ "sci-u1f406": {
+  "src": "assets/content/sci/u1f406.webp"
+ },
+ "sci-u1f407": {
+  "src": "assets/content/sci/u1f407.webp"
+ },
+ "sci-u1f407-1f42a-1f98c": {
+  "src": "assets/content/sci/u1f407-1f42a-1f98c.webp"
+ },
+ "sci-u1f407-1f981-1f43b": {
+  "src": "assets/content/sci/u1f407-1f981-1f43b.webp"
+ },
+ "sci-u1f408": {
+  "src": "assets/content/sci/u1f408.webp"
+ },
+ "sci-u1f40d": {
+  "src": "assets/content/sci/u1f40d.webp"
+ },
+ "sci-u1f412": {
+  "src": "assets/content/sci/u1f412.webp"
+ },
+ "sci-u1f413": {
+  "src": "assets/content/sci/u1f413.webp"
+ },
+ "sci-u1f418": {
+  "src": "assets/content/sci/u1f418.webp"
+ },
+ "sci-u1f41a-1faa8": {
+  "src": "assets/content/sci/u1f41a-1faa8.webp"
+ },
+ "sci-u1f41a-2b55": {
+  "src": "assets/content/sci/u1f41a-2b55.webp"
+ },
+ "sci-u1f41b": {
+  "src": "assets/content/sci/u1f41b.webp"
+ },
+ "sci-u1f41d": {
+  "src": "assets/content/sci/u1f41d.webp"
+ },
+ "sci-u1f41f": {
+  "src": "assets/content/sci/u1f41f.webp"
+ },
+ "sci-u1f420": {
+  "src": "assets/content/sci/u1f420.webp"
+ },
+ "sci-u1f426": {
+  "src": "assets/content/sci/u1f426.webp"
+ },
+ "sci-u1f427": {
+  "src": "assets/content/sci/u1f427.webp"
+ },
+ "sci-u1f42a": {
+  "src": "assets/content/sci/u1f42a.webp"
+ },
+ "sci-u1f42a-1f335-1f98e": {
+  "src": "assets/content/sci/u1f42a-1f335-1f98e.webp"
+ },
+ "sci-u1f42a-1f42a-1f42a": {
+  "src": "assets/content/sci/u1f42a-1f42a-1f42a.webp"
+ },
+ "sci-u1f42a-1f98e-1f335-1f985": {
+  "src": "assets/content/sci/u1f42a-1f98e-1f335-1f985.webp"
+ },
+ "sci-u1f42d": {
+  "src": "assets/content/sci/u1f42d.webp"
+ },
+ "sci-u1f438": {
+  "src": "assets/content/sci/u1f438.webp"
+ },
+ "sci-u1f43a": {
+  "src": "assets/content/sci/u1f43a.webp"
+ },
+ "sci-u1f43b": {
+  "src": "assets/content/sci/u1f43b.webp"
+ },
+ "sci-u1f43b-1f9d1": {
+  "src": "assets/content/sci/u1f43b-1f9d1.webp"
+ },
+ "sci-u1f43b-200d-2744": {
+  "src": "assets/content/sci/u1f43b-200d-2744.webp"
+ },
+ "sci-u1f455-1f576": {
+  "src": "assets/content/sci/u1f455-1f576.webp"
+ },
+ "sci-u1f468-200d-2695": {
+  "src": "assets/content/sci/u1f468-200d-2695.webp"
+ },
+ "sci-u1f468-200d-2695-1f489": {
+  "src": "assets/content/sci/u1f468-200d-2695-1f489.webp"
+ },
+ "sci-u1f480": {
+  "src": "assets/content/sci/u1f480.webp"
+ },
+ "sci-u1f485-1f6bf": {
+  "src": "assets/content/sci/u1f485-1f6bf.webp"
+ },
+ "sci-u1f489": {
+  "src": "assets/content/sci/u1f489.webp"
+ },
+ "sci-u1f4a7": {
+  "src": "assets/content/sci/u1f4a7.webp"
+ },
+ "sci-u1f4a8": {
+  "src": "assets/content/sci/u1f4a8.webp"
+ },
+ "sci-u1f4aa": {
+  "src": "assets/content/sci/u1f4aa.webp"
+ },
+ "sci-u1f4e5": {
+  "src": "assets/content/sci/u1f4e5.webp"
+ },
+ "sci-u1f525": {
+  "src": "assets/content/sci/u1f525.webp"
+ },
+ "sci-u1f534": {
+  "src": "assets/content/sci/u1f534.webp"
+ },
+ "sci-u1f535": {
+  "src": "assets/content/sci/u1f535.webp"
+ },
+ "sci-u1f53a": {
+  "src": "assets/content/sci/u1f53a.webp"
+ },
+ "sci-u1f590": {
+  "src": "assets/content/sci/u1f590.webp"
+ },
+ "sci-u1f5d1": {
+  "src": "assets/content/sci/u1f5d1.webp"
+ },
+ "sci-u1f5e3": {
+  "src": "assets/content/sci/u1f5e3.webp"
+ },
+ "sci-u1f623": {
+  "src": "assets/content/sci/u1f623.webp"
+ },
+ "sci-u1f634": {
+  "src": "assets/content/sci/u1f634.webp"
+ },
+ "sci-u1f634-1f319": {
+  "src": "assets/content/sci/u1f634-1f319.webp"
+ },
+ "sci-u1f637": {
+  "src": "assets/content/sci/u1f637.webp"
+ },
+ "sci-u1f69a": {
+  "src": "assets/content/sci/u1f69a.webp"
+ },
+ "sci-u1f6ab": {
+  "src": "assets/content/sci/u1f6ab.webp"
+ },
+ "sci-u1f6ab-1fa92": {
+  "src": "assets/content/sci/u1f6ab-1fa92.webp"
+ },
+ "sci-u1f6ab-27a1": {
+  "src": "assets/content/sci/u1f6ab-27a1.webp"
+ },
+ "sci-u1f6b1": {
+  "src": "assets/content/sci/u1f6b1.webp"
+ },
+ "sci-u1f6b6": {
+  "src": "assets/content/sci/u1f6b6.webp"
+ },
+ "sci-u1f6e2": {
+  "src": "assets/content/sci/u1f6e2.webp"
+ },
+ "sci-u1f6e2-26ab-1f525": {
+  "src": "assets/content/sci/u1f6e2-26ab-1f525.webp"
+ },
+ "sci-u1f7e4": {
+  "src": "assets/content/sci/u1f7e4.webp"
+ },
+ "sci-u1f7eb": {
+  "src": "assets/content/sci/u1f7eb.webp"
+ },
+ "sci-u1f90f": {
+  "src": "assets/content/sci/u1f90f.webp"
+ },
+ "sci-u1f912": {
+  "src": "assets/content/sci/u1f912.webp"
+ },
+ "sci-u1f91d": {
+  "src": "assets/content/sci/u1f91d.webp"
+ },
+ "sci-u1f927": {
+  "src": "assets/content/sci/u1f927.webp"
+ },
+ "sci-u1f927-1f408": {
+  "src": "assets/content/sci/u1f927-1f408.webp"
+ },
+ "sci-u1f927-1f4a8": {
+  "src": "assets/content/sci/u1f927-1f4a8.webp"
+ },
+ "sci-u1f927-1f6ab": {
+  "src": "assets/content/sci/u1f927-1f6ab.webp"
+ },
+ "sci-u1f927-1f9fb": {
+  "src": "assets/content/sci/u1f927-1f9fb.webp"
+ },
+ "sci-u1f927-27a1-1f642": {
+  "src": "assets/content/sci/u1f927-27a1-1f642.webp"
+ },
+ "sci-u1f954": {
+  "src": "assets/content/sci/u1f954.webp"
+ },
+ "sci-u1f957": {
+  "src": "assets/content/sci/u1f957.webp"
+ },
+ "sci-u1f957-1f4a7": {
+  "src": "assets/content/sci/u1f957-1f4a7.webp"
+ },
+ "sci-u1f95a": {
+  "src": "assets/content/sci/u1f95a.webp"
+ },
+ "sci-u1f95a-1f41f-1f357": {
+  "src": "assets/content/sci/u1f95a-1f41f-1f357.webp"
+ },
+ "sci-u1f95b": {
+  "src": "assets/content/sci/u1f95b.webp"
+ },
+ "sci-u1f964": {
+  "src": "assets/content/sci/u1f964.webp"
+ },
+ "sci-u1f966": {
+  "src": "assets/content/sci/u1f966.webp"
+ },
+ "sci-u1f981": {
+  "src": "assets/content/sci/u1f981.webp"
+ },
+ "sci-u1f981-1f42a-1f43b": {
+  "src": "assets/content/sci/u1f981-1f42a-1f43b.webp"
+ },
+ "sci-u1f981-1f985-1f43a": {
+  "src": "assets/content/sci/u1f981-1f985-1f43a.webp"
+ },
+ "sci-u1f982": {
+  "src": "assets/content/sci/u1f982.webp"
+ },
+ "sci-u1f985": {
+  "src": "assets/content/sci/u1f985.webp"
+ },
+ "sci-u1f985-27a1": {
+  "src": "assets/content/sci/u1f985-27a1.webp"
+ },
+ "sci-u1f988": {
+  "src": "assets/content/sci/u1f988.webp"
+ },
+ "sci-u1f98c": {
+  "src": "assets/content/sci/u1f98c.webp"
+ },
+ "sci-u1f98e": {
+  "src": "assets/content/sci/u1f98e.webp"
+ },
+ "sci-u1f990": {
+  "src": "assets/content/sci/u1f990.webp"
+ },
+ "sci-u1f992": {
+  "src": "assets/content/sci/u1f992.webp"
+ },
+ "sci-u1f993": {
+  "src": "assets/content/sci/u1f993.webp"
+ },
+ "sci-u1f995-1f9a4": {
+  "src": "assets/content/sci/u1f995-1f9a4.webp"
+ },
+ "sci-u1f997": {
+  "src": "assets/content/sci/u1f997.webp"
+ },
+ "sci-u1f99c": {
+  "src": "assets/content/sci/u1f99c.webp"
+ },
+ "sci-u1f99f-1f400": {
+  "src": "assets/content/sci/u1f99f-1f400.webp"
+ },
+ "sci-u1f99f-1f7e0": {
+  "src": "assets/content/sci/u1f99f-1f7e0.webp"
+ },
+ "sci-u1f9a0": {
+  "src": "assets/content/sci/u1f9a0.webp"
+ },
+ "sci-u1f9a0-1f9eb-1f344": {
+  "src": "assets/content/sci/u1f9a0-1f9eb-1f344.webp"
+ },
+ "sci-u1f9ab": {
+  "src": "assets/content/sci/u1f9ab.webp"
+ },
+ "sci-u1f9ab-1f418": {
+  "src": "assets/content/sci/u1f9ab-1f418.webp"
+ },
+ "sci-u1f9ad": {
+  "src": "assets/content/sci/u1f9ad.webp"
+ },
+ "sci-u1f9b4": {
+  "src": "assets/content/sci/u1f9b4.webp"
+ },
+ "sci-u1f9b4-1f95b": {
+  "src": "assets/content/sci/u1f9b4-1f95b.webp"
+ },
+ "sci-u1f9b6": {
+  "src": "assets/content/sci/u1f9b6.webp"
+ },
+ "sci-u1f9c8": {
+  "src": "assets/content/sci/u1f9c8.webp"
+ },
+ "sci-u1f9c8-1fad2": {
+  "src": "assets/content/sci/u1f9c8-1fad2.webp"
+ },
+ "sci-u1f9ca": {
+  "src": "assets/content/sci/u1f9ca.webp"
+ },
+ "sci-u1f9d1": {
+  "src": "assets/content/sci/u1f9d1.webp"
+ },
+ "sci-u1f9e9": {
+  "src": "assets/content/sci/u1f9e9.webp"
+ },
+ "sci-u1f9e9-1f69a-1f4e5": {
+  "src": "assets/content/sci/u1f9e9-1f69a-1f4e5.webp"
+ },
+ "sci-u1f9eb": {
+  "src": "assets/content/sci/u1f9eb.webp"
+ },
+ "sci-u1f9fc": {
+  "src": "assets/content/sci/u1f9fc.webp"
+ },
+ "sci-u1fa78": {
+  "src": "assets/content/sci/u1fa78.webp"
+ },
+ "sci-u1fa78-1f36c": {
+  "src": "assets/content/sci/u1fa78-1f36c.webp"
+ },
+ "sci-u1fa7a": {
+  "src": "assets/content/sci/u1fa7a.webp"
+ },
+ "sci-u1fa91": {
+  "src": "assets/content/sci/u1fa91.webp"
+ },
+ "sci-u1fa92": {
+  "src": "assets/content/sci/u1fa92.webp"
+ },
+ "sci-u1fa93": {
+  "src": "assets/content/sci/u1fa93.webp"
+ },
+ "sci-u1faa5": {
+  "src": "assets/content/sci/u1faa5.webp"
+ },
+ "sci-u1faa8": {
+  "src": "assets/content/sci/u1faa8.webp"
+ },
+ "sci-u1faa8-1f42a": {
+  "src": "assets/content/sci/u1faa8-1f42a.webp"
+ },
+ "sci-u1faa8-27a1-1f9e9": {
+  "src": "assets/content/sci/u1faa8-27a1-1f9e9.webp"
+ },
+ "sci-u1fac1": {
+  "src": "assets/content/sci/u1fac1.webp"
+ },
+ "sci-u1fad2": {
+  "src": "assets/content/sci/u1fad2.webp"
+ },
+ "sci-u1fad8": {
+  "src": "assets/content/sci/u1fad8.webp"
+ },
+ "sci-u23f3": {
+  "src": "assets/content/sci/u23f3.webp"
+ },
+ "sci-u2600": {
+  "src": "assets/content/sci/u2600.webp"
+ },
+ "sci-u2600-1f32c-1f4a7": {
+  "src": "assets/content/sci/u2600-1f32c-1f4a7.webp"
+ },
+ "sci-u2600-1f4a7-1faa8": {
+  "src": "assets/content/sci/u2600-1f4a7-1faa8.webp"
+ },
+ "sci-u2600-1f6e2": {
+  "src": "assets/content/sci/u2600-1f6e2.webp"
+ },
+ "sci-u267b": {
+  "src": "assets/content/sci/u267b.webp"
+ },
+ "sci-u2696": {
+  "src": "assets/content/sci/u2696.webp"
+ },
+ "sci-u26a1": {
+  "src": "assets/content/sci/u26a1.webp"
+ },
+ "sci-u26a1-1f422": {
+  "src": "assets/content/sci/u26a1-1f422.webp"
+ },
+ "sci-u26ab": {
+  "src": "assets/content/sci/u26ab.webp"
+ },
+ "sci-u26bd": {
+  "src": "assets/content/sci/u26bd.webp"
+ },
+ "sci-u26f0": {
+  "src": "assets/content/sci/u26f0.webp"
+ },
+ "sci-u26f0-2b07": {
+  "src": "assets/content/sci/u26f0-2b07.webp"
+ },
+ "sci-u2705": {
+  "src": "assets/content/sci/u2705.webp"
+ },
+ "sci-u2705-274c": {
+  "src": "assets/content/sci/u2705-274c.webp"
+ },
+ "sci-u2728": {
+  "src": "assets/content/sci/u2728.webp"
+ },
+ "sci-u2744": {
+  "src": "assets/content/sci/u2744.webp"
+ },
+ "sci-u2744-1f43b-200d-2744": {
+  "src": "assets/content/sci/u2744-1f43b-200d-2744.webp"
+ },
+ "sci-u2764": {
+  "src": "assets/content/sci/u2764.webp"
  },
  "star": {
   "sm": "assets/rewards/star-sm.webp",

@@ -12,6 +12,8 @@ const $ = id => document.getElementById(id);
 const ar = HS.toAr, esc = HS.esc;
 const LETTERS = 'أبجده';
 const S = { u: null, id: '', ns: '', fcns: '', page: 'home', timers: [], iv: null };
+/** a science picture for an emoji when one exists (the science sprite sheets), otherwise the emoji */
+const P = em => S.id && /sci/.test(S.id) && em ? HS.pic(em, 'sci', { small: true, cls: 'hs-pic' }) : em;
 const later = (f, ms) => S.timers.push(setTimeout(f, ms));
 function stopAll() { S.timers.forEach(clearTimeout); S.timers = []; clearInterval(S.iv); S.iv = null; HS.stopSpeak(); }
 const M = () => $('uMain');
@@ -128,8 +130,8 @@ function renderHome() {
 function block(b) {
   const h = b.h ? `<h3>${b.h}</h3>` : '';
   if (b.t === 'text') return `${h}<p>${b.html}</p>`;
-  if (b.t === 'tiles') return `${h}<div class="grid">${b.items.map(t => `<div class="tile t-${t.tone || 'green'}"><span class="em" aria-hidden="true">${t.em}</span><b>${t.b}</b><p>${t.p}</p></div>`).join('')}</div>`;
-  if (b.t === 'chain') return `${h}<div class="chain">${b.items.map(([e, n, r], i) => `${i ? '<span class="ar" aria-hidden="true">⬅</span>' : ''}<div class="lnk"><span class="em" aria-hidden="true">${e}</span>${n}<small>${r || ''}</small></div>`).join('')}</div>${b.note ? `<p class="hint">${b.note}</p>` : ''}`;
+  if (b.t === 'tiles') return `${h}<div class="grid">${b.items.map(t => `<div class="tile t-${t.tone || 'green'}"><span class="em" aria-hidden="true">${P(t.em)}</span><b>${t.b}</b><p>${t.p}</p></div>`).join('')}</div>`;
+  if (b.t === 'chain') return `${h}<div class="chain">${b.items.map(([e, n, r], i) => `${i ? '<span class="ar" aria-hidden="true">⬅</span>' : ''}<div class="lnk"><span class="em" aria-hidden="true">${P(e)}</span>${n}<small>${r || ''}</small></div>`).join('')}</div>${b.note ? `<p class="hint">${b.note}</p>` : ''}`;
   if (b.t === 'pyramid') { const n = b.levels.length; return `${h}${b.html ? `<p>${b.html}</p>` : ''}<div class="pyr">${b.levels.slice().reverse().map(([t, c], i) => `<div style="width:${28 + i * (60 / Math.max(1, n - 1))}%;background:${c}">${t}</div>`).join('')}</div>`; }
   if (b.t === 'html') return `${h}${b.html}`;
   if (b.t === 'model') return `${h}${b.html ? `<p>${b.html}</p>` : ''}${mathModel(b)}${b.after ? `<p>${b.after}</p>` : ''}`;   // math.js
@@ -183,7 +185,7 @@ function renderCards() {
 function showCard() {
   const g = FC.list[FC.i], fc = $('uFc'); if (!g) return;
   fc.classList.remove('flip');
-  later(() => { $('uFcEm').textContent = g.em; $('uFcT').textContent = g.term; $('uFcD').textContent = g.def; }, 120);
+  later(() => { $('uFcEm').innerHTML = P(g.em); $('uFcT').textContent = g.term; $('uFcD').textContent = g.def; }, 120);
   $('uFcPos').textContent = `بطاقة ${ar(FC.i + 1)} من ${ar(FC.list.length)}`;
 }
 
@@ -198,8 +200,8 @@ function renderPlay() {
     ${labs.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
   <h3 class="gp-h">🎮 نتدرّب <small>نرتّب ونصنّف ونتذكّر</small></h3>
   <div class="game-pick">
-    ${S.u.games.sort.map(g => `<button type="button" class="gp" data-act="sort" data-g="${g.id}"><span class="em">${g.em}</span><b>${g.title}</b><span>${L(g.l)} · فرز</span></button>`).join('')}
-    ${S.u.games.order.map(g => `<button type="button" class="gp" data-act="order" data-g="${g.id}"><span class="em">${g.em}</span><b>${g.title}</b><span>${L(g.l)} · ترتيب</span></button>`).join('')}
+    ${S.u.games.sort.map(g => `<button type="button" class="gp" data-act="sort" data-g="${g.id}"><span class="em">${P(g.em)}</span><b>${g.title}</b><span>${L(g.l)} · فرز</span></button>`).join('')}
+    ${S.u.games.order.map(g => `<button type="button" class="gp" data-act="order" data-g="${g.id}"><span class="em">${P(g.em)}</span><b>${g.title}</b><span>${L(g.l)} · ترتيب</span></button>`).join('')}
     <button type="button" class="gp" data-act="memory"><span class="em">🧠🃏</span><b>لعبة الذاكرة</b><span>طابق المصطلح بمعناه</span></button>
   </div>
   <h3 class="gp-h">⚡ نتحدّى <small>بسرعة ومن الذاكرة</small></h3>
@@ -403,7 +405,7 @@ function renderQuestion(q, el, done, opt = {}) {
     choice(q.o, q.a, o => o, 'chips-opts');
   }
   else if (q.t === 'num') numQuestion(q, el, finish, opt);   // math.js
-  else if (q.t === 'pic') { el.innerHTML = head(q.q); choice(q.o, q.a, (o, i) => `<span class="pic">${o}</span>${q.labels ? `<small>${q.labels[i]}</small>` : ''}`, 'pics'); }
+  else if (q.t === 'pic') { el.innerHTML = head(q.q); choice(q.o, q.a, (o, i) => `<span class="pic">${P(o)}</span>${q.labels ? `<small>${q.labels[i]}</small>` : ''}`, 'pics'); }
   else if (q.t === 'match') {
     const n = q.pairs.length; let mistakes = 0, matched = 0;
     el.innerHTML = head(q.q) + `<p class="hint">اسحب كل بطاقة إلى ما يناسبها، أو اضغط عليها ثم على المكان.</p>
@@ -476,11 +478,11 @@ function gameSort(g) {
   stopAll();
   const items = HS.shuffle(g.items).slice(0, 10); let placed = 0, first = 0; const combo = HS.makeCombo(); const tried = new Set();
   M().innerHTML = `<div class="card">${gameHead(g.title)}<p class="lead">${g.ask}</p><p class="hint">اسحب البطاقة إلى الصندوق، أو اضغط عليها ثم على الصندوق.</p>
-    <div class="sg-pool" id="uPool">${items.map((it, k) => `<button type="button" class="sg-item hs-drag" data-k="${k}"><span class="em">${it[0]}</span>${it[1]}</button>`).join('')}</div>
+    <div class="sg-pool" id="uPool">${items.map((it, k) => `<button type="button" class="sg-item hs-drag" data-k="${k}"><span class="em">${P(it[0])}</span>${it[1]}</button>`).join('')}</div>
     <div class="sg-bins" style="grid-template-columns:repeat(${g.bins.length},minmax(0,1fr))">${g.bins.map(([lab, col], b) => `<div class="sg-bin" data-b="${b}" tabindex="0"><div class="sg-lab" style="background:${col}">${lab}</div><div class="sg-in"></div></div>`).join('')}</div>
     <div class="meta"><span id="uLeft">${ar(items.length)} متبقية</span><span id="uSc">✅ ${ar(0)}</span></div></div>`;
   bindBack();
-  const put = (el, b) => { const it = items[+el.dataset.k]; el.classList.add('hs-done'); el.style.display = 'none'; const bin = ROOT.querySelector(`.sg-bin[data-b="${b}"] .sg-in`); bin.insertAdjacentHTML('beforeend', `<span class="sg-chip hs-pop">${it[0]} ${it[1]}</span>`); placed++; $('uLeft').textContent = `${ar(items.length - placed)} متبقية`; if (placed === items.length) later(() => sortDone(g, first, items.length), 700); };
+  const put = (el, b) => { const it = items[+el.dataset.k]; el.classList.add('hs-done'); el.style.display = 'none'; const bin = ROOT.querySelector(`.sg-bin[data-b="${b}"] .sg-in`); bin.insertAdjacentHTML('beforeend', `<span class="sg-chip hs-pop">${P(it[0])} ${it[1]}</span>`); placed++; $('uLeft').textContent = `${ar(items.length - placed)} متبقية`; if (placed === items.length) later(() => sortDone(g, first, items.length), 700); };
   HS.dnd(M().querySelector('.card'), { item: '.sg-item', target: '.sg-bin', onDrop(el, bin) {
     const it = items[+el.dataset.k], b = +bin.dataset.b, k = el.dataset.k;
     if (b === it[2]) { if (!tried.has(k)) { first++; star(1 + combo.hit()); } HS.fx('ok'); $('uSc').textContent = `✅ ${ar(first)}`; put(el, b); return true; }
@@ -512,15 +514,15 @@ function gameOrder(g) {
     }
     const raw = g.sets[order[k]], set = Array.isArray(raw) ? raw : raw.items, stitle = Array.isArray(raw) ? '' : raw.title; let placed = 0, mistakes = 0;
     M().innerHTML = `<div class="card">${gameHead(g.title)}<div class="meta"><span>${ar(k + 1)} / ${ar(order.length)}</span><span>✅ ${ar(perfect)}</span></div><p class="lead">${g.prompt}</p>${stitle ? `<h3 class="set-title">${stitle}</h3>` : ''}
-      <div class="slots">${g.start ? `<div class="slot filled"><span class="em">${g.start[0]}</span>${g.start[1]}</div>` : ''}${set.map((_, i) => `${i || g.start ? '<span class="ar" aria-hidden="true">⬅</span>' : ''}<div class="slot">؟</div>`).join('')}</div>
-      <div class="pool">${HS.shuffle(set.map((_, i) => i)).map(i => `<button type="button" data-i="${i}"><span class="em">${set[i][0]}</span>${set[i][1]}</button>`).join('')}</div>
+      <div class="slots">${g.start ? `<div class="slot filled"><span class="em">${P(g.start[0])}</span>${g.start[1]}</div>` : ''}${set.map((_, i) => `${i || g.start ? '<span class="ar" aria-hidden="true">⬅</span>' : ''}<div class="slot">؟</div>`).join('')}</div>
+      <div class="pool">${HS.shuffle(set.map((_, i) => i)).map(i => `<button type="button" data-i="${i}"><span class="em">${P(set[i][0])}</span>${set[i][1]}</button>`).join('')}</div>
       <div class="fb" id="uFb" aria-live="polite"></div></div>`;
     bindBack();
     const slots = [...ROOT.querySelectorAll('.slots .slot')].slice(g.start ? 1 : 0), fb = $('uFb');
     ROOT.querySelectorAll('.pool button').forEach(b => b.onclick = () => {
       const i = +b.dataset.i;
       if (i === placed) {
-        slots[i].innerHTML = `<span class="em">${set[i][0]}</span>${set[i][1]}`; slots[i].classList.add('filled', 'hs-pop'); b.disabled = true; HS.fx('tap'); fb.className = 'fb';
+        slots[i].innerHTML = `<span class="em">${P(set[i][0])}</span>${set[i][1]}`; slots[i].classList.add('filled', 'hs-pop'); b.disabled = true; HS.fx('tap'); fb.className = 'fb';
         if (++placed === set.length) {
           const ok = !mistakes; if (ok) { perfect++; star(2); } else star(1);
           HS.fx(ok ? 'win' : 'ok'); fb.className = 'fb ok';
@@ -541,7 +543,7 @@ function gameMemory(l) {
   stopAll();
   const pool = S.u.glossary.filter(g => !l || g.l === l);
   const pairs = HS.shuffle(pool).slice(0, Math.min(6, pool.length));
-  const cards = HS.shuffle(pairs.flatMap((g, i) => [{ i, face: `<span class="em">${g.em}</span><b>${g.term}</b>` }, { i, face: `<span class="mean">${g.short || g.def}</span>` }]));
+  const cards = HS.shuffle(pairs.flatMap((g, i) => [{ i, face: `<span class="em">${P(g.em)}</span><b>${g.term}</b>` }, { i, face: `<span class="mean">${g.short || g.def}</span>` }]));
   let open = [], found = 0, moves = 0, lock = false;
   M().innerHTML = `<div class="card">${gameHead('🧠 لعبة الذاكرة')}<p class="lead">اقلب بطاقتين: طابق كل مصطلح مع معناه.</p>
     <div class="meta"><span id="uMoves">المحاولات: ٠</span><span id="uSc">✅ ٠ / ${ar(pairs.length)}</span></div>

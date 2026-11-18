@@ -39,3 +39,6 @@
 .hs-shake{animation:hsshake .4s}
 /* the listen icon (HS.SPK) */
 .hs-spk{width:1.25em;height:1.25em;display:inline-block;vertical-align:middle;flex:0 0 auto}
+
+/* a content picture standing in for an emoji: sized by the font of the place it sits in */
+img.hs-pic{width:1.25em;height:1.25em;object-fit:contain;vertical-align:-.3em;display:inline-block}

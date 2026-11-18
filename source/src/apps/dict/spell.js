@@ -45,7 +45,7 @@ function spellNext() {
   SG.cur = { x, T, back: p.back, tries: 0, hint: 0, phase: 'guess' }; SG.last = x.id; ROOT._dbg = T;
   const hide = s => AR() ? esc(s) : esc(s).replace(new RegExp('\\b' + x.w.slice(0, Math.max(3, x.w.length - 2)).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\w*', 'gi'), '___');
   M().innerHTML = spHead() + `<div class="d-card sp-card">
-    <div class="sp-clue"><span class="em" aria-hidden="true">${x.em}</span>
+    <div class="sp-clue"><span class="em" aria-hidden="true">${pic(x)}</span>
       <div><b dir="${sDir()}">${esc(src(x))}</b><p dir="ltr">${hide(x.def)}</p></div></div>
     ${p.back ? `<p class="sp-back">🔁 ${HS.L('عادت لك هذه الكلمة: اكتبها من ذاكرتك', 'This word is back: write it from memory')}</p>` : ''}
     <p class="d-ask" id="spAsk">${AR() ? 'اكتب الكلمة بالعربي <small dir="ltr">Write it in Arabic</small>' : HS.L('كيف تُكتب بالإنجليزي؟', 'How do you spell it?')}</p>
@@ -137,7 +137,7 @@ function spellList() {
   M().innerHTML = `${backBtn()}<h2 class="d-h2">✓ ${HS.L('كلمات أتقنتها', 'Words I can spell')} <small>(${HS.num(ids.length)})</small></h2>
     <p class="d-note">${HS.L('هذه الكلمات لا تأتي في التحدّي. اضغط ↩️ لتعيد كلمة للتمرين.', 'These words no longer come up. Tap ↩️ to practise one again.')} ${HS.L('في هذا المستوى', 'At this level')}: ${HS.num(Math.min(ids.filter(id => BY_ID[id] && inLevel(BY_ID[id])).length, all))} / ${HS.num(all)}</p>
     ${ids.length ? `<div class="sp-list">${ids.map(id => { const x = BY_ID[id]; if (!x) return '';
-      return `<div class="sp-row"><span class="em" aria-hidden="true">${x.em}</span><b dir="${tDir()}">${esc(tgt(x))}</b><span class="sp-src" dir="${sDir()}">${esc(src(x))}</span>
+      return `<div class="sp-row"><span class="em" aria-hidden="true">${pic(x)}</span><b dir="${tDir()}">${esc(tgt(x))}</b><span class="sp-src" dir="${sDir()}">${esc(src(x))}</span>
         <button type="button" class="d-btn sec" data-sp-back="${esc(id)}" aria-label="${HS.L('أعدها للتمرين', 'Practise again')}: ${esc(tgt(x))}">↩️</button></div>`; }).join('')}</div>`
       : `<div class="d-card center"><p>${HS.L('لا توجد كلمات بعد. كل كلمة تكتبها صحيحة من أول مرة تظهر هنا.', 'No words yet. Every word you spell right the first time shows up here.')}</p></div>`}
     <div class="d-actions"><button type="button" class="d-btn" data-sp="start">✍️ ${HS.L('العب تحدّي الإملاء', 'Play the spelling challenge')}</button></div>`;

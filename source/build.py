@@ -176,6 +176,17 @@ def main():
         for e in json.load(open(mc, encoding='utf-8')):
             area = e['id'].split('-')[0]
             if e['id'] in art and e.get('replaces'): picmap.setdefault(area, {}).setdefault(e['replaces'], e['id'])
+    # dictionary words → picture id (same ids as tools/make_sheets.py: spaces → '-', a second meaning → '-2', a third → '-2-2'),
+    # keyed like the dictionary app's word ids: '<word>|<topic>'
+    import re as _re
+    dw, seen = {}, {}
+    for line in read('apps', 'dict', 'data.js').split('\n'):
+        p_ = line.strip().split('|')
+        if len(p_) < 8: continue
+        slug = _re.sub(r'[^a-z0-9]+', '-', p_[0].strip().lower()).strip('-'); seen[slug] = seen.get(slug, 0) + 1; n = seen[slug]
+        for cand in (slug if n == 1 else f'{slug}-{n}', slug + '-2' * (n - 1)):
+            if 'dict-' + cand in art: dw[p_[0].strip() + '|' + p_[7].strip()] = 'dict-' + cand; break
+    picmap['dictw'] = dw
     art_js = ('<script>window.HS_ART = ' + json.dumps(art, ensure_ascii=False, sort_keys=True) + ';'
               'window.HS_PICMAP = ' + json.dumps(picmap, ensure_ascii=False) + ';</script>')
 

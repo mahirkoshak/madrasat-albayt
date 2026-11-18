@@ -102,6 +102,24 @@
     const id = ((window.HS_PICMAP || {})[area] || {})[em] || HS.picId(em, area);
     return HS.ART && HS.ART[id] ? HS.art(id, Object.assign({ fb: em }, o)) : em;
   };
+  /** swap every element whose whole text is one emoji for that emoji's picture (when it exists) inside root, now and
+      whenever root changes. For screens that build emoji in many places (kindergarten). Text that mixes words and
+      emoji is left alone, and so is anything inside [data-nopic]. */
+  HS.picify = (root, area) => {
+    const map = (window.HS_PICMAP || {})[area] || {}, one = /^\s*(\p{Extended_Pictographic}(\uFE0F|\u200D\p{Extended_Pictographic})*)\s*$/u;
+    const run = () => {
+      const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), todo = [];
+      for (let n; (n = w.nextNode());) {
+        const m = one.exec(n.nodeValue); if (!m) continue;
+        const el = n.parentElement; if (!el || el.closest('[data-nopic],button.hs-spk,svg,textarea,input')) continue;
+        const em = m[1], id = map[em] || map[em.replace(/\uFE0F/g, '')] || HS.picId(em, area);
+        if (HS.ART[id]) todo.push([n, id, em]);
+      }
+      todo.forEach(([n, id, em]) => { const t = document.createElement('template'); t.innerHTML = HS.art(id, { small: true, eager: true, fb: em, cls: 'hs-pic' }); n.replaceWith(t.content); });
+    };
+    let q = 0; new MutationObserver(() => { if (!q) q = requestAnimationFrame(() => { q = 0; run(); }); }).observe(root, { childList: true, subtree: true, characterData: true });
+    run();
+  };
   HS.art = (id, o = {}) => {
     const a = HS.ART[id], fb = o.fb == null ? '' : String(o.fb);
     if (!a) return fb ? `<span class="hs-fb ${o.fbCls || ''}" aria-hidden="true">${fb}</span>` : '';

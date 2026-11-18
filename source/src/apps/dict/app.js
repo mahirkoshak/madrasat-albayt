@@ -18,6 +18,8 @@ const M = () => $('dMain');
 const stripHarakat = s => s.replace(/[ً-ْـ]/g, '');
 /** the one Arabic word the child learns to spell: first meaning before "/", without "(...)" notes */
 const arHead = a => a.split('/')[0].replace(/\(.*?\)/g, '').trim();
+/** the word's picture when it exists (from the dictionary sprite sheets), otherwise its emoji */
+const pic = x => { const id = ((window.HS_PICMAP || {}).dictw || {})[x.id]; return id && HS.hasArt(id) ? HS.art(id, { small: true, fb: x.em, cls: 'hs-pic' }) : x.em; };
 const WORDS = RAW.trim().split('\n').filter(l => l.split('|').length === 8).map(l => {
   const [w, p, em, a, def, ex, g, t] = l.split('|');
   const ah = arHead(a);
@@ -132,7 +134,7 @@ function home() {
   </div>
   <form class="d-search" id="dSearch" role="search"><input id="dQ" type="search" placeholder="ابحث · Search: apple / تفاحة" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="ابحث عن كلمة"><button type="submit" aria-label="بحث">🔎</button></form>
   <div class="d-lv" role="radiogroup" aria-label="الصعوبة">${[[0, '🌈 الكل'], [3, LEVEL[3]], [4, LEVEL[4]], [5, LEVEL[5]]].map(([g, t]) => `<button type="button" role="radio" aria-checked="${d.diff === g}" class="${d.diff === g ? 'on' : ''}" data-lv="${g}">${t}</button>`).join('')}</div>
-  <div class="d-wod" data-w="${esc(wod.id)}"><small>${wodPick ? '🎲 كلمة عشوائية · Random word' : '🌟 كلمة اليوم · Word of the day'}</small><span class="em">${wod.em}</span><b dir="${tDir()}">${esc(tgt(wod))}</b><span class="ar" dir="${sDir()}">${esc(src(wod))}</span>
+  <div class="d-wod" data-w="${esc(wod.id)}"><small>${wodPick ? '🎲 كلمة عشوائية · Random word' : '🌟 كلمة اليوم · Word of the day'}</small><span class="em">${pic(wod)}</span><b dir="${tDir()}">${esc(tgt(wod))}</b><span class="ar" dir="${sDir()}">${esc(src(wod))}</span>
     <button type="button" class="d-dice" data-a="dice" aria-label="كلمة عشوائية أخرى">🎲 كلمة أخرى</button></div>
   <div class="d-progress"><div class="m-row"><span>${AR() ? 'كتبت بالعربي' : 'تعلّمت'} ${ar(ln)} من ${ar(n)} كلمة</span><b>${ar(Math.round(ln / n * 100))}٪</b></div><div class="hs-meter"><i style="width:${Math.max(3, Math.round(ln / n * 100))}%"></i></div></div>
   <button type="button" class="sp-tile" data-sp="start"><span class="em" aria-hidden="true">✍️</span><span class="tx"><b>${HS.L('تحدّي الإملاء', 'Spelling challenge')}</b>
@@ -165,7 +167,7 @@ function list(kind, v, keepFocus) {
   M().innerHTML = `${backBtn()}${kind === 'q' ? `<form class="d-search" id="dSearch" role="search"><input id="dQ" type="search" value="${esc(v)}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="ابحث عن كلمة"><button type="submit" aria-label="بحث">🔎</button></form>` : ''}
     <h2 class="d-h2">${title} <small>(${ar(ws.length)})</small></h2>
     ${kind === 'mine' && ws.length ? `<button type="button" class="d-btn" data-a="practice">🧠 تدرّب على كلماتي</button>` : ''}
-    ${ws.length ? `<div class="d-list">${ws.map(x => `<button type="button" class="d-row" data-w="${esc(x.id)}"><span class="em">${x.em}</span><span class="tg" dir="${tDir()}">${esc(tgt(x))}</span><span class="sc" dir="${sDir()}">${esc(src(x))}</span><span class="st" aria-label="مستوى الحفظ">${learned(x.id) ? '✅' : d.mine.includes(x.id) ? '⭐' : ''}</span></button>`).join('')}</div>`
+    ${ws.length ? `<div class="d-list">${ws.map(x => `<button type="button" class="d-row" data-w="${esc(x.id)}"><span class="em">${pic(x)}</span><span class="tg" dir="${tDir()}">${esc(tgt(x))}</span><span class="sc" dir="${sDir()}">${esc(src(x))}</span><span class="st" aria-label="مستوى الحفظ">${learned(x.id) ? '✅' : d.mine.includes(x.id) ? '⭐' : ''}</span></button>`).join('')}</div>`
       : `<p class="d-empty">${kind === 'mine' ? 'لم تحفظ كلمات بعد. افتح أي كلمة واضغط ⭐ لتضيفها هنا.' : 'لم أجد هذه الكلمة. جرّب كلمة أخرى أو تأكّد من الكتابة.'}</p>`}`;
   M().dataset.ids = ids.join('\n');
   const f = $('dSearch'); if (f) { f.onsubmit = e => { e.preventDefault(); const q = $('dQ').value.trim(); if (q) HS.nav.go('app-dict-q-' + enc(q), true); };
@@ -188,7 +190,7 @@ function word(id, ids) {
   const letters = [...tgtPlain(x)].map(c => c === ' ' ? '<i class="sp"></i>' : `<i>${esc(c)}</i>`).join('');
   M().innerHTML = `${backBtn()}
   <article class="d-word">
-    <div class="em">${x.em}</div>
+    <div class="em">${pic(x)}</div>
     <div class="w" dir="${tDir()}"><span>${esc(tgt(x))}</span>${sayBtn(tgt(x))}</div>
     <div class="pos">${pos(x)} · ${LEVEL[x.g]}</div>
     <div class="spell" dir="${tDir()}" aria-label="الحروف">${letters}</div>
@@ -263,15 +265,15 @@ function nextItem() {
   const head = `<div class="d-qhead"><span>${ar(P.i + 1)} / ${ar(P.ids.length)}${AR() ? ' · 📝 عربي' : ''}</span>${P.again ? '<span>🔁 مرة ثانية</span>' : ''}</div>`;   // leave with the site header's Back
   // the clue must not give the spelling away: in English mode hide the word (and its forms) inside the definition
   const hide = s => AR() ? esc(s) : esc(s).replace(new RegExp('\\b' + x.w.split(' ')[0].slice(0, Math.max(3, x.w.split(' ')[0].length - 2)).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\w*', 'gi'), '___');
-  const clue = `<div class="d-clue"><span class="em">${x.em}</span><b dir="${sDir()}">${esc(src(x))}</b><p dir="ltr">${hide(x.def)}</p></div>`;
+  const clue = `<div class="d-clue"><span class="em">${pic(x)}</span><b dir="${sDir()}">${esc(src(x))}</b><p dir="ltr">${hide(x.def)}</p></div>`;
   let body = '';
   if (mode === 'mean') {          // target word → choose its meaning
     const opts = HS.shuffle([x, ...distractors(x, 3, AR() ? 'w' : 'a')]);
-    body = `<p class="d-ask">${askT('ما معنى هذه الكلمة؟', 'What does it mean?')}</p><div class="d-big" dir="${tDir()}">${x.em} ${esc(tgt(x))} ${sayBtn(tgt(x), 'sm')}</div>
+    body = `<p class="d-ask">${askT('ما معنى هذه الكلمة؟', 'What does it mean?')}</p><div class="d-big" dir="${tDir()}">${pic(x)} ${esc(tgt(x))} ${sayBtn(tgt(x), 'sm')}</div>
       <div class="d-opts" dir="${sDir()}">${opts.map(o => `<button type="button" class="d-opt" data-ok="${o.id === x.id}">${esc(AR() ? o.w : o.a)}</button>`).join('')}</div>`;
   } else if (mode === 'meanR') {  // meaning → choose the target word
     const opts = HS.shuffle([x, ...distractors(x, 3, AR() ? 'ah' : 'w')]);
-    body = `<p class="d-ask">${AR() ? askT('ما الكلمة بالعربي؟', 'Which Arabic word is it?') : 'ما الكلمة الإنجليزية؟'}</p><div class="d-big" dir="${sDir()}">${x.em} ${esc(src(x))}</div>
+    body = `<p class="d-ask">${AR() ? askT('ما الكلمة بالعربي؟', 'Which Arabic word is it?') : 'ما الكلمة الإنجليزية؟'}</p><div class="d-big" dir="${sDir()}">${pic(x)} ${esc(src(x))}</div>
       <div class="d-opts" dir="${tDir()}">${opts.map(o => `<button type="button" class="d-opt" data-ok="${o.id === x.id}">${esc(tgt(o))}</button>`).join('')}</div>`;
   } else if (mode === 'pick') {
     const opts = HS.shuffle([T, ...misspell(T).slice(0, 3)]);

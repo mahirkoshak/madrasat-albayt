@@ -289,3 +289,6 @@ APPS.kg = {
     return Object.keys(names).map(k => ({ k, name: names[k], max: THINK_ROUNDS[k] ? THINK_MAX[k] : 3, lv: (d.lv || {})[k] || 0, c: ((d.stats || {})[k] || {}).c || 0, w: ((d.stats || {})[k] || {}).w || 0 }));
   }
 };
+
+// kindergarten emoji become the kindergarten pictures as each screen is drawn (art-source/manifest-sheets.json, phase 9)
+HS.picify(ROOT, "kg");
