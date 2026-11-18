@@ -77,16 +77,16 @@ with sync_playwright() as p:
     print('computer:',t); assert t==['lines 48','win 2','block 7','none null','valid true']
     # D. duplicate product: the child chooses the square
     pg.evaluate("HS.nav.go('unit-g3math5-play-lab-pg')");pg.wait_for_timeout(300)
-    for k in range(10):   # aim for 3×4 = 12, which is on the board twice
+    def pick_move(clips):
+        for a_,b_ in [(3,4),(4,3),(2,6),(6,2)]:   # 12 is on the board twice: 3×4 or 2×6
+            if a_ in clips:
+                j=1 if clips[0]==clips[1] else 1-clips.index(a_)
+                if clips[j]!=b_: return (j,b_)   # a move that changes the clips (not already 12)
+    for k in range(20):   # deal again until a move to 12 exists
         clips=[int(''.join(str(AR.index(c)) for c in x.inner_text() if c in AR)) for x in pg.locator('#app-unit .pg-clip').all()]
-        if any(x in clips for x in (2,3,4,6)): break
+        mv=pick_move(clips)
+        if mv: break
         pg.evaluate("HS.nav.go('unit-g3math5');");pg.evaluate("HS.nav.go('unit-g3math5-play-lab-pg')");pg.wait_for_timeout(200)
-    clips=[int(''.join(str(AR.index(c)) for c in x.inner_text() if c in AR)) for x in pg.locator('#app-unit .pg-clip').all()]
-    mv=None
-    for a_,b_ in [(3,4),(4,3),(2,6),(6,2)]:   # 12 is on the board twice: 3×4 or 2×6
-        if a_ in clips:
-            j=1 if clips[0]==clips[1] else 1-clips.index(a_)
-            if clips[j]!=b_: mv=(j,b_); break
     assert mv, clips
     pg.locator('#app-unit .pg-clip').nth(mv[0]).click();pg.locator(f'#app-unit .pg-f[data-f="{mv[1]}"]').click();pg.wait_for_timeout(150)
     for d in '12': pg.locator(f'#app-unit .pg-ask .m-k[data-k="{d}"]').click()

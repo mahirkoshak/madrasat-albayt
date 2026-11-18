@@ -97,7 +97,16 @@
     const me = HS.current(), img = document.querySelector('.gb-av .hs-av-img'); if (!me || !img) return;
     const id = HS.avatarArt(me.avatar || ''), a = id && HS.ART[id + '-happy'], n = id && HS.ART[id]; if (!a || !n) return;
     img.src = a.face || a.sm || a.src; img.closest('.gb-av').classList.add('happy');
-    clearTimeout(happyT); happyT = setTimeout(() => { const i = document.querySelector('.gb-av .hs-av-img'); if (i) { i.src = n.face || n.sm || n.src; i.closest('.gb-av').classList.remove('happy'); } }, ms);
+    // and a big version of the happy face under the top bar, so the reaction is easy to see
+    let pop = document.querySelector('.av-pop');
+    if (!pop) { pop = document.createElement('div'); pop.className = 'av-pop'; pop.setAttribute('aria-hidden', 'true'); pop.innerHTML = '<img alt="">'; document.body.appendChild(pop); }
+    const r = img.closest('.gb-av').getBoundingClientRect(), W = Math.min(170, innerWidth * .4);
+    pop.style.left = Math.max(8, Math.min(innerWidth - W - 8, r.left + r.width / 2 - W / 2)) + 'px'; pop.style.top = (r.bottom + 14) + 'px';
+    pop.style.background = HS.kidColor(me); pop.classList.remove('out'); pop.querySelector('img').src = a.src;
+    clearTimeout(happyT); happyT = setTimeout(() => {
+      const i = document.querySelector('.gb-av .hs-av-img'); if (i) { i.src = n.face || n.sm || n.src; i.closest('.gb-av').classList.remove('happy'); }
+      const p = document.querySelector('.av-pop'); if (p) { p.classList.add('out'); setTimeout(() => { if (p.classList.contains('out')) p.remove(); }, 300); }
+    }, Math.max(ms, 1400));
   }
   const fx0 = HS.fx; HS.fx = k => { fx0(k); if (k === 'ok' || k === 'win' || k === 'combo') smile(900); };
   HS.on('diamond', n => { smile(2000); const b = document.querySelector('.gb-stars'); if (b) { b.classList.remove('hs-pop'); void b.offsetWidth; b.classList.add('hs-pop'); }

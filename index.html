@@ -112,9 +112,10 @@ img.hs-pic{width:1.25em;height:1.25em;object-fit:contain;vertical-align:-.3em;di
 img.hs-pic.inl{width:1.5em;height:1.5em;vertical-align:-.4em;margin-inline:.1em}
 
 /* the child's happy avatar beside the mascot on results screens */
-.kid-cheer{display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;margin-inline-end:10px;vertical-align:middle;overflow:hidden;box-shadow:0 4px 0 rgba(0,0,0,.12);animation:hspop .5s}
+.kid-cheer{display:inline-grid;place-items:center;width:min(170px,42vw);height:min(170px,42vw);border-radius:50%;margin-inline-end:10px;vertical-align:middle;overflow:hidden;box-shadow:0 4px 0 rgba(0,0,0,.12);animation:hspop .5s}
 .kid-cheer .hs-av-img{width:100%;height:100%;object-fit:cover}
-.kid-cheer .hs-av-em{font-size:52px}
+.kid-cheer .hs-av-em{font-size:96px}
+.kid-cheer{border:5px solid #fff;margin:0 auto 8px}
 @media (prefers-reduced-motion:reduce){.kid-cheer{animation:none}}
 
 html{color-scheme:light only}
@@ -304,7 +305,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .gb-stars b{font-size:var(--t-fs-md)}
 .gb-menu{position:relative}
 .gb-me{padding:3px 10px 3px 4px}
-.gb-av{width:38px;height:38px;border-radius:999px;display:grid;place-items:center;font-size:22px;overflow:hidden;flex:none;background:var(--t-sand-soft)}
+.gb-av{width:48px;height:48px;border-radius:999px;display:grid;place-items:center;font-size:22px;overflow:hidden;flex:none;background:var(--t-sand-soft)}
 .gb-who{max-width:9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .gb-caret{font-size:12px;color:var(--t-muted)}
 .gb-pop{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:30;width:min(300px,calc(100vw - 24px));background:var(--t-surface);border-radius:var(--t-r-card);
@@ -520,6 +521,14 @@ body{font-family:var(--t-font);background:var(--t-page)}
 .pp-other{margin-top:8px}
 .pp-other>summary{cursor:pointer;font-weight:800;padding:6px 0}
 
+/* the big happy face that pops out under the top bar for a moment (right answer, new diamond) */
+.av-pop{position:fixed;top:72px;left:12px;z-index:60;width:min(170px,40vw);height:min(170px,40vw);border-radius:50%;overflow:hidden;
+  border:5px solid #fff;box-shadow:0 10px 26px rgba(0,0,0,.22);pointer-events:none;animation:avpop .35s cubic-bezier(.3,1.6,.5,1)}
+.av-pop img{width:100%;height:100%;object-fit:cover}
+.av-pop.out{opacity:0;transform:scale(.6) translateY(-20px);transition:opacity .25s,transform .25s}
+@keyframes avpop{from{opacity:0;transform:scale(.3) translateY(-40px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.av-pop{animation:none}.av-pop.out{transition:none}}
+
 /* ===== app: dict (dict) ===== */
 #app-dict *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 #app-dict button{font:inherit;cursor:pointer;color:var(--t-ink);-webkit-appearance:none;appearance:none;border:none;background:none}
@@ -677,16 +686,19 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-dict .d-say{display:inline-grid;place-items:center;color:var(--t-gold-ink);padding:0}
 #app-dict .d-say .hs-spk{width:24px;height:24px}
 #app-dict .d-say.sm .hs-spk{width:19px;height:19px}
-#app-dict .d-row{grid-template-columns:72px 1fr 1fr 28px}
-#app-dict .d-row .em img.hs-pic{width:64px;height:64px;vertical-align:middle}
-#app-dict .d-word>.em img.hs-pic{width:min(220px,55vw);height:min(220px,55vw)}
-#app-dict .d-wod .em img.hs-pic{width:140px;height:140px}
-#app-dict .d-clue .em img.hs-pic{width:130px;height:130px}
-#app-dict .d-big img.hs-pic{width:110px;height:110px;vertical-align:middle;display:block;margin:0 auto 6px}
-#app-dict .sp-clue .em img.hs-pic{width:130px;height:130px}
-#app-dict .sp-row .em img.hs-pic{width:60px;height:60px;vertical-align:middle}
-@media (max-width:420px){#app-dict .d-row{grid-template-columns:60px 1fr 1fr 24px}
-#app-dict .d-row .em img.hs-pic{width:54px;height:54px}}
+#app-dict .d-row{grid-template-columns:104px 1fr 1fr 28px}
+#app-dict .d-row .em img.hs-pic{width:96px;height:96px;vertical-align:middle}
+#app-dict .d-word>.em img.hs-pic{width:min(340px,80vw);height:min(340px,80vw)}
+#app-dict .d-wod .em img.hs-pic{width:min(220px,55vw);height:min(220px,55vw)}
+#app-dict .d-clue .em img.hs-pic{width:min(220px,55vw);height:min(220px,55vw)}
+#app-dict .d-big img.hs-pic{width:min(180px,45vw);height:min(180px,45vw);vertical-align:middle;display:block;margin:0 auto 6px}
+#app-dict .sp-clue .em img.hs-pic{width:min(220px,55vw);height:min(220px,55vw)}
+#app-dict .sp-row .em img.hs-pic{width:88px;height:88px;vertical-align:middle}
+#app-dict .d-tile .em img.hs-pic,#app-dict .d-topic .em img.hs-pic{width:84px;height:84px}
+#app-dict .sp-tile .em img.hs-pic{width:80px;height:80px}
+#app-dict .d-opt img.hs-pic{width:72px;height:72px;display:block;margin:0 auto 4px}
+@media (max-width:420px){#app-dict .d-row{grid-template-columns:84px 1fr 1fr 24px}
+#app-dict .d-row .em img.hs-pic{width:78px;height:78px}}
 
 /* ===== app: kg (kg) ===== */
 #app-kg{--ink:var(--t-ink);--bg:var(--t-page);--pink:var(--t-pink);--sky:var(--t-blue);--sun:var(--t-gold);--mint:var(--t-green-btn);--grape:var(--t-purple);--orange:var(--t-orange);--shadow:var(--t-raise)}
@@ -8597,7 +8609,16 @@ window.CATALOG = [
     const me = HS.current(), img = document.querySelector('.gb-av .hs-av-img'); if (!me || !img) return;
     const id = HS.avatarArt(me.avatar || ''), a = id && HS.ART[id + '-happy'], n = id && HS.ART[id]; if (!a || !n) return;
     img.src = a.face || a.sm || a.src; img.closest('.gb-av').classList.add('happy');
-    clearTimeout(happyT); happyT = setTimeout(() => { const i = document.querySelector('.gb-av .hs-av-img'); if (i) { i.src = n.face || n.sm || n.src; i.closest('.gb-av').classList.remove('happy'); } }, ms);
+    // and a big version of the happy face under the top bar, so the reaction is easy to see
+    let pop = document.querySelector('.av-pop');
+    if (!pop) { pop = document.createElement('div'); pop.className = 'av-pop'; pop.setAttribute('aria-hidden', 'true'); pop.innerHTML = '<img alt="">'; document.body.appendChild(pop); }
+    const r = img.closest('.gb-av').getBoundingClientRect(), W = Math.min(170, innerWidth * .4);
+    pop.style.left = Math.max(8, Math.min(innerWidth - W - 8, r.left + r.width / 2 - W / 2)) + 'px'; pop.style.top = (r.bottom + 14) + 'px';
+    pop.style.background = HS.kidColor(me); pop.classList.remove('out'); pop.querySelector('img').src = a.src;
+    clearTimeout(happyT); happyT = setTimeout(() => {
+      const i = document.querySelector('.gb-av .hs-av-img'); if (i) { i.src = n.face || n.sm || n.src; i.closest('.gb-av').classList.remove('happy'); }
+      const p = document.querySelector('.av-pop'); if (p) { p.classList.add('out'); setTimeout(() => { if (p.classList.contains('out')) p.remove(); }, 300); }
+    }, Math.max(ms, 1400));
   }
   const fx0 = HS.fx; HS.fx = k => { fx0(k); if (k === 'ok' || k === 'win' || k === 'combo') smile(900); };
   HS.on('diamond', n => { smile(2000); const b = document.querySelector('.gb-stars'); if (b) { b.classList.remove('hs-pop'); void b.offsetWidth; b.classList.add('hs-pop'); }
