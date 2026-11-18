@@ -47,9 +47,9 @@
     <h2>الخدمة</h2>
     <div class="seg" role="radiogroup" aria-label="خدمة الأصوات العربية">
       <label class="chk"><input type="radio" name="prov" value="azure" checked> Microsoft Azure (مجاني، الصوت الحالي)</label>
-      <label class="chk"><input type="radio" name="prov" value="eleven"> ElevenLabs (للعربي)</label>
+      <label class="chk"><input type="radio" name="prov" value="eleven"> ElevenLabs (عربي وإنجليزي)</label>
     </div>
-    <p class="note">الإنجليزي يُسجّل دائمًا بـ Azure.</p>
+    <p class="note">الخدمة المختارة تسجّل العربي والإنجليزي معًا (لكل لغة صوتها).</p>
   </section>
 
   <section id="elBox" hidden>
@@ -58,20 +58,22 @@
       <li>افتح <a href="https://elevenlabs.io/app/settings/api-keys" target="_blank" rel="noopener">مفاتيح API في ElevenLabs</a> وسجّل دخولك.</li>
       <li>اضغط <b>Create API Key</b>، وفعّل صلاحيات <b>Text to Speech</b> و<b>Voices</b> و<b>Models</b>، ثم انسخ المفتاح.</li>
     </ol>
-    <p class="note">الخطة المجانية فيها ١٠ آلاف حرف في الشهر (للتجربة، غير تجاري). كل الجمل العربية تحتاج حوالي {{CHARS_AR}} حرف: خطة Starter أو Creator لشهر واحد تكفي.</p>
+    <p class="note">الخطة المجانية فيها ١٠ آلاف حرف في الشهر (للتجربة، غير تجاري). كل الجمل تحتاج حوالي {{CHARS}} حرف (العربي وحده {{CHARS_AR}}): خطة Creator لشهر واحد تكفي.</p>
     <label for="elKey">مفتاح ElevenLabs</label><input id="elKey" type="password" autocomplete="off" spellcheck="false" dir="ltr" placeholder="sk_••••••••">
     <label class="chk"><input type="checkbox" id="elRemember"> تذكّر المفتاح في هذا المتصفح</label>
     <p class="note" id="elRememberNote" hidden>المفتاح محفوظ في هذا المتصفح فقط. <button type="button" id="elForget" class="linkbtn">انسَ المفتاح</button></p>
     <div class="btns"><button type="button" class="sec" id="elLoad">🔄 حمّل الأصوات</button></div>
     <div class="row">
-      <div><label for="elVoice">الصوت</label><select id="elVoice"></select></div>
-      <div><label for="elModel">النموذج</label><select id="elModel" dir="ltr"></select></div>
+      <div><label for="elVoice">الصوت العربي</label><select id="elVoice"></select></div>
+      <div><label for="elVoiceEn">الصوت الإنجليزي</label><select id="elVoiceEn" dir="ltr"></select></div>
     </div>
+    <label for="elModel">النموذج</label><select id="elModel" dir="ltr"></select>
     <div class="row">
       <div><label for="elSpeed">السرعة</label><select id="elSpeed"><option value="0.85">أبطأ (للصغار)</option><option value="0.92" selected>أبطأ قليلًا</option><option value="1">عادية</option></select></div>
       <div><label for="elStab">الثبات</label><select id="elStab"><option value="0.35">معبّر أكثر</option><option value="0.5" selected>متوازن</option><option value="0.75">ثابت أكثر (نبرة واحدة)</option></select></div>
     </div>
-    <div class="btns"><button type="button" class="sec" id="elPreview">🎧 معاينة الصوت</button><button type="button" class="sec" id="elTry">▶️ جرّب جملة</button></div>
+    <div class="btns"><button type="button" class="sec" id="elPreview">🎧 معاينة العربي</button><button type="button" class="sec" id="elTry">▶️ جرّب جملة عربية</button>
+      <button type="button" class="sec" id="elPreviewEn">🎧 English preview</button><button type="button" class="sec" id="elTryEn">▶️ Try English</button></div>
     <p id="elMsg" role="status" aria-live="polite"></p>
   </section>
 
@@ -140,7 +142,7 @@ async function getToken() {
 let slow = false, waits = 0;
 const prov = () => (document.querySelector('[name=prov]:checked') || {}).value || 'azure';
 async function synth(text, lang) {
-  if (lang === 'ar' && prov() === 'eleven') return EL.synth(text);
+  if (prov() === 'eleven') return EL.synth(text, lang);
   return synthAzure(text, lang);
 }
 async function synthAzure(text, lang) { waits = 0;
@@ -165,8 +167,10 @@ async function play(text, lang) {
   catch (e) { msg(e.message === 'Failed to fetch' ? 'تعذّر الاتصال بـ Azure. تأكد من المنطقة والإنترنت.' : e.message, 'err'); }
 }
 $('tryAr').onclick = () => play('هيا نلعب! ركّبي الصورة، ثم وجّهي الروبوت إلى التفاحة. أحسنتِ!', 'ar');
-$('elTry').onclick = async () => { const m = $('elMsg'); try { m.textContent = '…'; const b = await EL.synth('ألف. أرنب. باء. بطة. أحسنتِ! هيا نلعب.'); new Audio(URL.createObjectURL(new Blob([b], { type: 'audio/mpeg' }))).play(); m.textContent = ''; } catch (e) { m.textContent = e.message; m.className = 'err'; } };
-document.querySelectorAll('[name=prov]').forEach(r => r.onchange = () => { $('elBox').hidden = prov() !== 'eleven'; });
+const elTry = (t, lang) => async () => { const m = $('elMsg'); try { m.textContent = '…'; m.className = ''; const b = await EL.synth(t, lang); new Audio(URL.createObjectURL(new Blob([b], { type: 'audio/mpeg' }))).play(); m.textContent = ''; } catch (e) { m.textContent = e.message; m.className = 'err'; } };
+$('elTry').onclick = elTry('ألف. أرنب. باء. بطة. أحسنتِ! هيا نلعب.', 'ar');
+$('elTryEn').onclick = elTry('A is for Apple. Great job! Can you find the red apple?', 'en');
+document.querySelectorAll('[name=prov]').forEach(r => r.onchange = () => { $('elBox').hidden = prov() !== 'eleven'; $('onlyNew').checked = prov() !== 'eleven'; $('what').value = prov() === 'eleven' ? 'both' : 'ar'; });   // a new voice: re-record every sentence, both languages
 EL.init();
 $('tryEn').onclick = () => play('Great job! Can you find the red apple?', 'en');
 
@@ -195,8 +199,11 @@ $('go').onclick = async () => {
   if (!LINES.some(l => ($('what').value === 'both' || l.lang === $('what').value) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text)))) {
     msg('كل الجمل في هذا الاختيار لها صوت مسجّل ✓'); $('go').disabled = false; return; }
   try {
-    if (prov() === 'eleven' && $('what').value !== 'en' && !EL.ready()) throw new Error('اختر صوت ElevenLabs أولًا (حمّل الأصوات)');
-    if (prov() === 'azure' || $('what').value !== 'ar') await getToken();
+    const w0 = $('what').value;
+    if (prov() === 'eleven') {
+      if (w0 !== 'en' && !EL.ready('ar')) throw new Error('اختر الصوت العربي في ElevenLabs أولًا (حمّل الأصوات)');
+      if (w0 !== 'ar' && !EL.ready('en')) throw new Error('اختر الصوت الإنجليزي في ElevenLabs أولًا');
+    } else await getToken();
     const w = $('what').value, todo = LINES.filter(l => (w === 'both' || l.lang === w) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text))), queue = todo.slice(), worker = async () => {
       while (queue.length) {
         if (slow && worker.n > 1) { worker.n--; return; }   // throttled: one request at a time
@@ -207,7 +214,8 @@ $('go').onclick = async () => {
       }
     };
     if (prov() === 'eleven') { worker.n = 2; await Promise.all([worker(), worker()]); } else { worker.n = 3; await Promise.all([worker(), worker(), worker()]); }
-    const info = { provider: { ar: prov(), en: 'azure' }, voices: { ar: prov() === 'eleven' ? EL.info() : $('voiceAr').value, en: $('voiceEn').value }, rate: { ar: prov() === 'eleven' ? $('elSpeed').value : $('rateAr').value, en: $('rateEn').value }, made: new Date().toISOString(), failed };
+    const el = prov() === 'eleven';
+    const info = { provider: { ar: prov(), en: prov() }, voices: { ar: el ? EL.info('ar') : $('voiceAr').value, en: el ? EL.info('en') : $('voiceEn').value }, rate: { ar: el ? $('elSpeed').value : $('rateAr').value, en: el ? $('elSpeed').value : $('rateEn').value }, made: new Date().toISOString(), failed };
     files.push(['manifest.json', new TextEncoder().encode(JSON.stringify(manifest, null, 1))], ['voices.json', new TextEncoder().encode(JSON.stringify(info, null, 1))]);
     const a = document.createElement('a'); a.href = URL.createObjectURL(zip(files)); a.download = w === 'en' ? 'madrasat-voices-en.zip' : w === 'ar' ? 'madrasat-voices.zip' : 'madrasat-voices-all.zip'; document.body.appendChild(a); a.click(); a.remove();
     msg(failed.length ? `نزل الملف. ${failed.length} جملة لم تُسجّل (ستبقى بصوت الجهاز).` : '✅ نزل الملف madrasat-voices.zip. أرسله لـ Claude ليضيفه للموقع.', failed.length ? 'err' : 'ok');

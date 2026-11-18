@@ -65,11 +65,12 @@
       <label for="elKey">مفتاح ElevenLabs</label><input id="elKey" type="password" autocomplete="off" spellcheck="false" dir="ltr" placeholder="sk_••••••••">
       <label class="chk"><input type="checkbox" id="elRemember"> تذكّر المفتاح في هذا المتصفح</label>
       <p class="note" id="elRememberNote" hidden>المفتاح محفوظ في هذا المتصفح فقط. <button type="button" id="elForget" class="linkbtn">انسَ المفتاح</button></p>
-      <div class="btns"><button type="button" class="sec" id="elLoad">🔄 حمّل الأصوات</button><button type="button" class="sec" id="elPreview">🎧 معاينة الصوت</button></div>
+      <div class="btns"><button type="button" class="sec" id="elLoad">🔄 حمّل الأصوات</button><button type="button" class="sec" id="elPreview">🎧 معاينة العربي</button><button type="button" class="sec" id="elPreviewEn">🎧 English preview</button></div>
       <div class="row">
-        <div><label for="elVoice">الصوت</label><select id="elVoice"></select></div>
-        <div><label for="elModel">النموذج</label><select id="elModel" dir="ltr"></select></div>
+        <div><label for="elVoice">الصوت العربي</label><select id="elVoice"></select></div>
+        <div><label for="elVoiceEn">الصوت الإنجليزي</label><select id="elVoiceEn" dir="ltr"></select></div>
       </div>
+      <label for="elModel">النموذج</label><select id="elModel" dir="ltr"></select>
       <div class="row">
         <div><label for="elSpeed">السرعة</label><select id="elSpeed"><option value="0.85">أبطأ (للصغار)</option><option value="0.92" selected>أبطأ قليلًا</option><option value="1">عادية</option></select></div>
         <div><label for="elStab">الثبات</label><select id="elStab"><option value="0.35">معبّر أكثر</option><option value="0.5" selected>متوازن</option><option value="0.75">ثابت أكثر</option></select></div>
@@ -120,7 +121,7 @@ EL.init();
 /* ---------- each source: one sentence -> audio URL ---------- */
 const blobUrl = b => URL.createObjectURL(b instanceof Blob ? b : new Blob([b], { type: 'audio/mpeg' }));
 let azTok = null, azAt = 0;
-async function azure(text) {   // a sentence the site has not recorded yet: Azure with the key saved by the voice maker
+async function azure(text, lang) {   // a sentence the site has not recorded yet: Azure with the key saved by the voice maker
   let s = null; try { s = JSON.parse(localStorage.getItem('madrasat-azure') || 'null'); } catch (e) {}
   if (!s || !s.key) throw new Error('غير مسجّلة في الموقع بعد');
   if (!azTok || Date.now() - azAt > 8 * 60e3) {
@@ -130,7 +131,7 @@ async function azure(text) {   // a sentence the site has not recorded yet: Azur
   const x = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   const r = await fetch(`https://${s.region}.tts.speech.microsoft.com/cognitiveservices/v1`, { method: 'POST',
     headers: { Authorization: 'Bearer ' + azTok, 'Content-Type': 'application/ssml+xml', 'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3' },
-    body: `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="ar-SA"><voice name="ar-SA-ZariyahNeural"><prosody rate="-8%">${x(text)}</prosody></voice></speak>` });
+    body: `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="ar-SA"><voice name="${lang === 'en' ? 'en-US-AvaMultilingualNeural' : 'ar-SA-ZariyahNeural'}"><prosody rate="-8%">${x(text)}</prosody></voice></speak>` });
   if (!r.ok) throw new Error('Azure ' + r.status); return blobUrl(await r.blob());
 }
 let gradio = null, refBlob = null, spaces = {};
@@ -152,23 +153,25 @@ async function lahgtna(text) {
   let r; try { r = await c.predict('/_clone_fn', args); } catch (e) { args.du = null; r = await c.predict('/_clone_fn', args); }
   const u = urlOf(r.data[0]); if (!u) throw new Error(String(r.data[1] || 'لا يوجد صوت').slice(0, 80)); return blobUrl(await (await fetch(u)).blob());
 }
-const MAKE = { site: async (t, s) => s ? s : azure(t), eleven: async t => blobUrl(await EL.synth(t)), habibi, lahgtna };
+const ARABIC_ONLY = new Set(['habibi', 'lahgtna']);
+const MAKE = { site: async (t, s, lang) => s ? s : azure(t, lang), eleven: async (t, s, lang) => blobUrl(await EL.synth(t, lang)), habibi, lahgtna };
 
 /* ---------- prepare every sample ---------- */
 $('go').onclick = async () => {
   const srcs = [...document.querySelectorAll('.src:checked')].map(c => c.value);
   if (srcs.length < 2) return msg('اختر صوتين على الأقل', 'err');
-  if (srcs.includes('eleven') && !EL.ready()) return msg('ElevenLabs: اكتب المفتاح واضغط «حمّل الأصوات» ثم اختر صوتًا', 'err');
+  if (srcs.includes('eleven') && !(EL.ready('ar') && EL.ready('en'))) return msg('ElevenLabs: اكتب المفتاح واضغط «حمّل الأصوات» ثم اختر الصوتين', 'err');
   $('go').disabled = true; let done = 0; const total = TEST.length * srcs.length, errs = {};
   const run = async src => {   // each service in its own lane, one sentence at a time
     for (let i = 0; i < TEST.length; i++) {
       const k = i + '|' + src;
-      if (!audio[k]) try { audio[k] = await MAKE[src](TEST[i].text, TEST[i].site); } catch (e) { audio[k] = { err: e.message || String(e) }; errs[src] = (errs[src] || 0) + 1; }
+      if (ARABIC_ONLY.has(src) && TEST[i].lang === 'en') { done++; continue; }   // Arabic-only models skip the English sentences
+      if (!audio[k]) try { audio[k] = await MAKE[src](TEST[i].text, TEST[i].site, TEST[i].lang); } catch (e) { audio[k] = { err: e.message || String(e) }; errs[src] = (errs[src] || 0) + 1; }
       done++; $('bar').style.width = (100 * done / total) + '%'; msg(`جُهّز ${done} من ${total}…`);
     }
   };
   await Promise.all(srcs.map(run));
-  TEST.forEach((_, i) => { order[i] = shuffle(srcs.slice()); });
+  TEST.forEach((q, i) => { order[i] = shuffle(srcs.filter(s => !(ARABIC_ONLY.has(s) && q.lang === 'en'))); });
   draw(srcs);
   const bad = Object.entries(errs).map(([s, n]) => `${NAMES[s]}: ${n} لم تنجح`);
   msg(bad.length ? '✅ جاهز. ' + bad.join(' · ') : '✅ جاهز! اسمع واختر.', bad.length ? '' : 'ok');
@@ -177,7 +180,7 @@ $('go').onclick = async () => {
 function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 const LAB = ['أ', 'ب', 'ج', 'د'];
 function draw() {
-  $('qs').innerHTML = TEST.map((q, i) => `<div class="q" data-i="${i}"><p class="cat">${q.cat}</p><p class="tx">${q.text}</p><div class="smp">${order[i].map((src, n) => {
+  $('qs').innerHTML = TEST.map((q, i) => `<div class="q" data-i="${i}"><p class="cat">${q.cat}</p><p class="tx"${q.lang === 'en' ? ' dir="ltr" lang="en"' : ''}>${q.text}</p><div class="smp">${order[i].map((src, n) => {
     const a = audio[i + '|' + src], v = votes[q.text] || {}, best = v.best === src, bad = (v.bad || []).includes(src);
     return `<div class="s ${best ? 'best' : ''}" data-src="${src}"><span class="lab">${LAB[n]}</span>${a && a.err ? `<span class="fail">لم ينجح</span>`
       : `<button type="button" class="play" aria-label="استمع إلى ${LAB[n]}">▶️ استمع</button><button type="button" class="pick" aria-pressed="${best}">${best ? '⭐ الأفضل' : '☆ الأفضل؟'}</button>
@@ -196,9 +199,9 @@ $('reset').onclick = () => { votes = {}; saveVotes(); draw(); $('resBox').hidden
 $('reveal').onclick = () => {
   const srcs = [...new Set(Object.values(order).flat())], n = TEST.filter(q => votes[q.text] && votes[q.text].best).length;
   if (!n) return msg('اختر الأفضل في جملة واحدة على الأقل', 'err');
-  const rows = srcs.map(s => ({ s, win: TEST.filter(q => votes[q.text] && votes[q.text].best === s).length, bad: TEST.filter(q => votes[q.text] && (votes[q.text].bad || []).includes(s)).length }))
+  const rows = srcs.map(s => ({ s, win: TEST.filter(q => votes[q.text] && votes[q.text].best === s).length, en: TEST.filter(q => q.lang === 'en' && votes[q.text] && votes[q.text].best === s).length, bad: TEST.filter(q => votes[q.text] && (votes[q.text].bad || []).includes(s)).length }))
     .sort((a, b) => b.win - a.win || a.bad - b.bad);
-  $('tally').innerHTML = rows.map((r, k) => `<div class="t"><b>${k === 0 ? '🏆 ' : ''}${NAMES[r.s]}</b><span>⭐ ${r.win} من ${n}${r.bad ? ` · ⚠️ ${r.bad} خطأ نطق` : ''}</span><div class="meter"><i style="width:${Math.round(100 * r.win / n)}%"></i></div></div>`).join('');
+  $('tally').innerHTML = rows.map((r, k) => `<div class="t"><b>${k === 0 ? '🏆 ' : ''}${NAMES[r.s]}</b><span>⭐ ${r.win} من ${n}${r.en ? ` (منها ${r.en} إنجليزي)` : ''}${r.bad ? ` · ⚠️ ${r.bad} خطأ نطق` : ''}</span><div class="meter"><i style="width:${Math.round(100 * r.win / n)}%"></i></div></div>`).join('');
   const w = rows[0];
   $('advice').textContent = w.s === 'site' ? 'الصوت الحالي فاز: لا حاجة للتغيير.'
     : w.s === 'eleven' ? 'ElevenLabs فاز: افتح صانع الأصوات واختر ElevenLabs بنفس الصوت والإعدادات، ثم سجّل كل الجمل وأرسل الملف لـ Claude.'

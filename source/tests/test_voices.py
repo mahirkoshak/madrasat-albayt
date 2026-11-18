@@ -36,12 +36,15 @@ with sync_playwright() as p:
     pg.fill('#elKey','bad');pg.click('#elLoad');pg.wait_for_timeout(400);print('bad key:',pg.inner_text('#elMsg'))
     pg.fill('#elKey','sk_test');pg.check('#elRemember');pg.click('#elLoad');pg.wait_for_timeout(500);print('loaded:',pg.inner_text('#elMsg'))
     print('model picked:',pg.input_value('#elModel'),'| voices:',pg.evaluate("[...document.querySelectorAll('#elVoice option')].map(o=>o.textContent)"))
-    pg.select_option('#elVoice','lib:own:lib2');pg.check('.src[value=lahgtna]')
+    pg.select_option('#elVoice','lib:own:lib2');pg.select_option('#elVoiceEn','my1');pg.check('.src[value=lahgtna]')
     pg.click('#go');pg.wait_for_timeout(6000)
     print('prepared:',pg.inner_text('#msg'))
     print('library voice added, then used:',[c for c in calls if c[0]=='el' and 'add' in c[1]], [c for c in calls if c[0]=='tts'][:1])
     print('gradio calls',len(pg.evaluate("window.__gr||[]")),pg.evaluate("(window.__gr||[]).slice(0,1)"))
     n=pg.locator('.q').count();print('questions',n,'samples per q',pg.locator('.q').first.locator('.s').count(),'failed shown',pg.locator('.q').first.locator('.fail').count())
+    en=pg.evaluate("TEST.findIndex(t=>t.lang==='en')");print('english q: samples',pg.locator(f'.q[data-i="{en}"] .s').count(),'sources',pg.evaluate(f"order[{en}]"),'| eleven english calls',[c for c in calls if c[0]=='tts' and c[2].startswith('A is')][:1])
+    assert sorted(pg.evaluate(f"order[{en}]"))==['eleven','site']
+    pg.locator(f'.q[data-i="{en}"] .s[data-src="eleven"] .pick').click()
     pg.screenshot(path=OUT+'/voice-test.png',full_page=False)
     # vote: always pick the ElevenLabs sample (find it by data-src) in 5 sentences, Habibi in 2; mark one pronunciation error
     for i in range(7):
@@ -55,11 +58,13 @@ with sync_playwright() as p:
     # ---- voice maker with ElevenLabs
     calls.clear();pg.goto('https://site.test/voice-maker.html');pg.wait_for_timeout(400)
     pg.check('[name=prov][value=eleven]');print('eleven box shown:',pg.is_visible('#elBox'))
-    pg.wait_for_timeout(500);pg.select_option('#elVoice','my1')
+    pg.wait_for_timeout(500);pg.select_option('#elVoice','my1');pg.select_option('#elVoiceEn','lib:own:lib2')
+    calls.clear();pg.click('#elTryEn');pg.wait_for_timeout(400);print('try english:',[c for c in calls if c[0]=='tts'][-1:])
     pg.click('#elTry');pg.wait_for_timeout(300);print('try:',[c for c in calls if c[0]=='tts'][-1:])
-    pg.select_option('#what','ar');pg.check('#onlyNew')
-    pg.evaluate("HAVE.clear(); LINES.splice(6)")   # record only a few sentences in the test
+    print('switching to eleven unticks only-new:',not pg.is_checked('#onlyNew'),pg.input_value('#what'));pg.check('#onlyNew')
+    pg.evaluate("HAVE.clear(); const ar=LINES.filter(l=>l.lang==='ar').slice(0,3), en=LINES.filter(l=>l.lang==='en').slice(0,3); LINES.splice(0,LINES.length,...ar,...en)")   # a few of each
     with pg.expect_download(timeout=30000) as d: pg.click('#go')
     z=d.value.path();import zipfile;zf=zipfile.ZipFile(z);names=zf.namelist();info=json.loads(zf.read('voices.json'))
     print('zip',len(names),'files; provider',info['provider'],'voice',info['voices']['ar'],'| msg:',pg.inner_text('#msg'))
-    print('errs',errs); assert not errs and info['provider']['ar']=='eleven'
+    print('english recorded by eleven:',[c[2] for c in calls if c[0]=='tts'][-3:])
+    print('errs',errs); assert not errs and info['provider']=={'ar':'eleven','en':'eleven'} and len(names)==8

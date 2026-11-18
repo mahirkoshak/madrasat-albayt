@@ -33,13 +33,15 @@ try:
     with open(os.path.join(HERE, 'dist', 'voice-maker.html'), 'w', encoding='utf-8') as f: f.write(t)
     # the listening test (tools/voice_maker/test.html): the same sentences in each voice, names hidden
     clips = json.load(open(man, encoding='utf-8')) if os.path.isfile(man) else {}
-    site = lambda text: ('assets/audio/' + clips['ar|' + text]) if 'ar|' + text in clips else None
+    site = lambda text, lang='ar': ('assets/audio/' + clips[lang + '|' + text]) if lang + '|' + text in clips else None
     TEST = [('الحروف', x) for x in ['ألف. أرنب', 'ثاء', 'حاء', 'خاء', 'ذال', 'ضاد', 'ظاء', 'عين', 'غين', 'قاف']] + \
            [('تشجيع', x) for x in ['أحسنت!', 'أحسنتِ!', 'ممتاز!', 'رائع!', 'سلسلة رائعة!', 'حاول مرة ثانية', 'هيا نلعب!']] + \
            [('تعليمات الروضة', x) for x in ['أين حرف غين؟', 'أربعة زائد اثنان، كم يساوي؟', 'رتّبي القصة: ماذا حدث أولًا؟', 'خذي النجمة أولًا، ثم اذهبي إلى التفاحة',
                                          'أوه! اصطدم الروبوت. جرّبي طريقًا آخر']] + \
            [('جملة علوم (للمستقبل)', 'النباتات تصنع غذاءها بنفسها من ضوء الشمس والماء.')]
-    test = [{'cat': c, 'text': x, 'site': site(x)} for c, x in TEST]
+    test = [{'cat': c, 'text': x, 'lang': 'ar', 'site': site(x)} for c, x in TEST]
+    test += [{'cat': 'English (KG)', 'text': x, 'lang': 'en', 'site': site(x, 'en')} for x in
+             ['A is for Apple', 'H is for Hat', 'Q is for Queen', 'Great job!', 'Well done!', 'Amazing!', 'Try again', 'Where is blue?', '2 plus 3. How many?', 'Build a rocket with the shapes']]
     ref_text = 'أحسنتِ اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة'
     ref = {'text': ref_text, 'url': site(ref_text)}
     tt = open(os.path.join(HERE, 'tools', 'voice_maker', 'test.html'), encoding='utf-8').read()
