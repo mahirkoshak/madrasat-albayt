@@ -1161,6 +1161,109 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-unit .ob-col.no{border-color:var(--t-red-edge);color:var(--t-red-ink);background:var(--t-red-soft);text-decoration:line-through}
 #app-unit .ob-col.ok{background:var(--t-green);border-color:var(--t-green);color:#fff}
 #app-unit .ob-ask{margin:8px 0}
+#app-unit .m-model{margin:12px auto;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-end;max-width:100%}
+#app-unit .m-o{width:30px;height:30px;object-fit:contain;display:inline-grid;place-items:center;font-size:22px;line-height:1}
+#app-unit .m-groups .m-grp{position:relative;padding:8px;border-radius:50%;background:var(--t-sand-soft);border:2px dashed var(--t-sand);min-width:64px;min-height:64px;display:grid;place-items:center}
+#app-unit .m-groups .m-in{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:110px}
+#app-unit .m-boxi{position:absolute;inset:auto 0 -6px;margin:auto;width:28px;height:28px;opacity:.35}
+#app-unit .m-array{flex-direction:column;align-items:center;gap:3px}
+#app-unit .m-row{display:flex;gap:3px}
+#app-unit .m-cell{width:26px;height:26px;display:grid;place-items:center}
+#app-unit .m-cell .m-o{width:24px;height:24px;font-size:18px}
+#app-unit .m-dot{width:18px;height:18px;border-radius:50%;background:var(--t-blue);display:block}
+#app-unit .m-cell.b .m-dot{background:var(--t-orange)}
+#app-unit .m-cell.b .m-o{filter:hue-rotate(40deg) saturate(1.2)}
+#app-unit .m-cell.gap{opacity:0}
+#app-unit .m-cut{width:3px;margin:0 4px;align-self:stretch;background:repeating-linear-gradient(to bottom,var(--t-red-ink) 0 5px,transparent 5px 9px);border-radius:2px}
+#app-unit .m-blocks{gap:14px}
+#app-unit .m-bk{display:flex;flex-wrap:wrap;gap:3px;align-items:flex-end;max-width:240px}
+#app-unit .m-bk.ones{max-width:80px}
+#app-unit .m-blocks svg rect{fill:#8fd3ff;stroke:#2a7ab8;stroke-width:1}
+#app-unit .m-blocks svg line{stroke:#2a7ab8;stroke-width:.4}
+#app-unit .m-flat{width:64px;height:64px}
+#app-unit .m-rod{width:12px;height:64px}
+#app-unit .m-one{width:12px;height:12px}
+#app-unit .m-flat rect{fill:#ffd36b!important;stroke:#b8860b!important}
+#app-unit .m-flat line{stroke:#b8860b!important}
+#app-unit .m-one rect{fill:#9be38c!important;stroke:#3c8a2e!important}
+#app-unit .m-area{flex-direction:column;align-items:stretch;width:min(100%,520px);gap:0}
+#app-unit .m-ar-top,#app-unit .m-ar-row{display:flex;gap:4px}
+#app-unit .m-ar-top{padding-inline-start:44px;font-weight:800;color:var(--t-ink)}
+#app-unit .m-ar-top span{text-align:center}
+#app-unit .m-ar-side{width:40px;display:grid;place-items:center;font-weight:800;color:var(--t-ink)}
+#app-unit .m-ar-cell{min-height:86px;min-width:0;border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:6px 2px;font-weight:700;text-align:center;border:2px solid rgba(0,0,0,.12)}
+#app-unit .m-ar-cell.c0{background:#ffe7a8}
+#app-unit .m-ar-cell.c1{background:#cfe9ff}
+#app-unit .m-ar-cell.c2{background:#d8f5cf}
+#app-unit .m-ar-cell b{font-size:1.25em}
+#app-unit .m-ar-e{white-space:nowrap;font-size:.85em;color:var(--t-ink)}
+#app-unit .m-ar-top span{min-width:0}
+#app-unit .m-slot{font:inherit;font-size:1.4em;font-weight:900;min-width:64px;min-height:48px;border-radius:12px;border:3px dashed var(--t-primary);background:#fff;cursor:pointer;color:var(--t-primary)}
+#app-unit .m-slot:focus-visible{outline:3px solid var(--t-focus);outline-offset:2px}
+#app-unit .m-vertical{display:grid;gap:2px;font-size:1.6em;font-weight:800;justify-content:center}
+#app-unit .m-v-row{display:grid;grid-template-columns:repeat(var(--w),1.1em);text-align:center}
+#app-unit .m-v-row.carry{font-size:.6em;color:var(--t-red-ink);grid-template-columns:repeat(var(--w),1.83em)}
+#app-unit .m-v-line{height:3px;background:var(--t-ink);border-radius:2px}
+#app-unit .m-v-row.res{color:var(--t-green-ink)}
+#app-unit .m-ans{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0 8px}
+#app-unit .m-box-ans{min-width:120px;padding:8px 16px;font-size:2rem;font-weight:900;text-align:center;border-radius:16px;border:3px solid var(--t-line);background:#fff;color:var(--t-ink-strong)}
+#app-unit .m-box-ans.no{border-color:var(--t-red-edge);background:var(--t-red-soft);animation:hsshake .35s}
+#app-unit .m-box-ans.ok{border-color:var(--t-green-edge);background:var(--t-green-soft);color:var(--t-green-ink)}
+#app-unit .m-unit{font-weight:700;color:var(--t-muted)}
+#app-unit .m-pad{display:grid;grid-template-columns:repeat(3,64px);gap:8px;justify-content:center;margin:6px auto}
+#app-unit .m-k{font:inherit;font-size:1.5rem;font-weight:800;height:56px;border-radius:14px;border:2px solid var(--t-line);background:var(--t-surface,#fff);box-shadow:0 3px 0 var(--t-line);cursor:pointer;color:var(--t-ink-strong)}
+#app-unit .m-k:active{transform:translateY(2px);box-shadow:0 1px 0 var(--t-line)}
+#app-unit .m-k.ok{background:var(--t-green);border-color:var(--t-green-edge);color:#fff;box-shadow:0 3px 0 var(--t-green-sh)}
+#app-unit .m-k.del{background:var(--t-sand-soft)}
+#app-unit .m-k:disabled{opacity:.45;cursor:default}
+#app-unit .m-k:focus-visible{outline:3px solid var(--t-focus);outline-offset:2px}
+#app-unit .coach .m-model{margin-top:8px}
+#app-unit .mg-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+#app-unit .mg-round{font-weight:800;color:var(--t-muted)}
+#app-unit .mg-fact{font-size:1.6rem;font-weight:900;text-align:center;margin:8px 0;color:var(--t-ink-strong)}
+#app-unit .mg-fact small{display:block;font-size:.55em;font-weight:600;color:var(--t-muted)}
+#app-unit .mg-say{font-weight:700;color:var(--t-primary-ink,var(--t-ink));text-align:center}
+#app-unit .mg-ask{margin-top:12px;padding-top:10px;border-top:2px dashed var(--t-line)}
+#app-unit .mg-fb{margin-top:10px}
+#app-unit .mg-stars{font-size:1.8rem;text-align:center}
+#app-unit .mg-splits{justify-content:center}
+#app-unit .pg-board{display:grid;grid-template-columns:repeat(5,minmax(44px,62px));gap:6px;justify-content:center;margin:8px auto}
+#app-unit .pg-c{aspect-ratio:1;display:grid;place-items:center;border-radius:12px;font-size:1.25rem;font-weight:800;background:var(--t-sand-soft);border:2px solid var(--t-sand)}
+#app-unit .pg-c.o1{background:#9be38c;border-color:#3c8a2e;color:#1d4d14}
+#app-unit .pg-c.o2{background:#d7c4ff;border-color:#7a52d1;color:#3d2378}
+#app-unit .pg-c.win{outline:4px solid var(--t-gold);outline-offset:-2px;animation:hspop .4s}
+#app-unit .pg-clips{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin:10px 0 4px;font-weight:700}
+#app-unit .pg-clip{font:inherit;font-weight:800;padding:6px 14px;border-radius:999px;border:2px solid var(--t-line);background:#fff;cursor:pointer}
+#app-unit .pg-clip.on{border-color:var(--t-primary);background:var(--t-primary-soft)}
+#app-unit .pg-strip{display:flex;gap:4px;justify-content:center;margin:14px 0 8px}
+#app-unit .pg-f{position:relative;font:inherit;font-size:1.3rem;font-weight:900;flex:1 1 0;min-width:0;max-width:52px;height:52px;border-radius:12px;border:2px solid var(--t-line);background:#fff;cursor:pointer}
+#app-unit .pg-f.has{border-color:var(--t-primary);background:var(--t-primary-soft)}
+#app-unit .pg-f i{position:absolute;top:-12px;font-style:normal;font-size:.8em}
+#app-unit .pg-f i+i{right:-4px}
+#app-unit .tb-wrap{overflow-x:auto}
+#app-unit .tb{border-collapse:separate;border-spacing:3px;margin:6px auto}
+#app-unit .tb th{font-weight:900;color:var(--t-primary);padding:2px 4px}
+#app-unit .tb-c{font:inherit;font-weight:700;width:38px;height:34px;border-radius:8px;border:1px solid var(--t-line);background:#fff;cursor:pointer;font-size:.95rem}
+#app-unit .tb-c.hid{background:var(--t-gold-soft);border:2px dashed var(--t-gold);font-weight:900}
+#app-unit .tb-c.on{background:var(--t-primary);color:#fff;border-color:var(--t-primary)}
+#app-unit .tb-c.twin{background:var(--t-primary-soft);border-color:var(--t-primary)}
+#app-unit .pr-cards{display:flex;gap:12px;justify-content:center;margin:10px 0}
+#app-unit .pr-card{font:inherit;font-size:2rem;font-weight:900;width:72px;height:88px;border-radius:16px;border:3px solid var(--t-line);background:#fff;box-shadow:0 4px 0 var(--t-line);cursor:pointer}
+#app-unit .pr-card.on{border-color:var(--t-primary);background:var(--t-primary-soft);transform:translateY(-4px)}
+#app-unit .fc-ctl{display:flex;gap:12px;justify-content:center;align-items:center;font-weight:700}
+#app-unit .fc-ctl .btn{min-width:48px;font-size:1.4rem}
+#app-unit .fc-arr .m-cell{width:30px;height:30px}
+#app-unit .fc-found{text-align:center}
+#app-unit .rg-groups{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+#app-unit .rg-groups .m-model{margin:0;padding:6px;border:2px dashed var(--t-line);border-radius:12px}
+#app-unit .rg-all .m-blocks{padding:10px;background:var(--t-sand-soft);border-radius:14px}
+#app-unit .rg-count{text-align:center;font-weight:800}
+@media (max-width:420px){#app-unit .m-pad{grid-template-columns:repeat(3,58px)}
+#app-unit .tb-c{width:30px;height:30px;font-size:.8rem}}
+@media (prefers-reduced-motion:reduce){#app-unit .m-box-ans.no,#app-unit .pg-c.win{animation:none}}
+#app-unit .mt-table{border-collapse:collapse;margin:8px auto;font-weight:700;font-size:1.1rem}
+#app-unit .mt-table th,#app-unit .mt-table td{border:2px solid var(--t-line);padding:6px 12px;text-align:center}
+#app-unit .mt-table th{background:var(--t-sand-soft)}
 </style>
 </head>
 <body>
@@ -1275,7 +1378,7 @@ body{font-family:var(--t-font);background:var(--t-page)}
 </div></div>
 <script>window.APPS = {}; window.APPDATA = {}; window.UNITS = {};</script>
 <script>window.HS_AUDIO = {"ar|آيس كريم بارد": "assets/audio/9c7dc7b65789a508.mp3", "ar|أبيض": "assets/audio/c16c03c2ecfd2167.mp3", "ar|أحسنت!": "assets/audio/160e592a0c57bae0.mp3", "ar|أحسنتِ اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة": "assets/audio/a16dfa6bff0814f0.mp3", "ar|أحسنتِ!": "assets/audio/1293c1d6d8749579.mp3", "ar|أحمر": "assets/audio/6bf9bd66730d83a3.mp3", "ar|أخضر": "assets/audio/5cc5640177f901c2.mp3", "ar|أربعة": "assets/audio/5bf05f9581cfc39a.mp3", "ar|أربعة زائد أربعة، كم يساوي؟": "assets/audio/56e351624dba961e.mp3", "ar|أربعة زائد اثنان، كم يساوي؟": "assets/audio/21d6bbd40b5e7f5c.mp3", "ar|أربعة زائد ثلاثة، كم يساوي؟": "assets/audio/b4a4ea48c527b448.mp3", "ar|أربعة زائد واحد، كم يساوي؟": "assets/audio/68c00b6d7bd4ff5d.mp3", "ar|أرنب": "assets/audio/b1e8c8659a4b0197.mp3", "ar|أرنب. بأي حرف تبدأ؟": "assets/audio/893068afb2750097.mp3", "ar|أزرق": "assets/audio/8e381dbf1a4e9bcd.mp3", "ar|أسد": "assets/audio/bcac732b10505cfe.mp3", "ar|أسود": "assets/audio/3311ca332d98d33c.mp3", "ar|أصفر": "assets/audio/10c48fe439915be6.mp3", "ar|ألف": "assets/audio/64628df11ee91834.mp3", "ar|ألف. أرنب": "assets/audio/e82b26657feb263a.mp3", "ar|ألف. أرنب. باء. بطة": "assets/audio/892dd181ad99541f.mp3", "ar|أوه! اصطدم الروبوت. جرّبي طريقًا آخر": "assets/audio/607d851b02c71910.mp3", "ar|أوه! اصطدم الروبوت. لنجرّب طريقًا آخر": "assets/audio/7a962a27498fdf4f.mp3", "ar|أي حيوان هو الأكبر؟": "assets/audio/76769e0ea2868555.mp3", "ar|أي واحد شكله دائرة؟": "assets/audio/4e448720e259797a.mp3", "ar|أي واحد شكله قلب؟": "assets/audio/22a4f5ebea80cb08.mp3", "ar|أي واحد شكله مثلث؟": "assets/audio/95de7ae34b11478e.mp3", "ar|أي واحد شكله مربع؟": "assets/audio/bc6642563e5c8e67.mp3", "ar|أي واحد شكله مستطيل؟": "assets/audio/c0e7186b7d2738e5.mp3", "ar|أي واحد شكله نجمة؟": "assets/audio/06d5f7ea6e265b46.mp3", "ar|أين الأرنب أمام الصندوق؟": "assets/audio/a5ebfd39eda596d4.mp3", "ar|أين الأرنب بجانب السلة؟": "assets/audio/1886f21898574baa.mp3", "ar|أين الأرنب بجانب الصندوق؟": "assets/audio/281c911328de2c14.mp3", "ar|أين الأرنب بجانب الصندوقين؟": "assets/audio/3703879d8368e9ca.mp3", "ar|أين الأرنب بجانب الطاولة؟": "assets/audio/2678e22ab8706485.mp3", "ar|أين الأرنب بين الصندوقين؟": "assets/audio/4df480b0f5cdcaa2.mp3", "ar|أين الأرنب تحت الطاولة؟": "assets/audio/5d633d00643bd125.mp3", "ar|أين الأرنب خلف الصندوق؟": "assets/audio/eafbf408b75924cd.mp3", "ar|أين الأرنب على السلة؟": "assets/audio/b84c8024a14ebfcb.mp3", "ar|أين الأرنب على الصندوق؟": "assets/audio/a20b71076c894994.mp3", "ar|أين الأرنب على الصندوقين؟": "assets/audio/f05c7d595b83fe11.mp3", "ar|أين الأرنب على الطاولة؟": "assets/audio/cd64aa1b2fd91e7a.mp3", "ar|أين الأرنب في السلة؟": "assets/audio/8e8dde60f94bf2cf.mp3", "ar|أين الأرنب؟": "assets/audio/f57c20d17eff9107.mp3", "ar|أين الأسد؟": "assets/audio/206188199db2bf50.mp3", "ar|أين البطة؟": "assets/audio/31104946fd0ecfd8.mp3", "ar|أين البقرة؟": "assets/audio/17017b41cf84ac66.mp3", "ar|أين الجمل؟": "assets/audio/9c6d79c3b37f1de7.mp3", "ar|أين الحصان؟": "assets/audio/08a23cf313247268.mp3", "ar|أين الخروف؟": "assets/audio/414c5e972378e34c.mp3", "ar|أين الدائرة؟": "assets/audio/422fc7b67d25fb70.mp3", "ar|أين الدب؟": "assets/audio/58112ef21bb2a5e3.mp3", "ar|أين الدجاجة؟": "assets/audio/f24fa27a9bd5a763.mp3", "ar|أين الزرافة؟": "assets/audio/ffb376376ff209e2.mp3", "ar|أين السمكة؟": "assets/audio/c33511d486fbc7ee.mp3", "ar|أين الفراشة؟": "assets/audio/a4cd1429c1f1ba2d.mp3", "ar|أين الفيل؟": "assets/audio/d7a0047acd76167e.mp3", "ar|أين القرد؟": "assets/audio/61199a72f1fd8d9f.mp3", "ar|أين القطة أمام الصندوق؟": "assets/audio/1bf800ac4d565a8f.mp3", "ar|أين القطة بجانب السلة؟": "assets/audio/21371f8829fb76a6.mp3", "ar|أين القطة بجانب الصندوق؟": "assets/audio/3bd4c6e980866f60.mp3", "ar|أين القطة بجانب الصندوقين؟": "assets/audio/7a05a73aafc09ca6.mp3", "ar|أين القطة بجانب الطاولة؟": "assets/audio/dfa570d62958ad79.mp3", "ar|أين القطة بين الصندوقين؟": "assets/audio/8f0edd6bf8be4748.mp3", "ar|أين القطة تحت الطاولة؟": "assets/audio/e96f195192e917ae.mp3", "ar|أين القطة خلف الصندوق؟": "assets/audio/ccbfc96d67b536a8.mp3", "ar|أين القطة على السلة؟": "assets/audio/12e570428c2767ad.mp3", "ar|أين القطة على الصندوق؟": "assets/audio/6bcd50623c22213e.mp3", "ar|أين القطة على الصندوقين؟": "assets/audio/53bfc6ab89016d01.mp3", "ar|أين القطة على الطاولة؟": "assets/audio/364d903a6a96db42.mp3", "ar|أين القطة في السلة؟": "assets/audio/11f6cb237550af94.mp3", "ar|أين القطة؟": "assets/audio/e8701e3db7943ab0.mp3", "ar|أين القلب؟": "assets/audio/ff74f1bd52024d3d.mp3", "ar|أين الكرة أمام الصندوق؟": "assets/audio/ce14e345452cdbdf.mp3", "ar|أين الكرة بجانب السلة؟": "assets/audio/a76a661c3d6625b6.mp3", "ar|أين الكرة بجانب الصندوق؟": "assets/audio/91468ecf4f8441c3.mp3", "ar|أين الكرة بجانب الصندوقين؟": "assets/audio/64152e4488e3e8d7.mp3", "ar|أين الكرة بجانب الطاولة؟": "assets/audio/107df327d3cf51f5.mp3", "ar|أين الكرة بين الصندوقين؟": "assets/audio/552b19a747a70a41.mp3", "ar|أين الكرة تحت الطاولة؟": "assets/audio/bae766fc1b5ff1ff.mp3", "ar|أين الكرة خلف الصندوق؟": "assets/audio/f1b2ed4c6f9cc239.mp3", "ar|أين الكرة على السلة؟": "assets/audio/13844f496ab4394f.mp3", "ar|أين الكرة على الصندوق؟": "assets/audio/fd4d0e08261975ff.mp3", "ar|أين الكرة على الصندوقين؟": "assets/audio/b324731d02261ff4.mp3", "ar|أين الكرة على الطاولة؟": "assets/audio/88e6085d91794ff0.mp3", "ar|أين الكرة في السلة؟": "assets/audio/767867ca9145e1c7.mp3", "ar|أين الكلب أمام الصندوق؟": "assets/audio/fba1edc096365a95.mp3", "ar|أين الكلب بجانب السلة؟": "assets/audio/d069868e9c925359.mp3", "ar|أين الكلب بجانب الصندوق؟": "assets/audio/48c68a12b1df318c.mp3", "ar|أين الكلب بجانب الصندوقين؟": "assets/audio/ebefdbfc0b4ea503.mp3", "ar|أين الكلب بجانب الطاولة؟": "assets/audio/61eec2d172c8d32f.mp3", "ar|أين الكلب بين الصندوقين؟": "assets/audio/24273cbf427e0aa4.mp3", "ar|أين الكلب تحت الطاولة؟": "assets/audio/91c266b921e52d1f.mp3", "ar|أين الكلب خلف الصندوق؟": "assets/audio/fd7cbf3776bed9b0.mp3", "ar|أين الكلب على السلة؟": "assets/audio/579374d313a38114.mp3", "ar|أين الكلب على الصندوق؟": "assets/audio/7836f4f880232072.mp3", "ar|أين الكلب على الصندوقين؟": "assets/audio/72d5b86f900f5ba3.mp3", "ar|أين الكلب على الطاولة؟": "assets/audio/24240c6a5d25e342.mp3", "ar|أين الكلب في السلة؟": "assets/audio/4ddfc74bed3a3364.mp3", "ar|أين الكلب؟": "assets/audio/f3b7bf77a52ee0da.mp3", "ar|أين اللون أبيض؟": "assets/audio/b30dc9646996b9d3.mp3", "ar|أين اللون أحمر؟": "assets/audio/e7c5fd4484901ce7.mp3", "ar|أين اللون أخضر؟": "assets/audio/937da77c3e955587.mp3", "ar|أين اللون أزرق؟": "assets/audio/70632a157c2d1456.mp3", "ar|أين اللون أسود؟": "assets/audio/d98cec6d65de666d.mp3", "ar|أين اللون أصفر؟": "assets/audio/d6bd2ed6b488b0cf.mp3", "ar|أين اللون برتقالي؟": "assets/audio/9807a98f06a2c6dc.mp3", "ar|أين اللون بنفسجي؟": "assets/audio/238526b606d45f2f.mp3", "ar|أين اللون بني؟": "assets/audio/01a14dcddbd9a982.mp3", "ar|أين اللون وردي؟": "assets/audio/ae6c2922471889fc.mp3", "ar|أين المثلث؟": "assets/audio/f993a322824b0ec4.mp3", "ar|أين المربع؟": "assets/audio/581e5d3d53fcf960.mp3", "ar|أين المستطيل؟": "assets/audio/2f92e63d9bb2d7c3.mp3", "ar|أين النجمة؟": "assets/audio/c12bd6bdc86b00ce.mp3", "ar|أين تحدث القصة؟": "assets/audio/ff881204d88b257a.mp3", "ar|أين حرف ألف؟": "assets/audio/a6b10f1903526674.mp3", "ar|أين حرف باء؟": "assets/audio/d2221c60095a3220.mp3", "ar|أين حرف تاء؟": "assets/audio/552f145e0abf31e7.mp3", "ar|أين حرف ثاء؟": "assets/audio/0ed8738f2dc5241c.mp3", "ar|أين حرف جيم؟": "assets/audio/f0693c8477fd5e28.mp3", "ar|أين حرف حاء؟": "assets/audio/4722b437bdd31bd7.mp3", "ar|أين حرف خاء؟": "assets/audio/3bc9493f1095d449.mp3", "ar|أين حرف دال؟": "assets/audio/90515da1108f0113.mp3", "ar|أين حرف ذال؟": "assets/audio/8f6ff5a55c00494b.mp3", "ar|أين حرف راء؟": "assets/audio/562dc5953f1b175e.mp3", "ar|أين حرف زاي؟": "assets/audio/2f98070450c3a35f.mp3", "ar|أين حرف سين؟": "assets/audio/2487e7c2e577d69a.mp3", "ar|أين حرف شين؟": "assets/audio/d875fb1ad79ef3f3.mp3", "ar|أين حرف صاد؟": "assets/audio/82d2ebe818190af6.mp3", "ar|أين حرف ضاد؟": "assets/audio/0689369e1706d0e0.mp3", "ar|أين حرف طاء؟": "assets/audio/5b28709e6a9e2d88.mp3", "ar|أين حرف ظاء؟": "assets/audio/1b096a2c3abbeb1d.mp3", "ar|أين حرف عين؟": "assets/audio/6bc4c78352dac2a1.mp3", "ar|أين حرف غين؟": "assets/audio/3fd462474736f126.mp3", "ar|أين حرف فاء؟": "assets/audio/f21eea3357ba5b77.mp3", "ar|أين حرف قاف؟": "assets/audio/fa4deb255cf683c6.mp3", "ar|أين حرف كاف؟": "assets/audio/c1b12dcb208905f5.mp3", "ar|أين حرف لام؟": "assets/audio/a728bdd49f4ce873.mp3", "ar|أين حرف ميم؟": "assets/audio/3fdd343414a159bd.mp3", "ar|أين حرف نون؟": "assets/audio/9ca0d6f6f8fbd35c.mp3", "ar|أين حرف هاء؟": "assets/audio/27b610a5cf9c53ad.mp3", "ar|أين حرف واو؟": "assets/audio/65cfffa857bf6cce.mp3", "ar|أين حرف ياء؟": "assets/audio/b23662560200c06f.mp3", "ar|أيّهم مختلف؟": "assets/audio/e436ed7013cce3b7.mp3", "ar|إجابة صحيحة!": "assets/audio/bbb2e01293543d6e.mp3", "ar|اثنان": "assets/audio/9750da6e3814c2c1.mp3", "ar|اثنان زائد أربعة، كم يساوي؟": "assets/audio/2c808eb21daf4c33.mp3", "ar|اثنان زائد اثنان، كم يساوي؟": "assets/audio/7fd3e6a3b7a0fbbe.mp3", "ar|اثنان زائد ثلاثة، كم يساوي؟": "assets/audio/01bc549333478aad.mp3", "ar|اثنان زائد واحد، كم يساوي؟": "assets/audio/0601518db979e30b.mp3", "ar|اضغطي زر التشغيل": "assets/audio/4976a3080a3fca1c.mp3", "ar|اقلبي بطاقتين وابحثي عن الأزواج": "assets/audio/d1b074d433013917.mp3", "ar|الآن نضغط زر التشغيل": "assets/audio/f116fac4dc98688e.mp3", "ar|البطاقة التي لها إطار نرتّبها حسب الشكل، والبطاقة بلا إطار حسب اللون": "assets/audio/e8c222209b3a5539.mp3", "ar|الدجاجة تبيض": "assets/audio/47f5787a9d860f2a.mp3", "ar|الشمس حارة": "assets/audio/b75e4cc7bf279ff0.mp3", "ar|الصباح": "assets/audio/ffa276a4978c0fe3.mp3", "ar|الظهر": "assets/audio/6a02a5078c63cc9e.mp3", "ar|الليل": "assets/audio/230ba202b39c4281.mp3", "ar|المساء": "assets/audio/792560b570e82fa3.mp3", "ar|النجمة رقم ١ أولًا": "assets/audio/4518c925882fb591.mp3", "ar|باء": "assets/audio/e8f3351900cb29ad.mp3", "ar|بذرة": "assets/audio/65dabeed0921850c.mp3", "ar|برافو!": "assets/audio/c24ab38388c02c3a.mp3", "ar|برتقالي": "assets/audio/17293a3c641993d2.mp3", "ar|بطة": "assets/audio/8ea2596d5d3686e6.mp3", "ar|بطة. بأي حرف تبدأ؟": "assets/audio/e4e0f13b8dd4ebfc.mp3", "ar|بقرة": "assets/audio/d109a122e4e13191.mp3", "ar|بنفسجي": "assets/audio/45d5428551560052.mp3", "ar|بني": "assets/audio/dc5cdfd633e37473.mp3", "ar|بيض وطحين": "assets/audio/6414200db61957a8.mp3", "ar|بيضة": "assets/audio/21989af2e4c7c48e.mp3", "ar|تأتي موجة": "assets/audio/316f9aa5b1b4d032.mp3", "ar|تأكل الفطور": "assets/audio/cf7ee7c861ed2cd4.mp3", "ar|تاء": "assets/audio/f38ad2f5b3e82456.mp3", "ar|تذهب إلى الروضة": "assets/audio/34aedfba09e51856.mp3", "ar|تسعة": "assets/audio/b03f60c0d5245e85.mp3", "ar|تسمع قصة": "assets/audio/e5abe7e0a2532aa1.mp3", "ar|تصبح زهرة": "assets/audio/37bd06e62a297726.mp3", "ar|تغيّرت القاعدة!": "assets/audio/5dcb71c5262dc230.mp3", "ar|تفاحة": "assets/audio/d43c38ccdaa913bc.mp3", "ar|تفاحة صغيرة": "assets/audio/212f4e4e0c8a8977.mp3", "ar|تفاحة ناضجة": "assets/audio/ea275df9fbdc4fb5.mp3", "ar|تفاحة. بأي حرف تبدأ؟": "assets/audio/f4e84e47c233cb68.mp3", "ar|تفتح الهدية": "assets/audio/90f06c28afaadc41.mp3", "ar|تفرّش أسنانها": "assets/audio/6e56079b36dcdcb0.mp3", "ar|تفقس": "assets/audio/9585d9e755bb4da7.mp3", "ar|تفقس البيضة": "assets/audio/040a9fbcb6cc4648.mp3", "ar|تنام": "assets/audio/686849fe2c071ade.mp3", "ar|تنبت": "assets/audio/2a8bfed310a179d9.mp3", "ar|ثاء": "assets/audio/17b3d04a49ed4838.mp3", "ar|ثعلب": "assets/audio/ea96c801636e3c79.mp3", "ar|ثعلب. بأي حرف تبدأ؟": "assets/audio/2ac32a40ff66b444.mp3", "ar|ثلاثة": "assets/audio/5a212cb534bd2ec0.mp3", "ar|ثلاثة زائد أربعة، كم يساوي؟": "assets/audio/96ad03e30f8bf224.mp3", "ar|ثلاثة زائد اثنان، كم يساوي؟": "assets/audio/fdf44fcf27df00df.mp3", "ar|ثلاثة زائد ثلاثة، كم يساوي؟": "assets/audio/ad91ef46a3ed3dec.mp3", "ar|ثلاثة زائد واحد، كم يساوي؟": "assets/audio/e0f5cc7e792d1f55.mp3", "ar|ثمانية": "assets/audio/92b51e1ddce47f5e.mp3", "ar|جرّبي في الأسفل": "assets/audio/2ab27ae62ada01c6.mp3", "ar|جرّبي في الأعلى": "assets/audio/6a31fb6e8c498529.mp3", "ar|جرّبي في الوسط": "assets/audio/fed6f4299e4f833c.mp3", "ar|جمل": "assets/audio/f83e3b7c25d1de38.mp3", "ar|جمل. بأي حرف تبدأ؟": "assets/audio/f7553b0c18aa81ef.mp3", "ar|جيم": "assets/audio/06f38f52d58ee563.mp3", "ar|حاء": "assets/audio/beda3d2d827a073c.mp3", "ar|حاول مرة ثانية": "assets/audio/b11c574db527e9ac.mp3", "ar|حاولي مرة ثانية": "assets/audio/e0eb9d564611d4c1.mp3", "ar|حصان": "assets/audio/4ae78667067157cd.mp3", "ar|حصان. بأي حرف تبدأ؟": "assets/audio/ccdf72556410aeb5.mp3", "ar|حيوانات": "assets/audio/a2ef6bcfcecf3dd7.mp3", "ar|خاء": "assets/audio/d79ad5109db4e2b1.mp3", "ar|خذي النجمة أولًا، ثم اذهبي إلى التفاحة": "assets/audio/5967210640939772.mp3", "ar|خذي كل النجوم، ثم اذهبي إلى التفاحة": "assets/audio/f0412437adb450f6.mp3", "ar|خروف": "assets/audio/5ae47240abe42a75.mp3", "ar|خروف. بأي حرف تبدأ؟": "assets/audio/7aa126ad1dc0c5a3.mp3", "ar|خمسة": "assets/audio/983f215904d74f74.mp3", "ar|خمسة زائد أربعة، كم يساوي؟": "assets/audio/98a9d2b84f5d65c5.mp3", "ar|خمسة زائد اثنان، كم يساوي؟": "assets/audio/07a68aef8f5e269e.mp3", "ar|خمسة زائد ثلاثة، كم يساوي؟": "assets/audio/fa6201fe796bdff4.mp3", "ar|خمسة زائد واحد، كم يساوي؟": "assets/audio/3774128ca05412f4.mp3", "ar|دائرة": "assets/audio/f2ce4decb3c1dec2.mp3", "ar|دال": "assets/audio/f19fc86cc617b660.mp3", "ar|دب": "assets/audio/839724dd5de15d3c.mp3", "ar|دب. بأي حرف تبدأ؟": "assets/audio/e5f38e17f712d8bb.mp3", "ar|دبدوب جميل": "assets/audio/f543fe8aaf03355b.mp3", "ar|دجاجة": "assets/audio/17e4ce83b6e4d30b.mp3", "ar|ذاب الآيس كريم": "assets/audio/6b80d3f3df421e2a.mp3", "ar|ذال": "assets/audio/a58cb302f1181d78.mp3", "ar|ذرة": "assets/audio/8d1e0cf59362d648.mp3", "ar|ذرة. بأي حرف تبدأ؟": "assets/audio/f5d06d69979f623f.mp3", "ar|ذهبت القلعة": "assets/audio/b7b93715a276f6bb.mp3", "ar|راء": "assets/audio/d736c27e444570fc.mp3", "ar|رائع!": "assets/audio/e4d2313f061cf8f4.mp3", "ar|رتّبي القصة: ماذا حدث أولًا؟": "assets/audio/4a30424b5dd337df.mp3", "ar|ركّبي الصورة": "assets/audio/9a148a50a2592cf3.mp3", "ar|ركّبي بيت من الأشكال": "assets/audio/ce68647156d17b06.mp3", "ar|ركّبي روبوت من الأشكال": "assets/audio/18dee72ac34b741b.mp3", "ar|ركّبي سمكة من الأشكال": "assets/audio/c357f822c44c6a88.mp3", "ar|ركّبي سيارة من الأشكال": "assets/audio/e9e1e02485e36bf8.mp3", "ar|ركّبي شجرة من الأشكال": "assets/audio/e5c358d1fa1971dc.mp3", "ar|ركّبي صاروخ من الأشكال": "assets/audio/28fab975285c004a.mp3", "ar|ركّبي طائر من الأشكال": "assets/audio/a1c6c50c75e3fd75.mp3", "ar|ركّبي قارب من الأشكال": "assets/audio/5eb6d89ad77ef556.mp3", "ar|ركّبي قلعة من الأشكال": "assets/audio/6612a6c40a8e2f1e.mp3", "ar|ريشة": "assets/audio/7351a8c853a9d5ee.mp3", "ar|ريشة. بأي حرف تبدأ؟": "assets/audio/318c70758fa6adbf.mp3", "ar|زاي": "assets/audio/88a17e5aa1581631.mp3", "ar|زر ×٢ يكرّر آخر سهم مرتين": "assets/audio/953e93b102fdef66.mp3", "ar|زرافة": "assets/audio/4a5ca91b98516dbc.mp3", "ar|زرافة. بأي حرف تبدأ؟": "assets/audio/c8a0bda8f0d9da10.mp3", "ar|زهرة على الشجرة": "assets/audio/b115ddb644f0384a.mp3", "ar|زهرة كبيرة": "assets/audio/54078e9b6c9a5c0e.mp3", "ar|سبعة": "assets/audio/7c67be66b8f1d4cc.mp3", "ar|ستة": "assets/audio/c56504fbb2968678.mp3", "ar|سلسلة رائعة!": "assets/audio/647ea73cdfaf6ec3.mp3", "ar|سمكة": "assets/audio/c77749e6457cf5bd.mp3", "ar|سمكة. بأي حرف تبدأ؟": "assets/audio/5fe4d6c7f17ff8e8.mp3", "ar|سين": "assets/audio/0bde71c9a1bbbe20.mp3", "ar|شاطرة!": "assets/audio/269951cfb4df2679.mp3", "ar|شمس": "assets/audio/9c10e8b35ba30c23.mp3", "ar|شمس. بأي حرف تبدأ؟": "assets/audio/3c4b32202a481355.mp3", "ar|شين": "assets/audio/7634bd01f96c17b8.mp3", "ar|صاد": "assets/audio/b85f00053c63e320.mp3", "ar|صقر": "assets/audio/65f2e7820b3eeef4.mp3", "ar|صقر. بأي حرف تبدأ؟": "assets/audio/556d56532690490c.mp3", "ar|ضاد": "assets/audio/8423dc91217660c1.mp3", "ar|ضعي الأرنب أمام الصندوق": "assets/audio/f31f72bc41f1304f.mp3", "ar|ضعي الأرنب بجانب السلة": "assets/audio/b6d93ebcacd92a06.mp3", "ar|ضعي الأرنب بجانب الصندوق": "assets/audio/4ee1f6d12269810b.mp3", "ar|ضعي الأرنب بجانب الصندوقين": "assets/audio/7b707cdebad02fe4.mp3", "ar|ضعي الأرنب بجانب الطاولة": "assets/audio/7598160bd7b7b049.mp3", "ar|ضعي الأرنب بين الصندوقين": "assets/audio/1e44b1ff54fe83d2.mp3", "ar|ضعي الأرنب تحت الطاولة": "assets/audio/ce21fb5478e96223.mp3", "ar|ضعي الأرنب خلف الصندوق": "assets/audio/6f50812513a47995.mp3", "ar|ضعي الأرنب على السلة": "assets/audio/a80eea986190c460.mp3", "ar|ضعي الأرنب على الصندوق": "assets/audio/a68ca77073f3d8d6.mp3", "ar|ضعي الأرنب على الصندوقين": "assets/audio/b1c216a189b56e5f.mp3", "ar|ضعي الأرنب على الطاولة": "assets/audio/9a5e051a835ce552.mp3", "ar|ضعي الأرنب في السلة": "assets/audio/1fb9530748f9bb09.mp3", "ar|ضعي القطة أمام الصندوق": "assets/audio/419a00c7001b17b4.mp3", "ar|ضعي القطة بجانب السلة": "assets/audio/8371ab52e7b75d2a.mp3", "ar|ضعي القطة بجانب الصندوق": "assets/audio/6d4b760a16e37525.mp3", "ar|ضعي القطة بجانب الصندوقين": "assets/audio/95d51ae19f24fbcc.mp3", "ar|ضعي القطة بجانب الطاولة": "assets/audio/cefaf357b32b47a0.mp3", "ar|ضعي القطة بين الصندوقين": "assets/audio/c99766c9001f2ea1.mp3", "ar|ضعي القطة تحت الطاولة": "assets/audio/2c337f645f381c9b.mp3", "ar|ضعي القطة خلف الصندوق": "assets/audio/6742d01dbb8c93c6.mp3", "ar|ضعي القطة على السلة": "assets/audio/0ed10981093f131b.mp3", "ar|ضعي القطة على الصندوق": "assets/audio/2dde4272a79533f0.mp3", "ar|ضعي القطة على الصندوقين": "assets/audio/01813d2f64a7cc90.mp3", "ar|ضعي القطة على الطاولة": "assets/audio/340c0f0bc7ec0d1f.mp3", "ar|ضعي القطة في السلة": "assets/audio/48cefb762509e092.mp3", "ar|ضعي الكرة أمام الصندوق": "assets/audio/5b279e7be9bfecf3.mp3", "ar|ضعي الكرة بجانب السلة": "assets/audio/c78e29e030e7b3d7.mp3", "ar|ضعي الكرة بجانب الصندوق": "assets/audio/66a5e4f20e30a433.mp3", "ar|ضعي الكرة بجانب الصندوقين": "assets/audio/f957fc582857e999.mp3", "ar|ضعي الكرة بجانب الطاولة": "assets/audio/40ff0c7c1af973d4.mp3", "ar|ضعي الكرة بين الصندوقين": "assets/audio/2d2d7a8625f02234.mp3", "ar|ضعي الكرة تحت الطاولة": "assets/audio/69e5ce66d3d14469.mp3", "ar|ضعي الكرة خلف الصندوق": "assets/audio/65fa1687dc1d72d3.mp3", "ar|ضعي الكرة على السلة": "assets/audio/cc59150e3842a535.mp3", "ar|ضعي الكرة على الصندوق": "assets/audio/c6bbc0b057f7467d.mp3", "ar|ضعي الكرة على الصندوقين": "assets/audio/dc3bf0d9735b92c7.mp3", "ar|ضعي الكرة على الطاولة": "assets/audio/99350dd14b522284.mp3", "ar|ضعي الكرة في السلة": "assets/audio/35728f70f6bb500f.mp3", "ar|ضعي الكلب أمام الصندوق": "assets/audio/9cfe0fae5d4eb4ed.mp3", "ar|ضعي الكلب بجانب السلة": "assets/audio/e159637283733fcc.mp3", "ar|ضعي الكلب بجانب الصندوق": "assets/audio/0a53f86436c52d02.mp3", "ar|ضعي الكلب بجانب الصندوقين": "assets/audio/26e440d3285b8f64.mp3", "ar|ضعي الكلب بجانب الطاولة": "assets/audio/2a200fdb6df0f2e3.mp3", "ar|ضعي الكلب بين الصندوقين": "assets/audio/b712e9df5b0550de.mp3", "ar|ضعي الكلب تحت الطاولة": "assets/audio/1d8e57191a2f93f0.mp3", "ar|ضعي الكلب خلف الصندوق": "assets/audio/d67f2e30cfe08e3c.mp3", "ar|ضعي الكلب على السلة": "assets/audio/07cb50a08faa005d.mp3", "ar|ضعي الكلب على الصندوق": "assets/audio/851f0ff95e8466a9.mp3", "ar|ضعي الكلب على الصندوقين": "assets/audio/c55bbae0f706122a.mp3", "ar|ضعي الكلب على الطاولة": "assets/audio/e465fded3bfdb91c.mp3", "ar|ضعي الكلب في السلة": "assets/audio/b33afef9c4d24166.mp3", "ar|ضعي كل شيء في سلّته": "assets/audio/2726c307c90674fd.mp3", "ar|ضفدع": "assets/audio/bf0956a4eedd9909.mp3", "ar|ضفدع. بأي حرف تبدأ؟": "assets/audio/c01ba3a072d3bd8d.mp3", "ar|طاء": "assets/audio/cd7cc849fbad1d85.mp3", "ar|طائرة": "assets/audio/dda9e964606bc55d.mp3", "ar|طائرة. بأي حرف تبدأ؟": "assets/audio/ff8e0ba3fbd7def6.mp3", "ar|ظاء": "assets/audio/eb50fe2aec70bf28.mp3", "ar|ظرف": "assets/audio/7c702af6b13a98db.mp3", "ar|ظرف. بأي حرف تبدأ؟": "assets/audio/935f9edcb7fdeb8f.mp3", "ar|عشرة": "assets/audio/89215053c2b28307.mp3", "ar|على الأرض": "assets/audio/d0f329887383a40d.mp3", "ar|عمل رائع اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة": "assets/audio/40f72f96a611ead3.mp3", "ar|عمل رائع!": "assets/audio/3ad95f5b20f55d09.mp3", "ar|عنب": "assets/audio/0fd5bf98756a20da.mp3", "ar|عنب. بأي حرف تبدأ؟": "assets/audio/185066f017c73fda.mp3", "ar|عندك 10 أسهم فقط. اختاري أقصر طريق": "assets/audio/28805ad495d465f9.mp3", "ar|عندك 10 أسهم فقط. لنجد أقصر طريق": "assets/audio/5a3a68813604d0eb.mp3", "ar|عندك 11 سهمًا فقط. اختاري أقصر طريق": "assets/audio/09584d3c8ce2ea53.mp3", "ar|عندك 11 سهمًا فقط. لنجد أقصر طريق": "assets/audio/4be457edeb535daa.mp3", "ar|عندك 12 سهمًا فقط. اختاري أقصر طريق": "assets/audio/55f9e326186f7832.mp3", "ar|عندك 12 سهمًا فقط. لنجد أقصر طريق": "assets/audio/b0e8ab045056e2be.mp3", "ar|عندك 13 سهمًا فقط. اختاري أقصر طريق": "assets/audio/48e0c09bc191a538.mp3", "ar|عندك 13 سهمًا فقط. لنجد أقصر طريق": "assets/audio/e20768540ca76f77.mp3", "ar|عندك 14 سهمًا فقط. اختاري أقصر طريق": "assets/audio/3cfa99f218379fe3.mp3", "ar|عندك 14 سهمًا فقط. لنجد أقصر طريق": "assets/audio/0eddf9c6238fffa6.mp3", "ar|عندك 9 أسهم فقط. اختاري أقصر طريق": "assets/audio/657905736dda4427.mp3", "ar|عندك 9 أسهم فقط. لنجد أقصر طريق": "assets/audio/0b6ba61fea76d746.mp3", "ar|عين": "assets/audio/255340755850469e.mp3", "ar|غيمة": "assets/audio/79c9d49fa1361ce7.mp3", "ar|غيمة. بأي حرف تبدأ؟": "assets/audio/051543d1f781bbe0.mp3", "ar|غين": "assets/audio/2a596f3d89785c93.mp3", "ar|غيوم في السماء": "assets/audio/07e47455f9e5b955.mp3", "ar|فأضاء المصباح المكان!": "assets/audio/653e035587a5f5af.mp3", "ar|فاء": "assets/audio/b76c25f7c3abd563.mp3", "ar|فجاء طبق من الفاكهة!": "assets/audio/f86008ab7039e386.mp3", "ar|فجاءت المظلة الكبيرة!": "assets/audio/a9b559538390b945.mp3", "ar|فراشة": "assets/audio/3bca9bc56c3d4857.mp3", "ar|فساعد الأصدقاء في البحث، ووجدوا الكرة!": "assets/audio/f2dd5274926b08c4.mp3", "ar|فواكه": "assets/audio/3114e33f2fa61b63.mp3", "ar|في البحر": "assets/audio/5a6f0b6cc70617c4.mp3", "ar|في السماء": "assets/audio/230247a57ec12bf0.mp3", "ar|فيل": "assets/audio/d152a723b1f99664.mp3", "ar|فيل. بأي حرف تبدأ؟": "assets/audio/5db8438a6a5f1e8a.mp3", "ar|قاف": "assets/audio/1f4a8902dc4d18ce.mp3", "ar|قرد": "assets/audio/01d2a64f708f1805.mp3", "ar|قطة": "assets/audio/8f41633f5c30c987.mp3", "ar|قطة. بأي حرف تبدأ؟": "assets/audio/9d3aaa7ebf4c1220.mp3", "ar|قلب": "assets/audio/cdb4ffab9feb42af.mp3", "ar|كاف": "assets/audio/5b13cc4807551dcc.mp3", "ar|كتكوت": "assets/audio/afc7f09a0bf299f3.mp3", "ar|كتكوت صغير": "assets/audio/b2d5b65b38d30468.mp3", "ar|كرة": "assets/audio/2c129f43491953c2.mp3", "ar|كرة. بأي حرف تبدأ؟": "assets/audio/aa6039f618e08b80.mp3", "ar|كعكة لذيذة": "assets/audio/b0fd817e3f9c7da6.mp3", "ar|كلب": "assets/audio/ec036b913ba2b836.mp3", "ar|كم عددها؟": "assets/audio/1153445f1861e48c.mp3", "ar|كيف نحلّ المشكلة؟": "assets/audio/db1e24529c93421d.mp3", "ar|لأن البقية حيوانات": "assets/audio/e4e1cb614856ebf6.mp3", "ar|لأن البقية فواكه": "assets/audio/b28980e1d12d5fd3.mp3", "ar|لأن البقية كرات": "assets/audio/ad06639d01ae312a.mp3", "ar|لأن البقية مركبات": "assets/audio/8d48880cf058d674.mp3", "ar|لأن البقية ملابس": "assets/audio/a88f0e7fccc228ce.mp3", "ar|لام": "assets/audio/d0b0a922d35850c3.mp3", "ar|لم يصل بعد. أضيفي أسهمًا": "assets/audio/c2701d4325bce819.mp3", "ar|لم يصل بعد. لنضف أسهمًا": "assets/audio/89786992b653212f.mp3", "ar|لنأخذ النجمة أولًا، ثم نذهب إلى التفاحة": "assets/audio/a969c381be90732f.mp3", "ar|لنأخذ النجمة رقم ١ ثم النجمة رقم ٢، ثم نذهب إلى التفاحة": "assets/audio/2c4670c8f7e094a5.mp3", "ar|لنبنِ ما نحب من الأشكال": "assets/audio/43ce667914866d9d.mp3", "ar|لنتدرّب أكثر هنا": "assets/audio/0cf092cd79e712cd.mp3", "ar|لنجرّب في الأسفل": "assets/audio/eaaa75d810620004.mp3", "ar|لنجرّب في الأعلى": "assets/audio/5ef27728c878aeea.mp3", "ar|لنجرّب في الوسط": "assets/audio/aa15c6657e59ddb2.mp3", "ar|لنحاول مرة ثانية": "assets/audio/9572af9f77cfb088.mp3", "ar|لنخطّط طريق الروبوت إلى التفاحة": "assets/audio/f91e6cfd47d1dfbb.mp3", "ar|لنرتّب القصة: ماذا حدث أولًا؟": "assets/audio/a117d8000065e714.mp3", "ar|لنرتّب حسب الحجم": "assets/audio/cc9dc50c2a453ba5.mp3", "ar|لنرتّب حسب الشكل": "assets/audio/777df7df3bea68f5.mp3", "ar|لنرتّب حسب اللون": "assets/audio/8189210b0e00b7e2.mp3", "ar|لنركّب بيت من الأشكال": "assets/audio/67571f4302461eb3.mp3", "ar|لنركّب روبوت من الأشكال": "assets/audio/70e6aafe03a8f460.mp3", "ar|لنركّب سمكة من الأشكال": "assets/audio/2fb9dd28c7764cea.mp3", "ar|لنركّب سيارة من الأشكال": "assets/audio/c40a4af3b2c2fa33.mp3", "ar|لنركّب شجرة من الأشكال": "assets/audio/96499117dbd79612.mp3", "ar|لنركّب صاروخ من الأشكال": "assets/audio/cc29df7c914e3574.mp3", "ar|لنركّب طائر من الأشكال": "assets/audio/511e76b1a3c38979.mp3", "ar|لنركّب قارب من الأشكال": "assets/audio/c907544b041f5f54.mp3", "ar|لنركّب قلعة من الأشكال": "assets/audio/9e3f0dc6d5126e9e.mp3", "ar|لنضع الأرنب أمام الصندوق": "assets/audio/4cd58acc90cccd16.mp3", "ar|لنضع الأرنب بجانب السلة": "assets/audio/41866fff81041fec.mp3", "ar|لنضع الأرنب بجانب الصندوق": "assets/audio/01f1b7f3be3e27cc.mp3", "ar|لنضع الأرنب بجانب الصندوقين": "assets/audio/e14a52582e377036.mp3", "ar|لنضع الأرنب بجانب الطاولة": "assets/audio/a0539ef914dc19b9.mp3", "ar|لنضع الأرنب بين الصندوقين": "assets/audio/74d180ffb1b5143a.mp3", "ar|لنضع الأرنب تحت الطاولة": "assets/audio/adfb0b515347be83.mp3", "ar|لنضع الأرنب خلف الصندوق": "assets/audio/8ba013307f4735ad.mp3", "ar|لنضع الأرنب على السلة": "assets/audio/0e573d99b68ecc99.mp3", "ar|لنضع الأرنب على الصندوق": "assets/audio/9517dfd044bf0ac6.mp3", "ar|لنضع الأرنب على الصندوقين": "assets/audio/23739b31df2d4963.mp3", "ar|لنضع الأرنب على الطاولة": "assets/audio/eba79de3ce4ec536.mp3", "ar|لنضع الأرنب في السلة": "assets/audio/9e2f489bb2e9846c.mp3", "ar|لنضع القطة أمام الصندوق": "assets/audio/32c9172956ae5610.mp3", "ar|لنضع القطة بجانب السلة": "assets/audio/de6ad3c2eaef1614.mp3", "ar|لنضع القطة بجانب الصندوق": "assets/audio/57a8d5675cffaa71.mp3", "ar|لنضع القطة بجانب الصندوقين": "assets/audio/c34bc46840c32335.mp3", "ar|لنضع القطة بجانب الطاولة": "assets/audio/86a5b16d2dc40639.mp3", "ar|لنضع القطة بين الصندوقين": "assets/audio/5ce4e34d0e6f3684.mp3", "ar|لنضع القطة تحت الطاولة": "assets/audio/985e52f697ccedea.mp3", "ar|لنضع القطة خلف الصندوق": "assets/audio/7cb3634dc1f7c33c.mp3", "ar|لنضع القطة على السلة": "assets/audio/3e1a42304c257ed2.mp3", "ar|لنضع القطة على الصندوق": "assets/audio/36894682ac2da033.mp3", "ar|لنضع القطة على الصندوقين": "assets/audio/25d05308c80f61d2.mp3", "ar|لنضع القطة على الطاولة": "assets/audio/39f9df763b5989db.mp3", "ar|لنضع القطة في السلة": "assets/audio/e70db87bf7c01741.mp3", "ar|لنضع الكرة أمام الصندوق": "assets/audio/6804bb5164f4361d.mp3", "ar|لنضع الكرة بجانب السلة": "assets/audio/935e0bd9870b9590.mp3", "ar|لنضع الكرة بجانب الصندوق": "assets/audio/b1f4ecb5612343a0.mp3", "ar|لنضع الكرة بجانب الصندوقين": "assets/audio/4709c98fcb45b3c8.mp3", "ar|لنضع الكرة بجانب الطاولة": "assets/audio/6e84656793ed5fe6.mp3", "ar|لنضع الكرة بين الصندوقين": "assets/audio/71b22a19deda587b.mp3", "ar|لنضع الكرة تحت الطاولة": "assets/audio/57f19136f1e3c286.mp3", "ar|لنضع الكرة خلف الصندوق": "assets/audio/17e40af38a9a8229.mp3", "ar|لنضع الكرة على السلة": "assets/audio/72716f15c5d2a91b.mp3", "ar|لنضع الكرة على الصندوق": "assets/audio/2dfd1c63eeb14dac.mp3", "ar|لنضع الكرة على الصندوقين": "assets/audio/e7eeb7cbbb6c41f3.mp3", "ar|لنضع الكرة على الطاولة": "assets/audio/1970ed32676052b0.mp3", "ar|لنضع الكرة في السلة": "assets/audio/5afe2b4514ce0ce2.mp3", "ar|لنضع الكلب أمام الصندوق": "assets/audio/edbfa5f01d432569.mp3", "ar|لنضع الكلب بجانب السلة": "assets/audio/b973c9e299e2cbd6.mp3", "ar|لنضع الكلب بجانب الصندوق": "assets/audio/e05678d37645e209.mp3", "ar|لنضع الكلب بجانب الصندوقين": "assets/audio/0963390cf7fb3f25.mp3", "ar|لنضع الكلب بجانب الطاولة": "assets/audio/b0aeb6d964b4e172.mp3", "ar|لنضع الكلب بين الصندوقين": "assets/audio/ea0741b2cba9f4eb.mp3", "ar|لنضع الكلب تحت الطاولة": "assets/audio/7c330a0fa13d0ce2.mp3", "ar|لنضع الكلب خلف الصندوق": "assets/audio/b0f799a326ef7cc2.mp3", "ar|لنضع الكلب على السلة": "assets/audio/d89f08b15f948c47.mp3", "ar|لنضع الكلب على الصندوق": "assets/audio/6865a31cf7fc0576.mp3", "ar|لنضع الكلب على الصندوقين": "assets/audio/e6b7c86eb809f056.mp3", "ar|لنضع الكلب على الطاولة": "assets/audio/0c1fad964bac4d05.mp3", "ar|لنضع الكلب في السلة": "assets/audio/1e0f54763677591d.mp3", "ar|لنضع كل شيء في سلّته": "assets/audio/3593bece3ba27eff.mp3", "ar|لنقلب بطاقتين ونبحث عن الأزواج": "assets/audio/da594a91c711316c.mp3", "ar|ليمون": "assets/audio/affbc010f230c669.mp3", "ar|ليمون. بأي حرف تبدأ؟": "assets/audio/08c7742325006b8d.mp3", "ar|ما أجمل هذا البناء!": "assets/audio/074c6d55030700ee.mp3", "ar|ما لون الباذنجانة؟": "assets/audio/f6d4796f453c2e8e.mp3", "ar|ما لون البرتقالة؟": "assets/audio/f536124bbb164977.mp3", "ar|ما لون التوت الأزرق؟": "assets/audio/89c30ba354560e00.mp3", "ar|ما لون الحليب؟": "assets/audio/0d52494ae4c4efa5.mp3", "ar|ما لون الخنزير الصغير؟": "assets/audio/9608cc171de8bfb3.mp3", "ar|ما لون الخيارة؟": "assets/audio/dfb82e01d3d685d2.mp3", "ar|ما لون الدب؟": "assets/audio/073899a3c7d7bae8.mp3", "ar|ما لون الشجرة؟": "assets/audio/705594641db1e3dd.mp3", "ar|ما لون الشوكولاتة؟": "assets/audio/6da1ac05dc9368d9.mp3", "ar|ما لون الضفدع؟": "assets/audio/3782dea183eabd7f.mp3", "ar|ما لون العنب؟": "assets/audio/8886a3e561744ac6.mp3", "ar|ما لون الغيمة؟": "assets/audio/e5c7376c432ab5a8.mp3", "ar|ما لون الفراولة؟": "assets/audio/bb5ed5071e3ca4a4.mp3", "ar|ما لون القطة السوداء؟": "assets/audio/4c3c7f83167c552d.mp3", "ar|ما لون الكرة؟": "assets/audio/8b2085550a04d460.mp3", "ar|ما لون الليمونة؟": "assets/audio/908fad01802c8adb.mp3", "ar|ما لون الموزة؟": "assets/audio/a24412984e8f9e66.mp3", "ar|ما لون الوردة؟": "assets/audio/bb3976f3c018d79e.mp3", "ar|ماذا حدث فجأة؟": "assets/audio/3413f5a87ad57542.mp3", "ar|ماذا يأتي بعد ذلك؟": "assets/audio/493f1777f72c916c.mp3", "ar|ماذا يحدث بعد ذلك؟": "assets/audio/e81b8ef80bba6f5a.mp3", "ar|مثلث": "assets/audio/c5c34ca87f7f1850.mp3", "ar|مثلثان يصنعان مستطيلًا!": "assets/audio/d5da45dbb0263c21.mp3", "ar|مربع": "assets/audio/111745e04754e0f4.mp3", "ar|مركبات": "assets/audio/83a7137e0f628f25.mp3", "ar|مستطيل": "assets/audio/ab05b9464a8b7677.mp3", "ar|مستوى جديد!": "assets/audio/eff8aaa50edd5e5e.mp3", "ar|ممتاز!": "assets/audio/a959822c2ad1da01.mp3", "ar|من بطل قصتنا؟": "assets/audio/d27ce5f3e93d8088.mp3", "ar|من له أذنان طويلتان ويحب الجزر؟": "assets/audio/586aa918dd166ac8.mp3", "ar|من له رقبة طويلة جدًا؟": "assets/audio/c382776b0b574e6a.mp3", "ar|من هو ملك الغابة؟": "assets/audio/3e9be99951eff261.mp3", "ar|من يحب أكل الموز؟": "assets/audio/3bdb404dbdb37166.mp3", "ar|من يستطيع أن يطير؟": "assets/audio/121594af75c71c83.mp3", "ar|من يصنع العسل؟": "assets/audio/94b80690ddccd585.mp3", "ar|من يعطينا البيض؟": "assets/audio/534fb8ac592c573e.mp3", "ar|من يعطينا الحليب؟": "assets/audio/f91b12b97fcbf390.mp3", "ar|من يعيش في الصحراء ويحمل الماء في سنامه؟": "assets/audio/24e4b0eabb5d421a.mp3", "ar|من يعيش في الماء؟": "assets/audio/526689d96a3a9516.mp3", "ar|من يقول: كاك كاك؟": "assets/audio/01500758991fd35d.mp3", "ar|من يقول: مياو؟": "assets/audio/f7cf2aa29b2ca394.mp3", "ar|من يقول: هاو هاو؟": "assets/audio/5d6551075dc3e746.mp3", "ar|موز": "assets/audio/bc8abdf9b471ab47.mp3", "ar|موز. بأي حرف تبدأ؟": "assets/audio/5bace9f8f4cd2c65.mp3", "ar|ميم": "assets/audio/16075ded14ae8e46.mp3", "ar|نأكلها": "assets/audio/f7d62bfdddfab9fc.mp3", "ar|نائمة": "assets/audio/f65f2e597d5d7bfa.mp3", "ar|نبني قلعة": "assets/audio/45e652bcbda23cfc.mp3", "ar|نجمة": "assets/audio/2d9c5a9ae7ca5852.mp3", "ar|نحلة": "assets/audio/4e978805701a3efb.mp3", "ar|نحلة. بأي حرف تبدأ؟": "assets/audio/4ab75f7f5405bb24.mp3", "ar|نخبزها": "assets/audio/cea60256b75f2bb4.mp3", "ar|نخلطها": "assets/audio/7fbeb6a1e7635eec.mp3", "ar|نذهب إلى الروضة": "assets/audio/e0855bb9275462d5.mp3", "ar|نذهب إلى الشاطئ": "assets/audio/8a6f3340cc438ada.mp3", "ar|نزرعها في التراب": "assets/audio/b480beb979c7a313.mp3", "ar|نسقيها": "assets/audio/126e151b0b454a28.mp3", "ar|نسقيها بالماء": "assets/audio/232528f9574674b6.mp3", "ar|نصحو": "assets/audio/f1cb8055bf299aea.mp3", "ar|نفطر": "assets/audio/a0346f7b0f7574c0.mp3", "ar|نلعب": "assets/audio/7ac65e42ec8e1bca.mp3", "ar|نملأ الدلو رملًا": "assets/audio/15f4036da243e193.mp3", "ar|ننام": "assets/audio/fc44033c896c6481.mp3", "ar|نون": "assets/audio/ed6b413f4ff99031.mp3", "ar|هاء": "assets/audio/825accbaae96f2fe.mp3", "ar|هدية": "assets/audio/a6a414ff2ce683ae.mp3", "ar|هدية. بأي حرف تبدأ؟": "assets/audio/c64d9857b1a12f70.mp3", "ar|هذه القطعة ليست من هذه الصورة": "assets/audio/f338eb01b38b599e.mp3", "ar|هذه قصة الأرنب على الشاطئ": "assets/audio/8a7904f7296ede56.mp3", "ar|هذه قصة الأرنب في البيت": "assets/audio/185c9f3a545bf0f6.mp3", "ar|هذه قصة الأرنب في الحديقة": "assets/audio/6fa63bba5ab12336.mp3", "ar|هذه قصة الروبوت على الشاطئ": "assets/audio/86b41f63884b9d5f.mp3", "ar|هذه قصة الروبوت في البيت": "assets/audio/2a2ce782a8082912.mp3", "ar|هذه قصة الروبوت في الحديقة": "assets/audio/a691b10119d9bb24.mp3", "ar|هذه قصة الفيل على الشاطئ": "assets/audio/c62677d13f0b2cba.mp3", "ar|هذه قصة الفيل في البيت": "assets/audio/b809b740661be881.mp3", "ar|هذه قصة الفيل في الحديقة": "assets/audio/e07b40017eaa0914.mp3", "ar|هذه قصة القطة على الشاطئ": "assets/audio/7fc0e05767edc3ea.mp3", "ar|هذه قصة القطة في البيت": "assets/audio/aad0016f7e606b2f.mp3", "ar|هذه قصة القطة في الحديقة": "assets/audio/fd730d7f1e8f4cbb.mp3", "ar|هل هذا يحلّ المشكلة؟ لنجرّب شيئًا آخر": "assets/audio/ffcc1e7362ee9499.mp3", "ar|هيا نركّب الصورة": "assets/audio/aaa433096ddbdae8.mp3", "ar|واحد": "assets/audio/85f2587df9883d5f.mp3", "ar|واحد زائد أربعة، كم يساوي؟": "assets/audio/023e623e153c1632.mp3", "ar|واحد زائد اثنان، كم يساوي؟": "assets/audio/0c3a6529b6e5f33a.mp3", "ar|واحد زائد ثلاثة، كم يساوي؟": "assets/audio/13af3e2f75c5c96a.mp3", "ar|واحد زائد واحد، كم يساوي؟": "assets/audio/e23e52320ae28d57.mp3", "ar|وانتهت القصة بابتسامة كبيرة": "assets/audio/c22735178cdd81f0.mp3", "ar|واو": "assets/audio/bb32c0dc5fe317ac.mp3", "ar|وبعد اللعب جاء الجوع!": "assets/audio/f74fbc3209b3c23a.mp3", "ar|وجّهي الروبوت إلى التفاحة": "assets/audio/7f6b03d989be8bd0.mp3", "ar|وردة": "assets/audio/59dd38c9d8f0284c.mp3", "ar|وردة. بأي حرف تبدأ؟": "assets/audio/6f8738d0e791e5b4.mp3", "ar|وردي": "assets/audio/b5ef92f5c939002b.mp3", "ar|وصلتِ! لكن نسيتِ نجمة": "assets/audio/367d431c16e509bf.mp3", "ar|وصلنا! لكن بقيت نجمة": "assets/audio/ce7a0d3f4968a437.mp3", "ar|وفجأة صار المكان مظلمًا!": "assets/audio/b83b191fea1adb9e.mp3", "ar|وفجأة ضاعت الكرة!": "assets/audio/33ee18d4911be5da.mp3", "ar|وفجأة نزل مطر غزير!": "assets/audio/4559fd82521ace7f.mp3", "ar|ياء": "assets/audio/a1856052ae2798a6.mp3", "ar|يد": "assets/audio/79d99c324209e002.mp3", "ar|يد. بأي حرف تبدأ؟": "assets/audio/7f95ffbdfb2606e7.mp3", "ar|يظهر قوس قزح": "assets/audio/8454270113235b39.mp3", "ar|يكبر ويصبح دجاجة": "assets/audio/db5aa48e2ec95f32.mp3", "ar|ينزل المطر": "assets/audio/3e69c9159820ed99.mp3", "en|1 plus 1. How many?": "assets/audio/b48449e90a498899.mp3", "en|1 plus 2. How many?": "assets/audio/8d368fd0f5ce54e1.mp3", "en|1 plus 3. How many?": "assets/audio/804e20d51d52a423.mp3", "en|1 plus 4. How many?": "assets/audio/506ca1000242820b.mp3", "en|2 plus 1. How many?": "assets/audio/0d8daff5f23083dc.mp3", "en|2 plus 2. How many?": "assets/audio/c8b5549b62c13af1.mp3", "en|2 plus 3. How many?": "assets/audio/be9fdd8040572de8.mp3", "en|2 plus 4. How many?": "assets/audio/706cb8c4a1493e0e.mp3", "en|3 plus 1. How many?": "assets/audio/b9447dcca1845b5d.mp3", "en|3 plus 2. How many?": "assets/audio/9dba4c9a89e28c4e.mp3", "en|3 plus 3. How many?": "assets/audio/78c33dea3e70555a.mp3", "en|3 plus 4. How many?": "assets/audio/75ae27b68b9b8f07.mp3", "en|4 plus 1. How many?": "assets/audio/d90e3ae606036611.mp3", "en|4 plus 2. How many?": "assets/audio/971d423db500baa2.mp3", "en|4 plus 3. How many?": "assets/audio/2d7c10c9c725e641.mp3", "en|4 plus 4. How many?": "assets/audio/e40fe6bb9a07d71c.mp3", "en|5 plus 1. How many?": "assets/audio/1f4ca7b0e579cea0.mp3", "en|5 plus 2. How many?": "assets/audio/aee51322fd269590.mp3", "en|5 plus 3. How many?": "assets/audio/d566fbe38a242df9.mp3", "en|5 plus 4. How many?": "assets/audio/3638d279f1e68fe4.mp3", "en|A": "assets/audio/4a6658a4109e470f.mp3", "en|A is for Apple": "assets/audio/4120f7d45845d593.mp3", "en|After playing, everyone got hungry!": "assets/audio/e384d348d832c518.mp3", "en|Amazing!": "assets/audio/3d32ec940218d3da.mp3", "en|And the story ended with a big smile": "assets/audio/237302d14377011c.mp3", "en|Apple": "assets/audio/4725d0597571657f.mp3", "en|Apple. Which letter does it start with?": "assets/audio/3b903389db3890b0.mp3", "en|B": "assets/audio/9f2edafd30d85dc0.mp3", "en|B is for Ball": "assets/audio/d77f11d6c2208e23.mp3", "en|Ball": "assets/audio/bf64c487ec5f4e45.mp3", "en|Ball. Which letter does it start with?": "assets/audio/08259fc53e992516.mp3", "en|Box": "assets/audio/285534a17b324a05.mp3", "en|Build a bird with the shapes": "assets/audio/974ccc05a1487fd0.mp3", "en|Build a boat with the shapes": "assets/audio/66554613035326d5.mp3", "en|Build a car with the shapes": "assets/audio/15c69a0db0f6789c.mp3", "en|Build a castle with the shapes": "assets/audio/7c883d8d82fb1af0.mp3", "en|Build a fish with the shapes": "assets/audio/bc6acd048d3d98f2.mp3", "en|Build a house with the shapes": "assets/audio/07ab61a134752b00.mp3", "en|Build a robot with the shapes": "assets/audio/4f1ee0f98c0dbba6.mp3", "en|Build a rocket with the shapes": "assets/audio/6140faf452ee0d9a.mp3", "en|Build a tree with the shapes": "assets/audio/83e978d44d3a7a71.mp3", "en|Build anything you like with shapes": "assets/audio/dd8470ec5a19fbdb.mp3", "en|C": "assets/audio/d9c1315858642f5c.mp3", "en|C is for Cat": "assets/audio/37a5d6c1ca0d52d0.mp3", "en|Cards with a frame go by shape. Cards without a frame go by colour": "assets/audio/7e0df9fc99938999.mp3", "en|Cat": "assets/audio/dcc81603508bad1c.mp3", "en|Cat. Which letter does it start with?": "assets/audio/4bb0fe256c5f4f14.mp3", "en|D": "assets/audio/4776e6a06c8963f0.mp3", "en|D is for Dog": "assets/audio/6da1f3682977ce1b.mp3", "en|Does that fix it? Let’s try something else": "assets/audio/52a61a4fc057efeb.mp3", "en|Dog": "assets/audio/f1764431c2d53d03.mp3", "en|Dog. Which letter does it start with?": "assets/audio/f6e7c65543c0a0eb.mp3", "en|E": "assets/audio/e15ca1669dd1c193.mp3", "en|E is for Elephant": "assets/audio/5b8a20e023182082.mp3", "en|Elephant": "assets/audio/737370a454298d69.mp3", "en|Elephant. Which letter does it start with?": "assets/audio/aaa8990a4a3d8c4b.mp3", "en|F": "assets/audio/d92d9600802c02f4.mp3", "en|F is for Fish": "assets/audio/fe97e834191da976.mp3", "en|Fish": "assets/audio/7fe1aee911ad222f.mp3", "en|Fish. Which letter does it start with?": "assets/audio/84e4ec219e7664ae.mp3", "en|Flip two cards and find the pairs": "assets/audio/663e52c2930eba60.mp3", "en|Friends helped look, and found the ball!": "assets/audio/b32a41f4569a17b8.mp3", "en|G": "assets/audio/6812d0edbe797c29.mp3", "en|G is for Grapes": "assets/audio/201b87d551df00ae.mp3", "en|Get all the stars, then go to the apple": "assets/audio/14561e6ae347477d.mp3", "en|Get star 1, then star 2, then go to the apple": "assets/audio/763b500e229be0c8.mp3", "en|Get the star first, then go to the apple": "assets/audio/1acd1438f4cfee90.mp3", "en|Grapes": "assets/audio/ff29b292cd71a9c4.mp3", "en|Grapes. Which letter does it start with?": "assets/audio/038629f9aef406b0.mp3", "en|Great job!": "assets/audio/4541e4f8f013ba65.mp3", "en|Great work today! Time for a break away from the screen": "assets/audio/fd0defee6405f9ce.mp3", "en|H": "assets/audio/d2c4689652c4fae5.mp3", "en|H is for Hat": "assets/audio/d7e648ce56470a12.mp3", "en|Hat": "assets/audio/657b579243d73de9.mp3", "en|Hat. Which letter does it start with?": "assets/audio/1e3ef3232f9c38f2.mp3", "en|Help the robot get to the apple": "assets/audio/d48a34baaf3ecdb4.mp3", "en|How do we fix it?": "assets/audio/6c57092049141965.mp3", "en|How many?": "assets/audio/87ba5ed8d565bbbc.mp3", "en|I": "assets/audio/710fd56aa5768e6e.mp3", "en|I is for Ice cream": "assets/audio/c2f764902f953478.mp3", "en|Ice cream": "assets/audio/cbfcc87ba9b89f7c.mp3", "en|Ice cream. Which letter does it start with?": "assets/audio/4fa44f44d15d4c73.mp3", "en|J": "assets/audio/eda72602a063e5d7.mp3", "en|J is for Juice": "assets/audio/d6039cc886f4abe8.mp3", "en|Juice": "assets/audio/fc4677402a7022e9.mp3", "en|Juice. Which letter does it start with?": "assets/audio/02f3eb671ad464c0.mp3", "en|K": "assets/audio/bdcde1b45a01869a.mp3", "en|K is for Kite": "assets/audio/c68099b831421d53.mp3", "en|Kite": "assets/audio/eadb96ed34825aac.mp3", "en|Kite. Which letter does it start with?": "assets/audio/4ca63c0b8db614c4.mp3", "en|L": "assets/audio/4620c9e1ed869706.mp3", "en|L is for Lion": "assets/audio/2cdf144aebfab8b9.mp3", "en|Let's practice a bit more": "assets/audio/d74370e6f4501b5f.mp3", "en|Lion": "assets/audio/1cbf6a841fa5df69.mp3", "en|Lion. Which letter does it start with?": "assets/audio/7793ab65abc08cca.mp3", "en|M": "assets/audio/671fb404ba1c0cb0.mp3", "en|M is for Moon": "assets/audio/6026416e2b9a1718.mp3", "en|Moon": "assets/audio/ffef13b974854a65.mp3", "en|Moon. Which letter does it start with?": "assets/audio/5f79afa9aed80455.mp3", "en|N": "assets/audio/416f061b822ef434.mp3", "en|N is for Nest": "assets/audio/2f566207d82af646.mp3", "en|Nest": "assets/audio/1e2ee5a57a0d4e4a.mp3", "en|Nest. Which letter does it start with?": "assets/audio/5c5f023b0e42a281.mp3", "en|New level!": "assets/audio/996439ee31dac339.mp3", "en|Not there yet. Add more arrows": "assets/audio/1a764e1faf71d21d.mp3", "en|O": "assets/audio/93b6cbe5a3967b93.mp3", "en|O is for Orange": "assets/audio/b2ada406b1e7db68.mp3", "en|On a roll!": "assets/audio/e4058eebadfbe174.mp3", "en|Oops! The robot bumped. Try another way": "assets/audio/bc973562353b247d.mp3", "en|Orange": "assets/audio/0b37814bc37e2a2d.mp3", "en|Orange. Which letter does it start with?": "assets/audio/7fee4ad654be3b27.mp3", "en|P": "assets/audio/f75d217042650f97.mp3", "en|P is for Pig": "assets/audio/63386b301bcd26e4.mp3", "en|Pig": "assets/audio/a23f2552274e917b.mp3", "en|Pig. Which letter does it start with?": "assets/audio/bf538a3433d13179.mp3", "en|Press play": "assets/audio/b3ee5fc03b943c89.mp3", "en|Put each one in the right basket": "assets/audio/cfb6aa410dd9ec75.mp3", "en|Put the ball behind the box": "assets/audio/e44aa0226e083222.mp3", "en|Put the ball between the two boxes": "assets/audio/a11aad68a156aeb9.mp3", "en|Put the ball in front of the box": "assets/audio/7cac5731bb95cc90.mp3", "en|Put the ball in the basket": "assets/audio/c029a1ee8c948738.mp3", "en|Put the ball next to the basket": "assets/audio/0cd17501bb5f657a.mp3", "en|Put the ball next to the box": "assets/audio/fbb496e4393738b8.mp3", "en|Put the ball next to the table": "assets/audio/1a865d6d376df3bd.mp3", "en|Put the ball next to the two boxes": "assets/audio/302e7e689b7971e9.mp3", "en|Put the ball on the basket": "assets/audio/d52b0ac78bf2d843.mp3", "en|Put the ball on the box": "assets/audio/0186981b31abfedf.mp3", "en|Put the ball on the table": "assets/audio/2389a9d1bb2b0b17.mp3", "en|Put the ball on the two boxes": "assets/audio/25e311c298d62cf6.mp3", "en|Put the ball under the table": "assets/audio/034d87827146be5d.mp3", "en|Put the cat behind the box": "assets/audio/333f4f01d9b6b5ee.mp3", "en|Put the cat between the two boxes": "assets/audio/cc85374558ac7345.mp3", "en|Put the cat in front of the box": "assets/audio/be76b3ea5871601d.mp3", "en|Put the cat in the basket": "assets/audio/72c779ca28462929.mp3", "en|Put the cat next to the basket": "assets/audio/ab870082d78a0431.mp3", "en|Put the cat next to the box": "assets/audio/5738878e42e57155.mp3", "en|Put the cat next to the table": "assets/audio/be789f2c48db04c7.mp3", "en|Put the cat next to the two boxes": "assets/audio/8ddc2a398d3a770d.mp3", "en|Put the cat on the basket": "assets/audio/131f98306bc071df.mp3", "en|Put the cat on the box": "assets/audio/4637f62a234de56b.mp3", "en|Put the cat on the table": "assets/audio/b5b9ef3e4b94cbbb.mp3", "en|Put the cat on the two boxes": "assets/audio/8511519e09e499fc.mp3", "en|Put the cat under the table": "assets/audio/b81cf15b2b0e0106.mp3", "en|Put the dog behind the box": "assets/audio/45e73c6c23fe8c29.mp3", "en|Put the dog between the two boxes": "assets/audio/d13daa6193a89eca.mp3", "en|Put the dog in front of the box": "assets/audio/04dd4c1b7053cb84.mp3", "en|Put the dog in the basket": "assets/audio/7e0b48c87d5bb427.mp3", "en|Put the dog next to the basket": "assets/audio/2a7178e3c192901d.mp3", "en|Put the dog next to the box": "assets/audio/5088ee372631c963.mp3", "en|Put the dog next to the table": "assets/audio/6f9f1f162a308f3e.mp3", "en|Put the dog next to the two boxes": "assets/audio/266acae2d57cd980.mp3", "en|Put the dog on the basket": "assets/audio/9f7037df850718f8.mp3", "en|Put the dog on the box": "assets/audio/68626f416ced314a.mp3", "en|Put the dog on the table": "assets/audio/55d093f59bca7481.mp3", "en|Put the dog on the two boxes": "assets/audio/54c8996ca76b0b0a.mp3", "en|Put the dog under the table": "assets/audio/0643517f36ce2f33.mp3", "en|Put the picture together": "assets/audio/012def0f2f9374f3.mp3", "en|Put the rabbit behind the box": "assets/audio/0d40b46bea57685b.mp3", "en|Put the rabbit between the two boxes": "assets/audio/aab5f7cb6bea1e87.mp3", "en|Put the rabbit in front of the box": "assets/audio/4f89a28baf16d91a.mp3", "en|Put the rabbit in the basket": "assets/audio/3cbe5c092b65e3c6.mp3", "en|Put the rabbit next to the basket": "assets/audio/c142acbf5c0d4123.mp3", "en|Put the rabbit next to the box": "assets/audio/d9f4f028370b9be3.mp3", "en|Put the rabbit next to the table": "assets/audio/751d18736fb5745a.mp3", "en|Put the rabbit next to the two boxes": "assets/audio/c119cdeb4d98dc47.mp3", "en|Put the rabbit on the basket": "assets/audio/51e6b94be772b9e9.mp3", "en|Put the rabbit on the box": "assets/audio/d03e6b12d7b24a58.mp3", "en|Put the rabbit on the table": "assets/audio/51a0f3f7a6528325.mp3", "en|Put the rabbit on the two boxes": "assets/audio/998142a3982c70fb.mp3", "en|Put the rabbit under the table": "assets/audio/bb2e09f58b689ee3.mp3", "en|Put the story in order: what happened first?": "assets/audio/026828c06a1729ef.mp3", "en|Q": "assets/audio/d72c387268f157d2.mp3", "en|Q is for Queen": "assets/audio/64ca5545a4ecd678.mp3", "en|Queen": "assets/audio/34a09518fa53ab32.mp3", "en|Queen. Which letter does it start with?": "assets/audio/7fdce224778ec59b.mp3", "en|R": "assets/audio/c323ec62b7dec990.mp3", "en|R is for Rabbit": "assets/audio/c2529431cc911ff3.mp3", "en|Rabbit": "assets/audio/45563c2f4ffab691.mp3", "en|Rabbit. Which letter does it start with?": "assets/audio/3f6c15a8438f7f19.mp3", "en|S": "assets/audio/f33f4f41caaa288f.mp3", "en|S is for Sun": "assets/audio/9d8bfbeea06125f2.mp3", "en|So a lamp lit everything up!": "assets/audio/c891d80814e88fb8.mp3", "en|So a plate of fruit arrived!": "assets/audio/251f8de6f286f79e.mp3", "en|So out came a big umbrella!": "assets/audio/c3de798a6895cedc.mp3", "en|Sort by colour": "assets/audio/756582c8c92dceab.mp3", "en|Sort by shape": "assets/audio/e5f8df1b8646f015.mp3", "en|Sort by size": "assets/audio/379de0605b2bc7b8.mp3", "en|Star number 1 first": "assets/audio/88aad694eac2d28d.mp3", "en|Suddenly, heavy rain started!": "assets/audio/cfbbc718562d9aa4.mp3", "en|Suddenly, it got dark!": "assets/audio/7d42f7feda125588.mp3", "en|Suddenly, the ball was lost!": "assets/audio/be2a8e46fb26b04b.mp3", "en|Sun": "assets/audio/8322cb276428e6d0.mp3", "en|Sun. Which letter does it start with?": "assets/audio/30246fdf3dc69650.mp3", "en|Super!": "assets/audio/a30ac1feb56af248.mp3", "en|T": "assets/audio/3471c5267180961f.mp3", "en|T is for Tree": "assets/audio/2dedb30388ef072a.mp3", "en|The others are animals": "assets/audio/e2f99baaa7adc70a.mp3", "en|The others are balls": "assets/audio/ba0c1fabb3ed46b4.mp3", "en|The others are clothes": "assets/audio/b5a5d8251377366e.mp3", "en|The others are fruits": "assets/audio/0c1990139c335dad.mp3", "en|The others are vehicles": "assets/audio/1658ab46968264a8.mp3", "en|The rule changed!": "assets/audio/3839860a8f049a01.mp3", "en|The ×2 button repeats the last arrow twice": "assets/audio/6b0410a64eaceb69.mp3", "en|This is the story of the cat at home": "assets/audio/8dd23c6a108c730d.mp3", "en|This is the story of the cat at the beach": "assets/audio/0b930fad7c1bddde.mp3", "en|This is the story of the cat in the park": "assets/audio/c02a8e4b302b4468.mp3", "en|This is the story of the elephant at home": "assets/audio/796aa87c81efd71b.mp3", "en|This is the story of the elephant at the beach": "assets/audio/6ccf5df061fa2949.mp3", "en|This is the story of the elephant in the park": "assets/audio/641b364151275e46.mp3", "en|This is the story of the rabbit at home": "assets/audio/0a9bd3650704ce94.mp3", "en|This is the story of the rabbit at the beach": "assets/audio/28f2e99369ed25b5.mp3", "en|This is the story of the rabbit in the park": "assets/audio/b46e798473b13f5d.mp3", "en|This is the story of the robot at home": "assets/audio/055d9c8b56f9d0a9.mp3", "en|This is the story of the robot at the beach": "assets/audio/3c1423fbd6fb7277.mp3", "en|This is the story of the robot in the park": "assets/audio/b5cece69e07760a1.mp3", "en|This piece is not from this picture": "assets/audio/e906ab0f3fd3ade0.mp3", "en|Tree": "assets/audio/c7b60ac351dac413.mp3", "en|Tree. Which letter does it start with?": "assets/audio/0a24f12640e5cff2.mp3", "en|Try again": "assets/audio/84f892450b66306f.mp3", "en|Try in the middle": "assets/audio/6f42e099506e081e.mp3", "en|Try near the bottom": "assets/audio/81031ecfb8ba0c0a.mp3", "en|Try near the top": "assets/audio/10ecbaa902ac4c0f.mp3", "en|Two triangles make a rectangle!": "assets/audio/f6ed931948a6bdac.mp3", "en|U": "assets/audio/f79f9aa2fad8478a.mp3", "en|U is for Umbrella": "assets/audio/3db9c8e095969e8c.mp3", "en|Umbrella": "assets/audio/4d1b05e2620c6ec1.mp3", "en|Umbrella. Which letter does it start with?": "assets/audio/1132e880aa036e25.mp3", "en|V": "assets/audio/9d4c30c95c0e3fec.mp3", "en|V is for Van": "assets/audio/d0a652cae344962a.mp3", "en|Van": "assets/audio/7b5f3374ff9217e1.mp3", "en|Van. Which letter does it start with?": "assets/audio/eaf78c20142bccaf.mp3", "en|W": "assets/audio/51994248ffbadc21.mp3", "en|W is for Watermelon": "assets/audio/52db690192d056f5.mp3", "en|Watermelon": "assets/audio/d56e84b3fca2c7b5.mp3", "en|Watermelon. Which letter does it start with?": "assets/audio/8b64c1b38804a3fe.mp3", "en|Well done!": "assets/audio/947d8573e42548dc.mp3", "en|What a lovely build!": "assets/audio/55d924b41c37cd0d.mp3", "en|What color is the ball?": "assets/audio/e268d632c9b8f62b.mp3", "en|What color is the banana?": "assets/audio/506c73ea80110c26.mp3", "en|What color is the bear?": "assets/audio/192bb06f8778efed.mp3", "en|What color is the black cat?": "assets/audio/c4b71f7ebee3c6a7.mp3", "en|What color is the blueberries?": "assets/audio/40c33573997b6e95.mp3", "en|What color is the chocolate?": "assets/audio/a70bd56b31007bf9.mp3", "en|What color is the cloud?": "assets/audio/2621c89e775ec89e.mp3", "en|What color is the cucumber?": "assets/audio/810eec7c6207f27f.mp3", "en|What color is the eggplant?": "assets/audio/2be5318b4800e750.mp3", "en|What color is the frog?": "assets/audio/d8381faf5afb2c9c.mp3", "en|What color is the grapes?": "assets/audio/ea65638965788507.mp3", "en|What color is the lemon?": "assets/audio/c6719cb0cb5a283f.mp3", "en|What color is the milk?": "assets/audio/94273d425667f4bd.mp3", "en|What color is the orange?": "assets/audio/d1c92cedd911ba68.mp3", "en|What color is the piglet?": "assets/audio/cd627ca9848ca854.mp3", "en|What color is the rose?": "assets/audio/eb060b13435a7de0.mp3", "en|What color is the strawberry?": "assets/audio/e9519687193ee66c.mp3", "en|What color is the tree?": "assets/audio/70ab6b7bdf4495f5.mp3", "en|What comes next?": "assets/audio/a9ba278291d03720.mp3", "en|What happened suddenly?": "assets/audio/75af259c0187455b.mp3", "en|What happens next?": "assets/audio/67ccf1d2ea44a521.mp3", "en|Where does it happen?": "assets/audio/4a936df630d29b5f.mp3", "en|Where is black?": "assets/audio/c68f1cad907577e4.mp3", "en|Where is blue?": "assets/audio/414df0fcd88e832d.mp3", "en|Where is brown?": "assets/audio/1d1101aab51e4dc9.mp3", "en|Where is green?": "assets/audio/6f9c0233a635d37c.mp3", "en|Where is orange?": "assets/audio/949f21051cbf26d2.mp3", "en|Where is pink?": "assets/audio/5232dde7f59440e0.mp3", "en|Where is purple?": "assets/audio/f26720b0f4ba4a21.mp3", "en|Where is red?": "assets/audio/adec58fcf042a762.mp3", "en|Where is the ball behind the box?": "assets/audio/02442a10b9226b4c.mp3", "en|Where is the ball between the two boxes?": "assets/audio/325a1f20d6a1f90f.mp3", "en|Where is the ball in front of the box?": "assets/audio/7d4b087e1a71a8ef.mp3", "en|Where is the ball in the basket?": "assets/audio/8d0f147522463d30.mp3", "en|Where is the ball next to the basket?": "assets/audio/06b9312e7a1fd88b.mp3", "en|Where is the ball next to the box?": "assets/audio/13fcc122e330051f.mp3", "en|Where is the ball next to the table?": "assets/audio/9e34cfbae493c46e.mp3", "en|Where is the ball next to the two boxes?": "assets/audio/e09b252cb892e1ac.mp3", "en|Where is the ball on the basket?": "assets/audio/04461c064f65eff6.mp3", "en|Where is the ball on the box?": "assets/audio/dcbe4d8aa1227c96.mp3", "en|Where is the ball on the table?": "assets/audio/8ca6ba158b00cf91.mp3", "en|Where is the ball on the two boxes?": "assets/audio/18b558510fca617e.mp3", "en|Where is the ball under the table?": "assets/audio/6760c83d47754672.mp3", "en|Where is the bear?": "assets/audio/0e0e50ee4faa7a0d.mp3", "en|Where is the butterfly?": "assets/audio/51427272c30b8eff.mp3", "en|Where is the camel?": "assets/audio/cb4f0504d45f89f4.mp3", "en|Where is the cat behind the box?": "assets/audio/4654d2a50702a50f.mp3", "en|Where is the cat between the two boxes?": "assets/audio/618fe8d25c3d8b87.mp3", "en|Where is the cat in front of the box?": "assets/audio/e83c0932fa1c35a5.mp3", "en|Where is the cat in the basket?": "assets/audio/4d5b420c6059f3ae.mp3", "en|Where is the cat next to the basket?": "assets/audio/0bdc604edfed02ab.mp3", "en|Where is the cat next to the box?": "assets/audio/a5a9103eafd9f0d1.mp3", "en|Where is the cat next to the table?": "assets/audio/9e9b85b9d697bdb6.mp3", "en|Where is the cat next to the two boxes?": "assets/audio/1c86c3a754b716f5.mp3", "en|Where is the cat on the basket?": "assets/audio/517ae85ec5bc4a44.mp3", "en|Where is the cat on the box?": "assets/audio/00289f9b66c7964c.mp3", "en|Where is the cat on the table?": "assets/audio/b08d55bd4e672f25.mp3", "en|Where is the cat on the two boxes?": "assets/audio/09d5139c7607f3d4.mp3", "en|Where is the cat under the table?": "assets/audio/be62b3ccf3623cc1.mp3", "en|Where is the cat?": "assets/audio/49c898308f44c56a.mp3", "en|Where is the chicken?": "assets/audio/5f0250ccc49fba36.mp3", "en|Where is the circle?": "assets/audio/db099102298357c3.mp3", "en|Where is the cow?": "assets/audio/d096040001bc77e9.mp3", "en|Where is the dog behind the box?": "assets/audio/7fa6a3e0df47a734.mp3", "en|Where is the dog between the two boxes?": "assets/audio/3a1e8181f29852ce.mp3", "en|Where is the dog in front of the box?": "assets/audio/3bf200ec33534b15.mp3", "en|Where is the dog in the basket?": "assets/audio/cc0ba0651ef03edf.mp3", "en|Where is the dog next to the basket?": "assets/audio/ac5ba20132f1493d.mp3", "en|Where is the dog next to the box?": "assets/audio/b80de0964bbd811f.mp3", "en|Where is the dog next to the table?": "assets/audio/08b75d00c0a4aa67.mp3", "en|Where is the dog next to the two boxes?": "assets/audio/fa68735b58781a43.mp3", "en|Where is the dog on the basket?": "assets/audio/cd828a8c6c2041a9.mp3", "en|Where is the dog on the box?": "assets/audio/966162a30dfae819.mp3", "en|Where is the dog on the table?": "assets/audio/2b13b66d39002584.mp3", "en|Where is the dog on the two boxes?": "assets/audio/715b66d88849a60b.mp3", "en|Where is the dog under the table?": "assets/audio/fdf7182339f0bbd8.mp3", "en|Where is the dog?": "assets/audio/93164b0b04a84429.mp3", "en|Where is the duck?": "assets/audio/f2ce1f93945a850a.mp3", "en|Where is the elephant?": "assets/audio/143a09e602fc0fbb.mp3", "en|Where is the fish?": "assets/audio/ba8b38a0b5de288f.mp3", "en|Where is the giraffe?": "assets/audio/bb59699759be2935.mp3", "en|Where is the heart?": "assets/audio/4d3bd6567ba914fc.mp3", "en|Where is the horse?": "assets/audio/2d1e1da6ccaa9d4e.mp3", "en|Where is the letter A?": "assets/audio/0f013831a316cc33.mp3", "en|Where is the letter B?": "assets/audio/35ddabccb75ee929.mp3", "en|Where is the letter C?": "assets/audio/7783e8756b0484aa.mp3", "en|Where is the letter D?": "assets/audio/3192844f899f4748.mp3", "en|Where is the letter E?": "assets/audio/72553871fd829577.mp3", "en|Where is the letter F?": "assets/audio/2e4661d07af95aac.mp3", "en|Where is the letter G?": "assets/audio/c1aa9fe5d5ff0526.mp3", "en|Where is the letter H?": "assets/audio/9f3478c857aad394.mp3", "en|Where is the letter I?": "assets/audio/fb9d7f698fa07fb0.mp3", "en|Where is the letter J?": "assets/audio/5dbb7273de90f040.mp3", "en|Where is the letter K?": "assets/audio/9764956cb49382fe.mp3", "en|Where is the letter L?": "assets/audio/0a2402afe1ec2c4c.mp3", "en|Where is the letter M?": "assets/audio/43bf6c6f20e3b536.mp3", "en|Where is the letter N?": "assets/audio/25f0bdfa83e26a9d.mp3", "en|Where is the letter O?": "assets/audio/9eb281f3beb726f3.mp3", "en|Where is the letter P?": "assets/audio/b8535eedc0224765.mp3", "en|Where is the letter Q?": "assets/audio/b8c0d1ab650f29fa.mp3", "en|Where is the letter R?": "assets/audio/55b9cdbcd7d59379.mp3", "en|Where is the letter S?": "assets/audio/5abdb9289953919d.mp3", "en|Where is the letter T?": "assets/audio/76d3471285d109c2.mp3", "en|Where is the letter U?": "assets/audio/a892d13a0d6ef59c.mp3", "en|Where is the letter V?": "assets/audio/afdf415e401b3528.mp3", "en|Where is the letter W?": "assets/audio/16d2bd4d09dc9e34.mp3", "en|Where is the letter X?": "assets/audio/a6f70837191e55f3.mp3", "en|Where is the letter Y?": "assets/audio/d5809cb41595c249.mp3", "en|Where is the letter Z?": "assets/audio/09a2fd956ea18c0f.mp3", "en|Where is the lion?": "assets/audio/46712de893428860.mp3", "en|Where is the monkey?": "assets/audio/85e8823f99f13c6d.mp3", "en|Where is the rabbit behind the box?": "assets/audio/29c9c7fa81d799c0.mp3", "en|Where is the rabbit between the two boxes?": "assets/audio/5a069675cd6ce832.mp3", "en|Where is the rabbit in front of the box?": "assets/audio/d662c41fb0aee8ba.mp3", "en|Where is the rabbit in the basket?": "assets/audio/a552ecc9650eed3c.mp3", "en|Where is the rabbit next to the basket?": "assets/audio/8f740ec4827e71d6.mp3", "en|Where is the rabbit next to the box?": "assets/audio/64eb388c00b84171.mp3", "en|Where is the rabbit next to the table?": "assets/audio/183b9e3242484fdb.mp3", "en|Where is the rabbit next to the two boxes?": "assets/audio/a04ca384d1872703.mp3", "en|Where is the rabbit on the basket?": "assets/audio/a59b1a18c0019aee.mp3", "en|Where is the rabbit on the box?": "assets/audio/86cd7ccedf6310af.mp3", "en|Where is the rabbit on the table?": "assets/audio/09fb4f6f7f4268c4.mp3", "en|Where is the rabbit on the two boxes?": "assets/audio/99f6d101bc9f0692.mp3", "en|Where is the rabbit under the table?": "assets/audio/2207d816f8e51338.mp3", "en|Where is the rabbit?": "assets/audio/25a97fe7cd8ca9be.mp3", "en|Where is the rectangle?": "assets/audio/fb1242ccab52b9d6.mp3", "en|Where is the sheep?": "assets/audio/3a85ee049cb8591d.mp3", "en|Where is the square?": "assets/audio/b5b2f1e764222f1f.mp3", "en|Where is the star?": "assets/audio/0275bd87f7257336.mp3", "en|Where is the triangle?": "assets/audio/fb6da6f83129d6bf.mp3", "en|Where is white?": "assets/audio/e5d9dc7e324075bd.mp3", "en|Where is yellow?": "assets/audio/9f4fa884fee525ae.mp3", "en|Which animal is the biggest?": "assets/audio/ca3b3f28008cae6f.mp3", "en|Which one is a circle?": "assets/audio/91f00ee2e914ac6e.mp3", "en|Which one is a heart?": "assets/audio/376f4e5efa2f9d90.mp3", "en|Which one is a rectangle?": "assets/audio/ee9ee877e7c9b888.mp3", "en|Which one is a square?": "assets/audio/9be7f6b6fb478896.mp3", "en|Which one is a star?": "assets/audio/f906395bce6cb946.mp3", "en|Which one is a triangle?": "assets/audio/f9096f52ce464454.mp3", "en|Which one is different?": "assets/audio/c2072601f579844f.mp3", "en|Who can fly?": "assets/audio/015232c825a336c1.mp3", "en|Who gives us eggs?": "assets/audio/ec1050d95e6ed11b.mp3", "en|Who gives us milk?": "assets/audio/afd0a81da0143cb4.mp3", "en|Who has a very long neck?": "assets/audio/c911943f5610e488.mp3", "en|Who has long ears and loves carrots?": "assets/audio/38b2af5f2d5e6e1b.mp3", "en|Who is in our story?": "assets/audio/fcc8c928a43877c3.mp3", "en|Who is the king of the jungle?": "assets/audio/dd51488ff9f67cbd.mp3", "en|Who lives in the desert and has a hump?": "assets/audio/c131e79b95a26eb2.mp3", "en|Who lives in the water?": "assets/audio/d35acc8b290cefc3.mp3", "en|Who loves bananas?": "assets/audio/e33060aafed11ea5.mp3", "en|Who makes honey?": "assets/audio/144dd0ac4cf033cf.mp3", "en|Who says meow?": "assets/audio/bb66bf6945716a40.mp3", "en|Who says quack quack?": "assets/audio/9c8328e6405dbbda.mp3", "en|Who says woof woof?": "assets/audio/41cc8f4566be38bf.mp3", "en|X": "assets/audio/e107af5ff9f408ce.mp3", "en|X is for Box": "assets/audio/a4425f96d2e27675.mp3", "en|Y": "assets/audio/4d3399f2209e10f2.mp3", "en|Y is for Yo-yo": "assets/audio/88ca419792c0470c.mp3", "en|Yes!": "assets/audio/9cd8799098515cc1.mp3", "en|Yo-yo": "assets/audio/3e19dba280015dbc.mp3", "en|Yo-yo. Which letter does it start with?": "assets/audio/a6d7f449b8de1ff8.mp3", "en|You got there, but you missed a star": "assets/audio/d2c10595401db375.mp3", "en|You have only 10 arrows. Find the shortest way": "assets/audio/b309a56ff8189a80.mp3", "en|You have only 11 arrows. Find the shortest way": "assets/audio/fe48344f40fb4ccc.mp3", "en|You have only 12 arrows. Find the shortest way": "assets/audio/509e4898b0c25cd2.mp3", "en|You have only 13 arrows. Find the shortest way": "assets/audio/6e0c907ca56ab17b.mp3", "en|You have only 14 arrows. Find the shortest way": "assets/audio/c08152383d6e34e5.mp3", "en|You have only 9 arrows. Find the shortest way": "assets/audio/4029c5b6cd2a96c4.mp3", "en|Z": "assets/audio/12a76183d8169989.mp3", "en|Z is for Zebra": "assets/audio/1432907195921d38.mp3", "en|Zebra": "assets/audio/7de7abdd88f9ec54.mp3", "en|Zebra. Which letter does it start with?": "assets/audio/d07672e810f4cfb0.mp3", "en|a big flower": "assets/audio/cda33ad6eeab71c1.mp3", "en|a chick": "assets/audio/7dc13ed2f5c44f92.mp3", "en|a cold ice cream": "assets/audio/bc0aaf508cae3204.mp3", "en|a flower on the tree": "assets/audio/0c3e24bd41d2d9a5.mp3", "en|a little chick": "assets/audio/e11aacd6d890ad0d.mp3", "en|a lovely teddy": "assets/audio/dbce01eb1a1b04fd.mp3", "en|a present": "assets/audio/568338c903f504f7.mp3", "en|a rainbow appears": "assets/audio/3ea6bec348c318ea.mp3", "en|a ripe apple": "assets/audio/8e404652dc440ac3.mp3", "en|a seed": "assets/audio/32fa42d982d3163e.mp3", "en|a small apple": "assets/audio/94eabed8c622f6cf.mp3", "en|a wave comes": "assets/audio/0c64bfd8ca7c65cb.mp3", "en|a yummy cake": "assets/audio/528c4841987bfbfc.mp3", "en|an egg": "assets/audio/b4324d0b7592c2ff.mp3", "en|animals": "assets/audio/0b622e0ea878a99d.mp3", "en|asleep": "assets/audio/1d50a6b6eb07eefc.mp3", "en|bear": "assets/audio/d6502fa1e561b253.mp3", "en|black": "assets/audio/3ea1a08f79112150.mp3", "en|blue": "assets/audio/0544f340c5c8a738.mp3", "en|box ends with X": "assets/audio/8cbdac6f61c39fc0.mp3", "en|brown": "assets/audio/c900340e1941c832.mp3", "en|butterfly": "assets/audio/bf5fb20b77df7631.mp3", "en|camel": "assets/audio/aa76970124fa5243.mp3", "en|cat": "assets/audio/df1d5c972d5bed26.mp3", "en|chicken": "assets/audio/b1f6b638336bb227.mp3", "en|circle": "assets/audio/6bcd86498267c16c.mp3", "en|clouds in the sky": "assets/audio/7c6721d6d8926512.mp3", "en|cow": "assets/audio/d3b800967d03464d.mp3", "en|dog": "assets/audio/c3dd1cc79813f966.mp3", "en|duck": "assets/audio/be4ac8d44032a6a9.mp3", "en|eggs and flour": "assets/audio/9d40ba9a34198bba.mp3", "en|eight": "assets/audio/8746921c5f1d2919.mp3", "en|elephant": "assets/audio/cfd85e1f643ad99a.mp3", "en|evening": "assets/audio/5bf9532240667ea9.mp3", "en|fish": "assets/audio/f3c62702689c13e5.mp3", "en|five": "assets/audio/b4608cf38b731e78.mp3", "en|four": "assets/audio/c32cac2b76238687.mp3", "en|fruits": "assets/audio/eb1f5a1c2ff1f1de.mp3", "en|giraffe": "assets/audio/725128c101a93f81.mp3", "en|green": "assets/audio/c5bc97988161f945.mp3", "en|heart": "assets/audio/640716fc7cd40edc.mp3", "en|horse": "assets/audio/be222e9c52e1d3ac.mp3", "en|in the sea": "assets/audio/2f67c3ec88e76cca.mp3", "en|in the sky": "assets/audio/8ec254f1b215c41d.mp3", "en|it becomes a flower": "assets/audio/bacc38b5790a5714.mp3", "en|it grows into a hen": "assets/audio/2ad4074b2a976fd2.mp3", "en|it hatches": "assets/audio/eb753147f6c668f0.mp3", "en|it rains": "assets/audio/abea34ef5305b4d1.mp3", "en|it sprouts": "assets/audio/558da63a1d4b60e5.mp3", "en|lion": "assets/audio/2a7a4c1454edf6ab.mp3", "en|monkey": "assets/audio/2b798c24c444d055.mp3", "en|morning": "assets/audio/9bd866038b7f79d2.mp3", "en|night": "assets/audio/4a518504a6149c1f.mp3", "en|nine": "assets/audio/2c14de06cdef0f96.mp3", "en|noon": "assets/audio/bad1d58162406532.mp3", "en|on land": "assets/audio/81cfccc8237e1196.mp3", "en|one": "assets/audio/2c61a3ba88010ae1.mp3", "en|orange": "assets/audio/a5b7ca953a367e83.mp3", "en|pink": "assets/audio/2f88f0404b7692ce.mp3", "en|purple": "assets/audio/b9b93cacb64d31bb.mp3", "en|rabbit": "assets/audio/0c264cb9f8d76e6c.mp3", "en|rectangle": "assets/audio/0c258225394b3fea.mp3", "en|red": "assets/audio/abec0bd86d6c3f56.mp3", "en|seven": "assets/audio/2d47edff38ee3c7f.mp3", "en|she brushes her teeth": "assets/audio/5c0eb27ca84046c4.mp3", "en|she eats breakfast": "assets/audio/684488f15f556153.mp3", "en|she goes to school": "assets/audio/0a918ad35ecdf39d.mp3", "en|she hears a story": "assets/audio/ef1c3f74b19f19fb.mp3", "en|she opens it": "assets/audio/f3d9dc91323d328b.mp3", "en|she sleeps": "assets/audio/6263c8e0f29117cf.mp3", "en|sheep": "assets/audio/d844c423b5fceb36.mp3", "en|six": "assets/audio/a426614563ce766a.mp3", "en|square": "assets/audio/ef12939ec51a8d48.mp3", "en|star": "assets/audio/7cc936bfe2feef41.mp3", "en|ten": "assets/audio/543d67143ee7b7ff.mp3", "en|the castle is gone": "assets/audio/4151162c12647abd.mp3", "en|the egg hatches": "assets/audio/0865829c99ca7d64.mp3", "en|the hen lays an egg": "assets/audio/be1a3b48ce4171d9.mp3", "en|the ice cream melted": "assets/audio/0d33152dafcc9c13.mp3", "en|the sun is hot": "assets/audio/525149bd2c9bace6.mp3", "en|three": "assets/audio/af56e89de90d4a7d.mp3", "en|triangle": "assets/audio/97e3c0d59ad32874.mp3", "en|two": "assets/audio/fae2c765c35ee030.mp3", "en|vehicles": "assets/audio/14e901d997a0d482.mp3", "en|we bake it": "assets/audio/f900e0d3ea937dd4.mp3", "en|we build a castle": "assets/audio/efdc499fdd3f09f7.mp3", "en|we eat breakfast": "assets/audio/ac7dbf517925694c.mp3", "en|we eat it": "assets/audio/eda03c6611c6d53d.mp3", "en|we fill a bucket with sand": "assets/audio/7ee49389c803a3d3.mp3", "en|we go to school": "assets/audio/8f288ecf778c123b.mp3", "en|we go to the beach": "assets/audio/e6f7fe7f3a246a95.mp3", "en|we mix them": "assets/audio/56986bc49265805e.mp3", "en|we plant it": "assets/audio/5d3c591a7eab61d8.mp3", "en|we play": "assets/audio/737ae105f3c6a9c1.mp3", "en|we sleep": "assets/audio/8d8f194ba307d5d2.mp3", "en|we wake up": "assets/audio/cc334e0318974019.mp3", "en|we water it": "assets/audio/475c53b814b08164.mp3", "en|white": "assets/audio/c0fad674fec7c1d0.mp3", "en|yellow": "assets/audio/26705445f0ada22f.mp3"};</script>
-<script>window.HS_ART = {"app-icon": {"src": "assets/brand/app-icon.webp?v=533e3fe7"}, "avatar-boy-cap": {"face": "assets/avatars/avatar-boy-cap-face.webp?v=a141845d", "sm": "assets/avatars/avatar-boy-cap-sm.webp?v=cfba0268", "src": "assets/avatars/avatar-boy-cap.webp?v=3c40d2de"}, "avatar-boy-cap-happy": {"sm": "assets/avatars/avatar-boy-cap-happy-sm.webp?v=3f21b97e", "src": "assets/avatars/avatar-boy-cap-happy.webp?v=f43904e8"}, "avatar-boy-curly": {"face": "assets/avatars/avatar-boy-curly-face.webp?v=57841f85", "sm": "assets/avatars/avatar-boy-curly-sm.webp?v=304566de", "src": "assets/avatars/avatar-boy-curly.webp?v=a80fa1de"}, "avatar-boy-curly-happy": {"sm": "assets/avatars/avatar-boy-curly-happy-sm.webp?v=661c004f", "src": "assets/avatars/avatar-boy-curly-happy.webp?v=8282e13c"}, "avatar-boy-glasses": {"face": "assets/avatars/avatar-boy-glasses-face.webp?v=8d5864c6", "sm": "assets/avatars/avatar-boy-glasses-sm.webp?v=3dea0c19", "src": "assets/avatars/avatar-boy-glasses.webp?v=08ce23fc"}, "avatar-boy-glasses-happy": {"sm": "assets/avatars/avatar-boy-glasses-happy-sm.webp?v=df820f2a", "src": "assets/avatars/avatar-boy-glasses-happy.webp?v=ce545363"}, "avatar-boy-thobe": {"face": "assets/avatars/avatar-boy-thobe-face.webp?v=9492ad0d", "sm": "assets/avatars/avatar-boy-thobe-sm.webp?v=5551bf21", "src": "assets/avatars/avatar-boy-thobe.webp?v=e3ffe026"}, "avatar-boy-thobe-happy": {"sm": "assets/avatars/avatar-boy-thobe-happy-sm.webp?v=1c55e5ce", "src": "assets/avatars/avatar-boy-thobe-happy.webp?v=e2fda73a"}, "avatar-bunny": {"face": "assets/avatars/avatar-bunny-face.webp?v=d89c989b", "sm": "assets/avatars/avatar-bunny-sm.webp?v=87b59994", "src": "assets/avatars/avatar-bunny.webp?v=9ed97b83"}, "avatar-bunny-happy": {"sm": "assets/avatars/avatar-bunny-happy-sm.webp?v=ea60493a", "src": "assets/avatars/avatar-bunny-happy.webp?v=26b3680c"}, "avatar-cat": {"face": "assets/avatars/avatar-cat-face.webp?v=46b7adbb", "sm": "assets/avatars/avatar-cat-sm.webp?v=88a082b5", "src": "assets/avatars/avatar-cat.webp?v=ba65c134"}, "avatar-cat-happy": {"sm": "assets/avatars/avatar-cat-happy-sm.webp?v=ba12cf85", "src": "assets/avatars/avatar-cat-happy.webp?v=4534972c"}, "avatar-cloud-pal": {"face": "assets/avatars/avatar-cloud-pal-face.webp?v=e328e5e6", "sm": "assets/avatars/avatar-cloud-pal-sm.webp?v=72f83586", "src": "assets/avatars/avatar-cloud-pal.webp?v=d7d9fa54"}, "avatar-cloud-pal-happy": {"sm": "assets/avatars/avatar-cloud-pal-happy-sm.webp?v=4acb4c61", "src": "assets/avatars/avatar-cloud-pal-happy.webp?v=0eae0d2b"}, "avatar-dragon": {"face": "assets/avatars/avatar-dragon-face.webp?v=f7074338", "sm": "assets/avatars/avatar-dragon-sm.webp?v=662c5cd7", "src": "assets/avatars/avatar-dragon.webp?v=b086d9c9"}, "avatar-dragon-happy": {"sm": "assets/avatars/avatar-dragon-happy-sm.webp?v=954294d8", "src": "assets/avatars/avatar-dragon-happy.webp?v=66192114"}, "avatar-fox": {"face": "assets/avatars/avatar-fox-face.webp?v=bd3b0faa", "sm": "assets/avatars/avatar-fox-sm.webp?v=1c51a486", "src": "assets/avatars/avatar-fox.webp?v=4342f72a"}, "avatar-fox-happy": {"sm": "assets/avatars/avatar-fox-happy-sm.webp?v=5dd0f38c", "src": "assets/avatars/avatar-fox-happy.webp?v=3a9dd299"}, "avatar-girl-bob": {"face": "assets/avatars/avatar-girl-bob-face.webp?v=0316c635", "sm": "assets/avatars/avatar-girl-bob-sm.webp?v=d43cb252", "src": "assets/avatars/avatar-girl-bob.webp?v=b0ee7741"}, "avatar-girl-bob-happy": {"sm": "assets/avatars/avatar-girl-bob-happy-sm.webp?v=255b24f6", "src": "assets/avatars/avatar-girl-bob-happy.webp?v=261f3b3a"}, "avatar-girl-braids": {"face": "assets/avatars/avatar-girl-braids-face.webp?v=348635ec", "sm": "assets/avatars/avatar-girl-braids-sm.webp?v=7b7d3436", "src": "assets/avatars/avatar-girl-braids.webp?v=c9b7e473"}, "avatar-girl-braids-happy": {"sm": "assets/avatars/avatar-girl-braids-happy-sm.webp?v=a7167afa", "src": "assets/avatars/avatar-girl-braids-happy.webp?v=ba4d986c"}, "avatar-girl-ponytail": {"face": "assets/avatars/avatar-girl-ponytail-face.webp?v=d65332a0", "sm": "assets/avatars/avatar-girl-ponytail-sm.webp?v=983bea63", "src": "assets/avatars/avatar-girl-ponytail.webp?v=29589d4f"}, "avatar-girl-ponytail-happy": {"sm": "assets/avatars/avatar-girl-ponytail-happy-sm.webp?v=de720f4e", "src": "assets/avatars/avatar-girl-ponytail-happy.webp?v=26722f72"}, "avatar-girl-waves": {"face": "assets/avatars/avatar-girl-waves-face.webp?v=64be61eb", "sm": "assets/avatars/avatar-girl-waves-sm.webp?v=57e3e56f", "src": "assets/avatars/avatar-girl-waves.webp?v=6d6eb285"}, "avatar-girl-waves-happy": {"sm": "assets/avatars/avatar-girl-waves-happy-sm.webp?v=0d29b796", "src": "assets/avatars/avatar-girl-waves-happy.webp?v=812fde7e"}, "avatar-lion": {"face": "assets/avatars/avatar-lion-face.webp?v=7d5fa2f1", "sm": "assets/avatars/avatar-lion-sm.webp?v=71afd643", "src": "assets/avatars/avatar-lion.webp?v=8544d2d7"}, "avatar-lion-happy": {"sm": "assets/avatars/avatar-lion-happy-sm.webp?v=e90b743b", "src": "assets/avatars/avatar-lion-happy.webp?v=68ea3406"}, "avatar-panda": {"face": "assets/avatars/avatar-panda-face.webp?v=d6751a33", "sm": "assets/avatars/avatar-panda-sm.webp?v=35107fa4", "src": "assets/avatars/avatar-panda.webp?v=d0c514b1"}, "avatar-panda-happy": {"sm": "assets/avatars/avatar-panda-happy-sm.webp?v=b08db662", "src": "assets/avatars/avatar-panda-happy.webp?v=d3ba8d34"}, "avatar-robot": {"face": "assets/avatars/avatar-robot-face.webp?v=cf54be3e", "sm": "assets/avatars/avatar-robot-sm.webp?v=ca08459a", "src": "assets/avatars/avatar-robot.webp?v=78c1be2b"}, "avatar-robot-happy": {"sm": "assets/avatars/avatar-robot-happy-sm.webp?v=bf0e7a42", "src": "assets/avatars/avatar-robot-happy.webp?v=e88ea635"}, "avatar-star-sprite": {"face": "assets/avatars/avatar-star-sprite-face.webp?v=21cac4b7", "sm": "assets/avatars/avatar-star-sprite-sm.webp?v=ff6068aa", "src": "assets/avatars/avatar-star-sprite.webp?v=6a94d9ab"}, "avatar-star-sprite-happy": {"sm": "assets/avatars/avatar-star-sprite-happy-sm.webp?v=f269b8bf", "src": "assets/avatars/avatar-star-sprite-happy.webp?v=f522fc79"}, "avatar-unicorn": {"face": "assets/avatars/avatar-unicorn-face.webp?v=437c2041", "sm": "assets/avatars/avatar-unicorn-sm.webp?v=9c763377", "src": "assets/avatars/avatar-unicorn.webp?v=3e017bab"}, "avatar-unicorn-happy": {"sm": "assets/avatars/avatar-unicorn-happy-sm.webp?v=b7b69501", "src": "assets/avatars/avatar-unicorn-happy.webp?v=4ce0efe1"}, "badge-champion-earned": {"sm": "assets/badges/badge-champion-earned-sm.webp?v=f329063c", "src": "assets/badges/badge-champion-earned.webp?v=0cb98de2"}, "badge-lesson-earned": {"sm": "assets/badges/badge-lesson-earned-sm.webp?v=7cbf6699", "src": "assets/badges/badge-lesson-earned.webp?v=712f5e93"}, "badge-stars100-earned": {"sm": "assets/badges/badge-stars100-earned-sm.webp?v=5448dc7b", "src": "assets/badges/badge-stars100-earned.webp?v=d23bd54b"}, "badge-streak3-earned": {"sm": "assets/badges/badge-streak3-earned-sm.webp?v=d8380835", "src": "assets/badges/badge-streak3-earned.webp?v=44a0279f"}, "coupon": {"sm": "assets/rewards/coupon-sm.webp?v=adf8cb38", "src": "assets/rewards/coupon.webp?v=e9500a31"}, "dict-cover": {"src": "assets/catalog/dict-cover.webp?v=0a3cfa8a"}, "dict-mode-ar": {"src": "assets/catalog/dict-mode-ar.webp?v=e773320e"}, "dict-mode-en": {"src": "assets/catalog/dict-mode-en.webp?v=13f72224"}, "game-ani-card": {"src": "assets/games/kg/game-ani-card.webp?v=20309fbd"}, "game-apple-goal": {"src": "assets/games/kg/game-apple-goal.webp?v=59ac9813"}, "game-ball": {"src": "assets/games/kg/game-ball.webp?v=9a03bfc9"}, "game-basket": {"src": "assets/games/kg/game-basket.webp?v=e6e83216"}, "game-basket-card": {"src": "assets/games/kg/game-basket-card.webp?v=73196fcd"}, "game-box": {"src": "assets/games/kg/game-box.webp?v=c2c1545c"}, "game-card-back": {"src": "assets/games/kg/game-card-back.webp?v=86dffd24"}, "game-col-card": {"src": "assets/games/kg/game-col-card.webp?v=08389023"}, "game-compose-card": {"src": "assets/games/kg/game-compose-card.webp?v=7358964e"}, "game-count-card": {"src": "assets/games/kg/game-count-card.webp?v=85ec2859"}, "game-first-card": {"src": "assets/games/kg/game-first-card.webp?v=125206d6"}, "game-memory-card": {"src": "assets/games/kg/game-memory-card.webp?v=6ce4b50d"}, "game-menu-arabic-card": {"src": "assets/games/kg/game-menu-arabic-card.webp?v=9cb58504"}, "game-menu-english-card": {"src": "assets/games/kg/game-menu-english-card.webp?v=2065cbc0"}, "game-menu-numbers-card": {"src": "assets/games/kg/game-menu-numbers-card.webp?v=6dd2082f"}, "game-menu-thinking-card": {"src": "assets/games/kg/game-menu-thinking-card.webp?v=cee0ddad"}, "game-odd-card": {"src": "assets/games/kg/game-odd-card.webp?v=e271e902"}, "game-pat-card": {"src": "assets/games/kg/game-pat-card.webp?v=5405c88d"}, "game-puzzle-card": {"src": "assets/games/kg/game-puzzle-card.webp?v=7625283c"}, "game-robot-card": {"src": "assets/games/kg/game-robot-card.webp?v=b27c7d25"}, "game-robot-happy": {"src": "assets/games/kg/game-robot-happy.webp?v=589d9156"}, "game-robot-idle": {"src": "assets/games/kg/game-robot-idle.webp?v=3b0ee993"}, "game-rock": {"src": "assets/games/kg/game-rock.webp?v=1913286a"}, "game-shp-card": {"src": "assets/games/kg/game-shp-card.webp?v=72a03fc0"}, "game-star-pickup": {"src": "assets/games/kg/game-star-pickup.webp?v=0deaf77d"}, "game-story-card": {"src": "assets/games/kg/game-story-card.webp?v=108737a5"}, "game-table": {"src": "assets/games/kg/game-table.webp?v=fca2dfd0"}, "game-tile": {"src": "assets/games/kg/game-tile.webp?v=f9a2c4be"}, "game-where-card": {"src": "assets/games/kg/game-where-card.webp?v=0954b4b0"}, "gift-box": {"sm": "assets/rewards/gift-box-sm.webp?v=1c8bdcf7", "src": "assets/rewards/gift-box.webp?v=3b7a81d4"}, "goal-flag": {"sm": "assets/rewards/goal-flag-sm.webp?v=8259ef3c", "src": "assets/rewards/goal-flag.webp?v=b985d6e3"}, "grade-g3": {"src": "assets/catalog/grade-g3.webp?v=7958ebb3"}, "grade-g4": {"src": "assets/catalog/grade-g4.webp?v=89c4c7c8"}, "grade-kg": {"src": "assets/catalog/grade-kg.webp?v=779eda5b"}, "home-hero-koko": {"h": 897, "sm": "assets/hero/home-hero-koko-800.webp?v=97a51983", "src": "assets/hero/home-hero-koko.webp?v=5dcf99ef", "w": 1752}, "home-hero-koko-en": {"h": 897, "sm": "assets/hero/home-hero-koko-en-800.webp?v=0a3905aa", "src": "assets/hero/home-hero-koko-en.webp?v=ab64fdb4", "w": 1752}, "logo-mark": {"src": "assets/brand/logo-mark.webp?v=a84b8018"}, "mascot-celebrate": {"sm": "assets/mascot/mascot-celebrate-sm.webp?v=6810dbe4", "src": "assets/mascot/mascot-celebrate.webp?v=005d5012"}, "mascot-cheer": {"sm": "assets/mascot/mascot-cheer-sm.webp?v=3ad0200e", "src": "assets/mascot/mascot-cheer.webp?v=f8710677"}, "mascot-encourage": {"sm": "assets/mascot/mascot-encourage-sm.webp?v=bdda60d5", "src": "assets/mascot/mascot-encourage.webp?v=4e80aa54"}, "mascot-point": {"sm": "assets/mascot/mascot-point-sm.webp?v=6153cf96", "src": "assets/mascot/mascot-point.webp?v=6859f657"}, "mascot-read": {"sm": "assets/mascot/mascot-read-sm.webp?v=44d4b4ec", "src": "assets/mascot/mascot-read.webp?v=32cebb26"}, "mascot-sad-soft": {"sm": "assets/mascot/mascot-sad-soft-sm.webp?v=7c48cd9b", "src": "assets/mascot/mascot-sad-soft.webp?v=e462a8c3"}, "mascot-sleep": {"sm": "assets/mascot/mascot-sleep-sm.webp?v=a40c591e", "src": "assets/mascot/mascot-sleep.webp?v=17cef48b"}, "mascot-thinking": {"sm": "assets/mascot/mascot-thinking-sm.webp?v=cf7d4403", "src": "assets/mascot/mascot-thinking.webp?v=9e576780"}, "mascot-welcome": {"sm": "assets/mascot/mascot-welcome-sm.webp?v=cd73231e", "src": "assets/mascot/mascot-welcome.webp?v=b067b2bf"}, "reward-ball": {"sm": "assets/rewards/reward-ball-sm.webp?v=6956a840", "src": "assets/rewards/reward-ball.webp?v=3871cebf"}, "reward-beach": {"sm": "assets/rewards/reward-beach-sm.webp?v=462ce532", "src": "assets/rewards/reward-beach.webp?v=d8821a23"}, "reward-bike": {"sm": "assets/rewards/reward-bike-sm.webp?v=f4340740", "src": "assets/rewards/reward-bike.webp?v=da4fb8ba"}, "reward-boardgame": {"sm": "assets/rewards/reward-boardgame-sm.webp?v=78c7560b", "src": "assets/rewards/reward-boardgame.webp?v=3be7cfa1"}, "reward-books": {"sm": "assets/rewards/reward-books-sm.webp?v=2c610388", "src": "assets/rewards/reward-books.webp?v=95623de9"}, "reward-cake": {"sm": "assets/rewards/reward-cake-sm.webp?v=c42a35cd", "src": "assets/rewards/reward-cake.webp?v=8b23435f"}, "reward-camera": {"sm": "assets/rewards/reward-camera-sm.webp?v=abf14bb9", "src": "assets/rewards/reward-camera.webp?v=ce9e7ad9"}, "reward-cinema": {"sm": "assets/rewards/reward-cinema-sm.webp?v=5444aa46", "src": "assets/rewards/reward-cinema.webp?v=7a692f4b"}, "reward-crafts": {"sm": "assets/rewards/reward-crafts-sm.webp?v=c175eafd", "src": "assets/rewards/reward-crafts.webp?v=5eb5b4e1"}, "reward-dinner": {"sm": "assets/rewards/reward-dinner-sm.webp?v=0032bdc3", "src": "assets/rewards/reward-dinner.webp?v=5b53de38"}, "reward-friend": {"sm": "assets/rewards/reward-friend-sm.webp?v=5c0fc917", "src": "assets/rewards/reward-friend.webp?v=5fb0b1a2"}, "reward-icecream": {"sm": "assets/rewards/reward-icecream-sm.webp?v=1c723ac2", "src": "assets/rewards/reward-icecream.webp?v=ceb2b1de"}, "reward-ipad": {"sm": "assets/rewards/reward-ipad-sm.webp?v=85a38283", "src": "assets/rewards/reward-ipad.webp?v=c62a55c3"}, "reward-juice": {"sm": "assets/rewards/reward-juice-sm.webp?v=3ff4e62e", "src": "assets/rewards/reward-juice.webp?v=c8b55a08"}, "reward-lego": {"sm": "assets/rewards/reward-lego-sm.webp?v=ca7f0a83", "src": "assets/rewards/reward-lego.webp?v=9a37a17a"}, "reward-money": {"sm": "assets/rewards/reward-money-sm.webp?v=a77db76a", "src": "assets/rewards/reward-money.webp?v=b5a75914"}, "reward-movie": {"sm": "assets/rewards/reward-movie-sm.webp?v=7256675d", "src": "assets/rewards/reward-movie.webp?v=2e78ec0e"}, "reward-music": {"sm": "assets/rewards/reward-music-sm.webp?v=b1f41f3b", "src": "assets/rewards/reward-music.webp?v=25dd12bd"}, "reward-outing": {"sm": "assets/rewards/reward-outing-sm.webp?v=e1b9f6ce", "src": "assets/rewards/reward-outing.webp?v=8f8d8106"}, "reward-park": {"sm": "assets/rewards/reward-park-sm.webp?v=f0aa6ddc", "src": "assets/rewards/reward-park.webp?v=59d128dd"}, "reward-pet": {"sm": "assets/rewards/reward-pet-sm.webp?v=bfe1f2f7", "src": "assets/rewards/reward-pet.webp?v=d80ceadc"}, "reward-pizza": {"sm": "assets/rewards/reward-pizza-sm.webp?v=c7d8c49e", "src": "assets/rewards/reward-pizza.webp?v=8066bcc5"}, "reward-plant": {"sm": "assets/rewards/reward-plant-sm.webp?v=656a2251", "src": "assets/rewards/reward-plant.webp?v=fe6bf31a"}, "reward-playstation": {"sm": "assets/rewards/reward-playstation-sm.webp?v=81b2adff", "src": "assets/rewards/reward-playstation.webp?v=b153b64c"}, "reward-restaurant": {"sm": "assets/rewards/reward-restaurant-sm.webp?v=7fe2cfb1", "src": "assets/rewards/reward-restaurant.webp?v=ff9fc752"}, "reward-shopping": {"sm": "assets/rewards/reward-shopping-sm.webp?v=e4f654d2", "src": "assets/rewards/reward-shopping.webp?v=ec7ee29d"}, "reward-sleepover": {"sm": "assets/rewards/reward-sleepover-sm.webp?v=f718d6d7", "src": "assets/rewards/reward-sleepover.webp?v=6470efa0"}, "reward-stayup": {"sm": "assets/rewards/reward-stayup-sm.webp?v=a6544897", "src": "assets/rewards/reward-stayup.webp?v=330d5da2"}, "reward-story": {"sm": "assets/rewards/reward-story-sm.webp?v=c94ce39f", "src": "assets/rewards/reward-story.webp?v=8d4d4d03"}, "reward-sweets": {"sm": "assets/rewards/reward-sweets-sm.webp?v=37dacfc8", "src": "assets/rewards/reward-sweets.webp?v=a08111f0"}, "reward-swim": {"sm": "assets/rewards/reward-swim-sm.webp?v=da3c6ae8", "src": "assets/rewards/reward-swim.webp?v=4770f728"}, "reward-toy": {"sm": "assets/rewards/reward-toy-sm.webp?v=17f185ca", "src": "assets/rewards/reward-toy.webp?v=496683f7"}, "reward-trip": {"sm": "assets/rewards/reward-trip-sm.webp?v=2f647dd2", "src": "assets/rewards/reward-trip.webp?v=2e58364c"}, "star": {"sm": "assets/rewards/star-sm.webp?v=7494dcf0", "src": "assets/rewards/star.webp?v=82bbc3df"}, "star-burst": {"sm": "assets/rewards/star-burst-sm.webp?v=e6b89162", "src": "assets/rewards/star-burst.webp?v=67a002db"}, "subject-arabic": {"src": "assets/catalog/subject-arabic.webp?v=a9ec1ebd"}, "subject-early": {"src": "assets/catalog/subject-early.webp?v=d0e3cae8"}, "subject-english": {"src": "assets/catalog/subject-english.webp?v=ef86cd82"}, "subject-math": {"src": "assets/catalog/subject-math.webp?v=e1e4c4a6"}, "subject-science": {"src": "assets/catalog/subject-science.webp?v=0fd11b25"}, "subject-stories": {"src": "assets/catalog/subject-stories.webp?v=53ec6919"}, "topic-ani": {"src": "assets/dict/topic-ani.webp?v=0e50af4e"}, "topic-body": {"src": "assets/dict/topic-body.webp?v=017bf6a6"}, "topic-fam": {"src": "assets/dict/topic-fam.webp?v=f337c954"}, "topic-food": {"src": "assets/dict/topic-food.webp?v=d5ef2d1e"}, "topic-home": {"src": "assets/dict/topic-home.webp?v=0925e96d"}, "topic-job": {"src": "assets/dict/topic-job.webp?v=2f41c84a"}, "topic-nat": {"src": "assets/dict/topic-nat.webp?v=3e560ec9"}, "topic-sch": {"src": "assets/dict/topic-sch.webp?v=fcd23112"}, "topic-sport": {"src": "assets/dict/topic-sport.webp?v=960cda80"}, "topic-time": {"src": "assets/dict/topic-time.webp?v=4bb719b7"}, "topic-town": {"src": "assets/dict/topic-town.webp?v=43193a68"}, "topic-trans": {"src": "assets/dict/topic-trans.webp?v=08df9109"}, "unit-g3sci-eco-cover": {"src": "assets/units/unit-g3sci-eco-cover.webp?v=9fcac7f0"}, "unit-g3sci-living-cover": {"src": "assets/units/unit-g3sci-living-cover.webp?v=9df3e817"}, "unit-g3sci-weather-cover": {"src": "assets/units/unit-g3sci-weather-cover.webp?v=a8cfee9b"}, "unit-g3sciearth-cover": {"src": "assets/units/unit-g3sciearth-cover.webp?v=7feef6dd"}, "unit-g4sci-animals-cover": {"src": "assets/units/unit-g4sci-animals-cover.webp?v=c04c28c6"}, "unit-g4sci-cells-cover": {"src": "assets/units/unit-g4sci-cells-cover.webp?v=2226c4e3"}, "unit-g4scieco-cover": {"src": "assets/units/unit-g4scieco-cover.webp?v=90e1452a"}, "unit-g4scihealth-cover": {"src": "assets/units/unit-g4scihealth-cover.webp?v=bb6a15af"}};window.HS_PICMAP = {};</script>
+<script>window.HS_ART = {"app-icon": {"src": "assets/brand/app-icon.webp?v=533e3fe7"}, "avatar-boy-cap": {"face": "assets/avatars/avatar-boy-cap-face.webp?v=a141845d", "sm": "assets/avatars/avatar-boy-cap-sm.webp?v=cfba0268", "src": "assets/avatars/avatar-boy-cap.webp?v=3c40d2de"}, "avatar-boy-cap-happy": {"sm": "assets/avatars/avatar-boy-cap-happy-sm.webp?v=3f21b97e", "src": "assets/avatars/avatar-boy-cap-happy.webp?v=f43904e8"}, "avatar-boy-curly": {"face": "assets/avatars/avatar-boy-curly-face.webp?v=57841f85", "sm": "assets/avatars/avatar-boy-curly-sm.webp?v=304566de", "src": "assets/avatars/avatar-boy-curly.webp?v=a80fa1de"}, "avatar-boy-curly-happy": {"sm": "assets/avatars/avatar-boy-curly-happy-sm.webp?v=661c004f", "src": "assets/avatars/avatar-boy-curly-happy.webp?v=8282e13c"}, "avatar-boy-glasses": {"face": "assets/avatars/avatar-boy-glasses-face.webp?v=8d5864c6", "sm": "assets/avatars/avatar-boy-glasses-sm.webp?v=3dea0c19", "src": "assets/avatars/avatar-boy-glasses.webp?v=08ce23fc"}, "avatar-boy-glasses-happy": {"sm": "assets/avatars/avatar-boy-glasses-happy-sm.webp?v=df820f2a", "src": "assets/avatars/avatar-boy-glasses-happy.webp?v=ce545363"}, "avatar-boy-thobe": {"face": "assets/avatars/avatar-boy-thobe-face.webp?v=9492ad0d", "sm": "assets/avatars/avatar-boy-thobe-sm.webp?v=5551bf21", "src": "assets/avatars/avatar-boy-thobe.webp?v=e3ffe026"}, "avatar-boy-thobe-happy": {"sm": "assets/avatars/avatar-boy-thobe-happy-sm.webp?v=1c55e5ce", "src": "assets/avatars/avatar-boy-thobe-happy.webp?v=e2fda73a"}, "avatar-bunny": {"face": "assets/avatars/avatar-bunny-face.webp?v=d89c989b", "sm": "assets/avatars/avatar-bunny-sm.webp?v=87b59994", "src": "assets/avatars/avatar-bunny.webp?v=9ed97b83"}, "avatar-bunny-happy": {"sm": "assets/avatars/avatar-bunny-happy-sm.webp?v=ea60493a", "src": "assets/avatars/avatar-bunny-happy.webp?v=26b3680c"}, "avatar-cat": {"face": "assets/avatars/avatar-cat-face.webp?v=46b7adbb", "sm": "assets/avatars/avatar-cat-sm.webp?v=88a082b5", "src": "assets/avatars/avatar-cat.webp?v=ba65c134"}, "avatar-cat-happy": {"sm": "assets/avatars/avatar-cat-happy-sm.webp?v=ba12cf85", "src": "assets/avatars/avatar-cat-happy.webp?v=4534972c"}, "avatar-cloud-pal": {"face": "assets/avatars/avatar-cloud-pal-face.webp?v=e328e5e6", "sm": "assets/avatars/avatar-cloud-pal-sm.webp?v=72f83586", "src": "assets/avatars/avatar-cloud-pal.webp?v=d7d9fa54"}, "avatar-cloud-pal-happy": {"sm": "assets/avatars/avatar-cloud-pal-happy-sm.webp?v=4acb4c61", "src": "assets/avatars/avatar-cloud-pal-happy.webp?v=0eae0d2b"}, "avatar-dragon": {"face": "assets/avatars/avatar-dragon-face.webp?v=f7074338", "sm": "assets/avatars/avatar-dragon-sm.webp?v=662c5cd7", "src": "assets/avatars/avatar-dragon.webp?v=b086d9c9"}, "avatar-dragon-happy": {"sm": "assets/avatars/avatar-dragon-happy-sm.webp?v=954294d8", "src": "assets/avatars/avatar-dragon-happy.webp?v=66192114"}, "avatar-fox": {"face": "assets/avatars/avatar-fox-face.webp?v=bd3b0faa", "sm": "assets/avatars/avatar-fox-sm.webp?v=1c51a486", "src": "assets/avatars/avatar-fox.webp?v=4342f72a"}, "avatar-fox-happy": {"sm": "assets/avatars/avatar-fox-happy-sm.webp?v=5dd0f38c", "src": "assets/avatars/avatar-fox-happy.webp?v=3a9dd299"}, "avatar-girl-bob": {"face": "assets/avatars/avatar-girl-bob-face.webp?v=0316c635", "sm": "assets/avatars/avatar-girl-bob-sm.webp?v=d43cb252", "src": "assets/avatars/avatar-girl-bob.webp?v=b0ee7741"}, "avatar-girl-bob-happy": {"sm": "assets/avatars/avatar-girl-bob-happy-sm.webp?v=255b24f6", "src": "assets/avatars/avatar-girl-bob-happy.webp?v=261f3b3a"}, "avatar-girl-braids": {"face": "assets/avatars/avatar-girl-braids-face.webp?v=348635ec", "sm": "assets/avatars/avatar-girl-braids-sm.webp?v=7b7d3436", "src": "assets/avatars/avatar-girl-braids.webp?v=c9b7e473"}, "avatar-girl-braids-happy": {"sm": "assets/avatars/avatar-girl-braids-happy-sm.webp?v=a7167afa", "src": "assets/avatars/avatar-girl-braids-happy.webp?v=ba4d986c"}, "avatar-girl-ponytail": {"face": "assets/avatars/avatar-girl-ponytail-face.webp?v=d65332a0", "sm": "assets/avatars/avatar-girl-ponytail-sm.webp?v=983bea63", "src": "assets/avatars/avatar-girl-ponytail.webp?v=29589d4f"}, "avatar-girl-ponytail-happy": {"sm": "assets/avatars/avatar-girl-ponytail-happy-sm.webp?v=de720f4e", "src": "assets/avatars/avatar-girl-ponytail-happy.webp?v=26722f72"}, "avatar-girl-waves": {"face": "assets/avatars/avatar-girl-waves-face.webp?v=64be61eb", "sm": "assets/avatars/avatar-girl-waves-sm.webp?v=57e3e56f", "src": "assets/avatars/avatar-girl-waves.webp?v=6d6eb285"}, "avatar-girl-waves-happy": {"sm": "assets/avatars/avatar-girl-waves-happy-sm.webp?v=0d29b796", "src": "assets/avatars/avatar-girl-waves-happy.webp?v=812fde7e"}, "avatar-lion": {"face": "assets/avatars/avatar-lion-face.webp?v=7d5fa2f1", "sm": "assets/avatars/avatar-lion-sm.webp?v=71afd643", "src": "assets/avatars/avatar-lion.webp?v=8544d2d7"}, "avatar-lion-happy": {"sm": "assets/avatars/avatar-lion-happy-sm.webp?v=e90b743b", "src": "assets/avatars/avatar-lion-happy.webp?v=68ea3406"}, "avatar-panda": {"face": "assets/avatars/avatar-panda-face.webp?v=d6751a33", "sm": "assets/avatars/avatar-panda-sm.webp?v=35107fa4", "src": "assets/avatars/avatar-panda.webp?v=d0c514b1"}, "avatar-panda-happy": {"sm": "assets/avatars/avatar-panda-happy-sm.webp?v=b08db662", "src": "assets/avatars/avatar-panda-happy.webp?v=d3ba8d34"}, "avatar-robot": {"face": "assets/avatars/avatar-robot-face.webp?v=cf54be3e", "sm": "assets/avatars/avatar-robot-sm.webp?v=ca08459a", "src": "assets/avatars/avatar-robot.webp?v=78c1be2b"}, "avatar-robot-happy": {"sm": "assets/avatars/avatar-robot-happy-sm.webp?v=bf0e7a42", "src": "assets/avatars/avatar-robot-happy.webp?v=e88ea635"}, "avatar-star-sprite": {"face": "assets/avatars/avatar-star-sprite-face.webp?v=21cac4b7", "sm": "assets/avatars/avatar-star-sprite-sm.webp?v=ff6068aa", "src": "assets/avatars/avatar-star-sprite.webp?v=6a94d9ab"}, "avatar-star-sprite-happy": {"sm": "assets/avatars/avatar-star-sprite-happy-sm.webp?v=f269b8bf", "src": "assets/avatars/avatar-star-sprite-happy.webp?v=f522fc79"}, "avatar-unicorn": {"face": "assets/avatars/avatar-unicorn-face.webp?v=437c2041", "sm": "assets/avatars/avatar-unicorn-sm.webp?v=9c763377", "src": "assets/avatars/avatar-unicorn.webp?v=3e017bab"}, "avatar-unicorn-happy": {"sm": "assets/avatars/avatar-unicorn-happy-sm.webp?v=b7b69501", "src": "assets/avatars/avatar-unicorn-happy.webp?v=4ce0efe1"}, "badge-champion-earned": {"sm": "assets/badges/badge-champion-earned-sm.webp?v=f329063c", "src": "assets/badges/badge-champion-earned.webp?v=0cb98de2"}, "badge-lesson-earned": {"sm": "assets/badges/badge-lesson-earned-sm.webp?v=7cbf6699", "src": "assets/badges/badge-lesson-earned.webp?v=712f5e93"}, "badge-stars100-earned": {"sm": "assets/badges/badge-stars100-earned-sm.webp?v=5448dc7b", "src": "assets/badges/badge-stars100-earned.webp?v=d23bd54b"}, "badge-streak3-earned": {"sm": "assets/badges/badge-streak3-earned-sm.webp?v=d8380835", "src": "assets/badges/badge-streak3-earned.webp?v=44a0279f"}, "coupon": {"sm": "assets/rewards/coupon-sm.webp?v=adf8cb38", "src": "assets/rewards/coupon.webp?v=e9500a31"}, "dict-cover": {"src": "assets/catalog/dict-cover.webp?v=0a3cfa8a"}, "dict-mode-ar": {"src": "assets/catalog/dict-mode-ar.webp?v=e773320e"}, "dict-mode-en": {"src": "assets/catalog/dict-mode-en.webp?v=13f72224"}, "game-ani-card": {"src": "assets/games/kg/game-ani-card.webp?v=20309fbd"}, "game-apple-goal": {"src": "assets/games/kg/game-apple-goal.webp?v=59ac9813"}, "game-ball": {"src": "assets/games/kg/game-ball.webp?v=9a03bfc9"}, "game-basket": {"src": "assets/games/kg/game-basket.webp?v=e6e83216"}, "game-basket-card": {"src": "assets/games/kg/game-basket-card.webp?v=73196fcd"}, "game-box": {"src": "assets/games/kg/game-box.webp?v=c2c1545c"}, "game-card-back": {"src": "assets/games/kg/game-card-back.webp?v=86dffd24"}, "game-col-card": {"src": "assets/games/kg/game-col-card.webp?v=08389023"}, "game-compose-card": {"src": "assets/games/kg/game-compose-card.webp?v=7358964e"}, "game-count-card": {"src": "assets/games/kg/game-count-card.webp?v=85ec2859"}, "game-first-card": {"src": "assets/games/kg/game-first-card.webp?v=125206d6"}, "game-memory-card": {"src": "assets/games/kg/game-memory-card.webp?v=6ce4b50d"}, "game-menu-arabic-card": {"src": "assets/games/kg/game-menu-arabic-card.webp?v=9cb58504"}, "game-menu-english-card": {"src": "assets/games/kg/game-menu-english-card.webp?v=2065cbc0"}, "game-menu-numbers-card": {"src": "assets/games/kg/game-menu-numbers-card.webp?v=6dd2082f"}, "game-menu-thinking-card": {"src": "assets/games/kg/game-menu-thinking-card.webp?v=cee0ddad"}, "game-odd-card": {"src": "assets/games/kg/game-odd-card.webp?v=e271e902"}, "game-pat-card": {"src": "assets/games/kg/game-pat-card.webp?v=5405c88d"}, "game-puzzle-card": {"src": "assets/games/kg/game-puzzle-card.webp?v=7625283c"}, "game-robot-card": {"src": "assets/games/kg/game-robot-card.webp?v=b27c7d25"}, "game-robot-happy": {"src": "assets/games/kg/game-robot-happy.webp?v=589d9156"}, "game-robot-idle": {"src": "assets/games/kg/game-robot-idle.webp?v=3b0ee993"}, "game-rock": {"src": "assets/games/kg/game-rock.webp?v=1913286a"}, "game-shp-card": {"src": "assets/games/kg/game-shp-card.webp?v=72a03fc0"}, "game-star-pickup": {"src": "assets/games/kg/game-star-pickup.webp?v=0deaf77d"}, "game-story-card": {"src": "assets/games/kg/game-story-card.webp?v=108737a5"}, "game-table": {"src": "assets/games/kg/game-table.webp?v=fca2dfd0"}, "game-tile": {"src": "assets/games/kg/game-tile.webp?v=f9a2c4be"}, "game-where-card": {"src": "assets/games/kg/game-where-card.webp?v=0954b4b0"}, "gift-box": {"sm": "assets/rewards/gift-box-sm.webp?v=1c8bdcf7", "src": "assets/rewards/gift-box.webp?v=3b7a81d4"}, "goal-flag": {"sm": "assets/rewards/goal-flag-sm.webp?v=8259ef3c", "src": "assets/rewards/goal-flag.webp?v=b985d6e3"}, "grade-g3": {"src": "assets/catalog/grade-g3.webp?v=7958ebb3"}, "grade-g4": {"src": "assets/catalog/grade-g4.webp?v=89c4c7c8"}, "grade-kg": {"src": "assets/catalog/grade-kg.webp?v=779eda5b"}, "home-hero-koko": {"h": 897, "sm": "assets/hero/home-hero-koko-800.webp?v=97a51983", "src": "assets/hero/home-hero-koko.webp?v=5dcf99ef", "w": 1752}, "home-hero-koko-en": {"h": 897, "sm": "assets/hero/home-hero-koko-en-800.webp?v=0a3905aa", "src": "assets/hero/home-hero-koko-en.webp?v=ab64fdb4", "w": 1752}, "logo-mark": {"src": "assets/brand/logo-mark.webp?v=a84b8018"}, "mascot-celebrate": {"sm": "assets/mascot/mascot-celebrate-sm.webp?v=6810dbe4", "src": "assets/mascot/mascot-celebrate.webp?v=005d5012"}, "mascot-cheer": {"sm": "assets/mascot/mascot-cheer-sm.webp?v=3ad0200e", "src": "assets/mascot/mascot-cheer.webp?v=f8710677"}, "mascot-encourage": {"sm": "assets/mascot/mascot-encourage-sm.webp?v=bdda60d5", "src": "assets/mascot/mascot-encourage.webp?v=4e80aa54"}, "mascot-point": {"sm": "assets/mascot/mascot-point-sm.webp?v=6153cf96", "src": "assets/mascot/mascot-point.webp?v=6859f657"}, "mascot-read": {"sm": "assets/mascot/mascot-read-sm.webp?v=44d4b4ec", "src": "assets/mascot/mascot-read.webp?v=32cebb26"}, "mascot-sad-soft": {"sm": "assets/mascot/mascot-sad-soft-sm.webp?v=7c48cd9b", "src": "assets/mascot/mascot-sad-soft.webp?v=e462a8c3"}, "mascot-sleep": {"sm": "assets/mascot/mascot-sleep-sm.webp?v=a40c591e", "src": "assets/mascot/mascot-sleep.webp?v=17cef48b"}, "mascot-thinking": {"sm": "assets/mascot/mascot-thinking-sm.webp?v=cf7d4403", "src": "assets/mascot/mascot-thinking.webp?v=9e576780"}, "mascot-welcome": {"sm": "assets/mascot/mascot-welcome-sm.webp?v=cd73231e", "src": "assets/mascot/mascot-welcome.webp?v=b067b2bf"}, "math-apple": {"src": "assets/content/math/apple.webp?v=d629fec5"}, "math-ball": {"src": "assets/content/math/ball.webp?v=2c23f1e2"}, "math-balloon": {"src": "assets/content/math/balloon.webp?v=3beb28f8"}, "math-bird": {"src": "assets/content/math/bird.webp?v=8bf52c3a"}, "math-book": {"src": "assets/content/math/book.webp?v=4bb12466"}, "math-cookie": {"src": "assets/content/math/cookie.webp?v=a69fd3e4"}, "math-crayon": {"src": "assets/content/math/crayon.webp?v=83233a9a"}, "math-date": {"src": "assets/content/math/date.webp?v=5ef56db3"}, "math-egg": {"src": "assets/content/math/egg.webp?v=766886a3"}, "math-fish": {"src": "assets/content/math/fish.webp?v=b8beeb69"}, "math-flower": {"src": "assets/content/math/flower.webp?v=a2143ce4"}, "math-marble": {"src": "assets/content/math/marble.webp?v=36c004b0"}, "math-orange": {"src": "assets/content/math/orange.webp?v=e4d073b7"}, "math-pencil": {"src": "assets/content/math/pencil.webp?v=950c6234"}, "math-star": {"src": "assets/content/math/star.webp?v=5dd1f341"}, "math-toycar": {"src": "assets/content/math/toycar.webp?v=6d2b8f9f"}, "reward-ball": {"sm": "assets/rewards/reward-ball-sm.webp?v=6956a840", "src": "assets/rewards/reward-ball.webp?v=3871cebf"}, "reward-beach": {"sm": "assets/rewards/reward-beach-sm.webp?v=462ce532", "src": "assets/rewards/reward-beach.webp?v=d8821a23"}, "reward-bike": {"sm": "assets/rewards/reward-bike-sm.webp?v=f4340740", "src": "assets/rewards/reward-bike.webp?v=da4fb8ba"}, "reward-boardgame": {"sm": "assets/rewards/reward-boardgame-sm.webp?v=78c7560b", "src": "assets/rewards/reward-boardgame.webp?v=3be7cfa1"}, "reward-books": {"sm": "assets/rewards/reward-books-sm.webp?v=2c610388", "src": "assets/rewards/reward-books.webp?v=95623de9"}, "reward-cake": {"sm": "assets/rewards/reward-cake-sm.webp?v=c42a35cd", "src": "assets/rewards/reward-cake.webp?v=8b23435f"}, "reward-camera": {"sm": "assets/rewards/reward-camera-sm.webp?v=abf14bb9", "src": "assets/rewards/reward-camera.webp?v=ce9e7ad9"}, "reward-cinema": {"sm": "assets/rewards/reward-cinema-sm.webp?v=5444aa46", "src": "assets/rewards/reward-cinema.webp?v=7a692f4b"}, "reward-crafts": {"sm": "assets/rewards/reward-crafts-sm.webp?v=c175eafd", "src": "assets/rewards/reward-crafts.webp?v=5eb5b4e1"}, "reward-dinner": {"sm": "assets/rewards/reward-dinner-sm.webp?v=0032bdc3", "src": "assets/rewards/reward-dinner.webp?v=5b53de38"}, "reward-friend": {"sm": "assets/rewards/reward-friend-sm.webp?v=5c0fc917", "src": "assets/rewards/reward-friend.webp?v=5fb0b1a2"}, "reward-icecream": {"sm": "assets/rewards/reward-icecream-sm.webp?v=1c723ac2", "src": "assets/rewards/reward-icecream.webp?v=ceb2b1de"}, "reward-ipad": {"sm": "assets/rewards/reward-ipad-sm.webp?v=85a38283", "src": "assets/rewards/reward-ipad.webp?v=c62a55c3"}, "reward-juice": {"sm": "assets/rewards/reward-juice-sm.webp?v=3ff4e62e", "src": "assets/rewards/reward-juice.webp?v=c8b55a08"}, "reward-lego": {"sm": "assets/rewards/reward-lego-sm.webp?v=ca7f0a83", "src": "assets/rewards/reward-lego.webp?v=9a37a17a"}, "reward-money": {"sm": "assets/rewards/reward-money-sm.webp?v=a77db76a", "src": "assets/rewards/reward-money.webp?v=b5a75914"}, "reward-movie": {"sm": "assets/rewards/reward-movie-sm.webp?v=7256675d", "src": "assets/rewards/reward-movie.webp?v=2e78ec0e"}, "reward-music": {"sm": "assets/rewards/reward-music-sm.webp?v=b1f41f3b", "src": "assets/rewards/reward-music.webp?v=25dd12bd"}, "reward-outing": {"sm": "assets/rewards/reward-outing-sm.webp?v=e1b9f6ce", "src": "assets/rewards/reward-outing.webp?v=8f8d8106"}, "reward-park": {"sm": "assets/rewards/reward-park-sm.webp?v=f0aa6ddc", "src": "assets/rewards/reward-park.webp?v=59d128dd"}, "reward-pet": {"sm": "assets/rewards/reward-pet-sm.webp?v=bfe1f2f7", "src": "assets/rewards/reward-pet.webp?v=d80ceadc"}, "reward-pizza": {"sm": "assets/rewards/reward-pizza-sm.webp?v=c7d8c49e", "src": "assets/rewards/reward-pizza.webp?v=8066bcc5"}, "reward-plant": {"sm": "assets/rewards/reward-plant-sm.webp?v=656a2251", "src": "assets/rewards/reward-plant.webp?v=fe6bf31a"}, "reward-playstation": {"sm": "assets/rewards/reward-playstation-sm.webp?v=81b2adff", "src": "assets/rewards/reward-playstation.webp?v=b153b64c"}, "reward-restaurant": {"sm": "assets/rewards/reward-restaurant-sm.webp?v=7fe2cfb1", "src": "assets/rewards/reward-restaurant.webp?v=ff9fc752"}, "reward-shopping": {"sm": "assets/rewards/reward-shopping-sm.webp?v=e4f654d2", "src": "assets/rewards/reward-shopping.webp?v=ec7ee29d"}, "reward-sleepover": {"sm": "assets/rewards/reward-sleepover-sm.webp?v=f718d6d7", "src": "assets/rewards/reward-sleepover.webp?v=6470efa0"}, "reward-stayup": {"sm": "assets/rewards/reward-stayup-sm.webp?v=a6544897", "src": "assets/rewards/reward-stayup.webp?v=330d5da2"}, "reward-story": {"sm": "assets/rewards/reward-story-sm.webp?v=c94ce39f", "src": "assets/rewards/reward-story.webp?v=8d4d4d03"}, "reward-sweets": {"sm": "assets/rewards/reward-sweets-sm.webp?v=37dacfc8", "src": "assets/rewards/reward-sweets.webp?v=a08111f0"}, "reward-swim": {"sm": "assets/rewards/reward-swim-sm.webp?v=da3c6ae8", "src": "assets/rewards/reward-swim.webp?v=4770f728"}, "reward-toy": {"sm": "assets/rewards/reward-toy-sm.webp?v=17f185ca", "src": "assets/rewards/reward-toy.webp?v=496683f7"}, "reward-trip": {"sm": "assets/rewards/reward-trip-sm.webp?v=2f647dd2", "src": "assets/rewards/reward-trip.webp?v=2e58364c"}, "star": {"sm": "assets/rewards/star-sm.webp?v=7494dcf0", "src": "assets/rewards/star.webp?v=82bbc3df"}, "star-burst": {"sm": "assets/rewards/star-burst-sm.webp?v=e6b89162", "src": "assets/rewards/star-burst.webp?v=67a002db"}, "subject-arabic": {"src": "assets/catalog/subject-arabic.webp?v=a9ec1ebd"}, "subject-early": {"src": "assets/catalog/subject-early.webp?v=d0e3cae8"}, "subject-english": {"src": "assets/catalog/subject-english.webp?v=ef86cd82"}, "subject-math": {"src": "assets/catalog/subject-math.webp?v=e1e4c4a6"}, "subject-science": {"src": "assets/catalog/subject-science.webp?v=0fd11b25"}, "subject-stories": {"src": "assets/catalog/subject-stories.webp?v=53ec6919"}, "topic-ani": {"src": "assets/dict/topic-ani.webp?v=0e50af4e"}, "topic-body": {"src": "assets/dict/topic-body.webp?v=017bf6a6"}, "topic-fam": {"src": "assets/dict/topic-fam.webp?v=f337c954"}, "topic-food": {"src": "assets/dict/topic-food.webp?v=d5ef2d1e"}, "topic-home": {"src": "assets/dict/topic-home.webp?v=0925e96d"}, "topic-job": {"src": "assets/dict/topic-job.webp?v=2f41c84a"}, "topic-nat": {"src": "assets/dict/topic-nat.webp?v=3e560ec9"}, "topic-sch": {"src": "assets/dict/topic-sch.webp?v=fcd23112"}, "topic-sport": {"src": "assets/dict/topic-sport.webp?v=960cda80"}, "topic-time": {"src": "assets/dict/topic-time.webp?v=4bb719b7"}, "topic-town": {"src": "assets/dict/topic-town.webp?v=43193a68"}, "topic-trans": {"src": "assets/dict/topic-trans.webp?v=08df9109"}, "unit-g3sci-eco-cover": {"src": "assets/units/unit-g3sci-eco-cover.webp?v=9fcac7f0"}, "unit-g3sci-living-cover": {"src": "assets/units/unit-g3sci-living-cover.webp?v=9df3e817"}, "unit-g3sci-weather-cover": {"src": "assets/units/unit-g3sci-weather-cover.webp?v=a8cfee9b"}, "unit-g3sciearth-cover": {"src": "assets/units/unit-g3sciearth-cover.webp?v=7feef6dd"}, "unit-g4sci-animals-cover": {"src": "assets/units/unit-g4sci-animals-cover.webp?v=c04c28c6"}, "unit-g4sci-cells-cover": {"src": "assets/units/unit-g4sci-cells-cover.webp?v=2226c4e3"}, "unit-g4scieco-cover": {"src": "assets/units/unit-g4scieco-cover.webp?v=90e1452a"}, "unit-g4scihealth-cover": {"src": "assets/units/unit-g4scihealth-cover.webp?v=bb6a15af"}};window.HS_PICMAP = {};</script>
 <script>
 /* Short phrases the apps speak (praise, retry, etc.).
    Pure data: also read by tools/speech_list.js to pre-generate audio clips. */
@@ -1991,6 +2094,227 @@ window.HS_FIREBASE = {
 })();
 
 </script>
+<script>/* ===== unit: g3math5.js ===== */
+/* ============================================================
+   UNIT CONTENT: Grade 3 Maths, term 1, Chapter 5 «الضرب (٢)» (book pages 140–171)
+   Only content lives here. The unit engine (src/apps/unit) draws it; maths models and games: math.js.
+   Lessons follow the book: explore the table, ×3, ×6, look for a pattern, ×7, ×8, ×9, the associative property.
+   Typed-answer questions { t:'num', a, f:[a,b] } get strategy hints from math.js (never the answer).
+   ============================================================ */
+UNITS.g3math5 = {
+  id: 'g3math5',
+  title: 'مغامرة الضرب',
+  subtitle: 'رياضيات الصف الثالث – الفصل الخامس: الضرب (٢)',
+  em: '✖️',
+
+  lessons: [
+    {
+      id: 'l1', em: '🔢', title: 'جدول الضرب', short: 'العامل، ناتج الضرب، الخاصية الإبدالية',
+      idea: 'الضرب = جمع <b>مجموعات متساوية</b>. وجدول الضرب يجمع كل الحقائق في مكان واحد.',
+      blocks: [
+        { t: 'text', h: 'ما الضرب؟', html: 'زرع سعد <b>٣ صفوف</b>، في كل صف <b>٧ شتلات</b>. بدل أن نعدّها واحدة واحدة نضرب: ٣ × ٧ = ٢١.' },
+        { t: 'model', m: 'array', r: 3, c: 7, obj: 'seed', after: '<span class="term">العاملان</span>: ٣ و٧. <span class="term">ناتج الضرب</span>: ٢١.' },
+        { t: 'text', h: 'الخاصية الإبدالية', html: 'إذا بدّلنا مكان العاملين <b>لا يتغيّر</b> الناتج: ٣ × ٤ = ٤ × ٣ = ١٢. لذلك إذا عرفت حقيقة فقد عرفت أختها!' },
+        { t: 'model', m: 'array', r: 3, c: 4, after: '٣ صفوف في كل صف ٤ … أدِر الصورة: ٤ صفوف في كل صف ٣. العدد نفسه: ١٢.' },
+        { t: 'tiles', h: 'أسرار في الجدول 🔍', items: [
+          { em: '1️⃣', b: 'الضرب في ١', p: 'العدد نفسه: ٨ × ١ = ٨.', tone: 'sky' },
+          { em: '🔟', b: 'الضرب في ١٠', p: 'نضع صفرًا عن يمين العدد: ٦ × ١٠ = ٦٠.', tone: 'green' },
+          { em: '🪞', b: 'الصف = العمود', p: 'صف ٦ في الجدول هو نفسه عمود ٦ (الخاصية الإبدالية).', tone: 'sun' } ] }
+      ],
+      remember: ['العامل × العامل = ناتج الضرب', 'تبديل العاملين لا يغيّر الناتج', 'أي عدد × ١ = العدد نفسه']
+    },
+    {
+      id: 'l2', em: '🐥', title: 'الضرب في ٣', short: 'مجموعات من ٣، العدّ القفزي، ضعف ٢ وزيادة',
+      idea: 'نضرب في ٣ بالعدّ القفزي ٣، ٦، ٩… أو نضاعف ونزيد مجموعة.',
+      blocks: [
+        { t: 'text', h: '٤ دجاجات، مع كل دجاجة ٣ صيصان', html: 'كم صوصًا؟ نجمع ٣ + ٣ + ٣ + ٣ = ١٢، أي <b>٤ × ٣ = ١٢</b>.' },
+        { t: 'model', m: 'groups', n: 4, size: 3, obj: 'chick', box: 'nest' },
+        { t: 'tiles', h: 'طرق للضرب في ٣', items: [
+          { em: '🦘', b: 'العدّ القفزي', p: '٣، ٦، ٩، ١٢، ١٥، ١٨، ٢١، ٢٤، ٢٧، ٣٠', tone: 'sky' },
+          { em: '➕', b: 'ضعف ٢ ثم زيادة', p: '٣ × ٦ = (٢ × ٦) + ٦ = ١٢ + ٦ = ١٨', tone: 'green' },
+          { em: '🔲', b: 'المصفوفة', p: 'ارسم ٣ صفوف متساوية وعدّ.', tone: 'sun' } ] },
+        { t: 'text', h: 'العامل المجهول', html: '٣ × ؟ = ٢٧. نعدّ قفزًا بالـ٣ حتى نصل إلى ٢٧: <b>٩ قفزات</b>، فالعامل ٩.' }
+      ],
+      remember: ['الضرب في ٣ = الضرب في ٢ ثم زيادة مجموعة', 'نواتج ٣: ٣، ٦، ٩، ١٢، ١٥، ١٨، ٢١، ٢٤، ٢٧، ٣٠']
+    },
+    {
+      id: 'l3', em: '🐸', title: 'الضرب في ٦', short: 'ضعف الضرب في ٣',
+      idea: '<b>٦ = ضعف ٣</b>، فالضرب في ٦ هو ضعف الضرب في ٣.',
+      blocks: [
+        { t: 'text', h: '٤ ضفادع، أكل كل ضفدع ٦ حشرات', html: 'كم حشرة؟ ٤ × ٦ = ٢٤.' },
+        { t: 'model', m: 'array', r: 4, c: 6, obj: 'bug', split: 3, after: 'قسمنا الأعمدة الستة نصفين: ٤ × ٣ = ١٢، ومرة أخرى ١٢. المجموع ٢٤.' },
+        { t: 'tiles', items: [
+          { em: '✌️', b: 'ضاعف', p: '٦ × ٧: احسب ٣ × ٧ = ٢١، ثم ضاعف: ٢١ + ٢١ = ٤٢.', tone: 'green' },
+          { em: '🔁', b: 'بدّل', p: '٦ × ٤ = ٤ × ٦. اختر الأسهل.', tone: 'sky' } ] },
+        { t: 'text', h: 'العامل المجهول', html: '٤٨ خاتمًا في ٨ صفوف متساوية: ٨ × ؟ = ٤٨. الجواب <b>٦</b> لأن ٨ × ٦ = ٤٨.' }
+      ],
+      remember: ['الضرب في ٦ = ضعف الضرب في ٣', 'نواتج ٦: ٦، ١٢، ١٨، ٢٤، ٣٠، ٣٦، ٤٢، ٤٨، ٥٤، ٦٠']
+    },
+    {
+      id: 'l4', em: '🔍', title: 'البحث عن نمط', short: 'خطة حل المسألة',
+      idea: 'عندما تتكرّر قاعدة نكتب الأعداد في جدول، نكتشف القاعدة، ونكمل.',
+      blocks: [
+        { t: 'text', h: 'قطع هدى', html: 'صنعت هدى في الصف الأول ٢ قطعة، ثم ٤، ثم ٨… كل صف <b>ضعف</b> الذي قبله. نكمل: ١٦، ٣٢، فالصف السادس <b>٦٤</b>.' },
+        { t: 'html', html: '<table class="mt-table"><tr><th>الصف</th><td>١</td><td>٢</td><td>٣</td><td>٤</td><td>٥</td><td>٦</td></tr><tr><th>القطع</th><td>٢</td><td>٤</td><td>٨</td><td>١٦</td><td>٣٢</td><td>٦٤</td></tr></table>' },
+        { t: 'tiles', h: 'خطوات الحل', items: [
+          { em: '📖', b: 'أفهم', p: 'ما المعطيات؟ ماذا أريد أن أجد؟', tone: 'sky' },
+          { em: '🗺️', b: 'أخطّط', p: 'أكتب الأعداد في جدول وأبحث عن القاعدة.', tone: 'green' },
+          { em: '✏️', b: 'أحلّ', p: 'أكمل النمط بالقاعدة.', tone: 'sun' },
+          { em: '✅', b: 'أتحقّق', p: 'هل القاعدة تصلح لكل الأعداد؟', tone: 'violet' } ] }
+      ],
+      remember: ['اكتب الأعداد في جدول', 'ابحث عن القاعدة: كم نزيد أو نضرب كل مرة؟']
+    },
+    {
+      id: 'l5', em: '🚂', title: 'الضرب في ٧', short: '٧ = ٥ + ٢',
+      idea: 'نقسم ٧ إلى <b>٥ + ٢</b>: حقيقتان سهلتان، ثم نجمع.',
+      blocks: [
+        { t: 'text', h: 'قطار فيه ٥ عربات، في كل عربة ٧ مقاعد', html: 'كم مقعدًا؟ ٥ × ٧ = ٣٥.' },
+        { t: 'model', m: 'array', r: 6, c: 7, split: 5, after: '٦ × ٧ = (٦ × ٥) + (٦ × ٢) = ٣٠ + ١٢ = <b>٤٢</b>.' },
+        { t: 'text', h: 'العامل المجهول', html: '٢٨ سيارة، من كل لون ٧: كم لونًا؟ ٧ × ؟ = ٢٨ ← <b>٤</b> ألوان.' }
+      ],
+      remember: ['٧ × عدد = (٥ × العدد) + (٢ × العدد)', 'نواتج ٧: ٧، ١٤، ٢١، ٢٨، ٣٥، ٤٢، ٤٩، ٥٦، ٦٣، ٧٠']
+    },
+    {
+      id: 'l6', em: '🐦', title: 'الضرب في ٨', short: 'ضعف الضرب في ٤',
+      idea: '<b>٨ = ضعف ٤</b>: نحسب × ٤ ثم نضاعف.',
+      blocks: [
+        { t: 'text', h: '٦ أشجار، على كل شجرة ٨ عصافير', html: 'كم عصفورًا؟ ٦ × ٨ = ٤٨.' },
+        { t: 'model', m: 'array', r: 6, c: 8, split: 4, after: '٦ × ٤ = ٢٤، ومرة أخرى ٢٤: المجموع <b>٤٨</b>.' },
+        { t: 'tiles', items: [
+          { em: '✌️', b: 'ضاعف ٣ مرات', p: '٨ × ٣: ٣ ← ٦ ← ١٢ ← ٢٤', tone: 'green' },
+          { em: '🔁', b: 'بدّل', p: 'تعرف ٤ × ٨؟ إذن تعرف ٨ × ٤.', tone: 'sky' } ] }
+      ],
+      remember: ['الضرب في ٨ = ضعف الضرب في ٤', 'نواتج ٨: ٨، ١٦، ٢٤، ٣٢، ٤٠، ٤٨، ٥٦، ٦٤، ٧٢، ٨٠']
+    },
+    {
+      id: 'l7', em: '🫙', title: 'الضرب في ٩', short: '١٠ ناقص ١، وأنماط مدهشة',
+      idea: 'الضرب في ٩ = الضرب في ١٠ <b>ناقص مجموعة واحدة</b>.',
+      blocks: [
+        { t: 'text', h: '٨ صناديق، في كل صندوق ٩ مرطبانات', html: 'كم مرطبانًا؟ ٨ × ١٠ = ٨٠، ثم نطرح ٨: <b>٧٢</b>.' },
+        { t: 'model', m: 'array', r: 8, c: 10, split: 9, after: 'العمود البرتقالي زائد: نطرحه.' },
+        { t: 'tiles', h: 'نمطان في جدول ٩ ✨', items: [
+          { em: '🔟', b: 'العشرات', p: 'رقم العشرات أقل من العامل الآخر بواحد: ٦ × ٩ ← العشرات ٥.', tone: 'sun' },
+          { em: '➕', b: 'مجموع الرقمين ٩', p: '٥٤: ٥ + ٤ = ٩. فالناتج ٥٤.', tone: 'violet' } ] },
+        { t: 'text', h: 'من على حق؟', html: 'قالت فاطمة: ٩ × ٩ = ٧٢ + ٩ = ٨١ ✅. وقالت خلود: ٩ × ٩ = ٧٢ + ٨ ✗. خلود أضافت <b>٨</b> بدل مجموعة كاملة من <b>٩</b>.' }
+      ],
+      remember: ['٩ × عدد = (١٠ × العدد) − العدد', 'في نواتج ٩: مجموع الرقمين = ٩']
+    },
+    {
+      id: 'l8', em: '🤝', title: 'الخاصية التجميعية', short: 'نختار الزوج السهل',
+      idea: 'عند ضرب ثلاثة أعداد، <b>تغيير طريقة التجميع لا يغيّر الناتج</b>.',
+      blocks: [
+        { t: 'text', h: 'ثلاثة عوامل', html: '(٢ × ٣) × ٤ = ٦ × ٤ = ٢٤<br>٢ × (٣ × ٤) = ٢ × ١٢ = ٢٤' },
+        { t: 'tiles', items: [
+          { em: '🔟', b: 'ابحث عن ١٠', p: '٢ × ٧ × ٥: نضرب ٢ × ٥ = ١٠ أولًا، ثم ١٠ × ٧ = ٧٠.', tone: 'green' },
+          { em: '🧮', b: 'الأقواس أولًا', p: 'ما بين القوسين نحسبه قبل غيره.', tone: 'sky' } ] },
+        { t: 'text', h: 'العامل المجهول', html: '٢ × ٥ × ؟ = ٣٠ ← ١٠ × ؟ = ٣٠ ← العامل <b>٣</b>.' }
+      ],
+      remember: ['(أ × ب) × جـ = أ × (ب × جـ)', 'اضرب الزوج الذي يعطي ١٠ أو ٢٠ أولًا']
+    }
+  ],
+
+  glossary: [
+    { l: 'l1', em: '✖️', term: 'العامل', def: 'كل عدد من الأعداد التي نضربها. في ٣ × ٧ = ٢١ العاملان ٣ و٧.', short: 'العدد الذي نضربه' },
+    { l: 'l1', em: '🎯', term: 'ناتج الضرب', def: 'العدد الذي نحصل عليه بعد الضرب. في ٣ × ٧ = ٢١ الناتج ٢١.', short: 'جواب الضرب' },
+    { l: 'l1', em: '🔁', term: 'الخاصية الإبدالية', def: 'تبديل مكان العاملين لا يغيّر الناتج: ٤ × ٣ = ٣ × ٤.', short: 'نبدّل العاملين' },
+    { l: 'l1', em: '🔲', term: 'المصفوفة', def: 'أشياء مرتبة في صفوف وأعمدة متساوية، تساعدنا على رؤية الضرب.', short: 'صفوف متساوية' },
+    { l: 'l2', em: '🦘', term: 'العدّ القفزي', def: 'العدّ بزيادة العدد نفسه كل مرة: ٣، ٦، ٩، ١٢…', short: 'نعدّ بقفزات متساوية' },
+    { l: 'l2', em: '❓', term: 'العامل المجهول', def: 'عامل لا نعرفه في جملة ضرب، مثل ٣ × ؟ = ٢٧. نجده بحقائق الضرب.', short: 'العامل الناقص' },
+    { l: 'l4', em: '🔍', term: 'النمط', def: 'قاعدة تتكرّر في الأعداد أو الأشكال، فنستطيع أن نكملها.', short: 'قاعدة تتكرّر' },
+    { l: 'l8', em: '🤝', term: 'الخاصية التجميعية', def: 'تغيير طريقة تجميع العوامل لا يغيّر الناتج: (٢ × ٣) × ٤ = ٢ × (٣ × ٤).', short: 'نغيّر التجميع' }
+  ],
+
+  questions: [
+    /* l1: the table */
+    { id: 'm1', l: 'l1', t: 'mcq', q: 'في ٥ × ٤ = ٢٠، ما ناتج الضرب؟', o: ['٢٠', '٥', '٤', '٩'], a: 0, ex: 'ناتج الضرب هو الجواب: ٢٠. أما ٥ و٤ فهما العاملان.',
+      mis: { 1: '٥ عدد نضربه: هذا عامل. أين الجواب؟', 2: '٤ عدد نضربه: هذا عامل. أين الجواب؟', 3: '٩ = ٥ + ٤ وهذا جمع، لا ضرب.' } },
+    { id: 'm2', l: 'l1', t: 'tf', q: '٦ × ٣ = ٣ × ٦', a: true, ex: 'الخاصية الإبدالية: تبديل العاملين لا يغيّر الناتج. كلاهما ١٨.' },
+    { id: 'm3', l: 'l1', t: 'num', q: 'ما عدد النقاط في المصفوفة؟ (٤ صفوف، في كل صف ٥)', a: 20, f: [4, 5], model: { m: 'array', r: 4, c: 5 }, modelFirst: true },
+    { id: 'm4', l: 'l1', t: 'num', q: '٩ × ١ = ؟', a: 9, f: [9, 1], hint1: 'أي عدد مضروب في ١ يبقى كما هو.' },
+    { id: 'm5', l: 'l1', t: 'num', q: '٧ × ١٠ = ؟', a: 70, f: [7, 10], hint1: 'عند الضرب في ١٠ نضع صفرًا عن يمين العدد.' },
+    { id: 'm6', l: 'l1', t: 'mcq', q: 'تعرف أن ٨ × ٢ = ١٦. ما الحقيقة التي عرفتها معها؟', o: ['٢ × ٨ = ١٦', '٨ + ٢ = ١٦', '١٦ × ٢ = ٨', '٨ × ٢ = ١٠'], a: 0, ex: 'الخاصية الإبدالية: ٢ × ٨ له الناتج نفسه.' },
+    /* l2: ×3 */
+    { id: 'm7', l: 'l2', t: 'num', q: '٤ دجاجات، مع كل دجاجة ٣ صيصان. كم صوصًا؟', a: 12, f: [4, 3], model: { m: 'groups', n: 4, size: 3, obj: 'chick', box: 'nest' }, unit: 'صوصًا' },
+    { id: 'm8', l: 'l2', t: 'num', q: '٣ × ٧ = ؟', a: 21, f: [3, 7] },
+    { id: 'm9', l: 'l2', t: 'num', q: '٣ × ٩ = ؟', a: 27, f: [3, 9] },
+    { id: 'm10', l: 'l2', t: 'num', q: '٣ × ؟ = ١٨', a: 6, hint1: 'عدّ قفزًا بالـ٣: ٣، ٦، ٩… كم قفزة حتى ١٨؟', hint2: 'كم مجموعة من ٣ في ١٨؟' },
+    { id: 'm11', l: 'l2', t: 'mcq', q: 'أيّ جمع يساوي ٥ × ٣؟', o: ['٣ + ٣ + ٣ + ٣ + ٣', '٥ + ٣', '٥ + ٥ + ٥ + ٥ + ٥', '٣ + ٣ + ٣'], a: 0, ex: '٥ × ٣ = ٥ مجموعات، في كل مجموعة ٣. (و٥ + ٥ + ٥ يساوي ٣ × ٥، وناتجه أيضًا ١٥، لكنه ٣ مجموعات فقط.)',
+      mis: { 1: 'هذا جمع العددين مرة واحدة فقط. كم مجموعة نحتاج؟', 2: 'هنا ٥ مجموعات من ٥. نريد ٥ مجموعات من ٣.', 3: 'هذه ٣ مجموعات فقط. كم مجموعة في ٥ × ٣؟' } },
+    { id: 'm12', l: 'l2', t: 'num', q: 'سعر علبة الأقلام ٥ ريالات. كم ثمن ٣ علب؟', a: 15, f: [3, 5], unit: 'ريالًا' },
+    /* l3: ×6 */
+    { id: 'm13', l: 'l3', t: 'num', q: '٤ ضفادع، أكل كل ضفدع ٦ حشرات. كم حشرة؟', a: 24, f: [4, 6], unit: 'حشرة', model: { m: 'array', r: 4, c: 6, obj: 'bug', split: 3 } },
+    { id: 'm14', l: 'l3', t: 'num', q: '٦ × ٧ = ؟', a: 42, f: [6, 7] },
+    { id: 'm15', l: 'l3', t: 'num', q: '٦ × ٨ = ؟', a: 48, f: [6, 8] },
+    { id: 'm16', l: 'l3', t: 'num', q: '٨ × ؟ = ٤٨ (٤٨ خاتمًا في ٨ صفوف)', a: 6, hint1: 'أي عدد إذا ضربناه في ٨ أعطى ٤٨؟', hint2: 'جرّب: ٨ × ٥ = ٤٠. نحتاج ٨ أخرى.' },
+    { id: 'm17', l: 'l3', t: 'mcq', q: 'كيف نحسب ٦ × ٩ بسهولة؟', o: ['نحسب ٣ × ٩ ثم نضاعف', 'نحسب ٦ + ٩', 'نحسب ٣ × ٣', 'نحسب ٦ × ٦ ثم نطرح ٩'], a: 0, ex: '٦ ضعف ٣: ٣ × ٩ = ٢٧، ثم ٢٧ + ٢٧ = ٥٤.',
+      mis: { 1: 'هذا جمع. الضرب مجموعات متساوية.', 2: 'أين ذهب العامل ٩؟', 3: '٦ × ٦ = ٣٦ وليس فيه ٩. ابحث عن علاقة بين ٦ و٣.' } },
+    { id: 'm18', l: 'l3', t: 'tf', q: 'ناتج ٦ × ٥ ضعف ناتج ٣ × ٥.', a: true, ex: '٣ × ٥ = ١٥، و٦ × ٥ = ٣٠ = ضعف ١٥.' },
+    /* l4: pattern */
+    { id: 'm19', l: 'l4', t: 'num', q: 'أكمل النمط: ٢، ٤، ٨، ١٦، ؟', a: 32, hint1: 'كيف ننتقل من ٢ إلى ٤، ومن ٤ إلى ٨؟', hint2: 'كل عدد ضعف الذي قبله.' },
+    { id: 'm20', l: 'l4', t: 'num', q: 'أكمل النمط: ٧، ١٤، ٢١، ٢٨، ؟', a: 35, hint1: 'كم نزيد كل مرة؟', hint2: 'نزيد ٧ كل مرة: هذه نواتج الضرب في ٧.' },
+    { id: 'm21', l: 'l4', t: 'mcq', q: 'ادّخرت ريم ريالًا في الشهر الأول، و٢ في الثاني، و٣ في الثالث… ما القاعدة؟', o: ['نزيد ١ كل شهر', 'نضاعف كل شهر', 'نزيد ٢ كل شهر', 'نضرب في ٣'], a: 0, ex: '١، ٢، ٣، ٤… في كل شهر ريال واحد زيادة.' },
+    { id: 'm22', l: 'l4', t: 'num', q: 'يقفز أرنب ٣ خطوات إلى الأمام ثم خطوة إلى الخلف. بعد مرتين، كم خطوة تقدّم؟', a: 4, hint1: 'في المرة الواحدة: ٣ إلى الأمام وواحدة إلى الخلف. كم تقدّم؟', hint2: 'في كل مرة يتقدّم ٢.' },
+    /* l5: ×7 */
+    { id: 'm23', l: 'l5', t: 'num', q: 'قطار فيه ٥ عربات، في كل عربة ٧ مقاعد. كم مقعدًا؟', a: 35, f: [5, 7], unit: 'مقعدًا' },
+    { id: 'm24', l: 'l5', t: 'num', q: '٧ × ٦ = ؟', a: 42, f: [7, 6] },
+    { id: 'm25', l: 'l5', t: 'num', q: '٧ × ٨ = ؟', a: 56, f: [7, 8] },
+    { id: 'm26', l: 'l5', t: 'num', q: '٧ × ٧ = ؟', a: 49, f: [7, 7] },
+    { id: 'm27', l: 'l5', t: 'num', q: '٢٨ سيارة، من كل لون ٧ سيارات. كم لونًا؟', a: 4, hint1: '٧ × ؟ = ٢٨', hint2: 'عدّ قفزًا بالـ٧: ٧، ١٤، ٢١…' },
+    { id: 'm28', l: 'l5', t: 'mcq', q: 'أيّ طريقة صحيحة لحساب ٧ × ٤؟', o: ['(٥ × ٤) + (٢ × ٤)', '(٥ × ٤) + ٢', '٧ + ٤', '(٥ × ٢) + ٤'], a: 0, ex: '٧ = ٥ + ٢. نضرب كل جزء في ٤: ٢٠ + ٨ = ٢٨.',
+      mis: { 1: 'أضفنا ٢ فقط، لكننا نحتاج مجموعتين من ٤.', 2: 'هذا جمع وليس ضربًا.', 3: 'أين العامل ٤ في الجزء الأول؟' } },
+    /* l6: ×8 */
+    { id: 'm29', l: 'l6', t: 'num', q: '٦ أشجار، على كل شجرة ٨ عصافير. كم عصفورًا؟', a: 48, f: [6, 8], unit: 'عصفورًا' },
+    { id: 'm30', l: 'l6', t: 'num', q: '٨ × ٤ = ؟', a: 32, f: [8, 4] },
+    { id: 'm31', l: 'l6', t: 'num', q: '٨ × ٧ = ؟', a: 56, f: [8, 7] },
+    { id: 'm32', l: 'l6', t: 'num', q: '٨ × ٩ = ؟', a: 72, f: [8, 9] },
+    { id: 'm33', l: 'l6', t: 'num', q: 'ثمن الحليب ٤ ريالات في اليوم. كم ريالًا في ٨ أيام؟', a: 32, f: [8, 4], unit: 'ريالًا' },
+    { id: 'm34', l: 'l6', t: 'tf', q: 'ناتج ٨ × ٥ ضعف ناتج ٤ × ٥.', a: true, ex: '٤ × ٥ = ٢٠، و٨ × ٥ = ٤٠ = ضعف ٢٠.' },
+    /* l7: ×9 */
+    { id: 'm35', l: 'l7', t: 'num', q: '٨ صناديق، في كل صندوق ٩ مرطبانات. كم مرطبانًا؟', a: 72, f: [8, 9], unit: 'مرطبانًا' },
+    { id: 'm36', l: 'l7', t: 'num', q: '٩ × ٦ = ؟', a: 54, f: [9, 6] },
+    { id: 'm37', l: 'l7', t: 'num', q: '٩ × ٩ = ؟', a: 81, f: [9, 9] },
+    { id: 'm38', l: 'l7', t: 'mcq', q: 'في ٧ × ٩، ما رقم العشرات في الناتج؟', o: ['٦', '٧', '٩', '٣'], a: 0, ex: 'رقم العشرات أقل من ٧ بواحد: ٦. والآحاد ٣ (٦ + ٣ = ٩). الناتج ٦٣.',
+      mis: { 1: 'قريب! رقم العشرات أقل من العامل بواحد.', 2: '٩ هو العامل الثابت، وليس رقم العشرات.', 3: '٣ هو رقم الآحاد. ماذا عن العشرات؟' } },
+    { id: 'm39', l: 'l7', t: 'mcq', q: 'قالت خلود: ٩ × ٩ = ٧٢ + ٨ = ٨٠. ما خطؤها؟', o: ['أضافت ٨ بدل ٩', 'بدأت بـ٧٢ وهذا خطأ', 'كان يجب أن تطرح', 'لا خطأ'], a: 0, ex: '٩ × ٨ = ٧٢، وللوصول إلى ٩ × ٩ نضيف مجموعة كاملة من ٩: ٧٢ + ٩ = ٨١.',
+      mis: { 1: '٧٢ = ٨ × ٩ بداية صحيحة. انظر إلى ما أضافته.', 2: 'من ٨ مجموعات إلى ٩ مجموعات نضيف ولا نطرح.', 3: 'تحقّق: هل ٩ × ٩ = ٨٠؟' } },
+    { id: 'm40', l: 'l7', t: 'tf', q: 'مجموع رقمَي ٩ × ٤ يساوي ٩.', a: true, ex: '٩ × ٤ = ٣٦، و٣ + ٦ = ٩.' },
+    /* l8: associative */
+    { id: 'm41', l: 'l8', t: 'num', q: '٢ × ٧ × ٥ = ؟', a: 70, hint1: 'ابحث عن عددين ناتجهما ١٠.', hint2: '٢ × ٥ = ١٠، ثم ١٠ × ٧.' },
+    { id: 'm42', l: 'l8', t: 'num', q: '(٢ × ٣) × ٤ = ؟', a: 24, hint1: 'احسب ما بين القوسين أولًا: ٢ × ٣.', hint2: '٦ × ٤ = ؟' },
+    { id: 'm43', l: 'l8', t: 'num', q: '٢ × ٥ × ؟ = ٣٠', a: 3, hint1: '٢ × ٥ = ١٠. والآن: ١٠ × ؟ = ٣٠.', hint2: 'كم ١٠ في ٣٠؟' },
+    { id: 'm44', l: 'l8', t: 'mcq', q: 'أيّ الطرق أسهل لحساب ٥ × ٩ × ٢؟', o: ['(٥ × ٢) × ٩', '(٥ × ٩) × ٢', '٥ + ٩ + ٢', '(٩ × ٢) + ٥'], a: 0, ex: '٥ × ٢ = ١٠، و١٠ × ٩ = ٩٠. سهل! (الطريقة الثانية صحيحة أيضًا لكنها أصعب.)',
+      mis: { 1: 'صحيحة، لكن ٤٥ × ٢ أصعب. هل يوجد زوج يعطي ١٠؟', 2: 'هذا جمع وليس ضربًا.', 3: 'لماذا جمعنا ٥ ولم نضربها؟' } },
+    { id: 'm45', l: 'l8', t: 'tf', q: '(٣ × ٢) × ٥ = ٣ × (٢ × ٥)', a: true, ex: 'الخاصية التجميعية: كلاهما ٣٠.' }
+  ],
+
+  games: {
+    sort: [
+      { id: 'g1', l: 'l2', em: '3️⃣🦘', title: 'من عائلة ٣؟', ask: 'هل العدد من نواتج الضرب في ٣ (١ إلى ١٠)؟',
+        bins: [['من نواتج ٣', 'var(--t-green-btn)'], ['ليس منها', 'var(--t-blue)']],
+        items: [['🔢', '١٢', 0], ['🔢', '٢٧', 0], ['🔢', '١٨', 0], ['🔢', '٢١', 0], ['🔢', '١٦', 1], ['🔢', '٢٥', 1], ['🔢', '١٤', 1], ['🔢', '٣٠', 0]],
+        why: ['نصل إليها بالعدّ القفزي بالـ٣: ٣، ٦، ٩، ١٢…', 'لا نصل إليها بالقفز بالـ٣.'] },
+      { id: 'g2', l: 'l7', em: '9️⃣✨', title: 'من عائلة ٩؟', ask: 'تذكّر: في نواتج ٩ مجموع الرقمين ٩.',
+        bins: [['من نواتج ٩', 'var(--t-green-btn)'], ['ليس منها', 'var(--t-blue)']],
+        items: [['🔢', '٣٦', 0], ['🔢', '٥٤', 0], ['🔢', '٨١', 0], ['🔢', '٧٢', 0], ['🔢', '٤٥', 0], ['🔢', '٤٦', 1], ['🔢', '٦٤', 1], ['🔢', '٨٨', 1]],
+        why: ['مجموع رقميها ٩، وهي في جدول ٩.', 'مجموع رقميها ليس ٩.'] }
+    ],
+    order: [
+      { id: 'o1', l: 'l5', em: '7️⃣🦘', title: 'قفزات الـ٧', ask: 'رتّب نواتج الضرب في ٧ من الأصغر.',
+        sets: [[['🔢', '٧'], ['🔢', '١٤'], ['🔢', '٢١'], ['🔢', '٢٨'], ['🔢', '٣٥'], ['🔢', '٤٢']]] },
+      { id: 'o2', l: 'l6', em: '8️⃣🦘', title: 'قفزات الـ٨', ask: 'رتّب نواتج الضرب في ٨ من الأصغر.',
+        sets: [[['🔢', '٨'], ['🔢', '١٦'], ['🔢', '٢٤'], ['🔢', '٣٢'], ['🔢', '٤٠'], ['🔢', '٤٨']]] }
+    ]
+  },
+
+  parentTips: [
+    'اسأل «كيف عرفت؟» أكثر من «كم الناتج؟». الهدف استراتيجية يفهمها، لا حفظ أعمى.',
+    'الحقائق الصعبة تُبنى على السهلة: ٦ = ضعف ٣، ٨ = ضعف ٤، ٧ = ٥ + ٢، ٩ = ١٠ − ١.',
+    'العبوا «ثلاثة على استقامة واحدة» معًا على الورق أيضًا: لعبة الكتاب صفحة ١٥١.',
+    'تحدّي السرعة اختياري. السرعة تأتي بعد الفهم، والضغط بالوقت مبكرًا يزيد القلق من الرياضيات.'
+  ]
+};
+
+</script>
 <script>/* ===== unit: g3sciearth.js ===== */
 /* ============================================================
    UNIT CONTENT: Grade 3 Science, Unit 3 "Earth and its resources" (الأرض ومواردها)
@@ -2207,6 +2531,209 @@ UNITS.g3sciearth = {
     'أهم ما يخلط فيه الأطفال: التجوية (تكسير) والتعرية (نقل) والترسيب (تجمّع). لعبة «تجوية أم تعرية أم ترسيب؟» مخصّصة لهذا.',
     'كذلك: الصهارة (تحت الأرض) واللابة (فوق الأرض)، والتربة الطينية (تحتفظ بالماء) والرملية (لا تحتفظ).',
     'الصياغة هنا مبسّطة؛ إن اختلفت تسمية عن كتاب الطالب (مثل أنواع التربة أو الأحافير) فاعتمد تسمية الكتاب.'
+  ]
+};
+
+</script>
+<script>/* ===== unit: g4math5.js ===== */
+/* ============================================================
+   UNIT CONTENT: Grade 4 Maths, term 1, Chapter 5 «الضرب في عدد من رقم واحد» (book pages 136–169)
+   Only content lives here. The unit engine (src/apps/unit) draws it; maths models and games: math.js.
+   Lessons follow the book: factors and multiples, ×10/100/1000, reasonableness, estimating,
+   2-digit × 1-digit without and with regrouping, choosing a strategy, 3-digit × 1-digit.
+   ============================================================ */
+UNITS.g4math5 = {
+  id: 'g4math5',
+  title: 'الضرب في عدد من رقم واحد',
+  subtitle: 'رياضيات الصف الرابع – الفصل الخامس',
+  em: '✖️',
+
+  lessons: [
+    {
+      id: 'l1', em: '🪑', title: 'القواسم والمضاعفات', short: 'نرتّب في صفوف متساوية',
+      idea: '<b>القواسم</b> أعداد تُقسم العدد بالتساوي. و<b>المضاعفات</b> نواتج ضرب العدد في ١، ٢، ٣…',
+      blocks: [
+        { t: 'text', h: '٢٤ طاولة في صفوف متساوية', html: 'كم طريقة؟ ١ × ٢٤، ٢ × ١٢، ٣ × ٨، ٤ × ٦ (ثم العكس). إذن قواسم ٢٤: <b>١، ٢، ٣، ٤، ٦، ٨، ١٢، ٢٤</b>.' },
+        { t: 'model', m: 'array', r: 4, c: 6, obj: 'table', after: '٤ صفوف × ٦ طاولات = ٢٤. إذن ٤ و٦ من قواسم ٢٤.' },
+        { t: 'tiles', items: [
+          { em: '➗', b: 'القاسم', p: 'يقسم العدد دون باقٍ: ٦ قاسم لـ٢٤.', tone: 'sky' },
+          { em: '✖️', b: 'المضاعف', p: 'مضاعفات ٧: ٧، ١٤، ٢١، ٢٨، ٣٥…', tone: 'green' },
+          { em: '🕌', b: 'من حياتنا', p: '٥ صلوات في اليوم: في ٣ أيام ١٥ صلاة. ١٥ من مضاعفات ٥.', tone: 'sun' } ] }
+      ],
+      remember: ['القاسم يقسم العدد بالتساوي', 'المضاعف = العدد × ١، ٢، ٣…', 'أصغر قاسم ١، وأكبر قاسم العدد نفسه']
+    },
+    {
+      id: 'l2', em: '🔟', title: 'الضرب في ١٠ و١٠٠ و١٠٠٠', short: 'الحقيقة الأساسية + الأصفار',
+      idea: 'نضرب الحقيقة الأساسية، ثم نكتب <b>عدد الأصفار</b> نفسه.',
+      blocks: [
+        { t: 'html', h: 'نمط الأصفار', html: '<table class="mt-table"><tr><td>٣ × ١ = ٣</td></tr><tr><td>٣ × ١٠ = ٣٠</td></tr><tr><td>٣ × ١٠٠ = ٣٠٠</td></tr><tr><td>٣ × ١٠٠٠ = ٣٠٠٠</td></tr></table>' },
+        { t: 'tiles', items: [
+          { em: '📿', b: 'حقيقة + صفران', p: '٧ × ١٠٠ = ٧٠٠ خرزة', tone: 'violet' },
+          { em: '🚒', b: 'حقيقة + ٣ أصفار', p: 'شاحنة إطفاء ٨ × ٢٠٠٠ = ١٦٠٠٠ كجم', tone: 'berry' },
+          { em: '⚠️', b: 'انتبه للصفر في الحقيقة', p: '٥ × ٤٠٠ = ٢٠٠٠: الحقيقة ٥ × ٤ = ٢٠ فيها صفر، ثم صفران.', tone: 'sun' } ] },
+        { t: 'text', h: 'جبر', html: '٦ × ؟ = ٤٢ ← ٦٠ × ؟ = ٤٢٠٠ ← العامل <b>٧٠</b>.' }
+      ],
+      remember: ['احسب الحقيقة الأساسية أولًا', 'عدد الأصفار في الناتج = أصفار العاملين (على الأقل)']
+    },
+    {
+      id: 'l3', em: '🤔', title: 'معقولية الإجابة', short: 'هل الجواب منطقي؟',
+      idea: 'قبل أن نقبل الجواب نسأل: <b>هل هو معقول؟</b> نقرّب ونقارن.',
+      blocks: [
+        { t: 'text', h: '٣ صناديق، في كل صندوق ٩٠٠ قلم', html: 'هل تكفي لـ٢٥٠٠ طالب؟ ٣ × ٩٠٠ = ٢٧٠٠، و٢٧٠٠ > ٢٥٠٠. <b>نعم، الجواب معقول.</b>' },
+        { t: 'tiles', items: [
+          { em: '📖', b: 'أفهم', p: 'ما السؤال بالضبط؟', tone: 'sky' },
+          { em: '🎯', b: 'أقرّب', p: 'أحسب جوابًا تقريبيًا بأعداد سهلة.', tone: 'green' },
+          { em: '⚖️', b: 'أقارن', p: 'هل الجواب قريب من التقريب؟', tone: 'sun' } ] }
+      ],
+      remember: ['الجواب البعيد جدًا عن التقدير غالبًا خطأ']
+    },
+    {
+      id: 'l4', em: '🎯', title: 'تقدير نواتج الضرب', short: 'نقرّب العامل الأكبر',
+      idea: 'نقرّب العامل الكبير إلى أقرب ١٠ أو ١٠٠ أو ١٠٠٠، ثم نضرب.',
+      blocks: [
+        { t: 'tiles', items: [
+          { em: '1️⃣', b: '٢٦ × ٦', p: '٢٦ ← ٣٠. التقدير ٣٠ × ٦ = ١٨٠', tone: 'sky' },
+          { em: '2️⃣', b: '١٠٤ × ٣', p: '١٠٤ ← ١٠٠. التقدير ١٠٠ × ٣ = ٣٠٠', tone: 'green' },
+          { em: '3️⃣', b: '١٩٩٣ × ٨', p: '١٩٩٣ ← ٢٠٠٠. التقدير ٢٠٠٠ × ٨ = ١٦٠٠٠', tone: 'sun' } ] },
+        { t: 'text', h: 'أكبر أم أصغر؟', html: 'إذا قرّبنا <b>إلى أعلى</b> فالتقدير <b>أكبر</b> من الناتج الحقيقي. وإذا قرّبنا إلى أسفل فهو <b>أصغر</b>.' }
+      ],
+      remember: ['قرّب العامل الأكبر', 'التقريب إلى أعلى ← تقدير أكبر من الناتج']
+    },
+    {
+      id: 'l5', em: '🟦', title: 'ضرب عدد من رقمين دون إعادة تجميع', short: 'نموذج المساحة، الآحاد ثم العشرات',
+      idea: 'نقسم العدد إلى <b>عشرات وآحاد</b>، نضرب كل جزء، ثم نجمع النواتج الجزئية.',
+      blocks: [
+        { t: 'text', h: '٣ × ١٣', html: '١٣ = ١٠ + ٣. نضرب: ٣ × ١٠ = ٣٠، و٣ × ٣ = ٩. المجموع <b>٣٩</b>.' },
+        { t: 'model', m: 'area', a: 13, b: 3, show: true },
+        { t: 'text', h: 'بالطريقة العمودية: ٤ × ٢١', html: 'نضرب <b>الآحاد أولًا</b>: ٤ × ١ = ٤. ثم العشرات: ٤ × ٢ = ٨ عشرات. الناتج ٨٤.' },
+        { t: 'model', m: 'vertical', a: 21, b: 4, res: 84 }
+      ],
+      remember: ['ابدأ بالآحاد', 'نواتج جزئية: نضرب كل منزلة ثم نجمع']
+    },
+    {
+      id: 'l6', em: '🧱', title: 'الضرب مع إعادة التجميع', short: 'كل ١٠ آحاد = عشرة',
+      idea: 'إذا صار ناتج الآحاد ١٠ أو أكثر، <b>نجمّع</b> كل ١٠ آحاد في عشرة ونضيفها إلى العشرات.',
+      blocks: [
+        { t: 'text', h: 'نستكشف بالقطع: ٢ × ١٦', html: 'مجموعتان من ١٦: عشرتان و١٢ آحادًا. نبدّل ١٠ آحاد بعشرة: <b>٣ عشرات و٢ آحاد = ٣٢</b>.' },
+        { t: 'model', m: 'blocks', parts: [0, 2, 12], after: 'قبل التجميع: ٢ عشرات و١٢ آحادًا.' },
+        { t: 'model', m: 'blocks', n: 32, after: 'بعد التجميع: ٣ عشرات و٢ آحاد.' },
+        { t: 'text', h: '٥ طوابق، في كل طابق ١٣ شقة', html: '٥ × ٣ = ١٥ آحادًا: نكتب ٥ ونحمل ١ إلى العشرات. ٥ × ١ = ٥ عشرات، + ١ = ٦. الناتج <b>٦٥</b>.' },
+        { t: 'model', m: 'vertical', a: 13, b: 5, carry: 10, res: 65 }
+      ],
+      remember: ['اكتب الآحاد واحمل العشرة', 'لا تنسَ أن تضيف ما حملته بعد ضرب المنزلة التالية']
+    },
+    {
+      id: 'l7', em: '🗺️', title: 'اختيار الخطة المناسبة', short: 'جدول، جملة عددية، تمثيل، نمط',
+      idea: 'لكل مسألة خطة تناسبها: نقرأ، نختار، نحلّ، ونتحقّق.',
+      blocks: [
+        { t: 'text', h: '٤ صناديق دعوات، في كل صندوق ١٥ دعوة', html: 'أسهل خطة: <b>جملة عددية</b> ٤ × ١٥ = ٦٠ دعوة.' },
+        { t: 'tiles', items: [
+          { em: '📊', b: 'جدول', p: 'عندما تتغيّر كميتان معًا.', tone: 'sky' },
+          { em: '🔢', b: 'جملة عددية', p: 'عندما نعرف العملية مباشرة.', tone: 'green' },
+          { em: '🎭', b: 'التمثيل', p: 'عندما نحتاج أن نرى ما يحدث خطوة خطوة.', tone: 'sun' },
+          { em: '🔍', b: 'نمط', p: 'عندما تتكرّر قاعدة.', tone: 'violet' } ] }
+      ],
+      remember: ['أفهم ← أخطّط ← أحلّ ← أتحقّق']
+    },
+    {
+      id: 'l8', em: '✏️', title: 'ضرب عدد من ثلاثة أرقام', short: 'الآحاد، العشرات، المئات',
+      idea: 'الطريقة نفسها: الآحاد ثم العشرات ثم المئات، مع إعادة التجميع عند الحاجة.',
+      blocks: [
+        { t: 'text', h: 'آلة تصنع ١٣٢ قلمًا في الدقيقة', html: 'في ٥ دقائق؟ التقدير ١٠٠ × ٥ = ٥٠٠. والناتج ١٣٢ × ٥ = <b>٦٦٠</b>. قريب من التقدير ✅' },
+        { t: 'model', m: 'area', a: 132, b: 5, show: true },
+        { t: 'text', h: 'صفر في المنتصف: ١٠٨ × ٦', html: '٦ × ٨ = ٤٨: نكتب ٨ ونحمل ٤. ٦ × ٠ = ٠، + ٤ = ٤. ٦ × ١ = ٦. الناتج <b>٦٤٨</b>.' },
+        { t: 'text', h: 'من على حق؟', html: '٣٦٢ × ٢: قال خالد ٧٢٤ ✅. وقال فهد ٦٢٤ ✗: نسي أن يضيف المئة التي جمّعها (٢ × ٦٠ = ١٢٠).' }
+      ],
+      remember: ['قدّر أولًا ثم احسب', 'الصفر في العامل لا يلغي العدد المحمول']
+    }
+  ],
+
+  glossary: [
+    { l: 'l1', em: '➗', term: 'القاسم', def: 'عدد يقسم عددًا آخر بالتساوي دون باقٍ. قواسم ١٢: ١، ٢، ٣، ٤، ٦، ١٢.', short: 'يقسم دون باقٍ' },
+    { l: 'l1', em: '✖️', term: 'المضاعف', def: 'ناتج ضرب العدد في عدد كلي: مضاعفات ٤ هي ٤، ٨، ١٢…', short: 'العدد × ١، ٢، ٣…' },
+    { l: 'l2', em: '🎯', term: 'ناتج الضرب', def: 'جواب عملية الضرب.', short: 'جواب الضرب' },
+    { l: 'l4', em: '🎯', term: 'التقدير', def: 'جواب قريب من الجواب الحقيقي، نحسبه بأعداد مقرّبة سهلة.', short: 'جواب تقريبي' },
+    { l: 'l5', em: '🟦', term: 'النواتج الجزئية', def: 'نواتج ضرب كل منزلة على حدة (العشرات، الآحاد…) ثم نجمعها.', short: 'نضرب كل منزلة' },
+    { l: 'l6', em: '🧱', term: 'إعادة التجميع', def: 'تبديل ١٠ آحاد بعشرة، أو ١٠ عشرات بمئة، ونقلها إلى المنزلة التالية.', short: '١٠ آحاد = عشرة' },
+    { l: 'l3', em: '🤔', term: 'المعقولية', def: 'أن يكون الجواب منطقيًا وقريبًا من التقدير.', short: 'جواب منطقي' }
+  ],
+
+  questions: [
+    /* l1 */
+    { id: 'n1', l: 'l1', t: 'mcq', q: 'ما قواسم ١٢؟', o: ['١، ٢، ٣، ٤، ٦، ١٢', '١٢، ٢٤، ٣٦', '٢، ٤، ٦، ٨', '١، ٢، ١٢'], a: 0, ex: '١٢ = ١ × ١٢ = ٢ × ٦ = ٣ × ٤.',
+      mis: { 1: 'هذه مضاعفات ١٢ (أكبر منه). القواسم أصغر أو تساويه.', 2: '٨ لا تقسم ١٢ بالتساوي. جرّب الترتيب في صفوف.', 3: 'ناقصة: هل تقسم ٣ و٤ و٦ العدد ١٢؟' } },
+    { id: 'n2', l: 'l1', t: 'num', q: 'ما المضاعف الخامس للعدد ٧؟', a: 35, f: [7, 5], hint1: 'المضاعفات: ٧ × ١، ٧ × ٢، ٧ × ٣…' },
+    { id: 'n3', l: 'l1', t: 'tf', q: '٥ من قواسم ٢٤.', a: false, ex: '٢٤ ÷ ٥ فيه باقٍ (٥ × ٤ = ٢٠، ٥ × ٥ = ٢٥). قواسم ٢٤: ١، ٢، ٣، ٤، ٦، ٨، ١٢، ٢٤.' },
+    { id: 'n4', l: 'l1', t: 'num', q: 'صينية فيها ٦ أكواب كعك. كم كوبًا في ٤ صوانٍ؟', a: 24, f: [4, 6], unit: 'كوبًا' },
+    { id: 'n5', l: 'l1', t: 'num', q: 'يظهر مذنّب كل ٦ سنوات. ظهر الآن. بعد كم سنة يظهر للمرة الثالثة بعدها؟', a: 18, f: [3, 6], hint1: 'المضاعف الثالث للعدد ٦.' },
+    /* l2 */
+    { id: 'n6', l: 'l2', t: 'num', q: '٧ × ١٠٠ = ؟', a: 700, f: [7, 100] },
+    { id: 'n7', l: 'l2', t: 'num', q: '٣ × ٧٠٠٠ = ؟', a: 21000, f: [3, 7000], hint1: '٣ × ٧ = ٢١، ثم أضف ثلاثة أصفار.' },
+    { id: 'n8', l: 'l2', t: 'num', q: '٨ × ٢٠٠٠ = ؟', a: 16000, f: [8, 2000] },
+    { id: 'n9', l: 'l2', t: 'num', q: '٥ × ٤٠٠ = ؟', a: 2000, f: [5, 400], hint1: '٥ × ٤ = ٢٠ (فيها صفر!)، ثم أضف صفرين.' },
+    { id: 'n10', l: 'l2', t: 'num', q: '٦٠ × ؟ = ٤٢٠٠', a: 70, hint1: 'فكّر أولًا: ٦ × ؟ = ٤٢.', hint2: '٦ × ٧ = ٤٢. والآن عدّ الأصفار.' },
+    /* l3 */
+    { id: 'n11', l: 'l3', t: 'mcq', q: '٣ صناديق، في كل صندوق ٩٠٠ قلم. هل تكفي لـ٢٥٠٠ طالب، لكل طالب قلم؟', o: ['نعم، ٢٧٠٠ أكثر من ٢٥٠٠', 'لا، ٢٧٠٠ أقل من ٢٥٠٠', 'نعم، ٩٠٠ أكثر من ٢٥٠٠', 'لا، ٩٠٣ أقل من ٢٥٠٠'], a: 0, ex: '٣ × ٩٠٠ = ٢٧٠٠ قلم، وهي أكثر من ٢٥٠٠.',
+      mis: { 1: 'قارن مرة أخرى: أيهما أكبر ٢٧٠٠ أم ٢٥٠٠؟', 2: 'هذا صندوق واحد فقط. كم صندوقًا عندنا؟', 3: 'جمعنا ٩٠٠ + ٣. لكن عندنا ٣ صناديق متساوية: نضرب.' } },
+    { id: 'n12', l: 'l3', t: 'mcq', q: 'حسب سامي ٤ × ٢٨ = ٨٣٢. هل جوابه معقول؟', o: ['لا، التقدير ٤ × ٣٠ = ١٢٠ فقط', 'نعم، لأنه عدد كبير', 'نعم، ٤ × ٢٨ أكبر من ٨٠٠', 'لا يمكن أن نعرف'], a: 0, ex: 'الجواب الصحيح ١١٢، قريب من ١٢٠. أما ٨٣٢ فبعيد جدًا: كتب ٤ × ٢ = ٨ و٤ × ٨ = ٣٢ متجاورتين ولم يُعِد التجميع.' },
+    { id: 'n13', l: 'l3', t: 'num', q: 'تقطع سلمى بدرّاجتها ١٠ كم في كل جولة. كم كيلومترًا في ٦ جولات؟', a: 60, f: [6, 10], unit: 'كم' },
+    /* l4 */
+    { id: 'n14', l: 'l4', t: 'mcq', q: 'ما أفضل تقدير لـ٢٦ × ٦؟', o: ['١٨٠', '١٢٠', '٣٢', '٦٠٠'], a: 0, ex: '٢٦ ← ٣٠، و٣٠ × ٦ = ١٨٠.',
+      mis: { 1: '١٢٠ = ٢٠ × ٦. هل ٢٦ أقرب إلى ٢٠ أم ٣٠؟', 2: '٣٢ = ٢٦ + ٦. هذا جمع.', 3: 'عدّ الأصفار مرة أخرى.' } },
+    { id: 'n15', l: 'l4', t: 'num', q: 'قدّر: ١٩٩٣ × ٨ ≈ ؟', a: 16000, hint1: 'قرّب ١٩٩٣ إلى أقرب ألف.', hint2: '٢٠٠٠ × ٨ = ؟' },
+    { id: 'n16', l: 'l4', t: 'num', q: 'قدّر: ١٠٤ × ٣ ≈ ؟', a: 300, hint1: 'قرّب ١٠٤ إلى أقرب مئة.' },
+    { id: 'n17', l: 'l4', t: 'tf', q: 'تقدير ٤٧ × ٥ بـ٥٠ × ٥ أكبر من الناتج الحقيقي.', a: true, ex: 'قرّبنا ٤٧ إلى أعلى (٥٠)، فالتقدير ٢٥٠ أكبر من الناتج ٢٣٥.' },
+    /* l5 */
+    { id: 'n18', l: 'l5', t: 'num', q: '٣ × ١٣ = ؟', a: 39, f: [13, 3], model: { m: 'area', a: 13, b: 3 } },
+    { id: 'n19', l: 'l5', t: 'num', q: 'رفّان، على كل رف ٢٣ كتابًا. كم كتابًا؟', a: 46, f: [23, 2], unit: 'كتابًا', model: { m: 'area', a: 23, b: 2 } },
+    { id: 'n20', l: 'l5', t: 'num', q: '٤ × ٢١ = ؟', a: 84, f: [21, 4], model: { m: 'vertical', a: 21, b: 4 }, modelFirst: true },
+    { id: 'n21', l: 'l5', t: 'num', q: '٣ × ٣٢ = ؟', a: 96, f: [32, 3] },
+    { id: 'n22', l: 'l5', t: 'mcq', q: 'في نموذج المساحة لـ٢ × ٣٤، ما الناتجان الجزئيان؟', o: ['٦٠ و٨', '٦ و٨', '٣٠ و٤', '٦٠ و٤'], a: 0, ex: '٣٤ = ٣٠ + ٤. ٢ × ٣٠ = ٦٠، و٢ × ٤ = ٨. المجموع ٦٨.',
+      mis: { 1: '٣ في ٣٤ تعني ٣ عشرات = ٣٠. ما ٢ × ٣٠؟', 2: 'هذان جزءا العدد ٣٤ قبل الضرب. اضرب كلًا منهما في ٢.', 3: 'ضربت العشرات فقط. ماذا عن ٢ × ٤؟' } },
+    /* l6 */
+    { id: 'n23', l: 'l6', t: 'num', q: '٢ × ١٦ = ؟', a: 32, f: [16, 2], model: { m: 'blocks', parts: [0, 2, 12] }, hint1: '١٢ آحادًا = عشرة و٢ آحاد.' },
+    { id: 'n24', l: 'l6', t: 'num', q: '٥ طوابق، في كل طابق ١٣ شقة. كم شقة؟', a: 65, f: [13, 5], unit: 'شقة' },
+    { id: 'n25', l: 'l6', t: 'num', q: '١٢ عشًّا، في كل عش ٨ بيضات سلاحف. كم بيضة؟', a: 96, f: [12, 8], unit: 'بيضة' },
+    { id: 'n26', l: 'l6', t: 'num', q: 'طول حشرة العصا ٤٥ سم. كم طول ٣ حشرات متتالية؟', a: 135, f: [45, 3], unit: 'سم' },
+    { id: 'n27', l: 'l6', t: 'num', q: '٤ × ٢٧ = ؟', a: 108, f: [27, 4] },
+    { id: 'n28', l: 'l6', t: 'mcq', q: 'حسب علي ٣ × ٢٥ = ٦٥. ما خطؤه؟', o: ['نسي أن يضيف العشر المحمول', 'جمع بدل أن يضرب', 'ضرب الآحاد فقط', 'لا خطأ'], a: 0, ex: '٣ × ٥ = ١٥: نكتب ٥ ونحمل ١. ٣ × ٢ = ٦، + ١ = ٧. الجواب ٧٥.',
+      mis: { 1: 'لو جمع لكان ٢٨. انظر إلى العشرات.', 2: 'الناتج فيه عشرات أيضًا. ما الذي نقص منها؟', 3: 'تحقّق: ٢٥ + ٢٥ + ٢٥ = ؟' } },
+    /* l7 */
+    { id: 'n29', l: 'l7', t: 'num', q: '٤ صناديق، في كل صندوق ١٥ دعوة. كم دعوة؟', a: 60, f: [15, 4], unit: 'دعوة' },
+    { id: 'n30', l: 'l7', t: 'mcq', q: 'ثمن الكتاب ٨ ريالات. أيّ خطة تناسب: كم ثمن ٦ كتب؟', o: ['جملة عددية: ٦ × ٨', 'البحث عن نمط في الأشكال', 'التخمين دون حساب', 'رسم خريطة'], a: 0, ex: 'نعرف العملية مباشرة: مجموعات متساوية ← ضرب. ٦ × ٨ = ٤٨ ريالًا.' },
+    { id: 'n31', l: 'l7', t: 'num', q: 'يقرأ أحمد ١٢ صفحة كل يوم. كم صفحة في أسبوع (٧ أيام)؟', a: 84, f: [12, 7], unit: 'صفحة' },
+    /* l8 */
+    { id: 'n32', l: 'l8', t: 'num', q: 'آلة تصنع ١٣٢ قلمًا في الدقيقة. كم قلمًا في ٥ دقائق؟', a: 660, f: [132, 5], unit: 'قلمًا', model: { m: 'area', a: 132, b: 5 } },
+    { id: 'n33', l: 'l8', t: 'num', q: '١٠٨ × ٦ = ؟', a: 648, f: [108, 6], hint1: 'ابدأ بالآحاد: ٦ × ٨ = ٤٨. اكتب ٨ واحمل ٤.', hint2: 'العشرات: ٦ × ٠ = ٠، ثم أضف ٤ المحمولة.' },
+    { id: 'n34', l: 'l8', t: 'num', q: '٩٠٥ × ٤ = ؟', a: 3620, f: [905, 4] },
+    { id: 'n35', l: 'l8', t: 'num', q: '٣٦٢ × ٢ = ؟', a: 724, f: [362, 2] },
+    { id: 'n36', l: 'l8', t: 'mcq', q: 'قال فهد: ٣٦٢ × ٢ = ٦٢٤. ما خطؤه؟', o: ['لم يضف المئة التي جمّعها من العشرات', 'ضرب الآحاد خطأ', 'جمع بدل أن يضرب', 'لا خطأ'], a: 0, ex: '٢ × ٦٠ = ١٢٠: عشرتان ومئة. المئة تُضاف إلى ٢ × ٣٠٠ = ٦٠٠، فالجواب ٧٢٤.',
+      mis: { 1: '٢ × ٢ = ٤ صحيح. انظر إلى العشرات والمئات.', 2: 'لو جمع لكان ٣٦٤.', 3: 'قدّر: ٣٥٠ × ٢ = ٧٠٠. هل ٦٢٤ قريب؟' } },
+    { id: 'n37', l: 'l8', t: 'tf', q: 'حسبت سارة ٢٤٨ × ٣ = ٧٤٤. التقدير ٢٥٠ × ٣ = ٧٥٠، فجوابها معقول.', a: true, ex: '٧٤٤ قريب جدًا من التقدير ٧٥٠، وهو أصغر قليلًا لأننا قرّبنا ٢٤٨ إلى أعلى.' }
+  ],
+
+  games: {
+    sort: [
+      { id: 'g1', l: 'l1', em: '➗🪑', title: 'قاسم أم لا؟', ask: 'هل العدد من قواسم ٢٤؟',
+        bins: [['قاسم لـ٢٤', 'var(--t-green-btn)'], ['ليس قاسمًا', 'var(--t-blue)']],
+        items: [['🔢', '٣', 0], ['🔢', '٨', 0], ['🔢', '٦', 0], ['🔢', '١٢', 0], ['🔢', '٥', 1], ['🔢', '٩', 1], ['🔢', '٧', 1], ['🔢', '١٠', 1]],
+        why: ['يقسم ٢٤ بالتساوي: نرتّب ٢٤ في صفوف متساوية.', 'يبقى باقٍ عند القسمة.'] },
+      { id: 'g2', l: 'l6', em: '🧱🔁', title: 'هل نعيد التجميع؟', ask: 'هل يحتاج الضرب إلى إعادة تجميع في الآحاد؟',
+        bins: [['نعم، نحمل', 'var(--t-orange)'], ['لا', 'var(--t-blue)']],
+        items: [['✖️', '٣ × ١٦', 0], ['✖️', '٤ × ٢٥', 0], ['✖️', '٥ × ١٣', 0], ['✖️', '٢ × ٤٣', 1], ['✖️', '٣ × ٢١', 1], ['✖️', '٤ × ١٢', 1]],
+        why: ['ناتج ضرب الآحاد ١٠ أو أكثر.', 'ناتج ضرب الآحاد أقل من ١٠.'] }
+    ],
+    order: [
+      { id: 'o1', l: 'l5', em: '📝', title: 'خطوات الضرب العمودي', ask: 'رتّب خطوات حساب ٥ × ٣٤.',
+        sets: [[['📝', 'نضرب الآحاد: ٥ × ٤ = ٢٠'], ['📝', 'نكتب ٠ ونحمل ٢ عشرات'], ['📝', 'نضرب العشرات: ٥ × ٣ = ١٥'], ['📝', 'نضيف المحمول: ١٥ + ٢ = ١٧'], ['📝', 'الناتج ١٧٠']]] }
+    ]
+  },
+
+  parentTips: [
+    'اطلب منه أن يقدّر قبل أن يحسب: «تقريبًا كم؟». هذا يمسك أخطاء كثيرة وحده.',
+    'نموذج المساحة يجهّزه للفصل السادس (الضرب في عدد من رقمين). لا تتجاوزه إلى الطريقة العمودية بسرعة.',
+    'أشهر خطأ: نسيان العدد المحمول. اسأل: «ماذا فعلت بالعشرة التي جمّعتها؟»',
+    'إذا تعثّر في حقيقة أساسية (مثل ٧ × ٨) فهذا وقت مراجعة جدول الضرب، لا الضرب الطويل.'
   ]
 };
 
@@ -5636,6 +6163,7 @@ function block(b) {
   if (b.t === 'chain') return `${h}<div class="chain">${b.items.map(([e, n, r], i) => `${i ? '<span class="ar" aria-hidden="true">⬅</span>' : ''}<div class="lnk"><span class="em" aria-hidden="true">${e}</span>${n}<small>${r || ''}</small></div>`).join('')}</div>${b.note ? `<p class="hint">${b.note}</p>` : ''}`;
   if (b.t === 'pyramid') { const n = b.levels.length; return `${h}${b.html ? `<p>${b.html}</p>` : ''}<div class="pyr">${b.levels.slice().reverse().map(([t, c], i) => `<div style="width:${28 + i * (60 / Math.max(1, n - 1))}%;background:${c}">${t}</div>`).join('')}</div>`; }
   if (b.t === 'html') return `${h}${b.html}`;
+  if (b.t === 'model') return `${h}${b.html ? `<p>${b.html}</p>` : ''}${mathModel(b)}${b.after ? `<p>${b.after}</p>` : ''}`;   // math.js
   return '';
 }
 function renderLesson(L) {
@@ -5693,8 +6221,10 @@ function showCard() {
 /* ---------------- play menu ---------------- */
 function renderPlay() {
   const L = id => { const i = S.u.lessons.findIndex(l => l.id === id); return i < 0 ? '' : 'الدرس ' + ar(i + 1); };
-  const labs = Object.values(LABS[S.id] || {});
-  M().innerHTML = `<div class="card"><h2>🎮 الألعاب</h2><p class="lead">اسحب البطاقة إلى مكانها، أو اضغط عليها ثم اضغط على المكان.</p></div>
+  const all = Object.values(LABS[S.id] || {}), labs = all.filter(x => x.kind !== 'math'), maths = all.filter(x => x.kind === 'math');
+  M().innerHTML = `<div class="card"><h2>🎮 الألعاب</h2><p class="lead">${maths.length ? 'في كل لعبة تحسب بنفسك، ومعك تلميح إذا احتجت.' : 'اسحب البطاقة إلى مكانها، أو اضغط عليها ثم اضغط على المكان.'}</p></div>
+  ${maths.length ? `<h3 class="gp-h">🔢 ألعاب الضرب <small>نحسب ونفكّر ونفوز</small></h3><div class="game-pick">
+    ${maths.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
   ${labs.length ? `<h3 class="gp-h">🧪 نفكّر ونجرّب <small>نتوقّع ثم نجرّب ونفسّر</small></h3><div class="game-pick">
     ${labs.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
   <h3 class="gp-h">🎮 نتدرّب <small>نرتّب ونصنّف ونتذكّر</small></h3>
@@ -5791,7 +6321,7 @@ function onAnswer(q, ok, info = {}) {
 function learnRec() { const d = D(); d.learn = d.learn || { n: 0, first: 0, fixed: 0, revealed: 0, hints: 0, L: {}, mis: {} }; return d.learn; }
 function onCoach(q, i, tries) {
   const r = learnRec(); r.hints++;
-  const k = q.t === 'tf' ? (i === 0 ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[i] : q.o[i];
+  const k = q.t === 'num' ? HS.toAr(i) : q.t === 'tf' ? (i === 0 ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[i] : q.o[i];
   const m = r.mis[q.id] = r.mis[q.id] || {}; m[k] = (m[k] || 0) + 1;
 }
 function trackLearning(q, ok, info) {
@@ -5805,6 +6335,7 @@ function answerText(q) {
   if (q.t === 'mcq' || q.t === 'fill') return q.o[q.a];
   if (q.t === 'pic') return q.o[q.a] + (q.labels ? ' ' + q.labels[q.a] : '');
   if (q.t === 'tf') return q.a ? 'صح' : 'خطأ';
+  if (q.t === 'num') return HS.toAr(q.a);
   return '';
 }
 function retryIntro() {
@@ -5902,6 +6433,7 @@ function renderQuestion(q, el, done, opt = {}) {
       if (!ok) later(() => { if (b.classList.contains('ok')) return; b.textContent = opt.coach ? '؟' : q.o[q.a]; b.className = opt.coach ? 'blank' : 'blank ok'; }, 900); };
     choice(q.o, q.a, o => o, 'chips-opts');
   }
+  else if (q.t === 'num') numQuestion(q, el, finish, opt);   // math.js
   else if (q.t === 'pic') { el.innerHTML = head(q.q); choice(q.o, q.a, (o, i) => `<span class="pic">${o}</span>${q.labels ? `<small>${q.labels[i]}</small>` : ''}`, 'pics'); }
   else if (q.t === 'match') {
     const n = q.pairs.length; let mistakes = 0, matched = 0;
@@ -6097,7 +6629,7 @@ APPS.unit = {
     const missed = Object.keys(s).filter(id => s[id].w > 0).sort((a, b) => (s[b].w - s[b].c * .5) - (s[a].w - s[a].c * .5)).slice(0, 5).map(id => ({ q: (u.questions.find(q => q.id === id) || {}).q, w: s[id].w, c: s[id].c })).filter(x => x.q);
     // how the child learns, not only what: first-try accuracy, self-corrections, and the wrong ideas chosen most
     const lr = d.learn || null, byQ = id => u.questions.find(q => q.id === id) || {};
-    const rightOf = q => q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
+    const rightOf = q => q.t === 'num' ? HS.toAr(q.a) : q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
     const mis = lr ? Object.entries(lr.mis || {}).flatMap(([id, ch]) => Object.entries(ch).map(([c, n]) => ({ q: byQ(id).q, chose: c, right: rightOf(byQ(id)), n, l: byQ(id).l })))
       .filter(x => x.q).sort((a, b) => b.n - a.n).slice(0, 4) : [];
     const lessons = u.lessons.map(L => { const r = lr && lr.L && lr.L[L.id]; return { title: L.title, em: L.em, m: m(L.id), first: r && r.n ? r.first / r.n : null, n: r ? r.n : 0 }; });
@@ -6932,6 +7464,439 @@ function outbreakLab(el, lab) {
 }
 LABS.g4scihealth = { outbreak: { id: 'outbreak', title: '🔎 محقّق العدوى', em: '🔎🦠', sub: 'من السجلّ إلى السبب', kind: 'think', lesson: 'l2', run: outbreakLab, challenges: OB.C } };
 
+/* ---- math.js ---- */
+/* ============================================================
+   MATHS (same scope as app.js): drawn models, typed number answers, hints that teach a strategy.
+   Research behind the choices (see docs/IMPROVEMENTS.md):
+   - strategies before speed: hints teach derived facts (×9 = ×10 − one group, ×6 = double ×3, ×8 = double ×4,
+     ×7 = ×5 + ×2, swap the factors), never the answer; there is no timer outside the optional challenge;
+   - visual models: equal groups, arrays, base-ten blocks and the area model (partial products), drawn exactly
+     by the site from one picture per object, so a count is never wrong;
+   - a wrong answer is read for the usual mistakes (added instead of multiplied, one group too many or too few,
+     forgot the regrouped ten, one zero too many or too few) and gets a matching hint.
+   ============================================================ */
+const AR = n => HS.toAr(n);
+// one emoji per maths object until its picture exists (art id 'math-<name>', from the maths sprite sheets)
+const MATH_EMOJI = { apple: '🍎', orange: '🍊', date: '🟤', cookie: '🍪', pencil: '✏️', crayon: '🖍️', egg: '🥚', flower: '🌸', star: '⭐',
+  ball: '⚽', toycar: '🚗', bird: '🐦', fish: '🐟', book: '📘', marble: '🔵', balloon: '🎈', plate: '🍽️', bag: '🛍️', box: '📦', cup: '🥤',
+  basket: '🧺', tray: '🟫', jar: '🫙', pencilcase: '👝', nest: '🪺', counter: '🔴', 'counter-yellow': '🟡', cube: '🟦', chick: '🐥', seed: '🌱',
+  frog: '🐸', bug: '🐞', ring: '💍', seat: '💺', jarbox: '🫙', table: '🪑', face: '🙂' };
+const mObj = (k, cls = 'm-o') => {
+  const id = 'math-' + k, fb = MATH_EMOJI[k] || '🔵';
+  return HS.ART && HS.ART[id] ? HS.art(id, { small: true, eager: true, fb, cls }) : `<span class="${cls} m-em" aria-hidden="true">${fb}</span>`;
+};
+
+/* ---------------- models ----------------
+   { m:'groups', n, size, obj, box }      n containers with `size` objects each
+   { m:'array', r, c, obj?, split? }      r rows × c columns; split = column where the array is cut in two
+   { m:'blocks', n }                       base-ten blocks for n (hundreds, tens, ones)
+   { m:'area', a, b, show? }               area model for a × b (a split by place value); show: true → products
+   { m:'vertical', a, b, carry?, res? }    column multiplication (digits in place, carries above) */
+function mathModel(s) {
+  if (s.m === 'groups') {
+    const one = `<div class="m-grp">${s.box ? `<span class="m-box" aria-hidden="true">${mObj(s.box, 'm-boxi')}</span>` : ''}<div class="m-in">${Array.from({ length: s.size }, () => mObj(s.obj || 'counter')).join('')}</div></div>`;
+    return `<div class="m-model m-groups" role="img" aria-label="${AR(s.n)} مجموعات، في كل مجموعة ${AR(s.size)}">${Array.from({ length: s.n }, () => one).join('')}</div>`;
+  }
+  if (s.m === 'array') {
+    const cell = (r, c) => `<span class="m-cell${s.split && c >= s.split ? ' b' : ''}">${s.obj ? mObj(s.obj) : '<i class="m-dot"></i>'}</span>`;
+    return `<div class="m-model m-array${s.split ? ' split' : ''}" dir="ltr" role="img" aria-label="${AR(s.r)} صفوف، في كل صف ${AR(s.c)}${s.split ? `، مقسومة إلى ${AR(s.split)} و${AR(s.c - s.split)}` : ''}" style="--c:${s.c}">
+      ${Array.from({ length: s.r }, (_, r) => `<div class="m-row">${Array.from({ length: s.c }, (_, c) => (s.split && c === s.split ? '<span class="m-cut" aria-hidden="true"></span>' : '') + cell(r, c)).join('')}</div>`).join('')}</div>`;
+  }
+  if (s.m === 'blocks') {   // s.parts = [h, t, o] draws them as they are (12 ones before regrouping)
+    const [h, t, o] = s.parts || [Math.floor(s.n / 100), Math.floor(s.n % 100 / 10), s.n % 10];
+    const flat = '<svg class="m-flat" viewBox="0 0 50 50" aria-hidden="true"><rect x="1" y="1" width="48" height="48" rx="2"/>' + Array.from({ length: 9 }, (_, i) => `<line x1="${5.8 + i * 4.8}" y1="1" x2="${5.8 + i * 4.8}" y2="49"/><line y1="${5.8 + i * 4.8}" x1="1" y2="${5.8 + i * 4.8}" x2="49"/>`).join('') + '</svg>';
+    const rod = '<svg class="m-rod" viewBox="0 0 6 50" aria-hidden="true"><rect x=".5" y=".5" width="5" height="49" rx="1"/>' + Array.from({ length: 9 }, (_, i) => `<line x1=".5" x2="5.5" y1="${5.4 + i * 4.9}" y2="${5.4 + i * 4.9}"/>`).join('') + '</svg>';
+    const one = '<svg class="m-one" viewBox="0 0 6 6" aria-hidden="true"><rect x=".5" y=".5" width="5" height="5" rx="1"/></svg>';
+    return `<div class="m-model m-blocks" dir="ltr" role="img" aria-label="${AR(h)} مئات، ${AR(t)} عشرات، ${AR(o)} آحاد">
+      ${h ? `<div class="m-bk">${Array(h).fill(flat).join('')}</div>` : ''}${t ? `<div class="m-bk">${Array(t).fill(rod).join('')}</div>` : ''}${o ? `<div class="m-bk ones">${Array(o).fill(one).join('')}</div>` : ''}</div>`;
+  }
+  if (s.m === 'area') {
+    const parts = placeParts(s.a), tot = parts.reduce((x, y) => x + y, 0);
+    return `<div class="m-model m-area" dir="ltr" role="img" aria-label="نموذج المساحة: ${AR(s.b)} × (${parts.map(AR).join(' + ')})">
+      <div class="m-ar-top">${parts.map(p => `<span style="flex:${Math.max(p, tot * .24)}">${AR(p)}</span>`).join('')}</div>
+      <div class="m-ar-row"><span class="m-ar-side">${AR(s.b)}</span>${parts.map((p, i) => `<div class="m-ar-cell c${i}" style="flex:${Math.max(p, tot * .24)}"><span class="m-ar-e" dir="rtl">${AR(s.b)} × ${AR(p)}</span>${s.show ? `<b>${AR(s.b * p)}</b>` : s.slots ? `<button type="button" class="m-slot" data-k="${i}" aria-label="${AR(s.b)} × ${AR(p)}">؟</button>` : ''}</div>`).join('')}</div></div>`;
+  }
+  if (s.m === 'vertical') {
+    const A = String(s.a), w = Math.max(A.length, String(s.res ?? '').length) + 1;
+    const pad = (x, n) => Array(n - x.length).fill('').concat(x.split(''));
+    const row = (cells, cls = '') => `<div class="m-v-row ${cls}">${cells.map(c => `<span>${c === '' ? '' : AR(c)}</span>`).join('')}</div>`;
+    const carry = s.carry ? pad(String(s.carry).replace(/0/g, ' ').padStart(A.length, ' '), w).map(c => c === ' ' ? '' : c) : null;
+    return `<div class="m-model m-vertical" dir="ltr" role="img" aria-label="${AR(s.a)} × ${AR(s.b)}${s.res != null ? ' = ' + AR(s.res) : ''}" style="--w:${w}">
+      ${carry ? row(carry, 'carry') : ''}${row(pad(A, w))}<div class="m-v-row op">${pad(String(s.b), w).map((c, i) => `<span>${i === 0 ? '×' : c === '' ? '' : AR(c)}</span>`).join('')}</div>
+      <div class="m-v-line"></div>${s.res != null ? row(pad(String(s.res), w), 'res') : ''}</div>`;
+  }
+  return '';
+}
+/** 324 → [300, 20, 4] (zeros left out: 305 → [300, 5]) */
+function placeParts(n) { const d = String(n).split(''); return d.map((x, i) => +x * 10 ** (d.length - 1 - i)).filter(Boolean); }
+/** what a child gets when the regrouped tens are forgotten (each place multiplied on its own, carry dropped) */
+function noCarry(a, b) { return +String(a).split('').map(d => String(+d * b % 10)).join(''); }
+
+/* ---------------- strategy hints for a × b (never contain the product) ---------------- */
+function factStrategy(a, b) {
+  const [x, y] = a === 9 || a === 6 || a === 8 || a === 7 || a === 3 ? [a, b] : [b, a];   // x: the factor with a strategy
+  if (x === 9) return `ابدأ بـ ${AR(10)} × ${AR(y)}، ثم اطرح مجموعة واحدة من ${AR(y)}.`;
+  if (x === 6) return `${AR(6)} × ${AR(y)} هو ضعف ${AR(3)} × ${AR(y)}: احسب ${AR(3)} × ${AR(y)} ثم اجمعه مع نفسه.`;
+  if (x === 8) return `${AR(8)} × ${AR(y)} هو ضعف ${AR(4)} × ${AR(y)}: احسب ${AR(4)} × ${AR(y)} ثم ضاعفه.`;
+  if (x === 7) return `قسّم ${AR(7)} إلى ${AR(5)} و${AR(2)}: احسب ${AR(5)} × ${AR(y)} و${AR(2)} × ${AR(y)} ثم اجمعهما.`;
+  if (x === 3) return `${AR(3)} × ${AR(y)} = ${AR(2)} × ${AR(y)} ثم أضف ${AR(y)} مرة أخرى.`;
+  return `بدّل العاملين إن كان أسهل: ${AR(b)} × ${AR(a)} له الناتج نفسه.`;
+}
+/** what a wrong number says about the child's thinking (empty when nothing matches) */
+function readMistake(q, w) {
+  const [a, b] = q.f || [], r = q.a;
+  if (a != null && w === a + b && a * b !== a + b) return 'يبدو أنك <b>جمعت</b> العددين. الضرب مجموعات متساوية: ' + `${AR(Math.min(a, b))} مجموعات، في كل منها ${AR(Math.max(a, b))}.`;
+  if (a != null && (Math.abs(w - r) === a || Math.abs(w - r) === b) && a < 11 && b < 11) return 'قريب جدًا! يبدو أنك زدت أو نقصت <b>مجموعة واحدة</b>. عدّ المجموعات مرة ثانية.';
+  if (a != null && Math.max(a, b) >= 10 && w === noCarry(Math.max(a, b), Math.min(a, b)) && w !== r) return 'انتبه لـ<b>إعادة التجميع</b>: هل أضفت العشرة (أو المئة) التي جمّعتها إلى المنزلة التالية؟';
+  if (r && (w === r * 10 || w * 10 === r)) return 'عدّ <b>الأصفار</b> مرة ثانية: كم صفرًا في العاملين معًا؟';
+  if (w > 0 && String(w).split('').reverse().join('') === String(r)) return 'هل كتبت الأرقام بترتيب معكوس؟ اقرأ الآحاد والعشرات مرة ثانية.';
+  return '';
+}
+
+/* ---------------- keypad (one for the screen; it writes into the active slot) ---------------- */
+function keypad(onKey) {
+  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'del', '0', 'ok'];
+  const html = `<div class="m-pad" dir="ltr" role="group" aria-label="لوحة الأرقام">${keys.map(k => `<button type="button" class="m-k ${k === 'ok' ? 'ok' : k === 'del' ? 'del' : ''}" data-k="${k}" aria-label="${k === 'ok' ? 'تحقّق' : k === 'del' ? 'امسح رقمًا' : AR(k)}">${k === 'ok' ? '✓' : k === 'del' ? '⌫' : AR(k)}</button>`).join('')}</div>`;
+  const bind = root => {
+    root.querySelectorAll('.m-k').forEach(b => b.onclick = () => onKey(b.dataset.k));
+    const kb = e => {
+      if (!root.isConnected) return document.removeEventListener('keydown', kb);
+      const d = '٠١٢٣٤٥٦٧٨٩'.indexOf(e.key); const k = d >= 0 ? String(d) : /^[0-9]$/.test(e.key) ? e.key : e.key === 'Backspace' ? 'del' : e.key === 'Enter' ? 'ok' : null;
+      if (!k || (e.target.closest && e.target.closest('input,textarea'))) return;
+      e.preventDefault(); onKey(k);
+    };
+    document.addEventListener('keydown', kb);
+  };
+  return { html, bind };
+}
+
+/* ---------------- typed number question { t:'num', q, a, f?:[a,b], model?, hint1?, hint2?, unit? } ----------------
+   1st wrong: what the mistake says, or a strategy · 2nd: second hint + the model drawn · 3rd: the answer. */
+function numQuestion(q, el, finish, opt) {
+  let val = '', tries = 0;
+  const pad = keypad(k => {
+    if (k === 'del') val = val.slice(0, -1);
+    else if (k === 'ok') return check();
+    else if (val.length < 6) val = (val === '0' ? '' : val) + k;
+    show();
+  });
+  el.innerHTML = `<div class="q-line"><div class="q">${q.q}</div></div>${q.model && q.modelFirst ? mathModel(q.model) : ''}
+    <div class="m-ans"><output class="m-box-ans" aria-live="polite" aria-label="إجابتك">؟</output>${q.unit ? `<span class="m-unit">${q.unit}</span>` : ''}</div>${pad.html}`;
+  pad.bind(el);
+  const out = el.querySelector('.m-box-ans');
+  const show = () => { out.textContent = val ? AR(val) : '؟'; out.classList.remove('no'); };
+  const coach = html => { let b = el.querySelector('.coach'); if (!b) { el.insertAdjacentHTML('beforeend', '<div class="coach" role="status"></div>'); b = el.querySelector('.coach'); }
+    b.innerHTML = `<span class="coach-ic" aria-hidden="true">💡</span><div>${html}</div>`; b.classList.remove('hs-pop'); void b.offsetWidth; b.classList.add('hs-pop'); };
+  const lock = () => el.querySelectorAll('.m-k').forEach(b => b.disabled = true);
+  function check() {
+    if (!val) return;
+    const w = +val;
+    if (w === q.a) { out.classList.add('ok'); lock(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
+    tries++; out.classList.add('no'); HS.fx('no'); onCoach(q, w, tries);
+    if (!opt.coach || tries >= 3) { lock(); out.textContent = AR(q.a); out.classList.remove('no'); out.classList.add('ok'); return finish(false, { tries, revealed: true }); }
+    const why = readMistake(q, w);
+    if (tries === 1) coach(why || q.hint1 || (q.f ? factStrategy(q.f[0], q.f[1]) : 'اقرأ السؤال مرة ثانية: ما العددان؟ وما العملية؟'));
+    else coach((why ? why + '<br>' : '') + (q.hint2 || 'انظر إلى النموذج وعُدّ.') + (q.model && !q.modelFirst ? mathModel(q.model) : q.f && q.f[0] * q.f[1] <= 100 ? mathModel({ m: 'array', r: Math.min(...q.f), c: Math.max(...q.f) }) : ''));
+    later(() => { val = ''; show(); }, 700);
+  }
+}
+
+/* ============================================================
+   MATHS GAMES (registered as LABS with kind 'math'; listed on the games page under «ألعاب الضرب»).
+   The maths is the game: every move is a multiplication the child works out, with the strategy hints above.
+   ============================================================ */
+const mRec = id => labRec(id);
+/** one screen per game: title, a short goal, a round counter, the play area */
+function mShell(el, lab, goal) {
+  el.innerHTML = `<div class="card lab mg"><div class="mg-top"><h2>${lab.title}</h2><span class="mg-round" aria-live="polite"></span></div>
+    <p class="lead">${goal}</p><div class="mg-play"></div></div>`;
+  return { play: el.querySelector('.mg-play'), round: t => { const r = el.querySelector('.mg-round'); if (r) r.textContent = t; } };
+}
+function mEnd(el, lab, stars, line, again) {
+  const r = mRec(lab.id); r.runs++; r.last = Date.now(); HS.save();
+  el.innerHTML = `<div class="card result"><div class="big">${HS.mascot('cheer', { fb: '🏅' })}</div><h2>أحسنت!</h2><p class="lead">${line}</p>
+    ${stars ? `<p class="mg-stars">${'⭐'.repeat(Math.min(stars, 10))}</p>` : ''}
+    <div class="row center"><button type="button" class="btn" id="mgAgain">العب مرة ثانية</button><button type="button" class="btn sec" id="mgBack">إلى الألعاب</button></div></div>`;
+  $('mgAgain').onclick = again; $('mgBack').onclick = () => HS.nav.go('unit-' + S.id + '-play');
+}
+/** ask one number inside a game; then(okFirst) */
+function mAsk(box, q, then) {
+  const d = document.createElement('div'); d.className = 'mg-ask'; box.appendChild(d);
+  renderQuestion(Object.assign({ t: 'num', id: 'game:' + (q.f || []).join('x') }, q), d, ok => { then(ok); }, { coach: true });
+  d.scrollIntoView({ block: 'nearest', behavior: reduced() ? 'auto' : 'smooth' });
+  return d;
+}
+const mDone = (box, html) => box.insertAdjacentHTML('beforeend', `<div class="fb ok mg-fb">${html}</div>`);
+
+/* ---------- 🧩 break apart a fact (grade 3: ×6, ×7, ×8, ×9 from facts the child knows) ---------- */
+const BREAK = [[7, 4], [6, 4], [8, 3], [7, 6], [9, 4], [8, 6], [6, 7], [9, 7]];
+function breakGame(el, lab) {
+  const list = HS.shuffle(BREAK.slice()).slice(0, 5); let k = 0, stars = 0;
+  const ui = mShell(el, lab, 'حقيقة صعبة؟ نقسمها إلى حقيقتين نعرفهما، ثم نجمع.');
+  const round = () => {
+    if (k >= list.length) return mEnd(el, lab, stars, `فكّكت ${AR(list.length)} حقائق ضرب بنفسك.`, () => breakGame(el, lab));
+    const [x, y] = list[k]; ui.round(`${AR(k + 1)} / ${AR(list.length)}`);
+    const P = ui.play;
+    P.innerHTML = `<p class="mg-fact">${AR(y)} × ${AR(x)} = ؟</p><div class="mg-model">${mathModel({ m: 'array', r: y, c: x })}</div>
+      <p>${AR(y)} صفوف، في كل صف ${AR(x)}. <b>كيف نقسم الأعمدة ${AR(x)}؟</b></p>
+      <div class="opts chips-opts mg-splits">${Array.from({ length: x - 1 }, (_, i) => x - 1 - i).filter(a => a >= x - a).map(a => `<button type="button" class="opt" data-a="${a}">${AR(a)} و ${AR(x - a)}</button>`).join('')}
+      ${x === 9 ? `<button type="button" class="opt" data-a="10">${AR(10)} ناقص ${AR(1)}</button>` : ''}</div><div class="mg-steps"></div>`;
+    P.querySelectorAll('.mg-splits .opt').forEach(b => b.onclick = () => {
+      P.querySelectorAll('.mg-splits .opt').forEach(o => o.disabled = true); b.classList.add('ok');
+      const a = +b.dataset.a, st = P.querySelector('.mg-steps');
+      const smart = a === 10 || a === 5 || a * 2 === x;
+      st.innerHTML = `<p class="mg-say">${a === 10 ? `ذكي! نحسب ${AR(10)} أعمدة ثم نطرح عمودًا واحدًا.` : smart ? `اختيار ذكي: ${a === 5 ? `${AR(5)} حقيقة سهلة` : 'نصفان متساويان: ضعف'}.` : 'يصلح! كل تقسيم يعطي الناتج نفسه.'}</p>`;
+      if (a === 10) {
+        P.querySelector('.mg-model').innerHTML = mathModel({ m: 'array', r: y, c: 10, split: 9 });
+        mAsk(st, { q: `${AR(y)} × ${AR(10)} = ؟`, a: y * 10, f: [y, 10] }, ok1 => mAsk(st, { q: `${AR(y * 10)} − ${AR(y)} = ؟ <small>(نطرح العمود الزائد)</small>`, a: y * 9, hint1: `اطرح ${AR(y)} من ${AR(y * 10)}.` }, ok2 => fin(ok1 && ok2)));
+        return;
+      }
+      P.querySelector('.mg-model').innerHTML = mathModel({ m: 'array', r: y, c: x, split: a });
+      mAsk(st, { q: `${AR(y)} × ${AR(a)} = ؟ <small>(الجزء الأول)</small>`, a: y * a, f: [y, a] }, ok1 =>
+        mAsk(st, { q: `${AR(y)} × ${AR(x - a)} = ؟ <small>(الجزء الثاني)</small>`, a: y * (x - a), f: [y, x - a] }, ok2 =>
+          mAsk(st, { q: `${AR(y * a)} + ${AR(y * (x - a))} = ؟`, a: y * x, hint1: 'اجمع ناتجي الجزأين.' }, ok3 => fin(ok1 && ok2 && ok3))));
+      function fin(ok) {
+        if (ok) { stars++; star(1); } HS.fx('ok');
+        mDone(st, `${AR(y)} × ${AR(x)} = <b>${AR(x * y)}</b> ✅`); k++; labNext(st, k < list.length ? 'الحقيقة التالية ←' : 'النتيجة', round);
+      }
+    });
+  };
+  round();
+}
+
+/* ---------- 🎯 the book's game «ثلاثة على استقامة واحدة» (grade 3, p.151) against the computer ---------- */
+const PG_BOARD = [20, 36, 12, 14, 30, 54, 45, 8, 24, 40, 28, 16, 27, 20, 32, 42, 15, 10, 21, 18, 6, 24, 12, 48, 35];
+const PG_LINES = (() => { const L = [], at = (r, c) => r * 5 + c;
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 5; c++) [[0, 1], [1, 0], [1, 1], [1, -1]].forEach(([dr, dc]) => {
+    const cells = [0, 1, 2].map(i => [r + dr * i, c + dc * i]); if (cells.every(([a, b]) => a >= 0 && a < 5 && b >= 0 && b < 5)) L.push(cells.map(([a, b]) => at(a, b)));
+  }); return L; })();
+function productGame(el, lab) {
+  const own = Array(25).fill(0);   // 0 free, 1 child, 2 computer
+  const clip = [2 + Math.floor(Math.random() * 8), 2 + Math.floor(Math.random() * 8)];
+  let sel = 0, busy = false;
+  const ui = mShell(el, lab, 'حرّك مشبكًا واحدًا إلى عامل جديد، ثم اكتب ناتج الضرب وغطِّه على اللوحة. أول من يغطي <b>ثلاثة على استقامة واحدة</b> يفوز.');
+  const win = who => PG_LINES.find(l => l.every(i => own[i] === who));
+  const P = ui.play;
+  const draw = (msg = '') => {
+    ui.round('أنت 🟢 · الحاسوب 🟣');
+    P.innerHTML = `<div class="pg-board" dir="ltr" role="grid" aria-label="لوحة نواتج الضرب">${PG_BOARD.map((n, i) => `<div class="pg-c o${own[i]}" role="gridcell" data-i="${i}">${AR(n)}</div>`).join('')}</div>
+      <div class="pg-clips"><span>المشبك المختار:</span>${[0, 1].map(j => `<button type="button" class="pg-clip${sel === j ? ' on' : ''}" data-j="${j}" aria-pressed="${sel === j}">📎 ${AR(clip[j])}</button>`).join('')}</div>
+      <div class="pg-strip" dir="ltr" role="group" aria-label="العوامل">${[2, 3, 4, 5, 6, 7, 8, 9].map(f => `<button type="button" class="pg-f${clip.includes(f) ? ' has' : ''}" data-f="${f}">${AR(f)}${clip[0] === f ? '<i>📎</i>' : ''}${clip[1] === f ? '<i>📎</i>' : ''}</button>`).join('')}</div>
+      <p class="mg-say" aria-live="polite">${msg}</p><div class="pg-ask"></div>`;
+    P.querySelectorAll('.pg-clip').forEach(b => b.onclick = () => { if (!busy) { sel = +b.dataset.j; draw(msg); } });
+    P.querySelectorAll('.pg-f').forEach(b => b.onclick = () => { if (!busy) move(+b.dataset.f); });
+  };
+  const free = n => PG_BOARD.map((x, i) => x === n && !own[i] ? i : -1).filter(i => i >= 0);
+  function move(f) {
+    if (clip[sel] === f) return;
+    clip[sel] = f; busy = true; const [a, b] = clip; draw();
+    mAsk(P.querySelector('.pg-ask'), { q: `${AR(a)} × ${AR(b)} = ؟`, a: a * b, f: [a, b] }, ok => {
+      if (ok) star(1);
+      const cells = free(a * b);
+      if (!cells.length) return later(() => cpu(`ناتج ${AR(a * b)} ${PG_BOARD.includes(a * b) ? 'مغطّى' : 'ليس على اللوحة'}. دور الحاسوب.`), 900);
+      own[cells[0]] = 1; HS.fx('ok');
+      if (win(1)) return later(() => finish(1), 700);
+      later(() => cpu(`غطّيت ${AR(a * b)}. دور الحاسوب…`), 700);
+    });
+  }
+  function cpu(msg) {
+    draw(msg);
+    // try every move of either clip: win > block > any free product
+    const moves = []; [0, 1].forEach(j => [2, 3, 4, 5, 6, 7, 8, 9].forEach(f => { if (f === clip[j]) return; const c = clip.slice(); c[j] = f; const fr = free(c[0] * c[1]); if (fr.length) moves.push({ j, f, i: fr[0], c }); }));
+    const wins = who => moves.find(m => PG_LINES.some(l => l.includes(m.i) && l.every(i => i === m.i || own[i] === who)));
+    const m = wins(2) || wins(1) || HS.shuffle(moves)[0];
+    later(() => {
+      if (m) { clip[m.j] = m.f; own[m.i] = 2; }
+      busy = false;
+      if (win(2)) return finish(2);
+      if (own.every(Boolean)) return finish(0);
+      draw(m ? `الحاسوب حرّك مشبكًا إلى ${AR(m.f)}: ${AR(m.c[0])} × ${AR(m.c[1])} = ${AR(m.c[0] * m.c[1])}. دورك!` : 'لم يجد الحاسوب حركة. دورك!');
+    }, 1100);
+  }
+  function finish(who) {
+    const line = win(who) || []; draw(); line.forEach(i => P.querySelector(`.pg-c[data-i="${i}"]`).classList.add('win'));
+    if (who === 1) star(2);
+    later(() => mEnd(el, lab, who === 1 ? 3 : 1, who === 1 ? 'فزت! ثلاثة على استقامة واحدة 🎉' : who === 2 ? 'فاز الحاسوب هذه المرة. جرّب أن تسدّ طريقه!' : 'تعادل!', () => productGame(el, lab)), 1400);
+  }
+  draw('ابدأ: اختر مشبكًا، ثم اضغط على عامل جديد.');
+}
+
+/* ---------- 🔢 multiplication table: explore it, then fill the hidden facts (grade 3) ---------- */
+function tableGame(el, lab) {
+  const ui = mShell(el, lab, 'اضغط على أي مربع لترى الحقيقة مصفوفةً. لاحظ: كل ناتج يظهر مرتين (الخاصية الإبدالية).');
+  const P = ui.play; let hidden = new Set(), filled = 0, stars = 0;
+  const draw = () => {
+    P.innerHTML = `<div class="tb-wrap"><table class="tb" dir="ltr"><tr><th>×</th>${[...Array(10)].map((_, c) => `<th>${AR(c + 1)}</th>`).join('')}</tr>
+      ${[...Array(10)].map((_, r) => `<tr><th>${AR(r + 1)}</th>${[...Array(10)].map((_, c) => { const k = (r + 1) + 'x' + (c + 1);
+        return `<td><button type="button" class="tb-c${hidden.has(k) ? ' hid' : ''}" data-r="${r + 1}" data-c="${c + 1}" aria-label="${AR(r + 1)} × ${AR(c + 1)}">${hidden.has(k) ? '؟' : AR((r + 1) * (c + 1))}</button></td>`; }).join('')}</tr>`).join('')}</table></div>
+      <div class="row center">${hidden.size ? `<span class="mg-say">بقي ${AR(hidden.size)}</span>` : `<button type="button" class="btn sky" id="tbGo">🙈 خبّئ بعض النواتج وامْلأها</button>`}</div><div class="tb-show"></div>`;
+    P.querySelectorAll('.tb-c').forEach(b => b.onclick = () => pick(+b.dataset.r, +b.dataset.c, b));
+    const go = $('tbGo'); if (go) go.onclick = hide;
+    ui.round(hidden.size ? `${AR(filled)} مكتمل` : 'استكشاف');
+  };
+  function pick(r, c, b) {
+    P.querySelectorAll('.tb-c.on,.tb-c.twin').forEach(x => x.classList.remove('on', 'twin'));
+    b.classList.add('on'); const tw = P.querySelector(`.tb-c[data-r="${c}"][data-c="${r}"]`); if (tw && tw !== b) tw.classList.add('twin');
+    const box = P.querySelector('.tb-show'), k = r + 'x' + c;
+    box.innerHTML = r * c <= 100 ? mathModel({ m: 'array', r, c }) : '';
+    if (!hidden.has(k)) { box.insertAdjacentHTML('afterbegin', `<p class="mg-fact">${AR(r)} × ${AR(c)} = ${AR(r * c)}${r !== c ? ` <small>و ${AR(c)} × ${AR(r)} = ${AR(r * c)} أيضًا</small>` : ''}</p>`); return; }
+    box.innerHTML = '';
+    mAsk(box, { q: `${AR(r)} × ${AR(c)} = ؟`, a: r * c, f: [r, c] }, ok => {
+      hidden.delete(k); filled++; if (ok) { stars++; star(1); }
+      later(() => { if (!hidden.size) return mEnd(el, lab, stars, `ملأت ${AR(filled)} نواتج في جدول الضرب.`, () => tableGame(el, lab)); draw(); }, 900);
+    });
+  }
+  function hide() {
+    const cand = []; [3, 6, 7, 8, 9].forEach(f => { for (let o = 2; o <= 9; o++) cand.push(Math.random() < .5 ? f + 'x' + o : o + 'x' + f); });
+    hidden = new Set(HS.shuffle([...new Set(cand)]).slice(0, 8)); filled = 0; draw();
+  }
+  draw();
+}
+
+/* ---------- 🤝 choose the easy pair: the associative property (grade 3, lesson 5-7) ---------- */
+const PAIRS = [[2, 7, 5], [5, 3, 2], [4, 9, 5], [3, 2, 5], [5, 8, 2], [2, 6, 5], [4, 2, 3], [3, 3, 2]];
+function pairGame(el, lab) {
+  const list = HS.shuffle(PAIRS.slice()).slice(0, 5); let k = 0, stars = 0;
+  const ui = mShell(el, lab, 'ثلاثة أعداد نضربها. نختار العددين اللذين نضربهما أولًا: الترتيب لا يغيّر الناتج، لكن بعضه أسهل!');
+  const round = () => {
+    if (k >= list.length) return mEnd(el, lab, stars, 'تعرف الآن كيف تختار الزوج السهل.', () => pairGame(el, lab));
+    const f = HS.shuffle(list[k].slice()); ui.round(`${AR(k + 1)} / ${AR(list.length)}`);
+    const P = ui.play; let picked = [];
+    P.innerHTML = `<p class="mg-fact" dir="ltr">${f.map(AR).join(' × ')} = ؟</p><p>اضغط على العددين اللذين تضربهما <b>أولًا</b>.</p>
+      <div class="pr-cards">${f.map((n, i) => `<button type="button" class="pr-card" data-i="${i}">${AR(n)}</button>`).join('')}</div><div class="mg-steps"></div>`;
+    P.querySelectorAll('.pr-card').forEach(b => b.onclick = () => {
+      if (picked.length >= 2 || b.classList.contains('on')) return;
+      b.classList.add('on'); picked.push(+b.dataset.i); if (picked.length < 2) return;
+      const [x, y] = picked.map(i => f[i]), z = f[[0, 1, 2].find(i => !picked.includes(i))], st = P.querySelector('.mg-steps');
+      const best = Math.max(...[[0, 1], [0, 2], [1, 2]].map(([i, j]) => (f[i] * f[j]) % 10 === 0 ? 2 : f[i] * f[j] <= 10 ? 1 : 0));
+      const mine = (x * y) % 10 === 0 ? 2 : x * y <= 10 ? 1 : 0;
+      st.innerHTML = `<p class="mg-say">${mine === 2 ? `اختيار ذكي! ${AR(x)} × ${AR(y)} = عدد ينتهي بصفر، والضرب فيه سهل.` : mine >= best ? 'اختيار جيد.' : 'يصلح، والناتج نفسه. لكن ابحث في المرة القادمة عن زوج يعطي ١٠ أو ٢٠.'}</p>
+        <p class="mg-fact" dir="ltr">(${AR(x)} × ${AR(y)}) × ${AR(z)}</p>`;
+      if (mine === 2 || mine >= best) stars++;
+      mAsk(st, { q: `${AR(x)} × ${AR(y)} = ؟`, a: x * y, f: [x, y] }, () =>
+        mAsk(st, { q: `${AR(x * y)} × ${AR(z)} = ؟`, a: x * y * z, f: [x * y, z] }, ok => {
+          if (ok) star(1); HS.fx('ok'); mDone(st, `${f.map(AR).join(' × ')} = <b>${AR(f[0] * f[1] * f[2])}</b> ✅`); k++;
+          labNext(st, k < list.length ? 'التالي ←' : 'النتيجة', round);
+        }));
+    });
+  };
+  round();
+}
+
+/* ---------- 🪑 arrange the tables: factors (grade 4, lesson 5-1) ---------- */
+const FACTOR_N = [12, 18, 24, 16, 20, 36, 15];
+function factorGame(el, lab) {
+  const list = HS.shuffle(FACTOR_N.slice()).slice(0, 3); let k = 0, stars = 0;
+  const ui = mShell(el, lab, 'نرتّب الطاولات في صفوف متساوية. كل ترتيب ينجح يعطينا زوجًا من القواسم.');
+  const round = () => {
+    if (k >= list.length) return mEnd(el, lab, stars, 'وجدت كل الترتيبات، أي كل القواسم.', () => factorGame(el, lab));
+    const n = list[k], found = new Set(); let rows = 1; ui.round(`${AR(k + 1)} / ${AR(list.length)}`);
+    const pairs = []; for (let r = 1; r * r <= n; r++) if (n % r === 0) pairs.push(r);
+    const P = ui.play;
+    const draw = (msg = '') => {
+      const c = Math.ceil(n / rows), full = n % rows === 0;
+      P.innerHTML = `<p class="mg-fact">${AR(n)} طاولة</p>
+        <div class="fc-ctl"><button type="button" class="btn sec" id="fcM" aria-label="صفوف أقل">−</button><span>عدد الصفوف: <b>${AR(rows)}</b></span><button type="button" class="btn sec" id="fcP" aria-label="صفوف أكثر">+</button></div>
+        <div class="m-model m-array fc-arr" dir="ltr" style="--c:${c}">${Array.from({ length: rows }, (_, r) => `<div class="m-row">${Array.from({ length: c }, (_, j) => r * c + j < n ? `<span class="m-cell">${mObj('table')}</span>` : '<span class="m-cell gap"></span>').join('')}</div>`).join('')}</div>
+        <p class="mg-say" aria-live="polite">${msg || (full ? `${AR(rows)} صفوف، في كل صف ${AR(n / rows)}: <b>ينجح!</b>` : `الصفوف غير متساوية: آخر صف فيه ${AR(n - (rows - 1) * c)} فقط.`)}</p>
+        <div class="row center">${full ? `<button type="button" class="btn" id="fcKeep">✔ سجّل: ${AR(rows)} × ${AR(n / rows)}</button>` : ''}</div>
+        <p class="fc-found">القواسم التي وجدتها: ${[...found].sort((a, b) => a - b).map(r => `<span class="chip">${AR(r)} × ${AR(n / r)}</span>`).join(' ') || '—'}</p>`;
+      $('fcM').onclick = () => { if (rows > 1) { rows--; draw(); } };
+      $('fcP').onclick = () => { if (rows < n) { rows++; draw(); } };
+      const kp = $('fcKeep'); if (kp) kp.onclick = () => {
+        const r = Math.min(rows, n / rows);
+        if (found.has(r)) return draw(`سجّلت ${AR(rows)} × ${AR(n / rows)} من قبل (أو عكسه). جرّب عددًا آخر من الصفوف.`);
+        found.add(r); HS.fx('ok');
+        if (found.size < pairs.length) return draw(`أحسنت! وجدت ${AR(found.size)} من ${AR(pairs.length)} ترتيبات.`);
+        stars++; star(1);
+        const facs = [...new Set(pairs.flatMap(r => [r, n / r]))].sort((a, b) => a - b);
+        P.innerHTML = `<div class="fb ok mg-fb"><b>وجدت كل الترتيبات!</b><div>قواسم ${AR(n)}: ${facs.map(AR).join('، ')}</div></div>`;
+        k++; labNext(P, k < list.length ? 'العدد التالي ←' : 'النتيجة', round);
+      };
+    };
+    draw();
+  };
+  round();
+}
+
+/* ---------- 🟦 area model: partial products (grade 4, lessons 5-5 and 5-8) ---------- */
+const AREA_P = [[36, 4], [24, 3], [47, 6], [132, 5], [215, 3], [108, 6], [58, 7]];
+function areaGame(el, lab) {
+  const list = HS.shuffle(AREA_P.slice()).slice(0, 4); let k = 0, stars = 0;
+  const ui = mShell(el, lab, 'نقسم العدد الكبير حسب المنازل، ونضرب كل جزء، ثم نجمع النواتج الجزئية.');
+  const round = () => {
+    if (k >= list.length) return mEnd(el, lab, stars, 'حللت مسائل الضرب بنموذج المساحة.', () => areaGame(el, lab));
+    const [a, b] = list[k], parts = placeParts(a), got = []; let okAll = true; ui.round(`${AR(k + 1)} / ${AR(list.length)}`);
+    const P = ui.play;
+    const draw = () => {
+      P.innerHTML = `<p class="mg-fact">${AR(b)} × ${AR(a)} = ؟</p>
+        <p>${AR(a)} = ${parts.map(AR).join(' + ')}. اضغط على كل جزء لتحسبه.</p>
+        ${mathModel({ m: 'area', a, b, slots: true })}<div class="mg-steps"></div>`;
+      P.querySelectorAll('.m-slot').forEach(s => {
+        const i = +s.dataset.k;
+        if (got[i] != null) { s.outerHTML = `<b>${AR(got[i])}</b>`; return; }
+        s.onclick = () => {
+          const st = P.querySelector('.mg-steps'); st.innerHTML = '';
+          mAsk(st, { q: `${AR(b)} × ${AR(parts[i])} = ؟`, a: b * parts[i], f: [b, parts[i]], hint1: parts[i] >= 10 ? `احسب ${AR(b)} × ${AR(String(parts[i])[0])} ثم أضف ${parts[i] >= 100 ? 'صفرين' : 'صفرًا'}.` : '' || undefined }, ok => {
+            okAll = okAll && ok; got[i] = b * parts[i]; HS.fx('ok');
+            later(() => { draw(); if (parts.every((_, j) => got[j] != null)) total(); }, 600);
+          });
+        };
+      });
+    };
+    const total = () => {
+      const st = P.querySelector('.mg-steps');
+      mAsk(st, { q: `${got.map(AR).join(' + ')} = ؟ <small>(نجمع النواتج الجزئية)</small>`, a: a * b, hint1: 'اجمع المئات مع المئات، والعشرات مع العشرات.' }, ok => {
+        if (ok && okAll) { stars++; star(1); } mDone(st, `${AR(b)} × ${AR(a)} = <b>${AR(a * b)}</b> ✅`); k++;
+        labNext(st, k < list.length ? 'المسألة التالية ←' : 'النتيجة', round);
+      });
+    };
+    draw();
+  };
+  round();
+}
+
+/* ---------- 🧱 regroup with base-ten blocks (grade 4, explore 5-6) ---------- */
+const REGROUP = [[16, 2], [13, 5], [24, 3], [18, 4], [45, 3], [27, 4]];
+function regroupGame(el, lab) {
+  const list = HS.shuffle(REGROUP.slice()).slice(0, 4); let k = 0, stars = 0;
+  const ui = mShell(el, lab, 'نضع المجموعات معًا. كل ١٠ آحاد نبدّلها بعشرة واحدة (إعادة التجميع).');
+  const round = () => {
+    if (k >= list.length) return mEnd(el, lab, stars, 'أتقنت إعادة التجميع بالقطع.', () => regroupGame(el, lab));
+    const [a, b] = list[k]; ui.round(`${AR(k + 1)} / ${AR(list.length)}`);
+    let st = [0, Math.floor(a / 10) * b, (a % 10) * b];   // hundreds, tens, ones all together, not yet regrouped
+    const P = ui.play;
+    P.innerHTML = `<p class="mg-fact">${AR(b)} × ${AR(a)} = ؟</p><p>${AR(b)} مجموعات، في كل مجموعة ${AR(a)}:</p>
+      <div class="rg-groups">${Array.from({ length: b }, () => mathModel({ m: 'blocks', n: a })).join('')}</div>
+      <div class="row center"><button type="button" class="btn" id="rgJoin">نضعها معًا</button></div><div class="rg-all"></div>`;
+    $('rgJoin').onclick = () => { $('rgJoin').disabled = true; join(); };
+    const join = (msg = '') => {
+      const box = P.querySelector('.rg-all'), need = st[2] >= 10 ? 'o' : st[1] >= 10 ? 't' : '';
+      box.innerHTML = `${mathModel({ m: 'blocks', parts: st })}
+        <p class="rg-count">${AR(st[0])} مئات، ${AR(st[1])} عشرات، ${AR(st[2])} آحاد</p><p class="mg-say" aria-live="polite">${msg}</p>
+        <div class="row center">${need === 'o' ? `<button type="button" class="btn sky" id="rgSwap">بدّل ${AR(10)} آحاد بعشرة 🔁</button>` : need === 't' ? `<button type="button" class="btn sky" id="rgSwap">بدّل ${AR(10)} عشرات بمئة 🔁</button>` : ''}</div><div class="rg-ask"></div>`;
+      if (need) { $('rgSwap').onclick = () => { if (need === 'o') { st[2] -= 10; st[1]++; } else { st[1] -= 10; st[0]++; } HS.fx('ok'); join(need === 'o' ? 'عشرة جديدة! 🧱' : 'مئة جديدة! 🟩'); }; return; }
+      mAsk(box.querySelector('.rg-ask'), { q: 'كم العدد الآن؟', a: a * b, hint1: `${AR(st[0])} مئات و${AR(st[1])} عشرات و${AR(st[2])} آحاد.`, f: [a, b] }, ok => {
+        if (ok) { stars++; star(1); } mDone(box, `${AR(b)} × ${AR(a)} = <b>${AR(a * b)}</b> ✅`); k++;
+        labNext(box, k < list.length ? 'التالي ←' : 'النتيجة', round);
+      });
+    };
+  };
+  round();
+}
+
+LABS.g3math5 = {
+  table: { id: 'table', title: '🔢 جدول الضرب', em: '🔢', sub: 'استكشف واملأ الفراغات', kind: 'math', lesson: 'l1', run: tableGame, challenges: [] },
+  pg: { id: 'pg', title: '🎯 ثلاثة على استقامة واحدة', em: '🎯📎', sub: 'لعبة الكتاب ضد الحاسوب', kind: 'math', lesson: 'l3', run: productGame, challenges: [] },
+  break: { id: 'break', title: '🧩 نفكّك الحقيقة', em: '🧩', sub: '٧ = ٥ + ٢، و٩ = ١٠ − ١', kind: 'math', lesson: 'l5', run: breakGame, challenges: BREAK },
+  pair: { id: 'pair', title: '🤝 الزوج السهل', em: '🤝', sub: 'الخاصية التجميعية', kind: 'math', lesson: 'l8', run: pairGame, challenges: PAIRS },
+};
+LABS.g4math5 = {
+  factor: { id: 'factor', title: '🪑 نرتّب الطاولات', em: '🪑', sub: 'القواسم والمضاعفات', kind: 'math', lesson: 'l1', run: factorGame, challenges: FACTOR_N },
+  area: { id: 'area', title: '🟦 نموذج المساحة', em: '🟦', sub: 'النواتج الجزئية', kind: 'math', lesson: 'l5', run: areaGame, challenges: AREA_P },
+  regroup: { id: 'regroup', title: '🧱 نعيد التجميع', em: '🧱', sub: 'بقطع دينز', kind: 'math', lesson: 'l6', run: regroupGame, challenges: REGROUP },
+};
+
 })();
 </script>
 <script>
@@ -6978,7 +7943,11 @@ window.CATALOG = [
             color: 'var(--t-orange)', unit: 'g3sciearth' },
           { name: 'الوحدة ٤: الطقس والمناخ', em: '⛅', art: 'unit-g3sci-weather-cover', soon: true }
         ] },
-      { name: 'الرياضيات', em: '➗', art: 'subject-math', soon: true },
+      { id: 'math', name: 'الرياضيات', em: '➗', art: 'subject-math', desc: 'دروس بالنماذج، وألعاب نحسب فيها بأنفسنا',
+        color: 'var(--t-orange)',
+        units: [
+          { name: 'الفصل ٥: الضرب (٢)', em: '✖️', art: 'unit-g3math5-cover', color: 'var(--t-orange)', unit: 'g3math5' }
+        ] },
       { name: 'لغتي', em: '📝', art: 'subject-arabic', soon: true }
     ]
   },
@@ -6996,7 +7965,11 @@ window.CATALOG = [
           { name: 'الخلايا وتصنيف المخلوقات', em: '🦠', art: 'unit-g4sci-cells-cover', soon: true },
           { name: 'الحيوانات وأجهزة أجسامها', em: '🐾', art: 'unit-g4sci-animals-cover', soon: true }
         ] },
-      { name: 'الرياضيات', em: '➗', art: 'subject-math', soon: true },
+      { id: 'math', name: 'الرياضيات', em: '➗', art: 'subject-math', desc: 'دروس بالنماذج، وألعاب نحسب فيها بأنفسنا',
+        color: 'var(--t-orange)',
+        units: [
+          { name: 'الفصل ٥: الضرب في عدد من رقم واحد', em: '✖️', art: 'unit-g4math5-cover', color: 'var(--t-blue)', unit: 'g4math5' }
+        ] },
       { name: 'لغتي', em: '📝', art: 'subject-arabic', soon: true },
       { name: 'English', em: '🔠', art: 'subject-english', soon: true }
     ]

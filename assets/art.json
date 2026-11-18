@@ -353,6 +353,54 @@
   "sm": "assets/mascot/mascot-welcome-sm.webp",
   "src": "assets/mascot/mascot-welcome.webp"
  },
+ "math-apple": {
+  "src": "assets/content/math/apple.webp"
+ },
+ "math-ball": {
+  "src": "assets/content/math/ball.webp"
+ },
+ "math-balloon": {
+  "src": "assets/content/math/balloon.webp"
+ },
+ "math-bird": {
+  "src": "assets/content/math/bird.webp"
+ },
+ "math-book": {
+  "src": "assets/content/math/book.webp"
+ },
+ "math-cookie": {
+  "src": "assets/content/math/cookie.webp"
+ },
+ "math-crayon": {
+  "src": "assets/content/math/crayon.webp"
+ },
+ "math-date": {
+  "src": "assets/content/math/date.webp"
+ },
+ "math-egg": {
+  "src": "assets/content/math/egg.webp"
+ },
+ "math-fish": {
+  "src": "assets/content/math/fish.webp"
+ },
+ "math-flower": {
+  "src": "assets/content/math/flower.webp"
+ },
+ "math-marble": {
+  "src": "assets/content/math/marble.webp"
+ },
+ "math-orange": {
+  "src": "assets/content/math/orange.webp"
+ },
+ "math-pencil": {
+  "src": "assets/content/math/pencil.webp"
+ },
+ "math-star": {
+  "src": "assets/content/math/star.webp"
+ },
+ "math-toycar": {
+  "src": "assets/content/math/toycar.webp"
+ },
  "reward-ball": {
   "sm": "assets/rewards/reward-ball-sm.webp",
   "src": "assets/rewards/reward-ball.webp"

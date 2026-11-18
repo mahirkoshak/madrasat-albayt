@@ -41,7 +41,11 @@ window.CATALOG = [
             color: 'var(--t-orange)', unit: 'g3sciearth' },
           { name: 'الوحدة ٤: الطقس والمناخ', em: '⛅', art: 'unit-g3sci-weather-cover', soon: true }
         ] },
-      { name: 'الرياضيات', em: '➗', art: 'subject-math', soon: true },
+      { id: 'math', name: 'الرياضيات', em: '➗', art: 'subject-math', desc: 'دروس بالنماذج، وألعاب نحسب فيها بأنفسنا',
+        color: 'var(--t-orange)',
+        units: [
+          { name: 'الفصل ٥: الضرب (٢)', em: '✖️', art: 'unit-g3math5-cover', color: 'var(--t-orange)', unit: 'g3math5' }
+        ] },
       { name: 'لغتي', em: '📝', art: 'subject-arabic', soon: true }
     ]
   },
@@ -59,7 +63,11 @@ window.CATALOG = [
           { name: 'الخلايا وتصنيف المخلوقات', em: '🦠', art: 'unit-g4sci-cells-cover', soon: true },
           { name: 'الحيوانات وأجهزة أجسامها', em: '🐾', art: 'unit-g4sci-animals-cover', soon: true }
         ] },
-      { name: 'الرياضيات', em: '➗', art: 'subject-math', soon: true },
+      { id: 'math', name: 'الرياضيات', em: '➗', art: 'subject-math', desc: 'دروس بالنماذج، وألعاب نحسب فيها بأنفسنا',
+        color: 'var(--t-orange)',
+        units: [
+          { name: 'الفصل ٥: الضرب في عدد من رقم واحد', em: '✖️', art: 'unit-g4math5-cover', color: 'var(--t-blue)', unit: 'g4math5' }
+        ] },
       { name: 'لغتي', em: '📝', art: 'subject-arabic', soon: true },
       { name: 'English', em: '🔠', art: 'subject-english', soon: true }
     ]

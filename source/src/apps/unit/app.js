@@ -132,6 +132,7 @@ function block(b) {
   if (b.t === 'chain') return `${h}<div class="chain">${b.items.map(([e, n, r], i) => `${i ? '<span class="ar" aria-hidden="true">⬅</span>' : ''}<div class="lnk"><span class="em" aria-hidden="true">${e}</span>${n}<small>${r || ''}</small></div>`).join('')}</div>${b.note ? `<p class="hint">${b.note}</p>` : ''}`;
   if (b.t === 'pyramid') { const n = b.levels.length; return `${h}${b.html ? `<p>${b.html}</p>` : ''}<div class="pyr">${b.levels.slice().reverse().map(([t, c], i) => `<div style="width:${28 + i * (60 / Math.max(1, n - 1))}%;background:${c}">${t}</div>`).join('')}</div>`; }
   if (b.t === 'html') return `${h}${b.html}`;
+  if (b.t === 'model') return `${h}${b.html ? `<p>${b.html}</p>` : ''}${mathModel(b)}${b.after ? `<p>${b.after}</p>` : ''}`;   // math.js
   return '';
 }
 function renderLesson(L) {
@@ -189,8 +190,10 @@ function showCard() {
 /* ---------------- play menu ---------------- */
 function renderPlay() {
   const L = id => { const i = S.u.lessons.findIndex(l => l.id === id); return i < 0 ? '' : 'الدرس ' + ar(i + 1); };
-  const labs = Object.values(LABS[S.id] || {});
-  M().innerHTML = `<div class="card"><h2>🎮 الألعاب</h2><p class="lead">اسحب البطاقة إلى مكانها، أو اضغط عليها ثم اضغط على المكان.</p></div>
+  const all = Object.values(LABS[S.id] || {}), labs = all.filter(x => x.kind !== 'math'), maths = all.filter(x => x.kind === 'math');
+  M().innerHTML = `<div class="card"><h2>🎮 الألعاب</h2><p class="lead">${maths.length ? 'في كل لعبة تحسب بنفسك، ومعك تلميح إذا احتجت.' : 'اسحب البطاقة إلى مكانها، أو اضغط عليها ثم اضغط على المكان.'}</p></div>
+  ${maths.length ? `<h3 class="gp-h">🔢 ألعاب الضرب <small>نحسب ونفكّر ونفوز</small></h3><div class="game-pick">
+    ${maths.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
   ${labs.length ? `<h3 class="gp-h">🧪 نفكّر ونجرّب <small>نتوقّع ثم نجرّب ونفسّر</small></h3><div class="game-pick">
     ${labs.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
   <h3 class="gp-h">🎮 نتدرّب <small>نرتّب ونصنّف ونتذكّر</small></h3>
@@ -287,7 +290,7 @@ function onAnswer(q, ok, info = {}) {
 function learnRec() { const d = D(); d.learn = d.learn || { n: 0, first: 0, fixed: 0, revealed: 0, hints: 0, L: {}, mis: {} }; return d.learn; }
 function onCoach(q, i, tries) {
   const r = learnRec(); r.hints++;
-  const k = q.t === 'tf' ? (i === 0 ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[i] : q.o[i];
+  const k = q.t === 'num' ? HS.toAr(i) : q.t === 'tf' ? (i === 0 ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[i] : q.o[i];
   const m = r.mis[q.id] = r.mis[q.id] || {}; m[k] = (m[k] || 0) + 1;
 }
 function trackLearning(q, ok, info) {
@@ -301,6 +304,7 @@ function answerText(q) {
   if (q.t === 'mcq' || q.t === 'fill') return q.o[q.a];
   if (q.t === 'pic') return q.o[q.a] + (q.labels ? ' ' + q.labels[q.a] : '');
   if (q.t === 'tf') return q.a ? 'صح' : 'خطأ';
+  if (q.t === 'num') return HS.toAr(q.a);
   return '';
 }
 function retryIntro() {
@@ -398,6 +402,7 @@ function renderQuestion(q, el, done, opt = {}) {
       if (!ok) later(() => { if (b.classList.contains('ok')) return; b.textContent = opt.coach ? '؟' : q.o[q.a]; b.className = opt.coach ? 'blank' : 'blank ok'; }, 900); };
     choice(q.o, q.a, o => o, 'chips-opts');
   }
+  else if (q.t === 'num') numQuestion(q, el, finish, opt);   // math.js
   else if (q.t === 'pic') { el.innerHTML = head(q.q); choice(q.o, q.a, (o, i) => `<span class="pic">${o}</span>${q.labels ? `<small>${q.labels[i]}</small>` : ''}`, 'pics'); }
   else if (q.t === 'match') {
     const n = q.pairs.length; let mistakes = 0, matched = 0;
@@ -593,7 +598,7 @@ APPS.unit = {
     const missed = Object.keys(s).filter(id => s[id].w > 0).sort((a, b) => (s[b].w - s[b].c * .5) - (s[a].w - s[a].c * .5)).slice(0, 5).map(id => ({ q: (u.questions.find(q => q.id === id) || {}).q, w: s[id].w, c: s[id].c })).filter(x => x.q);
     // how the child learns, not only what: first-try accuracy, self-corrections, and the wrong ideas chosen most
     const lr = d.learn || null, byQ = id => u.questions.find(q => q.id === id) || {};
-    const rightOf = q => q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
+    const rightOf = q => q.t === 'num' ? HS.toAr(q.a) : q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
     const mis = lr ? Object.entries(lr.mis || {}).flatMap(([id, ch]) => Object.entries(ch).map(([c, n]) => ({ q: byQ(id).q, chose: c, right: rightOf(byQ(id)), n, l: byQ(id).l })))
       .filter(x => x.q).sort((a, b) => b.n - a.n).slice(0, 4) : [];
     const lessons = u.lessons.map(L => { const r = lr && lr.L && lr.L[L.id]; return { title: L.title, em: L.em, m: m(L.id), first: r && r.n ? r.first / r.n : null, n: r ? r.n : 0 }; });
