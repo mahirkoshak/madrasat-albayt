@@ -1178,3 +1178,14 @@ invent|v|💡|يخترع|To make something new that did not exist.|Who invented 
 float|v|🛟|يطفو|To stay on top of water.|Wood floats on water.|5|sci
 sink|v|⚓|يغرق|To go down under water.|A stone sinks in water.|5|sci
 `;
+
+/** what the voice maker records for the dictionary (tools/speech_list.js): each English word and example sentence,
+    and the Arabic meaning shown in «Learn Arabic» (the first meaning, without brackets, the same as app.js arHead) */
+APPDATA.dict.speakables = () => {
+  const out = [];
+  APPDATA.dict.RAW.trim().split('\n').filter(l => l.split('|').length === 8).forEach(l => {
+    const [w, , , a, , ex] = l.split('|');
+    out.push([w, 'en'], [ex, 'en'], [a.split('/')[0].replace(/\(.*?\)/g, '').trim(), 'ar']);
+  });
+  return out;
+};

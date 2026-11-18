@@ -4619,6 +4619,17 @@ float|v|🛟|يطفو|To stay on top of water.|Wood floats on water.|5|sci
 sink|v|⚓|يغرق|To go down under water.|A stone sinks in water.|5|sci
 `;
 
+/** what the voice maker records for the dictionary (tools/speech_list.js): each English word and example sentence,
+    and the Arabic meaning shown in «Learn Arabic» (the first meaning, without brackets, the same as app.js arHead) */
+APPDATA.dict.speakables = () => {
+  const out = [];
+  APPDATA.dict.RAW.trim().split('\n').filter(l => l.split('|').length === 8).forEach(l => {
+    const [w, , , a, , ex] = l.split('|');
+    out.push([w, 'en'], [ex, 'en'], [a.split('/')[0].replace(/\(.*?\)/g, '').trim(), 'ar']);
+  });
+  return out;
+};
+
 </script>
 <script>/* ===== app: dict ===== */
 (function () {
@@ -4678,7 +4689,7 @@ const hiWord = (ex, w) => esc(ex).replace(new RegExp('\\b(' + w.replace(/[.*+?^$
 const pos = x => `${POS[x.p][0]} · ${POS[x.p][1]}`;
 const stars = n => '★'.repeat(n) + '☆'.repeat(Math.max(0, 4 - n));
 const LEVEL = { 3: '🟢 سهل', 4: '🟡 متوسط', 5: '🔴 صعب' };
-function sayEn(t) { HS.speak([[t, 'en']]); }   // the device's English voice, for English words only
+function sayEn(t) { HS.speak([[t, 'en']]); }   // the recorded clip when there is one, otherwise the device voice
 function refreshStars() { const s = $('dStars'); if (s) s.textContent = ar(HS.stars()); }   // diamonds to spend
 HS.on('stars', refreshStars);
 /* every page is a route (refresh, Back and Forward work; the site header has the only Back button):
@@ -4731,7 +4742,8 @@ function chainFor(sub) {
 const backBtn = () => '';   // Back lives in the site header
 /** question text: Arabic, plus an English line in Arabic mode (these children read English more easily) */
 const askT = (a, e) => AR() ? `${a}<small dir="ltr">${e}</small>` : a;
-const sayBtn = (t, cls = '') => AR() && /[؀-ۿ]/.test(t) ? '' : `<button type="button" class="d-say ${cls}" data-say="${esc(t)}" aria-label="استمع للنطق">${HS.SPK}</button>`;
+const sayBtn = (t, cls = '') => { const ar = /[؀-ۿ]/.test(t); if (ar && !HS.AUDIO['ar|' + t]) return '';   // Arabic only with a recorded clip (device Arabic voices are poor)
+  return `<button type="button" class="d-say ${cls}" data-say="${esc(t)}" data-lang="${ar ? 'ar' : 'en'}" aria-label="استمع للنطق">${HS.SPK}</button>`; };
 
 /* word of the day: the same all day for this level; 🎲 swaps it for a random word */
 let wodPick = null;
@@ -4970,7 +4982,7 @@ function endPractice() {
 ROOT.addEventListener('click', e => {
   const t = e.target.closest('button,[data-w]'); if (!t || !ROOT.contains(t)) return;
   const ds = t.dataset;
-  if (ds.say) { e.stopPropagation(); return sayEn(ds.say); }
+  if (ds.say) { e.stopPropagation(); return HS.speak([[ds.say, ds.lang || 'en']]); }
   if (ds.a === 'home') return go(home);
   if (ds.a === 'practice') return go(practice);
   if (ds.a === 'mine') return go(list, 'mine');

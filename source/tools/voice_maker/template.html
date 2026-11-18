@@ -125,7 +125,7 @@
     <select id="what"><option value="both">العربي والإنجليزي معًا ({{COUNT}} جملة)</option><option value="ar">العربي فقط ({{COUNT_AR}} جملة)</option><option value="en">الإنجليزي فقط ({{COUNT_EN}} جملة)</option></select>
     <fieldset class="scope"><legend>أي جمل؟</legend>
       <label class="chk"><input type="radio" name="scope" value="all" id="scopeAll"> كل الجمل من جديد (بالصوت الجديد)</label>
-      <label class="chk"><input type="radio" name="scope" value="new" id="onlyNew"> الجديدة فقط ({{COUNT_NEW}} جملة ليس لها صوت بعد)</label>
+      <label class="chk"><input type="radio" name="scope" value="new" id="onlyNew"> الجديدة فقط ({{COUNT_NEW}} جملة ليس لها صوت بعد، {{CHARS_NEW}} حرف)</label>
     </fieldset>
     <div class="btns"><button type="button" id="go">🎙️ سجّل ونزّل الملف</button></div>
     <div class="bar" aria-hidden="true"><i id="bar"></i></div>
@@ -183,7 +183,8 @@ $('elTryEn').onclick = elTry('A is for Apple. Great job! Can you find the red ap
 const PK = 'madrasat-voice-prov', NEW = {{COUNT_NEW}};
 function showProv(switched) {
   $('elBox').hidden = prov() !== 'eleven'; document.body.classList.toggle('eleven', prov() === 'eleven');   // the Azure steps are not needed then
-  if (switched || NEW === 0) { $('scopeAll').checked = prov() === 'eleven' || NEW === 0; $('onlyNew').checked = !$('scopeAll').checked; }
+  if (switched) { $('scopeAll').checked = prov() === 'eleven' || NEW === 0; $('onlyNew').checked = !$('scopeAll').checked; }
+  else { $('onlyNew').checked = NEW > 0; $('scopeAll').checked = NEW === 0; }   // opening the page: new sentences first, so no credits go on re-recording
   if (switched && prov() === 'eleven') $('what').value = 'both';
   $('whoRec').textContent = prov() === 'eleven' ? '🎙️ التسجيل بـ ElevenLabs (الصوت العربي والصوت الإنجليزي اللذين اخترتهما).' : '🎙️ التسجيل بـ Microsoft Azure.';
 }

@@ -26,7 +26,7 @@ try:
     new_n = sum(1 for l in lines if l['lang'] + '|' + l['text'] not in set(have))
     for k, v in {'{{LINES}}': json.dumps(lines, ensure_ascii=False), '{{COUNT}}': str(len(lines)), '{{CHARS}}': f"{sum(len(l['text']) for l in lines):,}",
                  '{{COUNT_AR}}': str(ar_n), '{{COUNT_EN}}': str(len(lines) - ar_n),
-                 '{{HAVE}}': json.dumps(have, ensure_ascii=False), '{{COUNT_NEW}}': str(new_n)}.items():
+                 '{{HAVE}}': json.dumps(have, ensure_ascii=False), '{{COUNT_NEW}}': str(new_n), '{{CHARS_NEW}}': f"{sum(len(l['text']) for l in lines if l['lang'] + '|' + l['text'] not in set(have)):,}"}.items():
         t = t.replace(k, v)
     eleven = open(os.path.join(HERE, 'tools', 'voice_maker', 'eleven.js'), encoding='utf-8').read()
     t = t.replace('{{ELEVEN_JS}}', eleven).replace('{{CHARS_AR}}', f"{sum(len(l['text']) for l in lines if l['lang'] == 'ar'):,}")

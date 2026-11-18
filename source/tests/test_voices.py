@@ -61,10 +61,13 @@ with sync_playwright() as p:
     pg.wait_for_timeout(500);pg.select_option('#elVoice','my1');pg.select_option('#elVoiceEn','lib:own:lib2')
     calls.clear();pg.click('#elTryEn');pg.wait_for_timeout(400);print('try english:',[c for c in calls if c[0]=='tts'][-1:])
     pg.click('#elTry');pg.wait_for_timeout(300);print('try:',[c for c in calls if c[0]=='tts'][-1:])
+    print('opening with new sentences -> only new:',pg.is_checked('#onlyNew'),pg.evaluate('NEW'))
+    assert pg.is_checked('#onlyNew')
+    pg.check('[name=prov][value=azure]');pg.check('[name=prov][value=eleven]');pg.wait_for_timeout(100)
     print('switching to eleven -> all sentences:',pg.is_checked('#scopeAll'),'| language:',pg.input_value('#what'),'|',pg.inner_text('#whoRec'))
     assert pg.is_checked('#scopeAll') and pg.input_value('#what')=='both'
-    pg.reload();pg.wait_for_timeout(500);print('after reload still ElevenLabs:',pg.is_checked('[name=prov][value=eleven]'),'all sentences:',pg.is_checked('#scopeAll'),'box shown:',pg.is_visible('#elBox'))
-    assert pg.is_checked('[name=prov][value=eleven]') and pg.is_checked('#scopeAll')
+    pg.reload();pg.wait_for_timeout(500);print('after reload still ElevenLabs:',pg.is_checked('[name=prov][value=eleven]'),'only new again:',pg.is_checked('#onlyNew'),'box shown:',pg.is_visible('#elBox'))
+    assert pg.is_checked('[name=prov][value=eleven]') and pg.is_checked('#onlyNew')
     pg.screenshot(path=OUT+'/voice-maker.png',full_page=True)
     pg.select_option('#elVoice','my1');pg.select_option('#elVoiceEn','lib:own:lib2');pg.check('#onlyNew')
     pg.evaluate("HAVE.clear(); const ar=LINES.filter(l=>l.lang==='ar').slice(0,3), en=LINES.filter(l=>l.lang==='en').slice(0,3); LINES.splice(0,LINES.length,...ar,...en)")   # a few of each
