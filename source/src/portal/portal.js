@@ -138,7 +138,7 @@
     if ($('ppSyncCopy')) $('ppSyncCopy').onclick = () => { const l = HS.sync.joinLink(); (navigator.clipboard ? navigator.clipboard.writeText(l) : Promise.reject()).then(() => HS.toast('📋 نُسخ الرابط'), () => HS.toast(l)); };
     const sign = kind => () => { const e = $('ppSignE'); if (e) e.textContent = '⏳ جاري تسجيل الدخول…';
       HS.sync.signIn(kind).then(u => { if (u) { HS.toast('✅ تم تسجيل الدخول'); parent(); } })
-        .catch(err => { if (e) e.textContent = /popup-closed|cancelled/.test((err && err.code) || '') ? '' : 'تعذّر تسجيل الدخول. تأكد من الإنترنت، أو استعمل كود العائلة.'; console.warn(err); }); };
+        .catch(err => { const c = (err && err.code) || ''; if (e) e.textContent = /popup-closed|cancelled/.test(c) ? '' : /operation-not-allowed|invalid-oauth|configuration/.test(c) ? (kind === 'apple' ? 'الدخول بحساب Apple غير مفعّل بعد. استعمل Google.' : 'هذه الطريقة غير مفعّلة بعد.') : 'تعذّر تسجيل الدخول. تأكد من الإنترنت، أو استعمل كود العائلة.'; console.warn(err); }); };
     if ($('ppSignG')) $('ppSignG').onclick = sign('google');
     if ($('ppSignA')) $('ppSignA').onclick = sign('apple');
     if ($('ppSignOut')) $('ppSignOut').onclick = () => HS.sync.signOut().then(() => { HS.toast('تم تسجيل الخروج'); parent(); });

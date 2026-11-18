@@ -1,5 +1,7 @@
 # Parent sign-in with Google and Apple: one-time Firebase setup
 
+**Status (18 Nov 2026):** Google is on. The site's address is allowed and the `parents` rule is published. Apple is still off.
+
 The site already uses Firebase (project `madrasat-albayt`) to keep the children, diamonds and progress the same on every device. A parent can now sign in with Google or Apple. Signing in on any device joins the family, and the parent can work from their own phone:
 
 - watch progress live;
