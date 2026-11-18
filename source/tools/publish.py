@@ -28,12 +28,31 @@ try:
                  '{{COUNT_AR}}': str(ar_n), '{{COUNT_EN}}': str(len(lines) - ar_n),
                  '{{HAVE}}': json.dumps(have, ensure_ascii=False), '{{COUNT_NEW}}': str(new_n)}.items():
         t = t.replace(k, v)
+    eleven = open(os.path.join(HERE, 'tools', 'voice_maker', 'eleven.js'), encoding='utf-8').read()
+    t = t.replace('{{ELEVEN_JS}}', eleven).replace('{{CHARS_AR}}', f"{sum(len(l['text']) for l in lines if l['lang'] == 'ar'):,}")
     with open(os.path.join(HERE, 'dist', 'voice-maker.html'), 'w', encoding='utf-8') as f: f.write(t)
+    # the listening test (tools/voice_maker/test.html): the same sentences in each voice, names hidden
+    clips = json.load(open(man, encoding='utf-8')) if os.path.isfile(man) else {}
+    site = lambda text: ('assets/audio/' + clips['ar|' + text]) if 'ar|' + text in clips else None
+    TEST = [('الحروف', x) for x in ['ألف. أرنب', 'ثاء', 'حاء', 'خاء', 'ذال', 'ضاد', 'ظاء', 'عين', 'غين', 'قاف']] + \
+           [('تشجيع', x) for x in ['أحسنت!', 'أحسنتِ!', 'ممتاز!', 'رائع!', 'سلسلة رائعة!', 'حاول مرة ثانية', 'هيا نلعب!']] + \
+           [('تعليمات الروضة', x) for x in ['أين حرف غين؟', 'أربعة زائد اثنان، كم يساوي؟', 'رتّبي القصة: ماذا حدث أولًا؟', 'خذي النجمة أولًا، ثم اذهبي إلى التفاحة',
+                                         'أوه! اصطدم الروبوت. جرّبي طريقًا آخر']] + \
+           [('جملة علوم (للمستقبل)', 'النباتات تصنع غذاءها بنفسها من ضوء الشمس والماء.')]
+    test = [{'cat': c, 'text': x, 'site': site(x)} for c, x in TEST]
+    ref_text = 'أحسنتِ اليوم! حان وقت الاستراحة. لنلعب بعيدًا عن الشاشة'
+    ref = {'text': ref_text, 'url': site(ref_text)}
+    tt = open(os.path.join(HERE, 'tools', 'voice_maker', 'test.html'), encoding='utf-8').read()
+    tt = tt.replace('{{ELEVEN_JS}}', eleven).replace('{{TEST}}', json.dumps(test, ensure_ascii=False)).replace('{{REF}}', json.dumps(ref, ensure_ascii=False))
+    with open(os.path.join(HERE, 'dist', 'voice-test.html'), 'w', encoding='utf-8') as f: f.write(tt)
+    print('listening test:', len(test), 'sentences,', sum(1 for x in test if x['site']), 'with a current clip')
 except (OSError, subprocess.CalledProcessError) as e:
     print('voice maker page skipped (needs node):', e)
 shutil.copy2(os.path.join(HERE, 'dist', 'index.html'), os.path.join(REPO, 'index.html'))
 if os.path.isfile(os.path.join(HERE, 'dist', 'voice-maker.html')):
     shutil.copy2(os.path.join(HERE, 'dist', 'voice-maker.html'), os.path.join(REPO, 'voice-maker.html'))
+if os.path.isfile(os.path.join(HERE, 'dist', 'voice-test.html')):
+    shutil.copy2(os.path.join(HERE, 'dist', 'voice-test.html'), os.path.join(REPO, 'voice-test.html'))
 n = 0
 for root, _, files in os.walk(os.path.join(HERE, 'dist', 'assets')):
     for f in files:

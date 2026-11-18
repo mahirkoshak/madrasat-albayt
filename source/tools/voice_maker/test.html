@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>اختبار الاستماع · مدرسة البيت</title>
+<style>
+  :root{--ink:#3d3428;--muted:#6c604f;--line:#ecdfc6;--page:#fff8e7;--blue:#1769c4;--blue-sh:#0e4a8f;--soft:#e2effd;--red:#a51d1d;--ok:#2b5d00;--gold:#ffc800}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);font:17px/1.55 'Tajawal',system-ui,sans-serif}
+  main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+  h1{font-size:30px;margin:0 0 4px} h2{font-size:20px;margin:0 0 8px}
+  .sub{color:var(--muted);margin:0 0 20px}
+  section{background:#fff;border-radius:20px;padding:18px 20px;margin:0 0 16px;box-shadow:0 0 0 1.5px var(--line),0 3px 0 1.5px var(--line)}
+  label{display:block;font-weight:700;margin:12px 0 4px} label.chk{display:flex;gap:8px;align-items:center;font-weight:600;margin:6px 0}
+  input,select{font:inherit;width:100%;min-height:46px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:#fff;color:var(--ink)}
+  input[type=checkbox],input[type=radio]{width:auto;min-height:0}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  button{font:inherit;font-weight:800;min-height:46px;padding:8px 18px;border:none;border-radius:14px;cursor:pointer;background:var(--blue);color:#fff;box-shadow:0 4px 0 var(--blue-sh)}
+  button.sec{background:#fff;color:var(--ink);box-shadow:0 0 0 1.5px var(--line),0 3px 0 1.5px var(--line)}
+  button:disabled{opacity:.5;cursor:default}
+  .linkbtn{background:none;border:0;box-shadow:none;color:#1c7ed6;text-decoration:underline;padding:0;min-height:0;font-weight:600}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .note{color:var(--muted);font-size:15px}
+  .err{color:var(--red)} .ok{color:var(--ok)}
+  details>summary{cursor:pointer;font-weight:800}
+  .bar{height:14px;background:var(--line);border-radius:99px;overflow:hidden;margin:12px 0 6px}.bar i{display:block;height:100%;width:0;background:var(--blue);transition:width .2s}
+  #msg,#elMsg{font-weight:700;min-height:1.4em}
+  /* the test */
+  .q{padding:14px 16px}
+  .q .tx{font-size:24px;font-weight:800;margin:0 0 4px}
+  .q .cat{font-size:13px;color:var(--muted)}
+  .smp{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:10px}
+  .s{border:3px solid var(--line);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:8px;align-items:stretch;background:#fff}
+  .s.best{border-color:var(--gold);background:#fff9db}
+  .s .lab{font-weight:900;font-size:20px;text-align:center}
+  .s .play{background:var(--soft);color:var(--blue-sh);box-shadow:0 3px 0 #b9d5f5}
+  .s .pick{background:#fff;color:var(--ink);box-shadow:0 0 0 1.5px var(--line),0 3px 0 1.5px var(--line)}
+  .s.best .pick{background:var(--gold);box-shadow:0 3px 0 #c99a00}
+  .s .bad{font-size:14px;font-weight:600;display:flex;gap:6px;align-items:center;justify-content:center}
+  .s .fail{color:var(--red);font-size:14px;text-align:center}
+  .tally{display:grid;gap:8px}
+  .tally .t{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--soft)}
+  .tally .meter{grid-column:1/-1;height:10px;border-radius:99px;background:#fff;overflow:hidden}.tally .meter i{display:block;height:100%;background:var(--blue)}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <h1>🎧 اختبار الاستماع</h1>
+  <p class="sub">نفس الجمل بأصوات مختلفة، والأسماء مخفية. اسمع، واختر الأفضل في كل جملة، وعلّم أي خطأ في النطق. في النهاية نكشف من فاز، ثم نسجّل الموقع كله بالفائز في <a href="voice-maker.html">صانع الأصوات</a>.</p>
+
+  <section>
+    <h2>١. الأصوات المتنافسة</h2>
+    <label class="chk"><input type="checkbox" class="src" value="site" checked> الصوت الحالي في الموقع (Microsoft Azure)</label>
+    <label class="chk"><input type="checkbox" class="src" value="eleven" checked> ElevenLabs</label>
+    <label class="chk"><input type="checkbox" class="src" value="habibi" checked> Habibi (مفتوح المصدر، يقلّد الصوت الحالي)</label>
+    <label class="chk"><input type="checkbox" class="src" value="lahgtna"> Lahgtna (مفتوح المصدر، يقلّد الصوت الحالي)</label>
+    <p class="note">Habibi وLahgtna يعملان من صفحات تجريبية مجانية على Hugging Face: قد تكون بطيئة، أو تطلب الانتظار إذا كانت مشغولة. ما يفشل منها يُستبعد من النتيجة.</p>
+
+    <details id="elDet" open><summary>إعداد ElevenLabs</summary>
+      <p class="note">أنشئ مفتاحًا من <a href="https://elevenlabs.io/app/settings/api-keys" target="_blank" rel="noopener">مفاتيح API في ElevenLabs</a> (فعّل Text to Speech وVoices وModels). الخطة المجانية (١٠ آلاف حرف) تكفي لهذا الاختبار عدة مرات.</p>
+      <label for="elKey">مفتاح ElevenLabs</label><input id="elKey" type="password" autocomplete="off" spellcheck="false" dir="ltr" placeholder="sk_••••••••">
+      <label class="chk"><input type="checkbox" id="elRemember"> تذكّر المفتاح في هذا المتصفح</label>
+      <p class="note" id="elRememberNote" hidden>المفتاح محفوظ في هذا المتصفح فقط. <button type="button" id="elForget" class="linkbtn">انسَ المفتاح</button></p>
+      <div class="btns"><button type="button" class="sec" id="elLoad">🔄 حمّل الأصوات</button><button type="button" class="sec" id="elPreview">🎧 معاينة الصوت</button></div>
+      <div class="row">
+        <div><label for="elVoice">الصوت</label><select id="elVoice"></select></div>
+        <div><label for="elModel">النموذج</label><select id="elModel" dir="ltr"></select></div>
+      </div>
+      <div class="row">
+        <div><label for="elSpeed">السرعة</label><select id="elSpeed"><option value="0.85">أبطأ (للصغار)</option><option value="0.92" selected>أبطأ قليلًا</option><option value="1">عادية</option></select></div>
+        <div><label for="elStab">الثبات</label><select id="elStab"><option value="0.35">معبّر أكثر</option><option value="0.5" selected>متوازن</option><option value="0.75">ثابت أكثر</option></select></div>
+      </div>
+      <p id="elMsg" role="status" aria-live="polite"></p>
+    </details>
+
+    <details><summary>إعداد Habibi</summary>
+      <div class="row">
+        <div><label for="hbLang">اللهجة</label><select id="hbLang"><option value="MSA" selected>الفصحى (MSA)</option><option value="SAU">سعودي (SAU)</option></select></div>
+        <div><label for="hbModel">النموذج</label><select id="hbModel"><option value="Unified" selected>Unified</option><option value="Specialized">Specialized</option></select></div>
+      </div>
+    </details>
+
+    <div class="btns"><button type="button" id="go">🎙️ جهّز الأصوات</button></div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <p id="msg" role="status" aria-live="polite"></p>
+  </section>
+
+  <section id="testBox" hidden>
+    <h2>٢. استمع واختر (الأسماء مخفية)</h2>
+    <p class="note">في كل جملة: اضغط ▶️ لكل صوت، ثم «⭐ الأفضل». علّم «خطأ في النطق» إذا قال حرفًا أو حركة خطأ. جرّب مع الأولاد أيضًا!</p>
+    <div id="qs"></div>
+    <div class="btns"><button type="button" id="reveal">🏆 اكشف النتيجة</button><button type="button" class="sec" id="reset">🔄 ابدأ التصويت من جديد</button></div>
+  </section>
+
+  <section id="resBox" hidden>
+    <h2>٣. النتيجة</h2>
+    <div class="tally" id="tally"></div>
+    <p class="note" id="advice"></p>
+  </section>
+</main>
+<script>
+{{ELEVEN_JS}}
+/* the sentences: letters, praise, kindergarten instructions, a science sentence. site = current recorded clip (or null) */
+const TEST = {{TEST}};
+const REF = {{REF}};   // a current clip and its text: the open-source models copy this voice
+const NAMES = { site: 'الصوت الحالي (Microsoft Azure)', eleven: 'ElevenLabs', habibi: 'Habibi (مفتوح المصدر)', lahgtna: 'Lahgtna (مفتوح المصدر)' };
+const $ = id => document.getElementById(id);
+const msg = (t, c) => { $('msg').textContent = t; $('msg').className = c || ''; };
+const V = 'madrasat-voice-test';   // votes, kept in this browser
+let votes = {}; try { votes = JSON.parse(localStorage.getItem(V) || '{}'); } catch (e) {}
+const saveVotes = () => { try { localStorage.setItem(V, JSON.stringify(votes)); } catch (e) {} };
+const audio = {};   // `${i}|${src}` -> object URL
+const order = {};   // i -> shuffled sources
+EL.init();
+
+/* ---------- each source: one sentence -> audio URL ---------- */
+const blobUrl = b => URL.createObjectURL(b instanceof Blob ? b : new Blob([b], { type: 'audio/mpeg' }));
+let azTok = null, azAt = 0;
+async function azure(text) {   // a sentence the site has not recorded yet: Azure with the key saved by the voice maker
+  let s = null; try { s = JSON.parse(localStorage.getItem('madrasat-azure') || 'null'); } catch (e) {}
+  if (!s || !s.key) throw new Error('غير مسجّلة في الموقع بعد');
+  if (!azTok || Date.now() - azAt > 8 * 60e3) {
+    const r = await fetch(`https://${s.region}.api.cognitive.microsoft.com/sts/v1.0/issueToken`, { method: 'POST', headers: { 'Ocp-Apim-Subscription-Key': s.key } });
+    if (!r.ok) throw new Error('Azure ' + r.status); azTok = await r.text(); azAt = Date.now();
+  }
+  const x = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const r = await fetch(`https://${s.region}.tts.speech.microsoft.com/cognitiveservices/v1`, { method: 'POST',
+    headers: { Authorization: 'Bearer ' + azTok, 'Content-Type': 'application/ssml+xml', 'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3' },
+    body: `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="ar-SA"><voice name="ar-SA-ZariyahNeural"><prosody rate="-8%">${x(text)}</prosody></voice></speak>` });
+  if (!r.ok) throw new Error('Azure ' + r.status); return blobUrl(await r.blob());
+}
+let gradio = null, refBlob = null, spaces = {};
+async function space(name) {
+  if (!gradio) gradio = await import('https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js');
+  if (!refBlob) refBlob = await (await fetch(REF.url)).blob();
+  return spaces[name] = spaces[name] || await gradio.Client.connect(name);
+}
+const urlOf = d => d && (d.url || (d.path && d.path.startsWith('http') ? d.path : null));
+async function habibi(text) {
+  const c = await space('chenxie95/Habibi-TTS');
+  const r = await c.predict('/basic_tts', { choose_tts_lang: $('hbLang').value, choose_tts_model: $('hbModel').value,
+    ref_wav_input: gradio.handle_file(refBlob), ref_txt_input: REF.text, gen_txt_input: text, randomize_seed: false, seed_input: 7 });
+  const u = urlOf(r.data[0]); if (!u) throw new Error('لا يوجد صوت'); return blobUrl(await (await fetch(u)).blob());
+}
+async function lahgtna(text) {
+  const c = await space('oddadmix/lahgtna-omnivoice-demo');
+  const args = { text, lang: 'Auto', ref_aud: gradio.handle_file(refBlob), ref_text: REF.text, instruct: '', ns: 32, gs: 2, dn: true, sp: 0.95, du: 0, pp: true, po: true };
+  let r; try { r = await c.predict('/_clone_fn', args); } catch (e) { args.du = null; r = await c.predict('/_clone_fn', args); }
+  const u = urlOf(r.data[0]); if (!u) throw new Error(String(r.data[1] || 'لا يوجد صوت').slice(0, 80)); return blobUrl(await (await fetch(u)).blob());
+}
+const MAKE = { site: async (t, s) => s ? s : azure(t), eleven: async t => blobUrl(await EL.synth(t)), habibi, lahgtna };
+
+/* ---------- prepare every sample ---------- */
+$('go').onclick = async () => {
+  const srcs = [...document.querySelectorAll('.src:checked')].map(c => c.value);
+  if (srcs.length < 2) return msg('اختر صوتين على الأقل', 'err');
+  if (srcs.includes('eleven') && !EL.ready()) return msg('ElevenLabs: اكتب المفتاح واضغط «حمّل الأصوات» ثم اختر صوتًا', 'err');
+  $('go').disabled = true; let done = 0; const total = TEST.length * srcs.length, errs = {};
+  const run = async src => {   // each service in its own lane, one sentence at a time
+    for (let i = 0; i < TEST.length; i++) {
+      const k = i + '|' + src;
+      if (!audio[k]) try { audio[k] = await MAKE[src](TEST[i].text, TEST[i].site); } catch (e) { audio[k] = { err: e.message || String(e) }; errs[src] = (errs[src] || 0) + 1; }
+      done++; $('bar').style.width = (100 * done / total) + '%'; msg(`جُهّز ${done} من ${total}…`);
+    }
+  };
+  await Promise.all(srcs.map(run));
+  TEST.forEach((_, i) => { order[i] = shuffle(srcs.slice()); });
+  draw(srcs);
+  const bad = Object.entries(errs).map(([s, n]) => `${NAMES[s]}: ${n} لم تنجح`);
+  msg(bad.length ? '✅ جاهز. ' + bad.join(' · ') : '✅ جاهز! اسمع واختر.', bad.length ? '' : 'ok');
+  $('go').disabled = false; $('testBox').hidden = false; $('testBox').scrollIntoView({ behavior: 'smooth' });
+};
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const LAB = ['أ', 'ب', 'ج', 'د'];
+function draw() {
+  $('qs').innerHTML = TEST.map((q, i) => `<div class="q" data-i="${i}"><p class="cat">${q.cat}</p><p class="tx">${q.text}</p><div class="smp">${order[i].map((src, n) => {
+    const a = audio[i + '|' + src], v = votes[q.text] || {}, best = v.best === src, bad = (v.bad || []).includes(src);
+    return `<div class="s ${best ? 'best' : ''}" data-src="${src}"><span class="lab">${LAB[n]}</span>${a && a.err ? `<span class="fail">لم ينجح</span>`
+      : `<button type="button" class="play" aria-label="استمع إلى ${LAB[n]}">▶️ استمع</button><button type="button" class="pick" aria-pressed="${best}">${best ? '⭐ الأفضل' : '☆ الأفضل؟'}</button>
+         <label class="bad"><input type="checkbox" ${bad ? 'checked' : ''}> خطأ في النطق</label>`}</div>`; }).join('')}</div></div>`).join('');
+  document.querySelectorAll('.q').forEach(qd => {
+    const i = +qd.dataset.i, q = TEST[i];
+    qd.querySelectorAll('.s').forEach(sd => {
+      const src = sd.dataset.src, a = audio[i + '|' + src]; if (!a || a.err) return;
+      sd.querySelector('.play').onclick = () => { document.querySelectorAll('audio').forEach(x => x.pause()); const el = new Audio(a); el.play(); };
+      sd.querySelector('.pick').onclick = () => { votes[q.text] = Object.assign(votes[q.text] || {}, { best: src }); saveVotes(); draw(); };
+      sd.querySelector('.bad input').onchange = e => { const v = votes[q.text] = votes[q.text] || {}; v.bad = (v.bad || []).filter(x => x !== src); if (e.target.checked) v.bad.push(src); saveVotes(); };
+    });
+  });
+}
+$('reset').onclick = () => { votes = {}; saveVotes(); draw(); $('resBox').hidden = true; };
+$('reveal').onclick = () => {
+  const srcs = [...new Set(Object.values(order).flat())], n = TEST.filter(q => votes[q.text] && votes[q.text].best).length;
+  if (!n) return msg('اختر الأفضل في جملة واحدة على الأقل', 'err');
+  const rows = srcs.map(s => ({ s, win: TEST.filter(q => votes[q.text] && votes[q.text].best === s).length, bad: TEST.filter(q => votes[q.text] && (votes[q.text].bad || []).includes(s)).length }))
+    .sort((a, b) => b.win - a.win || a.bad - b.bad);
+  $('tally').innerHTML = rows.map((r, k) => `<div class="t"><b>${k === 0 ? '🏆 ' : ''}${NAMES[r.s]}</b><span>⭐ ${r.win} من ${n}${r.bad ? ` · ⚠️ ${r.bad} خطأ نطق` : ''}</span><div class="meter"><i style="width:${Math.round(100 * r.win / n)}%"></i></div></div>`).join('');
+  const w = rows[0];
+  $('advice').textContent = w.s === 'site' ? 'الصوت الحالي فاز: لا حاجة للتغيير.'
+    : w.s === 'eleven' ? 'ElevenLabs فاز: افتح صانع الأصوات واختر ElevenLabs بنفس الصوت والإعدادات، ثم سجّل كل الجمل وأرسل الملف لـ Claude.'
+    : 'نموذج مفتوح المصدر فاز: أخبر Claude، وسيجهّز طريقة لتسجيل كل الجمل به (يحتاج جهازًا فيه معالج رسوميات أو Google Colab).';
+  if (w.bad) $('advice').textContent += ' انتبه: الفائز فيه أخطاء نطق، اسمعها مرة ثانية قبل القرار.';
+  $('resBox').hidden = false; $('resBox').scrollIntoView({ behavior: 'smooth' });
+};
+</script>
+</body>
+</html>
