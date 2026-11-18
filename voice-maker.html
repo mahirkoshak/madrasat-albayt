@@ -33,7 +33,12 @@
   #msg.err{color:var(--red)} #msg.ok{color:var(--ok)}
   code{background:var(--soft);padding:1px 6px;border-radius:6px;direction:ltr;unicode-bidi:embed}
   :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+  input[type=checkbox],input[type=radio]{width:22px;height:22px;min-height:0;flex:none;margin:0;accent-color:#1769c4}
+  label.chk{display:flex;gap:10px;align-items:center;font-weight:600;margin:8px 0}
   .seg{display:flex;gap:16px;flex-wrap:wrap}
+  body.eleven .azure-only{display:none}
+  .scope{border:2px solid var(--line);border-radius:14px;margin:12px 0 0;padding:6px 14px}.scope legend{font-weight:700;padding:0 6px}
+  .who{font-weight:800;margin:0 0 6px}
   #elMsg{font-weight:700;min-height:1.4em}#elMsg.err{color:var(--red)}
   @media(max-width:560px){.row{grid-template-columns:1fr}}
 </style>
@@ -87,7 +92,7 @@
     <p class="note">الخطة المجانية فيها ٥٠٠ ألف حرف في الشهر، وكل جمل الموقع تحتاج حوالي 18,218 حرفًا فقط. المفتاح يبقى في هذه الصفحة على جهازك ولا يُحفظ ولا يُرسل لأي مكان غير Microsoft.</p>
   </section>
 
-  <section>
+  <section class="azure-only">
     <h2>٢. اختر الأصوات</h2>
     <div class="row">
       <div><label for="key">المفتاح (KEY 1)</label><input id="key" type="password" autocomplete="off" spellcheck="false" dir="ltr" placeholder="••••••••••••••••"></div>
@@ -114,10 +119,14 @@
   </section>
 
   <section>
-    <h2>٣. سجّل كل الجمل</h2>
-    <label for="what">ماذا تسجّل؟</label>
-    <label class="chk"><input type="checkbox" id="onlyNew" checked> الجمل الجديدة فقط (0 جملة ليس لها صوت بعد)</label>
-    <select id="what"><option value="ar">العربي فقط (483 جملة)</option><option value="en">الإنجليزي فقط (507 جملة): لألعاب الروضة بالإنجليزي</option><option value="both">الاثنين معًا</option></select>
+    <h2>٣. سجّل</h2>
+    <p class="who" id="whoRec"></p>
+    <label for="what">أي لغة؟</label>
+    <select id="what"><option value="both">العربي والإنجليزي معًا (990 جملة)</option><option value="ar">العربي فقط (483 جملة)</option><option value="en">الإنجليزي فقط (507 جملة)</option></select>
+    <fieldset class="scope"><legend>أي جمل؟</legend>
+      <label class="chk"><input type="radio" name="scope" value="all" id="scopeAll"> كل الجمل من جديد (بالصوت الجديد)</label>
+      <label class="chk"><input type="radio" name="scope" value="new" id="onlyNew"> الجديدة فقط (0 جملة ليس لها صوت بعد)</label>
+    </fieldset>
     <div class="btns"><button type="button" id="go">🎙️ سجّل ونزّل الملف</button></div>
     <div class="bar" aria-hidden="true"><i id="bar"></i></div>
     <p id="msg" role="status" aria-live="polite"></p>
@@ -261,7 +270,17 @@ $('tryAr').onclick = () => play('هيا نلعب! ركّبي الصورة، ثم
 const elTry = (t, lang) => async () => { const m = $('elMsg'); try { m.textContent = '…'; m.className = ''; const b = await EL.synth(t, lang); new Audio(URL.createObjectURL(new Blob([b], { type: 'audio/mpeg' }))).play(); m.textContent = ''; } catch (e) { m.textContent = e.message; m.className = 'err'; } };
 $('elTry').onclick = elTry('ألف. أرنب. باء. بطة. أحسنتِ! هيا نلعب.', 'ar');
 $('elTryEn').onclick = elTry('A is for Apple. Great job! Can you find the red apple?', 'en');
-document.querySelectorAll('[name=prov]').forEach(r => r.onchange = () => { $('elBox').hidden = prov() !== 'eleven'; $('onlyNew').checked = prov() !== 'eleven'; $('what').value = prov() === 'eleven' ? 'both' : 'ar'; });   // a new voice: re-record every sentence, both languages
+/* the service choice is remembered; switching to ElevenLabs means a new voice, so every sentence in both languages is re-recorded */
+const PK = 'madrasat-voice-prov', NEW = 0;
+function showProv(switched) {
+  $('elBox').hidden = prov() !== 'eleven'; document.body.classList.toggle('eleven', prov() === 'eleven');   // the Azure steps are not needed then
+  if (switched || NEW === 0) { $('scopeAll').checked = prov() === 'eleven' || NEW === 0; $('onlyNew').checked = !$('scopeAll').checked; }
+  if (switched && prov() === 'eleven') $('what').value = 'both';
+  $('whoRec').textContent = prov() === 'eleven' ? '🎙️ التسجيل بـ ElevenLabs (الصوت العربي والصوت الإنجليزي اللذين اخترتهما).' : '🎙️ التسجيل بـ Microsoft Azure.';
+}
+document.querySelectorAll('[name=prov]').forEach(r => r.onchange = () => { try { localStorage.setItem(PK, prov()); } catch (e) {} showProv(true); });
+try { const sp = localStorage.getItem(PK) || (localStorage.getItem('madrasat-eleven') ? 'eleven' : ''); if (sp) { const r = document.querySelector(`[name=prov][value=${sp}]`); if (r) r.checked = true; } } catch (e) {}
+showProv(false);
 EL.init();
 $('tryEn').onclick = () => play('Great job! Can you find the red apple?', 'en');
 
@@ -288,7 +307,7 @@ function zip(files) {
 $('go').onclick = async () => {
   $('go').disabled = true; const files = [], manifest = {}; let done = 0, failed = [];
   if (!LINES.some(l => ($('what').value === 'both' || l.lang === $('what').value) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text)))) {
-    msg('كل الجمل في هذا الاختيار لها صوت مسجّل ✓'); $('go').disabled = false; return; }
+    msg('كل الجمل في هذا الاختيار لها صوت مسجّل ✓. لتسجيلها من جديد بالصوت الجديد اختر «كل الجمل من جديد».'); $('go').disabled = false; return; }
   try {
     const w0 = $('what').value;
     if (prov() === 'eleven') {
