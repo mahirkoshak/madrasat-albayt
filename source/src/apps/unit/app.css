@@ -441,3 +441,6 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 .mt-table th,.mt-table td{border:2px solid var(--t-line);padding:6px 10px;text-align:center}
 @media (max-width:420px){.mt-table{font-size:.95rem}.mt-table th,.mt-table td{padding:4px 5px}}
 .mt-table th{background:var(--t-sand-soft)}
+/* a picture standing in for a tile's or card's emoji: drawings need more room than an emoji */
+.em > img.hs-pic:not(.inl){width:1.9em;height:1.9em;vertical-align:middle}
+.tile .em > img.hs-pic:not(.inl),.card .em > img.hs-pic:not(.inl){width:72px;height:72px}

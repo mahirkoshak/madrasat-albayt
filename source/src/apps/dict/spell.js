@@ -153,3 +153,6 @@ ROOT.addEventListener('click', e => {
 });
 /** for the parent page */
 const spellReport = pid => { const d = HS.data('spell', pid); return { en: ((d.en || {}).done || []).length, ar: ((d.ar || {}).done || []).length, best: d.best || 0 }; };
+
+// emoji the word lists do not draw themselves (topics, word of the day) become dictionary pictures
+HS.picify(ROOT, ["dict", "kg", "sci"]);

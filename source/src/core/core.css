@@ -42,6 +42,7 @@
 
 /* a content picture standing in for an emoji: sized by the font of the place it sits in */
 img.hs-pic{width:1.25em;height:1.25em;object-fit:contain;vertical-align:-.3em;display:inline-block}
+img.hs-pic.inl{width:1.5em;height:1.5em;vertical-align:-.4em;margin-inline:.1em}
 
 /* the child's happy avatar beside the mascot on results screens */
 .kid-cheer{display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;margin-inline-end:10px;vertical-align:middle;overflow:hidden;box-shadow:0 4px 0 rgba(0,0,0,.12);animation:hspop .5s}

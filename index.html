@@ -109,6 +109,7 @@
 
 /* a content picture standing in for an emoji: sized by the font of the place it sits in */
 img.hs-pic{width:1.25em;height:1.25em;object-fit:contain;vertical-align:-.3em;display:inline-block}
+img.hs-pic.inl{width:1.5em;height:1.5em;vertical-align:-.4em;margin-inline:.1em}
 
 /* the child's happy avatar beside the mascot on results screens */
 .kid-cheer{display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;margin-inline-end:10px;vertical-align:middle;overflow:hidden;box-shadow:0 4px 0 rgba(0,0,0,.12);animation:hspop .5s}
@@ -676,6 +677,16 @@ body{font-family:var(--t-font);background:var(--t-page)}
 #app-dict .d-say{display:inline-grid;place-items:center;color:var(--t-gold-ink);padding:0}
 #app-dict .d-say .hs-spk{width:24px;height:24px}
 #app-dict .d-say.sm .hs-spk{width:19px;height:19px}
+#app-dict .d-row{grid-template-columns:72px 1fr 1fr 28px}
+#app-dict .d-row .em img.hs-pic{width:64px;height:64px;vertical-align:middle}
+#app-dict .d-word>.em img.hs-pic{width:min(220px,55vw);height:min(220px,55vw)}
+#app-dict .d-wod .em img.hs-pic{width:140px;height:140px}
+#app-dict .d-clue .em img.hs-pic{width:130px;height:130px}
+#app-dict .d-big img.hs-pic{width:110px;height:110px;vertical-align:middle;display:block;margin:0 auto 6px}
+#app-dict .sp-clue .em img.hs-pic{width:130px;height:130px}
+#app-dict .sp-row .em img.hs-pic{width:60px;height:60px;vertical-align:middle}
+@media (max-width:420px){#app-dict .d-row{grid-template-columns:60px 1fr 1fr 24px}
+#app-dict .d-row .em img.hs-pic{width:54px;height:54px}}
 
 /* ===== app: kg (kg) ===== */
 #app-kg{--ink:var(--t-ink);--bg:var(--t-page);--pink:var(--t-pink);--sky:var(--t-blue);--sun:var(--t-gold);--mint:var(--t-green-btn);--grape:var(--t-purple);--orange:var(--t-orange);--shadow:var(--t-raise)}
@@ -1351,6 +1362,8 @@ body{font-family:var(--t-font);background:var(--t-page)}
 @media (max-width:420px){#app-unit .mt-table{font-size:.95rem}
 #app-unit .mt-table th,#app-unit .mt-table td{padding:4px 5px}}
 #app-unit .mt-table th{background:var(--t-sand-soft)}
+#app-unit .em > img.hs-pic:not(.inl){width:1.9em;height:1.9em;vertical-align:middle}
+#app-unit .tile .em > img.hs-pic:not(.inl),#app-unit .card .em > img.hs-pic:not(.inl){width:72px;height:72px}
 </style>
 </head>
 <body>
@@ -1586,20 +1599,47 @@ window.HS_PHRASES = {
     const id = ((window.HS_PICMAP || {})[area] || {})[em] || HS.picId(em, area);
     return HS.ART && HS.ART[id] ? HS.art(id, Object.assign({ fb: em }, o)) : em;
   };
-  /** swap every element whose whole text is one emoji for that emoji's picture (when it exists) inside root, now and
-      whenever root changes. For screens that build emoji in many places (kindergarten). Text that mixes words and
-      emoji is left alone, and so is anything inside [data-nopic]. */
-  HS.picify = (root, area) => {
-    const map = (window.HS_PICMAP || {})[area] || {}, one = /^\s*(\p{Extended_Pictographic}(\uFE0F|\u200D\p{Extended_Pictographic})*)\s*$/u;
+  /** swap emoji for their pictures inside root, now and whenever root changes (screens that build emoji in many places).
+      areas: picture sets to look in, in order (e.g. ['kg', 'sci', 'dict']). An element holding only emoji gets the picture
+      at the emoji's size; an emoji beside words (a tab «🪨 الصخور») gets a small picture inline.
+      Interface symbols stay emoji: arrows, + − × ÷, ✓, ?, counters (⭐ 💎), the lock, confetti, keys and anything inside
+      [data-nopic], .hs-party, the top bar, inputs or speaker buttons. */
+  const KEEP = new Set([...'⭐🌟💎🔒🔓💡🎯🃏⏱️⏰👆👍👋👉👈🔁🔀🔄🗑️🧹➕➖✖️➗❓❔❗✅❌✔️🔟🔢🔤🔠🔡🔊🔈🔇🎉🎊🎈💖✨🏆🏅🥇🎮📚📝🗂️✍️🔎🔍🗺️📅📌📎🎲']
+    .concat(['⬅️', '➡️', '⬆️', '⬇️', '↩️', '↪️', '🔴', '🟢', '🟡', '🔵', '🟠', '🟣', '🟤', '⚫', '⚪', '🟥', '🟩', '🟨', '🟦', '🟧', '🟪', '🟫', '⬛', '⬜', '✏️', '✖', '✔', '〰️'].map(x => x)));
+  const EMO = /\p{Extended_Pictographic}(️|‍\p{Extended_Pictographic}|\p{Emoji_Modifier})*/gu;
+  const ONLY = /^\s*(\p{Extended_Pictographic}(️|‍\p{Extended_Pictographic}|\p{Emoji_Modifier})*\s*)+$/u;
+  const PIC_ALIAS = { '🚂': 'dict-train', '🚆': 'dict-train' };   // an emoji whose picture was drawn under another emoji
+  HS.picFor = (em, areas) => {
+    const pm = window.HS_PICMAP || {}, bare = em.replace(/️/g, '');
+    if (PIC_ALIAS[em] && HS.ART[PIC_ALIAS[em]]) return PIC_ALIAS[em];
+    for (const a of areas) { const m = pm[a] || {}, id = m[em] || m[bare] || HS.picId(em, a); if (id && HS.ART[id]) return id; }
+    return null;
+  };
+  HS.picify = (root, areas) => {
+    areas = [].concat(areas); if (!root) return;
+    const skip = el => !el || el.closest('[data-nopic],button.hs-spk,svg,textarea,input,select,option,.hs-party,#appbar,.appbar,.gb-btn,[aria-hidden="true"].hs-fb,.rb-k,.rk,.m-pad,title');
     const run = () => {
       const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), todo = [];
       for (let n; (n = w.nextNode());) {
-        const m = one.exec(n.nodeValue); if (!m) continue;
-        const el = n.parentElement; if (!el || el.closest('[data-nopic],button.hs-spk,svg,textarea,input')) continue;
-        const em = m[1], id = map[em] || map[em.replace(/\uFE0F/g, '')] || HS.picId(em, area);
-        if (HS.ART[id]) todo.push([n, id, em]);
+        const v = n.nodeValue; if (!v || !/\p{Extended_Pictographic}/u.test(v) || skip(n.parentElement)) continue;
+        const whole = v.trim(), alone = ONLY.test(v), wid = alone && !KEEP.has(whole) ? HS.picFor(whole, areas) : null;   // several emoji drawn as one picture (🐪🌵🦎)
+        const parts = []; let last = 0, any = false;
+        if (wid) { parts.push({ id: wid, em: whole, big: true }); any = true; }
+        else for (const m of v.matchAll(EMO)) {
+          const em = m[0], id = KEEP.has(em) || KEEP.has(em.replace(/️/g, '')) ? null : HS.picFor(em, areas);
+          if (!id) continue;
+          if (m.index > last) parts.push(v.slice(last, m.index));
+          parts.push({ id, em, big: alone }); last = m.index + em.length; any = true;
+        }
+        if (!any) continue;
+        if (!wid && last < v.length) parts.push(v.slice(last));
+        todo.push([n, parts]);
       }
-      todo.forEach(([n, id, em]) => { const t = document.createElement('template'); t.innerHTML = HS.art(id, { small: true, eager: true, fb: em, cls: 'hs-pic' }); n.replaceWith(t.content); });
+      todo.forEach(([n, parts]) => {
+        const t = document.createElement('template');
+        t.innerHTML = parts.map(p => typeof p === 'string' ? HS.esc(p) : HS.art(p.id, { small: true, eager: true, fb: p.em, cls: 'hs-pic' + (p.big ? '' : ' inl') })).join('');
+        n.replaceWith(t.content);
+      });
     };
     let q = 0; new MutationObserver(() => { if (!q) q = requestAnimationFrame(() => { q = 0; run(); }); }).observe(root, { childList: true, subtree: true, characterData: true });
     run();
@@ -5125,6 +5165,9 @@ ROOT.addEventListener('click', e => {
 /** for the parent page */
 const spellReport = pid => { const d = HS.data('spell', pid); return { en: ((d.en || {}).done || []).length, ar: ((d.ar || {}).done || []).length, best: d.best || 0 }; };
 
+// emoji the word lists do not draw themselves (topics, word of the day) become dictionary pictures
+HS.picify(ROOT, ["dict", "kg", "sci"]);
+
 })();
 </script>
 <script>/* ===== data: kg ===== */
@@ -5674,7 +5717,7 @@ APPS.kg = {
 };
 
 // kindergarten emoji become the kindergarten pictures as each screen is drawn (art-source/manifest-sheets.json, phase 9)
-HS.picify(ROOT, "kg");
+HS.picify(ROOT, ["kg", "sci", "dict"]);
 
 /* ---- thinking.js ---- */
 /* ============================================================
@@ -8129,6 +8172,9 @@ LABS.g4math5 = {
   area: { id: 'area', title: '🟦 نموذج المساحة', em: '🟦', sub: 'النواتج الجزئية', kind: 'math', lesson: 'l5', run: areaGame, challenges: AREA_P },
   regroup: { id: 'regroup', title: '🧱 نعيد التجميع', em: '🧱', sub: 'بقطع دينز', kind: 'math', lesson: 'l6', run: regroupGame, challenges: REGROUP },
 };
+
+// emoji left in lesson text, tabs and games become science/KG/dictionary pictures as each screen is drawn
+HS.picify(ROOT, ["sci", "kg", "dict"]);
 
 })();
 </script>

@@ -291,4 +291,4 @@ APPS.kg = {
 };
 
 // kindergarten emoji become the kindergarten pictures as each screen is drawn (art-source/manifest-sheets.json, phase 9)
-HS.picify(ROOT, "kg");
+HS.picify(ROOT, ["kg", "sci", "dict"]);

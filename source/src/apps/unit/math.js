@@ -448,3 +448,6 @@ LABS.g4math5 = {
   area: { id: 'area', title: '🟦 نموذج المساحة', em: '🟦', sub: 'النواتج الجزئية', kind: 'math', lesson: 'l5', run: areaGame, challenges: AREA_P },
   regroup: { id: 'regroup', title: '🧱 نعيد التجميع', em: '🧱', sub: 'بقطع دينز', kind: 'math', lesson: 'l6', run: regroupGame, challenges: REGROUP },
 };
+
+// emoji left in lesson text, tabs and games become science/KG/dictionary pictures as each screen is drawn
+HS.picify(ROOT, ["sci", "kg", "dict"]);

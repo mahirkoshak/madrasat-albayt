@@ -130,3 +130,14 @@ button:disabled{color:var(--t-ink);-webkit-text-fill-color:currentColor}
 @media(max-width:420px){.sp-boxes i{width:34px;height:46px;font-size:24px}.sp-clue .em{font-size:48px}.sp-form input{font-size:24px}}
 
 .d-say{display:inline-grid;place-items:center;color:var(--t-gold-ink);padding:0}.d-say .hs-spk{width:24px;height:24px}.d-say.sm .hs-spk{width:19px;height:19px}
+
+/* word pictures (sprite sheets): a drawing has empty space around it, so it gets a real size, not 1.25em like an emoji */
+.d-row{grid-template-columns:72px 1fr 1fr 28px}
+.d-row .em img.hs-pic{width:64px;height:64px;vertical-align:middle}
+.d-word>.em img.hs-pic{width:min(220px,55vw);height:min(220px,55vw)}
+.d-wod .em img.hs-pic{width:140px;height:140px}
+.d-clue .em img.hs-pic{width:130px;height:130px}
+.d-big img.hs-pic{width:110px;height:110px;vertical-align:middle;display:block;margin:0 auto 6px}
+.sp-clue .em img.hs-pic{width:130px;height:130px}
+.sp-row .em img.hs-pic{width:60px;height:60px;vertical-align:middle}
+@media (max-width:420px){.d-row{grid-template-columns:60px 1fr 1fr 24px}.d-row .em img.hs-pic{width:54px;height:54px}}
