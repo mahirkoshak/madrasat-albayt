@@ -5047,7 +5047,7 @@ function answer(ok, given) {
 function endPractice() {
   HS.party();
   M().innerHTML = `<div class="d-card center"><div class="d-bigem">${HS.kidCheer()}🏆</div><h2>أحسنت!</h2><p>تدرّبت على كلمات جديدة. كل كلمة تعود لك بعد أيام حتى تثبت في ذاكرتك.</p>
-    <div class="d-actions"><button type="button" class="d-btn" data-a="practice">🔁 تدريب جديد</button><button type="button" class="d-btn sec" data-a="home">🏠 القاموس</button></div></div>`;
+    <div class="d-actions"><button type="button" class="d-btn" data-a="practice">🔁 تدريب جديد</button><button type="button" class="d-btn" data-sp="start">✍️ التالي: تحدّي الإملاء</button><button type="button" class="d-btn sec" data-a="home">🏠 القاموس</button></div></div>`;
   P = null;
 }
 
@@ -6423,6 +6423,8 @@ ROOT.addEventListener('click', e => {
     a.onloadedmetadata = () => later(() => sb.classList.remove('on'), a.duration * 1000 + 400); a.onerror = () => sb.classList.remove('on');
     return;
   }
+  if (e.target.closest('[data-replay]')) { render(S.page, S.actKey); window.scrollTo({ top: 0 }); return; }   // same game, new shuffle
+  const nx = e.target.closest('[data-next]'); if (nx) { go('play-' + nx.dataset.next); return; }
   const b = e.target.closest('[data-p]'); if (b) { e.preventDefault(); go(b.dataset.p); return; }
   const a = e.target.closest('[data-act]'); if (a) go(actRoute(a.dataset.act, a.dataset));
 });
@@ -6468,7 +6470,7 @@ function go(page) { HS.nav.go(`unit-${S.id}-${page}`); }
 /** draw a page or start an activity (called by APPS.unit.open on every route change) */
 function render(page, actKey) {
   stopAll();
-  S.page = page;
+  S.page = page; S.actKey = actKey;
   const A = findAct(S.u, page, actKey);
   ROOT.classList.toggle('focus', !!A);   // in a game or quiz only the task shows (the site header keeps Back and the title)
   tabs(); header();
@@ -6855,7 +6857,7 @@ function finishSpeed(G) {
   HS.save(); star(Math.ceil(G.score / 2));
   if (G.score > prev && prev) HS.party();
   M().innerHTML = `<div class="card result"><div class="big">${HS.kidCheer()}⚡</div><h2>${ar(G.score)} إجابة صحيحة</h2><p class="lead">من ${ar(G.total)} في ٦٠ ثانية${G.score > prev && prev ? ' – رقم قياسي جديد! 🎉' : prev ? ` · رقمك القياسي ${ar(Math.max(prev, G.score))}` : ''}</p>
-    <div class="row center"><button type="button" class="btn" data-act="speed">🔁 مرة أخرى</button><button type="button" class="btn sec" data-p="play">🎮 الألعاب</button></div></div>`;
+    ${endRow()}</div>`;
 }
 
 /* ---------------- game: sort into boxes (drag or tap-tap) ---------------- */
@@ -6881,11 +6883,28 @@ function gameSort(g) {
 function sortDone(g, s, t) {
   if (s === t) HS.party();
   M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.kidCheer()}${HS.mascot(s === t ? 'cheer' : 'encourage', { fb: s === t ? '🎉' : '👍' })}</div><h2>${ar(s)} من ${ar(t)} من أول محاولة</h2><p class="lead">${s === t ? 'كلها صحيحة!' : 'العب مرة ثانية لتصل للكامل.'}</p>
-    <div class="row center"><button type="button" class="btn" data-act="sort" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
+    ${endRow()}</div>`;
   bindBack();
 }
 function gameHead(t) { return `<h2 class="sr">${t}</h2>`; }   // the title shows in the site header; kept here for screen-reader headings   // Back to the games list is in the site header
 function bindBack() {}   // the site header's Back returns to the games list
+
+/* ---------------- after a game: play again (re-dealt and re-shuffled), the next game, or back to all games ---------------- */
+/** the games in the order the games page lists them: [{ key: route after 'play-', title }] */
+function gameList() {
+  const all = Object.values(LABS[S.id] || {});
+  return [...all.filter(x => x.kind === 'math'), ...all.filter(x => x.kind !== 'math')].map(x => ({ key: 'lab-' + x.id, title: x.title }))
+    .concat(S.u.games.sort.map(g => ({ key: 's-' + g.id, title: '🎮 ' + g.title })), S.u.games.order.map(g => ({ key: 'o-' + g.id, title: '🎮 ' + g.title })),
+      [{ key: 'memory', title: '🧠 لعبة الذاكرة' }, { key: 'speed', title: '⚡ تحدّي السرعة' }]);
+}
+function endRow() {
+  const list = gameList(), cur = String(S.actKey || '').replace(/^memory-.+$/, 'memory'), i = list.findIndex(g => g.key === cur);
+  const nx = list.length > 1 ? list[(i + 1) % list.length] : null;
+  return `<div class="row center end-row">
+    <button type="button" class="btn" data-replay="1">🔁 العب مرة أخرى</button>
+    ${nx ? `<button type="button" class="btn sky" data-next="${nx.key}">التالية: ${nx.title} ←</button>` : ''}
+    <button type="button" class="btn sec" data-p="play">🎮 كل الألعاب</button></div>`;
+}
 
 /* ---------------- game: put in order (chains) ---------------- */
 function gameOrder(g) {
@@ -6894,7 +6913,7 @@ function gameOrder(g) {
   const round = () => {
     if (k >= order.length) {
       if (perfect === order.length) HS.party();
-      M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏆' })}</div><h2>${ar(perfect)} من ${ar(order.length)} بدون أخطاء</h2><div class="row center"><button type="button" class="btn" data-act="order" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
+      M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏆' })}</div><h2>${ar(perfect)} من ${ar(order.length)} بدون أخطاء</h2>${endRow()}</div>`;
       return bindBack();
     }
     const raw = g.sets[order[k]], set = Array.isArray(raw) ? raw : raw.items, stitle = Array.isArray(raw) ? '' : raw.title; let placed = 0, mistakes = 0;
@@ -6943,7 +6962,7 @@ function gameMemory(l) {
     if (same) {
       a.classList.add('got'); c.classList.add('got'); open = []; found++; star(); HS.fx('ok');
       $('uSc').textContent = `✅ ${ar(found)} / ${ar(pairs.length)}`;
-      if (found === pairs.length) later(() => { HS.party(); M().innerHTML = `<div class="card result">${gameHead('🧠 لعبة الذاكرة')}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🧠' })}</div><h2>وجدت كل الأزواج!</h2><p class="lead">في ${ar(moves)} محاولة${moves <= pairs.length + 2 ? ' – ذاكرة ممتازة!' : ''}</p><div class="row center"><button type="button" class="btn" data-act="memory" ${l ? `data-l="${l}"` : ''}>🔁 العب مرة أخرى</button></div></div>`; bindBack(); }, 700);
+      if (found === pairs.length) later(() => { HS.party(); M().innerHTML = `<div class="card result">${gameHead('🧠 لعبة الذاكرة')}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🧠' })}</div><h2>وجدت كل الأزواج!</h2><p class="lead">في ${ar(moves)} محاولة${moves <= pairs.length + 2 ? ' – ذاكرة ممتازة!' : ''}</p>${endRow()}</div>`; bindBack(); }, 700);
     } else { lock = true; later(() => { a.classList.remove('up'); c.classList.remove('up'); open = []; lock = false; }, 1000); }
   });
 }
@@ -7331,6 +7350,10 @@ function labWhy(el, lab, c, then) {
   }, { coach: true });
   box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
+/** the last story/case of a lab: a well-done card with play again, the next game, all games */
+const labEnd = el => { const d = document.createElement('div'); d.className = 'card result lab-end';
+  d.innerHTML = `<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏅' })}</div><h2>أنهيت المختبر كله!</h2>${endRow()}`;
+  el.appendChild(d); HS.party(); d.scrollIntoView({ behavior: 'smooth', block: 'center' }); const b = d.querySelector('[data-next]') || d.querySelector('button'); if (b) b.focus({ preventScroll: true }); };
 const labNext = (el, label, fn) => { const r = document.createElement('div'); r.className = 'row center lab-next'; r.innerHTML = `<button type="button" class="btn">${label}</button>`; el.appendChild(r); const b = r.firstElementChild; b.onclick = fn; b.focus({ preventScroll: true }); };
 const reduced = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -7635,7 +7658,7 @@ function foodWebLab(el, lab) {
         res.innerHTML += `<ul class="lab-cmp-list">${c.ask.map(k => `<li class="${pred[k] === truth(k) ? 'ok' : 'no'}">${pred[k] === truth(k) ? '✅' : '❌'} ${said(k, truth(k))}${s2[k] ? ' (في الخطوة ٢)' : ''}${pred[k] === truth(k) ? '' : '. توقّعك كان مختلفًا'}</li>`).join('')}</ul>`;
         if (okAll) star(1);
         later(() => { el.querySelector('.lab-steps').outerHTML = labSteps(3); labWhy(el, lab, c, () => { if (!r.done.includes(c.id)) r.done.push(c.id); r.last = Date.now(); HS.save();
-          const i = FW.C.indexOf(c); labNext(el, i + 1 < FW.C.length ? 'القصة التالية ←' : 'إلى بداية المختبر', () => i + 1 < FW.C.length ? story(FW.C[i + 1]) : intro()); }); }, 500);
+          const i = FW.C.indexOf(c); i + 1 < FW.C.length ? labNext(el, 'القصة التالية ←', () => story(FW.C[i + 1])) : labEnd(el); }); }, 500);
       };
       const step1 = () => { mark(s1, 1); res.innerHTML = `<p><b>الخطوة ١:</b> ${Object.entries(s1).map(([k, v]) => said(k, v)).join('، ')}.</p>`; };
       const step2 = () => { mark(s2, 2); res.innerHTML += `<p><b>الخطوة ٢:</b> ${Object.keys(s2).length ? Object.entries(s2).map(([k, v]) => said(k, v)).join('، ') : 'لا تغيير آخر'}.</p>`; };
@@ -7814,7 +7837,7 @@ function outbreakLab(el, lab) {
       const fb = box.querySelector('.fb'); fb.className = 'fb ' + (ok || info.fixed ? 'ok' : 'no');
       fb.innerHTML = `<b>${ok ? 'أحسنت أيها المحقّق! 🔎' : info.fixed ? 'وجدت الحل بنفسك! 👏' : 'هذا هو الحل:'}</b><div>${c.stop.a}.</div>`;
       if (!r.done.includes(c.id)) r.done.push(c.id); r.last = Date.now(); HS.save();
-      const i = OB.C.indexOf(c); labNext(el, i + 1 < OB.C.length ? 'القضية التالية ←' : 'إلى بداية المختبر', () => i + 1 < OB.C.length ? caseView(OB.C[i + 1]) : intro());
+      const i = OB.C.indexOf(c); i + 1 < OB.C.length ? labNext(el, 'القضية التالية ←', () => caseView(OB.C[i + 1])) : labEnd(el);
     }, { coach: true });
     box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
@@ -7978,8 +8001,7 @@ function mEnd(el, lab, stars, line, again) {
   const r = mRec(lab.id); r.runs++; r.last = Date.now(); HS.save();
   el.innerHTML = `<div class="card result"><div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏅' })}</div><h2>أحسنت!</h2><p class="lead">${line}</p>
     ${stars ? `<p class="mg-stars">${'⭐'.repeat(Math.min(stars, 10))}</p>` : ''}
-    <div class="row center"><button type="button" class="btn" id="mgAgain">العب مرة ثانية</button><button type="button" class="btn sec" id="mgBack">إلى الألعاب</button></div></div>`;
-  $('mgAgain').onclick = again; $('mgBack').onclick = () => HS.nav.go('unit-' + S.id + '-play');
+    ${endRow()}</div>`;   // play again re-runs the lab: new numbers, new order
 }
 /** ask one number inside a game; then(okFirst) */
 function mAsk(box, q, then) {

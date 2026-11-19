@@ -338,7 +338,7 @@ function answer(ok, given) {
 function endPractice() {
   HS.party();
   M().innerHTML = `<div class="d-card center"><div class="d-bigem">${HS.kidCheer()}🏆</div><h2>أحسنت!</h2><p>تدرّبت على كلمات جديدة. كل كلمة تعود لك بعد أيام حتى تثبت في ذاكرتك.</p>
-    <div class="d-actions"><button type="button" class="d-btn" data-a="practice">🔁 تدريب جديد</button><button type="button" class="d-btn sec" data-a="home">🏠 القاموس</button></div></div>`;
+    <div class="d-actions"><button type="button" class="d-btn" data-a="practice">🔁 تدريب جديد</button><button type="button" class="d-btn" data-sp="start">✍️ التالي: تحدّي الإملاء</button><button type="button" class="d-btn sec" data-a="home">🏠 القاموس</button></div></div>`;
   P = null;
 }
 

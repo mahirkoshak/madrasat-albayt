@@ -54,6 +54,8 @@ ROOT.addEventListener('click', e => {
     a.onloadedmetadata = () => later(() => sb.classList.remove('on'), a.duration * 1000 + 400); a.onerror = () => sb.classList.remove('on');
     return;
   }
+  if (e.target.closest('[data-replay]')) { render(S.page, S.actKey); window.scrollTo({ top: 0 }); return; }   // same game, new shuffle
+  const nx = e.target.closest('[data-next]'); if (nx) { go('play-' + nx.dataset.next); return; }
   const b = e.target.closest('[data-p]'); if (b) { e.preventDefault(); go(b.dataset.p); return; }
   const a = e.target.closest('[data-act]'); if (a) go(actRoute(a.dataset.act, a.dataset));
 });
@@ -99,7 +101,7 @@ function go(page) { HS.nav.go(`unit-${S.id}-${page}`); }
 /** draw a page or start an activity (called by APPS.unit.open on every route change) */
 function render(page, actKey) {
   stopAll();
-  S.page = page;
+  S.page = page; S.actKey = actKey;
   const A = findAct(S.u, page, actKey);
   ROOT.classList.toggle('focus', !!A);   // in a game or quiz only the task shows (the site header keeps Back and the title)
   tabs(); header();
@@ -486,7 +488,7 @@ function finishSpeed(G) {
   HS.save(); star(Math.ceil(G.score / 2));
   if (G.score > prev && prev) HS.party();
   M().innerHTML = `<div class="card result"><div class="big">${HS.kidCheer()}⚡</div><h2>${ar(G.score)} إجابة صحيحة</h2><p class="lead">من ${ar(G.total)} في ٦٠ ثانية${G.score > prev && prev ? ' – رقم قياسي جديد! 🎉' : prev ? ` · رقمك القياسي ${ar(Math.max(prev, G.score))}` : ''}</p>
-    <div class="row center"><button type="button" class="btn" data-act="speed">🔁 مرة أخرى</button><button type="button" class="btn sec" data-p="play">🎮 الألعاب</button></div></div>`;
+    ${endRow()}</div>`;
 }
 
 /* ---------------- game: sort into boxes (drag or tap-tap) ---------------- */
@@ -512,11 +514,28 @@ function gameSort(g) {
 function sortDone(g, s, t) {
   if (s === t) HS.party();
   M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.kidCheer()}${HS.mascot(s === t ? 'cheer' : 'encourage', { fb: s === t ? '🎉' : '👍' })}</div><h2>${ar(s)} من ${ar(t)} من أول محاولة</h2><p class="lead">${s === t ? 'كلها صحيحة!' : 'العب مرة ثانية لتصل للكامل.'}</p>
-    <div class="row center"><button type="button" class="btn" data-act="sort" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
+    ${endRow()}</div>`;
   bindBack();
 }
 function gameHead(t) { return `<h2 class="sr">${t}</h2>`; }   // the title shows in the site header; kept here for screen-reader headings   // Back to the games list is in the site header
 function bindBack() {}   // the site header's Back returns to the games list
+
+/* ---------------- after a game: play again (re-dealt and re-shuffled), the next game, or back to all games ---------------- */
+/** the games in the order the games page lists them: [{ key: route after 'play-', title }] */
+function gameList() {
+  const all = Object.values(LABS[S.id] || {});
+  return [...all.filter(x => x.kind === 'math'), ...all.filter(x => x.kind !== 'math')].map(x => ({ key: 'lab-' + x.id, title: x.title }))
+    .concat(S.u.games.sort.map(g => ({ key: 's-' + g.id, title: '🎮 ' + g.title })), S.u.games.order.map(g => ({ key: 'o-' + g.id, title: '🎮 ' + g.title })),
+      [{ key: 'memory', title: '🧠 لعبة الذاكرة' }, { key: 'speed', title: '⚡ تحدّي السرعة' }]);
+}
+function endRow() {
+  const list = gameList(), cur = String(S.actKey || '').replace(/^memory-.+$/, 'memory'), i = list.findIndex(g => g.key === cur);
+  const nx = list.length > 1 ? list[(i + 1) % list.length] : null;
+  return `<div class="row center end-row">
+    <button type="button" class="btn" data-replay="1">🔁 العب مرة أخرى</button>
+    ${nx ? `<button type="button" class="btn sky" data-next="${nx.key}">التالية: ${nx.title} ←</button>` : ''}
+    <button type="button" class="btn sec" data-p="play">🎮 كل الألعاب</button></div>`;
+}
 
 /* ---------------- game: put in order (chains) ---------------- */
 function gameOrder(g) {
@@ -525,7 +544,7 @@ function gameOrder(g) {
   const round = () => {
     if (k >= order.length) {
       if (perfect === order.length) HS.party();
-      M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏆' })}</div><h2>${ar(perfect)} من ${ar(order.length)} بدون أخطاء</h2><div class="row center"><button type="button" class="btn" data-act="order" data-g="${g.id}">🔁 العب مرة أخرى</button></div></div>`;
+      M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏆' })}</div><h2>${ar(perfect)} من ${ar(order.length)} بدون أخطاء</h2>${endRow()}</div>`;
       return bindBack();
     }
     const raw = g.sets[order[k]], set = Array.isArray(raw) ? raw : raw.items, stitle = Array.isArray(raw) ? '' : raw.title; let placed = 0, mistakes = 0;
@@ -574,7 +593,7 @@ function gameMemory(l) {
     if (same) {
       a.classList.add('got'); c.classList.add('got'); open = []; found++; star(); HS.fx('ok');
       $('uSc').textContent = `✅ ${ar(found)} / ${ar(pairs.length)}`;
-      if (found === pairs.length) later(() => { HS.party(); M().innerHTML = `<div class="card result">${gameHead('🧠 لعبة الذاكرة')}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🧠' })}</div><h2>وجدت كل الأزواج!</h2><p class="lead">في ${ar(moves)} محاولة${moves <= pairs.length + 2 ? ' – ذاكرة ممتازة!' : ''}</p><div class="row center"><button type="button" class="btn" data-act="memory" ${l ? `data-l="${l}"` : ''}>🔁 العب مرة أخرى</button></div></div>`; bindBack(); }, 700);
+      if (found === pairs.length) later(() => { HS.party(); M().innerHTML = `<div class="card result">${gameHead('🧠 لعبة الذاكرة')}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🧠' })}</div><h2>وجدت كل الأزواج!</h2><p class="lead">في ${ar(moves)} محاولة${moves <= pairs.length + 2 ? ' – ذاكرة ممتازة!' : ''}</p>${endRow()}</div>`; bindBack(); }, 700);
     } else { lock = true; later(() => { a.classList.remove('up'); c.classList.remove('up'); open = []; lock = false; }, 1000); }
   });
 }

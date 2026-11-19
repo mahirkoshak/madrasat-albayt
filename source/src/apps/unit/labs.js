@@ -37,6 +37,10 @@ function labWhy(el, lab, c, then) {
   }, { coach: true });
   box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
+/** the last story/case of a lab: a well-done card with play again, the next game, all games */
+const labEnd = el => { const d = document.createElement('div'); d.className = 'card result lab-end';
+  d.innerHTML = `<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏅' })}</div><h2>أنهيت المختبر كله!</h2>${endRow()}`;
+  el.appendChild(d); HS.party(); d.scrollIntoView({ behavior: 'smooth', block: 'center' }); const b = d.querySelector('[data-next]') || d.querySelector('button'); if (b) b.focus({ preventScroll: true }); };
 const labNext = (el, label, fn) => { const r = document.createElement('div'); r.className = 'row center lab-next'; r.innerHTML = `<button type="button" class="btn">${label}</button>`; el.appendChild(r); const b = r.firstElementChild; b.onclick = fn; b.focus({ preventScroll: true }); };
 const reduced = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -341,7 +345,7 @@ function foodWebLab(el, lab) {
         res.innerHTML += `<ul class="lab-cmp-list">${c.ask.map(k => `<li class="${pred[k] === truth(k) ? 'ok' : 'no'}">${pred[k] === truth(k) ? '✅' : '❌'} ${said(k, truth(k))}${s2[k] ? ' (في الخطوة ٢)' : ''}${pred[k] === truth(k) ? '' : '. توقّعك كان مختلفًا'}</li>`).join('')}</ul>`;
         if (okAll) star(1);
         later(() => { el.querySelector('.lab-steps').outerHTML = labSteps(3); labWhy(el, lab, c, () => { if (!r.done.includes(c.id)) r.done.push(c.id); r.last = Date.now(); HS.save();
-          const i = FW.C.indexOf(c); labNext(el, i + 1 < FW.C.length ? 'القصة التالية ←' : 'إلى بداية المختبر', () => i + 1 < FW.C.length ? story(FW.C[i + 1]) : intro()); }); }, 500);
+          const i = FW.C.indexOf(c); i + 1 < FW.C.length ? labNext(el, 'القصة التالية ←', () => story(FW.C[i + 1])) : labEnd(el); }); }, 500);
       };
       const step1 = () => { mark(s1, 1); res.innerHTML = `<p><b>الخطوة ١:</b> ${Object.entries(s1).map(([k, v]) => said(k, v)).join('، ')}.</p>`; };
       const step2 = () => { mark(s2, 2); res.innerHTML += `<p><b>الخطوة ٢:</b> ${Object.keys(s2).length ? Object.entries(s2).map(([k, v]) => said(k, v)).join('، ') : 'لا تغيير آخر'}.</p>`; };
@@ -520,7 +524,7 @@ function outbreakLab(el, lab) {
       const fb = box.querySelector('.fb'); fb.className = 'fb ' + (ok || info.fixed ? 'ok' : 'no');
       fb.innerHTML = `<b>${ok ? 'أحسنت أيها المحقّق! 🔎' : info.fixed ? 'وجدت الحل بنفسك! 👏' : 'هذا هو الحل:'}</b><div>${c.stop.a}.</div>`;
       if (!r.done.includes(c.id)) r.done.push(c.id); r.last = Date.now(); HS.save();
-      const i = OB.C.indexOf(c); labNext(el, i + 1 < OB.C.length ? 'القضية التالية ←' : 'إلى بداية المختبر', () => i + 1 < OB.C.length ? caseView(OB.C[i + 1]) : intro());
+      const i = OB.C.indexOf(c); i + 1 < OB.C.length ? labNext(el, 'القضية التالية ←', () => caseView(OB.C[i + 1])) : labEnd(el);
     }, { coach: true });
     box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }

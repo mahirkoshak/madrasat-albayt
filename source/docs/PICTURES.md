@@ -1531,7 +1531,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | id | emoji | Arabic | English | drawn / meaning | notes | used in |
 |---|---|---|---|---|---|---|
 | `mascot-celebrate` | 🏆 |  |  | Koko holding a small gold trophy above its head, confetti around, full body | 3d | dict/spell, unit/app |
-| `mascot-cheer` | 🎉 |  |  | Koko jumping with both arms up, eyes closed with joy, full body | 3d | unit/app, unit/math |
+| `mascot-cheer` | 🎉 |  |  | Koko jumping with both arms up, eyes closed with joy, full body | 3d | unit/app, unit/labs, unit/math |
 | `mascot-encourage` | 💪 |  |  | Koko giving a gentle thumbs up with a warm reassuring smile, full body | 3d | unit/app |
 | `mascot-point` | 👆 |  |  | Koko pointing to the left with one paw, friendly helpful expression, full body | 3d | portal/portal, unit/app |
 | `mascot-read` | 📖 |  |  | Koko sitting and reading an open book, happy and focused, full body | 3d | dict/app |

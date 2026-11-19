@@ -36,7 +36,10 @@ with sync_playwright() as p:
         for j in range(o.count()):
             if c['s'] in o.nth(j).inner_text(): o.nth(j).click();break
         pg.wait_for_timeout(300)
+        if pg.locator('.lab-end').count():   # after the last case: the end card (play again / next game / all games)
+            print('  end:',pg.locator('.lab-end .end-row button').all_inner_texts()); assert pg.locator('.lab-end .end-row button').count()==3; break
         pg.click('.lab-next .btn');pg.wait_for_timeout(300)
+    assert pg.locator('.lab-end').count()==1
     rec=pg.evaluate("HS.data('u:g4scihealth').labs||HS.data('g4scihealth').labs"); print('rec',rec)
     assert len(rec['outbreak']['done'])==5
     print('w',pg.evaluate('document.documentElement.scrollWidth')); assert pg.evaluate('document.documentElement.scrollWidth')<=390

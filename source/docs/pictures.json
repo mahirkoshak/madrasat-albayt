@@ -14022,7 +14022,7 @@
 "draw": "Koko jumping with both arms up, eyes closed with joy, full body",
 "style": "3d",
 "extra": "",
-"used": "unit/app, unit/math"
+"used": "unit/app, unit/labs, unit/math"
 },
 {
 "id": "mascot-encourage",
