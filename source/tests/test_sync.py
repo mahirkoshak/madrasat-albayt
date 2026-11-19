@@ -45,7 +45,7 @@ with sync_playwright() as p:
     addkid(B,'محمد','🦁'); B.evaluate("HS.addStars(5)")
     A.wait_for_timeout(200);B.wait_for_timeout(200)
     # A creates family
-    A.evaluate("HS.setSetting('pin','2580');sessionStorage.setItem('hs-pin','1');sessionStorage.setItem('hs-focus-later','1')");A.goto(U+'#parent');A.wait_for_timeout(300);A.click('.pp-other summary');A.click('#ppSyncNew');A.wait_for_timeout(1200)
+    A.evaluate("HS.setSetting('pin','2580');sessionStorage.setItem('hs-pin','1');sessionStorage.setItem('hs-focus-later','1')");A.goto(U+'#parent');A.wait_for_timeout(300);A.click('[data-ptab=settings]');A.click('.pp-other summary');A.click('#ppSyncNew');A.wait_for_timeout(1200)
     code=A.evaluate("HS.sync.family()");print('code',code,'status',A.evaluate("HS.sync.status()"),'docs',sorted(store))
     A.screenshot(path=OUT+'/sync_parent.png',full_page=True)
     # B joins via link

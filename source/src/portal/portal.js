@@ -126,7 +126,7 @@
       : `<div class="pp-acc"><p class="pp-note">سجّل الدخول مرة واحدة على كل جهاز (جوالك، آيباد الطفل، اللابتوب): يظهر الأطفال وماساتهم وتقدّمهم في كل مكان، وتتحكم من جوالك: تتابع التقدّم، توافق على الهدايا، وتغيّر المواد الصعبة.</p>
           <div class="pp-actions"><button type="button" class="p-btn pp-g" id="ppSignG">${G} الدخول بحساب Google</button><button type="button" class="p-btn pp-a" id="ppSignA">${A} الدخول بحساب Apple</button></div>
           <p class="pp-note" id="ppSignE" role="alert"></p></div>`;
-    return `<h4>☁️ حساب العائلة والحفظ بين الأجهزة</h4>${signin}
+    return `${signin}
       <details class="pp-other"${acc ? '' : ''}><summary>${acc ? 'حالة المزامنة وكود العائلة' : 'طرق أخرى: كود العائلة'}</summary>
       ${f ? `<div class="pp-sync"><p>الحالة: <b id="ppSyncSt">${SYNC_TXT[st] || st}</b>${t ? ` · آخر مزامنة ${new Date(t).toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' })}` : ''}</p>
           <p>كود العائلة: <b class="pp-code" dir="ltr">${HS.sync.pretty()}</b></p>
@@ -517,125 +517,168 @@
   // a parent can move a game to a different starting level here.
   function kgLevels(pid) {
     const cur = (HS.data('kg', pid).lv) || {};
-    return `<details class="pp-unit pp-kglv"><summary>🎚️ صعوبة ألعاب الروضة</summary>
+    return `<details class="pp-card pp-kglv"><summary>🎚️ صعوبة ألعاب الروضة</summary>
       <p class="pp-note">الألعاب تصعب وتسهل تلقائيًا حسب إجابات الطفل. غيّر المستوى هنا فقط إذا كانت لعبة سهلة جدًا أو صعبة جدًا.</p>
       ${APPS.kg.levels().map(g => `<label class="pp-lv"><span>${esc(g.name)}</span><select data-kglv="${pid}|${g.k}" aria-label="مستوى ${esc(g.name)}">${Array.from({ length: g.max }, (_, i) => `<option value="${i + 1}" ${(cur[g.k] || 1) === i + 1 ? 'selected' : ''}>المستوى ${ar(i + 1)} من ${ar(g.max)}</option>`).join('')}</select></label>`).join('')}</details>`;
   }
+  /* the parent page has three kinds of tab: one per child (their progress and what needs the parent),
+     «الهدايا» (the gifts shop) and «الإعدادات» (account, lock, sound, kindergarten time). Only one shows at a time. */
+  let ptab = '';
+  const sw = (id, on, label, sub) => `<label class="pp-row pp-swr"><span class="pp-rl"><b>${label}</b>${sub ? `<small>${sub}</small>` : ''}</span>
+    <span class="pp-switch"><input type="checkbox" role="switch" id="${id}" ${on ? 'checked' : ''}><i aria-hidden="true"></i></span></label>`;
+  const pct0 = x => ar(Math.round(x * 100)) + '٪';
+  function ppKid(k) {
+    const d = HS.profileData(k.id), units = Object.keys(window.UNITS || {}), isKg = k.grade === 'kg' || !k.grade;
+    const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && (r.answered || r.labs.length));
+    const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
+    const dr = APPS.dict ? APPS.dict.report(k.id) : null, dOn = dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar);
+    const waits = HS.orders(k.id).filter(o => o.st === 'wait'), goal = HS.goal(k.id), guest = k.id === 'guest';
+    const focus = k.grade ? focusChoices(k.grade).filter(c => HS.focusOf(k).includes(c.id)) : [];
+    const last = d.days.length ? d.days[d.days.length - 1] : '';
+    const fig = (n, l, cls = '') => `<div class="pp-fig ${cls}"><b>${n}</b><span>${l}</span></div>`;
+    // what needs the parent now: gifts to hand over, a missing grade, the next lesson to study
+    const todo = [
+      ...waits.map(o => `<div class="pp-todo gift"><span class="em">${HS.rewardArt(o)}</span><span class="tx"><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} بـ ${o.u === 'dia' ? '💎' : '⭐'} ${ar(o.cost)}. أعطه إياها قريبًا، فالمكافأة المتأخرة يضعف أثرها.</small></span>
+        <span class="pp-todo-b"><button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع الماسات</button></span></div>`),
+      ...(!guest && !k.grade ? [`<div class="pp-todo"><span class="em">🎒</span><span class="tx"><b>اختر صفّ ${esc(k.name)}</b><small>حتى تظهر له مواد صفّه في الصفحة الرئيسية.</small></span><span class="pp-todo-b"><button type="button" class="p-btn" data-setup="${k.id}">اختر الصف</button></span></div>`] : []),
+      ...ur.filter(r => r.next).slice(0, 2).map(r => `<div class="pp-todo"><span class="em">➡️</span><span class="tx"><b>${r.next}</b><small>${r.em} ${r.title}</small></span></div>`)
+    ];
+    const unit = r => `<article class="pp-card pp-unit"><header><h4>${r.em} ${r.title}</h4><b class="pp-big">${pct0(r.total)}</b></header>${meter(r.total)}<p class="pp-cap">إتقان الوحدة · أجاب عن ${ar(r.answered)} من ${ar(r.count)} سؤالًا</p>
+      <div class="pp-ls">${r.lessons.map(L => `<div class="pp-l"><span>${L.em} ${L.title}</span><span class="pp-lbar"><i style="width:${Math.max(2, Math.round(L.m * 100))}%"></i></span><b>${pct0(L.m)}</b></div>`).join('')}</div>
+      ${r.learn ? `<div class="pp-learn"><div class="pp-kv"><span>صح من أول محاولة</span><b>${pct0(r.learn.first)}</b></div><div class="pp-kv"><span>صحّح بعد تلميح</span><b>${ar(r.learn.fixed)}</b></div><div class="pp-kv"><span>رأى الإجابة بعد ٣ محاولات</span><b>${ar(r.learn.revealed)}</b></div><div class="pp-kv"><span>تلميحات</span><b>${ar(r.learn.hints)}</b></div>
+        ${r.lessons.some(L => L.n) ? `<details><summary>تفصيل الدروس</summary><table class="pp-t"><thead><tr><th>الدرس</th><th>صح من أول مرة</th><th>الإتقان</th></tr></thead><tbody>${r.lessons.filter(L => L.n).map(L => `<tr><td>${L.em} ${L.title}</td><td>${pct0(L.first)} <small>(${ar(L.n)})</small></td><td>${pct0(L.m)}</td></tr>`).join('')}</tbody></table></details>` : ''}
+        ${r.mis.length ? `<details><summary>🧩 أفكار خاطئة يكرّرها (${ar(r.mis.length)})</summary><ul>${r.mis.map(x => `<li>${x.q}<br><small>اختار: «${x.chose}»${x.n > 1 ? ` (${ar(x.n)} مرات)` : ''} · الصحيح: «${x.right}»</small></li>`).join('')}</ul></details>` : ''}</div>` : ''}
+      ${r.missed.length ? `<details><summary>⚠️ أكثر ما يخطئ فيه (${ar(r.missed.length)})</summary><ul>${r.missed.map(m => `<li>${m.q} <small>(أخطأ ${ar(m.w)} · أصاب ${ar(m.c)})</small></li>`).join('')}</ul></details>` : ''}
+      ${(r.labs || []).map(x => `<p class="pp-cap">🧪 ${x.title}: أنهى ${ar(x.done.length)} من ${ar(x.total)} · توقّع صحيح ${ar(x.predOk)} من ${ar(x.pred)} · فسّر من أول مرة ${ar(x.whyFirst)} من ${ar(x.why)}</p>`).join('')}
+      ${r.best.final || r.best.speed ? `<p class="pp-cap">${r.best.final ? `🏆 الاختبار الشامل: ${ar(r.best.final.s)} من ${ar(r.best.final.t)}` : ''}${r.best.final && r.best.speed ? ' · ' : ''}${r.best.speed ? `⚡ تحدّي السرعة: ${ar(r.best.speed.s)}` : ''}</p>` : ''}</article>`;
+    return `<section class="pp-kidv" aria-label="${esc(k.name)}">
+      <div class="pp-prof"><span class="pp-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span>
+        <div class="pp-who"><h2 class="nm">${esc(k.name)}</h2>
+          ${guest ? '' : `<div class="pp-focus"><span class="pp-chip grade">${k.grade ? gradeName(k.grade) : 'بدون صف'}</span>${focus.map(c => `<span class="pp-chip">💎 ${c.name}</span>`).join('')}<button type="button" class="pp-link" data-setup="${k.id}">تعديل الصف والمواد</button></div>`}</div>
+        <div class="pp-figs">${fig('💎 ' + ar(HS.diamonds(k.id)), 'ماسات للصرف')}${fig('⭐ ' + ar(HS.yellow(k.id)), 'نجمات')}${fig('🔥 ' + ar(HS.dayStreak(k.id)), 'أيام متتالية')}${fig('📅 ' + ar(d.days.length), last ? 'أيام تعلّم · آخرها ' + fmtDate(Date.parse(last)) : 'أيام تعلّم')}</div></div>
+      ${todo.length ? `<h3 class="pp-h">يحتاجك الآن</h3><div class="pp-todos">${todo.join('')}</div>` : ''}
+      <h3 class="pp-h">التقدّم</h3>
+      ${!ur.length && !kg.length && !dOn ? `<div class="pp-card pp-empty"><span class="em">🌱</span><p>لم يبدأ ${esc(k.name)} بعد. أول نشاط يلعبه سيظهر هنا: الإتقان، وما يخطئ فيه، والدرس التالي.</p></div>` : ''}
+      <div class="pp-grid">${ur.map(unit).join('')}
+        ${dOn ? `<article class="pp-card"><header><h4>📖 قاموسي</h4><b class="pp-big">${pct0(dr.acc)}</b></header>${meter(dr.learned / Math.max(1, dr.seen))}<p class="pp-cap">صحّ في التدريب</p>
+          <div class="pp-kv"><span>كلمات تعلّمها</span><b>${ar(dr.learned)}</b></div><div class="pp-kv"><span>تدرّب عليها</span><b>${ar(dr.seen)}</b></div><div class="pp-kv"><span>في «كلماتي»</span><b>${ar(dr.mine)}</b></div>
+          ${dr.ar.seen ? `<div class="pp-kv"><span>📝 عربي: كتبها من ذاكرته</span><b>${ar(dr.ar.learned)} من ${ar(dr.ar.seen)}</b></div>` : ''}
+          ${dr.spell && (dr.spell.en || dr.spell.ar) ? `<div class="pp-kv"><span>✍️ أتقن في الإملاء</span><b>${ar(dr.spell.en)}${dr.spell.ar ? ' + ' + ar(dr.spell.ar) + ' عربية' : ''}</b></div><div class="pp-kv"><span>أطول سلسلة</span><b>${ar(dr.spell.best)}</b></div>` : ''}
+          <p class="pp-cap">«تعلّمها» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></article>` : ''}
+        ${kg.length ? `<article class="pp-card"><header><h4>🔤 ألعاب الروضة</h4></header><table class="pp-t"><thead><tr><th>اللعبة</th><th>المستوى</th><th>صح من أول مرة</th></tr></thead><tbody>${kg.map(g => `<tr><td>${g.name}</td><td>${g.max > 3 ? ar(g.lv || 1) + ' / ' + ar(g.max) : '⭐'.repeat(g.lv || 1)}</td><td>${pct0(g.c / (g.c + g.w))} <small>(${ar(g.c + g.w)})</small></td></tr>`).join('')}</tbody></table></article>` : ''}
+      </div>
+      ${!guest && shopOn() ? `<h3 class="pp-h">التشجيع</h3><div class="pp-card pp-gift"><p class="pp-goal">${goal ? `🎯 يجمع لـ <b>${esc(goal.em)} ${esc(goal.name)}</b>: ${ar(HS.stars(k.id))} من ${ar(goal.cost)} 💎` : '🎯 لم يختر هدفًا من المتجر بعد'}</p>
+        <form class="pp-gift-f" data-gift="${k.id}"><span class="pp-rl"><b>🎁 ماسات مفاجأة</b><small>المفاجأة لا تُضعف حبّ التعلّم مثل المكافأة الموعودة. امدح بها جهدًا محددًا.</small></span>
+          <div class="pp-gift-in"><select aria-label="عدد الماسات">${[5, 10, 20, 50].map(n => `<option value="${n}">💎 ${ar(n)}</option>`).join('')}</select>
+          <input maxlength="60" placeholder="رسالة قصيرة: فخور فيك لأنك ساعدت أختك" aria-label="رسالة"><button type="submit" class="p-btn">أرسل</button></div></form></div>` : ''}
+      ${APPS.kg && isKg && !guest ? kgLevels(k.id) : ''}
+      ${guest ? '' : `<div class="pp-quiet"><button type="button" class="pp-link" data-ren="${k.id}">✏️ تعديل الاسم</button>
+        <button type="button" class="pp-link" data-reset="${k.id}">${confirmKey === 'r' + k.id ? '⚠️ اضغط مرة ثانية لمسح كل التقدّم' : '🔄 مسح التقدّم'}</button>
+        <button type="button" class="pp-link danger" data-del="${k.id}">${confirmKey === 'd' + k.id ? '⚠️ اضغط مرة ثانية للحذف' : '🗑️ حذف الطفل'}</button></div>`}
+    </section>`;
+  }
+  function ppShop() {
+    return `<section class="pp-pane">
+      <div class="pp-card pp-list">${sw('ppShop', shopOn(), 'إظهار متجر الهدايا للأطفال', 'يشترون الهدايا بالماس 💎 الذي يجمعونه في المواد الصعبة')}</div>
+      ${HS.ideas().length ? `<h3 class="pp-h">💡 أفكار اقترحها الأطفال</h3><div class="pp-card pp-ideas">${HS.ideas().map(i => `<div class="pp-idea"><span>${esc(i.name)}: «${esc(i.text)}»</span><button type="button" class="p-btn sec" data-idea-add="${i.id}">＋ للمتجر</button><button type="button" class="pp-x" data-idea-del="${i.id}" aria-label="حذف">✕</button></div>`).join('')}</div>` : ''}
+      <h3 class="pp-h">الهدايا والأسعار</h3>
+      <p class="pp-cap">«لمن» يجعل الهدية لطفل واحد، لأن الروضة والصف الرابع يجمعون بسرعات مختلفة. «في الأسبوع» = أكثر عدد يشتريه في ٧ أيام. تحت كل هدية: كم يومًا يحتاج كل طفل تقريبًا.</p>
+      <div class="pp-rw">${HS.rewards().map((r, i) => `<div class="pp-rw-row" data-i="${i}">
+          <input class="em" value="${esc(r.em)}" maxlength="4" aria-label="الرمز"><input class="nm" value="${esc(r.name)}" maxlength="40" aria-label="الهدية">
+          <label class="pp-f"><span>💎 السعر</span><input class="ct" type="number" min="1" max="9999" inputmode="numeric" value="${r.cost}"></label>
+          <label class="pp-f"><span>لمن</span><select class="fr">${[['', 'الكل'], ...HS.profiles().map(p => [p.id, p.name])].map(([v, t]) => `<option value="${v}" ${(r.for || '') === v ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
+          <label class="pp-f"><span>في الأسبوع</span><input class="wk" type="number" min="0" max="50" inputmode="numeric" value="${r.week || ''}" placeholder="بلا حد"></label>
+          <button type="button" class="pp-x" data-rdel="${i}" aria-label="حذف ${esc(r.name)}">✕</button>
+          <small class="pp-days">${daysHint(r)}</small></div>`).join('')}</div>
+      <div class="pp-actions"><button type="button" class="p-btn" id="ppRSave">💾 حفظ الهدايا</button><button type="button" class="p-btn sec" id="ppRAdd">＋ هدية جديدة</button></div>
+      <details class="pp-card pp-how"><summary>💡 كيف تجعل المتجر ينجح؟ (من الأبحاث)</summary><ul>
+        <li><b>أسعار صغيرة ومتوسطة وكبيرة:</b> أول هدية يجب أن يصل لها خلال يوم أو يومين، وإلا يفقد الحماس.</li>
+        <li><b>أعطِ الهدية بسرعة:</b> كلما تأخرت بعد الشراء ضعف أثرها. الهدايا المنتظرة تظهر في تبويب كل طفل وعلى القفل في الأعلى.</li>
+        <li><b>قلّل هدايا الشاشة:</b> دراسة من جامعة Guelph وجدت أن الأطفال الذين تُستعمل الشاشة مكافأةً لهم يقضون أمامها وقتًا أطول. لذلك عليها حد أسبوعي، والأفضل الوقت معكم والتجارب.</li>
+        <li><b>لا تأخذ النجوم عقابًا:</b> النجوم والماسات تُكسب ولا تُسحب.</li>
+        <li><b>المدح أولًا:</b> امدح الجهد بكلام محدد، واستعمل الماسات المفاجأة أحيانًا بدل الوعود.</li>
+        <li><b>دعهم يقترحون:</b> الطفل يعمل أكثر لهدية اختارها، واقتراحاتهم تظهر هنا.</li></ul></details>
+    </section>`;
+  }
+  function ppSettings(s) {
+    const voices = HS.arVoices(), cur = s.arVoice;
+    return `<section class="pp-pane">
+      <h3 class="pp-h">☁️ الحساب والأجهزة</h3><div class="pp-card pp-sync-card">${syncBox() || '<p class="pp-cap">الحفظ بين الأجهزة غير متاح في هذه النسخة.</p>'}</div>
+      <h3 class="pp-h">🔒 القفل</h3>
+      <div class="pp-card pp-list"><div class="pp-row"><span class="pp-rl"><b>الرقم السري لصفحة الأب</b><small>حتى لا يغيّر الأطفال المواد أو الأسعار أو يوافقوا على هداياهم بأنفسهم.</small></span>
+        <span class="pp-pin"><input id="ppPin" inputmode="numeric" maxlength="8" placeholder="2580" value="${esc(s.pin || '')}" aria-label="الرقم السري" dir="ltr"><button type="button" class="p-btn sec" id="ppPinSave">حفظ</button></span></div></div>
+      <h3 class="pp-h">🔊 الصوت</h3>
+      <div class="pp-card pp-list">${sw('ppSound', s.sound, 'مؤثرات صوتية عند الإجابة', 'صوت قصير للإجابة الصحيحة والخاطئة')}
+        <div class="pp-row"><span class="pp-rl"><b>الأصوات المسجّلة</b><small>${HS.clipCount() ? `${HS.count(HS.clipCount(), ['مقطع', 'مقطعان', 'مقاطع', 'مقطعًا'])} بصوت طبيعي: الروضة والقاموس وشرح الدروس.` : 'لا توجد مقاطع مسجّلة بعد.'}</small></span>
+          <span class="pp-row-b"><button type="button" class="p-btn sec" id="ppTestAr">${HS.SPK} عربي</button><button type="button" class="p-btn sec" id="ppTestEn">${HS.SPK} English</button></span></div>
+        <details class="pp-row pp-adv"><summary><span class="pp-rl"><b>صوت الجهاز وصانع الأصوات</b><small>لما ليس له مقطع مسجّل</small></span></summary>
+          <p class="pp-cap">${voices.length ? 'صوت الجهاز العربي (⭐ = طبيعي):' : 'لا يوجد صوت عربي في هذا الجهاز، فالعربية تُسمع من المقاطع المسجّلة فقط.'}</p>
+          ${voices.length ? `<select id="ppVoice" aria-label="صوت الجهاز العربي">${voices.map(v => `<option value="${esc(v.name)}" ${cur === v.name ? 'selected' : ''}>${esc(v.name)}${HS.isGoodVoice(v) ? ' ⭐' : ''}</option>`).join('')}</select>` : ''}
+          <p class="pp-cap"><a href="voice-maker.html" target="_blank" rel="noopener">🎙️ صانع الأصوات</a>: يسجّل الجمل الجديدة بصوت ElevenLabs، ثم ترسل الملف لـ Claude.</p></details></div>
+      <h3 class="pp-h">🧸 الروضة</h3>
+      <div class="pp-card pp-list"><div class="pp-row"><span class="pp-rl"><b>وقت اللعب في اليوم</b><small>بعده تظهر شاشة «وقت الاستراحة». منظمة الصحة العالمية تنصح بساعة شاشة كحد أقصى يوميًا لعمر ٢–٤ سنوات، والأقل أفضل.</small></span>
+        <select id="ppMin" aria-label="وقت الروضة">${[[10, '١٠ دقائق'], [15, '١٥ دقيقة'], [20, '٢٠ دقيقة'], [30, '٣٠ دقيقة'], [0, 'بدون حد']].map(([v, t]) => `<option value="${v}" ${(s.kgMinutes === undefined ? 15 : s.kgMinutes) === v ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+        <details class="pp-row pp-adv"><summary><span class="pp-rl"><b>🧠 العب معها: أسئلة لألعاب «نفكّر»</b><small>تحويل اللعبة إلى حديث في البيت</small></span></summary><ul>
+          <li><b>🧩 الأحجية:</b> «وين تروح هذي القطعة؟ فوق ولا تحت؟» ثم جرّبوا أحجية حقيقية من الكرتون.</li>
+          <li><b>🔺 ركّبي الشكل:</b> «أي شكل يصير سقف البيت؟» ثم ابنوا نفس الشكل بالمكعبات أو قصاصات ورق.</li>
+          <li><b>🧭 أين أضعها؟:</b> «حطّي الدبدوب تحت الطاولة… خلف الكرسي… بين المخدتين».</li>
+          <li><b>🤖 الروبوت:</b> كوني أنتِ الروبوت! تعطيك أوامر «خطوة قدّام، لفّي» حتى توصلين للهدف.</li>
+          <li><b>📖 القصة:</b> اطلب منها تحكي القصة بكلماتها: «أولًا… بعدين… وفي الآخر…».</li></ul></details></div>
+    </section>`;
+  }
   function parent() {
     const kids = HS.profiles().length ? HS.profiles() : [{ id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' }];
-    const units = Object.keys(window.UNITS || {});
-    const s = HS.settings(), voices = HS.arVoices(), cur = s.arVoice;
-    P.innerHTML = `<h1 class="p-title">👨‍👩‍👧 صفحة الأب</h1><p class="p-sub">تقدّم كل طفل، وما يحتاج مراجعة، والإعدادات.</p>
-    ${kids.map(k => {
-      const d = HS.profileData(k.id);
-      const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && (r.answered || r.labs.length));
-      const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
-      const dr = APPS.dict ? APPS.dict.report(k.id) : null;
-      return `<section class="pp-kid"><div class="pp-head"><span class="p-kid-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span><div><h3 class="nm">${esc(k.name)}</h3><p>💎 ${ar(HS.diamonds(k.id))} للصرف (جمع ${ar(HS.earned(k.id))}) · ⭐ ${ar(HS.yellow(k.id))} نجمة · ⚡ تقريبًا ${ar(HS.earnRate(k.id))} في اليوم · 🔥 متواصل: ${HS.count(HS.dayStreak(k.id), HS.N.day)} · 📅 تعلّم في ${HS.count(d.days.length, HS.N.day)}${d.days.length ? ` · آخر مرة ${d.days[d.days.length - 1]}` : ''}</p></div></div>
-        ${k.id !== 'guest' ? `<div class="pp-focus"><span>🎒 ${k.grade ? gradeName(k.grade) : 'لم يُختر الصف'}${k.grade ? ` · 💎 التركيز: ${focusChoices(k.grade).filter(c => HS.focusOf(k).includes(c.id)).map(c => c.name).join('، ') || '—'}` : ''}</span>
-          <button type="button" class="p-btn sec" data-setup="${k.id}">✏️ الصف والمواد الصعبة</button></div>` : ''}
-        ${HS.orders(k.id).filter(o => o.st === 'wait').map(o => `<div class="pp-order"><span class="em">${HS.rewardArt(o)}</span><span><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} · ${o.u === 'dia' ? '💎' : '⭐'} ${ar(o.cost)}</small></span>
-          <button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع الماسات</button></div>`).join('')}
-        ${shopOn() ? `<div class="pp-gift"><span>${HS.goal(k.id) ? `🎯 يجمع لـ ${esc(HS.goal(k.id).em)} ${esc(HS.goal(k.id).name)} (${ar(HS.stars(k.id))}/${ar(HS.goal(k.id).cost)})` : '🎯 لم يختر هدفًا بعد'}</span>
-          <details><summary>🎁 أعطه ماسات مفاجأة</summary><form class="pp-gift-f" data-gift="${k.id}"><select aria-label="عدد النجوم">${[5, 10, 20, 50].map(n => `<option value="${n}">💎 ${ar(n)}</option>`).join('')}</select>
-            <input maxlength="60" placeholder="رسالة قصيرة، مثال: فخور فيك لأنك ساعدت أختك" aria-label="رسالة"><button type="submit" class="p-btn">أرسل 🎁</button></form>
-            <p class="pp-note">المفاجآت التي لا يتوقعها الطفل لا تُضعف حبّه للتعلّم، بعكس المكافأة الموعودة. استعملها لمدح جهد محدد.</p></details></div>` : ''}
-        ${!ur.length && !kg.length && !(dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar)) ? '<p class="pp-empty">لا يوجد نشاط بعد.</p>' : ''}
-        ${ur.map(r => `<div class="pp-unit"><h4>${r.em} ${r.title}</h4><div class="m-row"><span>إتقان الوحدة</span><b>${ar(Math.round(r.total * 100))}٪</b></div>${meter(r.total)}
-          <div class="pp-ls">${r.lessons.map(L => `<div class="m-row"><span>${L.em} ${L.title}</span><b>${ar(Math.round(L.m * 100))}٪</b></div>${meter(L.m)}`).join('')}</div>
-          ${r.learn ? `<div class="pp-learn"><div class="m-row"><span>صح من أول محاولة</span><b>${ar(Math.round(r.learn.first * 100))}٪</b></div>${meter(r.learn.first)}
-            <p class="pp-note">صُحّحت بعد تلميح: ${ar(r.learn.fixed)} مرة · عُرضت الإجابة بعد ٣ محاولات: ${ar(r.learn.revealed)} مرة · تلميحات: ${ar(r.learn.hints)}</p>
-            ${r.lessons.some(L => L.n) ? `<table class="pp-t"><thead><tr><th>الفكرة (الدرس)</th><th>صح من أول مرة</th><th>الإتقان</th></tr></thead><tbody>${r.lessons.filter(L => L.n).map(L => `<tr><td>${L.em} ${L.title}</td><td>${ar(Math.round(L.first * 100))}٪ <small>(${ar(L.n)})</small></td><td>${ar(Math.round(L.m * 100))}٪</td></tr>`).join('')}</tbody></table>` : ''}
-            ${r.mis.length ? `<details><summary>🧩 أفكار خاطئة تكرّر اختيارها (${ar(r.mis.length)})</summary><ul>${r.mis.map(x => `<li>${x.q}<br><small>الاختيار: «${x.chose}»${x.n > 1 ? ` (${ar(x.n)} مرات)` : ''} · الصحيح: «${x.right}»</small></li>`).join('')}</ul></details>` : ''}
-            ${r.next ? `<p class="pp-next">➡️ ${r.next}</p>` : ''}</div>` : ''}
-          ${(r.labs || []).map(x => `<p class="pp-note">${x.title}: التجارب المنتهية ${ar(x.done.length)} من ${ar(x.total)} · توقّع صحيح ${ar(x.predOk)} من ${ar(x.pred)} · فسّر من أول محاولة ${ar(x.whyFirst)} من ${ar(x.why)}</p>`).join('')}
-          <p class="pp-note">أجاب عن ${ar(r.answered)} من ${ar(r.count)} سؤالًا${r.best.final ? ` · أفضل نتيجة في الاختبار الشامل ${ar(r.best.final.s)}/${ar(r.best.final.t)}` : ''}${r.best.speed ? ` · تحدّي السرعة ${ar(r.best.speed.s)}` : ''}</p>
-          ${r.missed.length ? `<details><summary>⚠️ أكثر ما يخطئ فيه (${ar(r.missed.length)})</summary><ul>${r.missed.map(m => `<li>${m.q} <small>(أخطأ ${ar(m.w)} · أصاب ${ar(m.c)})</small></li>`).join('')}</ul></details>` : ''}</div>`).join('')}
-        ${dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar) ? `<div class="pp-unit"><h4>📖 قاموسي</h4><div class="m-row"><span>تعلّم ${ar(dr.learned)} كلمة · تدرّب على ${ar(dr.seen)} · في «كلماتي» ${ar(dr.mine)}</span><b>${ar(Math.round(dr.acc * 100))}٪ صح</b></div>${meter(dr.learned / Math.max(1, dr.seen))}${dr.ar.seen ? `<div class="m-row"><span>📝 عربي: كتب ${ar(dr.ar.learned)} كلمة من ذاكرته · تدرّب على ${ar(dr.ar.seen)}</span><b>${ar(Math.round(dr.ar.acc * 100))}٪ صح</b></div>${meter(dr.ar.learned / Math.max(1, dr.ar.seen))}` : ''}${dr.spell && (dr.spell.en || dr.spell.ar) ? `<div class="m-row"><span>✍️ تحدّي الإملاء: أتقن ${ar(dr.spell.en)} كلمة إنجليزية${dr.spell.ar ? ` و${ar(dr.spell.ar)} عربية` : ''} · أطول سلسلة ${ar(dr.spell.best)}</span></div>` : ''}<p class="pp-note">«تعلّم» = كتبها صحيحة من ذاكرته في أكثر من مراجعة متباعدة.</p></div>` : ''}
-        ${kg.length ? `<div class="pp-unit"><h4>🔤 عربي و English (الروضة)</h4><table class="pp-t"><thead><tr><th>اللعبة</th><th>المستوى</th><th>صح من أول مرة</th></tr></thead><tbody>${kg.map(g => `<tr><td>${g.name}</td><td>${g.max > 3 ? ar(g.lv || 1) + ' / ' + ar(g.max) : '⭐'.repeat(g.lv || 1)}</td><td>${ar(Math.round(g.c / (g.c + g.w) * 100))}٪ <small>(${ar(g.c + g.w)})</small></td></tr>`).join('')}</tbody></table></div>` : ''}
-        ${APPS.kg ? kgLevels(k.id) : ''}
-        ${k.id !== 'guest' ? `<div class="pp-actions"><button type="button" class="p-btn sec" data-ren="${k.id}">✏️ تعديل الاسم</button>
-          <button type="button" class="p-btn sec" data-reset="${k.id}">${confirmKey === 'r' + k.id ? '⚠️ اضغط مرة ثانية لمسح التقدّم' : '🔄 مسح التقدّم'}</button>
-          <button type="button" class="p-btn sec danger" data-del="${k.id}">${confirmKey === 'd' + k.id ? '⚠️ اضغط مرة ثانية للحذف' : '🗑️ حذف الطفل'}</button></div>` : ''}
-      </section>`;
-    }).join('')}
-    <section class="pp-kid"><h3>⚙️ الإعدادات</h3>
-      <label class="pp-sw"><input type="checkbox" id="ppSound" ${s.sound ? 'checked' : ''}> مؤثرات صوتية عند الإجابة</label>
-${syncBox()}
-      <h4>🛒 متجر الهدايا (بالماس 💎)</h4>
-      <label class="pp-sw"><input type="checkbox" id="ppShop" ${shopOn() ? 'checked' : ''}> إظهار المتجر للأطفال</label>
-      <details class="pp-how"><summary>💡 كيف تجعل المتجر ينجح؟ (من الأبحاث)</summary><ul>
-        <li><b>أسعار صغيرة ومتوسطة وكبيرة:</b> أول مكافأة يجب أن يصل لها خلال يوم أو يومين، وإلا يفقد الحماس. تحت كل مكافأة تجد كم يومًا يحتاج كل طفل.</li>
-        <li><b>أعطِ الكوبون بسرعة:</b> كلما تأخرت المكافأة بعد الشراء ضعف أثرها. عدد الكوبونات المنتظرة يظهر على زر صفحة الأب.</li>
-        <li><b>قلّل مكافآت الشاشة:</b> دراسة من جامعة Guelph وجدت أن الأطفال الذين تُستعمل الشاشة كمكافأة لهم يقضون وقتًا أطول أمامها. لذلك عليها حد أسبوعي، والأفضل الوقت معكم والتجارب.</li>
-        <li><b>لا تأخذ النجوم عقابًا:</b> النجوم تُكسب ولا تُسحب.</li>
-        <li><b>المدح أولًا:</b> امدح الجهد بكلام محدد، واستعمل «🎁 المفاجأة» أحيانًا بدل الوعود.</li>
-        <li><b>دعهم يقترحون:</b> اقتراحاتهم تظهر هنا، والطفل يعمل أكثر لمكافأة اختارها.</li></ul></details>
-      <p class="pp-note">في الخانة الأولى رمز تعبيري (إيموجي). «لمن» يجعل المكافأة لطفل واحد، لأن الروضة والصف الرابع يجمعون بسرعات مختلفة. «حد أسبوعي» = أكثر عدد يشتريه في ٧ أيام (فارغ = بلا حد).</p>
-      ${HS.ideas().length ? `<div class="pp-ideas"><b>💡 أفكار من الأطفال</b>${HS.ideas().map(i => `<div class="pp-idea"><span>${esc(i.name)}: «${esc(i.text)}»</span><button type="button" class="p-btn sec" data-idea-add="${i.id}">＋ للمتجر</button><button type="button" class="p-btn sec danger" data-idea-del="${i.id}" aria-label="حذف">🗑️</button></div>`).join('')}</div>` : ''}
-      <div class="pp-rw">${HS.rewards().map((r, i) => `<div class="pp-rw-row" data-i="${i}"><input class="em" value="${esc(r.em)}" maxlength="4" aria-label="الرمز"><input class="nm" value="${esc(r.name)}" maxlength="40" aria-label="المكافأة">
-          <button type="button" class="p-btn sec danger" data-rdel="${i}" aria-label="حذف">🗑️</button>
-          <div class="pp-rw-2"><label>💎 <input class="ct" type="number" min="1" max="9999" inputmode="numeric" value="${r.cost}" aria-label="السعر"></label>
-            <label>لمن <select class="fr" aria-label="لمن">${[['', 'الكل'], ...HS.profiles().map(p => [p.id, [HS.avatarText(p), p.name].filter(Boolean).join(' ')])].map(([v, t]) => `<option value="${v}" ${(r.for || '') === v ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
-            <label>حد أسبوعي <input class="wk" type="number" min="0" max="50" inputmode="numeric" value="${r.week || ''}" placeholder="—" aria-label="حد أسبوعي"></label></div>
-          <small class="pp-days">${daysHint(r)}</small></div>`).join('')}</div>
-      <div class="pp-actions"><button type="button" class="p-btn sec" id="ppRAdd">＋ مكافأة جديدة</button><button type="button" class="p-btn" id="ppRSave">💾 حفظ المكافآت</button></div>
-      <h4>🔒 رقم سري لصفحة الأب</h4>
-      <p class="pp-note">حتى لا يغيّر الأطفال المواد أو الأسعار أو يوافقوا على هداياهم بأنفسهم.</p>
-      <div class="pp-actions"><input id="ppPin" inputmode="numeric" maxlength="8" placeholder="مثال: 2580" value="${esc(s.pin || '')}" aria-label="الرقم السري"><button type="button" class="p-btn sec" id="ppPinSave">حفظ الرقم</button></div>
-      <h4>⏱️ وقت الروضة</h4>
-      <p class="pp-note">بعد هذه المدة من اللعب في اليوم تظهر شاشة «وقت الاستراحة». منظمة الصحة العالمية تنصح بساعة شاشة كحد أقصى يوميًا لعمر ٢–٤ سنوات، والأقل أفضل.</p>
-      <select id="ppMin">${[[10, '١٠ دقائق'], [15, '١٥ دقيقة'], [20, '٢٠ دقيقة'], [30, '٣٠ دقيقة'], [0, 'بدون حد']].map(([v, t]) => `<option value="${v}" ${(s.kgMinutes === undefined ? 15 : s.kgMinutes) === v ? 'selected' : ''}>${t}</option>`).join('')}</select>
-      <details><summary>🧠 العب معها: أسئلة قصيرة لألعاب «نفكّر»</summary><ul>
-        <li><b>🧩 الأحجية:</b> «وين تروح هذي القطعة؟ فوق ولا تحت؟» ثم جرّبوا أحجية حقيقية من الكرتون.</li>
-        <li><b>🔺 ركّبي الشكل:</b> «أي شكل يصير سقف البيت؟» ثم ابنوا نفس الشكل بالمكعبات أو قصاصات ورق.</li>
-        <li><b>🧭 أين أضعها؟:</b> العبوا في البيت: «حطّي الدبدوب تحت الطاولة… خلف الكرسي… بين المخدتين».</li>
-        <li><b>🤖 الروبوت:</b> كوني أنتِ الروبوت! تعطيك أوامر «خطوة قدّام، لفّي» حتى توصلين للهدف.</li>
-        <li><b>📖 القصة:</b> اطلب منها تحكي القصة بكلماتها: «أولًا… بعدين… وفي الآخر…».</li></ul></details>
-      <h4>🔊 الصوت العربي</h4>
-      ${HS.clipCount() ? `<p class="pp-note">✅ في الموقع ${HS.count(HS.clipCount(), ['مقطع', 'مقطعان', 'مقاطع', 'مقطعًا'])} صوتية مسجّلة بصوت ذكاء اصطناعي، تُستخدم قبل صوت الجهاز.</p>` : ''}
-      <p class="pp-note">${voices.length ? `الأصوات العربية في هذا الجهاز (⭐ = صوت حديث وطبيعي):` : 'لا يوجد صوت عربي في هذا الجهاز/المتصفح، لذلك العربية بلا صوت إلا في المقاطع المسجّلة.'}</p>
-      ${voices.length ? `<select id="ppVoice">${voices.map(v => `<option value="${esc(v.name)}" ${cur === v.name ? 'selected' : ''}>${esc(v.name)}${HS.isGoodVoice(v) ? ' ⭐' : ''}</option>`).join('')}</select>` : ''}
-      <div class="pp-actions"><button type="button" class="p-btn" id="ppTestAr">${HS.SPK} جرّب العربي</button><button type="button" class="p-btn sec" id="ppTestEn">${HS.SPK} Test English</button></div>
-      <p class="pp-note"><a href="voice-maker.html" target="_blank" rel="noopener">🎙️ صانع الأصوات</a>: يسجّل كل جمل الموقع بصوت Microsoft الطبيعي (سعودي) مجانًا، بدل صوت الجهاز.</p><details><summary>كيف أحصل على صوت عربي أوضح؟</summary><ul>
-        <li><b>ويندوز:</b> افتح الصفحة في متصفح <b>Microsoft Edge</b>؛ فيه أصوات عربية طبيعية مجانية (Hamed و Zariyah).</li>
-        <li><b>آيفون / آيباد / ماك:</b> الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية ← حمّل «ماجد» أو «ليلى» (يفضّل النسخة المحسّنة Enhanced).</li>
-        <li><b>أندرويد:</b> الإعدادات ← تحويل النص إلى كلام ← محرك Google ← تثبيت بيانات الصوت ← العربية.</li>
-        <li>الأفضل: توليد مقاطع صوتية بالذكاء الاصطناعي مرة واحدة (انظر README، قسم الصوت).</li></ul></details>
-    </section>`;
+    const s = HS.settings(), waitN = id => HS.orders(id).filter(o => o.st === 'wait').length;
+    // which tab: the last one picked; else a child with a gift waiting; else the child using this device
+    const valid = t => t === 'shop' || t === 'settings' || kids.some(k => 'k:' + k.id === t);
+    if (!valid(ptab)) { const w = kids.find(k => waitN(k.id)), me = HS.current(); ptab = 'k:' + (w || (me && kids.find(k => k.id === me.id)) || kids[0]).id; }
+    const tab = (id, inner, n) => `<button type="button" role="tab" class="pp-tab ${ptab === id ? 'on' : ''}" aria-selected="${ptab === id}" data-ptab="${id}">${inner}${n ? `<span class="pp-badge" aria-label="${ar(n)} بانتظارك">${ar(n)}</span>` : ''}</button>`;
+    const kid = kids.find(k => 'k:' + k.id === ptab);
+    P.innerHTML = `<div class="pp-page">
+      <header class="pp-top"><h1 class="pp-title">صفحة الأب</h1><p class="pp-sub">تقدّم كل طفل، وما يحتاج منك الآن، والهدايا والإعدادات.</p>
+        <nav class="pp-tabs" role="tablist" aria-label="أقسام صفحة الأب">
+          ${kids.map(k => tab('k:' + k.id, `<span class="pp-tav" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span><span>${esc(k.name)}</span>`, waitN(k.id))).join('')}
+          <span class="pp-tsep" aria-hidden="true"></span>
+          ${tab('shop', '<span class="pp-tic" aria-hidden="true">🎁</span><span>الهدايا</span>')}${tab('settings', '<span class="pp-tic" aria-hidden="true">⚙️</span><span>الإعدادات</span>')}</nav></header>
+      <div class="pp-body" role="tabpanel">${kid ? ppKid(kid) : ptab === 'shop' ? ppShop() : ppSettings(s)}</div></div>`;
+    const $ = id => document.getElementById(id), on = (id, ev, f) => { const el = $(id); if (el) el[ev] = f; };
+    P.querySelectorAll('[data-ptab]').forEach(b => b.onclick = () => { ptab = b.dataset.ptab; confirmKey = ''; parent(); const t = P.querySelector('.pp-tabs'); if (t && t.getBoundingClientRect().top < 0) t.scrollIntoView({ block: 'start' }); });
     P.querySelectorAll('[data-setup]').forEach(b => b.onclick = () => { const k = HS.profiles().find(x => x.id === b.dataset.setup);
       setupGo({ step: 'grade', who: 'parent', pid: k.id, grade: k.grade, focus: HS.focusOf(k).slice(), from: 'parent' }); });
     P.querySelectorAll('[data-kglv]').forEach(sel => sel.onchange = () => {
       const [pid, k] = sel.dataset.kglv.split('|'); APPS.kg.setLevel(pid, k, +sel.value); HS.toast('✓ تم حفظ المستوى');
     });
     P.querySelectorAll('[data-ren]').forEach(b => b.onclick = () => {
-      const k = HS.profiles().find(x => x.id === b.dataset.ren); const sec = b.closest('.pp-kid').querySelector('h3');
+      const k = HS.profiles().find(x => x.id === b.dataset.ren); const sec = P.querySelector('.pp-who .nm');
       sec.innerHTML = `<form class="p-inline"><input value="${esc(k.name)}" maxlength="20" aria-label="الاسم الجديد"><button type="submit" class="p-btn">حفظ</button></form>`;
       const f = sec.querySelector('form'); f.querySelector('input').focus();
       f.onsubmit = e => { e.preventDefault(); const v = f.querySelector('input').value.trim(); if (v) HS.updateProfile(k.id, { name: v }); parent(); };
     });
     P.querySelectorAll('[data-reset]').forEach(b => b.onclick = () => { const k = 'r' + b.dataset.reset; if (confirmKey === k) { HS.resetProgress(b.dataset.reset); confirmKey = ''; } else confirmKey = k; parent(); });
-    P.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { const k = 'd' + b.dataset.del; if (confirmKey === k) { HS.removeProfile(b.dataset.del); confirmKey = ''; } else confirmKey = k; parent(); });
+    P.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { const k = 'd' + b.dataset.del; if (confirmKey === k) { HS.removeProfile(b.dataset.del); confirmKey = ''; ptab = ''; } else confirmKey = k; parent(); });
     P.querySelectorAll('[data-ord]').forEach(b => b.onclick = () => { const [k, o, how] = b.dataset.ord.split('|'); HS.settleOrder(k, o, how); HS.toast(how === 'done' ? '✅ تم' : '↩️ رجعت الماسات'); parent(); });
-    document.getElementById('ppShop').onchange = e => HS.setSetting('shop', e.target.checked);
+    P.querySelectorAll('[data-gift]').forEach(f => f.onsubmit = e => { e.preventDefault(); const n = +f.querySelector('select').value, m = f.querySelector('input').value.trim();
+      HS.gift(f.dataset.gift, n, m); HS.toast(`🎁 أُرسلت 💎 ${ar(n)}، ستظهر له كمفاجأة`); parent(); });
+    // gifts tab
+    on('ppShop', 'onchange', e => HS.setSetting('shop', e.target.checked));
     const readRw = () => [...P.querySelectorAll('.pp-rw-row')].map((row, i) => { const r = { id: HS.rewards()[i] ? HS.rewards()[i].id : 'r' + Date.now().toString(36) + i,
       em: row.querySelector('.em').value.trim() || '🎁', name: row.querySelector('.nm').value.trim(), cost: Math.max(1, Math.round(+row.querySelector('.ct').value || 1)) };
       const fr = row.querySelector('.fr').value, wk = Math.round(+row.querySelector('.wk').value || 0); if (fr) r.for = fr; if (wk > 0) r.week = wk; return r; }).filter(r => r.name);
-    P.querySelectorAll('[data-gift]').forEach(f => f.onsubmit = e => { e.preventDefault(); const n = +f.querySelector('select').value, m = f.querySelector('input').value.trim();
-      HS.gift(f.dataset.gift, n, m); HS.toast(`🎁 أُرسلت 💎 ${ar(n)}، ستظهر له كمفاجأة`); parent(); });
     P.querySelectorAll('[data-idea-add]').forEach(b => b.onclick = () => { const i = HS.ideas().find(x => x.id === b.dataset.ideaAdd); const l = readRw();
       l.push({ id: 'r' + Date.now().toString(36), em: '💡', name: i.text, cost: 50 }); HS.setSetting('rewards', l); HS.setSetting('ideas', HS.ideas().filter(x => x !== i)); HS.toast('أُضيفت. عدّل السعر ثم احفظ'); parent(); });
     P.querySelectorAll('[data-idea-del]').forEach(b => b.onclick = () => { HS.setSetting('ideas', HS.ideas().filter(x => x.id !== b.dataset.ideaDel)); parent(); });
-    document.getElementById('ppRSave').onclick = () => { HS.setSetting('rewards', readRw()); HS.toast('💾 تم حفظ المكافآت'); parent(); };
-    document.getElementById('ppRAdd').onclick = () => { const l = readRw(); l.push({ id: 'r' + Date.now().toString(36), em: '🎁', name: 'مكافأة جديدة', cost: 50 }); HS.setSetting('rewards', l); parent(); };
+    on('ppRSave', 'onclick', () => { HS.setSetting('rewards', readRw()); HS.toast('💾 تم حفظ الهدايا'); parent(); });
+    on('ppRAdd', 'onclick', () => { const l = readRw(); l.push({ id: 'r' + Date.now().toString(36), em: '🎁', name: 'هدية جديدة', cost: 50 }); HS.setSetting('rewards', l); parent();
+      const rows = P.querySelectorAll('.pp-rw-row .nm'); const last = rows[rows.length - 1]; if (last) { last.focus(); last.select(); } });
     P.querySelectorAll('[data-rdel]').forEach(b => b.onclick = () => { const l = readRw(); l.splice(+b.dataset.rdel, 1); HS.setSetting('rewards', l); parent(); });
-    document.getElementById('ppPinSave').onclick = () => { const v = document.getElementById('ppPin').value.trim(); if (!/^\d{4,8}$/.test(v)) { HS.toast('اكتب ٤ أرقام على الأقل'); HS.fx('no'); return; } HS.setSetting('pin', v); try { sessionStorage.setItem('hs-pin', '1'); } catch (e) {} HS.toast('🔒 تم حفظ الرقم السري'); };
+    // settings tab
+    on('ppPinSave', 'onclick', () => { const v = $('ppPin').value.trim(); if (!/^\d{4,8}$/.test(v)) { HS.toast('اكتب ٤ أرقام على الأقل'); HS.fx('no'); return; } HS.setSetting('pin', v); try { sessionStorage.setItem('hs-pin', '1'); } catch (e) {} HS.toast('🔒 تم حفظ الرقم السري'); });
     bindSync();
-    document.getElementById('ppMin').onchange = e => HS.setSetting('kgMinutes', +e.target.value);
-    document.getElementById('ppSound').onchange = e => HS.setSetting('sound', e.target.checked);
-    const sel = document.getElementById('ppVoice'); if (sel) sel.onchange = e => { HS.setSetting('arVoice', e.target.value); HS.speak([['ألف. أرنب', 'ar']]); };
-    document.getElementById('ppTestAr').onclick = () => HS.speak([['ألف. أرنب. باء. بطة', 'ar']]);
-    document.getElementById('ppTestEn').onclick = () => HS.speak([['A is for Apple', 'en']]);
+    on('ppMin', 'onchange', e => HS.setSetting('kgMinutes', +e.target.value));
+    on('ppSound', 'onchange', e => HS.setSetting('sound', e.target.checked));
+    on('ppVoice', 'onchange', e => { HS.setSetting('arVoice', e.target.value); HS.speak([['ألف. أرنب', 'ar']]); });
+    on('ppTestAr', 'onclick', () => HS.speak([['ألف. أرنب. باء. بطة', 'ar']]));
+    on('ppTestEn', 'onclick', () => HS.speak([['A is for Apple', 'en']]));
   }
 
   /* ---------- router ---------- */

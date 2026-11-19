@@ -1169,7 +1169,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f30a` | 🌊 | تأتي موجة |  |  | sheet: kg-6 | dict/data, kg/data, units/g3sciearth, units/g4scieco |
 | `kg-u1f327` | 🌧 | ينزل المطر |  |  | sheet: kg-4 | dict/data, kg/data, unit/labs |
 | `kg-u1f330` | 🌰 | بذرة |  |  | sheet: kg-5 | dict/data, kg/data |
-| `kg-u1f331` | 🌱 | تنبت |  |  | sheet: kg-5 | dict/data, kg/data, portal/catalog, unit/labs, unit/math, units/_TEMPLATE … |
+| `kg-u1f331` | 🌱 | تنبت |  |  | sheet: kg-5 | dict/data, kg/data, portal/catalog, portal/portal, unit/labs, unit/math … |
 | `kg-u1f338` | 🌸 | زهرة على الشجرة |  |  | sheet: kg-5 | dict/data, kg/data, unit/math |
 | `kg-u1f339` | 🌹 | وردة / الوردة |  |  | sheet: kg-2 | dict/data, kg/data |
 | `kg-u1f33b` | 🌻 | تصبح زهرة / زهرة كبيرة |  |  | sheet: kg-5 | dict/data, kg/data, units/g3sciearth |
@@ -1246,7 +1246,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f32a-1f30b-1f525` | 🌪🌋🔥 | الطبيعة |  |  | sheet: sci-09 |  |
 | `sci-u1f32c` | 🌬 | الرياح / رياح تحمل الرمل |  |  | sheet: sci-02 | dict/data, units/g3sciearth |
 | `sci-u1f32c-1f69a` | 🌬🚚 | ٢. التعرية |  |  | sheet: sci-01 |  |
-| `sci-u1f331` | 🌱 | التربة / تربة / تكوّن التربة |  |  | sheet: sci-02 | dict/data, kg/data, portal/catalog, unit/labs, unit/math, units/_TEMPLATE … |
+| `sci-u1f331` | 🌱 | التربة / تربة / تكوّن التربة |  |  | sheet: sci-02 | dict/data, kg/data, portal/catalog, portal/portal, unit/labs, unit/math … |
 | `sci-u1f331-1f334` | 🌱🌴 | المنتجات |  |  | sheet: sci-08 | units/g4scieco |
 | `sci-u1f331-1f407-1f344` | 🌱🐇🍄 | منتج أم مستهلك أم محلّل؟ |  |  | sheet: sci-12 | units/g4scieco |
 | `sci-u1f331-1f7eb` | 🌱🟫 | ١. الطبقة السطحية |  |  | sheet: sci-03 | units/g3sciearth |

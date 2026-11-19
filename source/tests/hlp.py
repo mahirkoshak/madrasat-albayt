@@ -38,3 +38,6 @@ def addkid(pg, name, who='kid', grade='g4', focus=(), pin='2580'):
 def unlock(pg, pin='2580'):
     """parent page without typing: set the PIN and mark this browser session as unlocked"""
     pg.evaluate(f"HS.setSetting('pin','{pin}');sessionStorage.setItem('hs-pin','1');sessionStorage.setItem('hs-focus-later','1')")
+def ptab(pg, tab):
+    """parent page: open a tab: 'shop' (gifts), 'settings', or a child's tab by profile id ('k:<id>')"""
+    pg.click(f'[data-ptab="{tab}"]'); pg.wait_for_timeout(200)

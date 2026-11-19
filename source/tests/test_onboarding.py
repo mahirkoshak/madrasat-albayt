@@ -85,10 +85,10 @@ with sync_playwright() as p:
     pg.evaluate("location.hash='explore'");pg.wait_for_timeout(300);print('explore lists',pg.locator('#portal .p-card').count(),'cards');pg.screenshot(path=OUT+'/onb-explore.png',full_page=True)
     # 10. Google sign-in starts a family; a second device signs in with the same account and gets the children
     unlock(pg);pg.evaluate("location.hash='parent'");pg.wait_for_timeout(400);pg.screenshot(path=OUT+'/onb-parent.png',full_page=True)
-    pg.click('#ppSignG');pg.wait_for_timeout(2500)
+    ptab(pg,'settings');pg.click('#ppSignG');pg.wait_for_timeout(2500)
     print('signed in:',pg.evaluate("HS.sync.account()"),'family',pg.evaluate("HS.sync.family()"),'parents doc',store.get('parents/parent1'))
     B=mk(b,'B',w=1280)
-    unlock(B);B.evaluate("location.hash='parent'");B.wait_for_timeout(500);B.click('#ppSignG');B.wait_for_timeout(3000)
+    unlock(B);B.evaluate("location.hash='parent'");B.wait_for_timeout(500);ptab(B,'settings');B.click('#ppSignG');B.wait_for_timeout(3000)
     print('device B family',B.evaluate("HS.sync.family()")==pg.evaluate("HS.sync.family()"),'kids',[x['name'] for x in B.evaluate("HS.profiles()")])
     # remote control: B (parent's phone) approves محمد's gift and changes سارة's focus; A sees both
     mid=B.evaluate("HS.profiles().find(x=>x.name==='محمد').id");oid=B.evaluate(f"HS.orders('{mid}').find(o=>o.st==='wait').id")

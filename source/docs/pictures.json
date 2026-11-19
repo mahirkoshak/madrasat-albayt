@@ -13329,7 +13329,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-5",
-"used": "dict/data, kg/data, portal/catalog, unit/labs, unit/math, units/_TEMPLATE …"
+"used": "dict/data, kg/data, portal/catalog, portal/portal, unit/labs, unit/math …"
 },
 {
 "id": "kg-u1f338",
@@ -15144,7 +15144,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-02",
-"used": "dict/data, kg/data, portal/catalog, unit/labs, unit/math, units/_TEMPLATE …"
+"used": "dict/data, kg/data, portal/catalog, portal/portal, unit/labs, unit/math …"
 },
 {
 "id": "sci-u1f331-1f334",
