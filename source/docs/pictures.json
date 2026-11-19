@@ -14022,7 +14022,7 @@
 "draw": "Koko jumping with both arms up, eyes closed with joy, full body",
 "style": "3d",
 "extra": "",
-"used": "unit/app, unit/labs, unit/math"
+"used": "unit/app, unit/arcade, unit/labs, unit/math"
 },
 {
 "id": "mascot-encourage",
@@ -14033,7 +14033,7 @@
 "draw": "Koko giving a gentle thumbs up with a warm reassuring smile, full body",
 "style": "3d",
 "extra": "",
-"used": "unit/app"
+"used": "unit/app, unit/arcade"
 },
 {
 "id": "mascot-point",
@@ -14088,7 +14088,7 @@
 "draw": "Koko tapping chin with one paw, looking up thoughtfully, a small question-mark-shaped cloud of light above (no text), full body",
 "style": "3d",
 "extra": "",
-"used": "unit/app"
+"used": "unit/app, unit/arcade"
 },
 {
 "id": "mascot-welcome",
@@ -17146,7 +17146,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-20",
-"used": "dict/data, kg/data, units/g4scihealth"
+"used": "dict/data, kg/data, unit/arcade, units/g4scihealth"
 },
 {
 "id": "star",

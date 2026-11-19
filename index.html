@@ -1540,6 +1540,99 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 @media (max-width:520px){#app-unit .idea{flex-wrap:wrap}
 #app-unit .idea>div{flex:1 1 180px}
 #app-unit .idea .u-say{flex-basis:auto;margin-inline-start:0;order:3}}
+#app-unit .g-lv{display:inline-flex;gap:5px;align-items:center}
+#app-unit .g-lv i{width:12px;height:12px;border-radius:99px;background:rgba(0,0,0,.13)}
+#app-unit .g-lv i.f{background:var(--t-gold);box-shadow:0 0 0 2px rgba(255,200,0,.25)}
+#app-unit .gp .g-lv{margin-top:6px}
+#app-unit .lv-msg{font-weight:800;font-size:18px;margin:6px 0 10px;color:var(--t-ink-strong)}
+#app-unit .lv-msg.up{color:var(--t-primary-ink)}
+#app-unit .coach{display:flex;gap:12px;align-items:center;margin:14px 0;padding:14px 16px;border-radius:20px;font-size:19px;line-height:1.6;background:var(--t-blue-soft);color:var(--t-ink-strong);border:2px solid #b9dcf5}
+#app-unit .coach[hidden]{display:none}
+#app-unit .coach.no{background:#fff3d6;border-color:#f3c969}
+#app-unit .coach.ok{background:var(--t-green-soft);border-color:#9ad86b}
+#app-unit .coach-av{flex:0 0 auto;width:56px;height:56px;display:grid;place-items:center;font-size:40px}
+#app-unit .coach-av img{width:56px;height:56px;object-fit:contain}
+#app-unit .coach-tx{flex:1;min-width:0}
+#app-unit .coach-tx small{font-size:16px;color:var(--t-muted)}
+#app-unit .sg-bin.hint-bin{animation:hintbin 1.1s ease-in-out infinite;box-shadow:0 0 0 4px var(--t-gold)}
+@keyframes hintbin{50%{box-shadow:0 0 0 9px rgba(255,200,0,.35)}}
+#app-unit .pool button.glow,#app-unit .tile-b.glow{box-shadow:0 0 0 4px var(--t-gold);animation:hintbin 1.1s ease-in-out infinite}
+#app-unit .hearts{display:flex;gap:4px;justify-content:center;font-size:24px;margin:2px 0 6px}
+#app-unit .hearts .lost{filter:grayscale(1);opacity:.3}
+#app-unit .a-opts{display:grid;gap:10px;margin-top:12px}
+#app-unit .a-opts .opt{text-align:center}
+#app-unit .a-opts.odd{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+#app-unit .a-opts .card-o{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:120px;justify-content:center}
+#app-unit .a-opts .card-o .em{font-size:44px;line-height:1}
+#app-unit .a-opts .card-o .em img{width:64px;height:64px}
+#app-unit .a-opts.tf{grid-template-columns:1fr 1fr}
+#app-unit .a-opts.tf .opt{font-size:24px;min-height:74px}
+#app-unit .tf-card{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--t-line);border-radius:22px;padding:18px 20px;font-size:22px;font-weight:700;line-height:1.6;min-height:110px}
+#app-unit .tf-card .em{font-size:44px}
+#app-unit .tf-card .em img{width:64px;height:64px}
+#app-unit .tf-card p{margin:0}
+#app-unit .who-clue{display:flex;gap:14px;align-items:center;background:var(--t-gold-soft);border-radius:22px;padding:16px 18px;font-size:21px;font-weight:700;line-height:1.6}
+#app-unit .who-clue p{margin:0}
+#app-unit .who-q{flex:0 0 auto;width:52px;height:52px;border-radius:50%;background:var(--t-gold);color:#5a3d00;display:grid;place-items:center;font-size:30px;font-weight:900}
+#app-unit .who-pic{text-align:center;font-size:64px;margin:8px 0}
+#app-unit .who-pic img{width:120px;height:120px}
+#app-unit .btn.sm{min-height:42px;padding:6px 16px;font-size:16px}
+#app-unit .who-build{display:flex;justify-content:center;flex-wrap:wrap;gap:2px;min-height:64px;margin:14px 0;padding:10px;border-radius:18px;background:#fff;border:2px dashed var(--t-line);font-size:34px;font-weight:800;direction:rtl}
+#app-unit .who-build i{display:inline-block;width:30px;border-bottom:4px solid var(--t-line);margin:0 2px;height:44px}
+#app-unit .who-build.words{gap:10px}
+#app-unit .who-build.words i{width:70px}
+#app-unit .who-build b{color:var(--t-primary-ink)}
+#app-unit .who-tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px}
+#app-unit .tile-b{min-width:58px;min-height:58px;border:2px solid var(--t-line);border-bottom-width:5px;border-radius:14px;background:#fff;font:inherit;font-size:26px;font-weight:800;cursor:pointer;padding:4px 12px}
+#app-unit .tile-b:disabled{opacity:.25}
+#app-unit .nb{background:repeating-linear-gradient(#fffdf6 0 46px,#d8e6f5 46px 48px);border-radius:16px;border-inline-start:6px solid #f08c8c;padding:6px 10px;display:grid;gap:0}
+#app-unit .nb-l{border:0;background:none;font:inherit;font-size:19px;font-weight:700;text-align:right;padding:10px 8px;min-height:48px;border-radius:10px;cursor:pointer;color:var(--t-ink-strong)}
+#app-unit .nb-l:hover:not(:disabled){background:rgba(28,126,214,.08)}
+#app-unit .nb-l.ok-l{color:var(--t-green-ink)}
+#app-unit .nb-l.ok-l::before{content:'✔️ '}
+#app-unit .nb-l.bad-l{background:var(--t-red-soft);color:var(--t-red-ink);text-decoration:line-through wavy}
+#app-unit .card.daily{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:linear-gradient(135deg,#fff6d6,#ffe7ef);border:2px solid #ffd77a}
+#app-unit .card.daily h3{margin:0}
+#app-unit .card.daily .lead{margin:2px 0 0}
+#app-unit .card.daily>div{flex:1 1 220px}
+#app-unit .daily-em{font-size:46px}
+#app-unit .card.daily.done{background:#f3fbe9;border-color:#bfe39a}
+#app-unit .umap{position:relative;display:grid;gap:6px;margin:16px 0;padding:6px 0}
+#app-unit .umap::before{content:'';position:absolute;inset-block:40px;inset-inline-start:50%;border-inline-start:6px dotted #e4d3ae}
+#app-unit .um-stop{position:relative;display:flex;align-items:center;gap:16px;width:min(100%,560px)}
+#app-unit .um-stop.l{justify-self:start;flex-direction:row}
+#app-unit .um-stop.r{justify-self:end;flex-direction:row-reverse;text-align:left}
+#app-unit .um-stop.r .um-tx{text-align:right}
+#app-unit .um-node{position:relative;flex:0 0 auto;border:0;background:none;padding:0;cursor:pointer;display:grid;justify-items:center}
+#app-unit .um-ring{width:96px;height:96px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:46px;box-shadow:0 0 0 5px #e9dcc2,0 8px 0 0 #d9c8a4;transition:transform .15s}
+#app-unit .um-ring img{width:70px;height:70px}
+#app-unit .um-node:hover .um-ring{transform:translateY(-3px)}
+#app-unit .um-node:focus-visible .um-ring{box-shadow:0 0 0 5px var(--t-primary),0 8px 0 0 var(--t-primary-sh)}
+#app-unit .um-stop.done .um-ring{box-shadow:0 0 0 5px var(--t-gold),0 8px 0 0 var(--t-gold-sh);background:#fffaf0}
+#app-unit .um-stars{margin-top:10px;font-size:20px;letter-spacing:2px}
+#app-unit .um-stars i{font-style:normal;color:#e2d6bd}
+#app-unit .um-stars i.f{color:var(--t-gold)}
+#app-unit .um-tx{flex:1;background:#fff;border-radius:20px;padding:12px 16px;box-shadow:var(--t-raise);display:flex;flex-direction:column;gap:2px;position:relative;z-index:1}
+#app-unit .um-tx b{font-size:19px}
+#app-unit .um-tx small{color:var(--t-muted);font-size:15px}
+#app-unit .um-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+#app-unit .um-a{border:0;background:var(--t-primary-soft);color:var(--t-primary-ink);border-radius:999px;padding:6px 12px;font:inherit;font-size:15px;font-weight:800;cursor:pointer;min-height:40px}
+#app-unit .um-stop.boss .um-ring{background:linear-gradient(160deg,#5b3cc4,#8e5cf7);box-shadow:0 0 0 5px #c9b6ff,0 8px 0 0 #4a2fa8;font-size:50px}
+#app-unit .um-stk{flex:0 0 auto;width:110px;height:110px;border-radius:24px;overflow:hidden;transform:rotate(-6deg);background:#fff;padding:6px;box-shadow:0 0 0 4px #fff,0 10px 22px -10px rgba(0,0,0,.4);filter:grayscale(1) opacity(.45);display:grid;place-items:center;font-size:56px}
+#app-unit .um-stk img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+#app-unit .um-stop.sticker{justify-self:center;width:auto}
+#app-unit .um-stop.sticker.won .um-stk{filter:none;animation:stk 2.4s ease-in-out infinite}
+@keyframes stk{50%{transform:rotate(4deg) scale(1.04)}}
+#app-unit .um-more{margin-bottom:18px}
+@media (max-width:560px){#app-unit .umap::before{inset-inline-start:48px}
+#app-unit .um-stop.l,#app-unit .um-stop.r{justify-self:stretch;flex-direction:row;text-align:right}
+#app-unit .um-ring{width:80px;height:80px;font-size:38px}
+#app-unit .um-ring img{width:58px;height:58px}
+#app-unit .coach{font-size:17px}
+#app-unit .coach-av{width:44px;height:44px}
+#app-unit .coach-av img{width:44px;height:44px}
+#app-unit .tf-card{font-size:19px}}
+@media (prefers-reduced-motion:reduce){#app-unit .sg-bin.hint-bin,#app-unit .pool button.glow,#app-unit .tile-b.glow,#app-unit .um-stop.sticker.won .um-stk{animation:none}}
 </style>
 </head>
 <body>
@@ -6588,6 +6681,7 @@ function actRoute(a, d) {
   if (a === 'memory') return 'play-memory' + (d.l ? '-' + d.l : '');
   if (a === 'speed') return 'play-speed';
   if (a === 'lab') return 'play-lab-' + d.g;
+  if (['odd', 'fix', 'tf', 'daily'].includes(a)) return 'play-' + a;
   return 'home';
 }
 /** what an activity route points to, or null */
@@ -6603,7 +6697,11 @@ function findAct(u, page, rest) {
   let m;
   if ((m = /^s-(.+)$/.exec(rest))) { const g = (u.games.sort || []).find(x => x.id === m[1]); return g && { title: g.title, run: () => gameSort(g) }; }
   if ((m = /^o-(.+)$/.exec(rest))) { const g = (u.games.order || []).find(x => x.id === m[1]); return g && { title: g.title, run: () => gameOrder(g) }; }
-  if ((m = /^memory(?:-(.+))?$/.exec(rest))) return { title: '🧠 لعبة الذاكرة', run: () => gameMemory(m[1]) };
+  if ((m = /^memory(?:-(.+))?$/.exec(rest))) return { title: '🕵️ مَن أنا؟', run: () => gameMemory(m[1]) };
+  if (rest === 'odd') return { title: '🔍 الدخيل', run: gameOdd };
+  if (rest === 'fix') return { title: '📒 صحّح دفتر كوكو', run: gameFix };
+  if (rest === 'tf') return { title: '✔️ صح أم خطأ؟', run: gameTF };
+  if (rest === 'daily') return { title: '🌟 تحدي اليوم', run: gameDaily };
   if (rest === 'speed') return { title: '⚡ تحدّي السرعة', run: () => speedRound() };
   if ((m = /^lab-(.+)$/.exec(rest)) && LABS[u.id] && LABS[u.id][m[1]]) { const L = LABS[u.id][m[1]]; return { title: L.title, run: () => L.run(M(), L) }; }
   return null;
@@ -6653,12 +6751,16 @@ function renderHome() {
   <div class="card hello"><div class="hello-row"><span class="big-av" aria-hidden="true">${HS.avatar(p)}</span><div><h2>أهلًا ${p.name ? 'يا ' + esc(p.name) : 'يا بطل'}! 👋</h2>
     <p class="lead">${streak ? `🔥 تعلّم متواصل: ${HS.count(streak, HS.N.day)} · ` : ''}إتقان الوحدة ${ar(pct(total))}٪</p></div></div>${meter(total)}</div>
   ${review}
-  <div class="path">${S.u.lessons.map((l, i) => { const m = mastery(l.id); return `
-    <button type="button" class="step ${m >= .8 ? 'done' : ''}" data-p="${l.id}"><span class="num" aria-hidden="true">${m >= .8 ? '✓' : l.em}</span>
-      <span class="txt"><b>${ar(i + 1)}. ${l.title}</b><span>${l.short || ''}</span>${meter(m)}<small>الإتقان ${ar(pct(m))}٪</small></span></button>`; }).join('')}
-    <button type="button" class="step" data-p="cards"><span class="num" aria-hidden="true">🃏</span><span class="txt"><b>بطاقات المصطلحات</b><span>${HS.count(S.u.glossary.length, HS.N.term)}</span></span></button>
-    <button type="button" class="step" data-p="test"><span class="num" aria-hidden="true">🏆</span><span class="txt"><b>الاختبارات</b><span>اختبار شامل، اختبار لكل درس، تحدّي السرعة</span></span></button>
+  ${dailyCard()}
+  <div class="umap" role="list" aria-label="رحلة الوحدة">${S.u.lessons.map((l, i) => { const m = mastery(l.id), st = m >= .8 ? 3 : m >= .6 ? 2 : m >= .3 ? 1 : 0; return `
+    <div class="um-stop ${i % 2 ? 'r' : 'l'} ${st === 3 ? 'done' : ''}" role="listitem"><button type="button" class="um-node" data-p="${l.id}" aria-label="الدرس ${ar(i + 1)}: ${l.title}، ${ar(st)} من ٣ نجوم"><span class="um-ring">${P(l.em)}</span><span class="um-stars" aria-hidden="true">${[1, 2, 3].map(k => `<i class="${k <= st ? 'f' : ''}">★</i>`).join('')}</span></button>
+      <div class="um-tx"><b>${ar(i + 1)}. ${l.title}</b><small>${l.short || ''}</small><span class="um-acts"><button type="button" class="um-a" data-p="${l.id}">📖 اقرأ</button><button type="button" class="um-a" data-act="quiz" data-mode="lesson" data-l="${l.id}">✏️ اختبر نفسك</button></span></div></div>`; }).join('')}
+    ${(() => { const best = (D().best || {}).final, won = best && best.s / best.t >= .8; return `
+    <div class="um-stop boss ${S.u.lessons.length % 2 ? 'r' : 'l'}" role="listitem"><button type="button" class="um-node" data-act="quiz" data-mode="final" aria-label="الجولة الأخيرة: الاختبار الشامل"><span class="um-ring">👑</span></button>
+      <div class="um-tx"><b>الجولة الأخيرة</b><small>الاختبار الشامل: ١٥ سؤالًا من كل الدروس. أجب عن ١٢ لتربح ملصق الوحدة.</small>${best ? `<small>أفضل نتيجة: ${ar(best.s)} من ${ar(best.t)}</small>` : ''}</div></div>
+    <div class="um-stop sticker ${won ? 'won' : ''}" role="listitem"><div class="um-stk" aria-label="${won ? 'ربحت ملصق الوحدة' : 'ملصق الوحدة: لم تربحه بعد'}">${HS.art('unit-' + S.id + '-cover', { fb: S.u.em || '🏅' })}</div><div class="um-tx"><b>${won ? '🎉 ملصق الوحدة لك!' : 'ملصق الوحدة'}</b><small>${won ? 'ربحته في الجولة الأخيرة.' : 'ينتظرك في نهاية الرحلة.'}</small></div></div>`; })()}
   </div>
+  <div class="row center um-more"><button type="button" class="btn sec" data-p="cards">🃏 بطاقات المصطلحات</button><button type="button" class="btn sec" data-p="play">🎮 كل الألعاب</button><button type="button" class="btn sec" data-p="test">🏆 الاختبارات</button></div>
   <div class="card"><h3>🏅 أوسمتك</h3><p class="lead small">الأوسمة تأتي من الإتقان الحقيقي: ٨٠٪ أو أكثر في الدرس.</p><div class="badges">${badges().map(([e, n, g]) => `<div class="badge ${g ? 'got' : ''}"><span class="em" aria-hidden="true">${e}</span><small>${n}</small>${g ? '' : '<span class="sr">لم تحصل عليه بعد</span>'}</div>`).join('')}</div></div>
   ${(S.u.parentTips || []).length ? `<details class="parent"><summary>👨‍👦 نصائح للأب</summary><ul>${S.u.parentTips.map(t => `<li>${t}</li>`).join('')}</ul></details>` : ''}`;
 }
@@ -6688,7 +6790,7 @@ function renderLesson(L) {
   ${cards.map(c => `<div class="card">${sayBtn(SAY.card(c), 'استمع للشرح', 'top')}${c.map(block).join('')}</div>`).join('')}
   <div class="remember"><div class="rem-head"><h3>🧠 احفظ هذا</h3>${sayBtn(SAY.remember(L), 'استمع', 'sm')}</div><ul>${L.remember.map(r => `<li>${r}</li>`).join('')}</ul></div>
   <div class="row"><button type="button" class="btn" data-act="quiz" data-mode="lesson" data-l="${L.id}">✏️ اختبر نفسك في الدرس ${ar(i + 1)}</button>${games.join('')}
-    <button type="button" class="btn sec" data-act="memory" data-l="${L.id}">🧠 لعبة الذاكرة</button></div>`;
+    <button type="button" class="btn sec" data-act="memory" data-l="${L.id}">🕵️ مَن أنا؟</button></div>`;
 }
 
 /* ---------------- flashcards (spaced repetition too) ---------------- */
@@ -6730,20 +6832,23 @@ function showCard() {
 function renderPlay() {
   const L = id => { const i = S.u.lessons.findIndex(l => l.id === id); return i < 0 ? '' : 'الدرس ' + ar(i + 1); };
   const all = Object.values(LABS[S.id] || {}), labs = all.filter(x => x.kind !== 'math'), maths = all.filter(x => x.kind === 'math');
-  M().innerHTML = `<div class="card"><h2>🎮 الألعاب</h2><p class="lead">${maths.length ? 'في كل لعبة تحسب بنفسك، ومعك تلميح إذا احتجت.' : 'اسحب البطاقة إلى مكانها، أو اضغط عليها ثم اضغط على المكان.'}</p></div>
+  M().innerHTML = `${dailyCard()}<div class="card"><h2>🎮 الألعاب</h2><p class="lead">${maths.length ? 'في كل لعبة تحسب بنفسك، ومعك تلميح إذا احتجت.' : 'كل لعبة لها ٣ مستويات: تصعد عندما تجيب عن ٩ من ١٠، وما أخطأت فيه يعود لك حتى تتقنه.'}</p></div>
   ${maths.length ? `<h3 class="gp-h">🔢 ألعاب الضرب <small>نحسب ونفكّر ونفوز</small></h3><div class="game-pick">
     ${maths.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
   ${labs.length ? `<h3 class="gp-h">🧪 نفكّر ونجرّب <small>نتوقّع ثم نجرّب ونفسّر</small></h3><div class="game-pick">
     ${labs.map(x => `<button type="button" class="gp lab" data-act="lab" data-g="${x.id}"><span class="em">${x.em}</span><b>${x.title.replace(/^\S+\s/, '')}</b><span>${L(x.lesson)} · ${x.sub}</span></button>`).join('')}</div>` : ''}
   <h3 class="gp-h">🎮 نتدرّب <small>نرتّب ونصنّف ونتذكّر</small></h3>
   <div class="game-pick">
-    ${S.u.games.sort.map(g => `<button type="button" class="gp" data-act="sort" data-g="${g.id}"><span class="em">${P(g.em)}</span><b>${g.title}</b><span>${L(g.l)} · فرز</span></button>`).join('')}
-    ${S.u.games.order.map(g => `<button type="button" class="gp" data-act="order" data-g="${g.id}"><span class="em">${P(g.em)}</span><b>${g.title}</b><span>${L(g.l)} · ترتيب</span></button>`).join('')}
-    <button type="button" class="gp" data-act="memory"><span class="em">🧠🃏</span><b>لعبة الذاكرة</b><span>طابق المصطلح بمعناه</span></button>
+    ${S.u.games.sort.map(g => `<button type="button" class="gp" data-act="sort" data-g="${g.id}"><span class="em">${P(g.em)}</span><b>${g.title}</b><span>${L(g.l)} · فرز</span>${lvPath(gLv('s-' + g.id))}</button>`).join('')}
+    ${S.u.games.order.map(g => `<button type="button" class="gp" data-act="order" data-g="${g.id}"><span class="em">${P(g.em)}</span><b>${g.title}</b><span>${L(g.l)} · ترتيب</span>${lvPath(gLv('o-' + g.id))}</button>`).join('')}
+    <button type="button" class="gp" data-act="odd"><span class="em">🔍</span><b>الدخيل</b><span>أيّها لا ينتمي؟ من كل الدروس</span>${lvPath(gLv('odd'))}</button>
+    <button type="button" class="gp" data-act="fix"><span class="em">📒</span><b>صحّح دفتر كوكو</b><span>ابحث عن الجملة الخطأ وصحّحها</span>${lvPath(gLv('fix'))}</button>
+    <button type="button" class="gp" data-act="memory"><span class="em">🕵️</span><b>مَن أنا؟</b><span>اقرأ الوصف وتذكّر المصطلح</span>${lvPath(gLv('memory'))}</button>
   </div>
   <h3 class="gp-h">⚡ نتحدّى <small>بسرعة ومن الذاكرة</small></h3>
   <div class="game-pick">
-    <button type="button" class="gp" data-act="speed"><span class="em">⚡⏱️</span><b>تحدّي السرعة</b><span>أجب عن أكبر عدد في ٦٠ ثانية</span></button>
+    <button type="button" class="gp" data-act="tf"><span class="em">✔️✖️</span><b>صح أم خطأ؟</b><span>احكم على الجملة، ومعك ٣ قلوب</span>${lvPath(gLv('tf'))}</button>
+    <button type="button" class="gp" data-act="speed"><span class="em">⚡⏱️</span><b>تحدّي السرعة</b><span>أجب عن أكبر عدد قبل انتهاء الوقت</span>${lvPath(gLv('speed'))}</button>
   </div>`;
 }
 
@@ -6975,13 +7080,14 @@ function renderQuestion(q, el, done, opt = {}) {
 function speedRound() {
   stopAll();
   const pool = HS.shuffle(S.u.questions.filter(q => ['mcq', 'tf', 'pic', 'fill', 'num'].includes(q.t)));
-  const G = { i: 0, score: 0, total: 0, end: Date.now() + 60000, combo: HS.makeCombo() };
+  const lv = gLv('speed'), secs = [90, 60, 45][lv - 1];
+  const G = { i: 0, score: 0, total: 0, secs, end: Date.now() + secs * 1000, combo: HS.makeCombo() };
   HS.markPractice();
   M().innerHTML = `<div class="card quiz"><div class="q-top"><h2>⚡ تحدّي السرعة</h2><span class="combo" id="uCombo"></span></div>
-    <div class="meta"><span id="uTime">٦٠ ثانية</span><span id="uSc">✅ ٠</span></div><div class="bar timer"><i id="uTb" style="width:100%"></i></div><div id="uQ"></div></div>`;
+    <div class="meta"><span id="uTime">${ar(secs)} ثانية</span>${lvPath(lv)}<span id="uSc">✅ ٠</span></div><div class="bar timer"><i id="uTb" style="width:100%"></i></div><div id="uQ"></div></div>`;
   const tick = () => {
     const left = Math.max(0, G.end - Date.now());
-    $('uTb').style.width = (left / 600) + '%'; $('uTime').textContent = `${ar(Math.ceil(left / 1000))} ثانية`;
+    $('uTb').style.width = (left / (G.secs * 10)) + '%'; $('uTime').textContent = `${ar(Math.ceil(left / 1000))} ثانية`;
     if (!left) finishSpeed(G);
   };
   S.iv = setInterval(tick, 200);
@@ -6994,7 +7100,7 @@ function speedRound() {
       if (ok) { G.score++; star(G.combo.hit()); HS.fx('ok'); } else { G.combo.miss(); HS.fx('no'); }
       $('uSc').textContent = `✅ ${ar(G.score)}`; $('uCombo').textContent = G.combo.n >= 2 ? '🔥 ' + ar(G.combo.n) : '';
       $('uCombo').classList.toggle('on', G.combo.n >= 2);
-      later(next, ok ? 450 : 1100);
+      later(next, ok ? 450 : 1600);
     }, { noSay: true });
   };
   next();
@@ -7005,35 +7111,42 @@ function finishSpeed(G) {
   if (G.score > prev) d.best.speed = { s: G.score, t: G.total };
   HS.save(); star(Math.ceil(G.score / 2));
   if (G.score > prev && prev) HS.party();
-  M().innerHTML = `<div class="card result"><div class="big">${HS.kidCheer()}⚡</div><h2>${ar(G.score)} إجابة صحيحة</h2><p class="lead">من ${ar(G.total)} في ٦٠ ثانية${G.score > prev && prev ? ' – رقم قياسي جديد! 🎉' : prev ? ` · رقمك القياسي ${ar(Math.max(prev, G.score))}` : ''}</p>
+  const a = gAdapt('speed', G.score, Math.max(G.total, 1));
+  M().innerHTML = `<div class="card result"><div class="big">${HS.kidCheer()}⚡</div><h2>${ar(G.score)} إجابة صحيحة</h2>${a.change === 'up' ? `<p class="lv-msg up">⬆️ في المرة القادمة: ${ar([90, 60, 45][a.lv - 1])} ثانية فقط!</p>` : a.change === 'down' ? `<p class="lv-msg down">في المرة القادمة: وقت أطول (${ar([90, 60, 45][a.lv - 1])} ثانية).</p>` : ''}<p class="lead">من ${ar(G.total)} في ${ar(G.secs)} ثانية${G.score > prev && prev ? ' – رقم قياسي جديد! 🎉' : prev ? ` · رقمك القياسي ${ar(Math.max(prev, G.score))}` : ''}</p>
     ${endRow()}</div>`;
 }
 
-/* ---------------- game: sort into boxes (drag or tap-tap) ---------------- */
+/* ---------------- game: sort into boxes (drag or tap-tap) ----------------
+   levels: 1 = 6 cards · 2 = 10 cards · 3 = every card, and the first miss only says «not here».
+   A card dropped in the wrong box goes back: the coach box says where it belongs and why, the right box pulses,
+   and the child moves it there themselves (correcting it is part of remembering it). */
 function gameSort(g) {
   stopAll();
-  const items = HS.shuffle(g.items).slice(0, 10); let placed = 0, first = 0; const combo = HS.makeCombo(); const tried = new Set();
+  const key = 's-' + g.id, lv = gLv(key), cid = it => 's:' + g.id + ':' + it[1];
+  const items = deal(g.items, cid, Math.min([6, 10, 99][lv - 1], g.items.length));
+  let placed = 0, first = 0; const combo = HS.makeCombo(), tried = {};
   M().innerHTML = `<div class="card">${gameHead(g.title)}<p class="lead">${g.ask}</p><p class="hint">اسحب البطاقة إلى الصندوق، أو اضغط عليها ثم على الصندوق.</p>
+    <div class="meta"><span id="uLeft">${ar(items.length)} متبقية</span>${lvPath(lv)}<span id="uSc">✅ ${ar(0)}</span></div>
     <div class="sg-pool" id="uPool">${items.map((it, k) => `<button type="button" class="sg-item hs-drag" data-k="${k}"><span class="em">${P(it[0])}</span>${it[1]}</button>`).join('')}</div>
-    <div class="sg-bins" style="grid-template-columns:repeat(${g.bins.length},minmax(0,1fr))">${g.bins.map(([lab, col], b) => `<div class="sg-bin" data-b="${b}" tabindex="0"><div class="sg-lab" style="background:${col}">${lab}</div><div class="sg-in"></div></div>`).join('')}</div>
-    <div class="meta"><span id="uLeft">${ar(items.length)} متبقية</span><span id="uSc">✅ ${ar(0)}</span></div></div>`;
+    ${coachBox()}
+    <div class="sg-bins" style="grid-template-columns:repeat(${g.bins.length},minmax(0,1fr))">${g.bins.map(([lab, col], b) => `<div class="sg-bin" data-b="${b}" tabindex="0"><div class="sg-lab" style="background:${col}">${lab}</div><div class="sg-in"></div></div>`).join('')}</div></div>`;
   bindBack();
-  const put = (el, b) => { const it = items[+el.dataset.k]; el.classList.add('hs-done'); el.style.display = 'none'; const bin = ROOT.querySelector(`.sg-bin[data-b="${b}"] .sg-in`); bin.insertAdjacentHTML('beforeend', `<span class="sg-chip hs-pop">${P(it[0])} ${it[1]}</span>`); placed++; $('uLeft').textContent = `${ar(items.length - placed)} متبقية`; if (placed === items.length) later(() => sortDone(g, first, items.length), 700); };
+  const put = (el, b) => { const it = items[+el.dataset.k]; el.classList.add('hs-done'); el.style.display = 'none'; const bin = ROOT.querySelector(`.sg-bin[data-b="${b}"] .sg-in`); bin.insertAdjacentHTML('beforeend', `<span class="sg-chip hs-pop">${P(it[0])} ${it[1]}</span>`); placed++; $('uLeft').textContent = `${ar(items.length - placed)} متبقية`; if (placed === items.length) later(() => endCard(g.title, first, items.length, gAdapt(key, first, items.length), 'صحيحة من أول محاولة'), 900); };
   HS.dnd(M().querySelector('.card'), { item: '.sg-item', target: '.sg-bin', onDrop(el, bin) {
-    const it = items[+el.dataset.k], b = +bin.dataset.b, k = el.dataset.k;
-    if (b === it[2]) { if (!tried.has(k)) { first++; star(1 + combo.hit()); } HS.fx('ok'); $('uSc').textContent = `✅ ${ar(first)}`; put(el, b); return true; }
-    tried.add(k); combo.miss(); HS.fx('no'); bin.classList.remove('hs-shake'); void bin.offsetWidth; bin.classList.add('hs-shake');
-    HS.toast(`${it[0]} ${it[1]} ← ${g.bins[it[2]][0]}`, 2200);
-    later(() => { if (!el.classList.contains('hs-done')) put(el, it[2]); }, 1100);
-    const why = g.why && g.why[it[2]]; if (why) later(() => HS.toast(`💡 ${why}`, 2200), 1200);
+    const k = el.dataset.k, it = items[+k], b = +bin.dataset.b;
+    ROOT.querySelectorAll('.sg-bin.hint-bin').forEach(x => x.classList.remove('hint-bin'));
+    if (b === it[2]) {
+      if (!tried[k]) { first++; star(1 + combo.hit()); missOk(cid(it)); coachOff(); } else coach(`✔️ صحيح: ${it[1]} ⬅ <b>${binName(g.bins[b][0])}</b>`, 'ok');
+      HS.fx('ok'); $('uSc').textContent = `✅ ${ar(first)}`; put(el, b); return true;
+    }
+    tried[k] = (tried[k] || 0) + 1; if (tried[k] === 1) { combo.miss(); missAdd(cid(it)); }
+    HS.fx('no'); bin.classList.remove('hs-shake'); void bin.offsetWidth; bin.classList.add('hs-shake');
+    const why = g.why && g.why[it[2]];
+    if (lv === 3 && tried[k] === 1) coach(`<b>${it[0]} ${it[1]}</b> ليس في «${binName(g.bins[b][0])}». فكّر مرة أخرى.`, 'no');
+    else { coach(`<b>${it[0]} ${it[1]}</b> مكانه «<b>${binName(g.bins[it[2]][0])}</b>»${why ? '. ' + why : '.'}<br><small>اسحبه إلى الصندوق الصحيح.</small>`, 'no');
+      const right = ROOT.querySelector(`.sg-bin[data-b="${it[2]}"]`); if (right) right.classList.add('hint-bin'); }
     return false;
   } });
-}
-function sortDone(g, s, t) {
-  if (s === t) HS.party();
-  M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.kidCheer()}${HS.mascot(s === t ? 'cheer' : 'encourage', { fb: s === t ? '🎉' : '👍' })}</div><h2>${ar(s)} من ${ar(t)} من أول محاولة</h2><p class="lead">${s === t ? 'كلها صحيحة!' : 'العب مرة ثانية لتصل للكامل.'}</p>
-    ${endRow()}</div>`;
-  bindBack();
 }
 function gameHead(t) { return `<h2 class="sr">${t}</h2>`; }   // the title shows in the site header; kept here for screen-reader headings   // Back to the games list is in the site header
 function bindBack() {}   // the site header's Back returns to the games list
@@ -7044,7 +7157,7 @@ function gameList() {
   const all = Object.values(LABS[S.id] || {});
   return [...all.filter(x => x.kind === 'math'), ...all.filter(x => x.kind !== 'math')].map(x => ({ key: 'lab-' + x.id, title: x.title }))
     .concat(S.u.games.sort.map(g => ({ key: 's-' + g.id, title: '🎮 ' + g.title })), S.u.games.order.map(g => ({ key: 'o-' + g.id, title: '🎮 ' + g.title })),
-      [{ key: 'memory', title: '🧠 لعبة الذاكرة' }, { key: 'speed', title: '⚡ تحدّي السرعة' }]);
+      [{ key: 'odd', title: '🔍 الدخيل' }, { key: 'fix', title: '📒 صحّح دفتر كوكو' }, { key: 'memory', title: '🕵️ مَن أنا؟' }, { key: 'tf', title: '✔️ صح أم خطأ؟' }, { key: 'speed', title: '⚡ تحدّي السرعة' }]);
 }
 function endRow() {
   const list = gameList(), cur = String(S.actKey || '').replace(/^memory-.+$/, 'memory'), i = list.findIndex(g => g.key === cur);
@@ -7056,34 +7169,37 @@ function endRow() {
 }
 
 /* ---------------- game: put in order (chains) ---------------- */
+/* levels: 1 = two chains, and after two misses the next right card glows · 2 = every chain · 3 = every chain plus a card that does not belong */
 function gameOrder(g) {
   stopAll();
-  const order = HS.shuffle(g.sets.map((_, i) => i)); let k = 0, perfect = 0;
+  const key = 'o-' + g.id, lv = gLv(key), oid = i => 'o:' + g.id + ':' + i;
+  const order = deal(g.sets.map((_, i) => i), oid, lv === 1 ? Math.min(2, g.sets.length) : g.sets.length); let k = 0, perfect = 0;
   const round = () => {
-    if (k >= order.length) {
-      if (perfect === order.length) HS.party();
-      M().innerHTML = `<div class="card result">${gameHead(g.title)}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🏆' })}</div><h2>${ar(perfect)} من ${ar(order.length)} بدون أخطاء</h2>${endRow()}</div>`;
-      return bindBack();
-    }
-    const raw = g.sets[order[k]], set = Array.isArray(raw) ? raw : raw.items, stitle = Array.isArray(raw) ? '' : raw.title; let placed = 0, mistakes = 0;
-    M().innerHTML = `<div class="card">${gameHead(g.title)}<div class="meta"><span>${ar(k + 1)} / ${ar(order.length)}</span><span>✅ ${ar(perfect)}</span></div><p class="lead">${g.prompt}</p>${stitle ? `<h3 class="set-title">${stitle}</h3>` : ''}
+    if (k >= order.length) return endCard(g.title, perfect, order.length, gAdapt(key, perfect, order.length), 'سلاسل بدون أي خطأ');
+    const raw = g.sets[order[k]], set = Array.isArray(raw) ? raw : raw.items, stitle = Array.isArray(raw) ? '' : raw.title; let placed = 0, mistakes = 0, here = 0;
+    const names = set.map(x => x[1]), others = g.sets.flatMap(r => Array.isArray(r) ? r : r.items).filter(x => !names.includes(x[1]));
+    const odd = lv === 3 && others.length ? HS.shuffle(others)[0] : null;
+    M().innerHTML = `<div class="card">${gameHead(g.title)}<div class="meta"><span>${ar(k + 1)} / ${ar(order.length)}</span>${lvPath(lv)}<span>✅ ${ar(perfect)}</span></div><p class="lead">${g.prompt}</p>${stitle ? `<h3 class="set-title">${stitle}</h3>` : ''}
       <div class="slots">${g.start ? `<div class="slot filled"><span class="em">${P(g.start[0])}</span>${g.start[1]}</div>` : ''}${set.map((_, i) => `${i || g.start ? '<span class="ar" aria-hidden="true">⬅</span>' : ''}<div class="slot">؟</div>`).join('')}</div>
-      <div class="pool">${HS.shuffle(set.map((_, i) => i)).map(i => `<button type="button" data-i="${i}"><span class="em">${P(set[i][0])}</span>${set[i][1]}</button>`).join('')}</div>
+      <div class="pool">${HS.shuffle(set.map((_, i) => i).concat(odd ? ['x'] : [])).map(i => i === 'x' ? `<button type="button" data-i="x"><span class="em">${P(odd[0])}</span>${odd[1]}</button>` : `<button type="button" data-i="${i}"><span class="em">${P(set[i][0])}</span>${set[i][1]}</button>`).join('')}</div>
       <div class="fb" id="uFb" aria-live="polite"></div></div>`;
     bindBack();
     const slots = [...ROOT.querySelectorAll('.slots .slot')].slice(g.start ? 1 : 0), fb = $('uFb');
     ROOT.querySelectorAll('.pool button').forEach(b => b.onclick = () => {
+      if (b.dataset.i === 'x') { mistakes++; b.disabled = true; HS.fx('no'); fb.className = 'fb no'; fb.innerHTML = `«${odd[1]}» ليس من هذه السلسلة. أحسنت إن لاحظت ذلك! 👀`; return; }
       const i = +b.dataset.i;
-      if (i === placed) {
+      ROOT.querySelectorAll('.pool button.glow').forEach(x => x.classList.remove('glow'));
+      if (i === placed) { here = 0;
         slots[i].innerHTML = `<span class="em">${P(set[i][0])}</span>${set[i][1]}`; slots[i].classList.add('filled', 'hs-pop'); b.disabled = true; HS.fx('tap'); fb.className = 'fb';
         if (++placed === set.length) {
-          const ok = !mistakes; if (ok) { perfect++; star(2); } else star(1);
+          const ok = !mistakes; if (ok) { perfect++; star(2); missOk(oid(order[k])); } else { star(1); missAdd(oid(order[k])); }
           HS.fx(ok ? 'win' : 'ok'); fb.className = 'fb ok';
           fb.innerHTML = `<b>${ok ? HS.one(HS_PHRASES.praise.ar) + ' بدون أي خطأ' : 'أكملتها!'}</b>${g.roles ? '<br>' + set.map((s, j) => `${s[1]}: ${g.roles[j] || ''}`).join(' · ') : ''}<div class="auto" style="--d:2600ms"><i></i></div>`;
           k++; later(round, 2600);
         }
       } else {
-        mistakes++; HS.fx('no'); b.classList.remove('hs-shake'); void b.offsetWidth; b.classList.add('hs-shake');
+        mistakes++; here++; HS.fx('no'); b.classList.remove('hs-shake'); void b.offsetWidth; b.classList.add('hs-shake');
+        if (lv === 1 && here >= 2) { const nx = ROOT.querySelector(`.pool button[data-i="${placed}"]`); if (nx) nx.classList.add('glow'); }
         fb.className = 'fb no'; fb.innerHTML = placed === 0 ? (g.firstHint || 'من يأتي أولًا؟') : (g.nextHint || 'ما التالي؟').replace('{prev}', set[placed - 1][1]);
       }
     });
@@ -7091,30 +7207,8 @@ function gameOrder(g) {
   round();
 }
 
-/* ---------------- game: memory (term ↔ meaning) ---------------- */
-function gameMemory(l) {
-  stopAll();
-  const pool = S.u.glossary.filter(g => !l || g.l === l);
-  const pairs = HS.shuffle(pool).slice(0, Math.min(6, pool.length));
-  const cards = HS.shuffle(pairs.flatMap((g, i) => [{ i, face: `<span class="em">${P(g.em)}</span><b>${g.term}</b>` }, { i, face: `<span class="mean">${g.short || g.def}</span>` }]));
-  let open = [], found = 0, moves = 0, lock = false;
-  M().innerHTML = `<div class="card">${gameHead('🧠 لعبة الذاكرة')}<p class="lead">اقلب بطاقتين: طابق كل مصطلح مع معناه.</p>
-    <div class="meta"><span id="uMoves">المحاولات: ٠</span><span id="uSc">✅ ٠ / ${ar(pairs.length)}</span></div>
-    <div class="mem">${cards.map((c, k) => `<button type="button" class="mc" data-k="${k}" aria-label="بطاقة ${ar(k + 1)}"><span class="mc-in"><span class="mc-back" aria-hidden="true">❓</span><span class="mc-face">${c.face}</span></span></button>`).join('')}</div></div>`;
-  bindBack();
-  ROOT.querySelectorAll('.mc').forEach(b => b.onclick = () => {
-    if (lock || b.classList.contains('up') || b.classList.contains('got')) return;
-    b.classList.add('up'); open.push(b); HS.fx('tap');
-    if (open.length < 2) return;
-    moves++; $('uMoves').textContent = `المحاولات: ${ar(moves)}`;
-    const [a, c] = open, same = cards[+a.dataset.k].i === cards[+c.dataset.k].i;
-    if (same) {
-      a.classList.add('got'); c.classList.add('got'); open = []; found++; star(); HS.fx('ok');
-      $('uSc').textContent = `✅ ${ar(found)} / ${ar(pairs.length)}`;
-      if (found === pairs.length) later(() => { HS.party(); M().innerHTML = `<div class="card result">${gameHead('🧠 لعبة الذاكرة')}<div class="big">${HS.kidCheer()}${HS.mascot('cheer', { fb: '🧠' })}</div><h2>وجدت كل الأزواج!</h2><p class="lead">في ${ar(moves)} محاولة${moves <= pairs.length + 2 ? ' – ذاكرة ممتازة!' : ''}</p>${endRow()}</div>`; bindBack(); }, 700);
-    } else { lock = true; later(() => { a.classList.remove('up'); c.classList.remove('up'); open = []; lock = false; }, 1000); }
-  });
-}
+/* ---------------- 🕵️ مَن أنا؟ replaced the flip-card memory game (route key stays «memory»): see arcade.js ---------------- */
+function gameMemory(l) { gameWho(l); }
 
 /* ---------------- entry ---------------- */
 APPS.unit = {
@@ -7167,6 +7261,249 @@ APPS.unit = {
     return { title: u.title, em: u.em, total: m(), lessons, best: d.best || {}, missed, mis, learn, next, labs, answered: Object.keys(s).length, count: u.questions.length };
   }
 };
+
+/* ---- arcade.js ---- */
+/* ================= arcade: what makes the unit games adapt, and the games every unit gets from its own content =================
+   Built on learning research (see README «Unit games»):
+   - retrieval: the child recalls (who-am-I, find the mistake, build the term) rather than only recognising
+   - interleaving: odd-one-out and the daily challenge mix items from every sorting game and lesson
+   - success rate: 3 levels per game; up after ≥85% right, down below 50%, so a child stays at roughly 75–90% right
+   - mistakes come back: a wrong item is weighted and dealt first next time, until answered right twice
+   - hints: short, plain words, shown in a coach box inside the game (not a toast), and they stay until the child moves on
+   Data (per child, per unit, in D()): g[key] = { lv, h: [last accuracies] } · miss[itemId] = weight · daily = { day, n } */
+
+/* ---------- levels ---------- */
+const LV_UP = .85, LV_DOWN = .5;
+function gData() { const d = D(); d.g = d.g || {}; d.miss = d.miss || {}; return d; }
+function gLv(key) { return Math.min(3, Math.max(1, (gData().g[key] || {}).lv || 1)); }
+/** record one finished game and move the level: returns { lv, change: 'up' | 'down' | '' } */
+function gAdapt(key, right, total) {
+  const d = gData(), g = d.g[key] = d.g[key] || { lv: 1, h: [] }, acc = total ? right / total : 0;
+  g.h = (g.h || []).concat(Math.round(acc * 100)).slice(-5); let change = '';
+  if (acc >= LV_UP && g.lv < 3) { g.lv++; change = 'up'; } else if (acc < LV_DOWN && g.lv > 1) { g.lv--; change = 'down'; }
+  HS.save(); return { lv: g.lv, change };
+}
+const lvPath = lv => `<span class="g-lv" role="img" aria-label="المستوى ${ar(lv)} من ٣">${[1, 2, 3].map(i => `<i class="${i <= lv ? 'f' : ''}"></i>`).join('')}</span>`;
+
+/* ---------- mistakes come back ---------- */
+function missed(id) { return gData().miss[id] || 0; }
+function missAdd(id) { if (!id) return; const d = gData(); d.miss[id] = Math.min(6, (d.miss[id] || 0) + 2); HS.save(); }
+function missOk(id) { if (!id) return; const d = gData(); if (d.miss[id]) { d.miss[id]--; if (d.miss[id] <= 0) delete d.miss[id]; HS.save(); } }
+/** n items from a pool: up to half of them items the child got wrong before (most-missed first), the rest new at random */
+function deal(pool, idf, n) {
+  const back = pool.filter(x => missed(idf(x))).sort((a, b) => missed(idf(b)) - missed(idf(a)) || Math.random() - .5).slice(0, Math.ceil(n / 2));
+  return HS.shuffle(back.concat(HS.shuffle(pool.filter(x => !back.includes(x)))).slice(0, n));
+}
+
+/* ---------- the coach box: hints next to the cards, staying until the next move ---------- */
+const coachBox = () => `<div class="coach" id="uCoach" role="status" aria-live="polite" hidden></div>`;
+function coach(html, kind = 'info') {
+  const c = $('uCoach'); if (!c || !html) return;
+  c.hidden = false; c.className = 'coach ' + kind;
+  c.innerHTML = `<span class="coach-av" aria-hidden="true">${HS.mascot(kind === 'ok' ? 'cheer' : 'thinking', { small: true, fb: '🐨' })}</span><div class="coach-tx">${html}</div>`;
+  c.classList.remove('hs-pop'); void c.offsetWidth; c.classList.add('hs-pop');
+  const r = c.getBoundingClientRect(); if (r.bottom > innerHeight - 10 || r.top < 60) c.scrollIntoView({ block: 'center', behavior: 'smooth' });
+}
+function coachOff() { const c = $('uCoach'); if (c) { c.hidden = true; c.innerHTML = ''; } }
+
+/* ---------- what the unit's content offers ---------- */
+const plain = s => String(s || "").replace(/[\p{Extended_Pictographic}\uFE0F\u200D]/gu, "").replace(/\s+/g, " ").trim();
+const binName = lab => plain(lab);
+/** every sorting card: { g, it: [em, text, bin], id } */
+const sortCards = () => S.u.games.sort.flatMap(g => g.items.map(it => ({ g, it, id: 's:' + g.id + ':' + it[1] })));
+const gloss = l => (S.u.glossary || []).filter(g => !l || g.l === l);
+const gid = g => 'gl:' + g.term;
+const mean = g => g.short || g.def;
+/** statements a child can judge: true ones, and false ones made by swapping a box or a meaning */
+function statements() {
+  const out = [];
+  (S.u.questions || []).filter(q => q.t === 'tf').forEach(q => out.push({ id: 'tf:' + q.id, text: q.q, truth: !!q.a, why: q.ex || '', kind: 'tf' }));
+  const G = gloss();
+  G.forEach(g => {
+    const other = HS.shuffle(G.filter(x => x !== g && mean(x) !== mean(g)))[0];
+    out.push({ id: gid(g), kind: 'gl', g, other, em: g.em,
+      t: `<b>${g.term}</b>: ${mean(g)}`, f: other ? `<b>${g.term}</b>: ${mean(other)}` : '', why: `<b>${g.term}</b>: ${g.def}` });
+  });
+  sortCards().forEach(c => {
+    const [em, text, b] = c.it, wrong = HS.shuffle(c.g.bins.map((_, i) => i).filter(i => i !== b))[0];
+    out.push({ id: c.id, kind: 's', c, em, t: `${text} ⬅ ${binName(c.g.bins[b][0])}`, f: wrong !== undefined ? `${text} ⬅ ${binName(c.g.bins[wrong][0])}` : '',
+      why: `${text} ⬅ <b>${binName(c.g.bins[b][0])}</b>${c.g.why && c.g.why[b] ? '. ' + c.g.why[b] : ''}` });
+  });
+  return out;
+}
+
+/* ---------- a game made of rounds: progress, score, coach, level, end card ---------- */
+function runRounds(key, title, rounds, opt = {}) {
+  stopAll(); HS.markPractice();
+  const lv = opt.lv || gLv(key), total = rounds.length, combo = HS.makeCombo();
+  let i = 0, right = 0, done = 0, hearts = opt.hearts || 0;
+  M().innerHTML = `<div class="card arc">${gameHead(title)}
+    <div class="meta"><span id="aPos"></span>${opt.noLv ? '' : lvPath(lv)}<span id="aSc">✅ ${ar(0)}</span></div>
+    ${hearts ? '<div class="hearts" id="aHearts" data-nopic aria-live="polite"></div>' : ''}
+    <div id="aStage"></div>${coachBox()}
+    <div class="row center"><button type="button" class="btn" id="aNext" hidden>التالي ←</button></div></div>`;
+  const drawHearts = () => { const h = $('aHearts'); if (h) h.innerHTML = Array.from({ length: opt.hearts }, (_, k) => `<span class="${k < hearts ? '' : 'lost'}" aria-hidden="true">❤️</span>`).join('') + `<span class="sr">${ar(hearts)} قلوب</span>`; };
+  const finish = () => {
+    if (opt.onEnd) opt.onEnd(right, done);
+    if (opt.noLv) return endCard(title, right, done, null, opt.endLine);
+    endCard(title, right, done, gAdapt(key, right, done), opt.endLine);
+  };
+  const next = () => {
+    if (i >= total || (opt.hearts && hearts <= 0)) return finish();
+    coachOff(); $('aNext').hidden = true;
+    $('aPos').textContent = `${ar(i + 1)} / ${ar(total)}`; drawHearts();
+    const R = rounds[i], stage = $('aStage'); stage.innerHTML = ''; let answered = false;
+    R.draw(stage, (ok, why) => {
+      if (answered) return; answered = true; i++; done++;
+      if (ok) { right++; star(1 + combo.hit()); HS.fx('ok'); missOk(R.id); }
+      else { combo.miss(); HS.fx('no'); missAdd(R.id); if (opt.hearts) { hearts--; drawHearts(); } }
+      $('aSc').textContent = `✅ ${ar(right)}`;
+      coach(ok ? `<b>${HS.one(HS_PHRASES.praise.ar)}</b>${why ? '<br>' + why : ''}` : why, ok ? 'ok' : 'no');
+      // a right answer moves on by itself; after a mistake the hint stays until the child taps «التالي»
+      if (ok) later(next, why ? 1800 : 1100); else { const n = $('aNext'); n.hidden = false; n.textContent = i >= total || (opt.hearts && hearts <= 0) ? 'النتيجة ←' : 'فهمت، التالي ←'; n.focus({ preventScroll: true }); }
+    });
+  };
+  $('aNext').onclick = next;
+  next();
+}
+/** the end of any game: score, the level for next time, and play again / next game / all games */
+function endCard(title, right, total, a, line) {
+  const perfect = total && right === total; if (perfect) HS.party();
+  const lvLine = !a ? '' : a.change === 'up' ? `⬆️ ممتاز! في المرة القادمة: المستوى ${ar(a.lv)} من ٣` : a.change === 'down' ? `في المرة القادمة نلعب المستوى ${ar(a.lv)} لنثبّت الفكرة أولًا.` : a.lv === 3 && perfect ? '🏆 أعلى مستوى، وكلها صحيحة!' : `تبقى في المستوى ${ar(a.lv)}. ${a.lv < 3 ? 'أجب عن ٩ من ١٠ لتصعد.' : ''}`;
+  M().innerHTML = `<div class="card result">${gameHead(title)}<div class="big">${HS.kidCheer()}${HS.mascot(perfect ? 'cheer' : 'encourage', { fb: perfect ? '🎉' : '👍' })}</div>
+    <h2>${ar(right)} من ${ar(total)}</h2>${line ? `<p class="lead">${line}</p>` : ''}${lvLine ? `<p class="lv-msg ${a ? a.change : ''}">${lvLine}</p>` : ''}${endRow()}</div>`;
+}
+// data-r marks the right choice (used by the automated tests; never shown)
+const optBtns = (opts, cls = '', rk = -1) => `<div class="a-opts ${cls}">${opts.map((o, k) => `<button type="button" class="opt" data-o="${k}"${k === rk ? ' data-r="1"' : ''}>${o}</button>`).join('')}</div>`;
+/** mark the choices after an answer: the right one green, a wrong pick red, all locked */
+function settle(stage, rightK, pickK) {
+  stage.querySelectorAll('.opt').forEach(b => { const k = +b.dataset.o; b.disabled = true; if (k === rightK) b.classList.add('ok'); else if (k === pickK) b.classList.add('no'); });
+}
+
+/* ---------- 🕵️ مَن أنا؟  (replaces the flip-card memory game: recall the term from its meaning) ---------- */
+function letterTiles(word) {
+  const w = word.replace(/^ال/, ''), lead = word.startsWith('ال') ? ['ال'] : [];
+  return lead.concat(w.match(/.[\u064B-\u0652\u0670]*/g) || []);
+}
+function whoRounds(lv, l, n) {
+  const pool = gloss(l), list = deal(pool, gid, n || (lv === 1 ? 6 : 8));
+  return list.map(g => ({ id: gid(g), draw(stage, done) {
+    const term = g.term.split(' (')[0], others = HS.shuffle(pool.filter(x => x !== g)).map(x => x.term.split(' (')[0]);
+    const clue = `<div class="who-clue"><span class="who-q" aria-hidden="true">؟</span><p>${g.def}</p></div>`;
+    const why = `<b>${g.term}</b>: ${g.def}`;
+    if (lv < 3) {   // choose the term
+      const opts = HS.shuffle([term, ...others.slice(0, lv === 1 ? 2 : 3)]), rk = opts.indexOf(term);
+      stage.innerHTML = `<p class="lead">مَن أنا؟ اقرأ الوصف واختر المصطلح.</p>${lv === 1 ? `<div class="who-pic" aria-hidden="true">${P(g.em)}</div>` : ''}${clue}
+        ${lv === 2 ? `<div class="row center"><button type="button" class="btn sec sm" id="whoHint">💡 أرني صورة</button></div><div class="who-pic" id="whoPic" hidden aria-hidden="true">${P(g.em)}</div>` : ''}${optBtns(opts, '', rk)}`;
+      if ($('whoHint')) $('whoHint').onclick = e => { $('whoPic').hidden = false; e.currentTarget.remove(); };
+      stage.querySelectorAll('.opt').forEach(b => b.onclick = () => { const k = +b.dataset.o; settle(stage, rk, k); done(k === rk, why); });
+      return;
+    }
+    // level 3: build it from tiles (letters for one word, words for a longer term), with two that do not belong
+    const words = term.split(' '), parts = words.length > 1 ? words : letterTiles(term);
+    const extra = words.length > 1 ? HS.shuffle([...new Set(others.flatMap(t => t.split(' ')).filter(w => !words.includes(w)))]).slice(0, 2)
+      : HS.shuffle('بتثجحدرسشصعفقكلمنهوي'.split('').filter(c => !parts.includes(c))).slice(0, 2);
+    const tiles = HS.shuffle(parts.map((t, k) => ({ t, k })).concat(extra.map(t => ({ t, k: -1 }))));
+    let at = 0, miss = 0;
+    stage.innerHTML = `<p class="lead">مَن أنا؟ ركّب المصطلح من القطع.</p>${clue}
+      <div class="who-build ${words.length > 1 ? 'words' : ''}" id="whoOut" aria-live="polite">${parts.map(() => '<i></i>').join(words.length > 1 ? ' ' : '')}</div>
+      <div class="who-tiles">${tiles.map((x, k) => `<button type="button" class="tile-b" data-k="${k}"${x.k >= 0 ? ` data-at="${x.k}"` : ''}>${x.t}</button>`).join('')}</div>
+      <div class="row center"><button type="button" class="btn sec sm" id="whoGive">لا أعرف، أرني</button></div>`;
+    const out = $('whoOut'), show = () => { out.innerHTML = parts.map((p, k) => k < at ? `<b>${p}</b>` : '<i></i>').join(words.length > 1 ? ' ' : ''); };
+    stage.querySelectorAll('.tile-b').forEach(b => b.onclick = () => {
+      const x = tiles[+b.dataset.k];
+      if (x.k === at || (x.k >= 0 && parts[x.k] === parts[at])) {
+        b.disabled = true; at++; show(); HS.fx('tap'); stage.querySelectorAll('.tile-b.glow').forEach(t => t.classList.remove('glow'));
+        if (at === parts.length) { stage.querySelectorAll('.tile-b').forEach(t => t.disabled = true); $('whoGive').remove(); done(miss <= 1, why); }
+      } else {
+        miss++; b.classList.remove('hs-shake'); void b.offsetWidth; b.classList.add('hs-shake'); HS.fx('no');
+        if (miss >= 2) { const nx = [...stage.querySelectorAll('.tile-b:not([disabled])')].find(t => tiles[+t.dataset.k].t === parts[at]); if (nx) nx.classList.add('glow'); }
+      }
+    });
+    $('whoGive').onclick = () => { at = parts.length; show(); stage.querySelectorAll('.tile-b').forEach(t => t.disabled = true); $('whoGive').remove(); done(false, why); };
+  } }));
+}
+function gameWho(l) { const lv = gLv('memory'); runRounds('memory', '🕵️ مَن أنا؟', whoRounds(lv, l)); }
+
+/* ---------- 🔍 الدخيل: which one does not belong? (mixes every sorting game) ---------- */
+function oddRounds(lv, n) {
+  const k = [3, 4, 5][lv - 1], cards = sortCards();
+  return deal(cards, c => c.id, n || 8).map(c => {
+    const [, , ib] = c.it, bins = c.g.bins.map((_, b) => b).filter(b => b !== ib && c.g.items.filter(x => x[2] === b).length >= 2);
+    if (!bins.length) return null;
+    const b = HS.shuffle(bins)[0], same = HS.shuffle(c.g.items.filter(x => x[2] === b)).slice(0, k - 1);
+    const opts = HS.shuffle([c.it, ...same]), rk = opts.indexOf(c.it);
+    return { id: c.id, draw(stage, done) {
+      stage.innerHTML = `<p class="lead">أيّها <b>لا ينتمي</b> إلى البقية؟</p><div class="a-opts odd">${opts.map((x, j) => `<button type="button" class="opt card-o" data-o="${j}"${j === rk ? ' data-r="1"' : ''}><span class="em">${P(x[0])}</span>${x[1]}</button>`).join('')}</div>`;
+      stage.querySelectorAll('.opt').forEach(btn => btn.onclick = () => { const j = +btn.dataset.o; settle(stage, rk, j);
+        done(j === rk, `<b>${c.it[1]}</b> ${binName(c.g.bins[ib][0])}، والبقية ${binName(c.g.bins[b][0])}.${c.g.why && c.g.why[ib] ? ' ' + c.g.why[ib] : ''}`); });
+    } };
+  }).filter(Boolean);
+}
+function gameOdd() { runRounds('odd', '🔍 الدخيل', oddRounds(gLv('odd'))); }
+
+/* ---------- ✔️ صح أم خطأ؟  (hearts instead of a clock, so there is time to read why) ---------- */
+function tfRounds(lv, n) {
+  const pool = statements().filter(s => s.kind === 'tf' || s.f);
+  return deal(pool, s => s.id, n || [10, 12, 15][lv - 1]).map(s => {
+    const truth = s.kind === 'tf' ? s.truth : Math.random() < .5, text = s.kind === 'tf' ? s.text : truth ? s.t : s.f;
+    return { id: s.id, draw(stage, done) {
+      stage.innerHTML = `<div class="tf-card">${s.em ? `<span class="em" aria-hidden="true">${P(s.em)}</span>` : ''}<p>${text}</p></div>
+        <div class="a-opts tf"><button type="button" class="opt t-yes" data-o="1"${truth ? ' data-r="1"' : ''}>✔️ صح</button><button type="button" class="opt t-no" data-o="0"${truth ? '' : ' data-r="1"'}>✖️ خطأ</button></div>`;
+      stage.querySelectorAll('.opt').forEach(b => b.onclick = () => { const said = b.dataset.o === '1'; settle(stage, truth ? 1 : 0, +b.dataset.o);
+        const why = s.kind === 'tf' ? s.why : (truth ? s.why : 'الصواب: ' + s.why);
+        // a mistake always says whether the sentence was right or wrong, and why; a right answer adds the fix for a false sentence
+        done(said === truth, said === truth ? (truth ? '' : why) : `هذه الجملة <b>${truth ? 'صحيحة ✔️' : 'خطأ ✖️'}</b>${why ? '. ' + why : '.'}`); });
+    } };
+  });
+}
+function gameTF() { const lv = gLv('tf'); runRounds('tf', '✔️ صح أم خطأ؟', tfRounds(lv), { hearts: lv === 3 ? 2 : 3 }); }
+
+/* ---------- 📒 صحّح دفتر كوكو: find the one wrong line, then fix it ---------- */
+function fixRounds(lv, n) {
+  const pool = statements().filter(s => s.kind !== 'tf' && s.f), k = [3, 4, 5][lv - 1];
+  return deal(pool, s => s.id, n || 6).map(bad => {
+    const good = HS.shuffle(pool.filter(s => s.id !== bad.id)).slice(0, k - 1);
+    const lines = HS.shuffle([bad, ...good]), bk = lines.indexOf(bad);
+    // the fix: the right box for a sorting card, the right meaning for a term
+    let fixOpts, fixRight;
+    if (bad.kind === 's') { fixOpts = bad.c.g.bins.map(b => binName(b[0])); fixRight = bad.c.it[2]; }
+    else { const o = HS.shuffle([mean(bad.g), mean(bad.other), ...HS.shuffle(gloss().filter(x => x !== bad.g && x !== bad.other)).slice(0, 1).map(mean)]); fixOpts = o; fixRight = o.indexOf(mean(bad.g)); }
+    return { id: bad.id, draw(stage, done) {
+      let tries = 0;
+      stage.innerHTML = `<p class="lead">كتب كوكو هذه الجمل في دفتره، وواحدة منها <b>خطأ</b>. اضغط عليها.</p>
+        <div class="nb">${lines.map((s, j) => `<button type="button" class="nb-l" data-j="${j}"${j === bk ? ' data-r="1"' : ''}>${s === bad ? s.f : s.t}</button>`).join('')}</div><div id="fixStep"></div>`;
+      stage.querySelectorAll('.nb-l').forEach(b => b.onclick = () => {
+        const j = +b.dataset.j; if (b.disabled) return;
+        if (j !== bk) { tries++; b.classList.add('ok-l'); b.disabled = true; coach('هذه صحيحة ✔️. ابحث عن الجملة الخطأ.', 'info'); HS.fx('no'); return; }
+        stage.querySelectorAll('.nb-l').forEach(x => x.disabled = true); b.classList.add('bad-l'); coachOff();
+        $('fixStep').innerHTML = `<p class="lead">وجدتها! كيف نصحّحها؟ ${bad.kind === 's' ? `<b>${bad.c.it[1]}</b> ⬅ …` : `<b>${bad.g.term}</b>: …`}</p>${optBtns(fixOpts, '', fixRight)}`;
+        $('fixStep').querySelectorAll('.opt').forEach(o => o.onclick = () => { const p = +o.dataset.o; settle($('fixStep'), fixRight, p);
+          done(tries === 0 && p === fixRight, bad.why); });
+      });
+    } };
+  });
+}
+function gameFix() { runRounds('fix', '📒 صحّح دفتر كوكو', fixRounds(gLv('fix'))); }
+
+/* ---------- 🌟 تحدي اليوم: 8 mixed rounds, mistakes first, once a day for a bonus ---------- */
+const today = () => new Date().toISOString().slice(0, 10);
+function dailyDone() { const d = gData().daily; return d && d.day === today(); }
+function gameDaily() {
+  const pick = (f, key, n) => f(gLv(key), n);
+  const rounds = HS.shuffle([].concat(pick(tfRounds, 'tf', 2), pick(oddRounds, 'odd', 2), pick(fixRounds, 'fix', 2),
+    gloss().length >= 4 ? whoRounds(Math.min(2, gLv('memory')), '', 2) : [])).slice(0, 8);
+  const first = !dailyDone();
+  runRounds('daily', '🌟 تحدي اليوم', rounds, { noLv: true, endLine: first ? '🌟 أنجزت تحدي اليوم: +٥ نجمات إضافية. عد غدًا لتحدٍّ جديد!' : 'لعبته مرة ثانية اليوم. التحدي الجديد غدًا.',
+    onEnd() { if (!first) return; const d = gData(), y = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+      d.daily = { day: today(), n: d.daily && d.daily.day === y ? d.daily.n + 1 : 1 }; HS.save(); star(5); } });
+}
+function dailyCard() {
+  const d = gData().daily, on = dailyDone();
+  return `<div class="card daily ${on ? 'done' : ''}"><span class="daily-em" aria-hidden="true">${on ? '✅' : '🌟'}</span><div><h3>تحدي اليوم</h3>
+    <p class="lead small">${on ? `أنجزته اليوم${d.n > 1 ? ` · ${ar(d.n)} أيام متتالية 🔥` : ''}. عد غدًا لتحدٍّ جديد.` : '٨ جولات منوّعة من كل الدروس، وما أخطأت فيه يعود أولًا. +٥ نجمات إضافية.'}</p></div>
+    <button type="button" class="btn ${on ? 'sec' : ''}" data-act="daily">${on ? 'العب مرة أخرى' : 'ابدأ التحدي'}</button></div>`;
+}
 
 /* ---- hints-g3sciearth.js ---- */
 /* Hints for «الأرض ومواردها» (grade 3). Only facts from the unit's own lessons.

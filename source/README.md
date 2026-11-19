@@ -194,6 +194,31 @@ which the header uses for the **Back** button (always the logical parent, never 
 and the tab title. Activities are marked `focus: true`: the header becomes compact and the breadcrumb is hidden.
 Counts on menu cards (lessons, terms, games, questions) are computed from the data by `HS.nav.desc`.
 
+## Unit games (src/apps/unit/arcade.js)
+Every unit gets these games from its own content; a new unit needs no game code, only good data:
+`games.sort` (cards in boxes, with `why` per box), `games.order` (chains), `glossary` (term, def, short, em) and `tf` questions.
+
+| Game | Built from | Levels (1 · 2 · 3) |
+|---|---|---|
+| Sort into boxes | `games.sort` | 6 cards · 10 cards · all, first miss only says «not here» |
+| Put in order | `games.order` | 2 chains, next card glows after 2 misses · all chains · all + one card that does not belong |
+| 🔍 الدخيل (odd one out) | every sort game mixed | 3 · 4 · 5 cards |
+| 📒 صحّح دفتر كوكو (find and fix the wrong line) | sort cards + glossary | 3 · 4 · 5 lines |
+| 🕵️ مَن أنا؟ (route key `memory`; replaced the flip-card game) | glossary | pick of 3 with picture · pick of 4, picture on request · build the term from tiles |
+| ✔️ صح أم خطأ؟ | `tf` questions + glossary + sort cards | 10 · 12 · 15 sentences, 3 · 3 · 2 hearts |
+| ⚡ تحدّي السرعة | questions | 90 · 60 · 45 seconds |
+| 🌟 تحدي اليوم | 8 rounds mixed from the four new games | once a day: +5 stars |
+
+Why (research): retrieval (recalling beats recognising; the flip-card game mostly trained card positions), interleaving
+(mixed practice; odd-one-out and the daily challenge mix lessons), success rate (children improve most at a high success
+rate: up a level at ≥85% right, down below 50%), short plain feedback (children struggle with long explanations).
+- Mistakes come back: `D().miss[itemId]` +2 on a miss, −1 on a right answer; `deal()` puts missed items first (up to half a game).
+- Hints: `coach(html)` writes into the coach box inside the game, next to the cards. A mistake's hint stays until the child taps «التالي».
+- Levels: `D().g[gameKey] = { lv, h }`; `gAdapt(key, right, total)` after each game; the dots on each game tile show the level.
+- Journey page = a map: each lesson a stop with 0–3 stars (mastery 30/60/80%), then «الجولة الأخيرة» (final test) and the unit
+  sticker (`unit-<id>-cover` art, won at 12 of 15 in the final test).
+- Correct answers carry `data-r` (and tiles `data-at`) for the automated test (`tests/test_arcade.py`).
+
 ## Thinking labs
 `src/apps/unit/labs.js` registers labs per unit (`LABS[unitId][labId]`). Each challenge stores
 id, learningObjective, cognitiveSkill, prompt, correctAnswer, distractors, misconceptions (one per distractor),

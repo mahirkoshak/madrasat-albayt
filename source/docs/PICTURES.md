@@ -1428,7 +1428,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u2728` | ✨ | حبيباتها ناعمة جدًا |  |  | sheet: sci-06 | core/core, dict/data, kg/app.html, units/g3math5, units/g3sciearth |
 | `sci-u2744` | ❄ | تبرد وتتصلّب |  |  | sheet: sci-06 | dict/data, units/g3sciearth, units/g4scieco |
 | `sci-u2744-1f43b-200d-2744` | ❄🐻‍❄ | التندرا (المنطقة القطبية) |  |  | sheet: sci-07 |  |
-| `sci-u2764` | ❤ | أمراض القلب |  |  | sheet: sci-20 | dict/data, kg/data, units/g4scihealth |
+| `sci-u2764` | ❤ | أمراض القلب |  |  | sheet: sci-20 | dict/data, kg/data, unit/arcade, units/g4scihealth |
 
 ## Maths (countable objects for counting, equal groups, arrays, money, shapes, measuring)
 
@@ -1531,13 +1531,13 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | id | emoji | Arabic | English | drawn / meaning | notes | used in |
 |---|---|---|---|---|---|---|
 | `mascot-celebrate` | 🏆 |  |  | Koko holding a small gold trophy above its head, confetti around, full body | 3d | dict/spell, unit/app |
-| `mascot-cheer` | 🎉 |  |  | Koko jumping with both arms up, eyes closed with joy, full body | 3d | unit/app, unit/labs, unit/math |
-| `mascot-encourage` | 💪 |  |  | Koko giving a gentle thumbs up with a warm reassuring smile, full body | 3d | unit/app |
+| `mascot-cheer` | 🎉 |  |  | Koko jumping with both arms up, eyes closed with joy, full body | 3d | unit/app, unit/arcade, unit/labs, unit/math |
+| `mascot-encourage` | 💪 |  |  | Koko giving a gentle thumbs up with a warm reassuring smile, full body | 3d | unit/app, unit/arcade |
 | `mascot-point` | 👆 |  |  | Koko pointing to the left with one paw, friendly helpful expression, full body | 3d | portal/portal, unit/app |
 | `mascot-read` | 📖 |  |  | Koko sitting and reading an open book, happy and focused, full body | 3d | dict/app |
 | `mascot-sad-soft` | 🙂 |  |  | Koko slightly sad but hopeful face, holding a little star, kind eyes, full body | 3d | unit/app |
 | `mascot-sleep` | 🌙 |  |  | Koko sleeping curled up on a small pillow, with a tiny moon nearby, full body | 3d | kg/thinking |
-| `mascot-thinking` | 🤔 |  |  | Koko tapping chin with one paw, looking up thoughtfully, a small question-mark-shaped cloud of light above (no text), full body | 3d | unit/app |
+| `mascot-thinking` | 🤔 |  |  | Koko tapping chin with one paw, looking up thoughtfully, a small question-mark-shaped cloud of light above (no text), full body | 3d | unit/app, unit/arcade |
 | `mascot-welcome` | 👋 |  |  | Koko waving hello with one paw, big happy smile, full body | 3d | portal/portal |
 
 ## Rewards / gifts shop

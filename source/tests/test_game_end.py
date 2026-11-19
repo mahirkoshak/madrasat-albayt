@@ -38,10 +38,10 @@ with sync_playwright() as p:
     h = pg.evaluate("location.hash"); print('next ->', h); assert h.startswith('#unit-g4scieco-play-') and h != '#unit-g4scieco-play-s-living'
     assert h == '#unit-g4scieco-play-s-' + pg.evaluate("UNITS.g4scieco.games.sort[1].id"), h
     # speed round with a fast clock: last game in the list wraps round to the first
-    pg.evaluate("HS.nav.go('unit-g4scieco-play-speed')"); pg.wait_for_timeout(300); pg.clock.fast_forward(62000); pg.wait_for_timeout(400)
+    pg.evaluate("HS.nav.go('unit-g4scieco-play-speed')"); pg.wait_for_timeout(300); pg.clock.fast_forward(92000); pg.wait_for_timeout(400)
     assert pg.locator('#app-unit .end-row').count() == 1
     pg.locator('#app-unit [data-next]').click(); pg.wait_for_timeout(300); h = pg.evaluate("location.hash"); print('after speed ->', h)
-    pg.evaluate("HS.nav.go('unit-g4scieco-play-speed')"); pg.wait_for_timeout(300); pg.clock.fast_forward(62000); pg.wait_for_timeout(400)
+    pg.evaluate("HS.nav.go('unit-g4scieco-play-speed')"); pg.wait_for_timeout(300); pg.clock.fast_forward(92000); pg.wait_for_timeout(400)
     pg.locator('#app-unit .end-row [data-p="play"]').click(); pg.wait_for_timeout(300)
     assert pg.evaluate("location.hash") == '#unit-g4scieco-play'
     # phone: buttons wrap inside the card
