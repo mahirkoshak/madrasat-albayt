@@ -4,10 +4,13 @@
    A 🔊 button only appears once its sentence has a recorded clip (no device voice in the units). */
 window.HS_UNIT_SAY = (function () {
   const EMO = /[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{200D}\u{20E3}]/gu;
-  const clean = s => String(s || '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&')
+  // table cells and lines stay separate words; maths symbols are spoken as words
+  const clean = s => String(s || '').replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<\/(td|th)>/gi, '، ').replace(/<\/(tr|li|p|div|h\d)>/gi, '. ')
+    .replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&')
     .replace(EMO, '').replace(/[⬅←→➜]/g, ' ')
-    .replace(/\s*×\s*/g, ' ضرب ').replace(/\s*÷\s*/g, ' قسمة ').replace(/\s*=\s*/g, ' يساوي ').replace(/\s*\+\s*/g, ' زائد ')
-    .replace(/([0-9٠-٩])\s*[−-]\s*([0-9٠-٩])/g, '$1 ناقص $2').replace(/…/g, '، ').replace(/\s+/g, ' ').trim();
+    .replace(/\s*×\s*/g, ' ضرب ').replace(/\s*÷\s*/g, ' قسمة ').replace(/\s*≈\s*/g, ' تقريبًا ').replace(/\s*=\s*/g, ' يساوي ').replace(/\s*\+\s*/g, ' زائد ')
+    .replace(/([0-9٠-٩])\s*[−-]\s*([0-9٠-٩])/g, '$1 ناقص $2').replace(/…/g, '، ').replace(/\s+/g, ' ').replace(/\s*([،.])(\s*[،.])+/g, '$1').replace(/^[،.\s]+/, '').trim();
   // join pieces into sentences: each piece ends with a full stop unless it already ends with punctuation
   const join = parts => parts.map(clean).filter(Boolean).map(p => /[.!?؟:،؛…]$/.test(p) ? p : p + '.').join(' ');
   /** the lesson's cards: a "tiles" block without a heading joins the card before it (same rule the page uses) */
