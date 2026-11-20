@@ -1181,7 +1181,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f34f` | 🍏 | تفاحة صغيرة |  |  | sheet: kg-6 | kg/data |
 | `kg-u1f373` | 🍳 | تأكل الفطور / نفطر |  |  | sheet: kg-5 | dict/data, kg/data |
 | `kg-u1f381` | 🎁 | هدية |  |  | sheet: kg-2 | core/core, dict/data, kg/data, portal/i18n, portal/portal |
-| `kg-u1f382` | 🎂 | كعكة لذيذة |  |  | sheet: kg-5 | dict/data, kg/data |
+| `kg-u1f382` | 🎂 | كعكة لذيذة |  |  | sheet: kg-5 | dict/data, kg/data, units/g5math5 |
 | `kg-u1f392` | 🎒 | تذهب إلى الروضة |  |  | sheet: kg-5 | dict/data, kg/data, portal/catalog, portal/portal |
 | `kg-u1f3d6` | 🏖 | نذهب إلى الشاطئ |  |  | sheet: kg-6 | dict/data, kg/data, units/g3sciearth, units/g4scieco, units/g5sciearth |
 | `kg-u1f3eb` | 🏫 | نذهب إلى الروضة |  |  | sheet: kg-6 | dict/data, kg/data, unit/labs |
@@ -1325,7 +1325,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f4a7` | 💧 | الماء / تحتفظ بالكثير من الماء / شرب الماء |  |  | sheet: sci-02 | dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `sci-u1f4a8` | 💨 | يمرّ منها الماء بسرعة / الهواء |  |  | sheet: sci-06 | dict/data, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco, units/g4scihealth … |
 | `sci-u1f4aa` | 💪 | المناعة الطبيعية |  |  | sheet: sci-17 | dict/data, unit/app, units/g4scianimals, units/g4scihealth |
-| `sci-u1f4e5` | 📥 | الترسيب: تتجمّع |  |  | sheet: sci-05 | dict/data, units/g3sciearth |
+| `sci-u1f4e5` | 📥 | الترسيب: تتجمّع |  |  | sheet: sci-05 | dict/data, units/g3sciearth, units/g5math5 |
 | `sci-u1f525` | 🔥 | الغاز الطبيعي / صهارة تحت الأرض |  |  | sheet: sci-04 | core/core, dict/data, dict/spell, kg/data, portal/i18n, portal/portal … |
 | `sci-u1f534` | 🔴 | الحصبة |  |  | sheet: sci-20 | core/core, dict/app, dict/data, kg/app.html, kg/data, unit/math … |
 | `sci-u1f535` | 🔵 | حبيباتها كبيرة |  |  | sheet: sci-06 | core/core, dict/data, kg/app.html, kg/data, unit/math, units/g3sciearth … |

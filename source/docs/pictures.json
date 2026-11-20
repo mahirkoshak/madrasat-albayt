@@ -13461,7 +13461,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-5",
-"used": "dict/data, kg/data"
+"used": "dict/data, kg/data, units/g5math5"
 },
 {
 "id": "kg-u1f392",
@@ -16013,7 +16013,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-05",
-"used": "dict/data, units/g3sciearth"
+"used": "dict/data, units/g3sciearth, units/g5math5"
 },
 {
 "id": "sci-u1f525",
