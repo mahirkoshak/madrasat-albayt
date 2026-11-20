@@ -586,3 +586,14 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 
 .m-pad .m-k.ok:nth-child(13){grid-column:1/-1}   /* the keypad with a decimal key: ✓ gets its own row */
 .wk-steps{list-style:arabic-indic}
+/* fraction bars (a whole split into equal parts) and a two-circle Venn diagram */
+.fr-bars { display: flex; gap: 3px; max-width: 320px; margin: .4em 0; }
+.fr-bars span { flex: 1; height: 34px; border: 2px solid var(--ink, #333); border-radius: 6px; background: #fff; }
+.fr-bars span.on { background: var(--t-orange, #f59e0b); }
+.venn { position: relative; width: 300px; max-width: 100%; height: 180px; margin: .6em auto; }
+.venn .vc { position: absolute; top: 0; width: 180px; height: 180px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; text-align: center; font-size: .85em; box-sizing: border-box; }
+.venn .vc.a { right: 0; padding: 0 12px 0 70px; background: color-mix(in srgb, var(--t-blue, #3b82f6) 25%, transparent); border: 3px solid var(--t-blue, #3b82f6); }
+.venn .vc.b { left: 0; padding: 0 70px 0 12px; background: color-mix(in srgb, var(--t-orange, #f59e0b) 25%, transparent); border: 3px solid var(--t-orange, #f59e0b); }
+.venn .vmid { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; display: flex; flex-direction: column; align-items: center; font-size: .8em; width: 56px; text-align: center; }
+.venn span { font-size: 1.8em; font-weight: 800; }
+.wk-in input.wk-word{width:190px;font-size:24px}

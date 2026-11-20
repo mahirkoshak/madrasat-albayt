@@ -5,7 +5,7 @@
 window.HS_UNIT_SAY = (function () {
   const EMO = /[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{200D}\u{20E3}]/gu;
   // table cells and lines stay separate words; maths symbols are spoken as words
-  const clean = s => String(s || '').replace(/<br\s*\/?>/gi, ' ')
+  const clean = s => String(s || '').replace(/<span class="frc"><b>(.*?)<\/b><i>(.*?)<\/i><\/span>/g, ' $1 على $2 ').replace(/<br\s*\/?>/gi, ' ')
     .replace(/<\/(td|th)>/gi, '، ').replace(/<\/(tr|li|p|div|h\d)>/gi, '. ')
     .replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&')
     .replace(EMO, '').replace(/[⬅←→➜]/g, ' ')

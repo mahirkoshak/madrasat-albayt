@@ -5,7 +5,7 @@ Do not change any website code: Claude wires the images into the site afterwards
 
 ## Files
 - `art-source/STYLE.md`: the style guide. Read it first and follow it for every image.
-- `art-source/manifest-core.json`: interface art, mascot, avatars, navigation, rewards and game graphics (154 images, phases 1–6).
+- `art-source/manifest-core.json`: interface art, mascot, avatars, navigation, rewards and game graphics (phases 1–6, plus phase 9: new covers for grade 5, grade 4 Arabic and the maths chapters).
 - `art-source/manifest-content.json`: one picture per learning item (phase 7: KG and science, about 290; phase 8: dictionary words, 1,143).
 
 Each manifest entry has `id`, `phase`, `size` and `prompt`.

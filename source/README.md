@@ -202,6 +202,13 @@ which the header uses for the **Back** button (always the logical parent, never 
 and the tab title. Activities are marked `focus: true`: the header becomes compact and the breadcrumb is hidden.
 Counts on menu cards (lessons, terms, games, questions) are computed from the data by `HS.nav.desc`.
 
+## Grade 5 and grade 4 Arabic units
+- Grade 5 (year `g5`): science (living things, ecosystems, earth) and maths chapters 1–6, from the Part 1 student books.
+- Grade 4 «لغتي»: `g4ar1` (reading text التصحّر), `g4ar2` (spelling: hamzas, ة/ت, hidden alif), `g4ar3` (grammar).
+- Worked example block `{ t:'worked', h, q, steps, try:{ q, steps, a, unit?, text? } }`: steps reveal one by one, then the
+  child types the last step. `text:true` takes an Arabic word (tashkeel ignored, hamza checked) instead of a number.
+- Stacked fractions: `<span class="frc"><b>2</b><i>3</i></span>` (style in core.css); the speech list reads «٢ على ٣».
+
 ## Unit games (src/apps/unit/arcade.js)
 Every unit gets these games from its own content; a new unit needs no game code, only good data:
 `games.sort` (cards in boxes, with `why` per box), `games.order` (chains), `glossary` (term, def, short, em) and `tf` questions.

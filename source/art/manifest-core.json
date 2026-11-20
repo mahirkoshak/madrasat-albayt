@@ -1357,5 +1357,140 @@
   "size": "1024x1024",
   "replaces": "❓",
   "prompt": "The back of a game card: purple with a gold star pattern, rounded rectangle. Soft-3D render for a premium children's learning game: rounded toy-like clay/vinyl forms, big expressive eyes with bright catchlights, matte soft-touch materials, warm key light from upper left, soft cool rim light from the right, gentle ambient occlusion. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred, whole subject visible with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "grade-g5",
+  "file": "assets/catalog/grade-g5.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "📘",
+  "prompt": "A blue school book with a ruler and a pencil, upper-primary school illustration. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g3math5-cover",
+  "file": "assets/units/unit-g3math5-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "✖️",
+  "prompt": "Multiplication with equal groups: three baskets each holding the same number of oranges. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g4math5-cover",
+  "file": "assets/units/unit-g4math5-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "✖️",
+  "prompt": "Multiplying by a one-digit number: rows of stacked coloured blocks forming a neat array. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5sci-living-cover",
+  "file": "assets/units/unit-g5sci-living-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🌱",
+  "prompt": "Living things: a sprouting seedling, a butterfly and a magnifying glass. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5sci-eco-cover",
+  "file": "assets/units/unit-g5sci-eco-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🌍",
+  "prompt": "Ecosystems: a small pond with a fish, a reed and a frog on a lily pad. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5sci-earth-cover",
+  "file": "assets/units/unit-g5sci-earth-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🌋",
+  "prompt": "Earth science: a cut-away hill showing rock layers, with a small volcano behind. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5math1-cover",
+  "file": "assets/units/unit-g5math1-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔢",
+  "prompt": "Place value: a place-value chart made of three coloured columns holding stacked counters. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5math2-cover",
+  "file": "assets/units/unit-g5math2-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "➕",
+  "prompt": "Adding and subtracting: a balance of coloured blocks and a stack of coins. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5math3-cover",
+  "file": "assets/units/unit-g5math3-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "✖️",
+  "prompt": "Multiplication: a grid area model of coloured squares with a pencil. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5math4-cover",
+  "file": "assets/units/unit-g5math4-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "➗",
+  "prompt": "Division: a tray of cookies shared equally into four plates. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5math5-cover",
+  "file": "assets/units/unit-g5math5-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔤",
+  "prompt": "Algebra: a balance scale with a mystery gift box on one pan and blocks on the other. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g5math6-cover",
+  "file": "assets/units/unit-g5math6-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🍕",
+  "prompt": "Fractions: a round pie cut into equal slices with one slice lifted out. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g4ar1-cover",
+  "file": "assets/units/unit-g4ar1-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🏜️",
+  "prompt": "Desert meets green belt: sand dunes on one side and a row of young trees with a water well on the other. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g4ar2-cover",
+  "file": "assets/units/unit-g4ar2-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "✍️",
+  "prompt": "Spelling practice: an open notebook with a fountain pen and an eraser, no writing visible. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "unit-g4ar3-cover",
+  "file": "assets/units/unit-g4ar3-cover.webp",
+  "phase": 9,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🧩",
+  "prompt": "Building sentences: three interlocking puzzle pieces in blue, orange and purple. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
  }
 ]

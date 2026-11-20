@@ -13054,7 +13054,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-4",
-"used": "dict/data, kg/data"
+"used": "dict/data, kg/data, units/g5math6"
 },
 {
 "id": "kg-cow",
@@ -13186,7 +13186,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-3",
-"used": "core/core, dict/data, kg/data, units/g3scieco, units/g4scihealth, units/g5sciearth"
+"used": "core/core, dict/data, kg/data, units/g3scieco, units/g4ar2, units/g4scihealth …"
 },
 {
 "id": "kg-nest",
@@ -13296,7 +13296,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-6",
-"used": "dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4scicells, units/g4scieco …"
+"used": "dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4ar2, units/g4scicells …"
 },
 {
 "id": "kg-u1f327",
@@ -13450,7 +13450,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-2",
-"used": "core/core, dict/data, kg/data, portal/i18n, portal/portal"
+"used": "core/core, dict/data, kg/data, portal/i18n, portal/portal, units/g4ar2"
 },
 {
 "id": "kg-u1f382",
@@ -15023,7 +15023,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-02",
-"used": "dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4scicells, units/g4scieco …"
+"used": "dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4ar2, units/g4scicells …"
 },
 {
 "id": "sci-u1f30a-1f420",
@@ -15089,7 +15089,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-21",
-"used": "core/core, dict/data, kg/data, units/g3scieco, units/g4scihealth, units/g5sciearth"
+"used": "core/core, dict/data, kg/data, units/g3scieco, units/g4ar2, units/g4scihealth …"
 },
 {
 "id": "sci-u1f321",
@@ -15100,7 +15100,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-11",
-"used": "dict/data, units/g4scianimals, units/g4scieco, units/g4scihealth, units/g5sciearth"
+"used": "dict/data, units/g4ar1, units/g4scianimals, units/g4scieco, units/g4scihealth, units/g5sciearth"
 },
 {
 "id": "sci-u1f32a-1f30b-1f525",
@@ -15122,7 +15122,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-02",
-"used": "dict/data, units/g3sciearth, units/g3scilife, units/g5sciearth"
+"used": "dict/data, units/g3sciearth, units/g3scilife, units/g4ar1, units/g5sciearth"
 },
 {
 "id": "sci-u1f32c-1f69a",
@@ -15243,7 +15243,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-12",
-"used": "dict/data, units/g3scieco, units/g4scieco, units/g5scieco, units/g5scilife"
+"used": "dict/data, units/g3scieco, units/g4ar1, units/g4scieco, units/g5scieco, units/g5scilife"
 },
 {
 "id": "sci-u1f33e-1f981",
@@ -15265,7 +15265,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-09",
-"used": "dict/data, portal/catalog, units/g3scieco, units/g3scilife, units/g4scicells, units/g4scieco …"
+"used": "dict/data, portal/catalog, units/g3scieco, units/g3scilife, units/g4ar1, units/g4scicells …"
 },
 {
 "id": "sci-u1f33f-1f997-1f985",
@@ -15463,7 +15463,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-01",
-"used": "dict/data, units/g3sciearth, units/g4scihealth"
+"used": "dict/data, units/g3sciearth, units/g4ar3, units/g4scihealth"
 },
 {
 "id": "sci-u1f3d6",
@@ -15507,7 +15507,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-14",
-"used": "kg/app.html, units/g4scieco, units/g5scieco"
+"used": "kg/app.html, units/g4ar1, units/g4scieco, units/g5scieco"
 },
 {
 "id": "sci-u1f3d7-1fa93-1f3ed",
@@ -15529,7 +15529,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-05",
-"used": "dict/data, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco, units/g5sciearth"
+"used": "dict/data, portal/catalog, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4ar1 …"
 },
 {
 "id": "sci-u1f3dc-1f334",
@@ -15991,7 +15991,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-06",
-"used": "dict/data, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco, units/g4scihealth …"
+"used": "dict/data, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4ar1, units/g4scieco …"
 },
 {
 "id": "sci-u1f4aa",
@@ -16365,7 +16365,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-18",
-"used": "dict/data, units/g4scihealth"
+"used": "dict/data, units/g4ar1, units/g4scihealth"
 },
 {
 "id": "sci-u1f957-1f4a7",
@@ -16750,7 +16750,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-13",
-"used": "dict/data, units/g4scianimals, units/g4scieco"
+"used": "dict/data, units/g4ar1, units/g4scianimals, units/g4scieco"
 },
 {
 "id": "sci-u1f9e9",
@@ -16761,7 +16761,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-02",
-"used": "core/core, dict/data, kg/app, kg/app.html, kg/thinking, portal/portal …"
+"used": "core/core, dict/data, kg/app, kg/app.html, kg/thinking, portal/catalog …"
 },
 {
 "id": "sci-u1f9e9-1f69a-1f4e5",
@@ -16948,7 +16948,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-04",
-"used": "dict/data, portal/portal, units/g3sciearth"
+"used": "dict/data, portal/portal, units/g3sciearth, units/g4ar3"
 },
 {
 "id": "sci-u2600",
@@ -17014,7 +17014,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-16",
-"used": "dict/data, kg/app, kg/app.html, kg/thinking3, units/g4math5, units/g4scihealth …"
+"used": "dict/data, kg/app, kg/app.html, kg/thinking3, units/g4ar3, units/g4math5 …"
 },
 {
 "id": "sci-u26a1",

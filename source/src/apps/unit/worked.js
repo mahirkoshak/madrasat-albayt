@@ -8,7 +8,7 @@
    ============================================================ */
 let WK_N = 0;
 const WK = {};
-const wkNorm = s => String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+const wkNorm = s => String(s).replace(/[\u064B-\u0652\u0640]/g, '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
   .replace(/[٫،,]/g, '.').replace(/[\s٬']/g, '').replace(/^\.+|\.+$/g, '').replace(/\.0+$/, '');
 function workedBlock(b) {
   const id = 'wk' + (++WK_N); WK[id] = b;
@@ -20,7 +20,7 @@ function workedBlock(b) {
     ${t ? `<div class="wk-try"${b.steps.length > 1 ? ' hidden' : ''}>
       <p class="wk-q"><span class="wk-tag try">جرّب أنت</span> ${t.q}</p>
       <ol class="wk-steps">${t.steps.slice(0, -1).map(s => `<li>${s}</li>`).join('')}<li class="wk-last">${t.steps[t.steps.length - 1]}
-        <span class="wk-in"><input type="text" inputmode="decimal" dir="ltr" aria-label="اكتب الناتج" autocomplete="off">${t.unit ? `<span>${t.unit}</span>` : ''}
+        <span class="wk-in"><input type="text" ${t.text ? 'dir="rtl" class="wk-word"' : 'inputmode="decimal" dir="ltr"'} aria-label="${t.text ? 'اكتب الجواب' : 'اكتب الناتج'}" autocomplete="off" autocapitalize="off" spellcheck="false">${t.unit ? `<span>${t.unit}</span>` : ''}
         <button type="button" class="btn" data-wcheck="${id}">تحقّق</button></span></li></ol>
       <p class="fb" aria-live="polite"></p></div>` : ''}
   </div>`;
@@ -40,7 +40,7 @@ ROOT.addEventListener('click', e => {
     if (!inp.value.trim()) { fb.className = 'fb'; fb.textContent = 'اكتب الناتج أولًا.'; inp.focus(); return; }
     if (wkNorm(inp.value) === wkNorm(b.try.a)) { fb.className = 'fb ok'; fb.innerHTML = '✅ صحيح! حللتها بالخطوات نفسها.'; HS.fx('ok'); inp.disabled = ck.disabled = true; return; }
     HS.fx('no'); fb.className = 'fb no';
-    fb.innerHTML = tries < 2 ? 'ليس بعد. ارجع إلى الخطوة الأخيرة في المثال المحلول، وافعل مثلها.' : `الناتج: <b>${b.try.a}</b>. قارن خطواتك بخطوات المثال.`;
+    fb.innerHTML = tries < 2 ? 'ليس بعد. ارجع إلى الخطوة الأخيرة في المثال المحلول، وافعل مثلها.' : `${b.try.text ? 'الجواب' : 'الناتج'}: <b>${b.try.a}</b>. قارن خطواتك بخطوات المثال.`;
     if (tries >= 2) inp.disabled = ck.disabled = true;
   }
 });

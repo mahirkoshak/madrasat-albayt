@@ -72,7 +72,13 @@ window.CATALOG = [
         units: [
           { name: 'الفصل ٥: الضرب في عدد من رقم واحد', em: '✖️', art: 'unit-g4math5-cover', color: 'var(--t-blue)', unit: 'g4math5' }
         ] },
-      { name: 'لغتي', em: '📝', art: 'subject-arabic', soon: true },
+      { id: 'ar', name: 'لغتي', em: '📝', art: 'subject-arabic', desc: 'القراءة والإملاء والنحو، من كتاب لغتي الجميلة',
+        color: 'var(--t-purple)',
+        units: [
+          { name: 'التصحّر وأثره في البيئة', em: '🏜️', art: 'unit-g4ar1-cover', color: 'var(--t-orange)', unit: 'g4ar1' },
+          { name: 'الإملاء: الهمزات والتاء والألف', em: '✍️', art: 'unit-g4ar2-cover', color: 'var(--t-blue)', unit: 'g4ar2' },
+          { name: 'النحو: الكلمة والجملة', em: '🧩', art: 'unit-g4ar3-cover', color: 'var(--t-purple)', unit: 'g4ar3' }
+        ] },
       { id: 'en', name: 'English', em: '🔠', art: 'subject-english', soon: true }
     ]
   },
@@ -97,7 +103,8 @@ window.CATALOG = [
           { name: 'الفصل ٢: الجمع والطرح', em: '➕', art: 'unit-g5math2-cover', color: 'var(--t-orange)', unit: 'g5math2' },
           { name: 'الفصل ٣: الضرب', em: '✖️', art: 'unit-g5math3-cover', color: 'var(--t-purple)', unit: 'g5math3' },
           { name: 'الفصل ٤: القسمة', em: '➗', art: 'unit-g5math4-cover', color: 'var(--t-pink)', unit: 'g5math4' },
-          { name: 'الفصل ٥: العبارات الجبرية والمعادلات', em: '🔤', art: 'unit-g5math5-cover', color: 'var(--t-blue)', unit: 'g5math5' }
+          { name: 'الفصل ٥: العبارات الجبرية والمعادلات', em: '🔤', art: 'unit-g5math5-cover', color: 'var(--t-blue)', unit: 'g5math5' },
+          { name: 'الفصل ٦: الكسور الاعتيادية', em: '🍕', art: 'unit-g5math6-cover', color: 'var(--t-orange)', unit: 'g5math6' }
         ] }
     ]
   },

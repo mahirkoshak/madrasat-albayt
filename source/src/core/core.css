@@ -52,3 +52,7 @@ img.hs-pic.inl{width:1.5em;height:1.5em;vertical-align:-.4em;margin-inline:.1em}
 .kid-cheer .hs-av-em{font-size:96px}
 .kid-cheer{border:5px solid #fff;margin:0 auto 8px}
 @media (prefers-reduced-motion:reduce){.kid-cheer{animation:none}}
+/* a stacked fraction: <span class="frc"><b>2</b><i>3</i></span> (numerator over denominator) */
+.frc { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1.05; font-size: .82em; margin: 0 .12em; font-style: normal; }
+.frc b { font-weight: 800; border-bottom: 2px solid currentColor; padding: 0 .2em; }
+.frc i { font-style: normal; font-weight: 800; padding: 0 .2em; }
