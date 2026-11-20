@@ -861,14 +861,70 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 #app-kg .view{display:none}
 #app-kg .view.on{display:block;animation:kin .3s}
 @keyframes kin{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
-#app-kg .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:10px}
-#app-kg .mi{border-radius:22px;padding:18px 10px;color:#fff;box-shadow:0 6px 0 rgba(0,0,0,.22);text-align:center;transition:transform .1s}
-#app-kg .mi:active{transform:translateY(5px);box-shadow:0 1px 0 rgba(0,0,0,.22)}
-#app-kg .mi{overflow:hidden;min-width:0}
-#app-kg .mi .em{font-size:clamp(34px,9vw,52px);display:block;line-height:1.1;white-space:nowrap}
-#app-kg .mi b{font-size:23px;display:block;color:#fff;line-height:1.3}
-#app-kg .mi small{display:block;color:#fff;opacity:.9;font-size:16px}
-#app-kg .sec-title{font-size:26px;font-weight:800;margin:22px 4px 4px}
+#app-kg .kh-hero{display:flex;align-items:center;gap:14px;margin:4px 0 10px}
+#app-kg .kh-koko{flex:0 0 auto;width:150px;height:150px;display:flex;align-items:flex-end;justify-content:center;font-size:96px;line-height:1}
+#app-kg .kh-koko img{width:100%;height:100%;object-fit:contain;animation:khBob 3.2s ease-in-out infinite}
+@keyframes khBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+#app-kg .kh-hi{flex:1;min-width:0;text-align:start}
+#app-kg .kh-hi h1{text-align:start;font-size:42px;margin:0}
+#app-kg .kh-hi .sub{text-align:start;margin:2px 0 8px}
+#app-kg .kh-hi .bar{justify-content:flex-start;margin:0}
+#app-kg #kLangL{font-size:17px;font-weight:700;opacity:.75}
+#app-kg .kh-today{max-width:720px;margin-inline:auto!important;display:flex;align-items:center;gap:16px;width:100%;margin:6px 0 4px;padding:16px 18px;border-radius:28px;background:var(--g,var(--t-blue));color:#fff;text-align:start;box-shadow:0 7px 0 rgba(0,0,0,.2);transition:transform .1s}
+#app-kg .kh-today:active{transform:translateY(5px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+#app-kg .kh-today[hidden]{display:none}
+#app-kg .kh-today .t-pic{flex:0 0 auto;width:96px;height:96px;border-radius:24px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:48px;line-height:1;overflow:hidden}
+#app-kg .kh-today .t-pic img{width:84%;height:84%;object-fit:contain}
+#app-kg .kh-today .t-tx{flex:1;min-width:0}
+#app-kg .kh-today small{display:block;font-size:18px;font-weight:700;opacity:.92;color:#fff}
+#app-kg .kh-today b{display:block;font-size:30px;font-weight:800;line-height:1.2;color:#fff}
+#app-kg .kh-today .t-go{flex:0 0 auto;width:62px;height:62px;border-radius:50%;background:#fff;color:var(--g,var(--t-blue));display:flex;align-items:center;justify-content:center;font-size:28px;padding-inline-start:4px}
+#app-kg .sec-title{font-size:26px;font-weight:800;margin:22px 4px 4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--t-ink-strong)}
+#app-kg .kh-focus{font-size:16px;font-weight:800;background:var(--t-gold);color:var(--t-ink-strong);border-radius:999px;padding:2px 12px}
+#app-kg .kh-focus[hidden]{display:none}
+#app-kg .menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:10px}
+#app-kg .menu.learn{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+#app-kg .menu.learn .mi{background:none;box-shadow:none;border:0;padding:0}
+#app-kg .menu.learn .mi .em,#app-kg .menu.learn .mi .em.has-art{width:min(108px,100%);aspect-ratio:1;margin:0 auto 6px;border-radius:50%;background:#fff;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:clamp(24px,5vw,38px);font-weight:800;color:var(--t-ink-strong);white-space:nowrap}
+#app-kg .menu.learn .mi b{color:var(--t-ink-strong);font-size:18px}
+#app-kg .menu.learn .mi:active .em{transform:scale(.93)}
+#app-kg .kh-grp{--g:var(--t-blue);margin-top:18px;padding:4px 14px 18px;border-radius:30px;background:color-mix(in srgb,var(--g) 11%,#fff)}
+#app-kg .kh-grp.c-l{--g:var(--t-pink)}
+#app-kg .kh-grp.c-n{--g:var(--t-orange)}
+#app-kg .kh-grp.c-w{--g:var(--t-blue)}
+#app-kg .kh-grp.c-t{--g:var(--t-purple)}
+#app-kg .kh-grp .sec-title{margin-top:14px}
+#app-kg .kh-grp.focus{outline:4px solid var(--t-gold);outline-offset:-4px}
+#app-kg .mi{position:relative;border-radius:24px;padding:12px 8px 14px;background:#fff;color:var(--t-ink-strong);box-shadow:0 6px 0 var(--g,var(--t-blue));text-align:center;transition:transform .1s;overflow:hidden;min-width:0}
+#app-kg .mi:active{transform:translateY(5px);box-shadow:0 1px 0 var(--g,var(--t-blue))}
+#app-kg .mi:focus-visible{outline:4px solid var(--t-ink-strong);outline-offset:3px}
+#app-kg .mi .em{display:flex;align-items:center;justify-content:center;height:84px;margin:0 0 8px;border-radius:18px;background:color-mix(in srgb,var(--g,var(--t-blue)) 14%,#fff);font-size:clamp(30px,8vw,44px);line-height:1.1;white-space:nowrap;overflow:hidden}
+#app-kg .mi .em img{max-height:76px;max-width:92%;object-fit:contain}
+#app-kg .mi b{font-size:21px;display:block;color:var(--t-ink-strong);line-height:1.25}
+#app-kg .mi small{display:block;opacity:.8;font-size:15px}
+#app-kg .mi-lv{display:flex;justify-content:center;gap:5px;margin-top:6px;min-height:10px}
+#app-kg .mi-lv i{width:10px;height:10px;border-radius:50%;background:color-mix(in srgb,var(--g,var(--t-blue)) 22%,#fff)}
+#app-kg .mi-lv i.f{background:var(--g,var(--t-blue))}
+#app-kg .mi.new::after{content:attr(data-new);position:absolute;top:8px;inset-inline-start:8px;background:var(--t-gold);color:var(--t-ink-strong);font-size:13px;font-weight:800;border-radius:999px;padding:1px 9px}
+#app-kg details.parent>summary{cursor:pointer;font-weight:800;font-size:19px;list-style:none}
+#app-kg details.parent>summary::-webkit-details-marker{display:none}
+#app-kg details.parent>summary::after{content:' ▾'}
+#app-kg details.parent[open]>summary::after{content:' ▴'}
+#app-kg details.parent ul{margin:8px 0 0;padding-inline-start:20px}
+@media(max-width:560px){#app-kg .kh-koko{width:104px;height:104px;font-size:70px}
+#app-kg .kh-hi h1{font-size:32px}
+#app-kg .menu{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#app-kg .menu.learn{grid-template-columns:repeat(3,minmax(0,1fr))}
+#app-kg .kh-today{padding:12px 14px;gap:12px}
+#app-kg .kh-today .t-pic{width:72px;height:72px;font-size:38px}
+#app-kg .kh-today b{font-size:24px}
+#app-kg .kh-today .t-go{width:50px;height:50px;font-size:22px}
+#app-kg .kh-grp{padding:2px 10px 14px}
+#app-kg .mi .em,#app-kg .mi .em.has-art{height:72px}
+#app-kg .mi .em.has-art .hs-art{height:66px}
+#app-kg .mi b{font-size:19px}
+#app-kg #kLangL{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+#app-kg .kh-hi .bar{flex-wrap:nowrap;gap:6px}}
 #app-kg .bar{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px 0 12px}
 #app-kg .pill{background:#fff;border-radius:14px;padding:4px 16px;margin-bottom:6px;font-weight:700;box-shadow:var(--shadow);font-size:19px}
 #app-kg .pill.on{background:var(--t-blue);color:#fff;box-shadow:0 5px 0 var(--t-blue-sh)}
@@ -1022,8 +1078,8 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 #app-kg .k-hold i{position:absolute;inset:0;background:#d7f5c0;transform:scaleX(0);transform-origin:right;transition:transform 0s}
 #app-kg .k-hold.on i{transform:scaleX(1);transition:transform 2s linear}
 #app-kg .k-hold span{position:relative}
-#app-kg .mi .em.has-art{display:grid;place-items:center;height:clamp(84px,24vw,124px)}
-#app-kg .mi .em.has-art .hs-art{height:clamp(84px,24vw,124px);width:auto;max-width:100%;object-fit:contain}
+#app-kg .mi .em.has-art{display:grid;place-items:center;height:84px}
+#app-kg .mi .em.has-art .hs-art{height:78px;width:auto;max-width:100%;object-fit:contain}
 #app-kg .mi b,#app-kg .mi small{text-shadow:0 1px 0 rgba(0,0,0,.28),0 0 8px rgba(0,0,0,.18)}
 #app-kg .mi small{opacity:1;font-weight:600;unicode-bidi:plaintext}
 #app-kg .kg-path{display:inline-flex;gap:6px;align-items:center;padding:4px 0}
@@ -1040,8 +1096,8 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 #app-kg .rb-star{position:relative;display:inline-block}
 #app-kg .rb-star b{position:absolute;inset-inline-end:-6px;bottom:-4px;font-size:.42em;background:#fff;border-radius:50%;width:1.5em;height:1.5em;line-height:1.5em;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.25);font-family:var(--t-font);color:var(--t-ink)}
 #app-kg .rb-star.got{opacity:.35;filter:grayscale(1)}
-#app-kg.L-ar .mi .en,#app-kg.L-ar .sec-title .en,#app-kg.L-ar .sub .en{display:none}
-#app-kg.L-en .mi .ar,#app-kg.L-en .sec-title .ar,#app-kg.L-en .sub .ar{display:none}
+#app-kg.L-ar .mi .en,#app-kg.L-ar .sec-title .en,#app-kg.L-ar .sub .en,#app-kg.L-ar .kh-today .en{display:none}
+#app-kg.L-en .mi .ar,#app-kg.L-en .sec-title .ar,#app-kg.L-en .sub .ar,#app-kg.L-en .kh-today .ar{display:none}
 #app-kg .mi b.en{font-family:inherit}
 #app-kg .rl-rule{font-size:34px;min-height:44px;text-align:center}
 #app-kg .rl-card{display:grid;place-items:center;min-height:150px}
@@ -1091,6 +1147,66 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 #app-kg .say-b{display:inline-flex;align-items:center;gap:8px;background:var(--sun);color:var(--t-gold-ink);box-shadow:0 5px 0 var(--t-gold-sh)}
 #app-kg .say-b .hs-spk{width:28px;height:28px}
 #app-kg.L-ar .speak-l .en,#app-kg.L-en .speak-l .ar{display:none}
+#app-kg .opts.two{grid-template-columns:repeat(2,1fr)}
+#app-kg .rc{display:flex;flex-direction:column;gap:16px;align-items:stretch}
+#app-kg .rc-board{display:grid;grid-template-columns:44px repeat(10,minmax(0,1fr));gap:4px;background:#fff;border-radius:22px;padding:8px;box-shadow:var(--shadow)}
+#app-kg .rc-start{display:flex;align-items:flex-end;justify-content:center;font-size:30px;padding-bottom:6px}
+#app-kg .rc-sq{position:relative;min-height:84px;border-radius:14px;background:color-mix(in srgb,var(--t-orange) 14%,#fff);border:2px solid color-mix(in srgb,var(--t-orange) 40%,#fff);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:6px 0 4px;min-width:0}
+#app-kg .rc-sq b{font-size:24px;font-weight:800;line-height:1}
+#app-kg .rc-sq:nth-child(even){background:color-mix(in srgb,var(--t-blue) 13%,#fff);border-color:color-mix(in srgb,var(--t-blue) 38%,#fff)}
+#app-kg .rc-sq.past{background:var(--t-gold-soft,#fff3c4);border-color:var(--t-gold)}
+#app-kg .rc-tok{font-size:30px;line-height:1;min-height:30px}
+#app-kg .rc-tok:not(:empty){animation:kpop .35s}
+#app-kg .rc-sq.glow,#app-kg .sz-it.glow{animation:rcGlow 1s ease-in-out infinite}
+@keyframes rcGlow{0%,100%{box-shadow:0 0 0 0 rgba(255,193,7,0)}50%{box-shadow:0 0 0 7px rgba(255,193,7,.75)}}
+#app-kg .rc-ctl{display:flex;align-items:center;justify-content:center;gap:22px}
+#app-kg .rc-spin{width:112px;height:112px;border-radius:50%;background:var(--t-purple);box-shadow:0 6px 0 var(--t-purple-sh);font-size:64px;line-height:1}
+#app-kg .rc-spin:disabled{opacity:.55}
+#app-kg .rc-spin.go .rc-wheel{display:inline-block;animation:rcSpin .3s linear infinite}
+@keyframes rcSpin{to{transform:rotate(360deg)}}
+#app-kg .rc-res{min-width:110px;min-height:110px;border-radius:26px;background:#fff;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center}
+#app-kg .rc-res b{font-size:60px;font-weight:800;line-height:1}
+#app-kg .rc-dots{font-size:20px;letter-spacing:4px;color:var(--t-purple)}
+#app-kg .qk{display:flex;flex-direction:column;align-items:center;gap:14px}
+#app-kg .qk-show{position:relative;display:flex;gap:16px;justify-content:center;background:#fff;border-radius:26px;padding:16px;box-shadow:var(--shadow);min-height:170px;align-items:center}
+#app-kg .qk-die{display:grid;grid-template-columns:repeat(3,40px);grid-template-rows:repeat(3,40px);gap:6px;padding:10px;border-radius:20px;background:color-mix(in srgb,var(--t-blue) 10%,#fff)}
+#app-kg .qk-die i{border-radius:50%}
+#app-kg .qk-die i.d{background:var(--t-blue)}
+#app-kg .qk-die.c1 i.d{background:var(--t-pink)}
+#app-kg .qk-cover{position:absolute;inset:0;border-radius:26px;background:var(--t-purple);color:#fff;font-size:70px;display:none;align-items:center;justify-content:center}
+#app-kg .qk-show.hid .qk-cover{display:flex}
+#app-kg .qk-again{background:#fff;border-radius:999px;box-shadow:var(--shadow);font-size:34px;width:74px;height:58px}
+#app-kg .qk .opts{width:100%}
+#app-kg .mr-grp{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;line-height:1.1;padding:6px}
+#app-kg .mr-grp.big{gap:18px}
+#app-kg .mr-num{font-size:84px;font-weight:800}
+#app-kg .mr .opt{min-height:190px}
+#app-kg .sz{display:flex;flex-direction:column;gap:16px}
+#app-kg .sz-pool{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:12px;background:#fff;border-radius:26px;padding:16px;box-shadow:var(--shadow);min-height:150px}
+#app-kg .sz-it{background:none;line-height:1;padding:6px;border-radius:18px;min-width:56px;min-height:56px}
+#app-kg .sz-it.used{visibility:hidden}
+#app-kg .sz-row{display:flex;justify-content:center;align-items:flex-end;gap:10px;direction:ltr}
+#app-kg .sz-slot{width:76px;height:84px;border-radius:18px;border:3px dashed color-mix(in srgb,var(--t-purple) 45%,#fff);display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;line-height:1}
+#app-kg .sz-row.down{flex-direction:row}
+#app-kg .sd-target{font-size:96px;line-height:1.1;margin:4px 0}
+#app-kg .sd-em{font-size:66px;line-height:1}
+#app-kg .fl-face{font-size:76px;line-height:1}
+#app-kg .fl-sit{font-size:24px;font-weight:700;line-height:1.5;color:var(--t-ink-strong);letter-spacing:0;background:color-mix(in srgb,var(--t-pink) 10%,#fff);border-radius:18px;padding:10px 14px;margin:8px auto 0;max-width:560px}
+@media(max-width:480px){#app-kg .rc-board{grid-template-columns:28px repeat(10,minmax(0,1fr));gap:3px;padding:6px}
+#app-kg .rc-start{font-size:22px}
+#app-kg .rc-sq{min-height:70px;border-radius:10px}
+#app-kg .rc-sq b{font-size:18px}
+#app-kg .rc-tok{font-size:22px;min-height:22px}
+#app-kg .qk-die{grid-template-columns:repeat(3,30px);grid-template-rows:repeat(3,30px);gap:5px;padding:8px}
+#app-kg .sz-slot{width:56px;height:70px}
+#app-kg .fl-face{font-size:62px}
+#app-kg .sd-target{font-size:80px}}
+#app-kg .tk>.rc,#app-kg .tk>.qk,#app-kg .tk>.mr,#app-kg .tk>.sz,#app-kg .tk>.sd,#app-kg .tk>.fl{width:100%;max-width:640px}
+#app-kg .mr .opt{min-height:200px}
+#app-kg .qk-again{display:flex;align-items:center;justify-content:center}
+@media(max-width:480px){#app-kg .rc-sq{min-height:78px}
+#app-kg .rc-tok{font-size:26px;min-height:26px}}
+#app-kg .rc-tok img,#app-kg .rc-start img{width:1.15em;height:1.15em}
 
 /* ===== app: unit (unit) ===== */
 #app-unit{
@@ -1669,60 +1785,89 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 
 <!-- HOME -->
 <section class="view on" id="k-home">
-  <h1>🌈 عالم الصغار</h1>
-  <p class="sub"><span class="ar">نضغط على الصورة ونسمع 🔊</span><span class="en" lang="en" dir="ltr">Tap and listen</span></p>
+  <div class="kh-hero">
+    <div class="kh-koko" id="kKoko" aria-hidden="true"></div>
+    <div class="kh-hi">
+      <h1>عالم الصغار</h1>
+      <p class="sub"><span class="ar">نضغط على الصورة ونسمع 🔊</span><span class="en" lang="en" dir="ltr">Tap and listen</span></p>
+      <div class="bar">
+        <span id="kLangL">لغة اللعب:</span>
+        <button type="button" class="pill on" data-lang="ar" aria-pressed="true" aria-describedby="kLangL">عربي</button>
+        <button type="button" class="pill" data-lang="en" aria-pressed="false" aria-describedby="kLangL" lang="en">English</button>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="kh-today" id="kToday"></button>
 
   <div class="sec-title">📚 <span class="ar">نتعلّم</span><span class="en" lang="en" dir="ltr">Learn</span></div>
-  <div class="menu">
-    <button type="button" class="mi" style="background:var(--pink)" data-learn="ar"><span class="em">أ ب ت</span><b class="ar">الحروف العربية</b><b class="en" lang="en" dir="ltr">Arabic Letters</b></button>
-    <button type="button" class="mi" style="background:var(--sky)" data-learn="en"><span class="em" style="direction:ltr">A B C</span><b class="ar">الحروف الإنجليزية</b><b class="en" lang="en" dir="ltr">English Letters</b></button>
-    <button type="button" class="mi" style="background:var(--orange)" data-learn="num"><span class="em">١ 2 ٣</span><b class="ar">الأرقام</b><b class="en" lang="en" dir="ltr">Numbers</b></button>
-    <button type="button" class="mi" style="background:var(--grape)" data-learn="col"><span class="em">🎨</span><b class="ar">الألوان</b><b class="en" lang="en" dir="ltr">Colors</b></button>
-    <button type="button" class="mi" style="background:var(--mint)" data-learn="shp"><span class="em">🔺⭐</span><b class="ar">الأشكال</b><b class="en" lang="en" dir="ltr">Shapes</b></button>
-    <button type="button" class="mi" style="background:#e8a33d" data-learn="ani"><span class="em">🦁🐘</span><b class="ar">الحيوانات</b><b class="en" lang="en" dir="ltr">Animals</b></button>
+  <div class="menu learn">
+    <button type="button" class="mi" data-learn="ar"><span class="em">أ ب ت</span><b class="ar">الحروف العربية</b><b class="en" lang="en" dir="ltr">Arabic Letters</b></button>
+    <button type="button" class="mi" data-learn="en"><span class="em" style="direction:ltr">A B C</span><b class="ar">الحروف الإنجليزية</b><b class="en" lang="en" dir="ltr">English Letters</b></button>
+    <button type="button" class="mi" data-learn="num"><span class="em">١ 2 ٣</span><b class="ar">الأرقام</b><b class="en" lang="en" dir="ltr">Numbers</b></button>
+    <button type="button" class="mi" data-learn="col"><span class="em">🎨</span><b class="ar">الألوان</b><b class="en" lang="en" dir="ltr">Colors</b></button>
+    <button type="button" class="mi" data-learn="shp"><span class="em">🔺⭐</span><b class="ar">الأشكال</b><b class="en" lang="en" dir="ltr">Shapes</b></button>
+    <button type="button" class="mi" data-learn="ani"><span class="em">🦁🐘</span><b class="ar">الحيوانات</b><b class="en" lang="en" dir="ltr">Animals</b></button>
   </div>
 
-  <div class="bar">
-    <span id="kLangL">لغة النشاط (الأسئلة والصوت):</span>
-    <button type="button" class="pill on" data-lang="ar" aria-pressed="true" aria-describedby="kLangL">عربي</button>
-    <button type="button" class="pill" data-lang="en" aria-pressed="false" aria-describedby="kLangL" lang="en">English</button>
-  </div>
-  <div class="sec-title">🧠 <span class="ar">نفكّر</span><span class="en" lang="en" dir="ltr">Think</span></div>
-  <div class="menu">
-    <button type="button" class="mi" style="background:#ff8c42" data-game="puzzle"><span class="em" data-art="game-puzzle-card" data-art-small>🧩</span><b class="ar">الأحجية</b><b class="en" lang="en" dir="ltr">Jigsaw</b></button>
-    <button type="button" class="mi" style="background:#4d96ff" data-game="compose"><span class="em" data-art="game-compose-card" data-art-small>🔺🟥</span><b class="ar">نركّب الشكل</b><b class="en" lang="en" dir="ltr">Build with shapes</b></button>
-    <button type="button" class="mi" style="background:#2fb4a8" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b class="ar">أين أضعها؟</b><b class="en" lang="en" dir="ltr">Where does it go?</b></button>
-    <button type="button" class="mi" style="background:#9b5de5" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b class="ar">نخطّط ثم نحرّك</b><b class="en" lang="en" dir="ltr">Plan, then move</b></button>
-    <button type="button" class="mi" style="background:#f15bb5" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b class="ar">نرتّب القصة</b><b class="en" lang="en" dir="ltr">Story order</b></button>
-    <button type="button" class="mi" style="background:#e76f51" data-game="rule"><span class="em">🔀🎨</span><b class="ar">غيّر القاعدة</b><b class="en" lang="en" dir="ltr">Change the rule</b></button>
-    <button type="button" class="mi" style="background:#3a86ff" data-game="tale"><span class="em">📚✨</span><b class="ar">ورشة القصة</b><b class="en" lang="en" dir="ltr">Story workshop</b></button>
-    <button type="button" class="mi" style="background:#2a9d8f" data-game="build" data-free><span class="em">🎨🏗️</span><b class="ar">نبني ما نحب</b><b class="en" lang="en" dir="ltr">Free build</b></button>
-  </div>
+  <section class="kh-grp c-l" data-grp="letters" aria-label="الحروف والأصوات">
+    <div class="sec-title">🔤 <span class="ar">الحروف والأصوات</span><span class="en" lang="en" dir="ltr">Letters & sounds</span><span class="kh-focus" hidden>💎 <span class="ar">تركيز</span><span class="en" lang="en">Focus</span></span></div>
+    <div class="menu">
+    <button type="button" class="mi" data-game="letters"><span class="em" id="gLetEm">أ ؟</span><b class="ar">أين الحرف؟</b><b class="en" lang="en" dir="ltr">Find the letter</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="first"><span class="em" data-art="game-first-card" data-art-small>🐇 ← أ</span><b class="ar">بأي حرف يبدأ؟</b><b class="en" lang="en" dir="ltr">First letter</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="sound"><span class="em">👂🐝</span><b class="ar">نفس الصوت</b><b class="en" lang="en" dir="ltr">Same sound</b><span class="mi-lv" aria-hidden="true"></span></button>
+    </div>
+  </section>
 
-  <div class="sec-title">🎮 <span class="ar">نلعب</span><span class="en" lang="en" dir="ltr">Play</span></div>
-  <div class="menu">
-    <button type="button" class="mi" style="background:var(--pink)" data-game="letters"><span class="em" id="gLetEm">أ ؟</span><b class="ar">أين الحرف؟</b><b class="en" lang="en" dir="ltr">Find the letter</b></button>
-    <button type="button" class="mi" style="background:var(--orange)" data-game="count"><span class="em" data-art="game-count-card" data-art-small>🍎🍎🍎</span><b class="ar">كم عددها؟</b><b class="en" lang="en" dir="ltr">How many?</b></button>
-    <button type="button" class="mi" style="background:var(--grape)" data-game="col"><span class="em" data-art="game-col-card" data-art-small>🔴🔵</span><b class="ar">أين اللون؟</b><b class="en" lang="en" dir="ltr">Find the color</b></button>
-    <button type="button" class="mi" style="background:var(--mint)" data-game="shp"><span class="em" data-art="game-shp-card" data-art-small>⭕🔺</span><b class="ar">أين الشكل؟</b><b class="en" lang="en" dir="ltr">Find the shape</b></button>
-    <button type="button" class="mi" style="background:#e8a33d" data-game="ani"><span class="em" data-art="game-ani-card" data-art-small>🐈🐄</span><b class="ar">أين الحيوان؟</b><b class="en" lang="en" dir="ltr">Find the animal</b></button>
-    <button type="button" class="mi" style="background:#ff6b6b" data-game="pat"><span class="em" data-art="game-pat-card" data-art-small>🔴🔵🔴❓</span><b class="ar">ماذا يأتي بعد؟</b><b class="en" lang="en" dir="ltr">What comes next?</b></button>
-    <button type="button" class="mi" style="background:#5c7cfa" data-game="odd"><span class="em" data-art="game-odd-card" data-art-small>🍎🍌🐈</span><b class="ar">أيّهم مختلف؟</b><b class="en" lang="en" dir="ltr">Odd one out</b></button>
-    <button type="button" class="mi" style="background:#2fb4a8" data-game="memory"><span class="em" data-art="game-memory-card" data-art-small>⭐❓⭐</span><b class="ar">لعبة الذاكرة</b><b class="en" lang="en" dir="ltr">Memory</b></button>
-    <button type="button" class="mi" style="background:#c06cf0" data-game="basket"><span class="em" data-art="game-basket-card" data-art-small>🧺🍎</span><b class="ar">السلّة الصحيحة</b><b class="en" lang="en" dir="ltr">Baskets</b></button>
-    <button type="button" class="mi" style="background:var(--sky)" data-game="first"><span class="em" data-art="game-first-card" data-art-small>🐇 ← أ</span><b class="ar">بأي حرف يبدأ؟</b><b class="en" lang="en" dir="ltr">First letter</b></button>
-  </div>
+  <section class="kh-grp c-n" data-grp="numbers" aria-label="الأرقام والعدّ">
+    <div class="sec-title">🔢 <span class="ar">الأرقام والعدّ</span><span class="en" lang="en" dir="ltr">Numbers</span><span class="kh-focus" hidden>💎 <span class="ar">تركيز</span><span class="en" lang="en">Focus</span></span></div>
+    <div class="menu">
+    <button type="button" class="mi" data-game="count"><span class="em" data-art="game-count-card" data-art-small>🍎🍎🍎</span><b class="ar">كم عددها؟</b><b class="en" lang="en" dir="ltr">How many?</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="race"><span class="em">🏁🐇</span><b class="ar">سباق الأرقام</b><b class="en" lang="en" dir="ltr">Number race</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="quick"><span class="em">👀⚃</span><b class="ar">نظرة سريعة</b><b class="en" lang="en" dir="ltr">Quick look</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="more"><span class="em">🍎⚖️</span><b class="ar">أين الأكثر؟</b><b class="en" lang="en" dir="ltr">Which has more?</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="size"><span class="em"><span style="font-size:.55em">🐘</span>🐘</span><b class="ar">من الأصغر؟</b><b class="en" lang="en" dir="ltr">Small to big</b><span class="mi-lv" aria-hidden="true"></span></button>
+    </div>
+  </section>
 
-  <div class="parent">
-    <b>👨‍👧 للأب:</b>
-    <ul style="margin:6px 0 0;padding-inline-start:20px">
-      <li>١٠ دقائق يوميًا تكفي في هذا العمر. اجلس معها في البداية وردّد الكلمات معها بصوت عالٍ.</li>
+  <section class="kh-grp c-w" data-grp="world" aria-label="العالم من حولنا">
+    <div class="sec-title">🎨 <span class="ar">العالم من حولنا</span><span class="en" lang="en" dir="ltr">Our world</span><span class="kh-focus" hidden>💎 <span class="ar">تركيز</span><span class="en" lang="en">Focus</span></span></div>
+    <div class="menu">
+    <button type="button" class="mi" data-game="col"><span class="em" data-art="game-col-card" data-art-small>🔴🔵</span><b class="ar">أين اللون؟</b><b class="en" lang="en" dir="ltr">Find the color</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="shp"><span class="em" data-art="game-shp-card" data-art-small>⭕🔺</span><b class="ar">أين الشكل؟</b><b class="en" lang="en" dir="ltr">Find the shape</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="ani"><span class="em" data-art="game-ani-card" data-art-small>🐈🐄</span><b class="ar">أين الحيوان؟</b><b class="en" lang="en" dir="ltr">Find the animal</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="basket"><span class="em" data-art="game-basket-card" data-art-small>🧺🍎</span><b class="ar">السلّة الصحيحة</b><b class="en" lang="en" dir="ltr">Baskets</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="feel"><span class="em">😄😢</span><b class="ar">كيف نشعر؟</b><b class="en" lang="en" dir="ltr">Feelings</b><span class="mi-lv" aria-hidden="true"></span></button>
+    </div>
+  </section>
+
+  <section class="kh-grp c-t" data-grp="think" aria-label="نفكّر ونبني">
+    <div class="sec-title">🧠 <span class="ar">نفكّر ونبني</span><span class="en" lang="en" dir="ltr">Think & build</span><span class="kh-focus" hidden>💎 <span class="ar">تركيز</span><span class="en" lang="en">Focus</span></span></div>
+    <div class="menu">
+    <button type="button" class="mi" data-game="puzzle"><span class="em" data-art="game-puzzle-card" data-art-small>🧩</span><b class="ar">الأحجية</b><b class="en" lang="en" dir="ltr">Jigsaw</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="compose"><span class="em" data-art="game-compose-card" data-art-small>🔺🟥</span><b class="ar">نركّب الشكل</b><b class="en" lang="en" dir="ltr">Build with shapes</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b class="ar">أين أضعها؟</b><b class="en" lang="en" dir="ltr">Where does it go?</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b class="ar">نخطّط ثم نحرّك</b><b class="en" lang="en" dir="ltr">Plan, then move</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b class="ar">نرتّب القصة</b><b class="en" lang="en" dir="ltr">Story order</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="rule"><span class="em">🔀🎨</span><b class="ar">غيّر القاعدة</b><b class="en" lang="en" dir="ltr">Change the rule</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="tale"><span class="em">📚✨</span><b class="ar">ورشة القصة</b><b class="en" lang="en" dir="ltr">Story workshop</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="build" data-free><span class="em">🎨🏗️</span><b class="ar">نبني ما نحب</b><b class="en" lang="en" dir="ltr">Free build</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="pat"><span class="em" data-art="game-pat-card" data-art-small>🔴🔵🔴❓</span><b class="ar">ماذا يأتي بعد؟</b><b class="en" lang="en" dir="ltr">What comes next?</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="odd"><span class="em" data-art="game-odd-card" data-art-small>🍎🍌🐈</span><b class="ar">أيّهم مختلف؟</b><b class="en" lang="en" dir="ltr">Odd one out</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="memory"><span class="em" data-art="game-memory-card" data-art-small>⭐❓⭐</span><b class="ar">لعبة الذاكرة</b><b class="en" lang="en" dir="ltr">Memory</b><span class="mi-lv" aria-hidden="true"></span></button>
+    </div>
+  </section>
+
+  <details class="parent">
+    <summary>👨‍👩‍👧 للوالدين: كيف نستخدم هذا القسم؟</summary>
+    <ul>
+      <li>١٠ دقائق يوميًا تكفي في هذا العمر. اجلسوا معه أو معها في البداية ورددوا الكلمات معًا بصوت عالٍ.</li>
       <li>ابدأوا بقسم «نتعلّم»، ثم العبوا. لكل لعبة <span id="kLvRange"></span> مستويات، والمستوى يتغيّر تلقائيًا: يصعد بعد إجابات جيدة، وينزل إذا صعبت الأسئلة، حتى ينجح الطفل في أغلب الأسئلة دون ملل. يمكنك اختيار المستوى بنفسك في «صفحة الأب».</li>
-      <li>لا يوجد خطأ يحبطها: إذا اختارت غلط تحاول مرة ثانية. ويمكنها سحب البطاقات أو الضغط عليها ثم على السلّة.</li>
-      <li>غيّر «لغة اللعب» بين عربي وEnglish لتسمع الأسئلة باللغتين.</li>
-      <li>إعدادات الصوت ومتابعة تقدّمها في <b>«صفحة الأب»</b> من الصفحة الرئيسية.</li>
+      <li>لا يوجد خطأ يُحبط: الإجابة الخطأ تعني محاولة ثانية. ويمكن سحب البطاقات أو الضغط عليها ثم على السلّة.</li>
+      <li>غيّر «لغة اللعب» بين عربي وEnglish لسماع الأسئلة باللغتين.</li>
+      <li>إعدادات الصوت ومتابعة التقدّم في <b>«صفحة الأب»</b> من الصفحة الرئيسية.</li>
     </ul>
-  </div>
+  </details>
 </section>
 
 <!-- LEARN -->
@@ -2029,9 +2174,9 @@ window.HS_PHRASES = {
   HS.focusOf = p => (p && p.focus) || [];
   /* kindergarten game groups a parent can pick as focus (game keys from src/apps/kg/app.html) */
   HS.KG_GROUPS = [
-    { id: 'letters', name: 'الحروف (عربي وإنجليزي)', em: '🔤', games: ['letters', 'first'] },
-    { id: 'numbers', name: 'الأرقام والعدّ', em: '🔢', games: ['count'] },
-    { id: 'world', name: 'الألوان والأشكال والحيوانات', em: '🎨', games: ['col', 'shp', 'ani', 'basket'] },
+    { id: 'letters', name: 'الحروف والأصوات', em: '🔤', games: ['letters', 'first', 'sound'] },
+    { id: 'numbers', name: 'الأرقام والعدّ', em: '🔢', games: ['count', 'race', 'quick', 'more', 'size'] },
+    { id: 'world', name: 'العالم من حولنا (ألوان، أشكال، حيوانات، مشاعر)', em: '🎨', games: ['col', 'shp', 'ani', 'basket', 'feel'] },
     { id: 'think', name: 'ألعاب التفكير', em: '🧠', games: ['puzzle', 'compose', 'where', 'robot', 'story', 'rule', 'tale', 'build', 'pat', 'odd', 'memory'] }
   ];
   /** where the child is right now, read from the address: { year, subject } for a unit, { kg: game } or { app } */
@@ -6550,6 +6695,98 @@ APPDATA.kg = {
   };
 })(APPDATA.kg);
 
+/* ============================================================
+   MORE PLAY GAMES (content for thinking3.js)
+   race · quick · more · size (numbers) · sound (letters) · feel (feelings)
+   ============================================================ */
+(function (K) {
+  const N = K.NUM;
+  /* same first sound: groups of picture words that start with the same sound (no letters shown).
+     near: sounds a 5-year-old easily mixes up; never asked against each other */
+  K.SOUNDS = {
+    ar: [
+      ['ب', [['بطة', '🦆'], ['بيت', '🏠'], ['باب', '🚪'], ['بقرة', '🐄']]],
+      ['ت', [['تفاحة', '🍎'], ['تاج', '👑'], ['تمساح', '🐊']]],
+      ['ج', [['جمل', '🐫'], ['جزرة', '🥕'], ['جرس', '🔔']]],
+      ['د', [['دب', '🐻'], ['دجاجة', '🐔'], ['دراجة', '🚲'], ['دلفين', '🐬']]],
+      ['س', [['سمكة', '🐟'], ['ساعة', '⌚'], ['سيارة', '🚗'], ['سلحفاة', '🐢']]],
+      ['ش', [['شمس', '☀️'], ['شجرة', '🌳'], ['شمعة', '🕯️']]],
+      ['ف', [['فيل', '🐘'], ['فراشة', '🦋'], ['فأر', '🐭'], ['فراولة', '🍓']]],
+      ['ق', [['قطة', '🐈'], ['قمر', '🌙'], ['قلم', '✏️'], ['قلب', '❤️']]],
+      ['ك', [['كلب', '🐕'], ['كرة', '⚽'], ['كتاب', '📖'], ['كعكة', '🎂']]],
+      ['م', [['موز', '🍌'], ['مفتاح', '🔑'], ['مظلة', '☂️']]],
+      ['ن', [['نحلة', '🐝'], ['نجمة', '⭐'], ['نار', '🔥'], ['نملة', '🐜']]],
+      ['ح', [['حصان', '🐎'], ['حذاء', '👟'], ['حليب', '🥛'], ['حوت', '🐋']]],
+      ['ز', [['زرافة', '🦒'], ['زهرة', '🌸'], ['زيتون', '🫒']]],
+      ['ع', [['عنب', '🍇'], ['عين', '👁️'], ['عصفور', '🐦']]]
+    ],
+    en: [
+      ['b', [['ball', '⚽'], ['bee', '🐝'], ['banana', '🍌'], ['bus', '🚌']]],
+      ['k', [['cat', '🐈'], ['cake', '🎂'], ['car', '🚗'], ['cow', '🐄']]],
+      ['d', [['dog', '🐕'], ['duck', '🦆'], ['door', '🚪'], ['drum', '🥁']]],
+      ['f', [['fish', '🐟'], ['fox', '🦊'], ['frog', '🐸'], ['fire', '🔥']]],
+      ['m', [['moon', '🌙'], ['milk', '🥛'], ['mouse', '🐭'], ['monkey', '🐒']]],
+      ['s', [['sun', '☀️'], ['sock', '🧦'], ['star', '⭐'], ['snake', '🐍']]],
+      ['p', [['pig', '🐖'], ['pen', '🖊️'], ['pizza', '🍕'], ['pear', '🍐']]],
+      ['t', [['tree', '🌳'], ['tiger', '🐅'], ['train', '🚆'], ['tooth', '🦷']]],
+      ['h', [['hat', '🎩'], ['horse', '🐎'], ['house', '🏠'], ['heart', '❤️']]],
+      ['r', [['rabbit', '🐇'], ['rain', '🌧️'], ['ring', '💍'], ['rocket', '🚀']]]
+    ],
+    near: { ar: [['س', 'ز'], ['ق', 'ك'], ['ت', 'د'], ['ح', 'ع']], en: [['b', 'p'], ['d', 't'], ['f', 'h']] }
+  };
+  /* feelings: [face, Arabic feeling (noun), English] — nouns keep every sentence right for boys and girls */
+  K.FEEL = { happy: ['😄', 'الفرح', 'happy'], sad: ['😢', 'الحزن', 'sad'], angry: ['😠', 'الغضب', 'angry'], scared: ['😨', 'الخوف', 'scared'],
+    surprised: ['😲', 'المفاجأة', 'surprised'], tired: ['😴', 'التعب', 'tired'] };
+  K.FEEL_EASY = ['happy', 'sad', 'angry', 'scared'];
+  /* situations: [Arabic, English, feeling, feelings that could also fit (never offered as wrong answers)] */
+  K.FEEL_SIT = [
+    ['اليوم عيد ميلاد سارة، وجاء أصدقاؤها للاحتفال.', "It's Sara's birthday, and her friends came to celebrate.", 'happy', ['surprised']],
+    ['حصل عمر على الهدية التي كان يتمنّاها.', 'Omar got the present he was wishing for.', 'happy', ['surprised']],
+    ['انكسرت لعبة يوسف المفضّلة.', "Yousef's favourite toy broke.", 'sad', ['angry']],
+    ['سافرت صديقة لمى، ولن تراها مدة طويلة.', "Lama's friend moved away, and they won't meet for a long time.", 'sad', []],
+    ['أخذ أحد الأطفال لعبة خالد دون أن يستأذن.', "A child took Khaled's toy without asking.", 'angry', ['sad']],
+    ['هدم أحدهم البرج الذي بنته نورة.', 'Someone knocked down the tower Noura built.', 'angry', ['sad']],
+    ['سمعت ريم صوت رعد قوي في الليل.', 'Reem heard loud thunder at night.', 'scared', ['surprised']],
+    ['رأى سالم كلبًا كبيرًا ينبح عليه.', 'Salem saw a big dog barking at him.', 'scared', ['surprised']],
+    ['فتح علي الصندوق، فقفزت منه دمية بنابض!', 'Ali opened the box, and a toy on a spring jumped out!', 'surprised', ['scared', 'happy']],
+    ['لعبت هند طوال اليوم، والآن تريد أن تنام.', 'Hind played all day, and now she wants to sleep.', 'tired', []],
+    ['ركض ماجد كثيرًا، وصار يتثاءب.', 'Majed ran a lot, and now he keeps yawning.', 'tired', []]
+  ];
+  K.SIZE_EM = ['🐘', '🍎', '⭐', '🐟', '🌳', '🎈', '🚗', '🐻', '🌸', '🐢'];
+  K.MORE_EM = ['🍎', '⭐', '🐟', '🎈', '🍓', '🐥', '🌸', '🚗'];
+  const steps = { ar: ['خطوة واحدة', 'خطوتين', 'ثلاث خطوات'], en: ['one step', 'two steps', 'three steps'] };
+  Object.assign(K.P, {
+    raceSpin: { ar: () => 'لنُدِر العجلة!', en: () => 'Spin the wheel!' },
+    raceGo: { ar: n => 'نتقدّم ' + steps.ar[n - 1] + '. لنعدّ!', en: n => "Let's move " + steps.en[n - 1] + '. Count!' },
+    raceLand: { ar: n => 'نتقدّم ' + steps.ar[n - 1] + '. أين نصل؟', en: n => 'Move ' + steps.en[n - 1] + '. Where do we land?' },
+    raceWin: { ar: () => 'وصلنا إلى العَشرة!', en: () => 'We reached ten!' },
+    quick: { ar: () => 'لننظر بسرعة… كم نقطة رأينا؟', en: () => 'Quick look… how many dots?' },
+    more: { ar: () => 'أين الأكثر؟', en: () => 'Which has more?' },
+    fewer: { ar: () => 'أين الأقل؟', en: () => 'Which has fewer?' },
+    bigNum: { ar: () => 'أيّ رقم أكبر؟', en: () => 'Which number is bigger?' },
+    smallNum: { ar: () => 'أيّ رقم أصغر؟', en: () => 'Which number is smaller?' },
+    sizeUp: { ar: () => 'لنرتّبها من الأصغر إلى الأكبر', en: () => 'Tap them from smallest to biggest' },
+    sizeDown: { ar: () => 'لنرتّبها من الأكبر إلى الأصغر', en: () => 'Tap them from biggest to smallest' },
+    sizeSmall: { ar: () => 'نبحث عن الأصغر', en: () => 'Find the smallest one' },
+    sizeBig: { ar: () => 'نبحث عن الأكبر', en: () => 'Find the biggest one' },
+    sound: { ar: w => w + '. أيّها يبدأ بالصوت نفسه؟', en: w => w + '. Which one starts with the same sound?' },
+    soundOdd: { ar: () => 'أيّها يبدأ بصوت مختلف؟', en: () => 'Which one starts with a different sound?' },
+    feelFace: { ar: f => 'أين وجه ' + f[1] + '؟', en: f => 'Which face is ' + f[2] + '?' },
+    feelSit: { ar: () => 'كيف يكون الشعور؟', en: () => 'How do they feel?' },
+    feelName: { ar: f => 'هذا ' + f[1], en: f => 'That is ' + f[2] }
+  });
+  const base = K.speakables;
+  K.speakables = function () {
+    const out = base(), add = (t, l) => out.push([t, l]), P = K.P;
+    ['raceSpin', 'raceWin', 'quick', 'more', 'fewer', 'bigNum', 'smallNum', 'sizeUp', 'sizeDown', 'sizeSmall', 'sizeBig', 'soundOdd', 'feelSit'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
+    [1, 2, 3].forEach(n => { add(P.raceGo.ar(n), 'ar'); add(P.raceGo.en(n), 'en'); add(P.raceLand.ar(n), 'ar'); add(P.raceLand.en(n), 'en'); });
+    ['ar', 'en'].forEach(l => K.SOUNDS[l].forEach(g => g[1].forEach(w => { add(w[0], l); add(P.sound[l](w[0]), l); })));
+    Object.values(K.FEEL).forEach(f => { add(P.feelFace.ar(f), 'ar'); add(P.feelFace.en(f), 'en'); add(P.feelName.ar(f), 'ar'); add(P.feelName.en(f), 'en'); });
+    K.FEEL_SIT.forEach(s => { add(s[0], 'ar'); add(s[1], 'en'); });
+    return out;
+  };
+})(APPDATA.kg);
+
 </script>
 <script>/* ===== app: kg ===== */
 (function () {
@@ -6818,10 +7055,37 @@ function basketGame() {
   } });
 }
 
+
+/* ---------- home page: Koko, game of the day, level dots on each game, the parent's focus groups ---------- */
+const NEW_GAMES = ['race', 'quick', 'more', 'size', 'sound', 'feel'];
+function homeExtras() {
+  const d = K(), lv = d.lv || {}, st = d.stats || {}, me = HS.current && HS.current(), focus = HS.focusOf(me);
+  $('kKoko').innerHTML = HS.mascot('welcome', { fb: '🐵', eager: true });
+  ROOT.querySelectorAll('.kh-grp').forEach(g => { const on = focus.includes(g.dataset.grp); g.classList.toggle('focus', on); g.querySelector('.kh-focus').hidden = !on; });
+  const max = k => THINK_ROUNDS[k] ? THINK_MAX[k] : 3;
+  ROOT.querySelectorAll('[data-game]').forEach(b => {
+    const k = b.dataset.game, dots = b.querySelector('.mi-lv'), played = st[k] && (st[k].c + st[k].w) > 0;
+    if (dots) dots.innerHTML = b.hasAttribute('data-free') ? '' : Array.from({ length: max(k) }, (_, i) => `<i class="${played && i < (lv[k] || 1) ? 'f' : ''}"></i>`).join('');
+    const isNew = NEW_GAMES.includes(k) && !played; b.classList.toggle('new', isNew); if (isNew) b.dataset.new = 'جديد'; else delete b.dataset.new;
+  });
+  // game of the day: from the focus groups (or all games), the one played least; the same choice all day
+  const groups = HS.KG_GROUPS.filter(g => !focus.length || focus.includes(g.id));
+  const pool = groups.flatMap(g => g.games.map(k => ({ k, g }))).filter(x => x.k !== 'build' && ROOT.querySelector(`[data-game="${x.k}"]`));
+  const plays = k => st[k] ? st[k].c + st[k].w : 0, least = Math.min(...pool.map(x => plays(x.k)));
+  const cand = pool.filter(x => plays(x.k) === least), day = Math.floor(Date.now() / 864e5);
+  const pick = cand[day % cand.length], t = $('kToday');
+  if (!pick) { t.hidden = true; return; }
+  const btn = ROOT.querySelector(`[data-game="${pick.k}"]`), grp = btn.closest('.kh-grp');
+  t.hidden = false; t.style.setProperty('--g', getComputedStyle(grp).getPropertyValue('--g'));
+  t.innerHTML = `<span class="t-pic">${btn.querySelector('.em').innerHTML}</span><span class="t-tx"><small>⭐ <span class="ar">لعبة اليوم</span><span class="en" lang="en">Game of the day</span></small><b class="ar">${gameName(pick.k)}</b><b class="en" lang="en" dir="ltr">${btn.querySelector('b.en').textContent}</b></span><span class="t-go" aria-hidden="true">${document.documentElement.dir === 'rtl' ? '◀' : '▶'}</span>`;
+  t.onclick = () => HS.nav.go('app-kg-game-' + pick.k);
+}
+
 APPS.kg = {
   open(sub) {
     const mx = APPS.kg.levels().map(x => x.max); $('kLvRange').textContent = HS.toAr(Math.min(...mx)) + '–' + HS.toAr(Math.max(...mx));
     setLang(K().lang || LANG);   // each child's last choice
+    homeExtras();
     HS.hydrateArt(ROOT); clearTimeout(tmr); HS.stopSpeak(); $('ov').classList.remove('on');
     const m = /^(learn|game)-([a-z]+)$/.exec(sub || '');
     if (m && m[1] === 'learn' && SETS[m[2]]) return learn(m[2]);
@@ -6841,7 +7105,7 @@ APPS.kg = {
   setLevel(profileId, k, lv) { const d = HS.data('kg', profileId); d.lv = d.lv || {}; d.lv[k] = lv; HS.save(); },
   close() { HS.stopSpeak(); clearTimeout(tmr); $('ov').classList.remove('on'); },
   report(profileId) {
-    const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'نركّب الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'نخطّط ثم نحرّك 🤖', story: 'نرتّب القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال' };
+    const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'نركّب الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'نخطّط ثم نحرّك 🤖', story: 'نرتّب القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال', race: 'سباق الأرقام 🏁', quick: 'نظرة سريعة 👀', more: 'أين الأكثر؟ ⚖️', size: 'من الأصغر؟ 📏', sound: 'نفس الصوت 👂', feel: 'كيف نشعر؟ 😊', rule: 'غيّر القاعدة 🔀', tale: 'ورشة القصة 📚' };
     return Object.keys(names).map(k => ({ k, name: names[k], max: THINK_ROUNDS[k] ? THINK_MAX[k] : 3, lv: (d.lv || {})[k] || 0, c: ((d.stats || {})[k] || {}).c || 0, w: ((d.stats || {})[k] || {}).w || 0 }));
   }
 };
@@ -7401,6 +7665,194 @@ function buildGame() {
   draw();
 }
 Object.assign(THINK_GAMES, { rule: ruleGame, tale: taleGame, build: buildGame });
+
+/* ---- thinking3.js ---- */
+/* ============================================================
+   MORE PLAY GAMES (loaded after thinking2.js, same scope). Each has 3 levels that adapt like the others.
+   - race:  number race on a straight 1–10 board (Siegler & Ramani: linear number board games build
+            number sense; saying each number while moving is the key part)
+            1 spin 1–2, tap each square, the next square glows · 2 spin 1–3, no glow · 3 tap where you land
+   - quick: quick look (subitizing, Clements & Sarama): dots show for a moment, then hide
+            1 dice dots 1–3 · 2 dice dots 1–6 · 3 two groups in two colours (5 and 2 → 7)
+   - more:  which has more? 1 very different groups · 2 close groups, more or fewer, the smaller group drawn bigger
+            · 3 numerals only (bigger / smaller number)
+   - size:  order by size (seriation): 1 three, small to big · 2 four · 3 five close sizes, sometimes big to small
+   - sound: same first sound (phonological awareness before letters: no letters shown, every word spoken)
+            1 three pictures · 2 four pictures · 3 which one starts with a different sound
+   - feel:  feelings: 1 find the face · 2 a short situation, which face · 3 more feelings, closer faces
+   ============================================================ */
+const { SOUNDS, FEEL, FEEL_EASY, FEEL_SIT, SIZE_EM, MORE_EM } = APPDATA.kg;
+Object.assign(THINK_ROUNDS, { race: 2, quick: 5, more: 5, size: 4, sound: 5, feel: 5 });
+Object.assign(THINK_MAX, { race: 3, quick: 3, more: 3, size: 3, sound: 3, feel: 3 });
+
+const numTxt = n => lang() === 'ar' ? NUM[n - 1][1] : String(n);
+const numSay = n => [lang() === 'ar' ? NUM[n - 1][2] : NUM[n - 1][3], lang()];
+const retry = () => [lang() === 'ar' ? HS_PHRASES.retryF.ar : HS_PHRASES.retry.en, lang()];
+/** show a question made of several spoken parts (the 🔊 button repeats all of them) */
+function askAll(text, parts) { $('gQ').textContent = text; $('gQ').style.direction = lang() === 'ar' ? 'rtl' : 'ltr'; G.sp = parts; say(parts); }
+/** one question finished: record it, say what was found and praise, then the next one */
+function playDone(ok, pre = []) {
+  track(ok); say([...pre, ...praise()]); G.round++; dots();
+  later(() => { if (G.round >= G.roundN) endOfRound(); thinkStart(G.k); }, pre.length ? 2900 : 2200);
+}
+/** answer buttons: right → done; wrong → greyed out, «let's try again» and the question again */
+function choices(box, opts, ans, onRight, onWrong) {
+  let first = true;
+  box.innerHTML = opts.map((o, i) => `<button type="button" class="opt" data-i="${i}"${i === ans ? ' data-r' : ''}>${o}</button>`).join('');
+  box.className = 'opts' + (opts.length === 4 ? ' four' : '') + (opts.length === 2 ? ' two' : '');
+  box.querySelectorAll('.opt').forEach(b => b.onclick = () => {
+    if (+b.dataset.i === ans) { box.querySelectorAll('.opt').forEach(x => x.disabled = true); b.classList.add('ok'); HS.fx('ok'); onRight(first); }
+    else { first = false; b.classList.add('no'); b.disabled = true; HS.fx('no'); if (onWrong) onWrong(); else say([retry(), ...G.sp]); }
+  });
+}
+
+/* ---------------- 🏁 number race ---------------- */
+function raceGame() {
+  const L = G.lv, l = lang(), maxStep = L === 1 ? 2 : 3, TOKEN = '🐇';
+  let pos = 0, target = 0, mistakes = 0, wrongHere = 0, moving = false;
+  const root = fresh(`<div class="rc"><div class="rc-board" dir="ltr"><span class="rc-start" aria-hidden="true"></span>${Array.from({ length: 10 }, (_, i) => `<button type="button" class="rc-sq" data-n="${i + 1}" aria-label="${i + 1}"><b>${numTxt(i + 1)}</b><span class="rc-tok"></span></button>`).join('')}</div>
+    <div class="rc-ctl"><button type="button" class="rc-spin" aria-label="${l === 'ar' ? 'أدِر العجلة' : 'Spin'}"><span class="rc-wheel" aria-hidden="true" data-nopic>🎡</span></button><div class="rc-res" aria-live="polite"></div></div></div>`);
+  const sq = n => root.querySelector(`.rc-sq[data-n="${n}"]`), spin = root.querySelector('.rc-spin'), res = root.querySelector('.rc-res');
+  const draw = () => {
+    root.querySelectorAll('.rc-tok').forEach(t => t.textContent = ''); root.querySelector('.rc-start').textContent = pos ? '🏁' : TOKEN;
+    if (pos) sq(pos).querySelector('.rc-tok').textContent = TOKEN;
+    root.querySelectorAll('.rc-sq').forEach(s => { s.classList.toggle('past', +s.dataset.n <= pos); s.classList.remove('glow'); });
+  };
+  const glow = n => { root.querySelectorAll('.rc-sq').forEach(s => s.classList.toggle('glow', +s.dataset.n === n)); };
+  const turnEnd = () => {
+    moving = false; target = 0;
+    if (pos >= 10) { HS.party(); return playDone(mistakes <= 1, [[P.raceWin[l](), l]]); }
+    later(() => { spin.disabled = false; askAll(P.raceSpin[l](), [[P.raceSpin[l](), l]]); }, 1300);
+  };
+  spin.onclick = () => {
+    spin.disabled = true; spin.classList.add('go'); HS.fx('tap'); let k = 0;
+    const iv = setInterval(() => { res.innerHTML = `<b>${numTxt(1 + (k++ % maxStep))}</b>`; }, 110);
+    later(() => {
+      clearInterval(iv); spin.classList.remove('go');
+      const n = 1 + rnd(maxStep); target = Math.min(10, pos + n); wrongHere = 0; root.dataset.pos = pos; root.dataset.target = target;
+      res.innerHTML = `<b>${numTxt(n)}</b><span class="rc-dots">${'●'.repeat(n)}</span>`;
+      const q = L === 3 ? P.raceLand[l](n) : P.raceGo[l](n);
+      askAll(q, [[q, l]]); if (L === 1) glow(pos + 1);
+    }, 800);
+    setTimeout(() => clearInterval(iv), 900);
+  };
+  root.querySelectorAll('.rc-sq').forEach(b => b.onclick = () => {
+    if (!target || moving) return;
+    const n = +b.dataset.n;
+    if (L < 3) {   // count each square while moving
+      if (n === pos + 1) { pos = n; HS.fx('ok'); draw(); say([numSay(n)]); wrongHere = 0; if (pos >= target) turnEnd(); else if (L === 1) glow(pos + 1); return; }
+    } else if (n === target) {   // hop there, saying each number
+      moving = true; HS.fx('ok'); const from = pos; say(Array.from({ length: target - from }, (_, i) => numSay(from + i + 1)));
+      const hop = () => { pos++; draw(); if (pos < target) later(hop, 520); else later(turnEnd, 500); }; hop(); return;
+    }
+    mistakes++; wrongHere++; HS.fx('no'); shake(b);
+    if (wrongHere >= 2) glow(L < 3 ? pos + 1 : target);
+    say([retry(), ...G.sp]);
+  });
+  draw(); res.innerHTML = ''; askAll(P.raceSpin[l](), [[P.raceSpin[l](), l]]);
+}
+
+/* ---------------- 👀 quick look ---------------- */
+const DICE = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
+const die = (n, c = '') => `<span class="qk-die ${c}">${Array.from({ length: 9 }, (_, i) => `<i${DICE[n].includes(i) ? ' class="d"' : ''}></i>`).join('')}</span>`;
+POOLS.quick = { 1: [1, 2, 3], 2: [1, 2, 3, 4, 5, 6], 3: [[5, 1], [5, 2], [5, 3], [4, 2], [4, 3], [4, 4], [3, 3], [3, 2], [6, 2]] };
+function quickGame() {
+  const L = G.lv, l = lang(), item = bag(POOLS.quick[L]), parts = L === 3 ? item : [item], n = parts.reduce((a, b) => a + b, 0);
+  const ms = L === 1 ? 2000 : L === 2 ? 1500 : 1800;
+  const root = fresh(`<div class="qk"><div class="qk-show">${parts.map((p, i) => die(p, 'c' + i)).join('')}<span class="qk-cover" aria-hidden="true">❓</span></div>
+    <button type="button" class="qk-again" aria-label="${l === 'ar' ? 'انظر مرة ثانية' : 'Look again'}" data-nopic>👀</button><div class="opts" id="qkOpts"></div></div>`);
+  const show = root.querySelector('.qk-show'); let seen = 0;
+  const flash = () => { show.classList.remove('hid'); seen++; later(() => show.classList.add('hid'), ms); };
+  let first = true;
+  root.querySelector('.qk-again').onclick = () => { first = false; flash(); };
+  const o = nearNums(n, L === 1 ? 3 : 4, 10);
+  choices(root.querySelector('#qkOpts'), o.map(numTxt), o.indexOf(n), f => { show.classList.remove('hid'); show.classList.add('done'); playDone(f && first, [numSay(n)]); }, () => { first = false; say([retry(), ...G.sp]); flash(); });
+  askAll(P.quick[l](), [[P.quick[l](), l]]); later(flash, 350);
+}
+
+/* ---------------- ⚖️ which has more? ---------------- */
+function moreGame() {
+  const L = G.lv, l = lang(); let a, b, askMore = true;
+  if (L === 1) { a = 1 + rnd(3); b = a + 3 + rnd(3); }
+  else if (L === 2) { a = 2 + rnd(5); b = a + 1 + rnd(2); askMore = Math.random() < .5; }
+  else { a = 1 + rnd(7); b = Math.min(10, a + 1 + rnd(3)); askMore = Math.random() < .5; }
+  const vals = shuffle([a, b]), ans = vals.indexOf(askMore ? Math.max(a, b) : Math.min(a, b)), em = HS.bag('kg-more-em', MORE_EM);
+  const group = v => {   // level 2: the smaller group is drawn bigger and spread out, so size alone misleads
+    const big = L === 2 && v === Math.min(a, b), fs = big ? 46 : v > 6 ? 26 : 32;
+    return `<span class="mr-grp${big ? ' big' : ''}" style="font-size:${fs}px">${Array.from({ length: v }, () => `<span>${em}</span>`).join('')}</span>`;
+  };
+  const q = L === 3 ? (askMore ? P.bigNum : P.smallNum)[l]() : (askMore ? P.more : P.fewer)[l]();
+  const root = fresh(`<div class="mr"><div class="opts two" id="mrOpts"></div></div>`);
+  choices(root.querySelector('#mrOpts'), vals.map(v => L === 3 ? `<span class="mr-num">${numTxt(v)}</span>` : group(v)), ans, f => playDone(f, [numSay(vals[ans])]));
+  askAll(q, [[q, l]]);
+}
+
+/* ---------------- 📏 order by size ---------------- */
+const SIZES = { 1: [34, 70, 116], 2: [30, 54, 80, 112], 3: [36, 52, 68, 86, 106] };
+function sizeGame() {
+  const L = G.lv, l = lang(), em = bag(SIZE_EM), down = L === 3 && Math.random() < .5;
+  const want = down ? SIZES[L].slice().reverse() : SIZES[L].slice(); let step = 0, mistakes = 0, wrongHere = 0;
+  const root = fresh(`<div class="sz"><div class="sz-pool">${shuffle(SIZES[L].slice()).map(s => `<button type="button" class="sz-it" data-s="${s}" style="font-size:${s}px">${em}</button>`).join('')}</div>
+    <div class="sz-row${down ? ' down' : ''}" aria-hidden="true">${want.map(() => '<span class="sz-slot"></span>').join('')}</div></div>`);
+  const q = (down ? P.sizeDown : P.sizeUp)[l]();
+  root.querySelectorAll('.sz-it').forEach(b => b.onclick = () => {
+    if (b.classList.contains('used')) return;
+    if (+b.dataset.s === want[step]) {
+      b.classList.add('used'); HS.fx('ok'); root.querySelectorAll('.sz-slot')[step].innerHTML = `<span class="hs-pop" style="font-size:${b.dataset.s * .62}px">${em}</span>`;
+      root.querySelectorAll('.sz-it').forEach(x => x.classList.remove('glow')); step++; wrongHere = 0;
+      if (step === want.length) playDone(mistakes === 0);
+      return;
+    }
+    mistakes++; wrongHere++; HS.fx('no'); shake(b);
+    const smallest = (want[step] === Math.min(...want.slice(step)));
+    if (wrongHere >= 2) root.querySelector(`.sz-it[data-s="${want[step]}"]`).classList.add('glow');
+    say([[(smallest ? P.sizeSmall : P.sizeBig)[l](), l]]);
+  });
+  askAll(q, [[q, l]]);
+}
+
+/* ---------------- 👂 same first sound ---------------- */
+function soundGame() {
+  const L = G.lv, l = lang(), groups = SOUNDS[l], near = SOUNDS.near[l];
+  const g = bag(groups), close = new Set([g[0]]); near.forEach(p => { if (p.includes(g[0])) p.forEach(x => close.add(x)); });
+  // other groups: never a sound that is easy to mix up with this one, and never two from the same group
+  const others = shuffle(groups.filter(x => !close.has(x[0])));
+  const words = shuffle(g[1].slice()); let opts, ans, q, parts;
+  if (L < 3) {
+    const t = words[0], right = words[1], wrong = others.slice(0, L === 1 ? 2 : 3).map(x => one(x[1]));
+    opts = shuffle([right, ...wrong]); ans = opts.indexOf(right);
+    q = P.sound[l](t[0]); parts = [[q, l], ...opts.map(o => [o[0], l])];
+    $('gShow').innerHTML = `<div class="sd-target">${t[1]}</div>`;
+  } else {
+    const odd = one(others[0][1]); opts = shuffle([words[0], words[1], odd]); ans = opts.indexOf(odd);
+    q = P.soundOdd[l](); parts = [[q, l], ...opts.map(o => [o[0], l])];
+    $('gShow').innerHTML = '';
+  }
+  const root = fresh(`<div class="sd"><div class="opts" id="sdOpts"></div></div>`);
+  choices(root.querySelector('#sdOpts'), opts.map(o => `<span class="sd-em">${o[1]}</span>`), ans, f => playDone(f, L < 3 ? [[words[0][0], l], [opts[ans][0], l]] : [[opts[ans][0], l]]));
+  askAll(q, parts);
+}
+
+/* ---------------- 😊 feelings ---------------- */
+function feelGame() {
+  const L = G.lv, l = lang(), face = k => `<span class="fl-face">${FEEL[k][0]}</span>`;
+  const root = fresh(`<div class="fl"><div class="opts" id="flOpts"></div></div>`); $('gShow').innerHTML = '';
+  if (L === 1) {
+    const k = bag(FEEL_EASY), opts = shuffle([k, ...shuffle(FEEL_EASY.filter(x => x !== k)).slice(0, 2)]);
+    const q = P.feelFace[l](FEEL[k]);
+    choices(root.querySelector('#flOpts'), opts.map(face), opts.indexOf(k), f => playDone(f));
+    return askAll(q, [[q, l]]);
+  }
+  POOLS.feel2 = POOLS.feel2 || FEEL_SIT.filter(s => FEEL_EASY.includes(s[2]));
+  const s = bag(L === 2 ? POOLS.feel2 : FEEL_SIT), all = L === 2 ? FEEL_EASY : Object.keys(FEEL);
+  const wrong = shuffle(all.filter(x => x !== s[2] && !s[3].includes(x))).slice(0, L === 2 ? 2 : 3), opts = shuffle([s[2], ...wrong]);
+  const text = l === 'ar' ? s[0] : s[1];
+  $('gShow').innerHTML = `<div class="fl-sit">${HS.esc ? HS.esc(text) : text}</div>`;
+  choices(root.querySelector('#flOpts'), opts.map(face), opts.indexOf(s[2]), f => playDone(f, [[P.feelName[l](FEEL[s[2]]), l]]));
+  askAll(P.feelSit[l](), [[text, l], [P.feelSit[l](), l]]);
+}
+
+Object.assign(THINK_GAMES, { race: raceGame, quick: quickGame, more: moreGame, size: sizeGame, sound: soundGame, feel: feelGame });
 
 })();
 </script>

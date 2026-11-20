@@ -30,7 +30,7 @@ madrasat-albayt/
     ├── apps/
     │   ├── unit/               ← the unit engine that draws any file in src/units/
     │   ├── dict/               ← kids' English dictionary (data.js = the word list, one line per word)
-    │   └── kg/                 ← kindergarten app (data.js = words & questions; thinking.js = the 5 «نفكّر» games)
+    │   └── kg/                 ← kindergarten app (data.js = words & questions; thinking*.js = thinking games; thinking3.js = race, quick look, more, size, sound, feelings)
     └── audio/                  ← created by make_audio.py (clips + manifest.json)
 ```
 
@@ -65,6 +65,14 @@ The design follows well-established learning research:
   - **Tap-then-tap always works alongside drag**, since dragging is hard for under-5s.
   - A wrong tap never ends a question.
   - Levels go **up after a strong round (≥80%) and down after a weak one (<50%)**, keeping her around 80% success.
+- **Kindergarten home page.** Koko greets the child, then a big **game of the day** (from the parent's focus groups, the game played least; it stays the same all day). Games sit in the same four groups the parent page uses (letters and sounds, numbers, our world, think and build); a focus group gets a gold outline. Each game card shows its level as dots, and new games carry a «جديد» badge until first played. Parent notes are folded away under «للوالدين».
+- **Six newer KG games (thinking3.js)**, each with 3 levels, chosen to fill gaps the research points to:
+  - 🏁 **Number race**: a straight 1–10 board, spin, then tap each square while its number is spoken (linear number board games build number sense: Siegler & Ramani). Level 1 glows the next square; level 3 asks where you land.
+  - 👀 **Quick look**: dots flash for a moment then hide (subitizing, Clements & Sarama). Level 3 shows two coloured groups (5 and 2 make 7).
+  - ⚖️ **Which has more?**: level 2 draws the smaller group bigger, so size alone misleads; level 3 compares numerals.
+  - 📏 **Small to big**: tap 3, 4, then 5 copies in size order (seriation, early measurement).
+  - 👂 **Same sound**: which picture starts with the same sound, no letters shown (phonological awareness comes before letters); sounds that are easy to mix up (س/ز, ق/ك, b/p…) are never asked against each other.
+  - 😊 **Feelings**: find the face, then which face fits a short situation; faces that could also fit a situation are never offered as wrong answers.
 - **«نفكّر» thinking games (KG).** Five games with **levels that follow published learning paths** (8 levels for the jigsaw and the robot, 5 for the others), and auto-levelling like the other games. A shuffle bag means a puzzle never repeats straight away:
   - 🧩 **Jigsaw**: 4 → 6 → 9 pieces with a faint picture guide, then 9 → 12 → 16 pieces with no guide, then 16 and 25 pieces with decoy pieces from another picture mixed in. A wrong piece gets a spatial hint ("near the top"); plain background pieces in the same row fit either spot.
   - 🔺 **Build with shapes**: coloured guide → outlines only → one grey silhouette with no inner lines. This follows Clements & Sarama's shape-composition trajectory (picture maker → shape composer); spatial skill at this age predicts later maths.

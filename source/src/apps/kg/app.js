@@ -262,10 +262,37 @@ function basketGame() {
   } });
 }
 
+
+/* ---------- home page: Koko, game of the day, level dots on each game, the parent's focus groups ---------- */
+const NEW_GAMES = ['race', 'quick', 'more', 'size', 'sound', 'feel'];
+function homeExtras() {
+  const d = K(), lv = d.lv || {}, st = d.stats || {}, me = HS.current && HS.current(), focus = HS.focusOf(me);
+  $('kKoko').innerHTML = HS.mascot('welcome', { fb: '🐵', eager: true });
+  ROOT.querySelectorAll('.kh-grp').forEach(g => { const on = focus.includes(g.dataset.grp); g.classList.toggle('focus', on); g.querySelector('.kh-focus').hidden = !on; });
+  const max = k => THINK_ROUNDS[k] ? THINK_MAX[k] : 3;
+  ROOT.querySelectorAll('[data-game]').forEach(b => {
+    const k = b.dataset.game, dots = b.querySelector('.mi-lv'), played = st[k] && (st[k].c + st[k].w) > 0;
+    if (dots) dots.innerHTML = b.hasAttribute('data-free') ? '' : Array.from({ length: max(k) }, (_, i) => `<i class="${played && i < (lv[k] || 1) ? 'f' : ''}"></i>`).join('');
+    const isNew = NEW_GAMES.includes(k) && !played; b.classList.toggle('new', isNew); if (isNew) b.dataset.new = 'جديد'; else delete b.dataset.new;
+  });
+  // game of the day: from the focus groups (or all games), the one played least; the same choice all day
+  const groups = HS.KG_GROUPS.filter(g => !focus.length || focus.includes(g.id));
+  const pool = groups.flatMap(g => g.games.map(k => ({ k, g }))).filter(x => x.k !== 'build' && ROOT.querySelector(`[data-game="${x.k}"]`));
+  const plays = k => st[k] ? st[k].c + st[k].w : 0, least = Math.min(...pool.map(x => plays(x.k)));
+  const cand = pool.filter(x => plays(x.k) === least), day = Math.floor(Date.now() / 864e5);
+  const pick = cand[day % cand.length], t = $('kToday');
+  if (!pick) { t.hidden = true; return; }
+  const btn = ROOT.querySelector(`[data-game="${pick.k}"]`), grp = btn.closest('.kh-grp');
+  t.hidden = false; t.style.setProperty('--g', getComputedStyle(grp).getPropertyValue('--g'));
+  t.innerHTML = `<span class="t-pic">${btn.querySelector('.em').innerHTML}</span><span class="t-tx"><small>⭐ <span class="ar">لعبة اليوم</span><span class="en" lang="en">Game of the day</span></small><b class="ar">${gameName(pick.k)}</b><b class="en" lang="en" dir="ltr">${btn.querySelector('b.en').textContent}</b></span><span class="t-go" aria-hidden="true">${document.documentElement.dir === 'rtl' ? '◀' : '▶'}</span>`;
+  t.onclick = () => HS.nav.go('app-kg-game-' + pick.k);
+}
+
 APPS.kg = {
   open(sub) {
     const mx = APPS.kg.levels().map(x => x.max); $('kLvRange').textContent = HS.toAr(Math.min(...mx)) + '–' + HS.toAr(Math.max(...mx));
     setLang(K().lang || LANG);   // each child's last choice
+    homeExtras();
     HS.hydrateArt(ROOT); clearTimeout(tmr); HS.stopSpeak(); $('ov').classList.remove('on');
     const m = /^(learn|game)-([a-z]+)$/.exec(sub || '');
     if (m && m[1] === 'learn' && SETS[m[2]]) return learn(m[2]);
@@ -285,7 +312,7 @@ APPS.kg = {
   setLevel(profileId, k, lv) { const d = HS.data('kg', profileId); d.lv = d.lv || {}; d.lv[k] = lv; HS.save(); },
   close() { HS.stopSpeak(); clearTimeout(tmr); $('ov').classList.remove('on'); },
   report(profileId) {
-    const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'نركّب الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'نخطّط ثم نحرّك 🤖', story: 'نرتّب القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال' };
+    const d = HS.data('kg', profileId), names = { puzzle: 'الأحجية 🧩', compose: 'نركّب الشكل 🏠', where: 'أين أضعها؟ 🧭', robot: 'نخطّط ثم نحرّك 🤖', story: 'نرتّب القصة 📖', letters: 'أين الحرف؟', first: 'بأي حرف يبدأ؟', count: 'كم عددها؟', col: 'الألوان', shp: 'الأشكال', ani: 'الحيوانات', odd: 'أيّهم مختلف؟', pat: 'ماذا يأتي بعد؟', memory: 'الذاكرة', basket: 'السلال', race: 'سباق الأرقام 🏁', quick: 'نظرة سريعة 👀', more: 'أين الأكثر؟ ⚖️', size: 'من الأصغر؟ 📏', sound: 'نفس الصوت 👂', feel: 'كيف نشعر؟ 😊', rule: 'غيّر القاعدة 🔀', tale: 'ورشة القصة 📚' };
     return Object.keys(names).map(k => ({ k, name: names[k], max: THINK_ROUNDS[k] ? THINK_MAX[k] : 3, lv: (d.lv || {})[k] || 0, c: ((d.stats || {})[k] || {}).c || 0, w: ((d.stats || {})[k] || {}).w || 0 }));
   }
 };

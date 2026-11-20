@@ -247,9 +247,9 @@
   HS.focusOf = p => (p && p.focus) || [];
   /* kindergarten game groups a parent can pick as focus (game keys from src/apps/kg/app.html) */
   HS.KG_GROUPS = [
-    { id: 'letters', name: 'الحروف (عربي وإنجليزي)', em: '🔤', games: ['letters', 'first'] },
-    { id: 'numbers', name: 'الأرقام والعدّ', em: '🔢', games: ['count'] },
-    { id: 'world', name: 'الألوان والأشكال والحيوانات', em: '🎨', games: ['col', 'shp', 'ani', 'basket'] },
+    { id: 'letters', name: 'الحروف والأصوات', em: '🔤', games: ['letters', 'first', 'sound'] },
+    { id: 'numbers', name: 'الأرقام والعدّ', em: '🔢', games: ['count', 'race', 'quick', 'more', 'size'] },
+    { id: 'world', name: 'العالم من حولنا (ألوان، أشكال، حيوانات، مشاعر)', em: '🎨', games: ['col', 'shp', 'ani', 'basket', 'feel'] },
     { id: 'think', name: 'ألعاب التفكير', em: '🧠', games: ['puzzle', 'compose', 'where', 'robot', 'story', 'rule', 'tale', 'build', 'pat', 'odd', 'memory'] }
   ];
   /** where the child is right now, read from the address: { year, subject } for a unit, { kg: game } or { app } */

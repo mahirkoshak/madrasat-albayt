@@ -246,3 +246,95 @@ APPDATA.kg = {
     return out;
   };
 })(APPDATA.kg);
+
+/* ============================================================
+   MORE PLAY GAMES (content for thinking3.js)
+   race · quick · more · size (numbers) · sound (letters) · feel (feelings)
+   ============================================================ */
+(function (K) {
+  const N = K.NUM;
+  /* same first sound: groups of picture words that start with the same sound (no letters shown).
+     near: sounds a 5-year-old easily mixes up; never asked against each other */
+  K.SOUNDS = {
+    ar: [
+      ['ب', [['بطة', '🦆'], ['بيت', '🏠'], ['باب', '🚪'], ['بقرة', '🐄']]],
+      ['ت', [['تفاحة', '🍎'], ['تاج', '👑'], ['تمساح', '🐊']]],
+      ['ج', [['جمل', '🐫'], ['جزرة', '🥕'], ['جرس', '🔔']]],
+      ['د', [['دب', '🐻'], ['دجاجة', '🐔'], ['دراجة', '🚲'], ['دلفين', '🐬']]],
+      ['س', [['سمكة', '🐟'], ['ساعة', '⌚'], ['سيارة', '🚗'], ['سلحفاة', '🐢']]],
+      ['ش', [['شمس', '☀️'], ['شجرة', '🌳'], ['شمعة', '🕯️']]],
+      ['ف', [['فيل', '🐘'], ['فراشة', '🦋'], ['فأر', '🐭'], ['فراولة', '🍓']]],
+      ['ق', [['قطة', '🐈'], ['قمر', '🌙'], ['قلم', '✏️'], ['قلب', '❤️']]],
+      ['ك', [['كلب', '🐕'], ['كرة', '⚽'], ['كتاب', '📖'], ['كعكة', '🎂']]],
+      ['م', [['موز', '🍌'], ['مفتاح', '🔑'], ['مظلة', '☂️']]],
+      ['ن', [['نحلة', '🐝'], ['نجمة', '⭐'], ['نار', '🔥'], ['نملة', '🐜']]],
+      ['ح', [['حصان', '🐎'], ['حذاء', '👟'], ['حليب', '🥛'], ['حوت', '🐋']]],
+      ['ز', [['زرافة', '🦒'], ['زهرة', '🌸'], ['زيتون', '🫒']]],
+      ['ع', [['عنب', '🍇'], ['عين', '👁️'], ['عصفور', '🐦']]]
+    ],
+    en: [
+      ['b', [['ball', '⚽'], ['bee', '🐝'], ['banana', '🍌'], ['bus', '🚌']]],
+      ['k', [['cat', '🐈'], ['cake', '🎂'], ['car', '🚗'], ['cow', '🐄']]],
+      ['d', [['dog', '🐕'], ['duck', '🦆'], ['door', '🚪'], ['drum', '🥁']]],
+      ['f', [['fish', '🐟'], ['fox', '🦊'], ['frog', '🐸'], ['fire', '🔥']]],
+      ['m', [['moon', '🌙'], ['milk', '🥛'], ['mouse', '🐭'], ['monkey', '🐒']]],
+      ['s', [['sun', '☀️'], ['sock', '🧦'], ['star', '⭐'], ['snake', '🐍']]],
+      ['p', [['pig', '🐖'], ['pen', '🖊️'], ['pizza', '🍕'], ['pear', '🍐']]],
+      ['t', [['tree', '🌳'], ['tiger', '🐅'], ['train', '🚆'], ['tooth', '🦷']]],
+      ['h', [['hat', '🎩'], ['horse', '🐎'], ['house', '🏠'], ['heart', '❤️']]],
+      ['r', [['rabbit', '🐇'], ['rain', '🌧️'], ['ring', '💍'], ['rocket', '🚀']]]
+    ],
+    near: { ar: [['س', 'ز'], ['ق', 'ك'], ['ت', 'د'], ['ح', 'ع']], en: [['b', 'p'], ['d', 't'], ['f', 'h']] }
+  };
+  /* feelings: [face, Arabic feeling (noun), English] — nouns keep every sentence right for boys and girls */
+  K.FEEL = { happy: ['😄', 'الفرح', 'happy'], sad: ['😢', 'الحزن', 'sad'], angry: ['😠', 'الغضب', 'angry'], scared: ['😨', 'الخوف', 'scared'],
+    surprised: ['😲', 'المفاجأة', 'surprised'], tired: ['😴', 'التعب', 'tired'] };
+  K.FEEL_EASY = ['happy', 'sad', 'angry', 'scared'];
+  /* situations: [Arabic, English, feeling, feelings that could also fit (never offered as wrong answers)] */
+  K.FEEL_SIT = [
+    ['اليوم عيد ميلاد سارة، وجاء أصدقاؤها للاحتفال.', "It's Sara's birthday, and her friends came to celebrate.", 'happy', ['surprised']],
+    ['حصل عمر على الهدية التي كان يتمنّاها.', 'Omar got the present he was wishing for.', 'happy', ['surprised']],
+    ['انكسرت لعبة يوسف المفضّلة.', "Yousef's favourite toy broke.", 'sad', ['angry']],
+    ['سافرت صديقة لمى، ولن تراها مدة طويلة.', "Lama's friend moved away, and they won't meet for a long time.", 'sad', []],
+    ['أخذ أحد الأطفال لعبة خالد دون أن يستأذن.', "A child took Khaled's toy without asking.", 'angry', ['sad']],
+    ['هدم أحدهم البرج الذي بنته نورة.', 'Someone knocked down the tower Noura built.', 'angry', ['sad']],
+    ['سمعت ريم صوت رعد قوي في الليل.', 'Reem heard loud thunder at night.', 'scared', ['surprised']],
+    ['رأى سالم كلبًا كبيرًا ينبح عليه.', 'Salem saw a big dog barking at him.', 'scared', ['surprised']],
+    ['فتح علي الصندوق، فقفزت منه دمية بنابض!', 'Ali opened the box, and a toy on a spring jumped out!', 'surprised', ['scared', 'happy']],
+    ['لعبت هند طوال اليوم، والآن تريد أن تنام.', 'Hind played all day, and now she wants to sleep.', 'tired', []],
+    ['ركض ماجد كثيرًا، وصار يتثاءب.', 'Majed ran a lot, and now he keeps yawning.', 'tired', []]
+  ];
+  K.SIZE_EM = ['🐘', '🍎', '⭐', '🐟', '🌳', '🎈', '🚗', '🐻', '🌸', '🐢'];
+  K.MORE_EM = ['🍎', '⭐', '🐟', '🎈', '🍓', '🐥', '🌸', '🚗'];
+  const steps = { ar: ['خطوة واحدة', 'خطوتين', 'ثلاث خطوات'], en: ['one step', 'two steps', 'three steps'] };
+  Object.assign(K.P, {
+    raceSpin: { ar: () => 'لنُدِر العجلة!', en: () => 'Spin the wheel!' },
+    raceGo: { ar: n => 'نتقدّم ' + steps.ar[n - 1] + '. لنعدّ!', en: n => "Let's move " + steps.en[n - 1] + '. Count!' },
+    raceLand: { ar: n => 'نتقدّم ' + steps.ar[n - 1] + '. أين نصل؟', en: n => 'Move ' + steps.en[n - 1] + '. Where do we land?' },
+    raceWin: { ar: () => 'وصلنا إلى العَشرة!', en: () => 'We reached ten!' },
+    quick: { ar: () => 'لننظر بسرعة… كم نقطة رأينا؟', en: () => 'Quick look… how many dots?' },
+    more: { ar: () => 'أين الأكثر؟', en: () => 'Which has more?' },
+    fewer: { ar: () => 'أين الأقل؟', en: () => 'Which has fewer?' },
+    bigNum: { ar: () => 'أيّ رقم أكبر؟', en: () => 'Which number is bigger?' },
+    smallNum: { ar: () => 'أيّ رقم أصغر؟', en: () => 'Which number is smaller?' },
+    sizeUp: { ar: () => 'لنرتّبها من الأصغر إلى الأكبر', en: () => 'Tap them from smallest to biggest' },
+    sizeDown: { ar: () => 'لنرتّبها من الأكبر إلى الأصغر', en: () => 'Tap them from biggest to smallest' },
+    sizeSmall: { ar: () => 'نبحث عن الأصغر', en: () => 'Find the smallest one' },
+    sizeBig: { ar: () => 'نبحث عن الأكبر', en: () => 'Find the biggest one' },
+    sound: { ar: w => w + '. أيّها يبدأ بالصوت نفسه؟', en: w => w + '. Which one starts with the same sound?' },
+    soundOdd: { ar: () => 'أيّها يبدأ بصوت مختلف؟', en: () => 'Which one starts with a different sound?' },
+    feelFace: { ar: f => 'أين وجه ' + f[1] + '؟', en: f => 'Which face is ' + f[2] + '?' },
+    feelSit: { ar: () => 'كيف يكون الشعور؟', en: () => 'How do they feel?' },
+    feelName: { ar: f => 'هذا ' + f[1], en: f => 'That is ' + f[2] }
+  });
+  const base = K.speakables;
+  K.speakables = function () {
+    const out = base(), add = (t, l) => out.push([t, l]), P = K.P;
+    ['raceSpin', 'raceWin', 'quick', 'more', 'fewer', 'bigNum', 'smallNum', 'sizeUp', 'sizeDown', 'sizeSmall', 'sizeBig', 'soundOdd', 'feelSit'].forEach(k => { add(P[k].ar(), 'ar'); add(P[k].en(), 'en'); });
+    [1, 2, 3].forEach(n => { add(P.raceGo.ar(n), 'ar'); add(P.raceGo.en(n), 'en'); add(P.raceLand.ar(n), 'ar'); add(P.raceLand.en(n), 'en'); });
+    ['ar', 'en'].forEach(l => K.SOUNDS[l].forEach(g => g[1].forEach(w => { add(w[0], l); add(P.sound[l](w[0]), l); })));
+    Object.values(K.FEEL).forEach(f => { add(P.feelFace.ar(f), 'ar'); add(P.feelFace.en(f), 'en'); add(P.feelName.ar(f), 'ar'); add(P.feelName.en(f), 'en'); });
+    K.FEEL_SIT.forEach(s => { add(s[0], 'ar'); add(s[1], 'en'); });
+    return out;
+  };
+})(APPDATA.kg);

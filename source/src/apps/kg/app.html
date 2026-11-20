@@ -4,60 +4,89 @@
 
 <!-- HOME -->
 <section class="view on" id="k-home">
-  <h1>🌈 عالم الصغار</h1>
-  <p class="sub"><span class="ar">نضغط على الصورة ونسمع 🔊</span><span class="en" lang="en" dir="ltr">Tap and listen</span></p>
+  <div class="kh-hero">
+    <div class="kh-koko" id="kKoko" aria-hidden="true"></div>
+    <div class="kh-hi">
+      <h1>عالم الصغار</h1>
+      <p class="sub"><span class="ar">نضغط على الصورة ونسمع 🔊</span><span class="en" lang="en" dir="ltr">Tap and listen</span></p>
+      <div class="bar">
+        <span id="kLangL">لغة اللعب:</span>
+        <button type="button" class="pill on" data-lang="ar" aria-pressed="true" aria-describedby="kLangL">عربي</button>
+        <button type="button" class="pill" data-lang="en" aria-pressed="false" aria-describedby="kLangL" lang="en">English</button>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="kh-today" id="kToday"></button>
 
   <div class="sec-title">📚 <span class="ar">نتعلّم</span><span class="en" lang="en" dir="ltr">Learn</span></div>
-  <div class="menu">
-    <button type="button" class="mi" style="background:var(--pink)" data-learn="ar"><span class="em">أ ب ت</span><b class="ar">الحروف العربية</b><b class="en" lang="en" dir="ltr">Arabic Letters</b></button>
-    <button type="button" class="mi" style="background:var(--sky)" data-learn="en"><span class="em" style="direction:ltr">A B C</span><b class="ar">الحروف الإنجليزية</b><b class="en" lang="en" dir="ltr">English Letters</b></button>
-    <button type="button" class="mi" style="background:var(--orange)" data-learn="num"><span class="em">١ 2 ٣</span><b class="ar">الأرقام</b><b class="en" lang="en" dir="ltr">Numbers</b></button>
-    <button type="button" class="mi" style="background:var(--grape)" data-learn="col"><span class="em">🎨</span><b class="ar">الألوان</b><b class="en" lang="en" dir="ltr">Colors</b></button>
-    <button type="button" class="mi" style="background:var(--mint)" data-learn="shp"><span class="em">🔺⭐</span><b class="ar">الأشكال</b><b class="en" lang="en" dir="ltr">Shapes</b></button>
-    <button type="button" class="mi" style="background:#e8a33d" data-learn="ani"><span class="em">🦁🐘</span><b class="ar">الحيوانات</b><b class="en" lang="en" dir="ltr">Animals</b></button>
+  <div class="menu learn">
+    <button type="button" class="mi" data-learn="ar"><span class="em">أ ب ت</span><b class="ar">الحروف العربية</b><b class="en" lang="en" dir="ltr">Arabic Letters</b></button>
+    <button type="button" class="mi" data-learn="en"><span class="em" style="direction:ltr">A B C</span><b class="ar">الحروف الإنجليزية</b><b class="en" lang="en" dir="ltr">English Letters</b></button>
+    <button type="button" class="mi" data-learn="num"><span class="em">١ 2 ٣</span><b class="ar">الأرقام</b><b class="en" lang="en" dir="ltr">Numbers</b></button>
+    <button type="button" class="mi" data-learn="col"><span class="em">🎨</span><b class="ar">الألوان</b><b class="en" lang="en" dir="ltr">Colors</b></button>
+    <button type="button" class="mi" data-learn="shp"><span class="em">🔺⭐</span><b class="ar">الأشكال</b><b class="en" lang="en" dir="ltr">Shapes</b></button>
+    <button type="button" class="mi" data-learn="ani"><span class="em">🦁🐘</span><b class="ar">الحيوانات</b><b class="en" lang="en" dir="ltr">Animals</b></button>
   </div>
 
-  <div class="bar">
-    <span id="kLangL">لغة النشاط (الأسئلة والصوت):</span>
-    <button type="button" class="pill on" data-lang="ar" aria-pressed="true" aria-describedby="kLangL">عربي</button>
-    <button type="button" class="pill" data-lang="en" aria-pressed="false" aria-describedby="kLangL" lang="en">English</button>
-  </div>
-  <div class="sec-title">🧠 <span class="ar">نفكّر</span><span class="en" lang="en" dir="ltr">Think</span></div>
-  <div class="menu">
-    <button type="button" class="mi" style="background:#ff8c42" data-game="puzzle"><span class="em" data-art="game-puzzle-card" data-art-small>🧩</span><b class="ar">الأحجية</b><b class="en" lang="en" dir="ltr">Jigsaw</b></button>
-    <button type="button" class="mi" style="background:#4d96ff" data-game="compose"><span class="em" data-art="game-compose-card" data-art-small>🔺🟥</span><b class="ar">نركّب الشكل</b><b class="en" lang="en" dir="ltr">Build with shapes</b></button>
-    <button type="button" class="mi" style="background:#2fb4a8" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b class="ar">أين أضعها؟</b><b class="en" lang="en" dir="ltr">Where does it go?</b></button>
-    <button type="button" class="mi" style="background:#9b5de5" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b class="ar">نخطّط ثم نحرّك</b><b class="en" lang="en" dir="ltr">Plan, then move</b></button>
-    <button type="button" class="mi" style="background:#f15bb5" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b class="ar">نرتّب القصة</b><b class="en" lang="en" dir="ltr">Story order</b></button>
-    <button type="button" class="mi" style="background:#e76f51" data-game="rule"><span class="em">🔀🎨</span><b class="ar">غيّر القاعدة</b><b class="en" lang="en" dir="ltr">Change the rule</b></button>
-    <button type="button" class="mi" style="background:#3a86ff" data-game="tale"><span class="em">📚✨</span><b class="ar">ورشة القصة</b><b class="en" lang="en" dir="ltr">Story workshop</b></button>
-    <button type="button" class="mi" style="background:#2a9d8f" data-game="build" data-free><span class="em">🎨🏗️</span><b class="ar">نبني ما نحب</b><b class="en" lang="en" dir="ltr">Free build</b></button>
-  </div>
+  <section class="kh-grp c-l" data-grp="letters" aria-label="الحروف والأصوات">
+    <div class="sec-title">🔤 <span class="ar">الحروف والأصوات</span><span class="en" lang="en" dir="ltr">Letters & sounds</span><span class="kh-focus" hidden>💎 <span class="ar">تركيز</span><span class="en" lang="en">Focus</span></span></div>
+    <div class="menu">
+    <button type="button" class="mi" data-game="letters"><span class="em" id="gLetEm">أ ؟</span><b class="ar">أين الحرف؟</b><b class="en" lang="en" dir="ltr">Find the letter</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="first"><span class="em" data-art="game-first-card" data-art-small>🐇 ← أ</span><b class="ar">بأي حرف يبدأ؟</b><b class="en" lang="en" dir="ltr">First letter</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="sound"><span class="em">👂🐝</span><b class="ar">نفس الصوت</b><b class="en" lang="en" dir="ltr">Same sound</b><span class="mi-lv" aria-hidden="true"></span></button>
+    </div>
+  </section>
 
-  <div class="sec-title">🎮 <span class="ar">نلعب</span><span class="en" lang="en" dir="ltr">Play</span></div>
-  <div class="menu">
-    <button type="button" class="mi" style="background:var(--pink)" data-game="letters"><span class="em" id="gLetEm">أ ؟</span><b class="ar">أين الحرف؟</b><b class="en" lang="en" dir="ltr">Find the letter</b></button>
-    <button type="button" class="mi" style="background:var(--orange)" data-game="count"><span class="em" data-art="game-count-card" data-art-small>🍎🍎🍎</span><b class="ar">كم عددها؟</b><b class="en" lang="en" dir="ltr">How many?</b></button>
-    <button type="button" class="mi" style="background:var(--grape)" data-game="col"><span class="em" data-art="game-col-card" data-art-small>🔴🔵</span><b class="ar">أين اللون؟</b><b class="en" lang="en" dir="ltr">Find the color</b></button>
-    <button type="button" class="mi" style="background:var(--mint)" data-game="shp"><span class="em" data-art="game-shp-card" data-art-small>⭕🔺</span><b class="ar">أين الشكل؟</b><b class="en" lang="en" dir="ltr">Find the shape</b></button>
-    <button type="button" class="mi" style="background:#e8a33d" data-game="ani"><span class="em" data-art="game-ani-card" data-art-small>🐈🐄</span><b class="ar">أين الحيوان؟</b><b class="en" lang="en" dir="ltr">Find the animal</b></button>
-    <button type="button" class="mi" style="background:#ff6b6b" data-game="pat"><span class="em" data-art="game-pat-card" data-art-small>🔴🔵🔴❓</span><b class="ar">ماذا يأتي بعد؟</b><b class="en" lang="en" dir="ltr">What comes next?</b></button>
-    <button type="button" class="mi" style="background:#5c7cfa" data-game="odd"><span class="em" data-art="game-odd-card" data-art-small>🍎🍌🐈</span><b class="ar">أيّهم مختلف؟</b><b class="en" lang="en" dir="ltr">Odd one out</b></button>
-    <button type="button" class="mi" style="background:#2fb4a8" data-game="memory"><span class="em" data-art="game-memory-card" data-art-small>⭐❓⭐</span><b class="ar">لعبة الذاكرة</b><b class="en" lang="en" dir="ltr">Memory</b></button>
-    <button type="button" class="mi" style="background:#c06cf0" data-game="basket"><span class="em" data-art="game-basket-card" data-art-small>🧺🍎</span><b class="ar">السلّة الصحيحة</b><b class="en" lang="en" dir="ltr">Baskets</b></button>
-    <button type="button" class="mi" style="background:var(--sky)" data-game="first"><span class="em" data-art="game-first-card" data-art-small>🐇 ← أ</span><b class="ar">بأي حرف يبدأ؟</b><b class="en" lang="en" dir="ltr">First letter</b></button>
-  </div>
+  <section class="kh-grp c-n" data-grp="numbers" aria-label="الأرقام والعدّ">
+    <div class="sec-title">🔢 <span class="ar">الأرقام والعدّ</span><span class="en" lang="en" dir="ltr">Numbers</span><span class="kh-focus" hidden>💎 <span class="ar">تركيز</span><span class="en" lang="en">Focus</span></span></div>
+    <div class="menu">
+    <button type="button" class="mi" data-game="count"><span class="em" data-art="game-count-card" data-art-small>🍎🍎🍎</span><b class="ar">كم عددها؟</b><b class="en" lang="en" dir="ltr">How many?</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="race"><span class="em">🏁🐇</span><b class="ar">سباق الأرقام</b><b class="en" lang="en" dir="ltr">Number race</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="quick"><span class="em">👀⚃</span><b class="ar">نظرة سريعة</b><b class="en" lang="en" dir="ltr">Quick look</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="more"><span class="em">🍎⚖️</span><b class="ar">أين الأكثر؟</b><b class="en" lang="en" dir="ltr">Which has more?</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="size"><span class="em"><span style="font-size:.55em">🐘</span>🐘</span><b class="ar">من الأصغر؟</b><b class="en" lang="en" dir="ltr">Small to big</b><span class="mi-lv" aria-hidden="true"></span></button>
+    </div>
+  </section>
 
-  <div class="parent">
-    <b>👨‍👧 للأب:</b>
-    <ul style="margin:6px 0 0;padding-inline-start:20px">
-      <li>١٠ دقائق يوميًا تكفي في هذا العمر. اجلس معها في البداية وردّد الكلمات معها بصوت عالٍ.</li>
+  <section class="kh-grp c-w" data-grp="world" aria-label="العالم من حولنا">
+    <div class="sec-title">🎨 <span class="ar">العالم من حولنا</span><span class="en" lang="en" dir="ltr">Our world</span><span class="kh-focus" hidden>💎 <span class="ar">تركيز</span><span class="en" lang="en">Focus</span></span></div>
+    <div class="menu">
+    <button type="button" class="mi" data-game="col"><span class="em" data-art="game-col-card" data-art-small>🔴🔵</span><b class="ar">أين اللون؟</b><b class="en" lang="en" dir="ltr">Find the color</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="shp"><span class="em" data-art="game-shp-card" data-art-small>⭕🔺</span><b class="ar">أين الشكل؟</b><b class="en" lang="en" dir="ltr">Find the shape</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="ani"><span class="em" data-art="game-ani-card" data-art-small>🐈🐄</span><b class="ar">أين الحيوان؟</b><b class="en" lang="en" dir="ltr">Find the animal</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="basket"><span class="em" data-art="game-basket-card" data-art-small>🧺🍎</span><b class="ar">السلّة الصحيحة</b><b class="en" lang="en" dir="ltr">Baskets</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="feel"><span class="em">😄😢</span><b class="ar">كيف نشعر؟</b><b class="en" lang="en" dir="ltr">Feelings</b><span class="mi-lv" aria-hidden="true"></span></button>
+    </div>
+  </section>
+
+  <section class="kh-grp c-t" data-grp="think" aria-label="نفكّر ونبني">
+    <div class="sec-title">🧠 <span class="ar">نفكّر ونبني</span><span class="en" lang="en" dir="ltr">Think & build</span><span class="kh-focus" hidden>💎 <span class="ar">تركيز</span><span class="en" lang="en">Focus</span></span></div>
+    <div class="menu">
+    <button type="button" class="mi" data-game="puzzle"><span class="em" data-art="game-puzzle-card" data-art-small>🧩</span><b class="ar">الأحجية</b><b class="en" lang="en" dir="ltr">Jigsaw</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="compose"><span class="em" data-art="game-compose-card" data-art-small>🔺🟥</span><b class="ar">نركّب الشكل</b><b class="en" lang="en" dir="ltr">Build with shapes</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="where"><span class="em" data-art="game-where-card" data-art-small>🐱📦</span><b class="ar">أين أضعها؟</b><b class="en" lang="en" dir="ltr">Where does it go?</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="robot"><span class="em" data-art="game-robot-card" data-art-small>🤖🍎</span><b class="ar">نخطّط ثم نحرّك</b><b class="en" lang="en" dir="ltr">Plan, then move</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="story"><span class="em" data-art="game-story-card" data-art-small>🥚🐣🐥</span><b class="ar">نرتّب القصة</b><b class="en" lang="en" dir="ltr">Story order</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="rule"><span class="em">🔀🎨</span><b class="ar">غيّر القاعدة</b><b class="en" lang="en" dir="ltr">Change the rule</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="tale"><span class="em">📚✨</span><b class="ar">ورشة القصة</b><b class="en" lang="en" dir="ltr">Story workshop</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="build" data-free><span class="em">🎨🏗️</span><b class="ar">نبني ما نحب</b><b class="en" lang="en" dir="ltr">Free build</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="pat"><span class="em" data-art="game-pat-card" data-art-small>🔴🔵🔴❓</span><b class="ar">ماذا يأتي بعد؟</b><b class="en" lang="en" dir="ltr">What comes next?</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="odd"><span class="em" data-art="game-odd-card" data-art-small>🍎🍌🐈</span><b class="ar">أيّهم مختلف؟</b><b class="en" lang="en" dir="ltr">Odd one out</b><span class="mi-lv" aria-hidden="true"></span></button>
+    <button type="button" class="mi" data-game="memory"><span class="em" data-art="game-memory-card" data-art-small>⭐❓⭐</span><b class="ar">لعبة الذاكرة</b><b class="en" lang="en" dir="ltr">Memory</b><span class="mi-lv" aria-hidden="true"></span></button>
+    </div>
+  </section>
+
+  <details class="parent">
+    <summary>👨‍👩‍👧 للوالدين: كيف نستخدم هذا القسم؟</summary>
+    <ul>
+      <li>١٠ دقائق يوميًا تكفي في هذا العمر. اجلسوا معه أو معها في البداية ورددوا الكلمات معًا بصوت عالٍ.</li>
       <li>ابدأوا بقسم «نتعلّم»، ثم العبوا. لكل لعبة <span id="kLvRange"></span> مستويات، والمستوى يتغيّر تلقائيًا: يصعد بعد إجابات جيدة، وينزل إذا صعبت الأسئلة، حتى ينجح الطفل في أغلب الأسئلة دون ملل. يمكنك اختيار المستوى بنفسك في «صفحة الأب».</li>
-      <li>لا يوجد خطأ يحبطها: إذا اختارت غلط تحاول مرة ثانية. ويمكنها سحب البطاقات أو الضغط عليها ثم على السلّة.</li>
-      <li>غيّر «لغة اللعب» بين عربي وEnglish لتسمع الأسئلة باللغتين.</li>
-      <li>إعدادات الصوت ومتابعة تقدّمها في <b>«صفحة الأب»</b> من الصفحة الرئيسية.</li>
+      <li>لا يوجد خطأ يُحبط: الإجابة الخطأ تعني محاولة ثانية. ويمكن سحب البطاقات أو الضغط عليها ثم على السلّة.</li>
+      <li>غيّر «لغة اللعب» بين عربي وEnglish لسماع الأسئلة باللغتين.</li>
+      <li>إعدادات الصوت ومتابعة التقدّم في <b>«صفحة الأب»</b> من الصفحة الرئيسية.</li>
     </ul>
-  </div>
+  </details>
 </section>
 
 <!-- LEARN -->

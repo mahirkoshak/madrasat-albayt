@@ -1165,7 +1165,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-tree` | 🌳 | الشجرة | Tree |  | sheet: kg-3 | dict/data, kg/data, kg/thinking, units/_TEMPLATE, units/g3sciearth, units/g3scieco … |
 | `kg-u1f305` | 🌅 | الصباح / نصحو |  |  | sheet: kg-6 | dict/data, kg/data |
 | `kg-u1f307` | 🌇 | المساء |  |  | sheet: kg-6 | dict/data, kg/data |
-| `kg-u1f308` | 🌈 | يظهر قوس قزح |  |  | sheet: kg-4 | dict/app, dict/data, kg/app.html, kg/data |
+| `kg-u1f308` | 🌈 | يظهر قوس قزح |  |  | sheet: kg-4 | dict/app, dict/data, kg/data |
 | `kg-u1f30a` | 🌊 | تأتي موجة |  |  | sheet: kg-6 | dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4scicells, units/g4scieco |
 | `kg-u1f327` | 🌧 | ينزل المطر |  |  | sheet: kg-4 | dict/data, kg/data, unit/labs |
 | `kg-u1f330` | 🌰 | بذرة |  |  | sheet: kg-5 | dict/data, kg/data, units/g3scilife |
@@ -1186,11 +1186,11 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f3d6` | 🏖 | نذهب إلى الشاطئ |  |  | sheet: kg-6 | dict/data, kg/data, units/g3sciearth, units/g4scieco |
 | `kg-u1f3eb` | 🏫 | نذهب إلى الروضة |  |  | sheet: kg-6 | dict/data, kg/data, unit/labs |
 | `kg-u1f3f0` | 🏰 | نبني قلعة |  |  | sheet: kg-6 | dict/data, kg/data |
-| `kg-u1f407` | 🐇 | أرنب | Rabbit |  | sheet: kg-1 | core/core, kg/app.html, kg/data, units/g3scieco, units/g3scilife, units/g4scieco |
+| `kg-u1f407` | 🐇 | أرنب | Rabbit |  | sheet: kg-1 | core/core, kg/app.html, kg/data, kg/thinking3, units/g3scieco, units/g3scilife … |
 | `kg-u1f408` | 🐈 | قطة | Cat |  | sheet: kg-2 | kg/app.html, kg/data, units/g3scieco, units/g4scicells, units/g4scieco, units/g4scihealth |
 | `kg-u1f411` | 🐑 | خروف |  |  | sheet: kg-1 | dict/data, kg/data, units/g4scianimals |
 | `kg-u1f418` | 🐘 | فيل | Elephant |  | sheet: kg-2 | dict/data, kg/app.html, kg/data, units/g3scieco, units/g4scieco |
-| `kg-u1f41d` | 🐝 | نحلة |  |  | sheet: kg-2 | dict/data, kg/app, kg/data, units/g3scilife, units/g4scieco |
+| `kg-u1f41d` | 🐝 | نحلة |  |  | sheet: kg-2 | dict/data, kg/app, kg/app.html, kg/data, units/g3scilife, units/g4scieco |
 | `kg-u1f41f` | 🐟 | سمكة | Fish |  | sheet: kg-1 | dict/data, kg/data, unit/math, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `kg-u1f423` | 🐣 | تفقس البيضة / تفقس |  |  | sheet: kg-5 | dict/data, kg/app.html, kg/data, units/g3scilife, units/g4scicells |
 | `kg-u1f425` | 🐥 | كتكوت صغير / كتكوت |  |  | sheet: kg-5 | dict/data, kg/app.html, kg/data, unit/math, units/g3math5, units/g3scilife |
@@ -1290,18 +1290,18 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f3fa` | 🏺 | التربة الطينية |  |  | sheet: sci-03 | dict/data, units/g3sciearth |
 | `sci-u1f404` | 🐄 | البقرة |  |  | sheet: sci-11 | dict/data, kg/app.html, kg/data, units/g3scieco, units/g3scilife, units/g4scianimals … |
 | `sci-u1f406` | 🐆 | مهدّدة بالانقراض |  |  | sheet: sci-10 | dict/data, units/g4scieco |
-| `sci-u1f407` | 🐇 | الأرنب |  |  | sheet: sci-10 | kg/app.html, kg/data, units/g3scieco, units/g3scilife, units/g4scieco |
+| `sci-u1f407` | 🐇 | الأرنب |  |  | sheet: sci-10 | kg/app.html, kg/data, kg/thinking3, units/g3scieco, units/g3scilife, units/g4scieco |
 | `sci-u1f407-1f42a-1f98c` | 🐇🐪🦌 | آكلات الأعشاب |  |  | sheet: sci-08 | units/g4scieco |
 | `sci-u1f407-1f981-1f43b` | 🐇🦁🐻 | المستهلكات |  |  | sheet: sci-08 | units/g4scieco |
 | `sci-u1f408` | 🐈 | قطة / الحساسية |  |  | sheet: sci-15 | kg/app.html, kg/data, units/g3scieco, units/g4scicells, units/g4scieco, units/g4scihealth |
-| `sci-u1f40d` | 🐍 | ثعبان |  |  | sheet: sci-14 | dict/data, units/g3scieco, units/g4scianimals, units/g4scieco |
+| `sci-u1f40d` | 🐍 | ثعبان |  |  | sheet: sci-14 | dict/data, kg/data, units/g3scieco, units/g4scianimals, units/g4scieco |
 | `sci-u1f412` | 🐒 | القرد |  |  | sheet: sci-12 | dict/data, kg/data, units/g4scianimals, units/g4scieco |
 | `sci-u1f413` | 🐓 | الدجاجة / دجاجة |  |  | sheet: sci-13 | dict/data, units/g4scieco |
 | `sci-u1f418` | 🐘 | فيلة تقتلع الأشجار |  |  | sheet: sci-14 | dict/data, kg/app.html, kg/data, units/g3scieco, units/g4scieco |
 | `sci-u1f41a-1faa8` | 🐚🪨 | المصبوب (النموذج) |  |  | sheet: sci-04 | units/g3sciearth |
 | `sci-u1f41a-2b55` | 🐚⭕ | القالب |  |  | sheet: sci-04 | units/g3sciearth |
 | `sci-u1f41b` | 🐛 | يرقة |  |  | sheet: sci-15 | units/g3scilife, units/g4scianimals, units/g4scieco |
-| `sci-u1f41d` | 🐝 | النحلة |  |  | sheet: sci-11 | dict/data, kg/app, kg/data, units/g3scilife, units/g4scieco |
+| `sci-u1f41d` | 🐝 | النحلة |  |  | sheet: sci-11 | dict/data, kg/app, kg/app.html, kg/data, units/g3scilife, units/g4scieco |
 | `sci-u1f41f` | 🐟 | مخلوق يموت / السمكة / سمكة صغيرة |  |  | sheet: sci-03 | dict/data, kg/data, unit/math, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `sci-u1f420` | 🐠 | سمكة كبيرة |  |  | sheet: sci-15 | units/g4scieco |
 | `sci-u1f426` | 🐦 | عصفور |  |  | sheet: sci-15 | dict/data, kg/data, unit/math, units/g3math5, units/g3scieco, units/g3scilife … |
@@ -1310,7 +1310,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f42a-1f335-1f98e` | 🐪🌵🦎 | العوامل الحيوية |  |  | sheet: sci-07 | core/core, units/g4scieco |
 | `sci-u1f42a-1f42a-1f42a` | 🐪🐪🐪 | الجماعة الحيوية |  |  | sheet: sci-07 | units/g4scieco |
 | `sci-u1f42a-1f98e-1f335-1f985` | 🐪🦎🌵🦅 | المجتمع الحيوي |  |  | sheet: sci-07 | units/g4scieco |
-| `sci-u1f42d` | 🐭 | فأر |  |  | sheet: sci-10 | dict/data, units/g4scieco |
+| `sci-u1f42d` | 🐭 | فأر |  |  | sheet: sci-10 | dict/data, kg/data, units/g4scieco |
 | `sci-u1f438` | 🐸 | ضفدع الشجر |  |  | sheet: sci-12 | dict/data, kg/data, unit/math, units/g3math5, units/g3scieco, units/g3scilife … |
 | `sci-u1f43a` | 🐺 | الذئب / ذئب |  |  | sheet: sci-13 | dict/data, units/g3scieco, units/g4scieco |
 | `sci-u1f43b` | 🐻 | الدب |  |  | sheet: sci-10 | dict/data, kg/data, units/g3scieco, units/g4scieco |
@@ -1408,7 +1408,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1faa8-1f42a` | 🪨🐪 | حيّ أم غير حيّ؟ |  |  | sheet: sci-11 | units/g4scieco |
 | `sci-u1faa8-27a1-1f9e9` | 🪨➡🧩 | ١. التجوية |  |  | sheet: sci-01 |  |
 | `sci-u1fac1` | 🫁 | السل |  |  | sheet: sci-16 | dict/data, units/g4scianimals, units/g4scihealth |
-| `sci-u1fad2` | 🫒 | الزيت |  |  | sheet: sci-22 | dict/data, units/g4scihealth |
+| `sci-u1fad2` | 🫒 | الزيت |  |  | sheet: sci-22 | dict/data, kg/data, units/g4scihealth |
 | `sci-u1fad8` | 🫘 | البقوليات |  |  | sheet: sci-21 | dict/data, units/g3scilife, units/g4scianimals, units/g4scihealth |
 | `sci-u23f3` | ⏳ | زمن طويل / زمن طويل جدًا / ملايين السنين |  |  | sheet: sci-04 | dict/data, portal/portal, units/g3sciearth |
 | `sci-u2600` | ☀ | حرارة الشمس / حرارة تشقّق الصخر / الشمس |  |  | sheet: sci-02 | dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife … |
@@ -1416,7 +1416,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u2600-1f4a7-1faa8` | ☀💧🪨 | العوامل اللاحيوية |  |  | sheet: sci-07 |  |
 | `sci-u2600-1f6e2` | ☀🛢 | متجدد أم غير متجدد؟ |  |  | sheet: sci-06 |  |
 | `sci-u267b` | ♻ | إعادة التدوير |  |  | sheet: sci-10 | dict/data, units/g3sciearth, units/g3scieco, units/g4scieco |
-| `sci-u2696` | ⚖ | السمنة |  |  | sheet: sci-16 | dict/data, units/g4math5, units/g4scihealth |
+| `sci-u2696` | ⚖ | السمنة |  |  | sheet: sci-16 | dict/data, kg/app, kg/app.html, kg/thinking3, units/g4math5, units/g4scihealth |
 | `sci-u26a1` | ⚡ | حريق بسبب البرق |  |  | sheet: sci-14 | dict/data, portal/portal, unit/app, units/g3sciearth, units/g3scieco, units/g4scicells … |
 | `sci-u26a1-1f422` | ⚡🐢 | سريع أم بطيء؟ |  |  | sheet: sci-05 | units/g3sciearth |
 | `sci-u26ab` | ⚫ | الفحم |  |  | sheet: sci-04 | core/core, dict/data, units/g3sciearth |
@@ -1538,7 +1538,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `mascot-sad-soft` | 🙂 |  |  | Koko slightly sad but hopeful face, holding a little star, kind eyes, full body | 3d | unit/app |
 | `mascot-sleep` | 🌙 |  |  | Koko sleeping curled up on a small pillow, with a tiny moon nearby, full body | 3d | kg/thinking |
 | `mascot-thinking` | 🤔 |  |  | Koko tapping chin with one paw, looking up thoughtfully, a small question-mark-shaped cloud of light above (no text), full body | 3d | unit/app, unit/arcade |
-| `mascot-welcome` | 👋 |  |  | Koko waving hello with one paw, big happy smile, full body | 3d | portal/portal |
+| `mascot-welcome` | 👋 |  |  | Koko waving hello with one paw, big happy smile, full body | 3d | kg/app, portal/portal |
 
 ## Rewards / gifts shop
 
