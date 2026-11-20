@@ -171,8 +171,11 @@
   HS.ICONS['🪹'] = SV('<path d="M24 3v7" stroke="#8B5E34" stroke-width="3" stroke-linecap="round"/><path d="M10 6h28" stroke="#8B5E34" stroke-width="4" stroke-linecap="round"/><ellipse cx="24" cy="27" rx="10" ry="17" fill="#C99A5B"/><path d="M15 21q9 4 18 0M14.5 28q9.5 4 19 0M16 35q8 4 16 0" fill="none" stroke="#8B5E34" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="20" cy="19" rx="3" ry="6" fill="#fff" opacity=".25"/>');   // a cocoon (pupa)
   HS.ICONS['❔'] = HS.ICONS['❓']; HS.ICONS['▶'] = HS.ICONS['▶️'];
   const hasPic = em => !!(PIC_ALIAS[em] || PIC_ALIAS[em.replace(/️/g, '')] || HS.ICONS[em] || HS.ICONS[em.replace(/️/g, '')]);
+  /** Codex's drawn versions of the interface symbols (art phase 14): used instead of the flat placeholders once they exist */
+  const ICON_ART = {"➡️": "icon-arrow-right", "➡": "icon-arrow-right", "→": "icon-arrow-right", "⬅️": "icon-arrow-left", "⬅": "icon-arrow-left", "←": "icon-arrow-left", "⬆️": "icon-arrow-up", "⬆": "icon-arrow-up", "↑": "icon-arrow-up", "⬇️": "icon-arrow-down", "⬇": "icon-arrow-down", "↓": "icon-arrow-down", "▶️": "icon-play", "▶": "icon-play", "✅": "icon-check", "✔️": "icon-check", "✔": "icon-check", "➕": "icon-plus", "➖": "icon-minus", "✖️": "icon-times", "✖": "icon-times", "➗": "icon-divide", "❓": "icon-question", "❔": "icon-question", "🎡": "icon-wheel", "🎲": "icon-dice", "🔗": "icon-link", "⛓️": "icon-link", "⚔️": "icon-swords", "🤼": "icon-swords", "📁": "icon-folder", "🔖": "icon-bookmark", "🎗️": "icon-ribbon", "🧬": "icon-dna", "🫧": "icon-bubbles", "〰️": "icon-wave", "📎": "icon-paperclip", "➰": "icon-loop", "📊": "icon-chart", "🪸": "icon-coral", "🎙️": "icon-mic", "🎚️": "icon-sliders", "📴": "icon-phone-off", "🪹": "icon-cocoon"};
   HS.picFor = (em, areas) => {
     const pm = window.HS_PICMAP || {}, bare = em.replace(/️/g, '');
+    const ia = ICON_ART[em] || ICON_ART[bare]; if (ia) return HS.ART[ia] ? ia : null;   // a symbol: its own icon or the drawn placeholder, never a word picture
     const al = PIC_ALIAS[em] || PIC_ALIAS[bare]; if (al && HS.ART[al]) return al;
     for (const a of areas) { const m = pm[a] || {}, id = m[em] || m[bare] || HS.picId(em, a); if (id && HS.ART[id]) return id; }
     return null;

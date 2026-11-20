@@ -1492,5 +1492,266 @@
   "size": "1024x1024",
   "replaces": "🧩",
   "prompt": "Building sentences: three interlocking puzzle pieces in blue, orange and purple. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-arrow-right",
+  "file": "assets/icons/icon-arrow-right.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "➡️ ➡ →",
+  "prompt": "A chunky rounded arrow pointing to the RIGHT, on a soft blue rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-arrow-left",
+  "file": "assets/icons/icon-arrow-left.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⬅️ ⬅ ←",
+  "prompt": "A chunky rounded arrow pointing to the LEFT, on a soft blue rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-arrow-up",
+  "file": "assets/icons/icon-arrow-up.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⬆️ ⬆ ↑",
+  "prompt": "A chunky rounded arrow pointing UP, on a soft blue rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-arrow-down",
+  "file": "assets/icons/icon-arrow-down.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⬇️ ⬇ ↓",
+  "prompt": "A chunky rounded arrow pointing DOWN, on a soft blue rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-play",
+  "file": "assets/icons/icon-play.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "▶️ ▶",
+  "prompt": "A rounded triangular play button on a purple rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-check",
+  "file": "assets/icons/icon-check.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "✅ ✔️ ✔",
+  "prompt": "A thick friendly check mark on a blue rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-plus",
+  "file": "assets/icons/icon-plus.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "➕",
+  "prompt": "A thick rounded plus sign on an orange rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-minus",
+  "file": "assets/icons/icon-minus.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "➖",
+  "prompt": "A thick rounded minus sign on an orange rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-times",
+  "file": "assets/icons/icon-times.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "✖️ ✖",
+  "prompt": "A thick rounded multiplication cross (×) on a pink rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-divide",
+  "file": "assets/icons/icon-divide.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "➗",
+  "prompt": "A thick division sign (a bar with one dot above and one below) on an orange rounded-square tile. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-question",
+  "file": "assets/icons/icon-question.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "❓ ❔",
+  "prompt": "A big rounded question mark on a purple circle. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-wheel",
+  "file": "assets/icons/icon-wheel.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🎡",
+  "prompt": "A colourful spinning prize wheel with six segments (pink, gold, blue, orange, purple, sand) and a pointer. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-dice",
+  "file": "assets/icons/icon-dice.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🎲",
+  "prompt": "A white rounded dice with pink pips, slightly tilted. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-link",
+  "file": "assets/icons/icon-link.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔗 ⛓️",
+  "prompt": "Two linked chain rings, one blue and one pink. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-swords",
+  "file": "assets/icons/icon-swords.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "⚔️ 🤼",
+  "prompt": "Two crossed toy foam swords, one purple and one pink, for a friendly match. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-folder",
+  "file": "assets/icons/icon-folder.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "📁",
+  "prompt": "A yellow paper folder, slightly open. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-bookmark",
+  "file": "assets/icons/icon-bookmark.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🔖",
+  "prompt": "A pink ribbon bookmark. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-ribbon",
+  "file": "assets/icons/icon-ribbon.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🎗️",
+  "prompt": "A purple looped awareness ribbon. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-dna",
+  "file": "assets/icons/icon-dna.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🧬",
+  "prompt": "A simple DNA double helix in blue and pink with rungs. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-bubbles",
+  "file": "assets/icons/icon-bubbles.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🫧",
+  "prompt": "A cluster of three soap bubbles with shiny highlights. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-wave",
+  "file": "assets/icons/icon-wave.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "〰️",
+  "prompt": "A single wavy line like a sound or water wave, blue. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-paperclip",
+  "file": "assets/icons/icon-paperclip.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "📎",
+  "prompt": "A purple paper clip. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-loop",
+  "file": "assets/icons/icon-loop.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "➰",
+  "prompt": "A curly loop line like a looping path, purple. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-chart",
+  "file": "assets/icons/icon-chart.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "📊",
+  "prompt": "A small bar chart with three rounded bars (blue, orange, pink) on a base line. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-coral",
+  "file": "assets/icons/icon-coral.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🪸",
+  "prompt": "A pink branching coral. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-mic",
+  "file": "assets/icons/icon-mic.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🎙️",
+  "prompt": "A purple studio microphone on a small stand. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-sliders",
+  "file": "assets/icons/icon-sliders.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🎚️",
+  "prompt": "Three vertical sound sliders with round knobs at different heights. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-phone-off",
+  "file": "assets/icons/icon-phone-off.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "📴",
+  "prompt": "A dark mobile phone with a small \"off\" power symbol on its screen (symbol only, no words). Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "icon-cocoon",
+  "file": "assets/icons/icon-cocoon.webp",
+  "phase": 14,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🪹",
+  "prompt": "A butterfly pupa (chrysalis) hanging from a small twig, soft brown and gold. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
  }
 ]
