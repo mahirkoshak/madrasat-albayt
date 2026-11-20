@@ -71,7 +71,7 @@ function statements() {
 function runRounds(key, title, rounds, opt = {}) {
   stopAll(); HS.markPractice();
   const lv = opt.lv || gLv(key), total = rounds.length, combo = HS.makeCombo();
-  let i = 0, right = 0, done = 0, hearts = opt.hearts || 0;
+  let i = 0, right = 0, done = 0, hearts = opt.hearts || 0, stage0 = -1;
   M().innerHTML = `<div class="card arc">${gameHead(title)}
     <div class="meta"><span id="aPos"></span>${opt.noLv ? '' : lvPath(lv)}<span id="aSc">✅ ${ar(0)}</span></div>
     ${hearts ? '<div class="hearts" id="aHearts" data-nopic aria-live="polite"></div>' : ''}
@@ -85,6 +85,7 @@ function runRounds(key, title, rounds, opt = {}) {
   };
   const next = () => {
     if (i >= total || (opt.hearts && hearts <= 0)) return finish();
+    if (stage0 === i) return; stage0 = i;   // a round is drawn once (the auto-advance and a tap on «التالي» can both call next)
     coachOff(); $('aNext').hidden = true;
     $('aPos').textContent = `${ar(i + 1)} / ${ar(total)}`; drawHearts();
     const R = rounds[i], stage = $('aStage'); stage.innerHTML = ''; let answered = false;
@@ -95,7 +96,12 @@ function runRounds(key, title, rounds, opt = {}) {
       $('aSc').textContent = `✅ ${ar(right)}`;
       coach(ok ? `<b>${HS.one(HS_PHRASES.praise.ar)}</b>${why ? '<br>' + why : ''}` : why, ok ? 'ok' : 'no');
       // a right answer moves on by itself; after a mistake the hint stays until the child taps «التالي»
-      if (ok) later(next, why ? 1800 : 1100); else { const n = $('aNext'); n.hidden = false; n.textContent = i >= total || (opt.hearts && hearts <= 0) ? 'النتيجة ←' : 'فهمت، التالي ←'; n.focus({ preventScroll: true }); }
+      // after a right answer the praise stays ~4 s (6 s with an explanation to read), with a bar for the time left and «التالي» to skip;
+      // after a mistake the hint stays until the child taps «فهمت، التالي»
+      const n = $('aNext'), last = i >= total || (opt.hearts && hearts <= 0); n.hidden = false; n.focus({ preventScroll: true });
+      if (ok) { const ms = why ? 6000 : 4000; n.textContent = last ? 'النتيجة ←' : 'التالي ←';
+        $('uCoach').insertAdjacentHTML('beforeend', `<div class="auto" style="--d:${ms}ms"><i></i></div>`); later(next, ms); }
+      else n.textContent = last ? 'النتيجة ←' : 'فهمت، التالي ←';
     });
   };
   $('aNext').onclick = next;

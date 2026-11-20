@@ -30,9 +30,10 @@ def play(pg, good=True, shots=None):
             o.first.click(); n += 1
         if pg.locator('#app-unit #aNext:visible').count():
             if shots is not None and not shots: pg.locator('#app-unit .card.arc').screenshot(path=OUT + '/arc-hint.png'); shots.append(1)
-            pg.clock.run_for(3000); assert pg.locator('#app-unit #uCoach:visible').count(), 'hint must stay on screen until Next'
+            if not good: pg.clock.run_for(8000)   # a mistake's hint never times out
+            assert pg.locator('#app-unit #uCoach:visible').count(), 'hint must stay on screen until Next'
             pg.click('#app-unit #aNext')
-        pg.clock.run_for(2000 if good else 100); pg.wait_for_timeout(30)
+        pg.clock.run_for(100); pg.wait_for_timeout(30)
     raise AssertionError('game did not end')
 with sync_playwright() as p:
     b = p.chromium.launch(**CHROME)
@@ -57,6 +58,13 @@ with sync_playwright() as p:
         # daily challenge
         pg.evaluate(f"HS.nav.go('unit-{u}-play-daily')"); pg.wait_for_timeout(250); y0 = pg.evaluate("HS.yellow()")
         play(pg, True); print(u, 'daily rounds ok, done today:', pg.evaluate(f"HS.data('u:{u}').daily.day") is not None)
+    # after a right answer the praise stays about 4 s (then moves on by itself)
+    pg.evaluate("HS.nav.go('unit-g4scieco-play-odd')"); pg.wait_for_timeout(200)
+    pg.locator('#app-unit #aStage .opt[data-r]').first.click(); pg.clock.run_for(3000)
+    assert pg.locator('#app-unit #uCoach.ok:visible').count() and pg.evaluate("document.getElementById('aPos').textContent").startswith('١ ')
+    pg.locator('#app-unit .card.arc').screenshot(path=OUT + '/arc-praise.png')
+    pg.clock.run_for(3500); assert pg.evaluate("document.getElementById('aPos').textContent").startswith('٢ '), 'moves on after the pause'
+    print('praise stays >3 s, then the next round')
     # sort game: wrong drop -> card back in the pool, coach names the right box, that box glows
     pg.evaluate("HS.nav.go('unit-g4scieco-play-s-living')"); pg.wait_for_timeout(300)
     items = {t: bb for _, t, bb in pg.evaluate("UNITS.g4scieco.games.sort[0].items")}

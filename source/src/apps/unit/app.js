@@ -525,7 +525,7 @@ function gameSort(g) {
     const k = el.dataset.k, it = items[+k], b = +bin.dataset.b;
     ROOT.querySelectorAll('.sg-bin.hint-bin').forEach(x => x.classList.remove('hint-bin'));
     if (b === it[2]) {
-      if (!tried[k]) { first++; star(1 + combo.hit()); missOk(cid(it)); coachOff(); } else coach(`✔️ صحيح: ${it[1]} ⬅ <b>${binName(g.bins[b][0])}</b>`, 'ok');
+      if (!tried[k]) { first++; star(1 + combo.hit()); missOk(cid(it)); coach(`<b>${HS.one(HS_PHRASES.praise.ar)}</b> ${it[1]} ⬅ ${binName(g.bins[b][0])}`, 'ok'); } else coach(`✔️ صحيح: ${it[1]} ⬅ <b>${binName(g.bins[b][0])}</b>`, 'ok');
       HS.fx('ok'); $('uSc').textContent = `✅ ${ar(first)}`; put(el, b); return true;
     }
     tried[k] = (tried[k] || 0) + 1; if (tried[k] === 1) { combo.miss(); missAdd(cid(it)); }
@@ -583,8 +583,8 @@ function gameOrder(g) {
         if (++placed === set.length) {
           const ok = !mistakes; if (ok) { perfect++; star(2); missOk(oid(order[k])); } else { star(1); missAdd(oid(order[k])); }
           HS.fx(ok ? 'win' : 'ok'); fb.className = 'fb ok';
-          fb.innerHTML = `<b>${ok ? HS.one(HS_PHRASES.praise.ar) + ' بدون أي خطأ' : 'أكملتها!'}</b>${g.roles ? '<br>' + set.map((s, j) => `${s[1]}: ${g.roles[j] || ''}`).join(' · ') : ''}<div class="auto" style="--d:2600ms"><i></i></div>`;
-          k++; later(round, 2600);
+          fb.innerHTML = `<b>${ok ? HS.one(HS_PHRASES.praise.ar) + ' بدون أي خطأ' : 'أكملتها!'}</b>${g.roles ? '<br>' + set.map((s, j) => `${s[1]}: ${g.roles[j] || ''}`).join(' · ') : ''}<div class="auto" style="--d:4500ms"><i></i></div><div class="row center"><button type="button" class="btn" id="uGoOn">التالي ←</button></div>`;
+          k++; let went = false; const go = () => { if (!went) { went = true; round(); } }; $('uGoOn').onclick = go; later(go, 4500);
         }
       } else {
         mistakes++; here++; HS.fx('no'); b.classList.remove('hs-shake'); void b.offsetWidth; b.classList.add('hs-shake');

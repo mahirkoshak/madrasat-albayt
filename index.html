@@ -1546,14 +1546,16 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 #app-unit .gp .g-lv{margin-top:6px}
 #app-unit .lv-msg{font-weight:800;font-size:18px;margin:6px 0 10px;color:var(--t-ink-strong)}
 #app-unit .lv-msg.up{color:var(--t-primary-ink)}
-#app-unit .coach{display:flex;gap:12px;align-items:center;margin:14px 0;padding:14px 16px;border-radius:20px;font-size:19px;line-height:1.6;background:var(--t-blue-soft);color:var(--t-ink-strong);border:2px solid #b9dcf5}
+#app-unit .coach{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:16px 0;padding:16px 20px;border-radius:24px;font-size:23px;font-weight:700;line-height:1.65;background:var(--t-blue-soft);color:var(--t-ink-strong);border:2px solid #b9dcf5}
 #app-unit .coach[hidden]{display:none}
 #app-unit .coach.no{background:#fff3d6;border-color:#f3c969}
 #app-unit .coach.ok{background:var(--t-green-soft);border-color:#9ad86b}
-#app-unit .coach-av{flex:0 0 auto;width:56px;height:56px;display:grid;place-items:center;font-size:40px}
-#app-unit .coach-av img{width:56px;height:56px;object-fit:contain}
+#app-unit .coach-av{flex:0 0 auto;width:110px;height:110px;display:grid;place-items:center;font-size:76px}
+#app-unit .coach-av{overflow:visible}
+#app-unit .coach-av img{width:110px;height:110px;object-fit:contain;transform:scale(1.45);transform-origin:50% 60%}
 #app-unit .coach-tx{flex:1;min-width:0}
-#app-unit .coach-tx small{font-size:16px;color:var(--t-muted)}
+#app-unit .coach-tx small{font-size:19px;color:var(--t-muted)}
+#app-unit .coach .auto{flex:1 0 100%;margin-top:0}
 #app-unit .sg-bin.hint-bin{animation:hintbin 1.1s ease-in-out infinite;box-shadow:0 0 0 4px var(--t-gold)}
 @keyframes hintbin{50%{box-shadow:0 0 0 9px rgba(255,200,0,.35)}}
 #app-unit .pool button.glow,#app-unit .tile-b.glow{box-shadow:0 0 0 4px var(--t-gold);animation:hintbin 1.1s ease-in-out infinite}
@@ -1628,9 +1630,9 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 #app-unit .um-stop.l,#app-unit .um-stop.r{justify-self:stretch;flex-direction:row;text-align:right}
 #app-unit .um-ring{width:80px;height:80px;font-size:38px}
 #app-unit .um-ring img{width:58px;height:58px}
-#app-unit .coach{font-size:17px}
-#app-unit .coach-av{width:44px;height:44px}
-#app-unit .coach-av img{width:44px;height:44px}
+#app-unit .coach{font-size:20px;gap:12px;padding:14px}
+#app-unit .coach-av{width:78px;height:78px}
+#app-unit .coach-av img{width:78px;height:78px}
 #app-unit .tf-card{font-size:19px}}
 @media (prefers-reduced-motion:reduce){#app-unit .sg-bin.hint-bin,#app-unit .pool button.glow,#app-unit .tile-b.glow,#app-unit .um-stop.sticker.won .um-stk{animation:none}}
 </style>
@@ -7136,7 +7138,7 @@ function gameSort(g) {
     const k = el.dataset.k, it = items[+k], b = +bin.dataset.b;
     ROOT.querySelectorAll('.sg-bin.hint-bin').forEach(x => x.classList.remove('hint-bin'));
     if (b === it[2]) {
-      if (!tried[k]) { first++; star(1 + combo.hit()); missOk(cid(it)); coachOff(); } else coach(`✔️ صحيح: ${it[1]} ⬅ <b>${binName(g.bins[b][0])}</b>`, 'ok');
+      if (!tried[k]) { first++; star(1 + combo.hit()); missOk(cid(it)); coach(`<b>${HS.one(HS_PHRASES.praise.ar)}</b> ${it[1]} ⬅ ${binName(g.bins[b][0])}`, 'ok'); } else coach(`✔️ صحيح: ${it[1]} ⬅ <b>${binName(g.bins[b][0])}</b>`, 'ok');
       HS.fx('ok'); $('uSc').textContent = `✅ ${ar(first)}`; put(el, b); return true;
     }
     tried[k] = (tried[k] || 0) + 1; if (tried[k] === 1) { combo.miss(); missAdd(cid(it)); }
@@ -7194,8 +7196,8 @@ function gameOrder(g) {
         if (++placed === set.length) {
           const ok = !mistakes; if (ok) { perfect++; star(2); missOk(oid(order[k])); } else { star(1); missAdd(oid(order[k])); }
           HS.fx(ok ? 'win' : 'ok'); fb.className = 'fb ok';
-          fb.innerHTML = `<b>${ok ? HS.one(HS_PHRASES.praise.ar) + ' بدون أي خطأ' : 'أكملتها!'}</b>${g.roles ? '<br>' + set.map((s, j) => `${s[1]}: ${g.roles[j] || ''}`).join(' · ') : ''}<div class="auto" style="--d:2600ms"><i></i></div>`;
-          k++; later(round, 2600);
+          fb.innerHTML = `<b>${ok ? HS.one(HS_PHRASES.praise.ar) + ' بدون أي خطأ' : 'أكملتها!'}</b>${g.roles ? '<br>' + set.map((s, j) => `${s[1]}: ${g.roles[j] || ''}`).join(' · ') : ''}<div class="auto" style="--d:4500ms"><i></i></div><div class="row center"><button type="button" class="btn" id="uGoOn">التالي ←</button></div>`;
+          k++; let went = false; const go = () => { if (!went) { went = true; round(); } }; $('uGoOn').onclick = go; later(go, 4500);
         }
       } else {
         mistakes++; here++; HS.fx('no'); b.classList.remove('hs-shake'); void b.offsetWidth; b.classList.add('hs-shake');
@@ -7336,7 +7338,7 @@ function statements() {
 function runRounds(key, title, rounds, opt = {}) {
   stopAll(); HS.markPractice();
   const lv = opt.lv || gLv(key), total = rounds.length, combo = HS.makeCombo();
-  let i = 0, right = 0, done = 0, hearts = opt.hearts || 0;
+  let i = 0, right = 0, done = 0, hearts = opt.hearts || 0, stage0 = -1;
   M().innerHTML = `<div class="card arc">${gameHead(title)}
     <div class="meta"><span id="aPos"></span>${opt.noLv ? '' : lvPath(lv)}<span id="aSc">✅ ${ar(0)}</span></div>
     ${hearts ? '<div class="hearts" id="aHearts" data-nopic aria-live="polite"></div>' : ''}
@@ -7350,6 +7352,7 @@ function runRounds(key, title, rounds, opt = {}) {
   };
   const next = () => {
     if (i >= total || (opt.hearts && hearts <= 0)) return finish();
+    if (stage0 === i) return; stage0 = i;   // a round is drawn once (the auto-advance and a tap on «التالي» can both call next)
     coachOff(); $('aNext').hidden = true;
     $('aPos').textContent = `${ar(i + 1)} / ${ar(total)}`; drawHearts();
     const R = rounds[i], stage = $('aStage'); stage.innerHTML = ''; let answered = false;
@@ -7360,7 +7363,12 @@ function runRounds(key, title, rounds, opt = {}) {
       $('aSc').textContent = `✅ ${ar(right)}`;
       coach(ok ? `<b>${HS.one(HS_PHRASES.praise.ar)}</b>${why ? '<br>' + why : ''}` : why, ok ? 'ok' : 'no');
       // a right answer moves on by itself; after a mistake the hint stays until the child taps «التالي»
-      if (ok) later(next, why ? 1800 : 1100); else { const n = $('aNext'); n.hidden = false; n.textContent = i >= total || (opt.hearts && hearts <= 0) ? 'النتيجة ←' : 'فهمت، التالي ←'; n.focus({ preventScroll: true }); }
+      // after a right answer the praise stays ~4 s (6 s with an explanation to read), with a bar for the time left and «التالي» to skip;
+      // after a mistake the hint stays until the child taps «فهمت، التالي»
+      const n = $('aNext'), last = i >= total || (opt.hearts && hearts <= 0); n.hidden = false; n.focus({ preventScroll: true });
+      if (ok) { const ms = why ? 6000 : 4000; n.textContent = last ? 'النتيجة ←' : 'التالي ←';
+        $('uCoach').insertAdjacentHTML('beforeend', `<div class="auto" style="--d:${ms}ms"><i></i></div>`); later(next, ms); }
+      else n.textContent = last ? 'النتيجة ←' : 'فهمت، التالي ←';
     });
   };
   $('aNext').onclick = next;
