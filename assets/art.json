@@ -3701,6 +3701,93 @@
   "src": "assets/hero/home-hero-koko-en.webp",
   "w": 1752
  },
+ "icon-arrow-down": {
+  "src": "assets/icons/icon-arrow-down.webp"
+ },
+ "icon-arrow-left": {
+  "src": "assets/icons/icon-arrow-left.webp"
+ },
+ "icon-arrow-right": {
+  "src": "assets/icons/icon-arrow-right.webp"
+ },
+ "icon-arrow-up": {
+  "src": "assets/icons/icon-arrow-up.webp"
+ },
+ "icon-bookmark": {
+  "src": "assets/icons/icon-bookmark.webp"
+ },
+ "icon-bubbles": {
+  "src": "assets/icons/icon-bubbles.webp"
+ },
+ "icon-chart": {
+  "src": "assets/icons/icon-chart.webp"
+ },
+ "icon-check": {
+  "src": "assets/icons/icon-check.webp"
+ },
+ "icon-cocoon": {
+  "src": "assets/icons/icon-cocoon.webp"
+ },
+ "icon-coral": {
+  "src": "assets/icons/icon-coral.webp"
+ },
+ "icon-dice": {
+  "src": "assets/icons/icon-dice.webp"
+ },
+ "icon-divide": {
+  "src": "assets/icons/icon-divide.webp"
+ },
+ "icon-dna": {
+  "src": "assets/icons/icon-dna.webp"
+ },
+ "icon-folder": {
+  "src": "assets/icons/icon-folder.webp"
+ },
+ "icon-link": {
+  "src": "assets/icons/icon-link.webp"
+ },
+ "icon-loop": {
+  "src": "assets/icons/icon-loop.webp"
+ },
+ "icon-mic": {
+  "src": "assets/icons/icon-mic.webp"
+ },
+ "icon-minus": {
+  "src": "assets/icons/icon-minus.webp"
+ },
+ "icon-paperclip": {
+  "src": "assets/icons/icon-paperclip.webp"
+ },
+ "icon-phone-off": {
+  "src": "assets/icons/icon-phone-off.webp"
+ },
+ "icon-play": {
+  "src": "assets/icons/icon-play.webp"
+ },
+ "icon-plus": {
+  "src": "assets/icons/icon-plus.webp"
+ },
+ "icon-question": {
+  "src": "assets/icons/icon-question.webp"
+ },
+ "icon-ribbon": {
+  "src": "assets/icons/icon-ribbon.webp"
+ },
+ "icon-sliders": {
+  "src": "assets/icons/icon-sliders.webp"
+ },
+ "icon-swords": {
+  "src": "assets/icons/icon-swords.webp"
+ },
+ "icon-times": {
+  "src": "assets/icons/icon-times.webp"
+ },
+ "icon-wave": {
+  "src": "assets/icons/icon-wave.webp"
+ },
+ "icon-wheel": {
+  "src": "assets/icons/icon-wheel.webp"
+ },
  "kg-ball": {
   "src": "assets/content/kg/ball.webp"
  },
