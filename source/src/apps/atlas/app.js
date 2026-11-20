@@ -76,6 +76,7 @@ function show(sub) {
   const main = M(); main.dir = EN() ? 'ltr' : 'rtl'; main.lang = EN() ? 'en' : 'ar';
   if (!sub) return home();
   if (sub === 'map') return freeMap();
+  if ((m = /^map-([\w-]+)$/.exec(sub)) && item(m[1])) return freeMap(m[1]);
   if (sub === 'passport') return passport();
   if (sub === 'quick') return game(null, 'quick');
   if ((m = /^p-(\w+)$/.exec(sub)) && PK[m[1]]) return packPage(PK[m[1]]);
@@ -88,12 +89,12 @@ const MODES = () => ({ tour: L('تعرّف', 'Explore'), find: L('أين تقع�
 function chainFor(sub) {
   let m;
   if (!sub) return [];
-  if (sub === 'map') return [{ route: R(sub), title: L('الخريطة', 'Map') }];
+  if (sub === 'map' || sub.startsWith('map-')) return [{ route: R(sub), title: L('الخريطة', 'Map') }];
   if (sub === 'passport') return [{ route: R(sub), title: L('جواز سفري', 'My passport') }];
   if (sub === 'quick') return [{ route: R(sub), title: MODES().quick, focus: true }];
   if ((m = /^p-(\w+)$/.exec(sub)) && PK[m[1]]) return [{ route: R(sub), title: nm(PK[m[1]]) }];
   if ((m = /^g-(\w+)-(\w+)$/.exec(sub)) && PK[m[1]]) return [{ route: R('p-' + m[1]), title: nm(PK[m[1]]) }, { route: R(sub), title: MODES()[m[2]] || '', focus: m[2] !== 'tour' }];
-  if ((m = /^[cf]-([\w-]+)$/.exec(sub)) && item(m[1])) return [{ route: R(sub), title: nameOf(m[1]) }];
+  if ((m = /^[cf]-([\w-]+)$/.exec(sub)) && item(m[1])) { const pk = packOf(m[1]); return [...(pk ? [{ route: R('p-' + pk.id), title: nm(pk) }] : []), { route: R(sub), title: nameOf(m[1]) }]; }
   return [];
 }
 
@@ -139,23 +140,26 @@ function search(q) {
 }
 
 /* ---------- free map ---------- */
-function freeMap() {
+function freeMap(focus) {
   const st = D().mapOpt || (D().mapOpt = { caps: false, phys: false });
   M().innerHTML = `<div class="a-mapbar"><button type="button" class="a-chip ${st.caps ? 'on' : ''}" data-opt="caps" aria-pressed="${st.caps}">🏛️ ${L('العواصم', 'Capitals')}</button>
       <button type="button" class="a-chip ${st.phys ? 'on' : ''}" data-opt="phys" aria-pressed="${st.phys}">🏔️ ${L('التضاريس', 'Landforms')}</button>
       <span class="a-tip">${L('اسحب الخريطة وكبّرها، ثم المس أي مكان.', 'Drag and zoom the map, then tap any place.')}</span></div>
     <div id="aMap" class="a-map big"></div><div id="aSheet" class="a-sheet" aria-live="polite"></div>`;
   const phys = st.phys ? A.phys.map(p => p.id) : [];
-  mapApi = atlasMap($('aMap'), { caps: st.caps, phys, labels: 'auto', extra: st.phys ? A.phys.map(p => ({ t: nm(p), at: p.lab, cls: 'lp k-' + p.k, dy: p.p ? -14 : 0, min: p.k === 'ocean' ? 0 : 2.2 })) : [], tap: (id, k) => sheet(id, k) });
+  const fx = focus && item(focus), fit = fx ? (CT[focus] ? fx.bb : [fx.bb[0] - 40, fx.bb[1] - 28, fx.bb[2] + 40, fx.bb[3] + 28]) : undefined;
+  if (focus && PH[focus] && !phys.includes(focus)) phys.push(focus);
+  mapApi = atlasMap($('aMap'), { fit, caps: st.caps, phys, labels: 'auto', extra: st.phys ? A.phys.map(p => ({ t: nm(p), at: p.lab, cls: 'lp k-' + p.k, dy: p.p ? -14 : 0, min: p.k === 'ocean' ? 0 : 2.2 })) : [], tap: (id, k) => sheet(id, k) });
+  if (fx && !CT[focus]) sheet(focus, C[focus] ? 'c' : 'p', true);
 }
 let sheetId = null;
-function sheet(id, k) {
+function sheet(id, k, quiet) {
   const s = $('aSheet'); if (!s) return;
   if (sheetId) mapApi.mark(sheetId, false);
   if (!id || (k !== 'c' && k !== 'p')) { s.innerHTML = ''; sheetId = null; return; }
-  sheetId = id; mapApi.mark(id, true); HS.fx('tap'); visit(id);
+  sheetId = id; mapApi.mark(id, true); if (!quiet) HS.fx('tap'); visit(id);
   const c = C[id], f = PH[id];
-  say(lineOf(id));
+  if (!quiet) say(lineOf(id));
   s.innerHTML = c ? `<div class="a-sh">${flagImg(c, 'mid')}<div><b>${esc(nm(c))}</b><span>${L('العاصمة', 'Capital')}: ${esc(capN(c))} · ${esc(contN(c.c))}</span></div><button type="button" class="a-btn" data-go="c-${id}">${L('المزيد', 'More')}</button></div>`
     : `<div class="a-sh"><span class="a-sh-em">${kindEm(f.k)}</span><div><b>${esc(nm(f))}</b><span>${esc(kindN(f.k))}</span></div><button type="button" class="a-btn" data-go="f-${id}">${L('المزيد', 'More')}</button></div>`;
 }
@@ -163,18 +167,34 @@ const kindEm = k => ({ ocean: '🌊', sea: '🌊', peak: '🏔️', range: '⛰�
 const spk = t => `<button type="button" class="a-spk" data-say="${esc(t)}" aria-label="${L('استمع', 'Listen')}">🔊</button>`;
 const other = x => `<p class="a-en" dir="${EN() ? 'rtl' : 'ltr'}" lang="${EN() ? 'ar' : 'en'}">${esc(EN() ? x.ar : x.en)}</p>`;
 
+/* ---------- moving between places: previous / next in the same level, the level, the big map ---------- */
+const packOf = id => A.packs.find(p => p.ids.includes(id));
+const pageOf = id => (C[id] || CT[id] ? 'c-' : 'f-') + id;
+function placeNav(id, top) {
+  const pk = packOf(id); if (!pk) return '';
+  const i = pk.ids.indexOf(id), prev = pk.ids[(i - 1 + pk.ids.length) % pk.ids.length], next = pk.ids[(i + 1) % pk.ids.length];
+  if (top) return `<nav class="a-pnav top" aria-label="${L('السابق والتالي', 'Previous and next')}"><button type="button" class="a-btn ghost sm" data-go="${pageOf(prev)}" aria-label="${esc(L('السابق: ', 'Previous: ') + nameOf(prev))}">${L('→', '←')} <span>${esc(nameOf(prev))}</span></button>
+    <button type="button" class="a-chip" data-go="map-${id}" aria-label="${L('على الخريطة الكبيرة', 'On the big map')}">🗺️</button>
+    <button type="button" class="a-btn ghost sm" data-go="${pageOf(next)}" aria-label="${esc(L('التالي: ', 'Next: ') + nameOf(next))}"><span>${esc(nameOf(next))}</span> ${L('←', '→')}</button></nav>`;
+  return `<nav class="a-pnav" aria-label="${L('التنقّل بين الأماكن', 'Move between places')}">
+    <button type="button" class="a-btn ghost" data-go="${pageOf(prev)}" data-key="prev" aria-label="${esc(L('السابق: ', 'Previous: ') + nameOf(prev))}">${L('→', '←')} <span>${esc(nameOf(prev))}</span></button>
+    <span class="a-pnav-mid"><button type="button" class="a-chip" data-go="p-${pk.id}">${pk.em} ${esc(nm(pk))} <small>${N(i + 1)}/${N(pk.ids.length)}</small></button>
+      <button type="button" class="a-chip" data-go="map-${id}">🗺️ ${L('على الخريطة الكبيرة', 'On the big map')}</button></span>
+    <button type="button" class="a-btn" data-go="${pageOf(next)}" data-key="next" aria-label="${esc(L('التالي: ', 'Next: ') + nameOf(next))}"><span>${esc(nameOf(next))}</span> ${L('←', '→')}</button></nav>`;
+}
+
 /* ---------- country, continent and feature pages ---------- */
 function countryPage(c) {
   visit(c.id);
   const nb = c.nb.map(id => `<button type="button" class="a-chip" data-go="c-${id}">${flagImg(C[id], 'sm')} ${esc(nm(C[id]))}</button>`).join('');
-  M().innerHTML = `<section class="a-card">
+  M().innerHTML = `${placeNav(c.id, true)}<section class="a-card">
       <div class="a-card-top">${flagImg(c, 'huge')}<div><h1>${esc(nm(c))} ${spk(lineOf(c.id))}</h1>
         ${other(c)}${c.arab ? `<span class="a-tag">${L('دولة عربية', 'Arab country')}</span>` : ''}</div></div>
       <dl class="a-facts"><div><dt>🏛️ ${L('العاصمة', 'Capital')}</dt><dd>${esc(capN(c))}</dd></div>
         <div><dt>🌍 ${L('القارة', 'Continent')}</dt><dd><button type="button" class="a-link" data-go="c-${c.c}">${esc(contN(c.c))}</button></dd></div>
         ${c.pop ? `<div><dt>👪 ${L('السكان', 'Population')}</dt><dd>${popWords(c.pop)}</dd></div>` : ''}</dl>
       ${nb ? `<h2 class="a-h3">${L('جيرانها', 'Neighbours')}</h2><div class="a-chips">${nb}</div>` : `<p class="a-note">${L('ليس لها جيران على اليابسة: يحيط بها الماء.', 'No neighbours on land: it is surrounded by water.')}</p>`}
-    </section><div id="aMap" class="a-map"></div>`;
+    </section><div id="aMap" class="a-map"></div>${placeNav(c.id)}`;
   const nbBB = [c.bb, ...c.nb.map(id => C[id].bb)].filter(b => b[2] - b[0] < A.W * 0.5);
   const fit = c.bb[2] - c.bb[0] > A.W * 0.3 ? c.bb : bbUnion(nbBB.length > 1 ? nbBB : [c.bb]);
   mapApi = atlasMap($('aMap'), { fit, tap: (id, k) => { if (k === 'c' && id && id !== c.id) go('c-' + id); },
@@ -183,15 +203,15 @@ function countryPage(c) {
 }
 function contPage(t) {
   const list = A.countries.filter(c => c.c === t.id);
-  M().innerHTML = `<section class="a-card"><div class="a-card-top"><span class="a-big-em">🌍</span><div><h1>${esc(nm(t))} ${spk(nm(t))}</h1>${other(t)}</div></div>
+  M().innerHTML = `${placeNav(t.id, true)}<section class="a-card"><div class="a-card-top"><span class="a-big-em">🌍</span><div><h1>${esc(nm(t))} ${spk(nm(t))}</h1>${other(t)}</div></div>
     <p class="a-fact">${esc(factOf(t))}</p>${list.length ? `<h2 class="a-h3">${L('دولها', 'Its countries')} (${N(list.length)})</h2><div class="a-chips">${list.map(c => `<button type="button" class="a-chip" data-go="c-${c.id}">${flagImg(c, 'sm')} ${esc(nm(c))}</button>`).join('')}</div>` : ''}</section>
-    <div id="aMap" class="a-map"></div>`;
+    <div id="aMap" class="a-map"></div>${placeNav(t.id)}`;
   mapApi = atlasMap($('aMap'), { fit: t.bb, labels: 'auto', paint: id => contOf(id) === t.id ? 'ct-' + t.id : 'plain', tap: (id, k) => { if (k === 'c' && id) go('c-' + id); } });
 }
 function featPage(f) {
   visit(f.id);
-  M().innerHTML = `<section class="a-card"><div class="a-card-top"><span class="a-big-em">${kindEm(f.k)}</span><div><h1>${esc(nm(f))} ${spk(nm(f))}</h1>${other(f)}<span class="a-tag">${esc(kindN(f.k))}</span></div></div>
-    <p class="a-fact">${esc(factOf(f))}</p></section><div id="aMap" class="a-map"></div>`;
+  M().innerHTML = `${placeNav(f.id, true)}<section class="a-card"><div class="a-card-top"><span class="a-big-em">${kindEm(f.k)}</span><div><h1>${esc(nm(f))} ${spk(nm(f))}</h1>${other(f)}<span class="a-tag">${esc(kindN(f.k))}</span></div></div>
+    <p class="a-fact">${esc(factOf(f))}</p></section><div id="aMap" class="a-map"></div>${placeNav(f.id)}`;
   const big = f.bb[2] - f.bb[0] > A.W * 0.8;
   mapApi = atlasMap($('aMap'), { fit: big ? [0, 0, A.W, A.H] : f.bb, phys: [f.id], labels: [{ t: nm(f), at: f.lab, cls: 'lp big k-' + f.k, dy: f.p ? -14 : 0 }] });
   mapApi.mark(f.id, true);
@@ -378,6 +398,12 @@ ROOT.addEventListener('click', e => {
   if (t.id === 'aNext' && G) { G.i++; return nextQ(); }
   if (t.id === 'aNx' && G) { G.i = Math.min(G.ids.length - 1, G.i + 1); return tourStep(); }
   if (t.id === 'aPrev' && G) { G.i = Math.max(0, G.i - 1); return tourStep(); }
+});
+document.addEventListener('keydown', e => {
+  if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && ROOT.offsetParent && !/INPUT|TEXTAREA|SELECT/.test(e.target.tagName) && !e.altKey) {
+    const fwd = (e.key === 'ArrowLeft') !== EN();   // Arabic reads right to left: the left arrow goes forward
+    const b = M().querySelector(`.a-pnav [data-key=${fwd ? 'next' : 'prev'}]`); if (b) { e.preventDefault(); b.click(); }
+  }
 });
 ROOT.addEventListener('keydown', e => {
   if (e.key === 'Enter' && e.target.id === 'aQ') { const b = $('aRes').querySelector('[data-go]'); if (b) b.click(); }
