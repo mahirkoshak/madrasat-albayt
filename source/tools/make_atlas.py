@@ -129,8 +129,9 @@ def ring_area(r):
     return abs(sum(r[i][0] * r[(i + 1) % len(r)][1] - r[(i + 1) % len(r)][0] * r[i][1] for i in range(len(r)))) / 2 / Q / Q
 
 # ---------- curated facts ----------
-CONT_AR = {'AS': 'آسيا', 'AF': 'إفريقيا', 'EU': 'أوروبا', 'NA': 'أمريكا الشمالية', 'SA': 'أمريكا الجنوبية', 'OC': 'أوقيانوسيا', 'AN': 'القارة القطبية الجنوبية'}
-CONT_EN = {'AS': 'Asia', 'AF': 'Africa', 'EU': 'Europe', 'NA': 'North America', 'SA': 'South America', 'OC': 'Oceania', 'AN': 'Antarctica'}
+# continent names as the Saudi school books use them (Oceania is taught as «قارة أستراليا»)
+CONT_AR = {'AS': 'آسيا', 'AF': 'إفريقيا', 'EU': 'أوروبا', 'NA': 'أمريكا الشمالية', 'SA': 'أمريكا الجنوبية', 'OC': 'أستراليا', 'AN': 'القارة القطبية الجنوبية'}
+CONT_EN = {'AS': 'Asia', 'AF': 'Africa', 'EU': 'Europe', 'NA': 'North America', 'SA': 'South America', 'OC': 'Australia', 'AN': 'Antarctica'}
 NE_CONT = {'Asia': 'AS', 'Africa': 'AF', 'Europe': 'EU', 'North America': 'NA', 'South America': 'SA', 'Oceania': 'OC', 'Antarctica': 'AN'}
 CONT_FIX = {'MDV': 'AS', 'MUS': 'AF', 'SYC': 'AF'}
 ARAB = 'SAU ARE KWT QAT BHR OMN YEM IRQ SYR JOR LBN PSX EGY SDN LBY TUN DZA MAR MRT SOM DJI COM'.split()
@@ -177,7 +178,7 @@ PACKS = [
     ('nam', 'أمريكا الشمالية والوسطى', 'North and Central America', '🦅', ['CAN', 'USA', 'MEX', 'GTM', 'BLZ', 'SLV', 'HND', 'NIC', 'CRI', 'PAN']),
     ('car', 'جزر الكاريبي', 'The Caribbean', '🏝️', ['CUB', 'JAM', 'HTI', 'DOM', 'BHS', 'TTO', 'BRB', 'DMA', 'GRD', 'LCA', 'VCT', 'KNA', 'ATG']),
     ('sam', 'أمريكا الجنوبية', 'South America', '🦜', ['BRA', 'ARG', 'CHL', 'PER', 'COL', 'VEN', 'ECU', 'BOL', 'PRY', 'URY', 'GUY', 'SUR']),
-    ('oce', 'أوقيانوسيا', 'Oceania', '🦘', ['AUS', 'NZL', 'PNG', 'FJI', 'SLB', 'VUT', 'WSM', 'TON', 'KIR', 'TUV', 'NRU', 'FSM', 'MHL', 'PLW']),
+    ('oce', 'قارة أستراليا', 'Australia and the Pacific islands', '🦘', ['AUS', 'NZL', 'PNG', 'FJI', 'SLB', 'VUT', 'WSM', 'TON', 'KIR', 'TUV', 'NRU', 'FSM', 'MHL', 'PLW']),
 ]
 # physical features: id → (Arabic, English, kind, source); sources: marine polygon names, region polygons, peaks, rivers, lakes, or a point (lon, lat)
 PHYS = [
@@ -256,7 +257,7 @@ PHYS_PACKS = [
 FACTS = {
     'AS': 'أكبر القارات وأكثرها سكانًا، وفيها المملكة العربية السعودية.', 'AF': 'ثاني أكبر القارات، يجري فيها نهر النيل.',
     'EU': 'قارة صغيرة كثيرة الدول، شمال البحر الأبيض المتوسط.', 'NA': 'فيها كندا والولايات المتحدة والمكسيك.',
-    'SA': 'فيها غابات الأمازون وجبال الأنديز.', 'OC': 'أصغر القارات، أكبر دولها أستراليا.', 'AN': 'أبرد القارات، يغطيها الجليد ولا يسكنها أحد دائمًا.',
+    'SA': 'فيها غابات الأمازون وجبال الأنديز.', 'OC': 'أصغر القارات، تضمّ دولة أستراليا وجزر المحيط الهادئ القريبة منها، مثل نيوزيلندا. تُسمّى أيضًا أوقيانوسيا.', 'AN': 'أبرد القارات، يغطيها الجليد ولا يسكنها أحد دائمًا.',
     'o-pacific': 'أكبر المحيطات وأعمقها.', 'o-atlantic': 'ثاني أكبر المحيطات، بين الأمريكتين وأوروبا وإفريقيا.',
     'o-indian': 'ثالث أكبر المحيطات، يقع جنوب شبه الجزيرة العربية.', 'o-arctic': 'أصغر المحيطات، يغطّي الجليد معظمه.',
     'o-southern': 'يحيط بالقارة القطبية الجنوبية.', 's-red': 'يفصل شبه الجزيرة العربية عن إفريقيا، وتطلّ عليه جدة.',
@@ -289,7 +290,7 @@ KIND_AR = {'ocean': 'محيط', 'sea': 'بحر أو خليج', 'peak': 'جبل',
 FACTS_EN = {
     'AS': 'The biggest continent with the most people. Saudi Arabia is in Asia.', 'AF': 'The second biggest continent. The Nile flows through it.',
     'EU': 'A small continent with many countries, north of the Mediterranean Sea.', 'NA': 'Home to Canada, the United States and Mexico.',
-    'SA': 'Home to the Amazon rainforest and the Andes mountains.', 'OC': 'The smallest continent. Its biggest country is Australia.',
+    'SA': 'Home to the Amazon rainforest and the Andes mountains.', 'OC': 'The smallest continent: the country of Australia and the Pacific islands near it, such as New Zealand. Also called Oceania.',
     'AN': 'The coldest continent, covered in ice. Nobody lives there all year.',
     'o-pacific': 'The biggest and deepest ocean.', 'o-atlantic': 'The second biggest ocean, between the Americas and Europe and Africa.',
     'o-indian': 'The third biggest ocean, south of the Arabian Peninsula.', 'o-arctic': 'The smallest ocean, mostly covered in ice.',
