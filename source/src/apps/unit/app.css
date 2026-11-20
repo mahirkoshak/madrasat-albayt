@@ -585,3 +585,4 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 .wk .fb{min-height:1.4em;margin:4px 0 0}
 
 .m-pad .m-k.ok:nth-child(13){grid-column:1/-1}   /* the keypad with a decimal key: ✓ gets its own row */
+.wk-steps{list-style:arabic-indic}
