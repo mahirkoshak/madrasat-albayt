@@ -23,6 +23,38 @@ const PH = Object.fromEntries(A.phys.map(p => [p.id, p]));
 const CT = Object.fromEntries(A.conts.map(c => [c.id, c]));
 const PK = Object.fromEntries(A.packs.map(p => [p.id, p]));
 const NS = 'atlas';
+
+/* pictures in place of emoji: every emoji the atlas shows that has a fitting drawing is swapped for it after each
+   render (the emoji stays as the fallback). Picked by hand so a symbol never turns into an unrelated word picture. */
+const EM_ART = {
+  '🐪': 'dict-camel', '🌿': 'dict-olive', '🏜️': 'dict-desert', '⛰️': 'dict-mountain', '🏯': 'dict-palace',
+  '🌴': 'dict-palm-tree', '🦁': 'dict-lion', '🦓': 'dict-zebra', '🏰': 'dict-castle', '❄️': 'dict-snow',
+  '🦅': 'dict-eagle', '🏝️': 'dict-island', '🦜': 'dict-parrot', '🦘': 'dict-kangaroo', '🐘': 'dict-elephant',
+  '🌍': 'dict-world', '🌊': 'dict-sea', '🏔️': 'dict-mountain', '🏞️': 'dict-river', '💧': 'dict-lake',
+  '💦': 'dict-waterfall', '🌋': 'dict-volcano', '🏛️': 'dict-capital', '👪': 'dict-people', '🗺️': 'dict-map',
+  '🎯': 'goal-flag', '🛂': 'dict-travel', '👀': 'dict-look', '🔤': 'dict-alphabet', '🚩': 'goal-flag',
+  '🎉': 'mascot-cheer', '🏆': 'badge-champion-earned', '🔁': 'dict-repeat', '🔍': 'dict-find', '👍': 'dict-good',
+  '✋': 'dict-hand', '📍': 'dict-map',
+};
+const EM_RE = new RegExp(Object.keys(EM_ART).sort((a, b) => b.length - a.length).map(e => e.replace(/️/g, '') + '️?').join('|'), 'gu');
+const emArt = em => { const id = EM_ART[em] || EM_ART[em + '️'] || EM_ART[em.replace(/️/g, '')]; return HS.hasArt(id) ? id : null; };
+function swapEmoji(root) {
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), todo = [];
+  for (let n; (n = w.nextNode());) {
+    const v = n.nodeValue; if (!v || !/\p{Extended_Pictographic}/u.test(v)) continue;
+    const el = n.parentElement; if (!el || el.closest('svg,input,textarea,option,title,[data-nopic],.a-spk,.a-map')) continue;
+    EM_RE.lastIndex = 0; if (!EM_RE.test(v)) continue;
+    todo.push(n);
+  }
+  todo.forEach(n => {
+    const v = n.nodeValue, alone = v.trim().length <= 3 && !/[\p{L}\p{N}]/u.test(v);
+    const html = HS.esc(v).replace(EM_RE, em => { const id = emArt(em); return id ? HS.art(id, { small: true, eager: true, fb: em, cls: 'hs-pic a-pic' + (alone ? '' : ' inl') }) : em; });
+    const t = document.createElement('template'); t.innerHTML = html; n.replaceWith(t.content);
+  });
+}
+let swapQ = 0;
+new MutationObserver(() => { if (!swapQ) swapQ = requestAnimationFrame(() => { swapQ = 0; swapEmoji(ROOT); }); }).observe(ROOT, { childList: true, subtree: true, characterData: true });
+
 const D = () => { const d = HS.data(NS); d.seen = d.seen || {}; d.lang = d.lang || 'ar'; return d; };
 
 /* ---------- language ---------- */

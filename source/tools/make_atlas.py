@@ -169,7 +169,7 @@ PACKS = [
     ('wasia', 'غرب آسيا ووسطها', 'West and Central Asia', '⛰️', ['TUR', 'IRN', 'AFG', 'PAK', 'CYP', 'GEO', 'ARM', 'AZE', 'KAZ', 'UZB', 'TKM', 'KGZ', 'TJK']),
     ('sasia', 'جنوب آسيا وشرقها', 'South and East Asia', '🏯', ['IND', 'BGD', 'NPL', 'BTN', 'LKA', 'MDV', 'CHN', 'MNG', 'JPN', 'KOR', 'PRK']),
     ('seasia', 'جنوب شرق آسيا', 'Southeast Asia', '🌴', ['MMR', 'THA', 'LAO', 'KHM', 'VNM', 'MYS', 'SGP', 'IDN', 'BRN', 'PHL', 'TLS']),
-    ('afw', 'غرب إفريقيا', 'West Africa', '🥁', ['SEN', 'GMB', 'GNB', 'GIN', 'SLE', 'LBR', 'CIV', 'GHA', 'TGO', 'BEN', 'NGA', 'NER', 'MLI', 'BFA', 'CPV']),
+    ('afw', 'غرب إفريقيا', 'West Africa', '🐘', ['SEN', 'GMB', 'GNB', 'GIN', 'SLE', 'LBR', 'CIV', 'GHA', 'TGO', 'BEN', 'NGA', 'NER', 'MLI', 'BFA', 'CPV']),
     ('afc', 'وسط إفريقيا وشرقها', 'Central and East Africa', '🦁', ['TCD', 'CMR', 'CAF', 'GNQ', 'GAB', 'COG', 'COD', 'STP', 'SDS', 'ETH', 'ERI', 'KEN', 'UGA', 'RWA', 'BDI', 'TZA', 'SYC']),
     ('afs', 'جنوب إفريقيا', 'Southern Africa', '🦓', ['AGO', 'ZMB', 'MWI', 'MOZ', 'ZWE', 'BWA', 'NAM', 'ZAF', 'LSO', 'SWZ', 'MDG', 'MUS']),
     ('euw', 'غرب أوروبا', 'Western Europe', '🏰', ['GBR', 'IRL', 'FRA', 'ESP', 'PRT', 'BEL', 'NLD', 'LUX', 'DEU', 'CHE', 'AUT', 'ITA', 'MCO', 'LIE', 'AND', 'SMR', 'VAT', 'MLT']),

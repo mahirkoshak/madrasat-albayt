@@ -1153,7 +1153,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-ice-cream` | 🍦 | آيس كريم بارد | Ice cream |  | sheet: kg-2 | core/core, dict/data, kg/data |
 | `kg-juice` | 🧃 |  | Juice |  | sheet: kg-2 | dict/data, kg/data |
 | `kg-kite` | 🪁 |  | Kite |  | sheet: kg-3 | dict/data, kg/data |
-| `kg-lion` | 🦁 | أسد | Lion |  | sheet: kg-3 | atlas/data, core/core, dict/data, kg/app.html, kg/data, portal/catalog … |
+| `kg-lion` | 🦁 | أسد | Lion |  | sheet: kg-3 | atlas/app, atlas/data, core/core, dict/data, kg/app.html, kg/data … |
 | `kg-milk` | 🥛 | الحليب |  |  | sheet: kg-4 | dict/data, kg/data, units/g4scihealth |
 | `kg-monkey` | 🐒 | قرد |  |  | sheet: kg-3 | dict/data, kg/data, units/g4scianimals, units/g4scieco |
 | `kg-moon` | 🌙 | الليل / ننام | Moon |  | sheet: kg-3 | core/core, dict/data, kg/data, units/g3scieco, units/g4ar2, units/g4scihealth … |
@@ -1185,16 +1185,16 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f392` | 🎒 | تذهب إلى الروضة |  |  | sheet: kg-5 | dict/data, kg/data, portal/catalog, portal/portal |
 | `kg-u1f3d6` | 🏖 | نذهب إلى الشاطئ |  |  | sheet: kg-6 | dict/data, kg/data, units/g3sciearth, units/g4scieco, units/g5sciearth |
 | `kg-u1f3eb` | 🏫 | نذهب إلى الروضة |  |  | sheet: kg-6 | dict/data, kg/data, unit/labs |
-| `kg-u1f3f0` | 🏰 | نبني قلعة |  |  | sheet: kg-6 | atlas/data, dict/data, kg/data |
+| `kg-u1f3f0` | 🏰 | نبني قلعة |  |  | sheet: kg-6 | atlas/app, atlas/data, dict/data, kg/data |
 | `kg-u1f407` | 🐇 | أرنب | Rabbit |  | sheet: kg-1 | core/core, kg/app.html, kg/data, kg/thinking3, units/g3scieco, units/g3scilife … |
 | `kg-u1f408` | 🐈 | قطة | Cat |  | sheet: kg-2 | kg/app.html, kg/data, units/g3scieco, units/g4scicells, units/g4scieco, units/g4scihealth … |
 | `kg-u1f411` | 🐑 | خروف |  |  | sheet: kg-1 | dict/data, kg/data, units/g4scianimals, units/g5scilife |
-| `kg-u1f418` | 🐘 | فيل | Elephant |  | sheet: kg-2 | dict/data, kg/app.html, kg/data, units/g3scieco, units/g4scieco |
+| `kg-u1f418` | 🐘 | فيل | Elephant |  | sheet: kg-2 | atlas/app, atlas/data, dict/data, kg/app.html, kg/data, units/g3scieco … |
 | `kg-u1f41d` | 🐝 | نحلة |  |  | sheet: kg-2 | dict/data, kg/app, kg/app.html, kg/data, units/g3scilife, units/g4scieco … |
 | `kg-u1f41f` | 🐟 | سمكة | Fish |  | sheet: kg-1 | dict/data, kg/data, unit/math, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `kg-u1f423` | 🐣 | تفقس البيضة / تفقس |  |  | sheet: kg-5 | dict/data, kg/app.html, kg/data, units/g3scilife, units/g4scicells, units/g5scilife |
 | `kg-u1f425` | 🐥 | كتكوت صغير / كتكوت |  |  | sheet: kg-5 | dict/data, kg/app.html, kg/data, unit/math, units/g3math5, units/g3scilife |
-| `kg-u1f42a` | 🐪 | جمل |  |  | sheet: kg-1 | atlas/data, core/core, dict/data, kg/data, units/_TEMPLATE, units/g3scieco … |
+| `kg-u1f42a` | 🐪 | جمل |  |  | sheet: kg-1 | atlas/app, atlas/data, core/core, dict/data, kg/data, units/_TEMPLATE … |
 | `kg-u1f430` | 🐰 | الأرنب |  |  | sheet: kg-4 | core/core, dict/data, kg/data |
 | `kg-u1f431` | 🐱 | القطة |  |  | sheet: kg-4 | dict/data, kg/app.html, kg/data |
 | `kg-u1f434` | 🐴 | حصان |  |  | sheet: kg-1 | core/core, dict/data, kg/data |
@@ -1211,7 +1211,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f6dd` | 🛝 | نلعب |  |  | sheet: kg-6 | dict/data, kg/data |
 | `kg-u1f95a` | 🥚 | بيضة / بيض وطحين / الدجاجة تبيض |  |  | sheet: kg-5 | dict/data, kg/app.html, kg/data, unit/math, units/g3scilife, units/g4scianimals … |
 | `kg-u1f963` | 🥣 | نخلطها |  |  | sheet: kg-5 | dict/data, kg/data |
-| `kg-u1f985` | 🦅 | صقر |  |  | sheet: kg-1 | atlas/data, dict/data, kg/data, unit/labs, units/g3scieco, units/g4scianimals … |
+| `kg-u1f985` | 🦅 | صقر |  |  | sheet: kg-1 | atlas/app, atlas/data, dict/data, kg/data, unit/labs, units/g3scieco … |
 | `kg-u1f986` | 🦆 | بطة |  |  | sheet: kg-1 | dict/data, kg/data, units/g4scianimals, units/g5scieco |
 | `kg-u1f98a` | 🦊 | ثعلب |  |  | sheet: kg-1 | core/core, dict/data, kg/data, units/g5scieco |
 | `kg-u1f992` | 🦒 | زرافة |  |  | sheet: kg-1 | dict/data, kg/data, units/g4scieco |
@@ -1229,7 +1229,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-van` | 🚐 |  | Van |  | sheet: kg-3 | dict/data, kg/data |
 | `kg-watermelon` | 🍉 |  | Watermelon |  | sheet: kg-3 | dict/data, kg/data |
 | `kg-yo-yo` | 🪀 |  | Yo-yo |  | sheet: kg-3 | kg/data |
-| `kg-zebra` | 🦓 |  | Zebra |  | sheet: kg-3 | atlas/data, dict/data, kg/data, units/g4scieco |
+| `kg-zebra` | 🦓 |  | Zebra |  | sheet: kg-3 | atlas/app, atlas/data, dict/data, kg/data, units/g4scieco |
 
 ## Science (Grade 3-4 units: plants, animals, ecosystems, matter, weather, space, body…)
 
@@ -1237,7 +1237,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 |---|---|---|---|---|---|---|
 | `sci-u1f30a` | 🌊 | الأمواج / سيل جارف / موج يجرف الشاطئ |  |  | sheet: sci-02 | atlas/app, atlas/data, dict/data, kg/data, units/g3sciearth, units/g3scieco … |
 | `sci-u1f30a-1f420` | 🌊🐠 | مياه مالحة |  |  | sheet: sci-08 | units/g4scieco |
-| `sci-u1f30b` | 🌋 | تغيرات الأرض الفجائية / البركان / ثوران بركان |  |  | sheet: sci-01 | dict/data, portal/catalog, units/g3sciearth, units/g4scieco, units/g5sciearth, units/g5scieco … |
+| `sci-u1f30b` | 🌋 | تغيرات الأرض الفجائية / البركان / ثوران بركان |  |  | sheet: sci-01 | atlas/app, dict/data, portal/catalog, units/g3sciearth, units/g4scieco, units/g5sciearth … |
 | `sci-u1f30b-1f9ab-1f3d7` | 🌋🦫🏗 | من سبّب التغيّر؟ |  |  | sheet: sci-13 | units/g4scieco |
 | `sci-u1f30d` | 🌍 | رحلة النظام البيئي |  |  | sheet: sci-05 | atlas/app, atlas/data, dict/data, portal/catalog, units/g3sciearth, units/g3scieco … |
 | `sci-u1f30e` | 🌎 | الأرض ومواردها |  |  | sheet: sci-01 | dict/data, portal/catalog, units/g3sciearth |
@@ -1251,13 +1251,13 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f331-1f407-1f344` | 🌱🐇🍄 | منتج أم مستهلك أم محلّل؟ |  |  | sheet: sci-12 | units/g4scieco |
 | `sci-u1f331-1f7eb` | 🌱🟫 | ١. الطبقة السطحية |  |  | sheet: sci-03 | units/g3sciearth |
 | `sci-u1f333` | 🌳 | جذور النباتات / جذور تشقّق صخرة / الأشجار |  |  | sheet: sci-02 | dict/data, kg/data, kg/thinking, units/_TEMPLATE, units/g3sciearth, units/g3scieco … |
-| `sci-u1f334` | 🌴 | النخلة / التمر |  |  | sheet: sci-12 | atlas/data, dict/data, kg/data, units/g3scilife, units/g4scicells, units/g4scieco … |
+| `sci-u1f334` | 🌴 | النخلة / التمر |  |  | sheet: sci-12 | atlas/app, atlas/data, dict/data, kg/data, units/g3scilife, units/g4scicells … |
 | `sci-u1f334-1f99c` | 🌴🦜 | الغابة المطيرة |  |  | sheet: sci-07 | units/g4scieco |
 | `sci-u1f335` | 🌵 | الصبّار |  |  | sheet: sci-11 | core/core, kg/data, units/_TEMPLATE, units/g3scieco, units/g4scieco, units/g5scieco … |
 | `sci-u1f33b` | 🌻 | التربة الدبالية (الزراعية) / الأفضل للزراعة |  |  | sheet: sci-03 | dict/data, kg/data, units/g3sciearth, units/g3scilife, units/g4scicells |
 | `sci-u1f33e` | 🌾 | القمح / قمح / حشائش |  |  | sheet: sci-12 | dict/data, units/g3scieco, units/g4ar1, units/g4scieco, units/g5scieco, units/g5scilife |
 | `sci-u1f33e-1f981` | 🌾🦁 | المنطقة العشبية |  |  | sheet: sci-07 | units/g4scieco |
-| `sci-u1f33f` | 🌿 | عشب / العشب / طحالب |  |  | sheet: sci-09 | atlas/data, dict/data, portal/catalog, units/g3scieco, units/g3scilife, units/g4ar1 … |
+| `sci-u1f33f` | 🌿 | عشب / العشب / طحالب |  |  | sheet: sci-09 | atlas/app, atlas/data, dict/data, portal/catalog, units/g3scieco, units/g3scilife … |
 | `sci-u1f33f-1f997-1f985` | 🌿🦗🦅 | رتّب السلسلة الغذائية |  |  | sheet: sci-14 | units/g4scieco |
 | `sci-u1f342` | 🍂 | دبال / غنية بالدبال / تختلط بالدبال |  |  | sheet: sci-03 | dict/data, units/g3sciearth, units/g3scieco, units/g4scieco, units/g5scieco |
 | `sci-u1f342-1f98c` | 🍂🦌 | الغابة المعتدلة |  |  | sheet: sci-07 | units/g4scieco |
@@ -1297,7 +1297,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f40d` | 🐍 | ثعبان |  |  | sheet: sci-14 | dict/data, kg/data, units/g3scieco, units/g4scianimals, units/g4scieco, units/g5scieco … |
 | `sci-u1f412` | 🐒 | القرد |  |  | sheet: sci-12 | dict/data, kg/data, units/g4scianimals, units/g4scieco |
 | `sci-u1f413` | 🐓 | الدجاجة / دجاجة |  |  | sheet: sci-13 | dict/data, units/g4scieco |
-| `sci-u1f418` | 🐘 | فيلة تقتلع الأشجار |  |  | sheet: sci-14 | dict/data, kg/app.html, kg/data, units/g3scieco, units/g4scieco |
+| `sci-u1f418` | 🐘 | فيلة تقتلع الأشجار |  |  | sheet: sci-14 | atlas/app, atlas/data, dict/data, kg/app.html, kg/data, units/g3scieco … |
 | `sci-u1f41a-1faa8` | 🐚🪨 | المصبوب (النموذج) |  |  | sheet: sci-04 | units/g3sciearth |
 | `sci-u1f41a-2b55` | 🐚⭕ | القالب |  |  | sheet: sci-04 | units/g3sciearth |
 | `sci-u1f41b` | 🐛 | يرقة |  |  | sheet: sci-15 | units/g3scilife, units/g4scianimals, units/g4scieco, units/g5scilife |
@@ -1306,7 +1306,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f420` | 🐠 | سمكة كبيرة |  |  | sheet: sci-15 | units/g4scieco |
 | `sci-u1f426` | 🐦 | عصفور |  |  | sheet: sci-15 | dict/data, kg/data, unit/math, units/g3math5, units/g3scieco, units/g3scilife … |
 | `sci-u1f427` | 🐧 | البطريق |  |  | sheet: sci-12 | dict/data, units/g4scieco |
-| `sci-u1f42a` | 🐪 | المخلوق الحي / الجمل |  |  | sheet: sci-07 | atlas/data, core/core, dict/data, kg/data, units/_TEMPLATE, units/g3scieco … |
+| `sci-u1f42a` | 🐪 | المخلوق الحي / الجمل |  |  | sheet: sci-07 | atlas/app, atlas/data, core/core, dict/data, kg/data, units/_TEMPLATE … |
 | `sci-u1f42a-1f335-1f98e` | 🐪🌵🦎 | العوامل الحيوية |  |  | sheet: sci-07 | core/core, units/g4scieco |
 | `sci-u1f42a-1f42a-1f42a` | 🐪🐪🐪 | الجماعة الحيوية |  |  | sheet: sci-07 | units/g4scieco |
 | `sci-u1f42a-1f98e-1f335-1f985` | 🐪🦎🌵🦅 | المجتمع الحيوي |  |  | sheet: sci-07 | units/g4scieco |
@@ -1364,21 +1364,21 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f95b` | 🥛 | الحليب ومشتقاته |  |  | sheet: sci-22 | dict/data, kg/data, units/g4scihealth |
 | `sci-u1f964` | 🥤 | الإكثار من المشروبات الغازية |  |  | sheet: sci-21 | dict/data, unit/math, units/g4scihealth |
 | `sci-u1f966` | 🥦 | الخضروات والفواكه |  |  | sheet: sci-22 | dict/data, kg/data, units/g4scihealth |
-| `sci-u1f981` | 🦁 | الأسد / أسد |  |  | sheet: sci-13 | atlas/data, core/core, dict/data, kg/app.html, kg/data, portal/catalog … |
+| `sci-u1f981` | 🦁 | الأسد / أسد |  |  | sheet: sci-13 | atlas/app, atlas/data, core/core, dict/data, kg/app.html, kg/data … |
 | `sci-u1f981-1f42a-1f43b` | 🦁🐪🐻 | ماذا يأكل؟ |  |  | sheet: sci-13 | units/g4scieco |
 | `sci-u1f981-1f985-1f43a` | 🦁🦅🐺 | آكلات اللحوم |  |  | sheet: sci-08 | units/g4scieco |
 | `sci-u1f982` | 🦂 | العقرب |  |  | sheet: sci-11 | dict/data, units/g4scieco |
-| `sci-u1f985` | 🦅 | صقر / الصقر |  |  | sheet: sci-09 | atlas/data, dict/data, kg/data, unit/labs, units/g3scieco, units/g4scianimals … |
+| `sci-u1f985` | 🦅 | صقر / الصقر |  |  | sheet: sci-09 | atlas/app, atlas/data, dict/data, kg/data, unit/labs, units/g3scieco … |
 | `sci-u1f985-27a1` | 🦅➡ | تنتقل |  |  | sheet: sci-09 | units/g4scieco |
 | `sci-u1f988` | 🦈 | القرش / قرش |  |  | sheet: sci-13 | dict/data, units/g4scianimals, units/g4scieco, units/g5scieco |
 | `sci-u1f98c` | 🦌 | الغزال |  |  | sheet: sci-13 | dict/data, units/g4scieco |
 | `sci-u1f98e` | 🦎 | سحلية / الضبّ |  |  | sheet: sci-09 | core/core, dict/data, units/_TEMPLATE, units/g3scilife, units/g4scianimals, units/g4scicells … |
 | `sci-u1f990` | 🦐 | مخلوقات بحرية صغيرة تموت |  |  | sheet: sci-06 | units/g3sciearth, units/g4scianimals |
 | `sci-u1f992` | 🦒 | الزرافة |  |  | sheet: sci-13 | dict/data, kg/data, units/g4scieco |
-| `sci-u1f993` | 🦓 | حمار وحشي |  |  | sheet: sci-15 | atlas/data, dict/data, kg/data, units/g4scieco |
+| `sci-u1f993` | 🦓 | حمار وحشي |  |  | sheet: sci-15 | atlas/app, atlas/data, dict/data, kg/data, units/g4scieco |
 | `sci-u1f995-1f9a4` | 🦕🦤 | منقرضة |  |  | sheet: sci-10 | units/g4scieco |
 | `sci-u1f997` | 🦗 | جرادة / جراد يأكل المزارع |  |  | sheet: sci-09 | units/g3scieco, units/g4scianimals, units/g4scieco, units/g5scilife |
-| `sci-u1f99c` | 🦜 | الببغاء |  |  | sheet: sci-12 | atlas/data, dict/data, units/g4scieco |
+| `sci-u1f99c` | 🦜 | الببغاء |  |  | sheet: sci-12 | atlas/app, atlas/data, dict/data, units/g4scieco |
 | `sci-u1f99f-1f400` | 🦟🐀 | النواقل |  |  | sheet: sci-17 | units/g4scihealth |
 | `sci-u1f99f-1f7e0` | 🦟🟠 | أحفورة كاملة |  |  | sheet: sci-04 | units/g3sciearth |
 | `sci-u1f9a0` | 🦠 | البكتيريا / الفيروسات / كورونا |  |  | sheet: sci-11 | dict/data, portal/catalog, unit/labs, units/g3scieco, units/g4scicells, units/g4scieco … |
@@ -1426,7 +1426,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u2705` | ✅ | تبقى وتتكيّف |  |  | sheet: sci-09 | core/core, dict/app, dict/data, dict/spell, kg/thinking2, portal/i18n … |
 | `sci-u2705-274c` | ✅❌ | عادة صحية أم لا؟ |  |  | sheet: sci-20 | core/core, units/g4scihealth |
 | `sci-u2728` | ✨ | حبيباتها ناعمة جدًا |  |  | sheet: sci-06 | core/core, dict/data, kg/app.html, units/g3math5, units/g3sciearth, units/g3scieco |
-| `sci-u2744` | ❄ | تبرد وتتصلّب |  |  | sheet: sci-06 | atlas/data, dict/data, units/g3sciearth, units/g4scieco, units/g5sciearth |
+| `sci-u2744` | ❄ | تبرد وتتصلّب |  |  | sheet: sci-06 | atlas/app, atlas/data, dict/data, units/g3sciearth, units/g4scieco, units/g5sciearth |
 | `sci-u2744-1f43b-200d-2744` | ❄🐻‍❄ | التندرا (المنطقة القطبية) |  |  | sheet: sci-07 |  |
 | `sci-u2764` | ❤ | أمراض القلب |  |  | sheet: sci-20 | dict/data, kg/data, unit/arcade, units/g4scianimals, units/g4scicells, units/g4scihealth … |
 
@@ -1531,7 +1531,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | id | emoji | Arabic | English | drawn / meaning | notes | used in |
 |---|---|---|---|---|---|---|
 | `mascot-celebrate` | 🏆 |  |  | Koko holding a small gold trophy above its head, confetti around, full body | 3d | dict/spell, unit/app |
-| `mascot-cheer` | 🎉 |  |  | Koko jumping with both arms up, eyes closed with joy, full body | 3d | unit/app, unit/arcade, unit/labs, unit/math |
+| `mascot-cheer` | 🎉 |  |  | Koko jumping with both arms up, eyes closed with joy, full body | 3d | atlas/app, unit/app, unit/arcade, unit/labs, unit/math |
 | `mascot-encourage` | 💪 |  |  | Koko giving a gentle thumbs up with a warm reassuring smile, full body | 3d | unit/app, unit/arcade |
 | `mascot-point` | 👆 |  |  | Koko pointing to the left with one paw, friendly helpful expression, full body | 3d | portal/portal, unit/app |
 | `mascot-read` | 📖 |  |  | Koko sitting and reading an open book, happy and focused, full body | 3d | dict/app |
@@ -1682,7 +1682,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 |---|---|---|---|---|---|---|
 | `app-icon` |  |  |  | App icon: Koko peeking out of an open book shaped like a little house, rounded-square composition, cheerful | 3d |  |
 | `atlas-cover` | 🗺️ |  |  | World atlas: a friendly globe on a stand next to an unrolled map with a compass and a small paper plane | 2d | portal/catalog |
-| `badge-champion-earned` | 🏆 |  |  | A round gold medal with a soft ribbon in blue and gold, a raised trophy shape in the centre, little sparkles around it (no text) | 3d | core/core, unit/app |
+| `badge-champion-earned` | 🏆 |  |  | A round gold medal with a soft ribbon in blue and gold, a raised trophy shape in the centre, little sparkles around it (no text) | 3d | atlas/app, core/core, unit/app |
 | `badge-lesson-earned` |  |  |  | A round gold medal with a soft blue and gold ribbon, an open book with a check-mark shape made of light raised in the centre, small sparkles (no text) | 3d |  |
 | `badge-stars100-earned` |  |  |  | A round gold medal with a soft blue and gold ribbon, a big star surrounded by small stars raised in the centre, small sparkles (no text) | 3d | unit/app |
 | `badge-streak3-earned` |  |  |  | A round gold medal with a soft blue and gold ribbon, a friendly flame raised in the centre, small sparkles (no text) | 3d | unit/app |
@@ -1702,7 +1702,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `bg-who` |  |  |  | bg who |  | portal/portal |
 | `coupon` | 🎟 |  |  | A cheerful paper ticket coupon in gold and orange with a star punched in it (no text) | 3d | core/core, core/sync, portal/i18n, portal/portal, portal/portal.css |
 | `gift-box` | 🎁 |  |  | A wrapped gift box in pink and gold with a big bow, slightly bouncing | 3d | core/core, portal/portal |
-| `goal-flag` | 🎯 |  |  | A small flag on a pole on top of a little hill, goal reached | 3d | core/core |
+| `goal-flag` | 🎯 |  |  | A small flag on a pole on top of a little hill, goal reached | 3d | atlas/app, core/core |
 | `home-hero-koko` |  |  |  | home hero koko |  | portal/portal |
 | `home-hero-koko-en` |  |  |  | home hero koko en |  | portal/portal |
 | `icon-arrow-down` |  |  |  | A chunky rounded arrow pointing DOWN, on a soft blue rounded-square tile | sheet: icons-1 | core/core |
