@@ -1676,5 +1676,5 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `home-hero-koko` |  |  |  | home hero koko |  | portal/portal |
 | `home-hero-koko-en` |  |  |  | home hero koko en |  | portal/portal |
 | `logo-mark` |  |  |  | App icon symbol for a home learning site: a small cosy house whose roof is an open book, with a gold star above the chimney, inside a rounded square of cream | 2d | portal/portal |
-| `star` | ⭐ |  |  | A single plump golden star with a soft glow and a tiny shine, the currency of a kids game | 3d | atlas/app, atlas/app.css, atlas/map, core/core, core/sync, dict/app … |
+| `star` | ⭐ |  |  | A single plump golden star with a soft glow and a tiny shine, the currency of a kids game | 3d | atlas/app, atlas/app.css, atlas/data, atlas/map, core/core, core/sync … |
 | `star-burst` | 🌟 |  |  | A burst of several plump golden stars flying outward with sparkles | 3d | core/core |

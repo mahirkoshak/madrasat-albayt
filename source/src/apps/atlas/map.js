@@ -45,10 +45,16 @@ function atlasMap(host, o = {}) {
     box.querySelector('.am-load').remove();
     svg = el('svg', { class: 'am-svg', viewBox: `0 0 ${GW} ${GH}`, role: 'img', 'aria-label': 'خريطة العالم', preserveAspectRatio: 'xMidYMid meet' });
     box.insertBefore(svg, box.firstChild);
-    el('rect', { class: 'am-sea', x: -GW, y: -GH, width: GW * 3, height: GH * 3, 'data-k': 'w' }, svg);
+    const G = window.ATLAS_GEO;
+    const defs = el('defs', {}, svg), uid = 'am' + Math.random().toString(36).slice(2, 7);
+    defs.innerHTML = `<linearGradient id="${uid}o" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fd0f7"/><stop offset=".5" stop-color="#b9def9"/><stop offset="1" stop-color="#9fd0f7"/></linearGradient>`;
+    el('rect', { class: 'am-out', x: -GW, y: -GH, width: GW * 3, height: GH * 3, 'data-k': 'w' }, svg);
+    el('path', { class: 'am-sea', d: G.edge, fill: `url(#${uid}o)`, 'data-k': 'w' }, svg);
+    el('path', { class: 'am-grat', d: G.grat }, svg);
+    el('path', { class: 'am-halo', d: G.coast }, svg);
     const gW = el('g', { class: 'am-water' }, svg), gC = el('g', { class: 'am-ct' }, svg);
     gPh = el('g', { class: 'am-ph' }, svg); gMk = el('g', { class: 'am-mk' }, svg); gLb = el('g', { class: 'am-lb', 'aria-hidden': 'true' }, svg);
-    const G = window.ATLAS_GEO;
+    el('path', { class: 'am-edge', d: G.edge }, gC.parentNode.insertBefore(el('g', {}), gPh));
     // water features that sit under the land (oceans, seas) and lakes on top
     (o.phys || []).forEach(id => { const f = PH[id]; if (!f || !G.p[id]) return;
       if (f.k === 'ocean' || f.k === 'sea') api.els[id] = el('path', { d: G.p[id], class: 'am-w', 'data-id': id, 'data-k': 'p' }, gW); });
@@ -126,10 +132,10 @@ function atlasMap(host, o = {}) {
     if (labels === 'auto') {
       const v = api.view;
       A.countries.forEach(c => { if (c.tiny) return; const bw = (c.bb[2] - c.bb[0]) / k;
-        if (bw > 46 && c.lab[0] > v.x && c.lab[0] < v.x + v.w && c.lab[1] > v.y && c.lab[1] < v.y + v.h) list.push({ t: c.ar, at: c.lab, cls: 'lc' }); });
+        if (bw > 46 && c.lab[0] > v.x && c.lab[0] < v.x + v.w && c.lab[1] > v.y && c.lab[1] < v.y + v.h) list.push({ t: nm(c), at: c.lab, cls: 'lc' }); });
       if (list.length > 70) list = list.slice(0, 70);
       (o.extra || []).forEach(l => { if (!l.min || api.view.w < GW / l.min) list.push(l); });
-    } else if (Array.isArray(labels)) list = labels;
+    } else if (Array.isArray(labels)) list = labels.filter(l => !l.w || l.w / k > 26);   // small countries get their name once zoomed in
     list.forEach(l => { const t = el('text', { x: l.at[0], y: l.at[1] + (l.dy || 0) * k, class: 'am-t ' + (l.cls || ''), 'text-anchor': 'middle', 'dominant-baseline': 'middle' }, gLb); t.textContent = l.t; });
   }
   impl.label = list => { labels = list; drawLabels(api.view.w / size().w); };

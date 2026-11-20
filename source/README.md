@@ -210,7 +210,10 @@ Counts on menu cards (lessons, terms, games, questions) are computed from the da
 - Ways to explore: free map (drag, pinch, tap; capitals and landforms layers), search, country of the day, country/feature
   pages with neighbours, a guided tour per level, games (what is it called? · where is it? · capitals · flags), a quick
   mixed review of due items (HS.srs, namespace `atlas`), and a passport whose map fills with colour.
-- `map.js` is the SVG map: loads `assets/atlas/world.js` on first use, Equal Earth projection, 974×474 map units.
+- `map.js` is the SVG map: loads `assets/atlas/world.js` on first use. Robinson projection (853×433 map units), 1:50m borders
+  at 1/12-unit precision, an ocean gradient, a 30° grid and a soft coastal halo (from the 1:110m coastline).
+- Two languages: «عربي» / «English» switch on the atlas home page (saved per child in `HS.data('atlas').lang`); English pages
+  are left to right, with English names, capitals, facts and voice. Progress is shared between the languages.
 - 🎨 «ألواني» (#colors): each child picks one of 16 card colours and one of 8 page themes (`html[data-theme]` in theme.css).
 
 ## Home and profiles

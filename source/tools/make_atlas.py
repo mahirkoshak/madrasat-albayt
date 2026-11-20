@@ -27,24 +27,28 @@ OUT_JS = os.path.join(SRC, 'src', 'apps', 'atlas', 'data.js')
 OUT_GEO = os.path.join(SRC, 'dist', 'assets', 'atlas')
 OUT_FLAGS = os.path.join(SRC, 'dist', 'assets', 'flags')
 
-# ---------- projection: Equal Earth ----------
-A1, A2, A3, A4 = 1.340264, -0.081106, 0.000893, 0.003796
-M = math.sqrt(3) / 2
-S = 180.0           # scale: the map is about 980 x 476 units
-Q = 5               # grid: 1/Q unit
+# ---------- projection: Robinson (the familiar classroom world map: shapes and sizes both look right) ----------
+RX = [1.0000, 0.9986, 0.9954, 0.9900, 0.9822, 0.9730, 0.9600, 0.9427, 0.9216, 0.8962, 0.8679, 0.8350, 0.7986, 0.7597, 0.7186, 0.6732, 0.6213, 0.5722, 0.5322]
+RY = [0.0000, 0.0620, 0.1240, 0.1860, 0.2480, 0.3100, 0.3720, 0.4340, 0.4958, 0.5571, 0.6176, 0.6769, 0.7346, 0.7903, 0.8435, 0.8936, 0.9394, 0.9761, 1.0000]
+S = 160.0           # scale: the map is about 1000 x 500 units
+Q = 12              # grid: 1/Q unit (about 0.08 units: sharp even when zoomed in on Bahrain or Lebanon)
+def _interp(tab, a):
+    i = min(int(a / 5), 17); f = (a - i * 5) / 5
+    # cubic (Catmull-Rom) interpolation through the table, so coastlines bend smoothly
+    p0, p1, p2, p3 = tab[max(i - 1, 0)], tab[i], tab[i + 1], tab[min(i + 2, 18)]
+    return p1 + 0.5 * f * (p2 - p0 + f * (2 * p0 - 5 * p1 + 4 * p2 - p3 + f * (3 * (p1 - p2) + p3 - p0)))
 def proj(lon, lat):
-    lam, phi = math.radians(lon), math.radians(lat)
-    th = math.asin(M * math.sin(phi)); t2 = th * th; t6 = t2 * t2 * t2
-    x = 2 * math.sqrt(3) * lam * math.cos(th) / (3 * (9 * A4 * t6 * t2 + 7 * A3 * t6 + 3 * A2 * t2 + A1))
-    y = th * (A4 * t6 * t2 + A3 * t6 + A2 * t2 + A1)
-    return x * S, -y * S
+    a = min(abs(lat), 90.0)
+    x = 0.8487 * _interp(RX, a) * math.radians(lon) * S
+    y = 1.3523 * _interp(RY, a) * (1 if lat >= 0 else -1) * S
+    return x, -y
 X0, Y0 = proj(-180, 0)[0], proj(0, 90)[1]     # shift so the map starts at 0,0
 W, H = round(-2 * X0), round(-2 * Y0)
 def P(lon, lat):
     x, y = proj(lon, lat)
     return (round((x - X0) * Q), round((y - Y0) * Q))   # integer grid units
 def pt(lon, lat):
-    x, y = P(lon, lat); return [round(x / Q, 1), round(y / Q, 1)]
+    x, y = P(lon, lat); return [round(x / Q, 2), round(y / Q, 2)]
 
 def rings_of(geom):
     if geom['type'] == 'Polygon': return [r for r in geom['coordinates']]
@@ -84,6 +88,14 @@ def union(rings):
         if len(ring) >= 3: out.append(ring)
     return out
 
+def graticule():
+    """faint latitude/longitude lines every 30 degrees, and the outline of the world"""
+    out = []
+    for lat in range(-60, 61, 30): out.append(line_path([(lon, lat) for lon in range(-180, 181, 5)]))
+    for lon in range(-150, 151, 30): out.append(line_path([(lon, lat) for lat in range(-90, 91, 5)]))
+    edge = [(-180, lat) for lat in range(-90, 91, 5)] + [(180, lat) for lat in range(90, -91, -5)]
+    return ''.join(out), path([[P(lon, lat) for lon, lat in edge]])
+
 def path(rings):
     """SVG path with relative moves; numbers in 1/Q units divided back to map units with one decimal"""
     s = []
@@ -96,7 +108,7 @@ def path(rings):
     return ''.join(s)
 def fmt(v):
     v = v / Q
-    t = ('%.1f' % v).rstrip('0').rstrip('.')
+    t = ('%.2f' % v).rstrip('0').rstrip('.')
     if t.startswith('0.'): t = t[1:]
     elif t.startswith('-0.'): t = '-' + t[2:]
     return t or '0'
@@ -274,6 +286,40 @@ FACTS = {
 }
 KIND_AR = {'ocean': 'محيط', 'sea': 'بحر أو خليج', 'peak': 'جبل', 'range': 'سلسلة جبال', 'river': 'نهر', 'lake': 'بحيرة', 'desert': 'صحراء', 'land': 'أرض وجزيرة', 'falls': 'شلالات', 'cont': 'قارة'}
 
+FACTS_EN = {
+    'AS': 'The biggest continent with the most people. Saudi Arabia is in Asia.', 'AF': 'The second biggest continent. The Nile flows through it.',
+    'EU': 'A small continent with many countries, north of the Mediterranean Sea.', 'NA': 'Home to Canada, the United States and Mexico.',
+    'SA': 'Home to the Amazon rainforest and the Andes mountains.', 'OC': 'The smallest continent. Its biggest country is Australia.',
+    'AN': 'The coldest continent, covered in ice. Nobody lives there all year.',
+    'o-pacific': 'The biggest and deepest ocean.', 'o-atlantic': 'The second biggest ocean, between the Americas and Europe and Africa.',
+    'o-indian': 'The third biggest ocean, south of the Arabian Peninsula.', 'o-arctic': 'The smallest ocean, mostly covered in ice.',
+    'o-southern': 'The ocean around Antarctica.', 's-red': 'It separates the Arabian Peninsula from Africa. Jeddah is on its coast.',
+    's-gulf': 'Saudi Arabia is on its western shore, with Kuwait, Qatar, Bahrain and the UAE.', 's-arabian': 'Part of the Indian Ocean, south of the Arabian Peninsula.',
+    's-med': 'A sea between Europe, Africa and Asia.', 's-black': 'A sea between Europe and Asia. Turkey is on its coast.',
+    's-caspian': 'The biggest closed body of water in the world. It does not reach an ocean.', 's-caribbean': 'Surrounded by the Caribbean islands and Central America.',
+    's-scs': 'A sea south of China, surrounded by Southeast Asian countries.', 's-bengal': 'East of India. It is part of the Indian Ocean.',
+    's-mexico': 'Between Mexico and the United States.', 's-japan': 'Between Japan and Korea.', 's-coral': 'Northeast of Australia. The Great Barrier Reef is here.',
+    's-hudson': 'A big bay in northern Canada.', 'm-everest': 'The highest mountain in the world, in the Himalayas.', 'm-k2': 'The second highest mountain in the world.',
+    'm-kilimanjaro': 'The highest mountain in Africa, in Tanzania.', 'm-elbrus': 'The highest mountain in Europe, in the Caucasus.', 'm-blanc': 'The highest peak in the Alps.',
+    'm-denali': 'The highest mountain in North America, in Alaska.', 'm-aconcagua': 'The highest mountain in South America, in the Andes.',
+    'm-kosciuszko': 'The highest mountain in Australia.', 'm-vinson': 'The highest mountain in Antarctica.', 'm-sawda': 'The highest peak in Saudi Arabia, near Abha.',
+    'r-himalaya': 'The highest mountain range in the world, with Mount Everest.', 'r-alps': 'Europe\'s best-known mountains, with snowy peaks.',
+    'r-andes': 'The longest mountain range on land, in western South America.', 'r-rocky': 'A long mountain range in western North America.',
+    'r-ural': 'They mark the border between Europe and Asia.', 'r-caucasus': 'Between the Black Sea and the Caspian Sea.', 'r-sarawat': 'Mountains in western Saudi Arabia, along the Red Sea.',
+    'v-nile': 'The longest river in the world. It flows through Africa into the Mediterranean Sea.', 'v-amazon': 'The river with the most water in the world, in South America.',
+    'v-mississippi': 'One of the biggest rivers in North America. It flows into the Gulf of Mexico.', 'v-yangtze': 'The longest river in Asia, in China.',
+    'v-congo': 'A big river in central Africa. It crosses the Equator twice.', 'v-danube': 'It flows through many European countries into the Black Sea.',
+    'v-mekong': 'It flows through Southeast Asia.', 'v-euphrates': 'It starts in Turkey and flows through Syria and Iraq.',
+    'v-tigris': 'It starts in Turkey and flows through Iraq. It joins the Euphrates to form the Shatt al-Arab.', 'l-victoria': 'The biggest lake in Africa. The White Nile starts here.',
+    'l-baikal': 'The deepest lake in the world, in Russia.', 'l-superior': 'The biggest of the Great Lakes in North America.',
+    'l-titicaca': 'A lake high in the Andes, between Peru and Bolivia.', 'l-tanganyika': 'A long, deep lake in East Africa.',
+    'd-sahara': 'The biggest hot desert in the world, in North Africa.', 'd-gobi': 'A cold desert in China and Mongolia.',
+    'd-rub': 'The biggest continuous sand desert in the world, in southeastern Saudi Arabia.', 'd-nafud': 'A red sand desert in northern Saudi Arabia.',
+    'p-arabia': 'The biggest peninsula in the world.', 'p-greenland': 'The biggest island in the world.', 'p-madagascar': 'A big island east of Africa.',
+    'f-niagara': 'Famous waterfalls between Canada and the United States.', 'f-angel': 'The highest waterfall in the world, in Venezuela.',
+}
+KIND_EN = {'ocean': 'Ocean', 'sea': 'Sea or gulf', 'peak': 'Mountain', 'range': 'Mountain range', 'river': 'River', 'lake': 'Lake', 'desert': 'Desert', 'land': 'Land and island', 'falls': 'Waterfall', 'cont': 'Continent'}
+
 def load(name): return json.load(open(os.path.join(NE, name), encoding='utf-8'))['features']
 
 def main():
@@ -314,7 +360,11 @@ def main():
         sovereign = q['ADMIN'] == q['SOVEREIGNT'] and q['TYPE'] in ('Sovereign country', 'Country', 'Sovereignty')
         taught = (sovereign or gid in EXTRA) and gid not in NOT_TAUGHT and cont != 'AN'
         if taught and gid not in taught_ids: print('NOT IN A PACK:', gid, q['NAME'])
-        bb = bbox(rings); area = sum(ring_area(r) for r in rings)
+        area = sum(ring_area(r) for r in rings)
+        # the box of the main land only (not French Guiana for France, Alaska and Hawaii for the USA, Svalbard for Norway)
+        big = max(rings, key=ring_area); bc = (sum(x for x, _ in big) / len(big), sum(y for _, y in big) / len(big))
+        near = [r for r in rings if ring_area(r) >= ring_area(big) * 0.03 and math.hypot(sum(x for x, _ in r) / len(r) - bc[0], sum(y for _, y in r) / len(r) - bc[1]) <= 60 * Q]
+        bb = bbox(near or [big])
         lab = pt(q['LABEL_X'], q['LABEL_Y'])
         shapes[gid] = path(rings)
         if not taught:
@@ -331,13 +381,18 @@ def main():
         if gid == 'KOS': iso = 'xk'
         flag = os.path.isfile(os.path.join(FLAGS, iso + '.svg'))
         if not flag: print('NO FLAG:', gid, iso)
-        countries.append({'id': gid, 'ar': NAME_FIX.get(gid, q['NAME_AR']), 'en': EN_FIX.get(gid, q['NAME_LONG'] if len(q['NAME_LONG']) < 24 else q['NAME']),
+        countries.append({'id': gid, 'ar': NAME_FIX.get(gid, q['NAME_AR']), 'en': EN_FIX.get(gid, q['NAME']),
                           'c': cont, 'arab': gid in ARAB, 'cap': cap, 'flag': iso if flag else '', 'lab': lab, 'bb': bb,
                           'tiny': area < 6, 'pop': q['POP_EST'], 'mc': q['MAPCOLOR7']})
     for gid, a, e, cont, iso, lon, lat, cap in MICRO:
+        if any(c['id'] == gid for c in countries): continue
         x, y = pt(lon, lat); ca, ce, clon, clat = cap
         countries.append({'id': gid, 'ar': a, 'en': e, 'c': cont, 'arab': False, 'cap': {'ar': ca, 'en': ce, 'p': pt(clon, clat)}, 'flag': iso,
                           'lab': [x, y], 'bb': [x - 1, y - 1, x + 1, y + 1], 'tiny': True, 'pop': 0, 'mc': 1})
+    # coastline: all land joined (shared borders cancel out), drawn as a halo and a crisp outline
+    # (from the 1:110m countries: it only draws the soft halo under the land, so it can be lighter)
+    all_rings = [r for f in load('ne_110m_admin_0_countries.geojson') for r in (qring(x) for x in rings_of(f['geometry'])) if r]
+    coast = path(union(all_rings))
     # neighbours: countries whose rings share an edge
     edge_owner, nb = {}, {}
     for f in feats:
@@ -385,17 +440,17 @@ def main():
             pshape[pid] = path_open(pts); item['bb'] = bbox([pts]); mid = pts[len(pts) // 2]; item['lab'] = [round(mid[0] / Q, 1), round(mid[1] / Q, 1)]
         elif src == 'point':
             item['p'] = pt(*ref); item['lab'] = item['p']; x, y = item['p']; item['bb'] = [x - 8, y - 8, x + 8, y + 8]
-        item['fact'] = FACTS.get(pid, ''); phys.append(item)
+        item['fact'] = FACTS.get(pid, ''); item['fact_en'] = FACTS_EN.get(pid, ''); phys.append(item)
     # continents: label points and bounding boxes from the countries
     conts = []
     for k in ['AS', 'AF', 'EU', 'NA', 'SA', 'OC', 'AN']:
         ids = [c['id'] for c in countries if c['c'] == k] if k != 'AN' else ['ATA']
-        if k == 'AN': bb = [0, 440, W, H]
+        if k == 'AN': bb = [0, pt(0, -62)[1], W, H]
         else:
             bbs = [c['bb'] for c in countries if c['c'] == k and c['id'] not in ('RUS', 'USA', 'FJI', 'KIR', 'NZL')] or [[0, 0, W, H]]
             bb = [min(b[0] for b in bbs), min(b[1] for b in bbs), max(b[2] for b in bbs), max(b[3] for b in bbs)]
         lab = {'AS': (90, 45), 'AF': (20, 5), 'EU': (20, 52), 'NA': (-100, 45), 'SA': (-60, -15), 'OC': (135, -25), 'AN': (0, -80)}[k]
-        conts.append({'id': k, 'ar': CONT_AR[k], 'en': CONT_EN[k], 'lab': pt(*lab), 'bb': bb, 'fact': FACTS[k]})
+        conts.append({'id': k, 'ar': CONT_AR[k], 'en': CONT_EN[k], 'lab': pt(*lab), 'bb': bb, 'fact': FACTS[k], 'fact_en': FACTS_EN[k]})
     packs = [{'id': i, 'ar': a, 'en': e, 'em': em, 'ids': ids, 'kind': 'country'} for i, a, e, em, ids in PACKS]
     ppacks = []
     for i, a, e, em, kinds in PHYS_PACKS:
@@ -406,8 +461,8 @@ def main():
     countries.sort(key=lambda c: c['ar'])
     # ---- write the app data (small) and the map shapes (big, loaded when needed)
     import hashlib
-    gv = hashlib.md5(json.dumps({'c': shapes, 'p': pshape}, separators=(',', ':')).encode()).hexdigest()[:8]
-    data = {'W': W, 'H': H, 'v': gv, 'kinds': KIND_AR, 'landc': land, 'countries': countries, 'conts': conts, 'phys': phys, 'packs': ppacks[:1] + packs + ppacks[1:]}
+    gv = hashlib.md5(json.dumps({'c': shapes, 'p': pshape, 'q': Q, 's': S}, separators=(',', ':')).encode()).hexdigest()[:8]
+    data = {'W': W, 'H': H, 'v': gv, 'kinds': KIND_AR, 'kinds_en': KIND_EN, 'landc': land, 'countries': countries, 'conts': conts, 'phys': phys, 'packs': ppacks[:1] + packs + ppacks[1:]}
     with open(OUT_JS, 'w', encoding='utf-8') as fo:
         fo.write('/* generated by tools/make_atlas.py from Natural Earth (public domain) – do not edit by hand */\nAPPDATA.atlas = ')
         fo.write(json.dumps(data, ensure_ascii=False, separators=(',', ':'))); fo.write(';\n')
@@ -417,11 +472,16 @@ def main():
   ['أحسنت', 'رائع', 'ممتاز', 'ما اسم هذه الدولة؟', 'ما اسم هذه القارة؟', 'ما اسم هذا المكان؟', 'أي دولة هذا علمها؟'].forEach(add);
   A.countries.forEach(c => { const line = c.ar + '، عاصمتها ' + (c.cap ? c.cap.ar : ''); add(line); add('أين ' + c.ar + '؟'); add('ما عاصمة ' + c.ar + '؟'); add('ما علم ' + c.ar + '؟'); });
   A.conts.concat(A.phys).forEach(x => { add(x.ar); add('أين ' + x.ar + '؟'); });
+  const en = t => out.push([t, 'en']);
+  ['Well done!', 'Great!', 'Excellent!', 'What is this country called?', 'What is this continent called?', 'What is this place called?', 'Which country has this flag?'].forEach(en);
+  A.countries.forEach(c => { en(c.en + '. The capital is ' + (c.cap ? c.cap.en : '') + '.'); en('Where is ' + c.en + '?'); en('What is the capital of ' + c.en + '?'); en('Which flag belongs to ' + c.en + '?'); });
+  A.conts.concat(A.phys).forEach(x => { en(x.en); en('Where is ' + x.en + '?'); });
   return out;
 };
 ''')
     os.makedirs(OUT_GEO, exist_ok=True)
-    geo = {'c': shapes, 'p': pshape}
+    grat, edge = graticule()
+    geo = {'c': shapes, 'p': pshape, 'coast': coast, 'grat': grat, 'edge': edge}
     with open(os.path.join(OUT_GEO, 'world.js'), 'w', encoding='utf-8') as fo:
         fo.write('window.ATLAS_GEO=' + json.dumps(geo, separators=(',', ':')) + ';\n')
     os.makedirs(OUT_FLAGS, exist_ok=True)

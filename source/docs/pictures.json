@@ -17157,7 +17157,7 @@
 "draw": "A single plump golden star with a soft glow and a tiny shine, the currency of a kids game",
 "style": "3d",
 "extra": "",
-"used": "atlas/app, atlas/app.css, atlas/map, core/core, core/sync, dict/app …"
+"used": "atlas/app, atlas/app.css, atlas/data, atlas/map, core/core, core/sync …"
 },
 {
 "id": "star-burst",
