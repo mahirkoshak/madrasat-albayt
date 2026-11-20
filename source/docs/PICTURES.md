@@ -1166,11 +1166,11 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f305` | 🌅 | الصباح / نصحو |  |  | sheet: kg-6 | dict/data, kg/data |
 | `kg-u1f307` | 🌇 | المساء |  |  | sheet: kg-6 | dict/data, kg/data |
 | `kg-u1f308` | 🌈 | يظهر قوس قزح |  |  | sheet: kg-4 | dict/app, dict/data, kg/data |
-| `kg-u1f30a` | 🌊 | تأتي موجة |  |  | sheet: kg-6 | dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4scicells, units/g4scieco |
-| `kg-u1f327` | 🌧 | ينزل المطر |  |  | sheet: kg-4 | dict/data, kg/data, unit/labs |
+| `kg-u1f30a` | 🌊 | تأتي موجة |  |  | sheet: kg-6 | dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4scicells, units/g4scieco … |
+| `kg-u1f327` | 🌧 | ينزل المطر |  |  | sheet: kg-4 | dict/data, kg/data, unit/labs, units/g5scieco |
 | `kg-u1f330` | 🌰 | بذرة |  |  | sheet: kg-5 | dict/data, kg/data, units/g3scilife, units/g5scilife |
 | `kg-u1f331` | 🌱 | تنبت |  |  | sheet: kg-5 | dict/data, kg/data, portal/catalog, portal/portal, unit/labs, unit/math … |
-| `kg-u1f338` | 🌸 | زهرة على الشجرة |  |  | sheet: kg-5 | dict/data, kg/data, unit/math, units/g3scilife, units/g4scicells, units/g5scilife |
+| `kg-u1f338` | 🌸 | زهرة على الشجرة |  |  | sheet: kg-5 | dict/data, kg/data, unit/math, units/g3scilife, units/g4scicells, units/g5scieco … |
 | `kg-u1f339` | 🌹 | وردة / الوردة |  |  | sheet: kg-2 | dict/data, kg/data |
 | `kg-u1f33b` | 🌻 | تصبح زهرة / زهرة كبيرة |  |  | sheet: kg-5 | dict/data, kg/data, units/g3sciearth, units/g3scilife, units/g4scicells |
 | `kg-u1f33d` | 🌽 | ذرة |  |  | sheet: kg-1 | dict/data, kg/data |
@@ -1200,7 +1200,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f434` | 🐴 | حصان |  |  | sheet: kg-1 | core/core, dict/data, kg/data |
 | `kg-u1f436` | 🐶 | الكلب |  |  | sheet: kg-4 | dict/data, kg/data |
 | `kg-u1f438` | 🐸 | ضفدع / الضفدع |  |  | sheet: kg-1 | dict/data, kg/data, unit/math, units/g3math5, units/g3scieco, units/g3scilife … |
-| `kg-u1f43b` | 🐻 | دب / الدب |  |  | sheet: kg-1 | dict/data, kg/data, units/g3scieco, units/g4scieco |
+| `kg-u1f43b` | 🐻 | دب / الدب |  |  | sheet: kg-1 | dict/data, kg/data, units/g3scieco, units/g4scieco, units/g5scieco |
 | `kg-u1f4a7` | 💧 | ذاب الآيس كريم / نسقيها بالماء / نسقيها |  |  | sheet: kg-4 | dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `kg-u1f4d6` | 📖 | تسمع قصة |  |  | sheet: kg-5 | core/core, dict/app, dict/data, dict/spell, kg/app, kg/data … |
 | `kg-u1f525` | 🔥 | نخبزها |  |  | sheet: kg-5 | core/core, dict/data, dict/spell, kg/data, portal/i18n, portal/portal … |
@@ -1212,15 +1212,15 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f95a` | 🥚 | بيضة / بيض وطحين / الدجاجة تبيض |  |  | sheet: kg-5 | dict/data, kg/app.html, kg/data, unit/math, units/g3scilife, units/g4scianimals … |
 | `kg-u1f963` | 🥣 | نخلطها |  |  | sheet: kg-5 | dict/data, kg/data |
 | `kg-u1f985` | 🦅 | صقر |  |  | sheet: kg-1 | dict/data, kg/data, unit/labs, units/g3scieco, units/g4scianimals, units/g4scieco |
-| `kg-u1f986` | 🦆 | بطة |  |  | sheet: kg-1 | dict/data, kg/data, units/g4scianimals |
-| `kg-u1f98a` | 🦊 | ثعلب |  |  | sheet: kg-1 | core/core, dict/data, kg/data |
+| `kg-u1f986` | 🦆 | بطة |  |  | sheet: kg-1 | dict/data, kg/data, units/g4scianimals, units/g5scieco |
+| `kg-u1f98a` | 🦊 | ثعلب |  |  | sheet: kg-1 | core/core, dict/data, kg/data, units/g5scieco |
 | `kg-u1f992` | 🦒 | زرافة |  |  | sheet: kg-1 | dict/data, kg/data, units/g4scieco |
 | `kg-u1f9f8` | 🧸 | دبدوب جميل |  |  | sheet: kg-5 | core/core, dict/data, kg/data, kg/thinking, portal/catalog, portal/portal … |
 | `kg-u1faa3` | 🪣 | نملأ الدلو رملًا |  |  | sheet: kg-6 | dict/data, kg/data |
 | `kg-u1faa5` | 🪥 | تفرّش أسنانها |  |  | sheet: kg-5 | dict/data, kg/data, units/g4scihealth |
 | `kg-u1fab6` | 🪶 | ريشة |  |  | sheet: kg-1 | dict/data, kg/data |
 | `kg-u2600` | ☀ | شمس / الشمس حارة | Sun |  | sheet: kg-1 | dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife … |
-| `kg-u2601` | ☁ | غيمة / الغيمة / غيوم في السماء |  |  | sheet: kg-2 | dict/data, kg/data, portal/portal |
+| `kg-u2601` | ☁ | غيمة / الغيمة / غيوم في السماء |  |  | sheet: kg-2 | dict/data, kg/data, portal/portal, units/g5scieco |
 | `kg-u26bd` | ⚽ | كرة / الكرة | Ball |  | sheet: kg-2 | dict/data, kg/data, unit/math, units/g4scicells, units/g4scihealth |
 | `kg-u2708` | ✈ | طائرة |  |  | sheet: kg-1 | dict/data, kg/data |
 | `kg-u2709` | ✉ | ظرف |  |  | sheet: kg-2 | kg/data |
@@ -1235,11 +1235,11 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 
 | id | emoji | Arabic | English | drawn / meaning | notes | used in |
 |---|---|---|---|---|---|---|
-| `sci-u1f30a` | 🌊 | الأمواج / سيل جارف / موج يجرف الشاطئ |  |  | sheet: sci-02 | dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4scicells, units/g4scieco |
+| `sci-u1f30a` | 🌊 | الأمواج / سيل جارف / موج يجرف الشاطئ |  |  | sheet: sci-02 | dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4scicells, units/g4scieco … |
 | `sci-u1f30a-1f420` | 🌊🐠 | مياه مالحة |  |  | sheet: sci-08 | units/g4scieco |
-| `sci-u1f30b` | 🌋 | تغيرات الأرض الفجائية / البركان / ثوران بركان |  |  | sheet: sci-01 | dict/data, units/g3sciearth, units/g4scieco, units/g5scilife |
+| `sci-u1f30b` | 🌋 | تغيرات الأرض الفجائية / البركان / ثوران بركان |  |  | sheet: sci-01 | dict/data, units/g3sciearth, units/g4scieco, units/g5scieco, units/g5scilife |
 | `sci-u1f30b-1f9ab-1f3d7` | 🌋🦫🏗 | من سبّب التغيّر؟ |  |  | sheet: sci-13 | units/g4scieco |
-| `sci-u1f30d` | 🌍 | رحلة النظام البيئي |  |  | sheet: sci-05 | dict/data, portal/catalog, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco |
+| `sci-u1f30d` | 🌍 | رحلة النظام البيئي |  |  | sheet: sci-05 | dict/data, portal/catalog, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco … |
 | `sci-u1f30e` | 🌎 | الأرض ومواردها |  |  | sheet: sci-01 | dict/data, portal/catalog, units/g3sciearth |
 | `sci-u1f319` | 🌙 | السهر |  |  | sheet: sci-21 | core/core, dict/data, kg/data, units/g3scieco, units/g4scihealth |
 | `sci-u1f321` | 🌡 | درجة الحرارة / ارتفاع الحرارة |  |  | sheet: sci-11 | dict/data, units/g4scianimals, units/g4scieco, units/g4scihealth |
@@ -1253,16 +1253,16 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f333` | 🌳 | جذور النباتات / جذور تشقّق صخرة / الأشجار |  |  | sheet: sci-02 | dict/data, kg/data, kg/thinking, units/_TEMPLATE, units/g3sciearth, units/g3scieco … |
 | `sci-u1f334` | 🌴 | النخلة / التمر |  |  | sheet: sci-12 | dict/data, kg/data, units/g3scilife, units/g4scicells, units/g4scieco, units/g4scihealth |
 | `sci-u1f334-1f99c` | 🌴🦜 | الغابة المطيرة |  |  | sheet: sci-07 | units/g4scieco |
-| `sci-u1f335` | 🌵 | الصبّار |  |  | sheet: sci-11 | core/core, kg/data, units/_TEMPLATE, units/g3scieco, units/g4scieco, units/g5scilife |
+| `sci-u1f335` | 🌵 | الصبّار |  |  | sheet: sci-11 | core/core, kg/data, units/_TEMPLATE, units/g3scieco, units/g4scieco, units/g5scieco … |
 | `sci-u1f33b` | 🌻 | التربة الدبالية (الزراعية) / الأفضل للزراعة |  |  | sheet: sci-03 | dict/data, kg/data, units/g3sciearth, units/g3scilife, units/g4scicells |
-| `sci-u1f33e` | 🌾 | القمح / قمح / حشائش |  |  | sheet: sci-12 | dict/data, units/g3scieco, units/g4scieco, units/g5scilife |
+| `sci-u1f33e` | 🌾 | القمح / قمح / حشائش |  |  | sheet: sci-12 | dict/data, units/g3scieco, units/g4scieco, units/g5scieco, units/g5scilife |
 | `sci-u1f33e-1f981` | 🌾🦁 | المنطقة العشبية |  |  | sheet: sci-07 | units/g4scieco |
 | `sci-u1f33f` | 🌿 | عشب / العشب / طحالب |  |  | sheet: sci-09 | dict/data, portal/catalog, units/g3scieco, units/g3scilife, units/g4scicells, units/g4scieco … |
 | `sci-u1f33f-1f997-1f985` | 🌿🦗🦅 | رتّب السلسلة الغذائية |  |  | sheet: sci-14 | units/g4scieco |
-| `sci-u1f342` | 🍂 | دبال / غنية بالدبال / تختلط بالدبال |  |  | sheet: sci-03 | dict/data, units/g3sciearth, units/g3scieco, units/g4scieco |
+| `sci-u1f342` | 🍂 | دبال / غنية بالدبال / تختلط بالدبال |  |  | sheet: sci-03 | dict/data, units/g3sciearth, units/g3scieco, units/g4scieco, units/g5scieco |
 | `sci-u1f342-1f98c` | 🍂🦌 | الغابة المعتدلة |  |  | sheet: sci-07 | units/g4scieco |
-| `sci-u1f343` | 🍃 | أوراق شجر |  |  | sheet: sci-14 | dict/data, units/g3scilife, units/g4scicells, units/g4scieco, units/g5scilife |
-| `sci-u1f344` | 🍄 | الفطر / الفطريات |  |  | sheet: sci-10 | dict/data, units/g3scieco, units/g4scicells, units/g4scieco, units/g4scihealth, units/g5scilife |
+| `sci-u1f343` | 🍃 | أوراق شجر |  |  | sheet: sci-14 | dict/data, units/g3scilife, units/g4scicells, units/g4scieco, units/g5scieco, units/g5scilife |
+| `sci-u1f344` | 🍄 | الفطر / الفطريات |  |  | sheet: sci-10 | dict/data, units/g3scieco, units/g4scicells, units/g4scieco, units/g4scihealth, units/g5scieco … |
 | `sci-u1f344-1f9a0` | 🍄🦠 | المحلِّلات |  |  | sheet: sci-08 | units/g4scieco |
 | `sci-u1f34a-1f966` | 🍊🥦 | الفيتامينات |  |  | sheet: sci-19 | units/g4scihealth |
 | `sci-u1f357` | 🍗 | الدجاج / اللحوم والأسماك |  |  | sheet: sci-21 | dict/data, units/g4scihealth |
@@ -1279,7 +1279,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f3d6` | 🏖 | التربة الرملية / رمل يتجمّع عند المصب / الرمل |  |  | sheet: sci-03 | dict/data, kg/data, units/g3sciearth, units/g4scieco |
 | `sci-u1f3d6-1f3fa-1f33b` | 🏖🏺🌻 | أيّ تربة؟ |  |  | sheet: sci-05 |  |
 | `sci-u1f3d6-1f4e5` | 🏖📥 | ٣. الترسيب |  |  | sheet: sci-01 |  |
-| `sci-u1f3d7` | 🏗 | بناء مدينة |  |  | sheet: sci-14 | kg/app.html, units/g4scieco |
+| `sci-u1f3d7` | 🏗 | بناء مدينة |  |  | sheet: sci-14 | kg/app.html, units/g4scieco, units/g5scieco |
 | `sci-u1f3d7-1fa93-1f3ed` | 🏗🪓🏭 | الإنسان |  |  | sheet: sci-09 |  |
 | `sci-u1f3dc` | 🏜 | تكوّن الكثبان / كثيب رملي يتكوّن / النظام البيئي |  |  | sheet: sci-05 | dict/data, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco |
 | `sci-u1f3dc-1f334` | 🏜🌴 | أين أعيش؟ |  |  | sheet: sci-11 |  |
@@ -1289,12 +1289,12 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f3ed` | 🏭 | دخان المصانع |  |  | sheet: sci-11 | dict/data, units/g3scieco, units/g4scieco |
 | `sci-u1f3fa` | 🏺 | التربة الطينية |  |  | sheet: sci-03 | dict/data, units/g3sciearth |
 | `sci-u1f404` | 🐄 | البقرة |  |  | sheet: sci-11 | dict/data, kg/app.html, kg/data, units/g3scieco, units/g3scilife, units/g4scianimals … |
-| `sci-u1f406` | 🐆 | مهدّدة بالانقراض |  |  | sheet: sci-10 | dict/data, units/g4scieco |
+| `sci-u1f406` | 🐆 | مهدّدة بالانقراض |  |  | sheet: sci-10 | dict/data, units/g4scieco, units/g5scieco |
 | `sci-u1f407` | 🐇 | الأرنب |  |  | sheet: sci-10 | kg/app.html, kg/data, kg/thinking3, units/g3scieco, units/g3scilife, units/g4scieco |
 | `sci-u1f407-1f42a-1f98c` | 🐇🐪🦌 | آكلات الأعشاب |  |  | sheet: sci-08 | units/g4scieco |
 | `sci-u1f407-1f981-1f43b` | 🐇🦁🐻 | المستهلكات |  |  | sheet: sci-08 | units/g4scieco |
 | `sci-u1f408` | 🐈 | قطة / الحساسية |  |  | sheet: sci-15 | kg/app.html, kg/data, units/g3scieco, units/g4scicells, units/g4scieco, units/g4scihealth … |
-| `sci-u1f40d` | 🐍 | ثعبان |  |  | sheet: sci-14 | dict/data, kg/data, units/g3scieco, units/g4scianimals, units/g4scieco, units/g5scilife |
+| `sci-u1f40d` | 🐍 | ثعبان |  |  | sheet: sci-14 | dict/data, kg/data, units/g3scieco, units/g4scianimals, units/g4scieco, units/g5scieco … |
 | `sci-u1f412` | 🐒 | القرد |  |  | sheet: sci-12 | dict/data, kg/data, units/g4scianimals, units/g4scieco |
 | `sci-u1f413` | 🐓 | الدجاجة / دجاجة |  |  | sheet: sci-13 | dict/data, units/g4scieco |
 | `sci-u1f418` | 🐘 | فيلة تقتلع الأشجار |  |  | sheet: sci-14 | dict/data, kg/app.html, kg/data, units/g3scieco, units/g4scieco |
@@ -1312,8 +1312,8 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f42a-1f98e-1f335-1f985` | 🐪🦎🌵🦅 | المجتمع الحيوي |  |  | sheet: sci-07 | units/g4scieco |
 | `sci-u1f42d` | 🐭 | فأر |  |  | sheet: sci-10 | dict/data, kg/data, units/g4scieco, units/g5scilife |
 | `sci-u1f438` | 🐸 | ضفدع الشجر |  |  | sheet: sci-12 | dict/data, kg/data, unit/math, units/g3math5, units/g3scieco, units/g3scilife … |
-| `sci-u1f43a` | 🐺 | الذئب / ذئب |  |  | sheet: sci-13 | dict/data, units/g3scieco, units/g4scieco |
-| `sci-u1f43b` | 🐻 | الدب |  |  | sheet: sci-10 | dict/data, kg/data, units/g3scieco, units/g4scieco |
+| `sci-u1f43a` | 🐺 | الذئب / ذئب |  |  | sheet: sci-13 | dict/data, units/g3scieco, units/g4scieco, units/g5scieco |
+| `sci-u1f43b` | 🐻 | الدب |  |  | sheet: sci-10 | dict/data, kg/data, units/g3scieco, units/g4scieco, units/g5scieco |
 | `sci-u1f43b-1f9d1` | 🐻🧑 | القارتات (آكلات الكل) |  |  | sheet: sci-08 | units/g4scieco |
 | `sci-u1f43b-200d-2744` | 🐻‍❄ | الدب القطبي |  |  | sheet: sci-12 | units/g4scieco |
 | `sci-u1f455-1f576` | 👕🕶 | الملابس والشمس |  |  | sheet: sci-18 | units/g4scihealth |
@@ -1323,7 +1323,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f485-1f6bf` | 💅🚿 | العناية بالجسم |  |  | sheet: sci-18 | units/g4scihealth |
 | `sci-u1f489` | 💉 | المناعة الاصطناعية |  |  | sheet: sci-17 | units/g4scihealth |
 | `sci-u1f4a7` | 💧 | الماء / تحتفظ بالكثير من الماء / شرب الماء |  |  | sheet: sci-02 | dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife … |
-| `sci-u1f4a8` | 💨 | يمرّ منها الماء بسرعة / الهواء |  |  | sheet: sci-06 | dict/data, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco, units/g4scihealth |
+| `sci-u1f4a8` | 💨 | يمرّ منها الماء بسرعة / الهواء |  |  | sheet: sci-06 | dict/data, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco, units/g4scihealth … |
 | `sci-u1f4aa` | 💪 | المناعة الطبيعية |  |  | sheet: sci-17 | dict/data, unit/app, units/g4scianimals, units/g4scihealth |
 | `sci-u1f4e5` | 📥 | الترسيب: تتجمّع |  |  | sheet: sci-05 | dict/data, units/g3sciearth |
 | `sci-u1f525` | 🔥 | الغاز الطبيعي / صهارة تحت الأرض |  |  | sheet: sci-04 | core/core, dict/data, dict/spell, kg/data, portal/i18n, portal/portal … |
@@ -1343,13 +1343,13 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f6ab-27a1` | 🚫➡ | الأمراض غير المعدية |  |  | sheet: sci-15 | units/g4scihealth |
 | `sci-u1f6b1` | 🚱 | الكوليرا |  |  | sheet: sci-16 | units/g4scihealth |
 | `sci-u1f6b6` | 🚶 | المشي |  |  | sheet: sci-22 | dict/data, units/g4scihealth |
-| `sci-u1f6e2` | 🛢 | النفط / نفط |  |  | sheet: sci-04 | units/g3sciearth |
+| `sci-u1f6e2` | 🛢 | النفط / نفط |  |  | sheet: sci-04 | units/g3sciearth, units/g5scieco |
 | `sci-u1f6e2-26ab-1f525` | 🛢⚫🔥 | موارد غير متجددة |  |  | sheet: sci-05 |  |
 | `sci-u1f7e4` | 🟤 | ٢. الطبقة تحت السطحية / تحت السطحية |  |  | sheet: sci-03 | core/core, dict/data, unit/math, units/g3sciearth |
 | `sci-u1f7eb` | 🟫 | يُدفن / طين يستقر في قاع البحيرة / لونها داكن |  |  | sheet: sci-03 | core/core, dict/data, unit/math, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `sci-u1f90f` | 🤏 | لزجة عندما تبتل |  |  | sheet: sci-06 | units/g3sciearth |
 | `sci-u1f912` | 🤒 | الأمراض |  |  | sheet: sci-15 | dict/data, unit/labs, units/g4scihealth |
-| `sci-u1f91d` | 🤝 | العدوى وانتقالها / الاتصال المباشر |  |  | sheet: sci-17 | dict/data, unit/math, units/g3math5, units/g4scihealth |
+| `sci-u1f91d` | 🤝 | العدوى وانتقالها / الاتصال المباشر |  |  | sheet: sci-17 | dict/data, unit/math, units/g3math5, units/g4scihealth, units/g5scieco |
 | `sci-u1f927` | 🤧 | الإنفلونزا / الزكام |  |  | sheet: sci-16 | dict/data, units/g4scihealth, units/g5scilife |
 | `sci-u1f927-1f408` | 🤧🐈 | الحساسية |  |  | sheet: sci-16 | units/g4scihealth |
 | `sci-u1f927-1f4a8` | 🤧💨 | الهواء |  |  | sheet: sci-17 | units/g4scihealth |
@@ -1370,7 +1370,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f982` | 🦂 | العقرب |  |  | sheet: sci-11 | dict/data, units/g4scieco |
 | `sci-u1f985` | 🦅 | صقر / الصقر |  |  | sheet: sci-09 | dict/data, kg/data, unit/labs, units/g3scieco, units/g4scianimals, units/g4scieco |
 | `sci-u1f985-27a1` | 🦅➡ | تنتقل |  |  | sheet: sci-09 | units/g4scieco |
-| `sci-u1f988` | 🦈 | القرش / قرش |  |  | sheet: sci-13 | dict/data, units/g4scianimals, units/g4scieco |
+| `sci-u1f988` | 🦈 | القرش / قرش |  |  | sheet: sci-13 | dict/data, units/g4scianimals, units/g4scieco, units/g5scieco |
 | `sci-u1f98c` | 🦌 | الغزال |  |  | sheet: sci-13 | dict/data, units/g4scieco |
 | `sci-u1f98e` | 🦎 | سحلية / الضبّ |  |  | sheet: sci-09 | core/core, dict/data, units/_TEMPLATE, units/g3scilife, units/g4scianimals, units/g4scicells … |
 | `sci-u1f990` | 🦐 | مخلوقات بحرية صغيرة تموت |  |  | sheet: sci-06 | units/g3sciearth, units/g4scianimals |
@@ -1383,9 +1383,9 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f99f-1f7e0` | 🦟🟠 | أحفورة كاملة |  |  | sheet: sci-04 | units/g3sciearth |
 | `sci-u1f9a0` | 🦠 | البكتيريا / الفيروسات / كورونا |  |  | sheet: sci-11 | dict/data, portal/catalog, unit/labs, units/g3scieco, units/g4scicells, units/g4scieco … |
 | `sci-u1f9a0-1f9eb-1f344` | 🦠🧫🍄 | من المسبّب؟ |  |  | sheet: sci-20 | units/g4scihealth |
-| `sci-u1f9ab` | 🦫 | قندس يبني سدًّا |  |  | sheet: sci-14 | units/g4scieco |
+| `sci-u1f9ab` | 🦫 | قندس يبني سدًّا |  |  | sheet: sci-14 | units/g4scieco, units/g5scieco |
 | `sci-u1f9ab-1f418` | 🦫🐘 | المخلوقات الحيّة |  |  | sheet: sci-09 | units/g4scieco |
-| `sci-u1f9ad` | 🦭 | الفقمة |  |  | sheet: sci-12 | dict/data, units/g3scieco, units/g4scieco |
+| `sci-u1f9ad` | 🦭 | الفقمة |  |  | sheet: sci-12 | dict/data, units/g3scieco, units/g4scieco, units/g5scieco |
 | `sci-u1f9b4` | 🦴 | الأحافير والوقود الأحفوري / أحفورة / تكوّن الأحافير |  |  | sheet: sci-03 | dict/data, units/g3sciearth, units/g4scianimals, units/g4scicells, units/g4scihealth |
 | `sci-u1f9b4-1f95b` | 🦴🥛 | الأملاح المعدنية |  |  | sheet: sci-19 | units/g4scihealth |
 | `sci-u1f9b6` | 🦶 | آثار / القدم الرياضي |  |  | sheet: sci-04 | dict/data, units/g3sciearth, units/g3scieco, units/g4scihealth |
@@ -1409,7 +1409,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1faa8-27a1-1f9e9` | 🪨➡🧩 | ١. التجوية |  |  | sheet: sci-01 |  |
 | `sci-u1fac1` | 🫁 | السل |  |  | sheet: sci-16 | dict/data, units/g4scianimals, units/g4scihealth |
 | `sci-u1fad2` | 🫒 | الزيت |  |  | sheet: sci-22 | dict/data, kg/data, units/g4scihealth |
-| `sci-u1fad8` | 🫘 | البقوليات |  |  | sheet: sci-21 | dict/data, units/g3scilife, units/g4scianimals, units/g4scihealth |
+| `sci-u1fad8` | 🫘 | البقوليات |  |  | sheet: sci-21 | dict/data, units/g3scilife, units/g4scianimals, units/g4scihealth, units/g5scieco |
 | `sci-u23f3` | ⏳ | زمن طويل / زمن طويل جدًا / ملايين السنين |  |  | sheet: sci-04 | dict/data, portal/portal, units/g3sciearth |
 | `sci-u2600` | ☀ | حرارة الشمس / حرارة تشقّق الصخر / الشمس |  |  | sheet: sci-02 | dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `sci-u2600-1f32c-1f4a7` | ☀🌬💧 | موارد متجددة |  |  | sheet: sci-04 |  |

@@ -84,7 +84,9 @@ window.CATALOG = [
         color: 'var(--t-blue)',
         units: [
           { name: 'الوحدة ١: المخلوقات الحية', em: '🌿', art: 'unit-g5sci-living-cover',
-            color: 'var(--t-pink)', unit: 'g5scilife' }
+            color: 'var(--t-pink)', unit: 'g5scilife' },
+          { name: 'الوحدة ٢: الأنظمة البيئية', em: '🌍', art: 'unit-g5sci-eco-cover',
+            color: 'var(--t-purple)', unit: 'g5scieco' }
         ] }
     ]
   },
