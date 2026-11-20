@@ -93,7 +93,8 @@ window.CATALOG = [
       { id: 'math', name: 'الرياضيات', em: '➗', art: 'subject-math', desc: 'أمثلة محلولة خطوة خطوة، ثم نحل بأنفسنا',
         color: 'var(--t-orange)',
         units: [
-          { name: 'الفصل ١: القيمة المنزلية', em: '🔢', art: 'unit-g5math1-cover', color: 'var(--t-blue)', unit: 'g5math1' }
+          { name: 'الفصل ١: القيمة المنزلية', em: '🔢', art: 'unit-g5math1-cover', color: 'var(--t-blue)', unit: 'g5math1' },
+          { name: 'الفصل ٢: الجمع والطرح', em: '➕', art: 'unit-g5math2-cover', color: 'var(--t-orange)', unit: 'g5math2' }
         ] }
     ]
   },

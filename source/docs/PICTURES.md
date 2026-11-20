@@ -1349,7 +1349,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f7eb` | 🟫 | يُدفن / طين يستقر في قاع البحيرة / لونها داكن |  |  | sheet: sci-03 | core/core, dict/data, unit/math, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `sci-u1f90f` | 🤏 | لزجة عندما تبتل |  |  | sheet: sci-06 | units/g3sciearth |
 | `sci-u1f912` | 🤒 | الأمراض |  |  | sheet: sci-15 | dict/data, unit/labs, units/g4scihealth |
-| `sci-u1f91d` | 🤝 | العدوى وانتقالها / الاتصال المباشر |  |  | sheet: sci-17 | dict/data, unit/math, units/g3math5, units/g4scihealth, units/g5scieco |
+| `sci-u1f91d` | 🤝 | العدوى وانتقالها / الاتصال المباشر |  |  | sheet: sci-17 | dict/data, unit/math, units/g3math5, units/g4scihealth, units/g5math2, units/g5scieco |
 | `sci-u1f927` | 🤧 | الإنفلونزا / الزكام |  |  | sheet: sci-16 | dict/data, units/g4scihealth, units/g5scilife |
 | `sci-u1f927-1f408` | 🤧🐈 | الحساسية |  |  | sheet: sci-16 | units/g4scihealth |
 | `sci-u1f927-1f4a8` | 🤧💨 | الهواء |  |  | sheet: sci-17 | units/g4scihealth |
