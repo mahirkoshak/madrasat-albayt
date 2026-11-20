@@ -37,6 +37,17 @@
   label.chk{display:flex;gap:10px;align-items:center;font-weight:600;margin:8px 0}
   .seg{display:flex;gap:16px;flex-wrap:wrap}
   body.eleven .azure-only{display:none}
+  .tree{display:grid;gap:4px;margin-top:6px}
+  .tree details{border:1.5px solid var(--line);border-radius:12px;padding:4px 10px;background:#fff}
+  .tree summary{display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:700;list-style:none;padding:4px 0}
+  .tree summary::-webkit-details-marker{display:none}
+  .tree summary::after{content:'▾';margin-inline-start:auto;color:var(--muted,#6c604f)}
+  .tree details[open] summary::after{content:'▴'}
+  .tree .kids{display:grid;gap:2px;padding:2px 26px 6px 0}
+  .tree label{display:flex;gap:8px;align-items:center;font-weight:500;margin:0}
+  .tree small{color:var(--muted,#6c604f);font-weight:500}
+  .pick-btns{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  button.sm{padding:6px 12px;font-size:15px}
   .scope{border:2px solid var(--line);border-radius:14px;margin:12px 0 0;padding:6px 14px}.scope legend{font-weight:700;padding:0 6px}
   .who{font-weight:800;margin:0 0 6px}
   #elMsg{font-weight:700;min-height:1.4em}#elMsg.err{color:var(--red)}
@@ -127,6 +138,10 @@
       <label class="chk"><input type="radio" name="scope" value="all" id="scopeAll"> كل الجمل من جديد (بالصوت الجديد)</label>
       <label class="chk"><input type="radio" name="scope" value="new" id="onlyNew"> الجديدة فقط ({{COUNT_NEW}} جملة ليس لها صوت بعد، {{CHARS_NEW}} حرف)</label>
     </fieldset>
+    <fieldset class="scope pick"><legend>ماذا تسجّل؟</legend>
+      <div class="pick-btns"><button type="button" class="sec sm" id="pickAll">اختر الكل</button><button type="button" class="sec sm" id="pickNone">لا شيء</button><span id="pickSum" class="note"></span></div>
+      <div id="tree" class="tree"></div>
+    </fieldset>
     <div class="btns"><button type="button" id="go">🎙️ سجّل ونزّل الملف</button></div>
     <div class="bar" aria-hidden="true"><i id="bar"></i></div>
     <p id="msg" role="status" aria-live="polite"></p>
@@ -136,6 +151,15 @@
 <script>
 {{ELEVEN_JS}}
 const LINES = {{LINES}};
+/* ---------- tick boxes: which sections and parts to record (remembered on this browser) ---------- */
+const gKey = l => (l.g || ['عام', 'عبارات مشتركة']).join(' ⟩ ');
+const PICK_K = 'madrasat-voice-pick';
+let picked = null; try { picked = JSON.parse(localStorage.getItem(PICK_K) || 'null'); } catch (e) {}
+const SECTIONS = [];   // [{name, parts:[name...]}] in the order they appear
+LINES.forEach(l => { const [a, b] = l.g || ['عام', 'عبارات مشتركة']; let s = SECTIONS.find(x => x.name === a); if (!s) SECTIONS.push(s = { name: a, parts: [] }); if (!s.parts.includes(b)) s.parts.push(b); });
+const allKeys = () => SECTIONS.flatMap(s => s.parts.map(p => s.name + ' ⟩ ' + p));
+let PICK = new Set(Array.isArray(picked) ? picked : allKeys());
+const savePick = () => { try { localStorage.setItem(PICK_K, JSON.stringify([...PICK])); } catch (e) {} };
 const HAVE = new Set({{HAVE}});   // sentences that already have a recorded clip on the site
 const $ = id => document.getElementById(id);
 const msg = (t, cls) => { $('msg').textContent = t; $('msg').className = cls || ''; };
@@ -186,6 +210,7 @@ function showProv(switched) {
   if (switched) { $('scopeAll').checked = prov() === 'eleven' || NEW === 0; $('onlyNew').checked = !$('scopeAll').checked; }
   else { $('onlyNew').checked = NEW > 0; $('scopeAll').checked = NEW === 0; }   // opening the page: new sentences first, so no credits go on re-recording
   if (switched && prov() === 'eleven') $('what').value = 'both';
+  if (typeof drawTree === 'function') drawTree();
   $('whoRec').textContent = prov() === 'eleven' ? '🎙️ التسجيل بـ ElevenLabs (الصوت العربي والصوت الإنجليزي اللذين اخترتهما).' : '🎙️ التسجيل بـ Microsoft Azure.';
 }
 document.querySelectorAll('[name=prov]').forEach(r => r.onchange = () => { try { localStorage.setItem(PK, prov()); } catch (e) {} showProv(true); });
@@ -214,9 +239,37 @@ function zip(files) {
   e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true); e.setUint16(10, files.length, true); e.setUint32(12, size, true); e.setUint32(16, off, true);
   return new Blob([...parts, ...central, new Uint8Array(e.buffer)], { type: 'application/zip' });
 }
+/** a sentence is recorded when its language, its part (tick boxes) and the new/all choice all say yes */
+function wanted(l) { return ($('what').value === 'both' || l.lang === $('what').value) && PICK.has(gKey(l)) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text)); }
+function drawTree() {
+  const w = $('what').value, onlyNew = $('onlyNew').checked, n = {}, c = {};
+  LINES.forEach(l => { if (w !== 'both' && l.lang !== w) return; if (onlyNew && HAVE.has(l.lang + '|' + l.text)) return; const k = gKey(l); n[k] = (n[k] || 0) + 1; c[k] = (c[k] || 0) + l.text.length; });
+  const open = new Set([...document.querySelectorAll('#tree details[open]')].map(d => d.dataset.sec));
+  $('tree').innerHTML = SECTIONS.map(s => {
+    const ks = s.parts.map(p => s.name + ' ⟩ ' + p), tot = ks.reduce((a, k) => a + (n[k] || 0), 0);
+    const on = ks.filter(k => PICK.has(k)).length;
+    return `<details data-sec="${s.name}" ${open.has(s.name) ? 'open' : ''}><summary><input type="checkbox" data-sec="${s.name}" ${on === ks.length ? 'checked' : ''} aria-label="${s.name}"> ${s.name} <small>(${tot} جملة)</small></summary>
+      <div class="kids">${s.parts.map(p => { const k = s.name + ' ⟩ ' + p; return `<label><input type="checkbox" data-k="${k}" ${PICK.has(k) ? 'checked' : ''}> ${p} <small>(${n[k] || 0})</small></label>`; }).join('')}</div></details>`;
+  }).join('');
+  SECTIONS.forEach(s => { const ks = s.parts.map(p => s.name + ' ⟩ ' + p), on = ks.filter(k => PICK.has(k)).length, box = $('tree').querySelector(`summary input[data-sec="${s.name}"]`); if (box) box.indeterminate = on > 0 && on < ks.length; });
+  let sum = 0, chars = 0; LINES.forEach(l => { if (wanted(l)) { sum++; chars += l.text.length; } });
+  $('pickSum').textContent = `المختار: ${sum} جملة، ${chars.toLocaleString('en')} حرف`;
+}
+document.addEventListener('change', e => {
+  const t = e.target; if (!t.closest || !t.closest('#tree')) return;
+  if (t.dataset.k) { t.checked ? PICK.add(t.dataset.k) : PICK.delete(t.dataset.k); }
+  else if (t.dataset.sec) { const s = SECTIONS.find(x => x.name === t.dataset.sec); s.parts.forEach(p => t.checked ? PICK.add(s.name + ' ⟩ ' + p) : PICK.delete(s.name + ' ⟩ ' + p)); }
+  savePick(); drawTree();
+});
+document.addEventListener('click', e => { if (e.target.matches && e.target.matches('#tree summary input')) e.stopPropagation(); }, true);
+$('pickAll').onclick = () => { PICK = new Set(allKeys()); savePick(); drawTree(); };
+$('pickNone').onclick = () => { PICK = new Set(); savePick(); drawTree(); };
+['what', 'onlyNew', 'scopeAll'].forEach(id => $(id).addEventListener('change', drawTree));
+drawTree();
 $('go').onclick = async () => {
   $('go').disabled = true; const files = [], manifest = {}; let done = 0, failed = [];
-  if (!LINES.some(l => ($('what').value === 'both' || l.lang === $('what').value) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text)))) {
+  if (!PICK.size) { msg('اختر قسمًا واحدًا على الأقل من «ماذا تسجّل؟».', 'err'); $('go').disabled = false; return; }
+  if (!LINES.some(wanted)) {
     msg('كل الجمل في هذا الاختيار لها صوت مسجّل ✓. لتسجيلها من جديد بالصوت الجديد اختر «كل الجمل من جديد».'); $('go').disabled = false; return; }
   try {
     const w0 = $('what').value;
@@ -225,7 +278,7 @@ $('go').onclick = async () => {
       if (w0 !== 'ar' && !EL.ready('en')) throw new Error('اختر الصوت الإنجليزي في ElevenLabs أولًا');
     } else await getToken();
     let quota = false;
-    const w = $('what').value, todo = LINES.filter(l => (w === 'both' || l.lang === w) && !($('onlyNew').checked && HAVE.has(l.lang + '|' + l.text))), queue = todo.slice(), worker = async () => {
+    const w = $('what').value, todo = LINES.filter(wanted), queue = todo.slice(), worker = async () => {
       while (queue.length) {
         if (slow && worker.n > 1) { worker.n--; return; }   // throttled: one request at a time
         const l = queue.shift(), key = l.lang + '|' + l.text;
