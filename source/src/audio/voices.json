@@ -5,11 +5,11 @@
  },
  "voices": {
   "ar": {
-   "voice": "الصوت المحفوظ",
+   "voice": "Jumana - Hijazi Voice - Warm",
    "model": "eleven_v4"
   },
   "en": {
-   "voice": "Saved voice",
+   "voice": "Jessica - Playful, Bright, Warm",
    "model": "eleven_v4"
   }
  },
@@ -17,8 +17,6 @@
   "ar": "0.92",
   "en": "0.92"
  },
- "made": "2026-11-20T21:13:23.803Z",
- "failed": [
-  "ar|ممتاز"
- ]
+ "made": "2026-11-20T21:39:19.367Z",
+ "failed": []
 }
