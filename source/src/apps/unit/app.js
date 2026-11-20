@@ -183,7 +183,16 @@ function renderLesson(L) {
   ${cards.map(c => `<div class="card">${sayBtn(SAY.card(c), 'استمع للشرح', 'top')}${c.map(block).join('')}</div>`).join('')}
   <div class="remember"><div class="rem-head"><h3>🧠 احفظ هذا</h3>${sayBtn(SAY.remember(L), 'استمع', 'sm')}</div><ul>${L.remember.map(r => `<li>${r}</li>`).join('')}</ul></div>
   <div class="row"><button type="button" class="btn" data-act="quiz" data-mode="lesson" data-l="${L.id}">✏️ اختبر نفسك في الدرس ${ar(i + 1)}</button>${games.join('')}
-    <button type="button" class="btn sec" data-act="memory" data-l="${L.id}">🕵️ مَن أنا؟</button></div>`;
+    <button type="button" class="btn sec" data-act="memory" data-l="${L.id}">🕵️ مَن أنا؟</button></div>
+  ${lessonNav(i)}`;
+}
+/** the way on at the end of a lesson: previous lesson · the unit · next lesson (after the last: the final test) */
+function lessonNav(i) {
+  const ls = S.u.lessons, prev = ls[i - 1], next = ls[i + 1];
+  return `<nav class="l-nav" aria-label="التنقّل بين الدروس">
+    ${prev ? `<button type="button" class="btn sec" data-p="${prev.id}">→ الدرس ${ar(i)}: ${prev.title}</button>` : `<button type="button" class="btn sec" data-p="home">→ صفحة الوحدة</button>`}
+    ${next ? `<button type="button" class="btn" data-p="${next.id}">الدرس ${ar(i + 2)}: ${next.title} ←</button>`
+      : `<button type="button" class="btn" data-act="quiz" data-mode="final">🏆 أنهيت الدروس: الاختبار الشامل ←</button>`}</nav>`;
 }
 
 /* ---------------- flashcards (spaced repetition too) ---------------- */

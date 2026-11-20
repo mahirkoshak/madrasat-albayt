@@ -597,3 +597,6 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 .venn .vmid { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; display: flex; flex-direction: column; align-items: center; font-size: .8em; width: 56px; text-align: center; }
 .venn span { font-size: 1.8em; font-weight: 800; }
 .wk-in input.wk-word{width:190px;font-size:24px}
+/* previous / next lesson at the end of a lesson */
+.l-nav{display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;margin:22px 0 8px;padding-top:16px;border-top:2px dashed var(--t-line,#ecdfc6)}
+.l-nav .btn{flex:1 1 240px;min-height:56px}
