@@ -35,8 +35,10 @@ window.CATALOG = [
       { id: 'sci', name: 'العلوم', em: '🔬', art: 'subject-science', desc: 'مراجعة الوحدات بالملخصات والألعاب والاختبارات',
         color: 'var(--t-blue)',
         units: [
-          { name: 'الوحدة ١: المخلوقات الحية', em: '🌱', art: 'unit-g3sci-living-cover', soon: true },
-          { name: 'الوحدة ٢: النظام البيئي', em: '🦁', art: 'unit-g3sci-eco-cover', soon: true },
+          { name: 'الوحدة ١: المخلوقات الحية', em: '🌱', art: 'unit-g3sci-living-cover',
+            color: 'var(--t-pink)', unit: 'g3scilife' },
+          { name: 'الوحدة ٢: النظام البيئي', em: '🦁', art: 'unit-g3sci-eco-cover',
+            color: 'var(--t-purple)', unit: 'g3scieco' },
           { name: 'الوحدة ٣: الأرض ومواردها', em: '🌎', art: 'unit-g3sciearth-cover',
             color: 'var(--t-orange)', unit: 'g3sciearth' },
           { name: 'الوحدة ٤: الطقس والمناخ', em: '⛅', art: 'unit-g3sci-weather-cover', soon: true }
@@ -60,8 +62,10 @@ window.CATALOG = [
             color: 'var(--t-purple)', unit: 'g4scieco' },
           { name: 'صحة الإنسان', em: '🩺', art: 'unit-g4scihealth-cover',
             color: 'var(--t-pink)', unit: 'g4scihealth' },
-          { name: 'الخلايا وتصنيف المخلوقات', em: '🦠', art: 'unit-g4sci-cells-cover', soon: true },
-          { name: 'الحيوانات وأجهزة أجسامها', em: '🐾', art: 'unit-g4sci-animals-cover', soon: true }
+          { name: 'الخلايا وتصنيف المخلوقات', em: '🦠', art: 'unit-g4sci-cells-cover',
+            color: 'var(--t-blue)', unit: 'g4scicells' },
+          { name: 'الحيوانات وأجهزة أجسامها', em: '🐾', art: 'unit-g4sci-animals-cover',
+            color: 'var(--t-orange)', unit: 'g4scianimals' }
         ] },
       { id: 'math', name: 'الرياضيات', em: '➗', art: 'subject-math', desc: 'دروس بالنماذج، وألعاب نحسب فيها بأنفسنا',
         color: 'var(--t-orange)',

@@ -544,3 +544,22 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
   .tf-card{font-size:19px}
 }
 @media (prefers-reduced-motion:reduce){.sg-bin.hint-bin,.pool button.glow,.tile-b.glow,.um-stop.sticker.won .um-stk{animation:none}}
+
+/* tables inside lessons (e.g. the six kingdoms) */
+.tbl-wrap{overflow-x:auto;margin:10px 0;border-radius:16px;border:2px solid var(--t-line)}
+.tbl{width:100%;border-collapse:collapse;background:#fff;font-size:17px}
+.tbl th{background:var(--t-blue-soft);color:var(--t-ink-strong);font-weight:800;padding:10px 12px;text-align:right;white-space:nowrap}
+.tbl td{padding:9px 12px;border-top:1px solid var(--t-line);text-align:right}
+.tbl tbody tr:nth-child(even) td{background:#fffbf2}
+.tbl td:first-child{font-weight:800}
+/* on a phone each table row becomes a small card: the first cell is its title, the others «label: value» */
+@media (max-width:560px){
+  .tbl-wrap{border:0;overflow:visible}
+  .tbl,.tbl tbody{display:block;background:none}
+  .tbl thead{display:none}
+  .tbl tr{display:block;background:#fff;border:2px solid var(--t-line);border-radius:14px;padding:8px 12px;margin-bottom:8px}
+  .tbl tbody tr:nth-child(even) td{background:none}
+  .tbl td{display:flex;justify-content:space-between;gap:10px;border:0;padding:3px 0}
+  .tbl td:first-child{font-size:18px;color:var(--t-primary-ink);border-bottom:1px dashed var(--t-line);padding-bottom:5px;margin-bottom:3px}
+  .tbl td[data-l]:not(:first-child)::before{content:attr(data-l);color:var(--t-muted);font-weight:700}
+}
