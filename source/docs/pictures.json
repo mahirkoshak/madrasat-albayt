@@ -415,7 +415,7 @@
 "draw": "A round gold medal with a soft ribbon in blue and gold, a raised trophy shape in the centre, little sparkles around it (no text)",
 "style": "3d",
 "extra": "",
-"used": "unit/app"
+"used": "core/core, unit/app"
 },
 {
 "id": "badge-lesson-earned",
@@ -12658,7 +12658,7 @@
 "draw": "The back of a game card: purple with a gold star pattern, rounded rectangle",
 "style": "3d",
 "extra": "",
-"used": "kg/app"
+"used": "core/core, kg/app"
 },
 {
 "id": "game-col-card",
@@ -12911,7 +12911,7 @@
 "draw": "A wrapped gift box in pink and gold with a big bow, slightly bouncing",
 "style": "3d",
 "extra": "",
-"used": "portal/portal"
+"used": "core/core, portal/portal"
 },
 {
 "id": "goal-flag",
@@ -12922,7 +12922,7 @@
 "draw": "A small flag on a pole on top of a little hill, goal reached",
 "style": "3d",
 "extra": "",
-"used": ""
+"used": "core/core"
 },
 {
 "id": "grade-g3",
@@ -13219,7 +13219,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-3",
-"used": "dict/data, kg/data"
+"used": "core/core, dict/data, kg/data"
 },
 {
 "id": "kg-queen",
@@ -13637,7 +13637,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-1",
-"used": "dict/data, kg/data"
+"used": "core/core, dict/data, kg/data"
 },
 {
 "id": "kg-u1f436",
@@ -13747,7 +13747,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-5",
-"used": "dict/data, kg/data, units/g4scihealth"
+"used": "core/core, dict/data, kg/data, units/g4scihealth"
 },
 {
 "id": "kg-u1f6dd",
@@ -16112,7 +16112,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-20",
-"used": "dict/data, kg/data, units/g4scihealth"
+"used": "core/core, dict/data, kg/data, units/g4scihealth"
 },
 {
 "id": "sci-u1f634-1f319",
@@ -17168,7 +17168,7 @@
 "draw": "A burst of several plump golden stars flying outward with sparkles",
 "style": "3d",
 "extra": "",
-"used": ""
+"used": "core/core"
 },
 {
 "id": "subject-arabic",
@@ -17212,7 +17212,7 @@
 "draw": "Friendly plus, minus, times and divide shapes as soft rounded blocks with an abacus (no digits)",
 "style": "2d",
 "extra": "",
-"used": "portal/catalog"
+"used": "core/core, portal/catalog"
 },
 {
 "id": "subject-science",

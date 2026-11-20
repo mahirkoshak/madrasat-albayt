@@ -34,7 +34,10 @@ const star = (n = 1) => HS.addStars(n);
 
 /* ---------------- shell ---------------- */
 function header() {
-  $('uTitle').textContent = `${S.u.em} ${S.u.title}`;
+  const cov = [S.u.art, 'unit-' + S.id + '-cover'].find(a => a && HS.ART[a]);   // the unit's own picture, big, beside the title
+  $('uTitle').innerHTML = (cov ? '' : HS.esc(S.u.em) + ' ') + HS.esc(S.u.title);
+  const hw = $('uTitle').closest('.wrap'); let ic = hw.querySelector('.u-cov'); if (!ic) { ic = document.createElement('div'); ic.className = 'u-cov'; ic.setAttribute('aria-hidden', 'true'); hw.prepend(ic); }
+  ic.innerHTML = cov ? HS.art(cov, { eager: true }) : ''; ic.hidden = !cov;
   $('uSub').textContent = S.u.subtitle || '';
 }
 
@@ -147,7 +150,7 @@ function renderHome() {
     ${(() => { const best = (D().best || {}).final, won = best && best.s / best.t >= .8; return `
     <div class="um-stop boss ${S.u.lessons.length % 2 ? 'r' : 'l'}" role="listitem"><button type="button" class="um-node" data-act="quiz" data-mode="final" aria-label="الجولة الأخيرة: الاختبار الشامل"><span class="um-ring">👑</span></button>
       <div class="um-tx"><b>الجولة الأخيرة</b><small>الاختبار الشامل: ١٥ سؤالًا من كل الدروس. أجب عن ١٢ لتربح ملصق الوحدة.</small>${best ? `<small>أفضل نتيجة: ${ar(best.s)} من ${ar(best.t)}</small>` : ''}</div></div>
-    <div class="um-stop sticker ${won ? 'won' : ''}" role="listitem"><div class="um-stk" aria-label="${won ? 'ربحت ملصق الوحدة' : 'ملصق الوحدة: لم تربحه بعد'}">${HS.art(S.u.art || 'unit-' + S.id + '-cover', { fb: S.u.em || '🏅' })}</div><div class="um-tx"><b>${won ? '🎉 ملصق الوحدة لك!' : 'ملصق الوحدة'}</b><small>${won ? 'ربحته في الجولة الأخيرة.' : 'ينتظرك في نهاية الرحلة.'}</small></div></div>`; })()}
+    <div class="um-stop sticker ${won ? 'won' : ''}" role="listitem"><div class="um-stk" aria-label="${won ? 'ربحت ملصق الوحدة' : 'ملصق الوحدة: لم تربحه بعد'}">${HS.art([S.u.art, 'unit-' + S.id + '-cover'].find(a => a && HS.ART[a]) || 'badge-champion-earned', { fb: '🏅' })}</div><div class="um-tx"><b>${won ? '🎉 ملصق الوحدة لك!' : 'ملصق الوحدة'}</b><small>${won ? 'ربحته في الجولة الأخيرة.' : 'ينتظرك في نهاية الرحلة.'}</small></div></div>`; })()}
   </div>
   <div class="row center um-more"><button type="button" class="btn sec" data-p="cards">🃏 بطاقات المصطلحات</button><button type="button" class="btn sec" data-p="play">🎮 كل الألعاب</button><button type="button" class="btn sec" data-p="test">🏆 الاختبارات</button></div>
   <div class="card"><h3>🏅 أوسمتك</h3><p class="lead small">الأوسمة تأتي من الإتقان الحقيقي: ٨٠٪ أو أكثر في الدرس.</p><div class="badges">${badges().map(([e, n, g]) => `<div class="badge ${g ? 'got' : ''}"><span class="em" aria-hidden="true">${e}</span><small>${n}</small>${g ? '' : '<span class="sr">لم تحصل عليه بعد</span>'}</div>`).join('')}</div></div>

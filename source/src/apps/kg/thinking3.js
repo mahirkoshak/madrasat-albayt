@@ -42,7 +42,7 @@ function raceGame() {
   const L = G.lv, l = lang(), maxStep = L === 1 ? 2 : 3, TOKEN = '🐇';
   let pos = 0, target = 0, mistakes = 0, wrongHere = 0, moving = false;
   const root = fresh(`<div class="rc"><div class="rc-board" dir="ltr"><span class="rc-start" aria-hidden="true"></span>${Array.from({ length: 10 }, (_, i) => `<button type="button" class="rc-sq" data-n="${i + 1}" aria-label="${i + 1}"><b>${numTxt(i + 1)}</b><span class="rc-tok"></span></button>`).join('')}</div>
-    <div class="rc-ctl"><button type="button" class="rc-spin" aria-label="${l === 'ar' ? 'أدِر العجلة' : 'Spin'}"><span class="rc-wheel" aria-hidden="true" data-nopic>🎡</span></button><div class="rc-res" aria-live="polite"></div></div></div>`);
+    <div class="rc-ctl"><button type="button" class="rc-spin" aria-label="${l === 'ar' ? 'أدِر العجلة' : 'Spin'}"><span class="rc-wheel" aria-hidden="true">🎡</span></button><div class="rc-res" aria-live="polite"></div></div></div>`);
   const sq = n => root.querySelector(`.rc-sq[data-n="${n}"]`), spin = root.querySelector('.rc-spin'), res = root.querySelector('.rc-res');
   const draw = () => {
     root.querySelectorAll('.rc-tok').forEach(t => t.textContent = ''); root.querySelector('.rc-start').textContent = pos ? '🏁' : TOKEN;
@@ -91,7 +91,7 @@ function quickGame() {
   const L = G.lv, l = lang(), item = bag(POOLS.quick[L]), parts = L === 3 ? item : [item], n = parts.reduce((a, b) => a + b, 0);
   const ms = L === 1 ? 2000 : L === 2 ? 1500 : 1800;
   const root = fresh(`<div class="qk"><div class="qk-show">${parts.map((p, i) => die(p, 'c' + i)).join('')}<span class="qk-cover" aria-hidden="true">❓</span></div>
-    <button type="button" class="qk-again" aria-label="${l === 'ar' ? 'انظر مرة ثانية' : 'Look again'}" data-nopic>👀</button><div class="opts" id="qkOpts"></div></div>`);
+    <button type="button" class="qk-again" aria-label="${l === 'ar' ? 'انظر مرة ثانية' : 'Look again'}">👀</button><div class="opts" id="qkOpts"></div></div>`);
   const show = root.querySelector('.qk-show'); let seen = 0;
   const flash = () => { show.classList.remove('hid'); seen++; later(() => show.classList.add('hid'), ms); };
   let first = true;

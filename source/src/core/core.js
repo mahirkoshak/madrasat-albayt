@@ -109,27 +109,85 @@
       [data-nopic], .hs-party, the top bar, inputs or speaker buttons. */
   const KEEP = new Set([...'⭐🌟💎🔒🔓💡🎯🃏⏱️⏰👆👍👋👉👈🔁🔀🔄🗑️🧹➕➖✖️➗❓❔❗✅❌✔️🔟🔢🔤🔠🔡🔊🔈🔇🎉🎊🎈💖✨🏆🏅🥇🎮📚📝🗂️✍️🔎🔍🗺️📅📌📎🎲']
     .concat(['⬅️', '➡️', '⬆️', '⬇️', '↩️', '↪️', '🔴', '🟢', '🟡', '🔵', '🟠', '🟣', '🟤', '⚫', '⚪', '🟥', '🟩', '🟨', '🟦', '🟧', '🟪', '🟫', '⬛', '⬜', '✏️', '✖', '✔', '〰️'].map(x => x)));
-  const EMO = /\p{Extended_Pictographic}(️|‍\p{Extended_Pictographic}|\p{Emoji_Modifier})*/gu;
-  const ONLY = /^\s*(\p{Extended_Pictographic}(️|‍\p{Extended_Pictographic}|\p{Emoji_Modifier})*\s*)+$/u;
-  const PIC_ALIAS = { '🚂': 'dict-train', '🚆': 'dict-train' };   // an emoji whose picture was drawn under another emoji
+  const EMO = /[0-9#*]️?⃣|\p{Regional_Indicator}{2}|[←→↑↓➜]|\p{Extended_Pictographic}(️|‍\p{Extended_Pictographic}|\p{Emoji_Modifier})*/gu;   // also keycap numbers (1️⃣) and text arrows
+  const ONLY = /^\s*(([0-9#*]️?⃣|\p{Regional_Indicator}{2}|\p{Extended_Pictographic}(️|‍\p{Extended_Pictographic}|\p{Emoji_Modifier})*)\s*)+$/u;
+  const PIC_ALIAS = { '🚂': 'dict-train', '🚆': 'dict-train',   // an emoji whose picture was drawn under another emoji
+    '😄': 'dict-happy', '😀': 'dict-happy', '😊': 'dict-smile', '😢': 'dict-sad', '😠': 'dict-angry', '😨': 'dict-scared', '😲': 'dict-surprised', '😴': 'dict-tired',
+    '🔴': 'dict-red', '🔵': 'dict-blue', '🟡': 'dict-yellow', '🟣': 'dict-purple', '🔲': 'dict-square', '⬛': 'dict-square',
+    '⭐': 'star', '🌟': 'dict-star-2', '💎': 'dict-shine', '✏️': 'dict-pencil', '✏': 'dict-pencil', '🎈': 'dict-balloon', '🐫': 'dict-camel', '🐪': 'dict-camel',
+    '🌼': 'dict-flower', '🐾': 'dict-dog', '👀': 'dict-eye', '👁️': 'dict-eye', '🃏': 'game-card-back', '🎮': 'dict-game-console', '🗺️': 'dict-map', '🧭': 'dict-map',
+    '🏅': 'dict-medal', '🏆': 'badge-champion-earned', '👑': 'badge-champion-earned', '🟢': 'dict-green', '🦄': 'avatar-unicorn', '🎉': 'star-burst', '🎊': 'star-burst', '👨‍👦': 'dict-father', '👨‍👩‍👧': 'dict-family', '🛒': 'gift-box', '🎁': 'gift-box', '🔒': 'dict-key', '🗑️': 'dict-bin', '🗑': 'dict-bin',
+    '🧹': 'dict-broom', '👋': 'dict-hello', '👣': 'dict-foot', '🔍': 'dict-check', '🔎': 'dict-check',
+    '🔢': 'subject-math', '🗂️': 'game-card-back', '🟦': 'dict-square', '🎯': 'goal-flag',
+    '💡': 'dict-idea', '🔁': 'dict-repeat', '🔄': 'dict-repeat', '👍': 'dict-like', '👆': 'dict-touch', '⏱️': 'dict-clock', '⏰': 'dict-clock', '🕐': 'dict-clock', '📅': 'dict-calendar',
+    '📒': 'dict-notebook', '📝': 'dict-write', '🔤': 'dict-alphabet', '🐎': 'dict-horse', '🐴': 'dict-horse', '🏈': 'dict-football', '🕸️': 'dict-spider', '🫀': 'dict-heart',
+    '🦪': 'dict-shell', '🪲': 'dict-insect', '👪': 'dict-family', '🍖': 'dict-meat', '⚪': 'dict-white', '✨': 'star-burst', '🟩': 'dict-square',
+    '💛': 'dict-heart', '💚': 'dict-heart', '🍼': 'dict-bottle', '🍶': 'dict-bottle', '🐀': 'dict-mouse', '🧻': 'dict-toilet', '🕶️': 'dict-glasses', '🍰': 'dict-cake', '⭕': 'dict-circle',
+    '🟠': 'dict-orange', '🇸🇦': 'dict-saudi-arabia', '🦑': 'dict-octopus', '🐖': 'kg-pig', '👝': 'dict-bag', '💺': 'dict-chair', '🎟️': 'coupon', '💾': 'dict-save', '⛅': 'dict-cloudy',
+    '🎭': 'dict-play', '🔦': 'dict-light' };
+  /** drawn interface symbols (no picture fits): arrows, play, plus, minus, ×, ?, the spinner */
+  const ARR = r => `<svg class="hs-ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="3" y="3" width="42" height="42" rx="13" fill="#1C7ED6"/><rect x="3" y="3" width="42" height="21" rx="13" fill="#fff" opacity=".12"/><g transform="rotate(${r} 24 24)"><path d="M12 24h21M24 13l11 11-11 11" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></g></svg>`;
+  const BOX = (c, inner) => `<svg class="hs-ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="3" y="3" width="42" height="42" rx="13" fill="${c}"/><rect x="3" y="3" width="42" height="21" rx="13" fill="#fff" opacity=".12"/>${inner}</svg>`;
+  const LINE = d => `<path d="${d}" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+  HS.ICONS = {
+    '➡️': ARR(0), '⬅️': ARR(180), '⬆️': ARR(-90), '⬇️': ARR(90), '➡': ARR(0), '⬅': ARR(180), '⬆': ARR(-90), '⬇': ARR(90),
+    '▶️': BOX('#8E5CF7', '<path d="M19 13.5l15 10.5-15 10.5z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>'),
+    '✅': BOX('#1C7ED6', LINE('M14 25l7 7 13-15')), '✔️': BOX('#1C7ED6', LINE('M14 25l7 7 13-15')),
+    '➕': BOX('#FF9600', LINE('M24 13v22M13 24h22')), '➖': BOX('#FF9600', LINE('M13 24h22')),
+    '✖️': BOX('#FF6F91', LINE('M16 16l16 16M32 16L16 32')), '✖': BOX('#FF6F91', LINE('M16 16l16 16M32 16L16 32')),
+    '❓': '<svg class="hs-ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="21" fill="#8E5CF7"/><path d="M17.5 18.5a6.5 6.5 0 1113 .5c0 4.5-6.5 5-6.5 10" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/><circle cx="24" cy="36.5" r="3.6" fill="#fff"/></svg>',
+    '🎡': '<svg class="hs-ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false">' + ['#FF6F91', '#FFC800', '#1C7ED6', '#FF9600', '#8E5CF7', '#4DA8FF'].map((c, i) => { const a = i * Math.PI / 3, b = a + Math.PI / 3, P = t => (24 + 21 * Math.cos(t)).toFixed(1) + ' ' + (24 + 21 * Math.sin(t)).toFixed(1); return `<path d="M24 24L${P(a)}A21 21 0 0 1 ${P(b)}z" fill="${c}"/>`; }).join('') + '<circle cx="24" cy="24" r="6" fill="#fff"/><circle cx="24" cy="24" r="2.6" fill="#3C3C3C"/></svg>'
+  };
+  const AR_D = '٠١٢٣٤٥٦٧٨٩', KEYCAP = t => BOX('#1C7ED6', `<text x="24" y="34" text-anchor="middle" font-size="${t.length > 1 ? 23 : 29}" font-weight="800" fill="#fff" font-family="system-ui,sans-serif">${t}</text>`);
+  for (let i = 0; i < 10; i++) HS.ICONS[i + '️⃣'] = HS.ICONS[i + '⃣'] = KEYCAP(AR_D[i]);
+  HS.ICONS['🔟'] = KEYCAP('١٠');
+  const SV = b => `<svg class="hs-ico" viewBox="0 0 48 48" aria-hidden="true" focusable="false">${b}</svg>`;
+  Object.assign(HS.ICONS, {
+    '←': '<svg class="hs-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H6M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '→': '<svg class="hs-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '✔': BOX('#1C7ED6', LINE('M14 25l7 7 13-15')),
+    '➗': BOX('#FF9600', '<path d="M13 24h22" stroke="#fff" stroke-width="6" stroke-linecap="round"/><circle cx="24" cy="14.5" r="3.8" fill="#fff"/><circle cx="24" cy="33.5" r="3.8" fill="#fff"/>'),
+    '🎲': SV('<rect x="6" y="6" width="36" height="36" rx="10" fill="#fff" stroke="#FF6F91" stroke-width="4"/>' + [[16, 16], [32, 16], [24, 24], [16, 32], [32, 32]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.6" fill="#FF6F91"/>`).join('')),
+    '🔗': SV('<g fill="none" stroke-width="6.5" stroke-linecap="round"><rect x="5" y="17" width="22" height="14" rx="7" stroke="#1C7ED6"/><rect x="21" y="17" width="22" height="14" rx="7" stroke="#FF9600"/></g>'),
+    '⚔️': SV('<g stroke-linecap="round" stroke-width="5"><path d="M10 10l26 26" stroke="#8E5CF7"/><path d="M38 10L12 36" stroke="#FF6F91"/><path d="M30 38l8-8M10 30l8 8" stroke="#FFC800"/></g>'),
+    '📁': SV('<path d="M5 14a4 4 0 014-4h10l4 5h16a4 4 0 014 4v17a4 4 0 01-4 4H9a4 4 0 01-4-4z" fill="#FFC800"/><path d="M5 20h38v16a4 4 0 01-4 4H9a4 4 0 01-4-4z" fill="#FF9600"/>'),
+    '🔖': SV('<path d="M13 5h22v38l-11-8-11 8z" fill="#FF6F91"/><path d="M13 5h22v9H13z" fill="#fff" opacity=".18"/>'),
+    '🎗️': SV('<path d="M24 22c-5-6-9-12-5-15s7 1 5 7c-2-6 1-10 5-7s0 9-5 15zM24 22l-9 20 5-2 3 5zM24 22l9 20-5-2-3 5z" fill="#8E5CF7"/>'),
+    '🧬': SV('<g fill="none" stroke-width="4.5" stroke-linecap="round"><path d="M15 5c0 13 18 13 18 19s-18 6-18 19" stroke="#1C7ED6"/><path d="M33 5c0 13-18 13-18 19s18 6 18 19" stroke="#FF6F91"/></g><g stroke="#FFC800" stroke-width="3.5" stroke-linecap="round"><path d="M18 11h12M18 37h12M21 17h6M21 31h6"/></g>'),
+    '🫧': SV('<g fill="#9AD0FF" stroke="#1C7ED6" stroke-width="2.5"><circle cx="19" cy="27" r="13" opacity=".85"/><circle cx="36" cy="14" r="7" opacity=".85"/><circle cx="37" cy="36" r="5" opacity=".85"/></g><path d="M12 22a8 8 0 016-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>'),
+    '〰️': SV('<path d="M4 24c5-9 9-9 13 0s8 9 13 0 9-9 14 0" fill="none" stroke="#1C7ED6" stroke-width="6" stroke-linecap="round"/>'),
+    '📎': SV('<path d="M30 14v18a7 7 0 01-14 0V12a5 5 0 0110 0v19a2.5 2.5 0 01-5 0V15" fill="none" stroke="#8E5CF7" stroke-width="4" stroke-linecap="round"/>'),
+    '⛓️': SV('<g fill="none" stroke-width="6.5" stroke-linecap="round"><rect x="5" y="17" width="22" height="14" rx="7" stroke="#1C7ED6"/><rect x="21" y="17" width="22" height="14" rx="7" stroke="#FF9600"/></g>')
+  });
+  Object.assign(HS.ICONS, {
+    '↑': HS.ICONS['→'].replace('<path', '<path transform="rotate(-90 12 12)"'), '↓': HS.ICONS['→'].replace('<path', '<path transform="rotate(90 12 12)"'), '➜': HS.ICONS['→'],
+    '🤼': HS.ICONS['⚔️'], '➰': SV('<path d="M4 34c8 0 12-6 14-12s6-12 12-12 8 5 6 10-10 6-14 2-6-10-2-14" fill="none" stroke="#8E5CF7" stroke-width="5" stroke-linecap="round"/>'),
+    '📊': SV('<rect x="5" y="40" width="38" height="4" rx="2" fill="#3C3C3C" opacity=".6"/><rect x="8" y="24" width="8" height="15" rx="2.5" fill="#FF6F91"/><rect x="20" y="12" width="8" height="27" rx="2.5" fill="#1C7ED6"/><rect x="32" y="18" width="8" height="21" rx="2.5" fill="#FFC800"/>'),
+    '🪸': SV('<g fill="none" stroke="#FF6F91" stroke-width="5.5" stroke-linecap="round"><path d="M24 44V22M24 30c-8 0-10-6-10-12M14 22c-6 0-8-4-8-9M24 26c8 0 11-6 11-13M35 19c5 0 7-3 7-8M24 22c0-6 3-10 3-15"/></g>'),
+    '🎙️': SV('<rect x="17" y="5" width="14" height="24" rx="7" fill="#8E5CF7"/><path d="M11 22a13 13 0 0026 0M24 35v7M17 42h14" fill="none" stroke="#3C3C3C" stroke-width="4" stroke-linecap="round"/>'),
+    '🎚️': SV('<g stroke-linecap="round"><path d="M10 8v32M24 8v32M38 8v32" stroke="#C9C2B3" stroke-width="4"/></g><rect x="4" y="26" width="12" height="8" rx="4" fill="#FF9600"/><rect x="18" y="12" width="12" height="8" rx="4" fill="#1C7ED6"/><rect x="32" y="20" width="12" height="8" rx="4" fill="#FF6F91"/>'),
+    '📴': SV('<rect x="13" y="4" width="22" height="40" rx="6" fill="#3C3C3C"/><rect x="16" y="9" width="16" height="27" rx="2" fill="#9AD0FF"/><path d="M8 8l32 32" stroke="#FF6F91" stroke-width="5" stroke-linecap="round"/>')
+  });
+  HS.ICONS['❔'] = HS.ICONS['❓']; HS.ICONS['▶'] = HS.ICONS['▶️'];
+  const hasPic = em => !!(PIC_ALIAS[em] || PIC_ALIAS[em.replace(/️/g, '')] || HS.ICONS[em] || HS.ICONS[em.replace(/️/g, '')]);
   HS.picFor = (em, areas) => {
     const pm = window.HS_PICMAP || {}, bare = em.replace(/️/g, '');
-    if (PIC_ALIAS[em] && HS.ART[PIC_ALIAS[em]]) return PIC_ALIAS[em];
+    const al = PIC_ALIAS[em] || PIC_ALIAS[bare]; if (al && HS.ART[al]) return al;
     for (const a of areas) { const m = pm[a] || {}, id = m[em] || m[bare] || HS.picId(em, a); if (id && HS.ART[id]) return id; }
     return null;
   };
   HS.picify = (root, areas) => {
     areas = [].concat(areas); if (!root) return;
-    const skip = el => !el || el.closest('[data-nopic],button.hs-spk,svg,textarea,input,select,option,.hs-party,#appbar,.appbar,.gb-btn,[aria-hidden="true"].hs-fb,.rb-k,.rk,.m-pad,title');
+    const skip = el => !el || el.closest('[data-nopic],button.hs-spk,svg,textarea,input,select,option,.hs-party,[aria-hidden="true"].hs-fb,.m-pad,title');
     const run = () => {
       const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), todo = [];
       for (let n; (n = w.nextNode());) {
-        const v = n.nodeValue; if (!v || !/\p{Extended_Pictographic}/u.test(v) || skip(n.parentElement)) continue;
-        const whole = v.trim(), alone = ONLY.test(v), wid = alone && !KEEP.has(whole) ? HS.picFor(whole, areas) : null;   // several emoji drawn as one picture (🐪🌵🦎)
+        const v = n.nodeValue; if (!v || !/\p{Extended_Pictographic}|\p{Regional_Indicator}|[←→↑↓➜]|⃣/u.test(v) || skip(n.parentElement)) continue;
+        const whole = v.trim(), alone = ONLY.test(v), wid = alone && (!KEEP.has(whole) || hasPic(whole)) ? HS.picFor(whole, areas) : null;   // several emoji drawn as one picture (🐪🌵🦎)
         const parts = []; let last = 0, any = false;
         if (wid) { parts.push({ id: wid, em: whole, big: true }); any = true; }
         else for (const m of v.matchAll(EMO)) {
-          const em = m[0], id = KEEP.has(em) || KEEP.has(em.replace(/️/g, '')) ? null : HS.picFor(em, areas);
+          const em = m[0], kept = (KEEP.has(em) || KEEP.has(em.replace(/️/g, ''))) && !hasPic(em), id = kept ? null : (HS.picFor(em, areas) || (HS.ICONS[em] ? 'ico:' + em : HS.ICONS[em.replace(/️/g, '')] ? 'ico:' + em.replace(/️/g, '') : null));
           if (!id) continue;
           if (m.index > last) parts.push(v.slice(last, m.index));
           parts.push({ id, em, big: alone }); last = m.index + em.length; any = true;
@@ -140,7 +198,7 @@
       }
       todo.forEach(([n, parts]) => {
         const t = document.createElement('template');
-        t.innerHTML = parts.map(p => typeof p === 'string' ? HS.esc(p) : HS.art(p.id, { small: true, eager: true, fb: p.em, cls: 'hs-pic' + (p.big ? '' : ' inl') })).join('');
+        t.innerHTML = parts.map(p => typeof p === 'string' ? HS.esc(p) : p.id.startsWith('ico:') ? HS.ICONS[p.id.slice(4)].replace('hs-ico', 'hs-ico' + (p.big ? '' : ' inl')) : HS.art(p.id, { small: true, eager: true, fb: p.em, cls: 'hs-pic' + (p.big ? '' : ' inl') })).join('');
         n.replaceWith(t.content);
       });
     };

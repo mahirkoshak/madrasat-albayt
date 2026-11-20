@@ -739,5 +739,6 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu(true); });
   HS.on('mute', m => document.querySelectorAll('[data-mute]').forEach(b => { b.setAttribute('aria-pressed', m); b.setAttribute('aria-label', HS.tr(m ? 'تشغيل الصوت' : 'كتم الصوت')); b.innerHTML = m ? I.off : I.on; }));
   HS.trWatch();
+  HS.picify(document.getElementById('portal'), ['dict', 'kg', 'sci']); HS.picify(document.getElementById('appbar'), ['dict', 'kg', 'sci']);   // emoji → pictures here too
   route();
 })();

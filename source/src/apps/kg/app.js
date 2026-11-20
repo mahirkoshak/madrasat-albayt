@@ -284,7 +284,7 @@ function homeExtras() {
   if (!pick) { t.hidden = true; return; }
   const btn = ROOT.querySelector(`[data-game="${pick.k}"]`), grp = btn.closest('.kh-grp');
   t.hidden = false; t.style.setProperty('--g', getComputedStyle(grp).getPropertyValue('--g'));
-  t.innerHTML = `<span class="t-pic">${btn.querySelector('.em').innerHTML}</span><span class="t-tx"><small>⭐ <span class="ar">لعبة اليوم</span><span class="en" lang="en">Game of the day</span></small><b class="ar">${gameName(pick.k)}</b><b class="en" lang="en" dir="ltr">${btn.querySelector('b.en').textContent}</b></span><span class="t-go" aria-hidden="true">${document.documentElement.dir === 'rtl' ? '◀' : '▶'}</span>`;
+  t.innerHTML = `<span class="t-pic">${btn.querySelector('.em').innerHTML}</span><span class="t-tx"><small><span class="ar">لعبة اليوم</span><span class="en" lang="en">Game of the day</span></small><b class="ar">${gameName(pick.k)}</b><b class="en" lang="en" dir="ltr">${btn.querySelector('b.en').textContent}</b></span><span class="t-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" style="transform:scaleX(${document.documentElement.dir === 'rtl' ? -1 : 1})"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>`;
   t.onclick = () => HS.nav.go('app-kg-game-' + pick.k);
 }
 

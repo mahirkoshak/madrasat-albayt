@@ -41,7 +41,9 @@
 .hs-spk{width:1.25em;height:1.25em;display:inline-block;vertical-align:middle;flex:0 0 auto}
 
 /* a content picture standing in for an emoji: sized by the font of the place it sits in */
-img.hs-pic{width:1.25em;height:1.25em;object-fit:contain;vertical-align:-.3em;display:inline-block}
+img.hs-pic{width:1.45em;height:1.45em;object-fit:contain;vertical-align:-.3em;display:inline-block}
+svg.hs-ico{width:1.35em;height:1.35em;vertical-align:-.3em;display:inline-block;flex:none}
+svg.hs-ico.inl{width:1.2em;height:1.2em;vertical-align:-.25em;margin-inline:.08em}
 img.hs-pic.inl{width:1.5em;height:1.5em;vertical-align:-.4em;margin-inline:.1em}
 
 /* the child's happy avatar beside the mascot on results screens */

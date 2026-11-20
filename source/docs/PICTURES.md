@@ -1159,7 +1159,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-moon` | 🌙 | الليل / ننام | Moon |  | sheet: kg-3 | core/core, dict/data, kg/data, units/g3scieco, units/g4scihealth |
 | `kg-nest` | 🪺 |  | Nest |  | sheet: kg-3 | dict/data, kg/data, unit/math, units/g3scilife |
 | `kg-orange` | 🍊 | البرتقالة | Orange |  | sheet: kg-3 | dict/data, kg/data, unit/math, units/g4scihealth |
-| `kg-pig` | 🐷 | الخنزير الصغير | Pig |  | sheet: kg-3 | dict/data, kg/data |
+| `kg-pig` | 🐷 | الخنزير الصغير | Pig |  | sheet: kg-3 | core/core, dict/data, kg/data |
 | `kg-queen` | 👸 |  | Queen |  | sheet: kg-3 | dict/data, kg/data |
 | `kg-strawberry` | 🍓 | الفراولة |  |  | sheet: kg-4 | dict/data, kg/data |
 | `kg-tree` | 🌳 | الشجرة | Tree |  | sheet: kg-3 | dict/data, kg/data, kg/thinking, units/_TEMPLATE, units/g3sciearth, units/g3scieco … |
@@ -1197,7 +1197,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f42a` | 🐪 | جمل |  |  | sheet: kg-1 | core/core, dict/data, kg/data, units/_TEMPLATE, units/g3scieco, units/g3scilife … |
 | `kg-u1f430` | 🐰 | الأرنب |  |  | sheet: kg-4 | core/core, dict/data, kg/data |
 | `kg-u1f431` | 🐱 | القطة |  |  | sheet: kg-4 | dict/data, kg/app.html, kg/data |
-| `kg-u1f434` | 🐴 | حصان |  |  | sheet: kg-1 | dict/data, kg/data |
+| `kg-u1f434` | 🐴 | حصان |  |  | sheet: kg-1 | core/core, dict/data, kg/data |
 | `kg-u1f436` | 🐶 | الكلب |  |  | sheet: kg-4 | dict/data, kg/data |
 | `kg-u1f438` | 🐸 | ضفدع / الضفدع |  |  | sheet: kg-1 | dict/data, kg/data, unit/math, units/g3math5, units/g3scieco, units/g3scilife … |
 | `kg-u1f43b` | 🐻 | دب / الدب |  |  | sheet: kg-1 | dict/data, kg/data, units/g3scieco, units/g4scieco |
@@ -1207,7 +1207,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1f573` | 🕳 | نزرعها في التراب |  |  | sheet: kg-6 | dict/data, kg/data |
 | `kg-u1f60b` | 😋 | نأكلها |  |  | sheet: kg-6 | dict/data, kg/data |
 | `kg-u1f62e` | 😮 | ذهبت القلعة |  |  | sheet: kg-6 | dict/data, kg/data |
-| `kg-u1f634` | 😴 | تنام / نائمة |  |  | sheet: kg-5 | dict/data, kg/data, units/g4scihealth |
+| `kg-u1f634` | 😴 | تنام / نائمة |  |  | sheet: kg-5 | core/core, dict/data, kg/data, units/g4scihealth |
 | `kg-u1f6dd` | 🛝 | نلعب |  |  | sheet: kg-6 | dict/data, kg/data |
 | `kg-u1f95a` | 🥚 | بيضة / بيض وطحين / الدجاجة تبيض |  |  | sheet: kg-5 | dict/data, kg/app.html, kg/data, unit/math, units/g3scilife, units/g4scianimals … |
 | `kg-u1f963` | 🥣 | نخلطها |  |  | sheet: kg-5 | dict/data, kg/data |
@@ -1334,7 +1334,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f5d1` | 🗑 | رمي النفايات في البحر |  |  | sheet: sci-14 | core/core, dict/data, kg/thinking, kg/thinking2, portal/portal, units/g3scieco … |
 | `sci-u1f5e3` | 🗣 | التهاب الحلق |  |  | sheet: sci-20 | dict/data, units/g4scihealth |
 | `sci-u1f623` | 😣 | أعراض أخرى |  |  | sheet: sci-16 | dict/data, units/g4scihealth |
-| `sci-u1f634` | 😴 | النوم المبكر |  |  | sheet: sci-20 | dict/data, kg/data, units/g4scihealth |
+| `sci-u1f634` | 😴 | النوم المبكر |  |  | sheet: sci-20 | core/core, dict/data, kg/data, units/g4scihealth |
 | `sci-u1f634-1f319` | 😴🌙 | النوم الكافي |  |  | sheet: sci-18 | units/g4scihealth |
 | `sci-u1f637` | 😷 | الإنفلونزا |  |  | sheet: sci-20 | dict/data, units/g4scihealth |
 | `sci-u1f69a` | 🚚 | التعرية: تُنقل |  |  | sheet: sci-05 | dict/data, units/g3sciearth, units/g3scilife, units/g4scihealth |
@@ -1588,7 +1588,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `game-basket` | 🧺 |  |  | An empty woven basket | 3d | kg/app.html, kg/thinking |
 | `game-basket-card` | 🧺🍎 |  |  | A woven basket with apples dropping into it | 2d | kg/app.html |
 | `game-box` | 📦 |  |  | An open cardboard box | 3d | kg/thinking |
-| `game-card-back` | ❓ |  |  | The back of a game card: purple with a gold star pattern, rounded rectangle | 3d | kg/app |
+| `game-card-back` | ❓ |  |  | The back of a game card: purple with a gold star pattern, rounded rectangle | 3d | core/core, kg/app |
 | `game-col-card` | 🔴🔵 |  |  | Paint splashes of red, blue, yellow and green with a paintbrush | 2d | kg/app.html |
 | `game-compose-card` | 🔺🟥 |  |  | A house built from simple shapes: a red square, a triangle roof and a round window | 2d | kg/app.html |
 | `game-count-card` | 🍎🍎🍎 |  |  | Three shiny red apples in a row with little sparkles (no numbers) | 2d | kg/app.html |
@@ -1619,7 +1619,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `subject-arabic` | 📝 |  |  | An open notebook with a reed pen and an ink pot, decorative Arabic geometric pattern border (no letters) | 2d | portal/catalog |
 | `subject-early` | 🔤 |  |  | Two alphabet blocks and a speech bubble with sparkles, early language learning (blank block faces, no letters) | 2d | portal/catalog |
 | `subject-english` | 🔠 |  |  | A speech bubble and an open book with a small British-style red bus toy (no letters) | 2d | portal/catalog |
-| `subject-math` | ➗ |  |  | Friendly plus, minus, times and divide shapes as soft rounded blocks with an abacus (no digits) | 2d | portal/catalog |
+| `subject-math` | ➗ |  |  | Friendly plus, minus, times and divide shapes as soft rounded blocks with an abacus (no digits) | 2d | core/core, portal/catalog |
 | `subject-science` | 🔬 |  |  | A friendly microscope beside a green leaf and a small round planet, science subject illustration | 2d | portal/catalog |
 | `subject-stories` | 📖 |  |  | An open storybook with a crescent moon and small stars rising from its pages | 2d | portal/catalog |
 
@@ -1666,15 +1666,15 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | id | emoji | Arabic | English | drawn / meaning | notes | used in |
 |---|---|---|---|---|---|---|
 | `app-icon` |  |  |  | App icon: Koko peeking out of an open book shaped like a little house, rounded-square composition, cheerful | 3d |  |
-| `badge-champion-earned` | 🏆 |  |  | A round gold medal with a soft ribbon in blue and gold, a raised trophy shape in the centre, little sparkles around it (no text) | 3d | unit/app |
+| `badge-champion-earned` | 🏆 |  |  | A round gold medal with a soft ribbon in blue and gold, a raised trophy shape in the centre, little sparkles around it (no text) | 3d | core/core, unit/app |
 | `badge-lesson-earned` |  |  |  | A round gold medal with a soft blue and gold ribbon, an open book with a check-mark shape made of light raised in the centre, small sparkles (no text) | 3d |  |
 | `badge-stars100-earned` |  |  |  | A round gold medal with a soft blue and gold ribbon, a big star surrounded by small stars raised in the centre, small sparkles (no text) | 3d | unit/app |
 | `badge-streak3-earned` |  |  |  | A round gold medal with a soft blue and gold ribbon, a friendly flame raised in the centre, small sparkles (no text) | 3d | unit/app |
 | `coupon` | 🎟 |  |  | A cheerful paper ticket coupon in gold and orange with a star punched in it (no text) | 3d | core/core, core/sync, portal/i18n, portal/portal, portal/portal.css |
-| `gift-box` | 🎁 |  |  | A wrapped gift box in pink and gold with a big bow, slightly bouncing | 3d | portal/portal |
-| `goal-flag` | 🎯 |  |  | A small flag on a pole on top of a little hill, goal reached | 3d |  |
+| `gift-box` | 🎁 |  |  | A wrapped gift box in pink and gold with a big bow, slightly bouncing | 3d | core/core, portal/portal |
+| `goal-flag` | 🎯 |  |  | A small flag on a pole on top of a little hill, goal reached | 3d | core/core |
 | `home-hero-koko` |  |  |  | home hero koko |  | portal/portal |
 | `home-hero-koko-en` |  |  |  | home hero koko en |  | portal/portal |
 | `logo-mark` |  |  |  | App icon symbol for a home learning site: a small cosy house whose roof is an open book, with a gold star above the chimney, inside a rounded square of cream | 2d | portal/portal |
 | `star` | ⭐ |  |  | A single plump golden star with a soft glow and a tiny shine, the currency of a kids game | 3d | core/core, core/sync, dict/app, dict/app.css, dict/data, dict/spell … |
-| `star-burst` | 🌟 |  |  | A burst of several plump golden stars flying outward with sparkles | 3d |  |
+| `star-burst` | 🌟 |  |  | A burst of several plump golden stars flying outward with sparkles | 3d | core/core |
