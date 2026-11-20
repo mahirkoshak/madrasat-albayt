@@ -1221,7 +1221,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `kg-u1fab6` | 🪶 | ريشة |  |  | sheet: kg-1 | dict/data, kg/data |
 | `kg-u2600` | ☀ | شمس / الشمس حارة | Sun |  | sheet: kg-1 | dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `kg-u2601` | ☁ | غيمة / الغيمة / غيوم في السماء |  |  | sheet: kg-2 | dict/data, kg/data, portal/portal, units/g5sciearth, units/g5scieco |
-| `kg-u26bd` | ⚽ | كرة / الكرة | Ball |  | sheet: kg-2 | dict/data, kg/data, unit/math, units/g4scicells, units/g4scihealth |
+| `kg-u26bd` | ⚽ | كرة / الكرة | Ball |  | sheet: kg-2 | dict/data, kg/data, unit/math, units/g4scicells, units/g4scihealth, units/g5math4 |
 | `kg-u2708` | ✈ | طائرة |  |  | sheet: kg-1 | dict/data, kg/data |
 | `kg-u2709` | ✉ | ظرف |  |  | sheet: kg-2 | kg/data |
 | `kg-u270b` | ✋ | يد |  |  | sheet: kg-2 | dict/app, dict/data, dict/spell, kg/data, portal/portal |
@@ -1349,7 +1349,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1f7eb` | 🟫 | يُدفن / طين يستقر في قاع البحيرة / لونها داكن |  |  | sheet: sci-03 | core/core, dict/data, unit/math, units/g3sciearth, units/g3scieco, units/g3scilife … |
 | `sci-u1f90f` | 🤏 | لزجة عندما تبتل |  |  | sheet: sci-06 | units/g3sciearth |
 | `sci-u1f912` | 🤒 | الأمراض |  |  | sheet: sci-15 | dict/data, unit/labs, units/g4scihealth |
-| `sci-u1f91d` | 🤝 | العدوى وانتقالها / الاتصال المباشر |  |  | sheet: sci-17 | dict/data, unit/math, units/g3math5, units/g4scihealth, units/g5math2, units/g5scieco |
+| `sci-u1f91d` | 🤝 | العدوى وانتقالها / الاتصال المباشر |  |  | sheet: sci-17 | dict/data, unit/math, units/g3math5, units/g4scihealth, units/g5math2, units/g5math4 … |
 | `sci-u1f927` | 🤧 | الإنفلونزا / الزكام |  |  | sheet: sci-16 | dict/data, units/g4scihealth, units/g5scilife |
 | `sci-u1f927-1f408` | 🤧🐈 | الحساسية |  |  | sheet: sci-16 | units/g4scihealth |
 | `sci-u1f927-1f4a8` | 🤧💨 | الهواء |  |  | sheet: sci-17 | units/g4scihealth |
@@ -1400,7 +1400,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u1fa78` | 🩸 | فقر الدم |  |  | sheet: sci-16 | dict/data, units/g4scianimals, units/g4scicells, units/g4scihealth |
 | `sci-u1fa78-1f36c` | 🩸🍬 | السكري |  |  | sheet: sci-16 | units/g4scihealth |
 | `sci-u1fa7a` | 🩺 | صحة الإنسان |  |  | sheet: sci-15 | portal/catalog, units/g4scihealth |
-| `sci-u1fa91` | 🪑 | عند الزلزال / الراحة |  |  | sheet: sci-01 | dict/data, unit/math, units/g3sciearth, units/g4math5, units/g4scihealth |
+| `sci-u1fa91` | 🪑 | عند الزلزال / الراحة |  |  | sheet: sci-01 | dict/data, unit/math, units/g3sciearth, units/g4math5, units/g4scihealth, units/g5math4 |
 | `sci-u1fa92` | 🪒 | استعمال أدوات الآخرين |  |  | sheet: sci-21 | units/g4scihealth |
 | `sci-u1fa93` | 🪓 | قطع الأشجار |  |  | sheet: sci-14 | units/g3scieco, units/g4scieco |
 | `sci-u1faa5` | 🪥 | الأدوات الملوثة / الأسنان / تنظيف الأسنان |  |  | sheet: sci-17 | dict/data, kg/data, units/g4scihealth |
@@ -1420,7 +1420,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u26a1` | ⚡ | حريق بسبب البرق |  |  | sheet: sci-14 | dict/data, portal/portal, unit/app, units/g3sciearth, units/g3scieco, units/g4scicells … |
 | `sci-u26a1-1f422` | ⚡🐢 | سريع أم بطيء؟ |  |  | sheet: sci-05 | units/g3sciearth |
 | `sci-u26ab` | ⚫ | الفحم |  |  | sheet: sci-04 | core/core, dict/data, units/g3sciearth, units/g5sciearth |
-| `sci-u26bd` | ⚽ | ممارسة الرياضة |  |  | sheet: sci-19 | dict/data, kg/data, unit/math, units/g4scicells, units/g4scihealth |
+| `sci-u26bd` | ⚽ | ممارسة الرياضة |  |  | sheet: sci-19 | dict/data, kg/data, unit/math, units/g4scicells, units/g4scihealth, units/g5math4 |
 | `sci-u26f0` | ⛰ | انزلاق أرضي |  |  | sheet: sci-05 | core/core, dict/data, unit/labs, units/g3sciearth, units/g5sciearth |
 | `sci-u26f0-2b07` | ⛰⬇ | الانزلاق الأرضي |  |  | sheet: sci-01 | core/core |
 | `sci-u2705` | ✅ | تبقى وتتكيّف |  |  | sheet: sci-09 | core/core, dict/app, dict/data, dict/spell, kg/thinking2, portal/i18n … |
