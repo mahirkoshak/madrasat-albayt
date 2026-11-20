@@ -76,6 +76,18 @@ window.CATALOG = [
       { id: 'en', name: 'English', em: '🔠', art: 'subject-english', soon: true }
     ]
   },
+  {
+    id: 'g5', name: 'الصف الخامس', sub: 'ابتدائي · المنهج السعودي', em: '📘', art: 'grade-g5',
+    color: 'var(--t-purple)',
+    subjects: [
+      { id: 'sci', name: 'العلوم', em: '🔬', art: 'subject-science', desc: 'مراجعة الوحدات بالملخصات والألعاب والاختبارات',
+        color: 'var(--t-blue)',
+        units: [
+          { name: 'الوحدة ١: المخلوقات الحية', em: '🌿', art: 'unit-g5sci-living-cover',
+            color: 'var(--t-pink)', unit: 'g5scilife' }
+        ] }
+    ]
+  },
   /* Not a year: an app shown next to the years on the home page (for every child) */
   { id: 'dict', name: 'قاموسي', sub: 'إنجليزي وعربي · أكثر من ١١٠٠ كلمة', em: '📖', art: 'dict-cover',
     color: 'var(--t-purple)', app: 'dict' }

@@ -168,6 +168,7 @@
     '🎚️': SV('<g stroke-linecap="round"><path d="M10 8v32M24 8v32M38 8v32" stroke="#C9C2B3" stroke-width="4"/></g><rect x="4" y="26" width="12" height="8" rx="4" fill="#FF9600"/><rect x="18" y="12" width="12" height="8" rx="4" fill="#1C7ED6"/><rect x="32" y="20" width="12" height="8" rx="4" fill="#FF6F91"/>'),
     '📴': SV('<rect x="13" y="4" width="22" height="40" rx="6" fill="#3C3C3C"/><rect x="16" y="9" width="16" height="27" rx="2" fill="#9AD0FF"/><path d="M8 8l32 32" stroke="#FF6F91" stroke-width="5" stroke-linecap="round"/>')
   });
+  HS.ICONS['🪹'] = SV('<path d="M24 3v7" stroke="#8B5E34" stroke-width="3" stroke-linecap="round"/><path d="M10 6h28" stroke="#8B5E34" stroke-width="4" stroke-linecap="round"/><ellipse cx="24" cy="27" rx="10" ry="17" fill="#C99A5B"/><path d="M15 21q9 4 18 0M14.5 28q9.5 4 19 0M16 35q8 4 16 0" fill="none" stroke="#8B5E34" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="20" cy="19" rx="3" ry="6" fill="#fff" opacity=".25"/>');   // a cocoon (pupa)
   HS.ICONS['❔'] = HS.ICONS['❓']; HS.ICONS['▶'] = HS.ICONS['▶️'];
   const hasPic = em => !!(PIC_ALIAS[em] || PIC_ALIAS[em.replace(/️/g, '')] || HS.ICONS[em] || HS.ICONS[em.replace(/️/g, '')]);
   HS.picFor = (em, areas) => {
