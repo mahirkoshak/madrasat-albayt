@@ -7,6 +7,9 @@
  "app-icon": {
   "src": "assets/brand/app-icon.webp"
  },
+ "atlas-cover": {
+  "src": "assets/catalog/atlas-cover.webp"
+ },
  "avatar-boy-cap": {
   "face": "assets/avatars/avatar-boy-cap-face.webp",
   "sm": "assets/avatars/avatar-boy-cap-sm.webp",
@@ -184,6 +187,90 @@
  "badge-streak3-earned": {
   "sm": "assets/badges/badge-streak3-earned-sm.webp",
   "src": "assets/badges/badge-streak3-earned.webp"
+ },
+ "bg-explore": {
+  "h": 1024,
+  "sm": "assets/bg/bg-explore-800.webp",
+  "src": "assets/bg/bg-explore.webp",
+  "w": 1536
+ },
+ "bg-grade-g3": {
+  "h": 1024,
+  "sm": "assets/bg/bg-grade-g3-800.webp",
+  "src": "assets/bg/bg-grade-g3.webp",
+  "w": 1536
+ },
+ "bg-grade-g4": {
+  "h": 1024,
+  "sm": "assets/bg/bg-grade-g4-800.webp",
+  "src": "assets/bg/bg-grade-g4.webp",
+  "w": 1536
+ },
+ "bg-grade-g5": {
+  "h": 1024,
+  "sm": "assets/bg/bg-grade-g5-800.webp",
+  "src": "assets/bg/bg-grade-g5.webp",
+  "w": 1536
+ },
+ "bg-grade-kg": {
+  "h": 1024,
+  "sm": "assets/bg/bg-grade-kg-800.webp",
+  "src": "assets/bg/bg-grade-kg.webp",
+  "w": 1536
+ },
+ "bg-parent": {
+  "h": 1024,
+  "sm": "assets/bg/bg-parent-800.webp",
+  "src": "assets/bg/bg-parent.webp",
+  "w": 1536
+ },
+ "bg-setup": {
+  "h": 1024,
+  "sm": "assets/bg/bg-setup-800.webp",
+  "src": "assets/bg/bg-setup.webp",
+  "w": 1536
+ },
+ "bg-shop": {
+  "h": 1024,
+  "sm": "assets/bg/bg-shop-800.webp",
+  "src": "assets/bg/bg-shop.webp",
+  "w": 1536
+ },
+ "bg-subj-ar": {
+  "h": 1024,
+  "sm": "assets/bg/bg-subj-ar-800.webp",
+  "src": "assets/bg/bg-subj-ar.webp",
+  "w": 1536
+ },
+ "bg-subj-early": {
+  "h": 1024,
+  "sm": "assets/bg/bg-subj-early-800.webp",
+  "src": "assets/bg/bg-subj-early.webp",
+  "w": 1536
+ },
+ "bg-subj-en": {
+  "h": 1024,
+  "sm": "assets/bg/bg-subj-en-800.webp",
+  "src": "assets/bg/bg-subj-en.webp",
+  "w": 1536
+ },
+ "bg-subj-math": {
+  "h": 1024,
+  "sm": "assets/bg/bg-subj-math-800.webp",
+  "src": "assets/bg/bg-subj-math.webp",
+  "w": 1536
+ },
+ "bg-subj-sci": {
+  "h": 1024,
+  "sm": "assets/bg/bg-subj-sci-800.webp",
+  "src": "assets/bg/bg-subj-sci.webp",
+  "w": 1536
+ },
+ "bg-who": {
+  "h": 1024,
+  "sm": "assets/bg/bg-who-800.webp",
+  "src": "assets/bg/bg-who.webp",
+  "w": 1536
  },
  "coupon": {
   "sm": "assets/rewards/coupon-sm.webp",
@@ -3596,6 +3683,9 @@
  "grade-g4": {
   "src": "assets/catalog/grade-g4.webp"
  },
+ "grade-g5": {
+  "src": "assets/catalog/grade-g5.webp"
+ },
  "grade-kg": {
   "src": "assets/catalog/grade-kg.webp"
  },
@@ -4852,6 +4942,9 @@
  "topic-trans": {
   "src": "assets/dict/topic-trans.webp"
  },
+ "unit-g3math5-cover": {
+  "src": "assets/units/unit-g3math5-cover.webp"
+ },
  "unit-g3sci-eco-cover": {
   "src": "assets/units/unit-g3sci-eco-cover.webp"
  },
@@ -4864,6 +4957,18 @@
  "unit-g3sciearth-cover": {
   "src": "assets/units/unit-g3sciearth-cover.webp"
  },
+ "unit-g4ar1-cover": {
+  "src": "assets/units/unit-g4ar1-cover.webp"
+ },
+ "unit-g4ar2-cover": {
+  "src": "assets/units/unit-g4ar2-cover.webp"
+ },
+ "unit-g4ar3-cover": {
+  "src": "assets/units/unit-g4ar3-cover.webp"
+ },
+ "unit-g4math5-cover": {
+  "src": "assets/units/unit-g4math5-cover.webp"
+ },
  "unit-g4sci-animals-cover": {
   "src": "assets/units/unit-g4sci-animals-cover.webp"
  },
@@ -4875,5 +4980,32 @@
  },
  "unit-g4scihealth-cover": {
   "src": "assets/units/unit-g4scihealth-cover.webp"
+ },
+ "unit-g5math1-cover": {
+  "src": "assets/units/unit-g5math1-cover.webp"
+ },
+ "unit-g5math2-cover": {
+  "src": "assets/units/unit-g5math2-cover.webp"
+ },
+ "unit-g5math3-cover": {
+  "src": "assets/units/unit-g5math3-cover.webp"
+ },
+ "unit-g5math4-cover": {
+  "src": "assets/units/unit-g5math4-cover.webp"
+ },
+ "unit-g5math5-cover": {
+  "src": "assets/units/unit-g5math5-cover.webp"
+ },
+ "unit-g5math6-cover": {
+  "src": "assets/units/unit-g5math6-cover.webp"
+ },
+ "unit-g5sci-earth-cover": {
+  "src": "assets/units/unit-g5sci-earth-cover.webp"
+ },
+ "unit-g5sci-eco-cover": {
+  "src": "assets/units/unit-g5sci-eco-cover.webp"
+ },
+ "unit-g5sci-living-cover": {
+  "src": "assets/units/unit-g5sci-living-cover.webp"
  }
 }

@@ -11,6 +11,17 @@
 "used": ""
 },
 {
+"id": "atlas-cover",
+"group": "atlas",
+"emoji": "🗺️",
+"ar": "",
+"en": "",
+"draw": "World atlas: a friendly globe on a stand next to an unrolled map with a compass and a small paper plane",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog"
+},
+{
 "id": "avatar-boy-cap",
 "group": "avatar",
 "emoji": "",
@@ -449,6 +460,160 @@
 "style": "3d",
 "extra": "",
 "used": "unit/app"
+},
+{
+"id": "bg-explore",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg explore",
+"style": "",
+"extra": "",
+"used": "portal/portal"
+},
+{
+"id": "bg-grade-g3",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg grade g3",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-grade-g4",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg grade g4",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-grade-g5",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg grade g5",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-grade-kg",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg grade kg",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-parent",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg parent",
+"style": "",
+"extra": "",
+"used": "portal/portal"
+},
+{
+"id": "bg-setup",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg setup",
+"style": "",
+"extra": "",
+"used": "portal/portal"
+},
+{
+"id": "bg-shop",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg shop",
+"style": "",
+"extra": "",
+"used": "portal/portal"
+},
+{
+"id": "bg-subj-ar",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg subj ar",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-subj-early",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg subj early",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-subj-en",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg subj en",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-subj-math",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg subj math",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-subj-sci",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg subj sci",
+"style": "",
+"extra": "",
+"used": ""
+},
+{
+"id": "bg-who",
+"group": "bg",
+"emoji": "",
+"ar": "",
+"en": "",
+"draw": "bg who",
+"style": "",
+"extra": "",
+"used": "portal/portal"
 },
 {
 "id": "coupon",
@@ -12947,6 +13112,17 @@
 "used": "portal/catalog"
 },
 {
+"id": "grade-g5",
+"group": "grade",
+"emoji": "📘",
+"ar": "",
+"en": "",
+"draw": "A blue school book with a ruler and a pencil, upper-primary school illustration",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog"
+},
+{
 "id": "grade-kg",
 "group": "grade",
 "emoji": "🧸",
@@ -17369,6 +17545,17 @@
 "used": ""
 },
 {
+"id": "unit-g3math5-cover",
+"group": "unit",
+"emoji": "✖️",
+"ar": "",
+"en": "",
+"draw": "Multiplication with equal groups: three baskets each holding the same number of oranges",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog"
+},
+{
 "id": "unit-g3sci-eco-cover",
 "group": "unit",
 "emoji": "🦁",
@@ -17408,6 +17595,50 @@
 "ar": "",
 "en": "",
 "draw": "Earth science: a cut-away hill showing soil layers, a small volcano, a fossil shell and a rock",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog"
+},
+{
+"id": "unit-g4ar1-cover",
+"group": "unit",
+"emoji": "🏜️",
+"ar": "",
+"en": "",
+"draw": "Desert meets green belt: sand dunes on one side and a row of young trees with a water well on the other",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g4ar1"
+},
+{
+"id": "unit-g4ar2-cover",
+"group": "unit",
+"emoji": "✍️",
+"ar": "",
+"en": "",
+"draw": "Spelling practice: an open notebook with a fountain pen and an eraser, no writing visible",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g4ar2"
+},
+{
+"id": "unit-g4ar3-cover",
+"group": "unit",
+"emoji": "🧩",
+"ar": "",
+"en": "",
+"draw": "Building sentences: three interlocking puzzle pieces in blue, orange and purple",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g4ar3"
+},
+{
+"id": "unit-g4math5-cover",
+"group": "unit",
+"emoji": "✖️",
+"ar": "",
+"en": "",
+"draw": "Multiplying by a one-digit number: rows of stacked coloured blocks forming a neat array",
 "style": "2d",
 "extra": "",
 "used": "portal/catalog"
@@ -17455,5 +17686,104 @@
 "style": "2d",
 "extra": "",
 "used": "portal/catalog"
+},
+{
+"id": "unit-g5math1-cover",
+"group": "unit",
+"emoji": "🔢",
+"ar": "",
+"en": "",
+"draw": "Place value: a place-value chart made of three coloured columns holding stacked counters",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5math1"
+},
+{
+"id": "unit-g5math2-cover",
+"group": "unit",
+"emoji": "➕",
+"ar": "",
+"en": "",
+"draw": "Adding and subtracting: a balance of coloured blocks and a stack of coins",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5math2"
+},
+{
+"id": "unit-g5math3-cover",
+"group": "unit",
+"emoji": "✖️",
+"ar": "",
+"en": "",
+"draw": "Multiplication: a grid area model of coloured squares with a pencil",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5math3"
+},
+{
+"id": "unit-g5math4-cover",
+"group": "unit",
+"emoji": "➗",
+"ar": "",
+"en": "",
+"draw": "Division: a tray of cookies shared equally into four plates",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5math4"
+},
+{
+"id": "unit-g5math5-cover",
+"group": "unit",
+"emoji": "🔤",
+"ar": "",
+"en": "",
+"draw": "Algebra: a balance scale with a mystery gift box on one pan and blocks on the other",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5math5"
+},
+{
+"id": "unit-g5math6-cover",
+"group": "unit",
+"emoji": "🍕",
+"ar": "",
+"en": "",
+"draw": "Fractions: a round pie cut into equal slices with one slice lifted out",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5math6"
+},
+{
+"id": "unit-g5sci-earth-cover",
+"group": "unit",
+"emoji": "🌋",
+"ar": "",
+"en": "",
+"draw": "Earth science: a cut-away hill showing rock layers, with a small volcano behind",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5sciearth"
+},
+{
+"id": "unit-g5sci-eco-cover",
+"group": "unit",
+"emoji": "🌍",
+"ar": "",
+"en": "",
+"draw": "Ecosystems: a small pond with a fish, a reed and a frog on a lily pad",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5scieco"
+},
+{
+"id": "unit-g5sci-living-cover",
+"group": "unit",
+"emoji": "🌱",
+"ar": "",
+"en": "",
+"draw": "Living things: a sprouting seedling, a butterfly and a magnifying glass",
+"style": "2d",
+"extra": "",
+"used": "portal/catalog, units/g5scilife"
 }
 ]
