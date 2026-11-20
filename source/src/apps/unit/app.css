@@ -569,3 +569,19 @@ details.parent ul{margin:8px 0 0;padding-inline-start:20px}
 .u-cov[hidden]{display:none}
 .u-cov .hs-art{width:92%;height:92%;object-fit:contain}
 @media(max-width:480px){.u-cov{width:82px;height:82px;border-radius:20px}}
+
+/* worked examples with fading (worked.js) */
+.wk{background:var(--t-sky-soft,#eef6ff);border-radius:20px;padding:14px 16px;margin:6px 0 4px}
+.wk-q{font-size:20px;font-weight:800;margin:0 0 8px}
+.wk-tag{display:inline-block;font-size:14px;font-weight:800;background:var(--t-blue);color:#fff;border-radius:999px;padding:2px 12px;margin-inline-end:6px;vertical-align:2px}
+.wk-tag.try{background:var(--t-orange)}
+.wk-steps{margin:0 0 10px;padding-inline-start:26px;font-size:19px;line-height:1.7}
+.wk-steps li{margin:4px 0}
+.wk-steps li::marker{font-weight:800;color:var(--t-blue)}
+.wk-try{border-top:2px dashed color-mix(in srgb,var(--t-blue) 35%,#fff);margin-top:10px;padding-top:12px}
+.wk-in{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;margin-inline-start:6px}
+.wk-in input{width:120px;font-size:22px;font-weight:800;text-align:center;border:3px solid var(--t-line);border-radius:14px;padding:6px 8px;background:#fff}
+.wk-in input:focus{border-color:var(--t-blue);outline:none}
+.wk .fb{min-height:1.4em;margin:4px 0 0}
+
+.m-pad .m-k.ok:nth-child(13){grid-column:1/-1}   /* the keypad with a decimal key: ✓ gets its own row */

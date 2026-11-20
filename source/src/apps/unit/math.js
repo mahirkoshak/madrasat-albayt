@@ -8,7 +8,7 @@
    - a wrong answer is read for the usual mistakes (added instead of multiplied, one group too many or too few,
      forgot the regrouped ten, one zero too many or too few) and gets a matching hint.
    ============================================================ */
-const AR = n => HS.toAr(n);
+const AR = n => HS.toAr(n).replace(/\./g, '٫');   // decimals use the Arabic decimal mark
 // one emoji per maths object until its picture exists (art id 'math-<name>', from the maths sprite sheets)
 const MATH_EMOJI = { apple: '🍎', orange: '🍊', date: '🟤', cookie: '🍪', pencil: '✏️', crayon: '🖍️', egg: '🥚', flower: '🌸', star: '⭐',
   ball: '⚽', toycar: '🚗', bird: '🐦', fish: '🐟', book: '📘', marble: '🔵', balloon: '🎈', plate: '🍽️', bag: '🛍️', box: '📦', cup: '🥤',
@@ -88,16 +88,16 @@ function readMistake(q, w) {
 
 /* ---------------- keypad (one for the screen; it writes into the active slot) ---------------- */
 const PAD = {};
-function keypad(onKey) {
-  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'del', '0', 'ok'];
-  const html = `<div class="m-pad" dir="ltr" role="group" aria-label="لوحة الأرقام">${keys.map(k => `<button type="button" class="m-k ${k === 'ok' ? 'ok' : k === 'del' ? 'del' : ''}" data-k="${k}" aria-label="${k === 'ok' ? 'تحقّق' : k === 'del' ? 'امسح رقمًا' : AR(k)}">${k === 'ok' ? '✓' : k === 'del' ? '⌫' : AR(k)}</button>`).join('')}</div>`;
+function keypad(onKey, dec) {
+  const keys = dec ? ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'del', 'ok'] : ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'del', '0', 'ok'];
+  const html = `<div class="m-pad" dir="ltr" role="group" aria-label="لوحة الأرقام">${keys.map(k => `<button type="button" class="m-k ${k === 'ok' ? 'ok' : k === 'del' ? 'del' : ''}" data-k="${k}" aria-label="${k === 'ok' ? 'تحقّق' : k === 'del' ? 'امسح رقمًا' : k === '.' ? 'فاصلة عشرية' : AR(k)}">${k === 'ok' ? '✓' : k === 'del' ? '⌫' : AR(k)}</button>`).join('')}</div>`;
   const bind = root => {
     root.querySelectorAll('.m-k').forEach(b => b.onclick = () => onKey(b.dataset.k));
     const me = PAD.n = (PAD.n || 0) + 1;   // only the newest keypad on screen listens to the keyboard
     const kb = e => {
       if (!root.isConnected || PAD.n !== me) return document.removeEventListener('keydown', kb);
       if (e.ctrlKey || e.metaKey || e.altKey || root.querySelector('.m-k:disabled')) return;
-      const d = '٠١٢٣٤٥٦٧٨٩'.indexOf(e.key); const k = d >= 0 ? String(d) : /^[0-9]$/.test(e.key) ? e.key : e.key === 'Backspace' ? 'del' : e.key === 'Enter' ? 'ok' : null;
+      const d = '٠١٢٣٤٥٦٧٨٩'.indexOf(e.key); const k = d >= 0 ? String(d) : /^[0-9]$/.test(e.key) ? e.key : e.key === 'Backspace' ? 'del' : e.key === 'Enter' ? 'ok' : dec && /^[.,٫،]$/.test(e.key) ? '.' : null;
       if (!k || (e.target.closest && e.target.closest('input,textarea'))) return;
       e.preventDefault(); onKey(k);
     };
@@ -110,13 +110,15 @@ function keypad(onKey) {
    1st wrong: what the mistake says, or a strategy · 2nd: second hint + the model drawn · 3rd: the answer. */
 function numQuestion(q, el, finish, opt) {
   let val = '', tries = 0, over = false;
+  const dec = q.dec || !Number.isInteger(q.a), maxLen = Math.max(6, String(q.a).length + 2);   // decimals get a ٫ key; long numbers (billions) fit
   const pad = keypad(k => {
     if (over) return;
     if (k === 'del') val = val.slice(0, -1);
     else if (k === 'ok') return check();
-    else if (val.length < 6) val = (val === '0' ? '' : val) + k;
+    else if (k === '.') { if (!val.includes('.')) val = (val || '0') + '.'; }
+    else if (val.length < maxLen) val = (val === '0' ? '' : val) + k;
     show();
-  });
+  }, dec);
   el.innerHTML = `<div class="q-line"><div class="q">${q.q}</div></div>${q.model && q.modelFirst ? mathModel(q.model) : ''}
     <div class="m-ans"><output class="m-box-ans" aria-live="polite" aria-label="إجابتك">؟</output>${q.unit ? `<span class="m-unit">${q.unit}</span>` : ''}</div>${pad.html}`;
   pad.bind(el);
@@ -128,7 +130,7 @@ function numQuestion(q, el, finish, opt) {
   function check() {
     if (!val) return;
     const w = +val;
-    if (w === q.a) { over = true; out.classList.add('ok'); lock(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
+    if (Math.abs(w - q.a) < 1e-9) { over = true; out.classList.add('ok'); lock(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
     tries++; out.classList.add('no'); HS.fx('no'); onCoach(q, w, tries);
     if (!opt.coach || tries >= 3) { over = true; lock(); out.textContent = AR(q.a); out.classList.remove('no'); out.classList.add('ok'); return finish(false, { tries, revealed: true }); }
     const why = readMistake(q, w);

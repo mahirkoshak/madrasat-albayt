@@ -166,6 +166,7 @@ function block(b) {
   if (b.t === 'pyramid') { const n = b.levels.length; return `${h}${b.html ? `<p>${b.html}</p>` : ''}<div class="pyr">${b.levels.slice().reverse().map(([t, c], i) => `<div style="width:${28 + i * (60 / Math.max(1, n - 1))}%;background:${c}">${t}</div>`).join('')}</div>`; }
   if (b.t === 'html') return `${h}${b.html}`;
   if (b.t === 'model') return `${h}${b.html ? `<p>${b.html}</p>` : ''}${mathModel(b)}${b.after ? `<p>${b.after}</p>` : ''}`;   // math.js
+  if (b.t === 'worked') return workedBlock(b);   // worked.js
   return '';
 }
 function renderLesson(L) {
@@ -340,7 +341,7 @@ function answerText(q) {
   if (q.t === 'mcq' || q.t === 'fill') return q.o[q.a];
   if (q.t === 'pic') return q.o[q.a] + (q.labels ? ' ' + q.labels[q.a] : '');
   if (q.t === 'tf') return q.a ? 'صح' : 'خطأ';
-  if (q.t === 'num') return HS.toAr(q.a);
+  if (q.t === 'num') return AR(q.a);
   return '';
 }
 function retryIntro() {
@@ -641,7 +642,7 @@ APPS.unit = {
     const missed = Object.keys(s).filter(id => s[id].w > 0).sort((a, b) => (s[b].w - s[b].c * .5) - (s[a].w - s[a].c * .5)).slice(0, 5).map(id => ({ q: (u.questions.find(q => q.id === id) || {}).q, w: s[id].w, c: s[id].c })).filter(x => x.q);
     // how the child learns, not only what: first-try accuracy, self-corrections, and the wrong ideas chosen most
     const lr = d.learn || null, byQ = id => u.questions.find(q => q.id === id) || {};
-    const rightOf = q => q.t === 'num' ? HS.toAr(q.a) : q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
+    const rightOf = q => q.t === 'num' ? AR(q.a) : q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
     const mis = lr ? Object.entries(lr.mis || {}).flatMap(([id, ch]) => Object.entries(ch).map(([c, n]) => ({ q: byQ(id).q, chose: c, right: rightOf(byQ(id)), n, l: byQ(id).l })))
       .filter(x => x.q).sort((a, b) => b.n - a.n).slice(0, 4) : [];
     const lessons = u.lessons.map(L => { const r = lr && lr.L && lr.L[L.id]; return { title: L.title, em: L.em, m: m(L.id), first: r && r.n ? r.first / r.n : null, n: r ? r.n : 0 }; });

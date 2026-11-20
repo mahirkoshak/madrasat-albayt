@@ -1778,6 +1778,19 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 #app-unit .u-cov[hidden]{display:none}
 #app-unit .u-cov .hs-art{width:92%;height:92%;object-fit:contain}
 @media(max-width:480px){#app-unit .u-cov{width:82px;height:82px;border-radius:20px}}
+#app-unit .wk{background:var(--t-sky-soft,#eef6ff);border-radius:20px;padding:14px 16px;margin:6px 0 4px}
+#app-unit .wk-q{font-size:20px;font-weight:800;margin:0 0 8px}
+#app-unit .wk-tag{display:inline-block;font-size:14px;font-weight:800;background:var(--t-blue);color:#fff;border-radius:999px;padding:2px 12px;margin-inline-end:6px;vertical-align:2px}
+#app-unit .wk-tag.try{background:var(--t-orange)}
+#app-unit .wk-steps{margin:0 0 10px;padding-inline-start:26px;font-size:19px;line-height:1.7}
+#app-unit .wk-steps li{margin:4px 0}
+#app-unit .wk-steps li::marker{font-weight:800;color:var(--t-blue)}
+#app-unit .wk-try{border-top:2px dashed color-mix(in srgb,var(--t-blue) 35%,#fff);margin-top:10px;padding-top:12px}
+#app-unit .wk-in{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;margin-inline-start:6px}
+#app-unit .wk-in input{width:120px;font-size:22px;font-weight:800;text-align:center;border:3px solid var(--t-line);border-radius:14px;padding:6px 8px;background:#fff}
+#app-unit .wk-in input:focus{border-color:var(--t-blue);outline:none}
+#app-unit .wk .fb{min-height:1.4em;margin:4px 0 0}
+#app-unit .m-pad .m-k.ok:nth-child(13){grid-column:1/-1}
 </style>
 </head>
 <body>
@@ -4768,6 +4781,185 @@ UNITS.g4scihealth = {
     'عند سماع عطاس أو رؤية بعوضة: «كيف تنتقل العدوى هنا؟ وكيف نحمي أنفسنا؟»',
     'قيسوا نبض القلب معًا وهو جالس، ثم بعد المشي، ثم بعد الركض، وقارنوا الأرقام كما في الكتاب.',
     'راجعا بطاقة التطعيمات الخاصة به، واسأله: ما الفرق بين المناعة الطبيعية والاصطناعية؟'
+  ]
+};
+
+</script>
+<script>/* ===== unit: g5math1.js ===== */
+/* ============================================================
+   UNIT CONTENT: Grade 5 Maths, Chapter 1 «القيمة المنزلية»
+   Lessons 1-1 … 1-7 of the Saudi student book (Grade 5 maths, Part 1), pages 10–43.
+   Worked examples (t:'worked') show a solved problem step by step, then a similar one with the last step for the child.
+   Format reference: src/units/_TEMPLATE.js
+   ============================================================ */
+UNITS.g5math1 = {
+  id: 'g5math1',
+  title: 'القيمة المنزلية',
+  subtitle: 'رياضيات الصف الخامس – الفصل الأول',
+  em: '🔢',
+  art: 'unit-g5math1-cover',
+
+  lessons: [
+    {
+      id: 'l1', em: '🏛️', title: 'القيمة المنزلية ضمن البلايين', short: 'الدورات، الصيغ القياسية والتحليلية واللفظية',
+      idea: '<b>القيمة المنزلية</b> هي القيمة التي يأخذها الرقم بحسب موقعه في العدد. في الأعداد الكبيرة نقسم الأرقام إلى <b>دورات</b>، كل دورة ثلاثة أرقام.',
+      blocks: [
+        { t: 'html', h: 'جدول المنازل', html: '<div class="tbl-wrap"><table class="tbl"><tr><th>البلايين</th><th>الملايين</th><th>الألوف</th><th>الواحدات</th></tr><tr><td data-l="البلايين">مئات · عشرات · آحاد</td><td data-l="الملايين">مئات · عشرات · آحاد</td><td data-l="الألوف">مئات · عشرات · آحاد</td><td data-l="الواحدات">مئات · عشرات · آحاد</td></tr></table></div><p><span class="term">دورة الأعداد</span>: كل ثلاثة أرقام في العدد. نقرأ كل دورة ثم نقول اسمها. <b>البليون</b> هو المليار.</p>' },
+        { t: 'tiles', h: 'ثلاث صيغ لكتابة العدد', items: [
+          { em: '🔢', b: 'الصيغة القياسية', p: 'الطريقة المألوفة بالأرقام: <b>٥٤٣٠٠٠</b>', tone: 'sky' },
+          { em: '➕', b: 'الصيغة التحليلية', p: 'العدد في صورة مجموع قيم أرقامه: <b>٥٠٠٠٠٠ + ٤٠٠٠٠ + ٣٠٠٠</b>', tone: 'sun' },
+          { em: '📝', b: 'الصيغة اللفظية', p: 'العدد بالكلمات: <b>خمس مئة وثلاثة وأربعون ألفًا</b>', tone: 'berry' } ] },
+        { t: 'worked', h: 'مثال: منزلة الرقم وقيمته', q: 'في العدد ٢٣٨٤٠٠٠٠٠٠، ما منزلة الرقم ٣؟ وما قيمته؟', steps: ['نقسم العدد إلى دورات من اليمين: ٢ | ٣٨٤ | ٠٠٠ | ٠٠٠', 'الدورة الأولى من اليسار ٢: دورة البلايين. الدورة ٣٨٤: دورة الملايين.', 'الرقم ٣ في منزلة <b>عشرات الملايين</b>.', 'قيمته: ٣ × ١٠٠٠٠٠٠٠ = <b>٣٠٠٠٠٠٠٠</b> (ثلاثون مليونًا).'],
+          try: { q: 'في العدد ٥٦٧١٢٠٠، ما قيمة الرقم ٦؟', steps: ['نقسم العدد إلى دورات: ٥ | ٦٧١ | ٢٠٠', '٥ في دورة الملايين، و٦٧١ في دورة الألوف.', 'الرقم ٦ في منزلة مئات الألوف، فقيمته ='], a: '600000' } }
+      ],
+      remember: ['القيمة المنزلية: قيمة الرقم بحسب موقعه', 'الدورة ثلاثة أرقام: الواحدات، الألوف، الملايين، البلايين', 'القياسية بالأرقام | التحليلية مجموع القيم | اللفظية بالكلمات']
+    },
+    {
+      id: 'l2', em: '⚖️', title: 'المقارنة بين الأعداد', short: '> و< و=، خط الأعداد، المنازل',
+      idea: 'نقارن بين عددين بخط الأعداد أو بالقيمة المنزلية، ونكتب النتيجة بالإشارات <b>&gt;</b> أو <b>&lt;</b> أو <b>=</b>.',
+      blocks: [
+        { t: 'tiles', items: [
+          { em: '🟰', b: 'المعادلة', p: 'جملة تبيّن أن كميتين متساويتان: ٥٠٠ = ٥٠٠', tone: 'sky' },
+          { em: '↔️', b: 'المتباينة', p: 'جملة تبيّن أن كميتين غير متساويتين: ٧٠٠ &gt; ٦٩٩', tone: 'sun' },
+          { em: '📏', b: 'خط الأعداد', p: 'كل عدد <b>أكبر</b> من الأعداد التي عن يساره، و<b>أصغر</b> من التي عن يمينه.', tone: 'green' } ] },
+        { t: 'text', h: 'المقارنة بالقيمة المنزلية', html: '<b>الخطوة ١</b>: نكتب العددين رأسيًا، آحاد أحدهما تحت آحاد الآخر.<br><b>الخطوة ٢</b>: نبدأ من المنزلة الكبرى (من اليسار) ونقارن الرقمين في كل منزلة حتى يختلفا. العدد الذي فيه الرقم الأكبر هو الأكبر.<br>💡 إذا اختلف عدد الأرقام، فالعدد الذي أرقامه <b>أكثر</b> هو الأكبر.' },
+        { t: 'worked', h: 'مثال', q: 'أيهما أكبر: ٥٤٧٢٣ أم ٥٤٨١٠؟', steps: ['نكتب العددين رأسيًا: ٥٤٧٢٣ فوق ٥٤٨١٠', 'عشرات الألوف: ٥ = ٥. الألوف: ٤ = ٤.', 'المئات: ٧ &lt; ٨، فوجدنا رقمين مختلفين.', 'إذن ٥٤٧٢٣ &lt; ٥٤٨١٠، والأكبر <b>٥٤٨١٠</b>.'],
+          try: { q: 'أيهما أكبر: ٣٢٠٩١ أم ٣٢٠١٩؟', steps: ['نكتب العددين رأسيًا.', 'عشرات الألوف ٣ = ٣، الألوف ٢ = ٢، المئات ٠ = ٠.', 'العشرات: ٩ &gt; ١، فالعدد الأكبر هو'], a: '32091' } }
+      ],
+      remember: ['&gt; أكبر من | &lt; أصغر من | = يساوي', 'نقارن من المنزلة الكبرى (اليسار)', 'العدد الذي أرقامه أكثر أكبر']
+    },
+    {
+      id: 'l3', em: '🟩', title: 'الكسور الاعتيادية والعشرية', short: 'الأعشار والأجزاء من مئة، الفاصلة العشرية',
+      idea: 'كل <b>كسر اعتيادي</b> مقامه ١٠ أو ١٠٠ أو ١٠٠٠ يمكن كتابته <b>كسرًا عشريًا</b>. الفاصلة العشرية تفصل منزلة الآحاد عن منزلة الأجزاء من عشرة.',
+      blocks: [
+        { t: 'text', h: 'منازل جديدة عن يمين الآحاد', html: 'المنزلة عن يمين الآحاد: <b>الأجزاء من عشرة (الأعشار)</b>، ثم <b>الأجزاء من مئة</b>، ثم <b>الأجزاء من ألف</b>.<br><span class="term">الكسر العشري</span>: عدد فيه أرقام في منزلة الأجزاء من عشرة أو من مئة أو ما بعدهما.<br><span class="term">الفاصلة العشرية</span>: تفصل منزلة الآحاد عن منزلة الأجزاء من عشرة.' },
+        { t: 'tiles', h: 'بالنموذج', items: [
+          { em: '🟦', b: '٣ من ١٠', p: 'نظلّل ٣ أجزاء من شبكة مقسّمة إلى ١٠: <b>٣ / ١٠ = ٠٫٣</b>', tone: 'sky' },
+          { em: '🟩', b: '٩ من ١٠٠', p: 'نظلّل ٩ مربعات من ١٠٠: <b>٩ / ١٠٠ = ٠٫٠٩</b>', tone: 'sun' },
+          { em: '🟫', b: '٣٤ من ١٠٠', p: '٣ أعشار و٤ أجزاء من مئة: <b>٣٤ / ١٠٠ = ٠٫٣٤</b>', tone: 'violet' } ] },
+        { t: 'text', h: 'كم رقمًا بعد الفاصلة؟', html: 'الأجزاء من <b>عشرة</b>: رقم واحد بعد الفاصلة.<br>الأجزاء من <b>مئة</b>: رقمان.<br>الأجزاء من <b>ألف</b>: ثلاثة أرقام. مثلًا ١٦ / ١٠٠٠ = ٠٫٠١٦' },
+        { t: 'worked', h: 'مثال', q: 'اكتب ٣٥ / ١٠٠ كسرًا عشريًا.', steps: ['نقرؤه: خمسة وثلاثون من مئة.', 'الأجزاء من مئة تحتاج رقمين عن يمين الفاصلة.', 'الكسر العشري: <b>٠٫٣٥</b>'],
+          try: { q: 'اكتب ٧ / ١٠٠ كسرًا عشريًا.', steps: ['نقرؤه: سبعة من مئة.', 'نحتاج رقمين عن يمين الفاصلة، فنضع صفرًا قبل ٧.', 'الكسر العشري ='], a: '0.07' } }
+      ],
+      remember: ['١٠ ← رقم بعد الفاصلة | ١٠٠ ← رقمان | ١٠٠٠ ← ثلاثة', '٣ / ١٠ = ٠٫٣ | ٩ / ١٠٠ = ٠٫٠٩', 'الفاصلة العشرية بعد منزلة الآحاد']
+    },
+    {
+      id: 'l4', em: '🔍', title: 'القيمة المنزلية ضمن أجزاء الألف', short: 'الأعشار، الأجزاء من مئة ومن ألف، الصيغ',
+      idea: 'نوسّع جدول المنازل عن يمين الفاصلة: أجزاء العشرة ثم أجزاء المئة ثم أجزاء الألف، ونكتب الكسر العشري بالصيغ الثلاث.',
+      blocks: [
+        { t: 'html', h: 'جدول المنازل', html: '<div class="tbl-wrap"><table class="tbl"><tr><th>العشرات</th><th>الآحاد</th><th>٫</th><th>أجزاء العشرة</th><th>أجزاء المئة</th><th>أجزاء الألف</th></tr><tr><td data-l="العشرات">٢</td><td data-l="الآحاد">٧</td><td>٫</td><td data-l="أجزاء العشرة">٣</td><td data-l="أجزاء المئة">٤</td><td data-l="أجزاء الألف">٨</td></tr></table></div><p>في ٢٧٫٣٤٨: الرقم ٣ قيمته ٠٫٣، والرقم ٤ قيمته ٠٫٠٤، والرقم ٨ قيمته ٠٫٠٠٨.</p>' },
+        { t: 'text', h: 'الصيغة اللفظية للكسر العشري', html: 'نستعمل حرف العطف <b>(و)</b> مكان الفاصلة، ونذكر <b>منزلة آخر رقم</b>.<br>٣٫٧٩ = ثلاثة <b>و</b>تسعة وسبعون <b>من مئة</b>.<br>٥٫٦١٤ = خمسة <b>و</b>ست مئة وأربعة عشر <b>من ألف</b>.<br>التحليلية: ٥٫٦١٤ = ٥ + ٠٫٦ + ٠٫٠١ + ٠٫٠٠٤' },
+        { t: 'worked', h: 'مثال', q: 'اكتب ٤٫٢٠٧ بالصيغة التحليلية.', steps: ['الرقم ٤ في منزلة الآحاد: قيمته ٤', 'الرقم ٢ في منزلة أجزاء العشرة: قيمته ٠٫٢', 'الرقم ٠ في أجزاء المئة: قيمته ٠، فلا نكتبه.', 'الرقم ٧ في أجزاء الألف: قيمته ٠٫٠٠٧', 'التحليلية: <b>٤ + ٠٫٢ + ٠٫٠٠٧</b>'],
+          try: { q: 'ما قيمة الرقم ٩ في العدد ٦٫٠٩٥؟', steps: ['الرقم ٠ في منزلة أجزاء العشرة.', 'الرقم ٩ في منزلة أجزاء المئة.', 'قيمته ='], a: '0.09' } }
+      ],
+      remember: ['أجزاء العشرة ٠٫١ | المئة ٠٫٠١ | الألف ٠٫٠٠١', 'نقرأ الفاصلة «و» ونذكر منزلة آخر رقم', 'التحليلية: نجمع قيم الأرقام']
+    },
+    {
+      id: 'l5', em: '🎯', title: 'مقارنة الكسور العشرية', short: 'نرتّب الفواصل، كسور عشرية متكافئة',
+      idea: 'نقارن الكسور العشرية كما نقارن الأعداد: نرتّب <b>الفواصل بعضها تحت بعض</b>، ونقارن من المنزلة الكبرى.',
+      blocks: [
+        { t: 'text', h: 'الخطوات', html: '<b>١</b>: نرتّب الكسور العشرية بحيث تكون الفواصل بعضها تحت بعض.<br><b>٢</b>: نقارن الأرقام في المنزلة الكبرى.<br><b>٣</b>: نتابع حتى نصل إلى رقمين مختلفين.<br>أو نستعمل خط الأعداد: الأكبر هو الأبعد إلى اليمين.' },
+        { t: 'text', h: 'كسور عشرية متكافئة', html: '<span class="term">الكسور العشرية المتكافئة</span>: كسور تمثّل العدد نفسه، مثل ٠٫٥ = ٠٫٥٠ = ٠٫٥٠٠. إضافة صفر في آخر الكسر العشري لا تغيّر قيمته، وتساعدنا على المقارنة.' },
+        { t: 'worked', h: 'مثال', q: 'قارن: ٤٫٧ ؟ ٤٫٦٨', steps: ['نرتّب الفاصلتين بعضهما تحت بعض، ونضيف صفرًا: ٤٫٧٠ و٤٫٦٨', 'الآحاد: ٤ = ٤', 'أجزاء العشرة: ٧ &gt; ٦', 'إذن <b>٤٫٧ &gt; ٤٫٦٨</b>'],
+          try: { q: 'أيهما أكبر: ٠٫٥٣ أم ٠٫٥٢٩؟', steps: ['نكتبهما: ٠٫٥٣٠ و٠٫٥٢٩', 'أجزاء العشرة: ٥ = ٥', 'أجزاء المئة: ٣ &gt; ٢، فالأكبر هو'], a: '0.53' } }
+      ],
+      remember: ['الفواصل بعضها تحت بعض', 'نبدأ من المنزلة الكبرى', '٠٫٥ = ٠٫٥٠: الصفر في الآخر لا يغيّر القيمة', 'ليس الأطول هو الأكبر دائمًا: ٠٫٧ &gt; ٠٫٦٩٩']
+    },
+    {
+      id: 'l6', em: '🪜', title: 'ترتيب الأعداد والكسور العشرية', short: 'من الأصغر إلى الأكبر وبالعكس',
+      idea: 'لترتيب عدة أعداد نقارنها منزلةً منزلة. في الكسور العشرية <b>نضيف أصفارًا</b> حتى يتساوى عدد الأرقام بعد الفاصلة.',
+      blocks: [
+        { t: 'worked', h: 'مثال: ترتيب أعداد', q: 'رتّب من الأكبر إلى الأصغر: ٦٨٠٠٠، ٦٢٠٠٠، ٦٨٥٠٠', steps: ['نكتبها رأسيًا وننظر إلى عشرات الألوف: كلها ٦.', 'الألوف: ٨، ٢، ٨. أصغرها ٦٢٠٠٠.', 'نقارن ٦٨٠٠٠ و٦٨٥٠٠ في المئات: ٠ &lt; ٥', 'الترتيب: <b>٦٨٥٠٠، ٦٨٠٠٠، ٦٢٠٠٠</b>'],
+          try: { q: 'ما أصغر عدد بين: ٣٫٤، ٣٫٠٤، ٣٫٤٤؟', steps: ['نضيف أصفارًا: ٣٫٤٠، ٣٫٠٤، ٣٫٤٤', 'الآحاد كلها ٣.', 'أجزاء العشرة: ٤، ٠، ٤. الأصغر هو'], a: '3.04' } },
+        { t: 'text', h: '💡 تذكير', html: 'إضافة الأصفار عن يمين الكسر العشري تجعل المقارنة أسهل، ولا تغيّر قيمة العدد.' }
+      ],
+      remember: ['نرتّب بالقيمة المنزلية منزلةً منزلة', 'نضيف أصفارًا ليتساوى عدد الأرقام بعد الفاصلة', 'تصاعدي: من الأصغر | تنازلي: من الأكبر']
+    },
+    {
+      id: 'l7', em: '🐫', title: 'خطة حل المسألة: التخمين والتحقق', short: 'نخمّن، نتحقق، نعدّل',
+      idea: 'في <b>التخمين والتحقق</b> نخمّن جوابًا، ثم نتحقق منه، فإن لم يكن صحيحًا نعدّل التخمين ونعيد.',
+      blocks: [
+        { t: 'chain', items: [['📖', 'أفهم', 'ما المعطى؟ وما المطلوب؟'], ['🗺️', 'أخطط', 'أختار التخمين والتحقق'], ['✏️', 'أحل', 'أخمّن ثم أتحقق وأعدّل'], ['✅', 'أتحقق', 'هل الجواب يناسب كل الشروط؟']] },
+        { t: 'worked', h: 'مثال من الكتاب', q: 'رأى محمود ١٩ جملًا، بعضها بسنامين وبعضها بسنام واحد، وعدّ ٢٩ سنامًا. كم جملًا بسنامين؟', steps: ['نخمّن: ٨ جمال بسنامين و١١ بسنام واحد ← ١٦ + ١١ = ٢٧ سنامًا. أقل من ٢٩.', 'نزيد الجمال ذات السنامين: ٩ و١٠ ← ١٨ + ١٠ = ٢٨. ما زال أقل.', 'نخمّن: ١٠ بسنامين و٩ بسنام ← ٢٠ + ٩ = ٢٩ سنامًا. ✓', 'الجواب: <b>١٠ جمال بسنامين</b>، و١٠ + ٩ = ١٩ جملًا. ✓'],
+          try: { q: 'لدى سعاد ٨ أوراق نقدية من فئتي ١٠ و٥ ريالات، مجموعها ٦٠ ريالًا. كم ورقة من فئة ١٠؟', steps: ['نخمّن ٥ أوراق من ١٠ و٣ من ٥: ٥٠ + ١٥ = ٦٥. أكثر من ٦٠.', 'نقلّل: ٤ من ١٠ و٤ من ٥: ٤٠ + ٢٠ = ٦٠ ✓', 'عدد الأوراق من فئة ١٠ ='], a: '4' } }
+      ],
+      remember: ['أفهم ← أخطط ← أحل ← أتحقق', 'إذا كان الناتج كبيرًا نصغّر التخمين، وإذا كان صغيرًا نكبّره', 'نتحقق من كل شروط المسألة']
+    }
+  ],
+
+  glossary: [
+    { l: 'l1', em: '🏛️', term: 'القيمة المنزلية', def: 'القيمة التي يأخذها الرقم بحسب موقعه في العدد.', short: 'قيمة الرقم بموقعه' },
+    { l: 'l1', em: '3️⃣', term: 'دورة الأعداد', def: 'كل ثلاثة أرقام في العدد: الواحدات، الألوف، الملايين، البلايين.', short: 'ثلاثة أرقام' },
+    { l: 'l1', em: '🔢', term: 'الصيغة القياسية', def: 'الطريقة المألوفة لكتابة العدد باستعمال أرقامه.', short: 'بالأرقام' },
+    { l: 'l1', em: '➕', term: 'الصيغة التحليلية', def: 'كتابة العدد في صورة مجموع قيم أرقامه.', short: 'مجموع القيم' },
+    { l: 'l1', em: '📝', term: 'الصيغة اللفظية', def: 'كتابة العدد بالكلمات.', short: 'بالكلمات' },
+    { l: 'l2', em: '🟰', term: 'المعادلة', def: 'جملة تبيّن أن كميتين متساويتان.', short: 'كميتان متساويتان' },
+    { l: 'l2', em: '↔️', term: 'المتباينة', def: 'جملة تبيّن أن كميتين غير متساويتين، باستعمال &gt; أو &lt;.', short: 'كميتان مختلفتان' },
+    { l: 'l3', em: '🟦', term: 'الكسر العشري', def: 'عدد فيه أرقام في منزلة الأجزاء من عشرة أو من مئة أو ما بعدهما.', short: 'فيه فاصلة عشرية' },
+    { l: 'l3', em: '🔴', term: 'الفاصلة العشرية', def: 'تفصل منزلة الآحاد عن منزلة الأجزاء من عشرة.', short: 'بعد الآحاد' },
+    { l: 'l5', em: '🟰', term: 'الكسور العشرية المتكافئة', def: 'كسور عشرية تمثّل العدد نفسه، مثل ٠٫٥ و٠٫٥٠.', short: 'القيمة نفسها' }
+  ],
+
+  questions: [
+    { id: 'q1', l: 'l1', t: 'mcq', q: 'في العدد ٤٧٢٣٥١٠٠٠، ما منزلة الرقم ٧؟', o: ['عشرات الملايين', 'مئات الملايين', 'الملايين', 'عشرات الألوف'], a: 0, ex: 'الدورات: ٤٧٢ | ٣٥١ | ٠٠٠. الرقم ٧ في منزلة عشرات الملايين.' },
+    { id: 'q2', l: 'l1', t: 'num', q: 'ما قيمة الرقم ٨ في العدد ٣٨٥٠٠٠؟', a: 80000, hint1: 'الرقم ٨ في منزلة عشرات الألوف.' },
+    { id: 'q3', l: 'l1', t: 'mcq', q: 'الصيغة التحليلية للعدد ٢٠٤٠٦ هي:', o: ['٢٠٠٠٠ + ٤٠٠ + ٦', '٢٠٠٠ + ٤٠٠ + ٦', '٢٠٠٠٠ + ٤٠٠٠ + ٦', '٢ + ٤ + ٦'], a: 0, ex: '٢ عشرات ألوف، و٤ مئات، و٦ آحاد.' },
+    { id: 'q4', l: 'l1', t: 'num', q: 'اكتب بالصيغة القياسية: ثلاثة ملايين ومئتا ألف وخمسة.', a: 3200005, hint1: 'دورة الملايين: ٣. دورة الألوف: ٢٠٠. دورة الواحدات: ٠٠٥.' },
+    { id: 'q5', l: 'l1', t: 'mcq', q: 'كم رقمًا في كل دورة من دورات الأعداد؟', o: ['ثلاثة', 'اثنان', 'أربعة', 'عشرة'], a: 0, ex: 'آحاد وعشرات ومئات في كل دورة.' },
+    { id: 'q6', l: 'l1', t: 'mcq', q: 'البليون هو:', o: ['المليار', 'المليون', 'مئة ألف', 'ألف مليار'], a: 0, ex: 'البليون والمليار اسمان للعدد نفسه: ألف مليون.' },
+    { id: 'q7', l: 'l1', t: 'mcq', q: 'الصيغة اللفظية للعدد ١٥٠٠٠٠٠ هي:', o: ['مليون وخمس مئة ألف', 'مليون وخمسون ألفًا', 'مئة وخمسون ألفًا', 'خمسة عشر مليونًا'], a: 0, ex: 'دورة الملايين ١، ودورة الألوف ٥٠٠.' },
+    { id: 'q8', l: 'l2', t: 'mcq', q: 'أي إشارة تجعل الجملة صحيحة: ٧٨٣٤٥ ○ ٧٨٤٣٥', o: ['&lt;', '&gt;', '='], a: 0, ex: 'المئات: ٣ &lt; ٤، فالأول أصغر.' },
+    { id: 'q9', l: 'l2', t: 'mcq', q: 'أي العددين أكبر: ٩٩٩٩٩ أم ١٠٠٠٠٠؟', o: ['١٠٠٠٠٠', '٩٩٩٩٩', 'متساويان'], a: 0, ex: 'العدد الذي أرقامه أكثر هو الأكبر.' },
+    { id: 'q10', l: 'l2', t: 'tf', q: 'على خط الأعداد، كل عدد أكبر من جميع الأعداد التي تقع عن يساره.', a: true, ex: 'وأصغر من جميع الأعداد التي تقع عن يمينه.' },
+    { id: 'q11', l: 'l2', t: 'mcq', q: 'جملة تبيّن أن كميتين غير متساويتين تسمّى:', o: ['متباينة', 'معادلة', 'صيغة تحليلية', 'دورة'], a: 0, ex: 'المعادلة تبيّن أن الكميتين متساويتان.' },
+    { id: 'q12', l: 'l2', t: 'mcq', q: 'من أين نبدأ المقارنة بين عددين لهما عدد الأرقام نفسه؟', o: ['من المنزلة الكبرى (اليسار)', 'من الآحاد', 'من الوسط', 'من أي منزلة'], a: 0, ex: 'نقارن من المنزلة الكبرى حتى يختلف الرقمان.' },
+    { id: 'q13', l: 'l2', t: 'num', q: 'باستعمال الأرقام ٧، ٠، ٤، ٥ مرة واحدة لكل منها، ما أكبر عدد يمكن تكوينه؟', a: 7540, hint1: 'ضع الرقم الأكبر في المنزلة الكبرى.' },
+    { id: 'q14', l: 'l3', t: 'mcq', q: 'الكسر ٧ / ١٠ في صورة كسر عشري:', o: ['٠٫٧', '٠٫٠٧', '٧٫٠', '٠٫٠٠٧'], a: 0, ex: 'الأجزاء من عشرة: رقم واحد بعد الفاصلة.' },
+    { id: 'q15', l: 'l3', t: 'num', q: 'اكتب ٤٥ / ١٠٠ كسرًا عشريًا.', a: 0.45, hint1: 'الأجزاء من مئة: رقمان بعد الفاصلة.' },
+    { id: 'q16', l: 'l3', t: 'mcq', q: 'الكسر ١٦ / ١٠٠٠ في صورة كسر عشري:', o: ['٠٫٠١٦', '٠٫١٦', '٠٫٠٠١٦', '١٦٫٠'], a: 0, ex: 'الأجزاء من ألف: ثلاثة أرقام بعد الفاصلة.' },
+    { id: 'q17', l: 'l3', t: 'mcq', q: 'شبكة من ١٠٠ مربع ظُلّل منها ٨٨. الجزء المظلّل:', o: ['٠٫٨٨', '٨٫٨', '٠٫٠٨٨', '٠٫٨'], a: 0, ex: '٨٨ من ١٠٠ = ٠٫٨٨' },
+    { id: 'q18', l: 'l3', t: 'mcq', q: 'ما الذي تفصله الفاصلة العشرية؟', o: ['الآحاد عن الأجزاء من عشرة', 'العشرات عن الآحاد', 'الألوف عن المئات', 'المئات عن العشرات'], a: 0, ex: 'منزلة الأجزاء من عشرة تقع مباشرة عن يمين الآحاد.' },
+    { id: 'q19', l: 'l4', t: 'mcq', q: 'في العدد ٢٫٤٧٣، ما منزلة الرقم ٧؟', o: ['أجزاء المئة', 'أجزاء العشرة', 'أجزاء الألف', 'العشرات'], a: 0, ex: '٤ أجزاء عشرة، ٧ أجزاء مئة، ٣ أجزاء ألف.' },
+    { id: 'q20', l: 'l4', t: 'num', q: 'ما قيمة الرقم ٥ في العدد ٠٫٠٠٥؟', a: 0.005, hint1: 'الرقم ٥ في منزلة أجزاء الألف.' },
+    { id: 'q21', l: 'l4', t: 'mcq', q: 'الصيغة اللفظية للعدد ٣٫٧٩:', o: ['ثلاثة وتسعة وسبعون من مئة', 'ثلاثة وتسعة وسبعون من عشرة', 'ثلاث مئة وتسعة وسبعون', 'ثلاثة وسبعة وتسعون من ألف'], a: 0, ex: 'الفاصلة تُقرأ «و»، وآخر رقم في منزلة أجزاء المئة.' },
+    { id: 'q22', l: 'l4', t: 'num', q: 'اكتب بالصيغة القياسية: خمسة وست مئة وأربعة عشر من ألف.', a: 5.614, hint1: 'من ألف: ثلاثة أرقام بعد الفاصلة.' },
+    { id: 'q23', l: 'l4', t: 'mcq', q: 'الصيغة التحليلية للعدد ٦٫٠٣:', o: ['٦ + ٠٫٠٣', '٦ + ٠٫٣', '٦٠ + ٣', '٦ + ٣'], a: 0, ex: 'الرقم ٣ في منزلة أجزاء المئة فقيمته ٠٫٠٣.' },
+    { id: 'q24', l: 'l5', t: 'mcq', q: 'أي إشارة تجعل الجملة صحيحة: ٤٫٧ ○ ٤٫٦٨', o: ['&gt;', '&lt;', '='], a: 0, ex: 'أجزاء العشرة: ٧ &gt; ٦.' },
+    { id: 'q25', l: 'l5', t: 'mcq', q: 'أي الكسور العشرية يكافئ ٠٫٦؟', o: ['٠٫٦٠', '٠٫٠٦', '٦٫٠', '٠٫٦١'], a: 0, ex: 'إضافة صفر في آخر الكسر العشري لا تغيّر قيمته.' },
+    { id: 'q26', l: 'l5', t: 'tf', q: '٠٫٧ أكبر من ٠٫٦٩٩.', a: true, ex: '٠٫٧٠٠ و٠٫٦٩٩: في أجزاء العشرة ٧ &gt; ٦. ليس الأطول هو الأكبر.' },
+    { id: 'q27', l: 'l5', t: 'mcq', q: 'أيهما أكبر: ١٫٠٥ أم ١٫٥؟', o: ['١٫٥', '١٫٠٥', 'متساويان'], a: 0, ex: '١٫٥٠ و١٫٠٥: في أجزاء العشرة ٥ &gt; ٠.' },
+    { id: 'q28', l: 'l5', t: 'mcq', q: 'ماذا نفعل أولًا عند مقارنة كسرين عشريين بالقيمة المنزلية؟', o: ['نرتّب الفواصل بعضها تحت بعض', 'نحذف الفاصلة', 'نجمع الكسرين', 'نبدأ من آخر رقم'], a: 0, ex: 'ثم نقارن من المنزلة الكبرى.' },
+    { id: 'q29', l: 'l6', t: 'order', q: 'رتّب من الأصغر إلى الأكبر:', items: ['٣٫٠٤', '٣٫٤', '٣٫٤٤', '٣٫٥'], ex: 'نضيف أصفارًا: ٣٫٠٤، ٣٫٤٠، ٣٫٤٤، ٣٫٥٠.' },
+    { id: 'q30', l: 'l6', t: 'order', q: 'رتّب من الأكبر إلى الأصغر:', items: ['٦٨٥٠٠', '٦٨٠٠٠', '٦٢٠٠٠', '٥٩٩٩٩'], ex: 'نقارن عشرات الألوف ثم الألوف ثم المئات.' },
+    { id: 'q31', l: 'l6', t: 'num', q: 'ما أصغر عدد بين: ٠٫٨، ٠٫٠٨، ٠٫٨٨؟', a: 0.08, hint1: 'أضف أصفارًا: ٠٫٨٠، ٠٫٠٨، ٠٫٨٨.' },
+    { id: 'q32', l: 'l6', t: 'mcq', q: 'لماذا نضيف أصفارًا عند ترتيب الكسور العشرية؟', o: ['ليتساوى عدد الأرقام بعد الفاصلة فتسهل المقارنة', 'لنكبّر الأعداد', 'لنصغّر الأعداد', 'لأن الأصفار تغيّر القيمة'], a: 0, ex: 'الأصفار عن يمين الكسر العشري لا تغيّر قيمته.' },
+    { id: 'q33', l: 'l7', t: 'order', q: 'رتّب خطوات حل المسألة:', items: ['أفهم', 'أخطط', 'أحل', 'أتحقق'], ex: 'هذه الخطوات الأربع في كل خطة حل.' },
+    { id: 'q34', l: 'l7', t: 'num', q: 'عددان مجموعهما ١٥، والفرق بينهما ٣. ما العدد الأكبر؟', a: 9, hint1: 'خمّن: ٨ و٧؟ الفرق ١ فقط. جرّب عددين أبعد.' },
+    { id: 'q35', l: 'l7', t: 'num', q: 'في حظيرة دجاج وأرانب، عدد الرؤوس ٧ وعدد الأرجل ٢٠. كم أرنبًا؟', a: 3, hint1: 'الأرنب ٤ أرجل والدجاجة رجلان. خمّن ثم تحقّق.' },
+    { id: 'q36', l: 'l7', t: 'mcq', q: 'خمّنت جوابًا فكان الناتج أكبر من المطلوب. ماذا تفعل؟', o: ['أصغّر التخمين ثم أتحقق مرة أخرى', 'أتوقف', 'أكبّر التخمين', 'أكتبه جوابًا'], a: 0, ex: 'نعدّل التخمين في الاتجاه الصحيح ونتحقق.' }
+  ],
+
+  games: {
+    sort: [
+      { id: 'g1', l: 'l5', em: '⚖️🔢', title: 'أكبر أم أصغر من ٠٫٥؟', ask: 'قارن كل كسر عشري بالعدد ٠٫٥.',
+        bins: [['أكبر من ٠٫٥', 'var(--t-blue)'], ['أصغر من ٠٫٥', 'var(--t-orange)']],
+        items: [['🔢', '٠٫٧', 0], ['🔢', '٠٫٥١', 0], ['🔢', '٠٫٦٠٢', 0], ['🔢', '٠٫٩', 0], ['🔢', '٠٫٤٩', 1], ['🔢', '٠٫٠٩', 1], ['🔢', '٠٫٠٥', 1], ['🔢', '٠٫٣٩٩', 1]],
+        why: ['في منزلة أجزاء العشرة رقمه ٥ أو أكثر، والباقي يجعله أكبر.', 'في منزلة أجزاء العشرة رقمه أقل من ٥.'] },
+      { id: 'g2', l: 'l1', em: '🏛️🔢', title: 'أي دورة؟', ask: 'في أي دورة يقع الرقم ٥ في كل عدد؟',
+        bins: [['الألوف', 'var(--t-blue)'], ['الملايين', 'var(--t-purple)'], ['البلايين', 'var(--t-pink)']],
+        items: [['🔢', '٥٢٠٠٠', 0], ['🔢', '٣٥٠٠', 0], ['🔢', '٥٠٠٠٠٠٠', 1], ['🔢', '٢٥٠٠٠٠٠٠٠', 1], ['🔢', '٥٠٠٠٠٠٠٠٠٠', 2], ['🔢', '١٥٠٠٠٠٠٠٠٠٠', 2]],
+        why: ['من ١٠٠٠ إلى ٩٩٩٩٩٩.', 'من مليون إلى ٩٩٩ مليونًا.', 'من مليار فأكثر.'] }
+    ],
+    order: [
+      { id: 'dec', l: 'l6', em: '🪜', title: 'رتّب الكسور العشرية', prompt: 'اضغط من الأصغر إلى الأكبر.', sets: [[['🔢', '٠٫٠٩'], ['🔢', '٠٫٣'], ['🔢', '٠٫٣٥'], ['🔢', '٠٫٥']], [['🔢', '١٫٠٥'], ['🔢', '١٫٢'], ['🔢', '١٫٢٥'], ['🔢', '١٫٥']], [['🔢', '٢٫٠٠٧'], ['🔢', '٢٫٠٧'], ['🔢', '٢٫٧'], ['🔢', '٢٫٧٧']]] },
+      { id: 'big', l: 'l2', em: '🏛️', title: 'رتّب الأعداد الكبيرة', prompt: 'اضغط من الأصغر إلى الأكبر.', sets: [[['🔢', '٩٩٩٩'], ['🔢', '١٠٠٠٠'], ['🔢', '١٠٠١٠'], ['🔢', '١١٠٠٠']], [['🔢', '٥٤٧٢٣'], ['🔢', '٥٤٨١٠'], ['🔢', '٥٥٠٠٠'], ['🔢', '٦٠٠٠٠']]] }
+    ]
+  },
+
+  parentTips: [
+    'اقرؤوا معًا أعدادًا كبيرة من الأخبار أو الفواتير، وقسّموها إلى دورات بأصابعكم.',
+    'أكثر خطأ في الكسور العشرية: الظن أن ٠٫٦٩٩ أكبر من ٠٫٧ لأنه أطول. اطلبوا إضافة الأصفار قبل المقارنة.',
+    'في الأمثلة المحلولة: اطلبوا من طفلكم أو طفلتكم أن يشرح كل خطة بصوته قبل أن يحل «جرّب أنت».'
   ]
 };
 
@@ -8765,6 +8957,7 @@ function block(b) {
   if (b.t === 'pyramid') { const n = b.levels.length; return `${h}${b.html ? `<p>${b.html}</p>` : ''}<div class="pyr">${b.levels.slice().reverse().map(([t, c], i) => `<div style="width:${28 + i * (60 / Math.max(1, n - 1))}%;background:${c}">${t}</div>`).join('')}</div>`; }
   if (b.t === 'html') return `${h}${b.html}`;
   if (b.t === 'model') return `${h}${b.html ? `<p>${b.html}</p>` : ''}${mathModel(b)}${b.after ? `<p>${b.after}</p>` : ''}`;   // math.js
+  if (b.t === 'worked') return workedBlock(b);   // worked.js
   return '';
 }
 function renderLesson(L) {
@@ -8939,7 +9132,7 @@ function answerText(q) {
   if (q.t === 'mcq' || q.t === 'fill') return q.o[q.a];
   if (q.t === 'pic') return q.o[q.a] + (q.labels ? ' ' + q.labels[q.a] : '');
   if (q.t === 'tf') return q.a ? 'صح' : 'خطأ';
-  if (q.t === 'num') return HS.toAr(q.a);
+  if (q.t === 'num') return AR(q.a);
   return '';
 }
 function retryIntro() {
@@ -9240,7 +9433,7 @@ APPS.unit = {
     const missed = Object.keys(s).filter(id => s[id].w > 0).sort((a, b) => (s[b].w - s[b].c * .5) - (s[a].w - s[a].c * .5)).slice(0, 5).map(id => ({ q: (u.questions.find(q => q.id === id) || {}).q, w: s[id].w, c: s[id].c })).filter(x => x.q);
     // how the child learns, not only what: first-try accuracy, self-corrections, and the wrong ideas chosen most
     const lr = d.learn || null, byQ = id => u.questions.find(q => q.id === id) || {};
-    const rightOf = q => q.t === 'num' ? HS.toAr(q.a) : q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
+    const rightOf = q => q.t === 'num' ? AR(q.a) : q.t === 'tf' ? (q.a ? 'صح' : 'خطأ') : q.t === 'pic' && q.labels ? q.labels[q.a] : q.o ? q.o[q.a] : '';
     const mis = lr ? Object.entries(lr.mis || {}).flatMap(([id, ch]) => Object.entries(ch).map(([c, n]) => ({ q: byQ(id).q, chose: c, right: rightOf(byQ(id)), n, l: byQ(id).l })))
       .filter(x => x.q).sort((a, b) => b.n - a.n).slice(0, 4) : [];
     const lessons = u.lessons.map(L => { const r = lr && lr.L && lr.L[L.id]; return { title: L.title, em: L.em, m: m(L.id), first: r && r.n ? r.first / r.n : null, n: r ? r.n : 0 }; });
@@ -10339,7 +10532,7 @@ LABS.g4scihealth = { outbreak: { id: 'outbreak', title: '🔎 محقّق الع�
    - a wrong answer is read for the usual mistakes (added instead of multiplied, one group too many or too few,
      forgot the regrouped ten, one zero too many or too few) and gets a matching hint.
    ============================================================ */
-const AR = n => HS.toAr(n);
+const AR = n => HS.toAr(n).replace(/\./g, '٫');   // decimals use the Arabic decimal mark
 // one emoji per maths object until its picture exists (art id 'math-<name>', from the maths sprite sheets)
 const MATH_EMOJI = { apple: '🍎', orange: '🍊', date: '🟤', cookie: '🍪', pencil: '✏️', crayon: '🖍️', egg: '🥚', flower: '🌸', star: '⭐',
   ball: '⚽', toycar: '🚗', bird: '🐦', fish: '🐟', book: '📘', marble: '🔵', balloon: '🎈', plate: '🍽️', bag: '🛍️', box: '📦', cup: '🥤',
@@ -10419,16 +10612,16 @@ function readMistake(q, w) {
 
 /* ---------------- keypad (one for the screen; it writes into the active slot) ---------------- */
 const PAD = {};
-function keypad(onKey) {
-  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'del', '0', 'ok'];
-  const html = `<div class="m-pad" dir="ltr" role="group" aria-label="لوحة الأرقام">${keys.map(k => `<button type="button" class="m-k ${k === 'ok' ? 'ok' : k === 'del' ? 'del' : ''}" data-k="${k}" aria-label="${k === 'ok' ? 'تحقّق' : k === 'del' ? 'امسح رقمًا' : AR(k)}">${k === 'ok' ? '✓' : k === 'del' ? '⌫' : AR(k)}</button>`).join('')}</div>`;
+function keypad(onKey, dec) {
+  const keys = dec ? ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'del', 'ok'] : ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'del', '0', 'ok'];
+  const html = `<div class="m-pad" dir="ltr" role="group" aria-label="لوحة الأرقام">${keys.map(k => `<button type="button" class="m-k ${k === 'ok' ? 'ok' : k === 'del' ? 'del' : ''}" data-k="${k}" aria-label="${k === 'ok' ? 'تحقّق' : k === 'del' ? 'امسح رقمًا' : k === '.' ? 'فاصلة عشرية' : AR(k)}">${k === 'ok' ? '✓' : k === 'del' ? '⌫' : AR(k)}</button>`).join('')}</div>`;
   const bind = root => {
     root.querySelectorAll('.m-k').forEach(b => b.onclick = () => onKey(b.dataset.k));
     const me = PAD.n = (PAD.n || 0) + 1;   // only the newest keypad on screen listens to the keyboard
     const kb = e => {
       if (!root.isConnected || PAD.n !== me) return document.removeEventListener('keydown', kb);
       if (e.ctrlKey || e.metaKey || e.altKey || root.querySelector('.m-k:disabled')) return;
-      const d = '٠١٢٣٤٥٦٧٨٩'.indexOf(e.key); const k = d >= 0 ? String(d) : /^[0-9]$/.test(e.key) ? e.key : e.key === 'Backspace' ? 'del' : e.key === 'Enter' ? 'ok' : null;
+      const d = '٠١٢٣٤٥٦٧٨٩'.indexOf(e.key); const k = d >= 0 ? String(d) : /^[0-9]$/.test(e.key) ? e.key : e.key === 'Backspace' ? 'del' : e.key === 'Enter' ? 'ok' : dec && /^[.,٫،]$/.test(e.key) ? '.' : null;
       if (!k || (e.target.closest && e.target.closest('input,textarea'))) return;
       e.preventDefault(); onKey(k);
     };
@@ -10441,13 +10634,15 @@ function keypad(onKey) {
    1st wrong: what the mistake says, or a strategy · 2nd: second hint + the model drawn · 3rd: the answer. */
 function numQuestion(q, el, finish, opt) {
   let val = '', tries = 0, over = false;
+  const dec = q.dec || !Number.isInteger(q.a), maxLen = Math.max(6, String(q.a).length + 2);   // decimals get a ٫ key; long numbers (billions) fit
   const pad = keypad(k => {
     if (over) return;
     if (k === 'del') val = val.slice(0, -1);
     else if (k === 'ok') return check();
-    else if (val.length < 6) val = (val === '0' ? '' : val) + k;
+    else if (k === '.') { if (!val.includes('.')) val = (val || '0') + '.'; }
+    else if (val.length < maxLen) val = (val === '0' ? '' : val) + k;
     show();
-  });
+  }, dec);
   el.innerHTML = `<div class="q-line"><div class="q">${q.q}</div></div>${q.model && q.modelFirst ? mathModel(q.model) : ''}
     <div class="m-ans"><output class="m-box-ans" aria-live="polite" aria-label="إجابتك">؟</output>${q.unit ? `<span class="m-unit">${q.unit}</span>` : ''}</div>${pad.html}`;
   pad.bind(el);
@@ -10459,7 +10654,7 @@ function numQuestion(q, el, finish, opt) {
   function check() {
     if (!val) return;
     const w = +val;
-    if (w === q.a) { over = true; out.classList.add('ok'); lock(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
+    if (Math.abs(w - q.a) < 1e-9) { over = true; out.classList.add('ok'); lock(); return finish(tries === 0, { tries, fixed: tries > 0 }); }
     tries++; out.classList.add('no'); HS.fx('no'); onCoach(q, w, tries);
     if (!opt.coach || tries >= 3) { over = true; lock(); out.textContent = AR(q.a); out.classList.remove('no'); out.classList.add('ok'); return finish(false, { tries, revealed: true }); }
     const why = readMistake(q, w);
@@ -10782,6 +10977,55 @@ LABS.g4math5 = {
 // emoji left in lesson text, tabs and games become science/KG/dictionary pictures as each screen is drawn
 HS.picify(ROOT, ["sci", "kg", "dict"]);
 
+/* ---- worked.js ---- */
+/* ============================================================
+   WORKED EXAMPLES WITH FADING (lesson block t:'worked'), loaded with app.js in the same scope.
+   Research: studying a step-by-step solution first, then a similar problem with the LAST step left out
+   ("backward fading"), then solving alone, works better for new learners than solving straight away.
+   { t:'worked', h:'title', q:'the solved problem', steps:['step 1', 'step 2', …],
+     try:{ q:'a similar problem', steps:['step 1', …, 'last step (hidden: the child writes its answer)'], a:'٦٤٨', unit:'optional word after the box' } }
+   The steps appear one at a time («الخطوة التالية»); the practice problem appears after the last step.
+   ============================================================ */
+let WK_N = 0;
+const WK = {};
+const wkNorm = s => String(s).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+  .replace(/[٫،,]/g, '.').replace(/[\s٬']/g, '').replace(/^\.+|\.+$/g, '').replace(/\.0+$/, '');
+function workedBlock(b) {
+  const id = 'wk' + (++WK_N); WK[id] = b;
+  const t = b.try;
+  return `${b.h ? `<h3>${b.h}</h3>` : ''}<div class="wk" id="${id}">
+    <p class="wk-q"><span class="wk-tag">مثال محلول</span> ${b.q}</p>
+    <ol class="wk-steps">${b.steps.map((s, i) => `<li${i ? ' hidden' : ''}>${s}</li>`).join('')}</ol>
+    ${b.steps.length > 1 ? `<button type="button" class="btn sky wk-next" data-wnext="${id}">الخطوة التالية</button>` : ''}
+    ${t ? `<div class="wk-try"${b.steps.length > 1 ? ' hidden' : ''}>
+      <p class="wk-q"><span class="wk-tag try">جرّب أنت</span> ${t.q}</p>
+      <ol class="wk-steps">${t.steps.slice(0, -1).map(s => `<li>${s}</li>`).join('')}<li class="wk-last">${t.steps[t.steps.length - 1]}
+        <span class="wk-in"><input type="text" inputmode="decimal" dir="ltr" aria-label="اكتب الناتج" autocomplete="off">${t.unit ? `<span>${t.unit}</span>` : ''}
+        <button type="button" class="btn" data-wcheck="${id}">تحقّق</button></span></li></ol>
+      <p class="fb" aria-live="polite"></p></div>` : ''}
+  </div>`;
+}
+ROOT.addEventListener('click', e => {
+  const nx = e.target.closest('[data-wnext]');
+  if (nx) {
+    const box = $(nx.dataset.wnext), next = box.querySelector('.wk-steps li[hidden]');
+    if (next) { next.hidden = false; next.classList.add('hs-pop'); HS.fx('tap'); }
+    if (!box.querySelector('.wk-steps li[hidden]')) { nx.hidden = true; const t = box.querySelector('.wk-try'); if (t) { t.hidden = false; const i = t.querySelector('input'); if (i) i.focus({ preventScroll: true }); } }
+    return;
+  }
+  const ck = e.target.closest('[data-wcheck]');
+  if (ck) {
+    const box = $(ck.dataset.wcheck), b = WK[ck.dataset.wcheck], inp = box.querySelector('.wk-try input'), fb = box.querySelector('.wk-try .fb');
+    const tries = (+box.dataset.tries || 0) + 1; box.dataset.tries = tries;
+    if (!inp.value.trim()) { fb.className = 'fb'; fb.textContent = 'اكتب الناتج أولًا.'; inp.focus(); return; }
+    if (wkNorm(inp.value) === wkNorm(b.try.a)) { fb.className = 'fb ok'; fb.innerHTML = '✅ صحيح! حللتها بالخطوات نفسها.'; HS.fx('ok'); inp.disabled = ck.disabled = true; return; }
+    HS.fx('no'); fb.className = 'fb no';
+    fb.innerHTML = tries < 2 ? 'ليس بعد. ارجع إلى الخطوة الأخيرة في المثال المحلول، وافعل مثلها.' : `الناتج: <b>${b.try.a}</b>. قارن خطواتك بخطوات المثال.`;
+    if (tries >= 2) inp.disabled = ck.disabled = true;
+  }
+});
+ROOT.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.matches('.wk-try input')) { e.preventDefault(); e.target.closest('.wk-try').querySelector('[data-wcheck]').click(); } });
+
 })();
 </script>
 <script>
@@ -10876,6 +11120,11 @@ window.CATALOG = [
             color: 'var(--t-purple)', unit: 'g5scieco' },
           { name: 'الوحدة ٣: الأرض ومواردها', em: '🌋', art: 'unit-g5sci-earth-cover',
             color: 'var(--t-orange)', unit: 'g5sciearth' }
+        ] },
+      { id: 'math', name: 'الرياضيات', em: '➗', art: 'subject-math', desc: 'أمثلة محلولة خطوة خطوة، ثم نحل بأنفسنا',
+        color: 'var(--t-orange)',
+        units: [
+          { name: 'الفصل ١: القيمة المنزلية', em: '🔢', art: 'unit-g5math1-cover', color: 'var(--t-blue)', unit: 'g5math1' }
         ] }
     ]
   },

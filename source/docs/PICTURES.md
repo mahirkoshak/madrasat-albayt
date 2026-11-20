@@ -1416,7 +1416,7 @@ Columns: `used in` = source files (under `src/`) that already show the picture, 
 | `sci-u2600-1f4a7-1faa8` | ☀💧🪨 | العوامل اللاحيوية |  |  | sheet: sci-07 |  |
 | `sci-u2600-1f6e2` | ☀🛢 | متجدد أم غير متجدد؟ |  |  | sheet: sci-06 |  |
 | `sci-u267b` | ♻ | إعادة التدوير |  |  | sheet: sci-10 | dict/data, units/g3sciearth, units/g3scieco, units/g4scieco, units/g5sciearth |
-| `sci-u2696` | ⚖ | السمنة |  |  | sheet: sci-16 | dict/data, kg/app, kg/app.html, kg/thinking3, units/g4math5, units/g4scihealth |
+| `sci-u2696` | ⚖ | السمنة |  |  | sheet: sci-16 | dict/data, kg/app, kg/app.html, kg/thinking3, units/g4math5, units/g4scihealth … |
 | `sci-u26a1` | ⚡ | حريق بسبب البرق |  |  | sheet: sci-14 | dict/data, portal/portal, unit/app, units/g3sciearth, units/g3scieco, units/g4scicells … |
 | `sci-u26a1-1f422` | ⚡🐢 | سريع أم بطيء؟ |  |  | sheet: sci-05 | units/g3sciearth |
 | `sci-u26ab` | ⚫ | الفحم |  |  | sheet: sci-04 | core/core, dict/data, units/g3sciearth, units/g5sciearth |
