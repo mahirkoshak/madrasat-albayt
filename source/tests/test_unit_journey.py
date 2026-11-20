@@ -10,7 +10,7 @@ with sync_playwright() as p:
     addkid(pg,'محمد');pg.wait_for_timeout(300)
     addkid(pg,'سارة');pg.wait_for_timeout(300)
     pg.screenshot(path=OUT+'/a2.png',full_page=True)
-    pg.click('[data-kid]:has-text("محمد")')
+    pg.evaluate("location.hash='who'");pg.wait_for_timeout(250);pg.click('[data-kid]:has-text("محمد")')
     pg.click('[data-nav="s-g4-sci"]');pg.click('[data-nav="unit-g4scieco"]');pg.wait_for_timeout(400)
     pg.screenshot(path=OUT+'/a3.png',full_page=True)
     # lesson
@@ -68,7 +68,7 @@ with sync_playwright() as p:
         pg.wait_for_timeout(1200)
     pg.screenshot(path=OUT+'/a11.png',full_page=True)
     # KG
-    pg.click('#appbar [data-nav=home]');pg.click('[data-kid]:has-text("سارة")');pg.click('.p-explore');pg.click('[data-nav="y-kg"]');pg.click('[data-nav="app-kg"]');pg.wait_for_timeout(300)
+    pg.click('#appbar [data-nav=home]');pg.evaluate("location.hash='who'");pg.wait_for_timeout(250);pg.click('[data-kid]:has-text("سارة")');pg.click('.p-explore');pg.click('[data-nav="y-kg"]');pg.click('[data-nav="app-kg"]');pg.wait_for_timeout(300)
     pg.click('#app-kg [data-game=basket]');pg.wait_for_timeout(200);pg.screenshot(path=OUT+'/a12.png',full_page=True)
     back(pg);pg.click('#app-kg [data-game=memory]');pg.wait_for_timeout(200)
     cards=pg.locator('.kmem .mc'); n=cards.count(); print('kg mem cards',n)

@@ -5,7 +5,7 @@ Do not change any website code: Claude wires the images into the site afterwards
 
 ## Files
 - `art-source/STYLE.md`: the style guide. Read it first and follow it for every image.
-- `art-source/manifest-core.json`: interface art, mascot, avatars, navigation, rewards and game graphics (phases 1–6, plus phase 9: new covers for grade 5, grade 4 Arabic and the maths chapters).
+- `art-source/manifest-core.json`: interface art, mascot, avatars, navigation, rewards and game graphics (phases 1–6, and phase 12 below).
 - `art-source/manifest-content.json`: one picture per learning item (phase 7: KG and science, about 290; phase 8: dictionary words, 1,143).
 
 Each manifest entry has `id`, `phase`, `size` and `prompt`.
@@ -38,3 +38,11 @@ Each manifest entry has `id`, `phase`, `size` and `prompt`.
   You can do them in batches of about 50, pushing after each batch.
 
 To generate a single phase, filter the manifest by `phase`.
+
+## Phases 12–13 (new)
+- **Phase 12: 15 new covers** in `art-source/manifest-core.json` (filter `phase` = 12): the grade 5 card, the new maths
+  chapters, grade 5 science and grade 4 Arabic. Same rules as the other covers (transparent background, 1024×1024).
+- **Phase 13: 14 background scenes** in `art-source/manifest-scenes.json`, at **1536×1024**.
+  These are the only images that are **not** transparent: draw a full, edge-to-edge scene with no frame.
+  Keep the upper-right two thirds calm (the site puts headings and buttons there), details along the bottom and left.
+  Use a phase-1 image as the style reference. Save as `art-source/raw/<id>.png`, commit `art: phase 13`, push to `main`.

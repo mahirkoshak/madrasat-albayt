@@ -202,6 +202,13 @@ which the header uses for the **Back** button (always the logical parent, never 
 and the tab title. Activities are marked `focus: true`: the header becomes compact and the breadcrumb is hidden.
 Counts on menu cards (lessons, terms, games, questions) are computed from the data by `HS.nav.desc`.
 
+## Home and profiles
+- The site remembers the last child and opens straight on their home page. The greeting has a small «تبديل» button
+  (and the menu has «تبديل الطفل») that opens `#who`: big rounded-square cards, one per child, plus «طفل جديد». No PIN.
+- Background scenes: `art/manifest-scenes.json` (Codex phase 13, 1536×1024, opaque). `tools/art_process.py` keeps them
+  whole like the hero. `pageBg(id)` in portal.js draws one faded behind the top of the page: `bg-who`, `bg-setup`,
+  `bg-grade-<grade id>`, `bg-subj-<subject id>`, `bg-explore`, `bg-shop`, `bg-parent`. Until a picture exists nothing changes.
+
 ## Grade 5 and grade 4 Arabic units
 - Grade 5 (year `g5`): science (living things, ecosystems, earth) and maths chapters 1–6, from the Part 1 student books.
 - Grade 4 «لغتي»: `g4ar1` (reading text التصحّر), `g4ar2` (spelling: hamzas, ة/ت, hidden alif), `g4ar3` (grammar).

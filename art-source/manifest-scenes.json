@@ -1,0 +1,128 @@
+[
+ {
+  "id": "bg-who",
+  "file": "assets/bg/bg-who.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A cosy reading corner at home in the morning: big window with soft sunlight, floor cushions, a low bookshelf with colourful books, a small plant and a rug. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-setup",
+  "file": "assets/bg/bg-setup.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A bright open doorway into a playful classroom-at-home, with a backpack, a pencil cup and a few books waiting on a small table. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-grade-kg",
+  "file": "assets/bg/bg-grade-kg.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A soft playroom: building blocks, a rocking horse, crayons and a few balloons along the bottom edge, pastel sky through a window. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-grade-g3",
+  "file": "assets/bg/bg-grade-g3.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A sunny desert-town street at morning: rounded sand-coloured houses with arched windows, a few palm trees on the left, wide pale sky. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-grade-g4",
+  "file": "assets/bg/bg-grade-g4.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A school courtyard in soft afternoon light: arches, a reading bench and a few potted palms along the bottom, wide pale sky. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-grade-g5",
+  "file": "assets/bg/bg-grade-g5.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A quiet library hall: tall shelves fading into the left side, a globe and a reading lamp at the bottom, warm light from high windows. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-subj-sci",
+  "file": "assets/bg/bg-subj-sci.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A gentle science scene: a microscope, a magnifying glass, a small plant in a pot and floating soft bubbles along the bottom-left, pale sky-blue wall. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-subj-math",
+  "file": "assets/bg/bg-subj-math.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A playful maths scene: rounded geometric shapes (cubes, cones, spheres), an abacus and a ruler along the bottom-left, soft cream-to-blue gradient wall. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-subj-ar",
+  "file": "assets/bg/bg-subj-ar.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "An Arabic-language corner: an open book, a reed pen and an ink pot, and soft arabesque-like geometric tile patterns faint along the left edge (decorative shapes only, no letters). Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-subj-en",
+  "file": "assets/bg/bg-subj-en.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "An English-language corner: a stack of books, a small globe, a red double-decker toy bus and a few speech-bubble shapes without any text along the bottom-left. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-subj-early",
+  "file": "assets/bg/bg-subj-early.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A kindergarten letters-and-numbers corner: soft toy blocks, a puzzle, crayons and a small easel (blank) along the bottom-left, pastel wall. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-explore",
+  "file": "assets/bg/bg-explore.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A gentle adventure map landscape: rolling sand dunes, a winding path, a small oasis, a hot-air balloon in the distant sky on the left. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-shop",
+  "file": "assets/bg/bg-shop.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A small friendly gift shop shelf: wrapped presents, a teddy bear, a toy car and a jar of sweets along the bottom-left, warm cream wall with soft gold sparkles. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ },
+ {
+  "id": "bg-parent",
+  "file": "assets/bg/bg-parent.webp",
+  "phase": 13,
+  "style": "2d",
+  "size": "1536x1024",
+  "background": "opaque scene",
+  "prompt": "A calm home desk at evening: a notebook, a cup of tea, a small lamp and a family photo frame (blank) along the bottom-left, soft lavender wall. Wide background scene for a children's learning website, polished 2D illustration in the 'Desert Daylight' style: flat shapes with soft gradient shading (light from upper left), no outlines, rounded friendly forms, low detail. Palette: cream #FFF8E7, sand #F3E2C3, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7; use green only sparingly and muted. Soft, calm and slightly pale so dark text stays readable on top of it. Keep the upper-right two thirds calm and empty (sky, wall or soft gradient): the page puts its heading and buttons there; put the details along the bottom and the left edge. Full-bleed opaque background, edge to edge, NOT transparent, no frame or border. No people's faces in the centre. No text, letters, numbers or logos anywhere."
+ }
+]

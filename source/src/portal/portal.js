@@ -56,7 +56,7 @@
           <div class="gb-pop" id="gbMenu" ${menuOpen ? '' : 'hidden'}>
             <p class="gb-pop-h">${named ? `يتعلّم الآن: <b class="nm">${esc(me.name)}</b>` : 'تتعلّم الآن كضيف: التقدّم لا يُحفظ باسم طفل'}</p>
             <button type="button" data-nav="home" data-menu>🏠 الرئيسية</button>
-            <button type="button" data-nav="home" data-menu>👧 ${HS.profiles().length ? 'تبديل الطفل أو إضافة طفل' : 'إضافة طفل'}</button>
+            <button type="button" data-nav="${HS.profiles().length ? 'who' : 'home'}" data-menu>👧 ${HS.profiles().length ? 'تبديل الطفل أو إضافة طفل' : 'إضافة طفل'}</button>
             ${named && shopOn() ? '<button type="button" data-nav="shop" data-menu>💎 متجر الهدايا</button>' : ''}
             <button type="button" data-nav="explore" data-menu>🧭 استكشف كل الصفوف</button>
             <button type="button" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" data-menu>🌐 لغة الواجهة: <span lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'العربية' : 'English'}</span></button>
@@ -228,8 +228,30 @@
       <fieldset class="p-avpick"><legend>اختر صورته</legend><div class="p-avs" role="radiogroup" aria-label="صورة الطفل">${ch.map(a => `<button type="button" role="radio" aria-checked="${a === newAv}" tabindex="${a === newAv ? 0 : -1}" class="p-av ${a === newAv ? 'on' : ''}" data-av="${esc(a)}" aria-label="${esc(HS.avatarName(a))}">${HS.avatar({ avatar: a })}</button>`).join('')}</div></fieldset>
       <div class="p-form-row"><button type="submit" class="p-btn">حفظ</button>${list.length ? '<button type="button" class="p-btn sec" id="pCancel">إلغاء</button>' : ''}</div></form>`;
   }
+  /** a page's background scene (art/manifest-scenes.json), drawn faded behind the top of the page; nothing until Codex draws it */
+  function pageBg(id) {
+    const old = document.getElementById('pBg'); if (old) old.remove();
+    const a = id && HS.ART[id]; if (!a) return;
+    document.getElementById('portal').insertAdjacentHTML('afterbegin', `<div class="p-bg" id="pBg" aria-hidden="true"><img src="${a.src}" srcset="${a.sm} 800w, ${a.src} 1600w" sizes="(max-width: 640px) 100vw, 1080px" alt="" decoding="async" onerror="this.parentNode.remove()"></div>`);
+  }
+  /** #who: who is learning? Big square cards, one per child (Netflix style), plus "new child". Opens only when asked:
+      the site remembers the last child and goes straight to their page. */
+  function who() {
+    const list = HS.profiles(), cur = HS.current();
+    if (!list.length) return setupGo({});
+    P.innerHTML = `<section class="p-who" aria-labelledby="pWhoT"><h1 class="p-title" id="pWhoT">من يتعلّم الآن؟</h1>
+      <div class="p-who-grid">${list.map(p => { const on = !!(cur && cur.id === p.id);
+        return `<button type="button" class="p-who-k ${on ? 'on' : ''}" data-kid="${p.id}" aria-pressed="${on}"><span class="p-who-av" style="background:${HS.kidColor(p)}">${HS.avatar(p, { big: true, eager: true })}</span>
+          <span class="p-who-n nm">${esc(p.name)}</span><span class="p-who-s">💎 ${ar(HS.diamonds(p.id))}${HS.dayStreak(p.id) ? ` · 🔥 ${ar(HS.dayStreak(p.id))}` : ''}</span></button>`; }).join('')}
+        <button type="button" class="p-who-k add" id="pNew"><span class="p-who-av">＋</span><span class="p-who-n">طفل جديد</span></button></div></section>`;
+    P.querySelectorAll('[data-kid]').forEach(b => b.onclick = () => { HS.setCurrent(b.dataset.kid); HS.fx('tap'); location.hash = 'home'; });
+    document.getElementById('pNew').onclick = () => setupGo({});
+    pageBg('bg-who');
+  }
+  /** the small "switch child" button in the home greeting */
+  const switchBtn = me => `<button type="button" class="p-switch" data-nav="who" aria-label="تبديل الطفل"><span class="p-switch-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span><span>تبديل</span></button>`;
   /** "who is learning now?": one chip per child (tap to switch), plus "new child" */
-  function kidsRow() {
+  function kidsRowAll() {
     const list = HS.profiles(), cur = HS.current();
     if (!list.length) return `<div class="p-kids"><button type="button" class="p-kid add" id="pNew" aria-expanded="${adding}"><span class="p-kid-av">＋</span><span class="p-kid-n">أضف طفلًا</span></button>${adding ? avForm(list) : ''}</div>`;
     return `<div class="p-kids"><h2 class="p-kids-t">من يتعلّم الآن؟</h2><div class="p-chips">${list.map(p => { const on = !!(cur && cur.id === p.id);
@@ -306,7 +328,7 @@
     const me = HS.current(), named = me && me.id !== 'guest', st = HS.dayStreak(), go = lastPlace();
     return heroWrap('', `
       <div class="p-hero-tx">
-        <h1 id="pHi">${named ? `أهلًا يا <span class="nm">${esc(me.name)}</span>` : 'أهلًا بك في مدرسة البيت'}</h1>
+        <div class="p-hi-row"><h1 id="pHi">${named ? `أهلًا يا <span class="nm">${esc(me.name)}</span>` : 'أهلًا بك في مدرسة البيت'}</h1>${named && HS.profiles().length ? switchBtn(me) : ''}</div>
         <p class="p-hero-sub">${st ? `🔥 تعلّم متواصل: ${HS.count(st, HS.N.day)}` : 'هيا نتعلّم شيئًا جديدًا اليوم.'}</p>
         ${go ? `<button type="button" class="p-go" data-nav="${go.nav}"><span class="p-go-tile" aria-hidden="true">${HS.art(go.art, { fb: go.em, small: true })}</span>
             <span class="p-go-tx"><small>أكمل من حيث توقفت${go.where ? ` · ${go.where}` : ''}</small><b>${go.name}</b></span><span class="go">${I.fwd}</span></button>` : ''}
@@ -328,6 +350,8 @@
     const list = HS.profiles();
     if (!list.length && !skip) { if (!W) W = { step: 'who', focus: [] }; return setup(); }   // first visit: who is setting up?
     const me = HS.current(), named = me && me.id !== 'guest';
+    if (list.length && !named) { try { history.replaceState(null, '', '#who'); } catch (e) {} bar('who'); return who(); }
+    const kidsRow = () => named ? '' : kidsRowAll();
     const foot = `<footer class="p-foot">${HS.sync && HS.sync.family() ? `<p class="p-cloud" id="pCloud">${HS.sync.status() === 'on' ? '☁️ محفوظ أونلاين' : ''}</p>` : ''}
       <p>${HS.sync && HS.sync.family() ? 'التقدّم والماسات محفوظة على هذا الجهاز وأونلاين' : 'التقدّم والماسات تُحفظ على هذا الجهاز'} · صفحة الأب من القفل 🔒 في الأعلى</p></footer>`;
     if (named && me.grade) {
@@ -702,23 +726,27 @@
     if ((m = h.match(/^unit-([a-z0-9]+)(?:-(.+))?$/i)) && APPS.unit && window.UNITS && UNITS[m[1]]) { openApp('unit', m[1] + (m[2] ? '-' + m[2] : '')); return bar(h); }
     closeApp(); confirmKey = '';
     const draw = r => { if (r !== h) { try { history.replaceState(null, '', '#' + r); } catch (e) {} } bar(r); };
-    if (h === 'parent') { showScreen('portal'); draw('parent'); return gate(parentFirst); }
-    if (h === 'setup') { showScreen('portal'); draw('setup'); return setup(); }
-    if (h === 'explore') { showScreen('portal'); draw('explore'); return explore(); }
+    if (h === 'parent') { showScreen('portal'); draw('parent'); return gate(() => { parentFirst(); pageBg('bg-parent'); }); }
+    if (h === 'setup') { showScreen('portal'); draw('setup'); setup(); return pageBg('bg-setup'); }
+    pageBg(null);
+    if (h === 'who') { showScreen('portal'); draw('who'); return who(); }
+    if (h === 'explore') { showScreen('portal'); draw('explore'); explore(); return pageBg('bg-explore'); }
     if (h !== 'shop') buying = '';
-    if (h === 'shop') { showScreen('portal'); if (shopOn()) { draw('shop'); return shop(); } draw('home'); return home(); }
+    if (h === 'shop') { showScreen('portal'); if (shopOn()) { draw('shop'); shop(); return pageBg('bg-shop'); } draw('home'); return home(); }
     showScreen('portal');
     if ((m = h.match(/^y-(\w+)$/))) {
       const y = CATALOG.find(x => x.id === m[1]); if (!y) { draw('home'); return home(); }
       draw(h);
       P.innerHTML =         `<div class="p-head">${tile(y)}<div><h1 class="p-title">${y.name}</h1><p class="p-sub">اختر المادة</p></div></div><div class="p-grid">${
           y.subjects.map(s => card(s, navOf(s) || `s-${y.id}-${s.id}`)).join('')}</div>`;
+      pageBg('bg-grade-' + y.id);
     } else if ((m = h.match(/^s-(\w+)-(\w+)$/))) {
       const y = CATALOG.find(x => x.id === m[1]); const s = y && y.subjects.find(x => x.id === m[2]);
       if (!s || !s.units) { draw('home'); return home(); }
       draw(h);
       P.innerHTML =         `<div class="p-head">${tile(s)}<div><h1 class="p-title">${s.name}</h1><p class="p-sub">اختر الوحدة</p></div></div><div class="p-grid">${
           s.units.map(u => card(u, navOf(u))).join('')}</div>`;
+      pageBg('bg-subj-' + s.id);
     } else { draw('home'); home(); }
   }
 

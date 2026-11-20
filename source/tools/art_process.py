@@ -244,7 +244,10 @@ def main(raw_dir):
             cut += slice_sheet(sh, src, reg, problems, os.path.join(ROOT, 'art', 'check'))
             reg.update(keep)
         if cut: print(f'{cut} pictures cut from sprite sheets (check images: art/check/)')
-    for sid, rel in SCENES.items():
+    scenes = dict(SCENES)   # plus the background scenes Codex draws from manifest-scenes.json (kept whole, like the hero)
+    sp2 = os.path.join(mdir, 'manifest-scenes.json')
+    if os.path.exists(sp2): scenes.update({e['id']: e['file'] for e in json.load(open(sp2, encoding='utf-8'))})
+    for sid, rel in scenes.items():
         src = os.path.join(raw_dir, sid + '.png')
         if not os.path.exists(src): continue
         sm = rel.replace('.webp', '-800.webp'); reg[sid] = {'src': rel, 'sm': sm, 'w': 0, 'h': 0}

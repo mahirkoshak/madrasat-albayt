@@ -8,7 +8,7 @@ with sync_playwright() as p:
     pg.goto(U);pg.wait_for_timeout(300)
     addkid(pg,'محمد');pg.wait_for_timeout(200)
     addkid(pg,'سارة');pg.wait_for_timeout(200)
-    pg.click('[data-kid]:has-text("سارة")');pg.evaluate("(()=>{const p=HS.profileData();p.dia=(p.dia||0)+70;HS.save()})()");pg.wait_for_timeout(150)
+    pg.evaluate("location.hash='who'");pg.wait_for_timeout(250);pg.click('[data-kid]:has-text("سارة")');pg.evaluate("(()=>{const p=HS.profileData();p.dia=(p.dia||0)+70;HS.save()})()");pg.wait_for_timeout(150)
     # old-default migration check
     print('defaults',pg.evaluate("HS.rewards().length"))
     nav(pg,'#shop');pg.screenshot(path=OUT+'/a1.png',full_page=True)

@@ -18,7 +18,7 @@ with sync_playwright() as p:
     out['reduced motion transition']=pg.evaluate("getComputedStyle(document.querySelector('.p-card')).transitionDuration")
     out['emoji profile kept']=pg.evaluate("JSON.parse(localStorage.getItem('hs-v2')).profiles.map(p=>p.avatar)")
     # new child via keyboard picker
-    pg.click('#pNew'); pg.wait_for_timeout(200); pg.click('[data-who=kid]'); pg.wait_for_timeout(150)
+    pg.evaluate("location.hash='who'"); pg.wait_for_timeout(250); pg.click('#pNew'); pg.wait_for_timeout(200); pg.click('[data-who=kid]'); pg.wait_for_timeout(150)
     pg.fill('#wzName','ليان'); pg.focus('.p-av.on'); pg.keyboard.press('ArrowLeft'); pg.keyboard.press('ArrowLeft')
     sel=pg.evaluate("document.activeElement.dataset.av"); pg.click('#wzNext'); pg.wait_for_timeout(150)
     pg.click('[data-grade=g4]'); pg.click('#wzNext'); pg.wait_for_timeout(150); pg.click('#wzGo'); pg.wait_for_timeout(300)

@@ -554,3 +554,35 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
   .pp-l{grid-template-columns:minmax(0,1fr) 25% 3em}
 }
 @media (prefers-reduced-motion:reduce){.pp-switch i,.pp-switch i::after,details.pp-row>summary::after{transition:none}}
+
+/* ---------- page background scenes (art/manifest-scenes.json): faded behind the top of the page ---------- */
+#portal{position:relative;isolation:isolate}
+.p-bg{position:absolute;inset:0 0 auto 0;height:min(460px,70vh);z-index:-1;overflow:hidden;pointer-events:none;
+  -webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
+.p-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.55}
+#portal:has(.p-bg) .p-head .p-title,#portal:has(.p-bg) .p-who .p-title{text-shadow:0 2px 0 var(--t-page),0 0 18px var(--t-page)}
+
+/* ---------- #who: who is learning? big rounded squares, like a streaming app's profile screen ---------- */
+.p-who{min-height:calc(100vh - 160px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--t-s6) 0;text-align:center}
+#portal .p-who .p-title{font-size:clamp(30px,5vw,46px);margin:0 0 var(--t-s6)}
+.p-who-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,3vw,32px)}
+#portal .p-who-k{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit;width:clamp(140px,22vw,200px)}
+.p-who-av{width:100%;aspect-ratio:1;border-radius:22px;display:grid;place-items:center;overflow:hidden;font-size:clamp(56px,9vw,84px);
+  box-shadow:var(--t-raise);transition:transform .15s ease,box-shadow .15s ease}
+.p-who-av .hs-av,.p-who-av .hs-av-img{width:100%;height:100%}
+.p-who-av .hs-av-img img,.p-who-av img{width:100%;height:100%;object-fit:cover}
+#portal .p-who-k:hover .p-who-av,#portal .p-who-k:focus-visible .p-who-av{transform:translateY(-4px) scale(1.03);box-shadow:0 0 0 4px var(--t-blue),var(--t-raise)}
+#portal .p-who-k.on .p-who-av{box-shadow:0 0 0 4px var(--t-gold,#FFC800),var(--t-raise)}
+#portal .p-who-k:active .p-who-av{transform:translateY(2px)}
+.p-who-k.add .p-who-av{background:var(--t-surface);color:var(--t-muted);box-shadow:inset 0 0 0 3px var(--t-line)}
+.p-who-n{font-weight:900;font-size:clamp(20px,2.6vw,26px);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.p-who-s{font-size:var(--t-fs-sm);color:var(--t-muted);margin-top:-4px}
+@media (prefers-reduced-motion:reduce){.p-who-av{transition:none}}
+
+/* the greeting with a small "switch child" button */
+.p-hi-row{display:flex;align-items:center;gap:var(--t-s3);flex-wrap:wrap}
+.p-hi-row h1{margin:0}
+#portal .p-switch{display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;border-radius:14px;background:var(--t-surface);box-shadow:var(--t-raise);
+  font:inherit;font-weight:800;font-size:var(--t-fs-sm);color:var(--t-ink);border:0;cursor:pointer}
+.p-switch-av{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;overflow:hidden;font-size:22px}
+.p-switch-av .hs-av,.p-switch-av .hs-av-img{width:100%;height:100%}
