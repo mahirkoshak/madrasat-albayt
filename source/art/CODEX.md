@@ -41,11 +41,11 @@ To generate a single phase, filter the manifest by `phase`.
 
 ## Phases 12–14 (new)
 - **Phase 12: 16 new covers** in `art-source/manifest-core.json` (filter `phase` = 12): the grade 5 card, the new maths
-  chapters, grade 5 science, grade 4 Arabic and the world atlas. Same rules as the other covers (transparent background, 1024×1024).
+  chapters, grade 5 science, grade 4 Arabic and the world atlas. Transparent background (no green screen), 1024×1024.
 - **Phase 13: 14 background scenes** in `art-source/manifest-scenes.json`, at **1536×1024**.
   These are the only images that are **not** transparent: draw a full, edge-to-edge scene with no frame.
   Keep the upper-right two thirds calm (the site puts headings and buttons there), details along the bottom and left.
   Use a phase-1 image as the style reference. Save as `art-source/raw/<id>.png`, commit `art: phase 13`, push to `main`.
-- **Phase 14: 29 interface icons** in `art-source/manifest-core.json` (filter `phase` = 14): arrows, play, check, plus,
-  minus, ×, ÷, question mark and other small symbols the site now draws as flat placeholders. Transparent, 1024×1024,
-  one bold symbol filling most of the canvas, same style as the rest. Commit `art: phase 14`.
+- **Phase 14: 29 interface icons on two 4×4 sprite sheets** in `art-source/manifest-sheets.json` (`sheet-icons-1` with 16,
+  `sheet-icons-2` with 13; the last 3 cells stay empty): arrows, play, check, plus, minus, ×, ÷, question mark and other
+  small symbols. Same sheet rules as phases 7–11 (transparent, listed order, nothing touching). Commit `art: phase 14`.

@@ -8263,5 +8263,170 @@
    }
   ],
   "prompt": "A sprite sheet of 1 separate small pictures for a children's learning game (dictionary words: Faith and daily life). Arrange them in an invisible grid of 4 columns and 4 rows on a 1024x1024 canvas: one picture centred in each cell of about 256x256 px, in reading order from left to right, top row first.\n1. (row 1, column 1): dream (حلم): Pictures in your mind while you sleep; or a big wish.\nThe last 15 cells stay completely empty.\nEvery picture stays fully inside its own cell with at least 12% empty space on every side; pictures never touch or overlap. Draw each one as a single clear picture of the idea, not a copy of an emoji. All pictures at a similar size, same light direction and same style, so they look like one set. No grid lines, frames, borders, labels, captions, cards or tiles behind the pictures, no floor and no shadow on the background. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from the upper left), no outlines, rounded corners, simple readable silhouettes that still work at 48 px. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7, darkest shadows ink #3C3C3C (never pure black). Background: fully transparent (PNG with alpha channel). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "sheet-icons-1",
+  "phase": 14,
+  "size": "1024x1024",
+  "grid": 4,
+  "cell": 256,
+  "cells": [
+   {
+    "id": "icon-arrow-right",
+    "file": "assets/icons/icon-arrow-right.webp",
+    "draw": "A chunky rounded arrow pointing to the RIGHT, on a soft blue rounded-square tile"
+   },
+   {
+    "id": "icon-arrow-left",
+    "file": "assets/icons/icon-arrow-left.webp",
+    "draw": "A chunky rounded arrow pointing to the LEFT, on a soft blue rounded-square tile"
+   },
+   {
+    "id": "icon-arrow-up",
+    "file": "assets/icons/icon-arrow-up.webp",
+    "draw": "A chunky rounded arrow pointing UP, on a soft blue rounded-square tile"
+   },
+   {
+    "id": "icon-arrow-down",
+    "file": "assets/icons/icon-arrow-down.webp",
+    "draw": "A chunky rounded arrow pointing DOWN, on a soft blue rounded-square tile"
+   },
+   {
+    "id": "icon-play",
+    "file": "assets/icons/icon-play.webp",
+    "draw": "A rounded triangular play button on a purple rounded-square tile"
+   },
+   {
+    "id": "icon-check",
+    "file": "assets/icons/icon-check.webp",
+    "draw": "A thick friendly check mark on a blue rounded-square tile"
+   },
+   {
+    "id": "icon-plus",
+    "file": "assets/icons/icon-plus.webp",
+    "draw": "A thick rounded plus sign on an orange rounded-square tile"
+   },
+   {
+    "id": "icon-minus",
+    "file": "assets/icons/icon-minus.webp",
+    "draw": "A thick rounded minus sign on an orange rounded-square tile"
+   },
+   {
+    "id": "icon-times",
+    "file": "assets/icons/icon-times.webp",
+    "draw": "A thick rounded multiplication cross (×) on a pink rounded-square tile"
+   },
+   {
+    "id": "icon-divide",
+    "file": "assets/icons/icon-divide.webp",
+    "draw": "A thick division sign (a bar with one dot above and one below) on an orange rounded-square tile"
+   },
+   {
+    "id": "icon-question",
+    "file": "assets/icons/icon-question.webp",
+    "draw": "A big rounded question mark on a purple circle"
+   },
+   {
+    "id": "icon-wheel",
+    "file": "assets/icons/icon-wheel.webp",
+    "draw": "A colourful spinning prize wheel with six segments (pink, gold, blue, orange, purple, sand) and a pointer"
+   },
+   {
+    "id": "icon-dice",
+    "file": "assets/icons/icon-dice.webp",
+    "draw": "A white rounded dice with pink pips, slightly tilted"
+   },
+   {
+    "id": "icon-link",
+    "file": "assets/icons/icon-link.webp",
+    "draw": "Two linked chain rings, one blue and one pink"
+   },
+   {
+    "id": "icon-swords",
+    "file": "assets/icons/icon-swords.webp",
+    "draw": "Two crossed toy foam swords, one purple and one pink, for a friendly match"
+   },
+   {
+    "id": "icon-folder",
+    "file": "assets/icons/icon-folder.webp",
+    "draw": "A yellow paper folder, slightly open"
+   }
+  ],
+  "prompt": "A sprite sheet of 16 separate small pictures for a children's learning game (interface icons: arrows, buttons and small symbols). Arrange them in an invisible grid of 4 columns and 4 rows on a 1024x1024 canvas: one picture centred in each cell of about 256x256 px, in reading order from left to right, top row first.\n1. (row 1, column 1): A chunky rounded arrow pointing to the RIGHT, on a soft blue rounded-square tile\n2. (row 1, column 2): A chunky rounded arrow pointing to the LEFT, on a soft blue rounded-square tile\n3. (row 1, column 3): A chunky rounded arrow pointing UP, on a soft blue rounded-square tile\n4. (row 1, column 4): A chunky rounded arrow pointing DOWN, on a soft blue rounded-square tile\n5. (row 2, column 1): A rounded triangular play button on a purple rounded-square tile\n6. (row 2, column 2): A thick friendly check mark on a blue rounded-square tile\n7. (row 2, column 3): A thick rounded plus sign on an orange rounded-square tile\n8. (row 2, column 4): A thick rounded minus sign on an orange rounded-square tile\n9. (row 3, column 1): A thick rounded multiplication cross (×) on a pink rounded-square tile\n10. (row 3, column 2): A thick division sign (a bar with one dot above and one below) on an orange rounded-square tile\n11. (row 3, column 3): A big rounded question mark on a purple circle\n12. (row 3, column 4): A colourful spinning prize wheel with six segments (pink, gold, blue, orange, purple, sand) and a pointer\n13. (row 4, column 1): A white rounded dice with pink pips, slightly tilted\n14. (row 4, column 2): Two linked chain rings, one blue and one pink\n15. (row 4, column 3): Two crossed toy foam swords, one purple and one pink, for a friendly match\n16. (row 4, column 4): A yellow paper folder, slightly open\nEvery picture stays fully inside its own cell with at least 12% empty space on every side; pictures never touch or overlap. Each icon is one bold, simple symbol that fills most of its cell (inside the margin), not a copy of an emoji. All pictures at a similar size, same light direction and same style, so they look like one set. No grid lines, frames, borders, labels, captions, cards or tiles behind the pictures, no floor and no shadow on the background. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from the upper left), no outlines, rounded corners, simple readable silhouettes that still work at 48 px. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7, darkest shadows ink #3C3C3C (never pure black). Background: fully transparent (PNG with alpha channel). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "sheet-icons-2",
+  "phase": 14,
+  "size": "1024x1024",
+  "grid": 4,
+  "cell": 256,
+  "cells": [
+   {
+    "id": "icon-bookmark",
+    "file": "assets/icons/icon-bookmark.webp",
+    "draw": "A pink ribbon bookmark"
+   },
+   {
+    "id": "icon-ribbon",
+    "file": "assets/icons/icon-ribbon.webp",
+    "draw": "A purple looped awareness ribbon"
+   },
+   {
+    "id": "icon-dna",
+    "file": "assets/icons/icon-dna.webp",
+    "draw": "A simple DNA double helix in blue and pink with rungs"
+   },
+   {
+    "id": "icon-bubbles",
+    "file": "assets/icons/icon-bubbles.webp",
+    "draw": "A cluster of three soap bubbles with shiny highlights"
+   },
+   {
+    "id": "icon-wave",
+    "file": "assets/icons/icon-wave.webp",
+    "draw": "A single wavy line like a sound or water wave, blue"
+   },
+   {
+    "id": "icon-paperclip",
+    "file": "assets/icons/icon-paperclip.webp",
+    "draw": "A purple paper clip"
+   },
+   {
+    "id": "icon-loop",
+    "file": "assets/icons/icon-loop.webp",
+    "draw": "A curly loop line like a looping path, purple"
+   },
+   {
+    "id": "icon-chart",
+    "file": "assets/icons/icon-chart.webp",
+    "draw": "A small bar chart with three rounded bars (blue, orange, pink) on a base line"
+   },
+   {
+    "id": "icon-coral",
+    "file": "assets/icons/icon-coral.webp",
+    "draw": "A pink branching coral"
+   },
+   {
+    "id": "icon-mic",
+    "file": "assets/icons/icon-mic.webp",
+    "draw": "A purple studio microphone on a small stand"
+   },
+   {
+    "id": "icon-sliders",
+    "file": "assets/icons/icon-sliders.webp",
+    "draw": "Three vertical sound sliders with round knobs at different heights"
+   },
+   {
+    "id": "icon-phone-off",
+    "file": "assets/icons/icon-phone-off.webp",
+    "draw": "A dark mobile phone with a small \"off\" power symbol on its screen (symbol only, no words)"
+   },
+   {
+    "id": "icon-cocoon",
+    "file": "assets/icons/icon-cocoon.webp",
+    "draw": "A butterfly pupa (chrysalis) hanging from a small twig, soft brown and gold"
+   }
+  ],
+  "prompt": "A sprite sheet of 13 separate small pictures for a children's learning game (interface icons: arrows, buttons and small symbols). Arrange them in an invisible grid of 4 columns and 4 rows on a 1024x1024 canvas: one picture centred in each cell of about 256x256 px, in reading order from left to right, top row first.\n1. (row 1, column 1): A pink ribbon bookmark\n2. (row 1, column 2): A purple looped awareness ribbon\n3. (row 1, column 3): A simple DNA double helix in blue and pink with rungs\n4. (row 1, column 4): A cluster of three soap bubbles with shiny highlights\n5. (row 2, column 1): A single wavy line like a sound or water wave, blue\n6. (row 2, column 2): A purple paper clip\n7. (row 2, column 3): A curly loop line like a looping path, purple\n8. (row 2, column 4): A small bar chart with three rounded bars (blue, orange, pink) on a base line\n9. (row 3, column 1): A pink branching coral\n10. (row 3, column 2): A purple studio microphone on a small stand\n11. (row 3, column 3): Three vertical sound sliders with round knobs at different heights\n12. (row 3, column 4): A dark mobile phone with a small \"off\" power symbol on its screen (symbol only, no words)\n13. (row 4, column 1): A butterfly pupa (chrysalis) hanging from a small twig, soft brown and gold\nCells after picture 13 stay empty.\nEvery picture stays fully inside its own cell with at least 12% empty space on every side; pictures never touch or overlap. Each icon is one bold, simple symbol that fills most of its cell (inside the margin), not a copy of an emoji. All pictures at a similar size, same light direction and same style, so they look like one set. No grid lines, frames, borders, labels, captions, cards or tiles behind the pictures, no floor and no shadow on the background. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from the upper left), no outlines, rounded corners, simple readable silhouettes that still work at 48 px. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7, darkest shadows ink #3C3C3C (never pure black). Background: fully transparent (PNG with alpha channel). No text, letters or numbers anywhere."
  }
 ]
