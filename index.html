@@ -694,9 +694,9 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 
 /* ---------- page background scenes (art/manifest-scenes.json): faded behind the top of the page ---------- */
 #portal{position:relative;isolation:isolate}
-.p-bg{position:absolute;inset:0 0 auto 0;height:min(460px,70vh);z-index:-1;overflow:hidden;pointer-events:none;
-  -webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
-.p-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.55}
+.p-bg{position:absolute;inset:0 0 auto 0;height:min(66vw,760px);z-index:-1;overflow:hidden;pointer-events:none;border-radius:0 0 var(--t-r-lg) var(--t-r-lg);
+  -webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}
+.p-bg img{width:100%;height:100%;object-fit:cover;object-position:center 70%;opacity:.9}
 #portal:has(.p-bg) .p-head .p-title,#portal:has(.p-bg) .p-who .p-title{text-shadow:0 2px 0 var(--t-page),0 0 18px var(--t-page)}
 
 /* ---------- #who: who is learning? big rounded squares, like a streaming app's profile screen ---------- */
