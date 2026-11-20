@@ -13153,7 +13153,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-3",
-"used": "core/core, dict/data, kg/app.html, kg/data, portal/catalog, units/g3scieco …"
+"used": "atlas/data, core/core, dict/data, kg/app.html, kg/data, portal/catalog …"
 },
 {
 "id": "kg-milk",
@@ -13296,7 +13296,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-6",
-"used": "dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4ar2, units/g4scicells …"
+"used": "atlas/app, atlas/data, dict/data, kg/data, units/g3sciearth, units/g3scieco …"
 },
 {
 "id": "kg-u1f327",
@@ -13505,7 +13505,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-6",
-"used": "dict/data, kg/data"
+"used": "atlas/data, dict/data, kg/data"
 },
 {
 "id": "kg-u1f407",
@@ -13604,7 +13604,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-1",
-"used": "core/core, dict/data, kg/data, units/_TEMPLATE, units/g3scieco, units/g3scilife …"
+"used": "atlas/data, core/core, dict/data, kg/data, units/_TEMPLATE, units/g3scieco …"
 },
 {
 "id": "kg-u1f430",
@@ -13681,7 +13681,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-4",
-"used": "dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife …"
+"used": "atlas/app, dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco …"
 },
 {
 "id": "kg-u1f4d6",
@@ -13791,7 +13791,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-1",
-"used": "dict/data, kg/data, unit/labs, units/g3scieco, units/g4scianimals, units/g4scieco"
+"used": "atlas/data, dict/data, kg/data, unit/labs, units/g3scieco, units/g4scianimals …"
 },
 {
 "id": "kg-u1f986",
@@ -13934,7 +13934,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-2",
-"used": "dict/app, dict/data, dict/spell, kg/data, portal/portal"
+"used": "atlas/app, dict/app, dict/data, dict/spell, kg/data, portal/portal"
 },
 {
 "id": "kg-umbrella",
@@ -13989,7 +13989,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: kg-3",
-"used": "dict/data, kg/data, units/g4scieco"
+"used": "atlas/data, dict/data, kg/data, units/g4scieco"
 },
 {
 "id": "logo-mark",
@@ -15023,7 +15023,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-02",
-"used": "dict/data, kg/data, units/g3sciearth, units/g3scieco, units/g4ar2, units/g4scicells …"
+"used": "atlas/app, atlas/data, dict/data, kg/data, units/g3sciearth, units/g3scieco …"
 },
 {
 "id": "sci-u1f30a-1f420",
@@ -15067,7 +15067,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-05",
-"used": "dict/data, portal/catalog, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4scieco …"
+"used": "atlas/app, atlas/data, dict/data, portal/catalog, units/g3sciearth, units/g3scieco …"
 },
 {
 "id": "sci-u1f30e",
@@ -15199,7 +15199,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-12",
-"used": "dict/data, kg/data, units/g3scilife, units/g4scicells, units/g4scieco, units/g4scihealth"
+"used": "atlas/data, dict/data, kg/data, units/g3scilife, units/g4scicells, units/g4scieco …"
 },
 {
 "id": "sci-u1f334-1f99c",
@@ -15265,7 +15265,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-09",
-"used": "dict/data, portal/catalog, units/g3scieco, units/g3scilife, units/g4ar1, units/g4scicells …"
+"used": "atlas/data, dict/data, portal/catalog, units/g3scieco, units/g3scilife, units/g4ar1 …"
 },
 {
 "id": "sci-u1f33f-1f997-1f985",
@@ -15529,7 +15529,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-05",
-"used": "dict/data, portal/catalog, units/g3sciearth, units/g3scieco, units/g3scilife, units/g4ar1 …"
+"used": "atlas/app, atlas/data, dict/data, portal/catalog, units/g3sciearth, units/g3scieco …"
 },
 {
 "id": "sci-u1f3dc-1f334",
@@ -15551,7 +15551,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-06",
-"used": "dict/data, units/g3sciearth, units/g5sciearth"
+"used": "atlas/app, atlas/data, dict/data, units/g3sciearth, units/g5sciearth"
 },
 {
 "id": "sci-u1f3de",
@@ -15562,7 +15562,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-02",
-"used": "core/core, dict/data, units/g3sciearth, units/g4scieco, units/g5sciearth"
+"used": "atlas/app, atlas/data, core/core, dict/data, units/g3sciearth, units/g4scieco …"
 },
 {
 "id": "sci-u1f3de-1f438",
@@ -15804,7 +15804,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-07",
-"used": "core/core, dict/data, kg/data, units/_TEMPLATE, units/g3scieco, units/g3scilife …"
+"used": "atlas/data, core/core, dict/data, kg/data, units/_TEMPLATE, units/g3scieco …"
 },
 {
 "id": "sci-u1f42a-1f335-1f98e",
@@ -15980,7 +15980,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-02",
-"used": "dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco, units/g3scilife …"
+"used": "atlas/app, dict/data, kg/data, units/_TEMPLATE, units/g3sciearth, units/g3scieco …"
 },
 {
 "id": "sci-u1f4a8",
@@ -16442,7 +16442,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-13",
-"used": "core/core, dict/data, kg/app.html, kg/data, portal/catalog, units/g3scieco …"
+"used": "atlas/data, core/core, dict/data, kg/app.html, kg/data, portal/catalog …"
 },
 {
 "id": "sci-u1f981-1f42a-1f43b",
@@ -16486,7 +16486,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-09",
-"used": "dict/data, kg/data, unit/labs, units/g3scieco, units/g4scianimals, units/g4scieco"
+"used": "atlas/data, dict/data, kg/data, unit/labs, units/g3scieco, units/g4scianimals …"
 },
 {
 "id": "sci-u1f985-27a1",
@@ -16563,7 +16563,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-15",
-"used": "dict/data, kg/data, units/g4scieco"
+"used": "atlas/data, dict/data, kg/data, units/g4scieco"
 },
 {
 "id": "sci-u1f995-1f9a4",
@@ -16596,7 +16596,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-12",
-"used": "dict/data, units/g4scieco"
+"used": "atlas/data, dict/data, units/g4scieco"
 },
 {
 "id": "sci-u1f99f-1f400",
@@ -17069,7 +17069,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-05",
-"used": "core/core, dict/data, unit/labs, units/g3sciearth, units/g5sciearth"
+"used": "atlas/app, atlas/data, core/core, dict/data, unit/labs, units/g3sciearth …"
 },
 {
 "id": "sci-u26f0-2b07",
@@ -17124,7 +17124,7 @@
 "draw": "",
 "style": "2d",
 "extra": "sheet: sci-06",
-"used": "dict/data, units/g3sciearth, units/g4scieco, units/g5sciearth"
+"used": "atlas/data, dict/data, units/g3sciearth, units/g4scieco, units/g5sciearth"
 },
 {
 "id": "sci-u2744-1f43b-200d-2744",
@@ -17157,7 +17157,7 @@
 "draw": "A single plump golden star with a soft glow and a tiny shine, the currency of a kids game",
 "style": "3d",
 "extra": "",
-"used": "core/core, core/sync, dict/app, dict/app.css, dict/data, dict/spell …"
+"used": "atlas/app, atlas/app.css, atlas/map, core/core, core/sync, dict/app …"
 },
 {
 "id": "star-burst",

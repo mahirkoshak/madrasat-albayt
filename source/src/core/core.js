@@ -80,6 +80,15 @@
   const GUEST = { id: 'guest', name: 'ضيف', avatar: '🙂', color: 'var(--t-blue)' };
   HS.AVATARS = ['🦁', '🐯', '🐼', '🦊', '🐨', '🐰', '🦄', '🐬', '🦋', '🐢', '🚀', '⭐'];
   HS.COLORS = ['var(--t-blue)', 'var(--t-pink)', 'var(--t-gold)', 'var(--t-purple)', 'var(--t-orange)'];
+  /** every colour a child can pick for their card (the first five are given in turn to new children) */
+  /** page themes a child can pick (theme.css: html[data-theme=…]); '' is the default cream */
+  HS.THEMES = [['', 'كريمي', '#fff8e7', '#1769c4'], ['sky', 'سماوي', '#eef6ff', '#1971c2'], ['lilac', 'بنفسجي', '#f5f0ff', '#7048e8'],
+    ['rose', 'وردي', '#fff0f5', '#d6336c'], ['peach', 'خوخي', '#fff1e6', '#e8590c'], ['sun', 'ليموني', '#fffbe0', '#c27c0e'],
+    ['sea', 'فيروزي', '#ebfbfd', '#0c8599'], ['stone', 'رمادي', '#f3f4f6', '#495057']];
+  HS.applyTheme = () => { const p = S.profiles.find(x => x.id === S.current); const t = (p && p.theme) || ''; if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme; };
+  HS.COLOR_CHOICES = [['var(--t-blue)', 'أزرق'], ['#74C0FC', 'سماوي'], ['#364FC7', 'كحلي'], ['#15AABF', 'فيروزي'], ['var(--t-purple)', 'بنفسجي'],
+    ['#B197FC', 'ليلكي'], ['var(--t-pink)', 'وردي'], ['#E64980', 'فوشي'], ['#F03E3E', 'أحمر'], ['#FF8787', 'مرجاني'], ['var(--t-orange)', 'برتقالي'],
+    ['var(--t-gold)', 'ذهبي'], ['#D9A066', 'رملي'], ['#A0522D', 'بنّي'], ['#495057', 'رمادي'], ['#212529', 'أسود']];
   /** a child's circle colour; children saved with the old green are shown in purple (nothing is rewritten) */
   HS.kidColor = p => !p || !p.color ? 'var(--t-blue)' : p.color === 'var(--t-green-btn)' ? 'var(--t-purple)' : p.color;
 
@@ -416,6 +425,7 @@
   const L = {};
   function emit(t, d) { (L[t] || []).forEach(f => { try { f(d); } catch (e) {} }); }
   HS.on = (t, f) => { (L[t] = L[t] || []).push(f); };
+  HS.on('profile', () => HS.applyTheme());
 
   /* ---------- spaced repetition (Leitner boxes) ----------
      box 0 = new/wrong ... box 5 = solid. Correct → next box, wrong → box 0.

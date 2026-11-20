@@ -49,3 +49,12 @@
   /* type scale (px): 15 · 17 · 19 · 23 · 28 · 36 · 48 */
   --t-fs-xs:15px; --t-fs-sm:17px; --t-fs-md:19px; --t-fs-lg:23px; --t-fs-xl:28px; --t-fs-2xl:36px; --t-fs-3xl:48px;
 }
+
+/* page themes a child can choose (🎨 ألواني): only the page, panels and the main action colour change */
+html[data-theme=sky]{--t-page:#eef6ff;--t-sand:#d6e8fb;--t-sand-soft:#e6f1fd;--t-line:#cfe0f5;--t-sky:#dcefff;--t-primary:#1971c2;--t-primary-sh:#0f4c8a;--t-primary-soft:#dbeafe;--t-primary-ink:#0f4c8a}
+html[data-theme=lilac]{--t-page:#f5f0ff;--t-sand:#e5dbff;--t-sand-soft:#efe8ff;--t-line:#ddd1fb;--t-sky:#ece4ff;--t-primary:#7048e8;--t-primary-sh:#5032b8;--t-primary-soft:#ebe4ff;--t-primary-ink:#5032b8}
+html[data-theme=rose]{--t-page:#fff0f5;--t-sand:#ffd9e6;--t-sand-soft:#ffe6ee;--t-line:#f9d0de;--t-sky:#ffe3ec;--t-primary:#d6336c;--t-primary-sh:#a61e4d;--t-primary-soft:#ffe0eb;--t-primary-ink:#a61e4d}
+html[data-theme=peach]{--t-page:#fff1e6;--t-sand:#ffdcc2;--t-sand-soft:#ffe8d6;--t-line:#f7d5bb;--t-sky:#ffe6d1;--t-primary:#e8590c;--t-primary-sh:#b04307;--t-primary-soft:#ffe3cf;--t-primary-ink:#9a3a06}
+html[data-theme=sun]{--t-page:#fffbe0;--t-sand:#fff0a8;--t-sand-soft:#fff6c7;--t-line:#f3e6a0;--t-sky:#fff5c4;--t-primary:#c27c0e;--t-primary-sh:#8f5a08;--t-primary-soft:#fff0b3;--t-primary-ink:#7a4d06}
+html[data-theme=sea]{--t-page:#ebfbfd;--t-sand:#c5f0f6;--t-sand-soft:#dcf6fa;--t-line:#bfe7ee;--t-sky:#d6f5fa;--t-primary:#0c8599;--t-primary-sh:#095e6c;--t-primary-soft:#d3f4f9;--t-primary-ink:#095e6c}
+html[data-theme=stone]{--t-page:#f3f4f6;--t-sand:#e2e5ea;--t-sand-soft:#eceef1;--t-line:#dadde3;--t-sky:#e7eaef;--t-primary:#495057;--t-primary-sh:#2b3035;--t-primary-soft:#e6e8eb;--t-primary-ink:#2b3035}

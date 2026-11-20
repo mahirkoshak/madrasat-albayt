@@ -586,3 +586,16 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
   font:inherit;font-weight:800;font-size:var(--t-fs-sm);color:var(--t-ink);border:0;cursor:pointer}
 .p-switch-av{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;overflow:hidden;font-size:22px}
 .p-switch-av .hs-av,.p-switch-av .hs-av-img{width:100%;height:100%}
+/* colour swatches for a child's card */
+.p-cols{display:flex;flex-wrap:wrap;gap:10px}
+#portal .p-col{width:46px;height:46px;border-radius:14px;border:0;cursor:pointer;box-shadow:inset 0 0 0 3px rgba(255,255,255,.55),var(--t-raise);transition:transform .12s}
+#portal .p-col.on{box-shadow:0 0 0 3px var(--t-page,#fff),0 0 0 6px var(--t-ink);transform:scale(1.08)}
+#portal .p-col:focus-visible{outline:3px solid var(--t-blue);outline-offset:3px}
+.pp-colbox{margin:var(--t-s3) 0}
+/* 🎨 my colours */
+.p-colprev{display:flex;justify-content:center;margin:var(--t-s3) 0}
+.p-colprev .p-who-av{width:150px}
+.p-themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+#portal .p-theme{display:flex;align-items:center;gap:10px;padding:12px;border-radius:16px;border:0;cursor:pointer;font:inherit;font-weight:800;color:#2a2219;box-shadow:var(--t-raise);min-height:56px}
+#portal .p-theme span{width:26px;height:26px;border-radius:8px;flex:none}
+#portal .p-theme.on{box-shadow:0 0 0 3px var(--t-page),0 0 0 6px var(--t-ink)}

@@ -1753,5 +1753,14 @@
   "size": "1024x1024",
   "replaces": "🪹",
   "prompt": "A butterfly pupa (chrysalis) hanging from a small twig, soft brown and gold. Simple bold icon, centred, fills most of the canvas, no text. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
+ },
+ {
+  "id": "atlas-cover",
+  "file": "assets/catalog/atlas-cover.webp",
+  "phase": 12,
+  "style": "2d",
+  "size": "1024x1024",
+  "replaces": "🗺️",
+  "prompt": "World atlas: a friendly globe on a stand next to an unrolled map with a compass and a small paper plane. Polished 2D illustration for a premium children's learning game: flat shapes with soft gradient shading (light from upper left), no outlines, rounded corners, simple readable silhouette that still works at 64 px, one clear focal object plus at most 2-3 supporting shapes. Palette: cream #FFF8E7, sand #F3E2C3, green #58CC02, blue #1C7ED6, gold #FFC800, orange #FF9600, pink #FF6F91, purple #8E5CF7. Centred with 10% margin. Background: perfectly flat uniform chroma green #00FF00, no gradient, no floor, no texture; no shadow on the background at all (the site adds its own shadow). No text, letters or numbers anywhere."
  }
 ]

@@ -14,6 +14,7 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(HERE)
 run = lambda *a: subprocess.run([sys.executable, *a], cwd=HERE, check=True)
 run(os.path.join('tools', 'art_process.py'))
+run(os.path.join('tools', 'make_atlas.py'))        # world map shapes and flags for the atlas app
 run('build.py')
 run(os.path.join('tools', 'make_inventory.py'))   # docs/PICTURES.md: every picture, for planning new games/units
 

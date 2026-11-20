@@ -202,6 +202,17 @@ which the header uses for the **Back** button (always the logical parent, never 
 and the tab title. Activities are marked `focus: true`: the header becomes compact and the breadcrumb is hidden.
 Counts on menu cards (lessons, terms, games, questions) are computed from the data by `HS.nav.desc`.
 
+## World atlas (src/apps/atlas)
+- «أطلس العالم»: 195 countries (UN members, Palestine, Vatican, Kosovo), capitals, flags, 7 continents, 5 oceans, 13 seas and gulfs,
+  mountains, rivers, lakes, deserts and islands. Data: `tools/make_atlas.py` from `data/atlas/` (see its README).
+- 21 levels from near to far (Arabian Peninsula first, then the Arab world, then each continent in small regions, then
+  physical geography). Each country level has three stars: where it is, its capital, its flag.
+- Ways to explore: free map (drag, pinch, tap; capitals and landforms layers), search, country of the day, country/feature
+  pages with neighbours, a guided tour per level, games (what is it called? · where is it? · capitals · flags), a quick
+  mixed review of due items (HS.srs, namespace `atlas`), and a passport whose map fills with colour.
+- `map.js` is the SVG map: loads `assets/atlas/world.js` on first use, Equal Earth projection, 974×474 map units.
+- 🎨 «ألواني» (#colors): each child picks one of 16 card colours and one of 8 page themes (`html[data-theme]` in theme.css).
+
 ## Home and profiles
 - The site remembers the last child and opens straight on their home page. The greeting has a small «تبديل» button
   (and the menu has «تبديل الطفل») that opens `#who`: big rounded-square cards, one per child, plus «طفل جديد». No PIN.

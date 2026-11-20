@@ -110,5 +110,7 @@ window.CATALOG = [
   },
   /* Not a year: an app shown next to the years on the home page (for every child) */
   { id: 'dict', name: 'قاموسي', sub: 'إنجليزي وعربي · أكثر من ١١٠٠ كلمة', em: '📖', art: 'dict-cover',
-    color: 'var(--t-purple)', app: 'dict' }
+    color: 'var(--t-purple)', app: 'dict' },
+  { id: 'atlas', name: 'أطلس العالم', sub: 'القارات والدول والعواصم والأعلام والتضاريس', em: '🗺️', art: 'atlas-cover',
+    color: 'var(--t-blue)', app: 'atlas' }
 ];

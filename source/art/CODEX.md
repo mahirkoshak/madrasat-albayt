@@ -40,8 +40,8 @@ Each manifest entry has `id`, `phase`, `size` and `prompt`.
 To generate a single phase, filter the manifest by `phase`.
 
 ## Phases 12–14 (new)
-- **Phase 12: 15 new covers** in `art-source/manifest-core.json` (filter `phase` = 12): the grade 5 card, the new maths
-  chapters, grade 5 science and grade 4 Arabic. Same rules as the other covers (transparent background, 1024×1024).
+- **Phase 12: 16 new covers** in `art-source/manifest-core.json` (filter `phase` = 12): the grade 5 card, the new maths
+  chapters, grade 5 science, grade 4 Arabic and the world atlas. Same rules as the other covers (transparent background, 1024×1024).
 - **Phase 13: 14 background scenes** in `art-source/manifest-scenes.json`, at **1536×1024**.
   These are the only images that are **not** transparent: draw a full, edge-to-edge scene with no frame.
   Keep the upper-right two thirds calm (the site puts headings and buttons there), details along the bottom and left.

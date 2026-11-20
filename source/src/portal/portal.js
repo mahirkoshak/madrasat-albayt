@@ -56,7 +56,7 @@
           <div class="gb-pop" id="gbMenu" ${menuOpen ? '' : 'hidden'}>
             <p class="gb-pop-h">${named ? `يتعلّم الآن: <b class="nm">${esc(me.name)}</b>` : 'تتعلّم الآن كضيف: التقدّم لا يُحفظ باسم طفل'}</p>
             <button type="button" data-nav="home" data-menu>🏠 الرئيسية</button>
-            <button type="button" data-nav="${HS.profiles().length ? 'who' : 'home'}" data-menu>👧 ${HS.profiles().length ? 'تبديل الطفل أو إضافة طفل' : 'إضافة طفل'}</button>
+            ${named ? '<button type="button" data-nav="colors" data-menu>🎨 ألواني</button>' : ''}<button type="button" data-nav="${HS.profiles().length ? 'who' : 'home'}" data-menu>👧 ${HS.profiles().length ? 'تبديل الطفل أو إضافة طفل' : 'إضافة طفل'}</button>
             ${named && shopOn() ? '<button type="button" data-nav="shop" data-menu>💎 متجر الهدايا</button>' : ''}
             <button type="button" data-nav="explore" data-menu>🧭 استكشف كل الصفوف</button>
             <button type="button" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" data-menu>🌐 لغة الواجهة: <span lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'العربية' : 'English'}</span></button>
@@ -248,6 +248,17 @@
     document.getElementById('pNew').onclick = () => setupGo({});
     pageBg('bg-who');
   }
+  /** #colors: the child picks the colour of their card and the colours of the site */
+  function colors() {
+    const me = HS.current(); if (!me || me.id === 'guest') return home();
+    P.innerHTML = `<div class="p-head"><span class="p-tile" aria-hidden="true">🎨</span><div><h1 class="p-title">ألواني</h1><p class="p-sub">اختر لون بطاقتك وألوان الموقع. تتغيّر لك أنت فقط.</p></div></div>
+      <div class="p-colprev"><span class="p-who-av" id="pPrev" style="background:${HS.kidColor(me)}">${HS.avatar(me, { big: true })}</span></div>
+      ${colorPick(me.color, 'لون بطاقتي')}
+      <fieldset class="p-avpick"><legend>ألوان الموقع</legend><div class="p-themes" role="radiogroup" aria-label="ألوان الموقع">${HS.THEMES.map(([id, n, bg, ac]) =>
+        `<button type="button" role="radio" aria-checked="${(me.theme || '') === id}" class="p-theme ${(me.theme || '') === id ? 'on' : ''}" data-theme="${id}" style="background:${bg}"><span style="background:${ac}"></span><b>${n}</b></button>`).join('')}</div></fieldset>`;
+    bindColPick(P, c => { HS.updateProfile(me.id, { color: c }); document.getElementById('pPrev').style.background = c; });
+    P.querySelectorAll('[data-theme]').forEach(b => b.onclick = () => { HS.updateProfile(me.id, { theme: b.dataset.theme }); HS.fx('tap'); colors(); });
+  }
   /** the small "switch child" button in the home greeting */
   const switchBtn = me => `<button type="button" class="p-switch" data-nav="who" aria-label="تبديل الطفل"><span class="p-switch-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span><span>تبديل</span></button>`;
   /** "who is learning now?": one chip per child (tap to switch), plus "new child" */
@@ -356,7 +367,7 @@
       <p>${HS.sync && HS.sync.family() ? 'التقدّم والماسات محفوظة على هذا الجهاز وأونلاين' : 'التقدّم والماسات تُحفظ على هذا الجهاز'} · صفحة الأب من القفل 🔒 في الأعلى</p></footer>`;
     if (named && me.grade) {
       P.innerHTML = hero() + kidsRow() + today() + myGrade(me) + `
-        <section class="p-sec" aria-label="المزيد"><div class="p-grid">${dictCard(me)}
+        <section class="p-sec" aria-label="المزيد"><div class="p-grid">${dictCard(me)}${atlasCard()}
           <button type="button" class="p-card p-explore" data-nav="explore"><span class="p-tile" aria-hidden="true">🧭</span><span class="tx"><b>استكشف</b><small>صفوف ومواد أخرى، وألعاب الروضة</small></span><span class="go">${I.fwd}</span></button></div></section>` + foot;
       return bindPicker(), giftPopup();
     }
@@ -406,13 +417,15 @@
       P.querySelectorAll('[data-who]').forEach(b => b.onclick = () => { W.who = b.dataset.who; W.step = 'kid'; HS.fx('tap'); if (W.who === 'parent' && HS.settings().pin) gate(setup); else setup(); }),
       bindSkip();
     if (W.step === 'kid') {
+      W.color = W.color || HS.COLORS[HS.profiles().length % HS.COLORS.length];
       if (!HS.avatarChoices().includes(W.avatar)) W.avatar = HS.avatarChoices()[HS.profiles().length % HS.avatarChoices().length];
       wizStep(W.who === 'parent' ? 'اسم الطفل وصورته' : 'ما اسمك؟ واختر صورتك', '', `<label class="wz-l" for="wzName">${W.who === 'parent' ? 'اسم الطفل' : 'اسمي'}</label>
         <input id="wzName" class="wz-in" maxlength="20" autocomplete="off" value="${esc(W.name || '')}" placeholder="مثال: محمد">
-        <fieldset class="p-avpick"><legend>${W.who === 'parent' ? 'اختر صورته' : 'اختر صورتك'}</legend><div class="p-avs" role="radiogroup" aria-label="الصورة">${HS.avatarChoices().map(a => `<button type="button" role="radio" aria-checked="${a === W.avatar}" tabindex="${a === W.avatar ? 0 : -1}" class="p-av ${a === W.avatar ? 'on' : ''}" data-av="${esc(a)}" aria-label="${esc(HS.avatarName(a))}">${HS.avatar({ avatar: a })}</button>`).join('')}</div></fieldset>`,
+        <fieldset class="p-avpick"><legend>${W.who === 'parent' ? 'اختر صورته' : 'اختر صورتك'}</legend><div class="p-avs" role="radiogroup" aria-label="الصورة">${HS.avatarChoices().map(a => `<button type="button" role="radio" aria-checked="${a === W.avatar}" tabindex="${a === W.avatar ? 0 : -1}" class="p-av ${a === W.avatar ? 'on' : ''}" data-av="${esc(a)}" aria-label="${esc(HS.avatarName(a))}">${HS.avatar({ avatar: a })}</button>`).join('')}</div></fieldset>${colorPick(W.color, W.who === 'parent' ? 'لون بطاقته' : 'لونك المفضّل')}`,
         { onNext: () => { const v = document.getElementById('wzName').value.trim(); if (!v) { document.getElementById('wzName').focus(); HS.fx('no'); return; } W.name = v; W.step = 'grade'; setup(); } });
       const nm = document.getElementById('wzName'); setTimeout(() => nm.focus(), 50);
       nm.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); document.getElementById('wzNext').click(); } };
+      bindColPick(P, c => { W.color = c; });
       return bindAvPick(a => { W.avatar = a; });
     }
     if (W.step === 'grade') {
@@ -456,9 +469,13 @@
   function finish() {
     let id = W.pid;
     if (id) HS.updateProfile(id, Object.assign({ grade: W.grade }, W.who === 'parent' ? { focus: W.focus.slice(), needFocus: false } : { needFocus: !HS.focusOf(HS.profiles().find(x => x.id === id)).length }));
-    else id = HS.addProfile({ name: W.name, avatar: W.avatar, color: HS.COLORS[HS.profiles().length % HS.COLORS.length], grade: W.grade, focus: W.who === 'parent' ? W.focus : [], needFocus: W.who !== 'parent' });
+    else id = HS.addProfile({ name: W.name, avatar: W.avatar, color: W.color || HS.COLORS[HS.profiles().length % HS.COLORS.length], grade: W.grade, focus: W.who === 'parent' ? W.focus : [], needFocus: W.who !== 'parent' });
     HS.setCurrent(id); W.done = id; W.step = 'done'; setup();
   }
+  /** colour swatches for a child's card */
+  const colorPick = (cur, label) => `<fieldset class="p-avpick"><legend>${label}</legend><div class="p-cols" role="radiogroup" aria-label="${label}">${HS.COLOR_CHOICES.map(([c, n]) =>
+    `<button type="button" role="radio" aria-checked="${c === cur}" class="p-col ${c === cur ? 'on' : ''}" data-col="${c}" aria-label="${n}" title="${n}" style="background:${c}"></button>`).join('')}</div></fieldset>`;
+  function bindColPick(root, onPick) { root.querySelectorAll('[data-col]').forEach(b => b.onclick = () => { root.querySelectorAll('[data-col]').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-checked', x === b); }); HS.fx('tap'); onPick(b.dataset.col); }); }
   function bindAvPick(onPick) {
     const pick = b => { onPick(b.dataset.av); P.querySelectorAll('[data-av]').forEach(x => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); x.tabIndex = on ? 0 : -1; }); };
     P.querySelectorAll('[data-av]').forEach(b => b.onclick = () => { pick(b); HS.fx('tap'); });
@@ -495,6 +512,7 @@
     const lv = { kg: 'سهل', g1: 'سهل', g2: 'سهل', g3: 'سهل', g4: 'متوسط', g5: 'متوسط', g6: 'صعب' }[me.grade];
     return card(d, 'app-dict').replace('</small></span>', `</small>${lv ? `<small class="p-lv">مستواك المقترح: ${lv}</small>` : ''}</span>`);
   }
+  function atlasCard() { const d = CATALOG.find(x => x.app === 'atlas'); return d && APPS.atlas ? card(d, 'app-atlas') : ''; }
   function explore() {
     P.innerHTML = `<div class="p-head"><span class="p-tile" aria-hidden="true">🧭</span><div><h1 class="p-title">استكشف</h1><p class="p-sub">كل الصفوف والمواد والألعاب. ما تتعلّمه هنا يعطيك نجومًا ⭐.</p></div></div>
       <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div>`;
@@ -556,6 +574,7 @@
     const ur = units.map(u => APPS.unit.report(u, k.id)).filter(r => r && (r.answered || r.labs.length));
     const kg = APPS.kg ? APPS.kg.report(k.id).filter(g => g.c + g.w) : [];
     const dr = APPS.dict ? APPS.dict.report(k.id) : null, dOn = dr && (dr.seen || dr.ar.seen || dr.spell.en || dr.spell.ar);
+    const at = APPS.atlas ? APPS.atlas.report(k.id) : null, aOn = at && (at.seen || at.learned);
     const waits = HS.orders(k.id).filter(o => o.st === 'wait'), goal = HS.goal(k.id), guest = k.id === 'guest';
     const focus = k.grade ? focusChoices(k.grade).filter(c => HS.focusOf(k).includes(c.id)) : [];
     const last = d.days.length ? d.days[d.days.length - 1] : '';
@@ -582,8 +601,10 @@
         <div class="pp-figs">${fig('💎 ' + ar(HS.diamonds(k.id)), 'ماسات للصرف')}${fig('⭐ ' + ar(HS.yellow(k.id)), 'نجمات')}${fig('🔥 ' + ar(HS.dayStreak(k.id)), 'أيام متتالية')}${fig('📅 ' + ar(d.days.length), last ? 'أيام تعلّم · آخرها ' + fmtDate(Date.parse(last)) : 'أيام تعلّم')}</div></div>
       ${todo.length ? `<h3 class="pp-h">يحتاجك الآن</h3><div class="pp-todos">${todo.join('')}</div>` : ''}
       <h3 class="pp-h">التقدّم</h3>
-      ${!ur.length && !kg.length && !dOn ? `<div class="pp-card pp-empty"><span class="em">🌱</span><p>لم يبدأ ${esc(k.name)} بعد. أول نشاط يلعبه سيظهر هنا: الإتقان، وما يخطئ فيه، والدرس التالي.</p></div>` : ''}
+      ${!ur.length && !kg.length && !dOn && !aOn ? `<div class="pp-card pp-empty"><span class="em">🌱</span><p>لم يبدأ ${esc(k.name)} بعد. أول نشاط يلعبه سيظهر هنا: الإتقان، وما يخطئ فيه، والدرس التالي.</p></div>` : ''}
       <div class="pp-grid">${ur.map(unit).join('')}
+        ${aOn ? `<article class="pp-card"><header><h4>🗺️ أطلس العالم</h4><b class="pp-big">${pct0(at.acc)}</b></header>${meter(at.seen / Math.max(1, at.total))}<p class="pp-cap">صحّ في الألعاب</p>
+          <div class="pp-kv"><span>أماكن زارها</span><b>${ar(at.seen)}</b></div><div class="pp-kv"><span>معلومات أتقنها (مكان، عاصمة، علم)</span><b>${ar(at.learned)}</b></div></article>` : ''}
         ${dOn ? `<article class="pp-card"><header><h4>📖 قاموسي</h4><b class="pp-big">${pct0(dr.acc)}</b></header>${meter(dr.learned / Math.max(1, dr.seen))}<p class="pp-cap">صحّ في التدريب</p>
           <div class="pp-kv"><span>كلمات تعلّمها</span><b>${ar(dr.learned)}</b></div><div class="pp-kv"><span>تدرّب عليها</span><b>${ar(dr.seen)}</b></div><div class="pp-kv"><span>في «كلماتي»</span><b>${ar(dr.mine)}</b></div>
           ${dr.ar.seen ? `<div class="pp-kv"><span>📝 عربي: كتبها من ذاكرته</span><b>${ar(dr.ar.learned)} من ${ar(dr.ar.seen)}</b></div>` : ''}
@@ -596,7 +617,7 @@
           <div class="pp-gift-in"><select aria-label="عدد الماسات">${[5, 10, 20, 50].map(n => `<option value="${n}">💎 ${ar(n)}</option>`).join('')}</select>
           <input maxlength="60" placeholder="رسالة قصيرة: فخور فيك لأنك ساعدت أختك" aria-label="رسالة"><button type="submit" class="p-btn">أرسل</button></div></form></div>` : ''}
       ${APPS.kg && isKg && !guest ? kgLevels(k.id) : ''}
-      ${guest ? '' : `<div class="pp-quiet"><button type="button" class="pp-link" data-ren="${k.id}">✏️ تعديل الاسم</button>
+      ${guest ? '' : `<div class="pp-quiet"><button type="button" class="pp-link" data-ren="${k.id}">✏️ تعديل الاسم</button><button type="button" class="pp-link" data-recol="${k.id}">🎨 تغيير اللون</button>
         <button type="button" class="pp-link" data-reset="${k.id}">${confirmKey === 'r' + k.id ? '⚠️ اضغط مرة ثانية لمسح كل التقدّم' : '🔄 مسح التقدّم'}</button>
         <button type="button" class="pp-link danger" data-del="${k.id}">${confirmKey === 'd' + k.id ? '⚠️ اضغط مرة ثانية للحذف' : '🗑️ حذف الطفل'}</button></div>`}
     </section>`;
@@ -672,6 +693,11 @@
     P.querySelectorAll('[data-kglv]').forEach(sel => sel.onchange = () => {
       const [pid, k] = sel.dataset.kglv.split('|'); APPS.kg.setLevel(pid, k, +sel.value); HS.toast('✓ تم حفظ المستوى');
     });
+    P.querySelectorAll('[data-recol]').forEach(b => b.onclick = () => {
+      const k = HS.profiles().find(x => x.id === b.dataset.recol), box = document.createElement('div');
+      box.className = 'pp-colbox'; box.innerHTML = colorPick(k.color, 'لون بطاقة ' + esc(k.name)); b.closest('.pp-quiet').after(box);
+      b.disabled = true; bindColPick(box, c => { HS.updateProfile(k.id, { color: c }); parent(); });
+    });
     P.querySelectorAll('[data-ren]').forEach(b => b.onclick = () => {
       const k = HS.profiles().find(x => x.id === b.dataset.ren); const sec = P.querySelector('.pp-who .nm');
       sec.innerHTML = `<form class="p-inline"><input value="${esc(k.name)}" maxlength="20" aria-label="الاسم الجديد"><button type="submit" class="p-btn">حفظ</button></form>`;
@@ -728,8 +754,9 @@
     const draw = r => { if (r !== h) { try { history.replaceState(null, '', '#' + r); } catch (e) {} } bar(r); };
     if (h === 'parent') { showScreen('portal'); draw('parent'); return gate(() => { parentFirst(); pageBg('bg-parent'); }); }
     if (h === 'setup') { showScreen('portal'); draw('setup'); setup(); return pageBg('bg-setup'); }
-    pageBg(null);
+    pageBg(null); HS.applyTheme();
     if (h === 'who') { showScreen('portal'); draw('who'); return who(); }
+    if (h === 'colors') { showScreen('portal'); draw('colors'); return colors(); }
     if (h === 'explore') { showScreen('portal'); draw('explore'); explore(); return pageBg('bg-explore'); }
     if (h !== 'shop') buying = '';
     if (h === 'shop') { showScreen('portal'); if (shopOn()) { draw('shop'); shop(); return pageBg('bg-shop'); } draw('home'); return home(); }
