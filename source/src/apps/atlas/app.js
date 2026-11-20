@@ -170,12 +170,9 @@ const other = x => `<p class="a-en" dir="${EN() ? 'rtl' : 'ltr'}" lang="${EN() ?
 /* ---------- moving between places: previous / next in the same level, the level, the big map ---------- */
 const packOf = id => A.packs.find(p => p.ids.includes(id));
 const pageOf = id => (C[id] || CT[id] ? 'c-' : 'f-') + id;
-function placeNav(id, top) {
+function placeNav(id) {
   const pk = packOf(id); if (!pk) return '';
   const i = pk.ids.indexOf(id), prev = pk.ids[(i - 1 + pk.ids.length) % pk.ids.length], next = pk.ids[(i + 1) % pk.ids.length];
-  if (top) return `<nav class="a-pnav top" aria-label="${L('السابق والتالي', 'Previous and next')}"><button type="button" class="a-btn ghost sm" data-go="${pageOf(prev)}" aria-label="${esc(L('السابق: ', 'Previous: ') + nameOf(prev))}">${L('→', '←')} <span>${esc(nameOf(prev))}</span></button>
-    <button type="button" class="a-chip" data-go="map-${id}" aria-label="${L('على الخريطة الكبيرة', 'On the big map')}">🗺️</button>
-    <button type="button" class="a-btn ghost sm" data-go="${pageOf(next)}" aria-label="${esc(L('التالي: ', 'Next: ') + nameOf(next))}"><span>${esc(nameOf(next))}</span> ${L('←', '→')}</button></nav>`;
   return `<nav class="a-pnav" aria-label="${L('التنقّل بين الأماكن', 'Move between places')}">
     <button type="button" class="a-btn ghost" data-go="${pageOf(prev)}" data-key="prev" aria-label="${esc(L('السابق: ', 'Previous: ') + nameOf(prev))}">${L('→', '←')} <span>${esc(nameOf(prev))}</span></button>
     <span class="a-pnav-mid"><button type="button" class="a-chip" data-go="p-${pk.id}">${pk.em} ${esc(nm(pk))} <small>${N(i + 1)}/${N(pk.ids.length)}</small></button>
@@ -183,18 +180,23 @@ function placeNav(id, top) {
     <button type="button" class="a-btn" data-go="${pageOf(next)}" data-key="next" aria-label="${esc(L('التالي: ', 'Next: ') + nameOf(next))}"><span>${esc(nameOf(next))}</span> ${L('←', '→')}</button></nav>`;
 }
 
-/* ---------- country, continent and feature pages ---------- */
+/** the map, and right under it the way on: previous · the level · the big map · next (the details card follows) */
+const mapCol = id => `<div class="a-place-map"><div id="aMap" class="a-map"></div>${placeNav(id)}</div>`;
+
+/* ---------- country, continent and feature pages ----------
+   Layout (map apps such as Google Maps and Apple Maps): the map first, the controls next to it, the details card after.
+   The buttons stay between the map and the card on every screen size. */
 function countryPage(c) {
   visit(c.id);
   const nb = c.nb.map(id => `<button type="button" class="a-chip" data-go="c-${id}">${flagImg(C[id], 'sm')} ${esc(nm(C[id]))}</button>`).join('');
-  M().innerHTML = `${placeNav(c.id, true)}<section class="a-card">
+  M().innerHTML = `<div class="a-place">${mapCol(c.id)}<section class="a-card">
       <div class="a-card-top">${flagImg(c, 'huge')}<div><h1>${esc(nm(c))} ${spk(lineOf(c.id))}</h1>
         ${other(c)}${c.arab ? `<span class="a-tag">${L('دولة عربية', 'Arab country')}</span>` : ''}</div></div>
       <dl class="a-facts"><div><dt>🏛️ ${L('العاصمة', 'Capital')}</dt><dd>${esc(capN(c))}</dd></div>
         <div><dt>🌍 ${L('القارة', 'Continent')}</dt><dd><button type="button" class="a-link" data-go="c-${c.c}">${esc(contN(c.c))}</button></dd></div>
         ${c.pop ? `<div><dt>👪 ${L('السكان', 'Population')}</dt><dd>${popWords(c.pop)}</dd></div>` : ''}</dl>
       ${nb ? `<h2 class="a-h3">${L('جيرانها', 'Neighbours')}</h2><div class="a-chips">${nb}</div>` : `<p class="a-note">${L('ليس لها جيران على اليابسة: يحيط بها الماء.', 'No neighbours on land: it is surrounded by water.')}</p>`}
-    </section><div id="aMap" class="a-map"></div>${placeNav(c.id)}`;
+    </section></div>`;
   const nbBB = [c.bb, ...c.nb.map(id => C[id].bb)].filter(b => b[2] - b[0] < A.W * 0.5);
   const fit = c.bb[2] - c.bb[0] > A.W * 0.3 ? c.bb : bbUnion(nbBB.length > 1 ? nbBB : [c.bb]);
   mapApi = atlasMap($('aMap'), { fit, tap: (id, k) => { if (k === 'c' && id && id !== c.id) go('c-' + id); },
@@ -203,15 +205,14 @@ function countryPage(c) {
 }
 function contPage(t) {
   const list = A.countries.filter(c => c.c === t.id);
-  M().innerHTML = `${placeNav(t.id, true)}<section class="a-card"><div class="a-card-top"><span class="a-big-em">🌍</span><div><h1>${esc(nm(t))} ${spk(nm(t))}</h1>${other(t)}</div></div>
-    <p class="a-fact">${esc(factOf(t))}</p>${list.length ? `<h2 class="a-h3">${L('دولها', 'Its countries')} (${N(list.length)})</h2><div class="a-chips">${list.map(c => `<button type="button" class="a-chip" data-go="c-${c.id}">${flagImg(c, 'sm')} ${esc(nm(c))}</button>`).join('')}</div>` : ''}</section>
-    <div id="aMap" class="a-map"></div>${placeNav(t.id)}`;
+  M().innerHTML = `<div class="a-place">${mapCol(t.id)}<section class="a-card"><div class="a-card-top"><span class="a-big-em">🌍</span><div><h1>${esc(nm(t))} ${spk(nm(t))}</h1>${other(t)}</div></div>
+    <p class="a-fact">${esc(factOf(t))}</p>${list.length ? `<h2 class="a-h3">${L('دولها', 'Its countries')} (${N(list.length)})</h2><div class="a-chips">${list.map(c => `<button type="button" class="a-chip" data-go="c-${c.id}">${flagImg(c, 'sm')} ${esc(nm(c))}</button>`).join('')}</div>` : ''}</section></div>`;
   mapApi = atlasMap($('aMap'), { fit: t.bb, labels: 'auto', paint: id => contOf(id) === t.id ? 'ct-' + t.id : 'plain', tap: (id, k) => { if (k === 'c' && id) go('c-' + id); } });
 }
 function featPage(f) {
   visit(f.id);
-  M().innerHTML = `${placeNav(f.id, true)}<section class="a-card"><div class="a-card-top"><span class="a-big-em">${kindEm(f.k)}</span><div><h1>${esc(nm(f))} ${spk(nm(f))}</h1>${other(f)}<span class="a-tag">${esc(kindN(f.k))}</span></div></div>
-    <p class="a-fact">${esc(factOf(f))}</p></section><div id="aMap" class="a-map"></div>${placeNav(f.id)}`;
+  M().innerHTML = `<div class="a-place">${mapCol(f.id)}<section class="a-card"><div class="a-card-top"><span class="a-big-em">${kindEm(f.k)}</span><div><h1>${esc(nm(f))} ${spk(nm(f))}</h1>${other(f)}<span class="a-tag">${esc(kindN(f.k))}</span></div></div>
+    <p class="a-fact">${esc(factOf(f))}</p></section></div>`;
   const big = f.bb[2] - f.bb[0] > A.W * 0.8;
   mapApi = atlasMap($('aMap'), { fit: big ? [0, 0, A.W, A.H] : f.bb, phys: [f.id], labels: [{ t: nm(f), at: f.lab, cls: 'lp big k-' + f.k, dy: f.p ? -14 : 0 }] });
   mapApi.mark(f.id, true);
@@ -222,6 +223,7 @@ function packPage(p) {
   const cp = isCountryPack(p);
   const bar = s => `<span class="a-bar sm"><i style="width:${Math.round(mastery(p, s) * 100)}%"></i></span>`;
   M().innerHTML = `<section class="a-phead"><span class="a-pk-em big">${p.em}</span><div><h1>${esc(nm(p))}</h1><p>${countN(p.ids.length, cp)} ${starRow(stars(p), 'sm')}</p></div></section>
+    <div id="aMap" class="a-map"></div>
     <div class="a-modes">
       <button type="button" class="a-mode tour" data-go="g-${p.id}-tour"><b>👀</b><span>${MODES().tour}<small>${L('جولة مع الأسماء', 'A tour with the names')}</small></span></button>
       <button type="button" class="a-mode" data-go="g-${p.id}-name"><b>🔤</b><span>${MODES().name}<small>${L('اختر الاسم الصحيح', 'Pick the right name')}</small>${bar('l')}</span></button>
@@ -229,7 +231,6 @@ function packPage(p) {
       ${cp ? `<button type="button" class="a-mode" data-go="g-${p.id}-cap"><b>🏛️</b><span>${MODES().cap}<small>${L('عاصمة كل دولة', 'The capital of each country')}</small>${bar('c')}</span></button>
       <button type="button" class="a-mode" data-go="g-${p.id}-flag"><b>🚩</b><span>${MODES().flag}<small>${L('علم كل دولة', 'The flag of each country')}</small>${bar('f')}</span></button>` : ''}
     </div>
-    <div id="aMap" class="a-map"></div>
     <div class="a-chips list">${p.ids.map(id => `<button type="button" class="a-chip ${learned(id) ? 'got' : ''}" data-go="${C[id] || CT[id] ? 'c-' : 'f-'}${id}">${C[id] ? flagImg(C[id], 'sm') : kindEm((PH[id] || { k: 'cont' }).k)} ${esc(nameOf(id))}</button>`).join('')}</div>`;
   const phys = p.ids.filter(id => PH[id]);
   mapApi = atlasMap($('aMap'), { fit: packBB(p), phys, only: p.ids, paint: id => paintPack(p, id), labels: labelsOf(p),

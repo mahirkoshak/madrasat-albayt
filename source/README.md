@@ -212,11 +212,16 @@ Counts on menu cards (lessons, terms, games, questions) are computed from the da
   mixed review of due items (HS.srs, namespace `atlas`), and a passport whose map fills with colour.
 - `map.js` is the SVG map: loads `assets/atlas/world.js` on first use. Robinson projection (853×433 map units), 1:50m borders
   at 1/12-unit precision, an ocean gradient, a 30° grid and a soft coastal halo (from the 1:110m coastline).
+- Place pages (country, continent, landform): map first, the buttons right under it, then the details card (map apps' layout).
+  Level pages: map right under the title, then the games.
 - Moving between places: every country, continent and landform page has previous/next (in its level's order, wrapping
   around; also ← → keys), a link to its level, and «على الخريطة الكبيرة» (#app-atlas-map-<id>: the free map zoomed there).
 - Two languages: «عربي» / «English» switch on the atlas home page (saved per child in `HS.data('atlas').lang`); English pages
   are left to right, with English names, capitals, facts and voice. Progress is shared between the languages.
 - 🎨 «ألواني» (#colors): each child picks one of 16 card colours and one of 8 page themes (`html[data-theme]` in theme.css).
+
+## Font
+- Readex Pro (Google Fonts) for Arabic and English: the Arabic expansion of Lexend, designed for easier reading.
 
 ## Home and profiles
 - The site remembers the last child and opens straight on their home page. The greeting has a small «تبديل» button

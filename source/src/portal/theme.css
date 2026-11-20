@@ -5,8 +5,10 @@
    The 3D characters are the focal points; everything around them stays flat, warm and calm.
    ============================================================ */
 :root{
-  --t-font:'Baloo Bhaijaan 2','Tajawal',system-ui,sans-serif;   /* rounded Arabic + Latin, friendly at every size */
-  --t-font-text:'Tajawal','Baloo Bhaijaan 2',system-ui,sans-serif; /* long adult text (parent page) */
+  /* Readex Pro: one modern family for Arabic and English, built on Lexend's research on easier reading
+     (open letter shapes, wide spacing); a variable font, weights 300–700 */
+  --t-font:'Readex Pro','Segoe UI','Noto Sans Arabic',system-ui,sans-serif;
+  --t-font-text:'Readex Pro','Segoe UI','Noto Sans Arabic',system-ui,sans-serif; /* long adult text (parent page) */
 
   /* surfaces & text: warm, never pure grey or black */
   --t-page:#fff8e7;        /* cream page */
