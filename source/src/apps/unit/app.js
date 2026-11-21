@@ -637,6 +637,25 @@ APPS.unit = {
     return out;
   },
   labCount: id => Object.keys(LABS[id] || {}).length,
+  /** every game of a unit, for the site-wide games page (#games): [{ route, title, em, sub, type, lv }]
+      type: 'math' | 'lab' | 'practice' | 'challenge'; lv = this child's level (1–3) where the game has levels */
+  games(id) {
+    const u = window.UNITS && UNITS[id]; if (!u) return [];
+    const g = (((HS.profileData().ns || {})['u:' + id]) || {}).g || {}, lv = k => Math.min(3, Math.max(1, (g[k] || {}).lv || 1));
+    const Ln = l => { const i = u.lessons.findIndex(x => x.id === l); return i < 0 ? '' : 'الدرس ' + ar(i + 1); };
+    const r = k => `unit-${id}-play-${k}`, j = (...a) => a.filter(Boolean).join(' · ');
+    const labs = Object.values(LABS[id] || {});
+    return [
+      ...labs.filter(x => x.kind === 'math').map(x => ({ route: r('lab-' + x.id), title: x.title.replace(/^\S+\s/, ''), em: x.em, sub: j(Ln(x.lesson), x.sub), type: 'math' })),
+      ...labs.filter(x => x.kind !== 'math').map(x => ({ route: r('lab-' + x.id), title: x.title.replace(/^\S+\s/, ''), em: x.em, sub: j(Ln(x.lesson), x.sub), type: 'lab' })),
+      ...(u.games.sort || []).map(x => ({ route: r('s-' + x.id), title: x.title, em: x.em, sub: j(Ln(x.l), 'فرز'), type: 'practice', lv: lv('s-' + x.id) })),
+      ...(u.games.order || []).map(x => ({ route: r('o-' + x.id), title: x.title, em: x.em, sub: j(Ln(x.l), 'ترتيب'), type: 'practice', lv: lv('o-' + x.id) })),
+      { route: r('odd'), title: 'الدخيل', em: '🔍', sub: 'أيّها لا ينتمي؟', type: 'practice', lv: lv('odd') },
+      { route: r('fix'), title: 'صحّح دفتر كوكو', em: '📒', sub: 'ابحث عن الجملة الخطأ', type: 'practice', lv: lv('fix') },
+      { route: r('memory'), title: 'مَن أنا؟', em: '🕵️', sub: 'اقرأ الوصف وتذكّر المصطلح', type: 'practice', lv: lv('memory') },
+      { route: r('tf'), title: 'صح أم خطأ؟', em: '✔️', sub: 'معك ٣ قلوب', type: 'challenge', lv: lv('tf') },
+      { route: r('speed'), title: 'تحدّي السرعة', em: '⚡', sub: 'قبل انتهاء الوقت', type: 'challenge', lv: lv('speed') }];
+  },
   labs: () => LABS,   // read by the automated tests
   renderQ: (unitId, q, el, done, opt) => { S.id = S.id || unitId; S.u = S.u || UNITS[unitId]; renderQuestion(q, el, done, opt || { coach: true }); },   // tests
   mathModel: s => mathModel(s),   // tests

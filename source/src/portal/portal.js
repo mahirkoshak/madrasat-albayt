@@ -58,6 +58,7 @@
             <button type="button" data-nav="home" data-menu>🏠 الرئيسية</button>
             ${named ? '<button type="button" data-nav="colors" data-menu>🎨 ألواني</button>' : ''}<button type="button" data-nav="${HS.profiles().length ? 'who' : 'home'}" data-menu>👧 ${HS.profiles().length ? 'تبديل الطفل أو إضافة طفل' : 'إضافة طفل'}</button>
             ${named && shopOn() ? '<button type="button" data-nav="shop" data-menu>💎 متجر الهدايا</button>' : ''}
+            <button type="button" data-nav="games" data-menu>🎮 كل الألعاب</button>
             <button type="button" data-nav="explore" data-menu>🧭 استكشف كل الصفوف</button>
             <button type="button" data-lang-ui="${HS.lang() === 'en' ? 'ar' : 'en'}" data-menu>🌐 لغة الواجهة: <span lang="${HS.lang() === 'en' ? 'ar' : 'en'}">${HS.lang() === 'en' ? 'العربية' : 'English'}</span></button>
           </div></div></div></div>${ctx}`;
@@ -368,6 +369,7 @@
     if (named && me.grade) {
       P.innerHTML = hero() + kidsRow() + today() + myGrade(me) + `
         <section class="p-sec" aria-label="صفوف أخرى"><div class="p-grid">
+          <button type="button" class="p-card p-explore p-allgames" data-nav="games"><span class="p-tile" aria-hidden="true">🎮</span><span class="tx"><b>كل الألعاب</b><small>ألعاب كل الوحدات والصفوف في مكان واحد</small></span><span class="go">${I.fwd}</span></button>
           <button type="button" class="p-card p-explore" data-nav="explore"><span class="p-tile" aria-hidden="true">🧭</span><span class="tx"><b>صفوف ومواد أخرى</b><small>كل الصفوف والمواد، وألعاب الروضة</small></span><span class="go">${I.fwd}</span></button></div></section>` + extras(dictCard(me) + atlasCard()) + foot;
       return bindPicker(), giftPopup();
     }
@@ -518,6 +520,60 @@
     return card(d, 'app-dict').replace('</small></span>', `</small>${lv ? `<small class="p-lv">مستواك المقترح: ${lv}</small>` : ''}</span>`);
   }
   function atlasCard() { const d = CATALOG.find(x => x.app === 'atlas'); return d && APPS.atlas ? card(d, 'app-atlas') : ''; }
+  /* ---------- #games: every game of every unit, grade and app on one page ----------
+     filter by grade (the child's own grade first) or the explore corner; «لعبة مفاجئة» opens a random one from the filter.
+     Each tile opens the game directly; the game's own end card offers «again» and «next». */
+  function gameSets() {
+    const sets = [];   // { key, name, em, art, groups: [{ name, em, art, nav, games: [...] }] }
+    for (const y of CATALOG) {
+      if (y.app) continue;
+      const groups = [];
+      for (const sb of y.subjects || []) {
+        if (sb.app === 'kg' && APPS.kg) {
+          const K = document.getElementById('app-kg');
+          HS.KG_GROUPS.forEach(g => groups.push({ name: g.name.replace(/ \(.*\)$/, ''), em: g.em, nav: 'app-kg', games: g.games.map(k => {
+            const b = K && K.querySelector(`[data-game="${k}"]`); if (!b) return null;
+            const em = b.querySelector('.em'), t = b.querySelector('b.ar');
+            return { route: 'app-kg-game-' + k, title: t ? t.textContent : k, em: em ? em.textContent.trim() : '🎮', art: em && em.dataset.art, type: 'kg' };
+          }).filter(Boolean) }));
+        }
+        for (const u of sb.units || []) {
+          if (!u.unit || !(window.UNITS && UNITS[u.unit]) || !APPS.unit) continue;
+          groups.push({ name: u.name, em: u.em, art: u.art, nav: navOf(u), where: sb.name, games: APPS.unit.games(u.unit) });
+        }
+      }
+      if (groups.some(g => g.games.length)) sets.push({ key: y.id, name: y.name, em: y.em, art: y.art, groups: groups.filter(g => g.games.length) });
+    }
+    const ex = [];
+    if (APPS.atlas && APPS.atlas.games) { const d = CATALOG.find(x => x.app === 'atlas'); ex.push({ name: d ? d.name : 'أطلس العالم', em: '🗺️', art: d && d.art, nav: 'app-atlas', games: APPS.atlas.games() }); }
+    if (APPS.dict) { const d = CATALOG.find(x => x.app === 'dict'); ex.push({ name: d ? d.name : 'قاموسي', em: '📖', art: d && d.art, nav: 'app-dict', games: [
+      { route: 'app-dict-practice', title: 'تدرّب على الكلمات', em: '🃏', sub: 'كلمات بالصورة والصوت', type: 'extra' },
+      { route: 'app-dict-spell', title: 'تحدّي الإملاء', em: '✏️', sub: 'اسمع الكلمة واكتبها', type: 'extra' }] }); }
+    if (ex.length) sets.push({ key: 'extra', name: 'ركن الاستكشاف', em: '🧭', groups: ex, extra: true });
+    return sets;
+  }
+  const TYPE_AR = { math: 'نحسب', lab: 'نجرّب', practice: 'نتدرّب', challenge: 'نتحدّى', kg: 'الروضة', atlas: 'مستوى', extra: '' };
+  function gamesPage(f) {
+    const sets = gameSets(), me = HS.current(), mine = me && me.grade && sets.find(x => x.key === me.grade);
+    if (!f) f = mine ? mine.key : 'all';
+    const shown = f === 'all' ? sets : sets.filter(x => x.key === f), total = sets.reduce((a, x) => a + x.groups.reduce((b, g) => b + g.games.length, 0), 0);
+    const lvDots = lv => lv ? `<span class="g-lv" role="img" aria-label="المستوى ${ar(lv)} من ٣">${[1, 2, 3].map(i => `<i class="${i <= lv ? 'f' : ''}"></i>`).join('')}</span>` : '';
+    const stars = n => n == null ? '' : `<span class="p-gstars" aria-label="${ar(n)} من ٣ نجوم">${'★'.repeat(n)}<u>${'★'.repeat(3 - n)}</u></span>`;
+    const tileOf = gm => `<button type="button" class="p-game t-${gm.type || 'x'}" data-nav="${gm.route}"><span class="p-game-em" aria-hidden="true">${gm.art && HS.hasArt(gm.art) ? HS.art(gm.art, { small: true, fb: gm.em }) : esc(gm.em)}</span>
+      <b>${esc(gm.title)}</b>${gm.sub ? `<small>${esc(gm.sub)}</small>` : ''}${lvDots(gm.lv)}${stars(gm.stars)}</button>`;
+    const group = g => `<section class="p-gset"><button type="button" class="p-gset-h" data-nav="${g.nav}"><span class="p-gset-t" aria-hidden="true">${g.art && HS.hasArt(g.art) ? HS.art(g.art, { small: true, fb: g.em }) : esc(g.em)}</span>
+      <span><b>${esc(g.name)}</b><small>${g.where ? esc(g.where) + ' · ' : ''}${HS.count(g.games.length, ['لعبة', 'لعبتان', 'ألعاب', 'لعبة'])}</small></span></button>
+      <div class="p-games">${g.games.map(tileOf).join('')}</div></section>`;
+    P.innerHTML = `<div class="p-head"><span class="p-tile" aria-hidden="true">🎮</span><div><h1 class="p-title">كل الألعاب</h1>
+        <p class="p-sub">${HS.count(total, ['لعبة', 'لعبتان', 'ألعاب', 'لعبة'])} من كل الصفوف والوحدات في مكان واحد.</p></div></div>
+      <div class="p-gbar"><div class="p-gchips" role="group" aria-label="اختر الصف">${sets.map(x => `<button type="button" class="p-gchip${x.key === f ? ' on' : ''}${x.extra ? ' ex' : ''}" data-nav="games-${x.key}" aria-pressed="${x.key === f}">${esc(x.em)} ${esc(x.name)}${mine && x.key === mine.key ? ' <small>صفّي</small>' : ''}</button>`).join('')}
+        <button type="button" class="p-gchip${f === 'all' ? ' on' : ''}" data-nav="games-all" aria-pressed="${f === 'all'}">الكل</button></div>
+        <button type="button" class="p-btn p-gluck" id="pLuck">🎲 لعبة مفاجئة</button></div>
+      ${shown.map(x => `<section class="p-sec p-gyear${x.extra ? ' p-extra' : ''}" aria-label="${esc(x.name)}">${f === 'all' || x.extra ? `<div class="${x.extra ? 'p-extra-h' : ''}"><h2 class="p-h2">${esc(x.em)} ${esc(x.name)}</h2>${x.extra ? '<p>إضافات للفضول والمتعة، ليست من المنهج المدرسي</p>' : ''}</div>` : ''}
+        ${x.groups.map(group).join('')}</section>`).join('')}`;
+    const pool = shown.flatMap(x => x.groups.flatMap(g => g.games));
+    document.getElementById('pLuck').onclick = () => { const g = pool[Math.floor(Math.random() * pool.length)]; if (g) { HS.fx && HS.fx('tap'); location.hash = g.route; } };
+  }
   function explore() {
     P.innerHTML = `<div class="p-head"><span class="p-tile" aria-hidden="true">🧭</span><div><h1 class="p-title">استكشف</h1><p class="p-sub">كل الصفوف والمواد والألعاب. ما تتعلّمه هنا يعطيك نجومًا ⭐.</p></div></div>
       <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div>`;
@@ -738,7 +794,7 @@
 
   /* ---------- router ---------- */
   // addresses from the first single-unit pages (old links saved on the kids' devices) → new pages
-  const LEGACY = { l1: 'l1', l2: 'l2', l3: 'l3', cards: 'cards', games: 'play', quiz: 'test' };
+  const LEGACY = { l1: 'l1', l2: 'l2', l3: 'l3', cards: 'cards', quiz: 'test' };
   // the address #app-kg is also the id of the app's box, so the browser jumps down to it: keep pages at the top
   const unjump = () => { if (document.getElementById((location.hash || '').slice(1))) requestAnimationFrame(() => window.scrollTo(0, 0)); };
   window.addEventListener('load', unjump);
@@ -763,6 +819,7 @@
     if (h === 'who') { showScreen('portal'); draw('who'); return who(); }
     if (h === 'colors') { showScreen('portal'); draw('colors'); return colors(); }
     if (h === 'explore') { showScreen('portal'); draw('explore'); explore(); return pageBg('bg-explore'); }
+    if ((m = h.match(/^games(?:-(\w+))?$/))) { showScreen('portal'); draw(h); gamesPage(m[1]); return pageBg('bg-explore'); }
     if (h !== 'shop') buying = '';
     if (h === 'shop') { showScreen('portal'); if (shopOn()) { draw('shop'); shop(); return pageBg('bg-shop'); } draw('home'); return home(); }
     showScreen('portal');

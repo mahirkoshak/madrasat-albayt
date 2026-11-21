@@ -49,6 +49,7 @@
     if (p.base === 'parent') return [HOME, { route: 'parent', title: 'صفحة الأب' }];
     if (p.base === 'shop') return [HOME, { route: 'shop', title: 'متجر الهدايا' }];
     if (p.base === 'explore') return [HOME, { route: 'explore', title: 'استكشف' }];
+    if (p.base === 'games' || /^games-\w+$/.test(p.base)) return [HOME, { route: p.base, title: 'كل الألعاب' }];
     if (p.base === 'who') return [HOME, { route: 'who', title: 'من يتعلّم؟' }];
     if (p.base === 'colors') return [HOME, { route: 'colors', title: 'ألواني' }];
     if (p.base === 'setup') return [HOME, { route: 'setup', title: 'تجهيز طفل' }];

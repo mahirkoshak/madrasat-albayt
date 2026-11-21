@@ -446,6 +446,9 @@ APPS.atlas = {
   open(sub) { show(sub || ''); window.scrollTo(0, 0); },
   nav: chainFor,
   close() { HS.stopSpeak(); G = null; mapApi = null; },
+  /** for the site-wide games page (#games): the quick challenge and one entry per level (its page lists the games) */
+  games: () => [{ route: R('quick'), title: MODES().quick, em: '🎯', sub: L('أماكن من كل المستويات', 'Places from every level'), type: 'challenge' },
+    ...A.packs.map(p => ({ route: R('p-' + p.id), title: nm(p), em: p.em, sub: L('مستوى في الأطلس', 'An atlas level'), stars: stars(p), type: 'atlas' }))],
   /** parent page: places visited and learned, accuracy */
   report(pid) {
     const d = HS.data(NS, pid), s = d.srs || {}, ks = Object.keys(s);
