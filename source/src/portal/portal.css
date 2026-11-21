@@ -599,3 +599,11 @@ details.pp-row[open]>summary::after{transform:rotate(-135deg)}
 #portal .p-theme{display:flex;align-items:center;gap:10px;padding:12px;border-radius:16px;border:0;cursor:pointer;font:inherit;font-weight:800;color:#2a2219;box-shadow:var(--t-raise);min-height:56px}
 #portal .p-theme span{width:26px;height:26px;border-radius:8px;flex:none}
 #portal .p-theme.on{box-shadow:0 0 0 3px var(--t-page),0 0 0 6px var(--t-ink)}
+
+/* ركن الاستكشاف: dictionary and atlas, apart from the school subjects */
+.p-extra{margin-top:calc(var(--t-s6) * 1.6);padding:var(--t-s5);border-radius:28px;border:2px dashed color-mix(in srgb,var(--t-purple) 45%,transparent);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--t-purple) 10%,var(--t-page)),color-mix(in srgb,var(--t-blue) 9%,var(--t-page)))}
+.p-extra-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:var(--t-s3)}
+#portal .p-extra-h .p-h2{margin:0}
+.p-extra-h p{margin:0;color:var(--t-muted);font-weight:600;font-size:var(--t-fs-sm)}
+.p-extra .p-card{background:var(--t-surface)}

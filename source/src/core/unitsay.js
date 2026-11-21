@@ -26,7 +26,7 @@ window.HS_UNIT_SAY = (function () {
   };
   const S = {
     clean, cards,
-    idea: L => join(['الفكرة الرئيسة: ' + clean(L.idea)]),
+    idea: L => join(['الفكرة الرئيسية: ' + clean(L.idea)]),
     card: c => join(c.flatMap(blockText)),
     remember: L => join(['احفظ هذا', ...L.remember]),
     q: q => join([String(q.q || '').replace(/_{2,}/g, ' فراغ ')]),

@@ -177,7 +177,7 @@ function renderLesson(L) {
   const cards = SAY.cards(L);
   M().innerHTML = `
   <div class="card"><h2>${L.em} الدرس ${ar(i + 1)}: ${L.title}</h2>
-    <div class="idea"><span class="em" aria-hidden="true">💡</span><div><b>الفكرة الرئيسة:</b> ${L.idea}</div>${sayBtn(SAY.idea(L), 'استمع', 'sm')}
+    <div class="idea"><span class="em" aria-hidden="true">💡</span><div><b>الفكرة الرئيسية:</b> ${L.idea}</div>${sayBtn(SAY.idea(L), 'استمع', 'sm')}
 </div>
     <div class="m-row"><span>إتقانك لهذا الدرس</span><b>${ar(pct(m))}٪</b></div>${meter(m)}</div>
   ${cards.map(c => `<div class="card">${sayBtn(SAY.card(c), 'استمع للشرح', 'top')}${c.map(block).join('')}</div>`).join('')}

@@ -15,7 +15,7 @@ UNITS._template = {
   lessons: [
     {
       id: 'l1', em: '🔬', title: 'عنوان الدرس', short: 'وصف قصير يظهر في الخريطة',
-      idea: 'الفكرة الرئيسة في جملة واحدة.',
+      idea: 'الفكرة الرئيسية في جملة واحدة.',
       /* blocks, drawn in order. A "tiles" block without h joins the card before it.
          { t:'text', h:'عنوان (اختياري)', html:'...' }
          { t:'tiles', h:'...', items:[{ em:'🌱', b:'عنوان', p:'شرح', tone:'green|sky|sun|berry|earth|violet' }] }

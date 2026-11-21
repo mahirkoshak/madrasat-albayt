@@ -88,7 +88,7 @@
     const ks = HS.profiles().filter(p => !r.for || r.for === p.id).map(p => { const rate = HS.earnRate(p.id); return rate ? `${esc(p.name)}: ${HS.count(Math.max(1, Math.ceil(r.cost / rate)), HS.N.day)}` : ''; }).filter(Boolean);
     return ks.length ? '⏳ تقريبًا: ' + ks.join(' · ') : '';
   }
-  const barLabel = () => `متجر الهدايا: عندك ${ar(HS.diamonds())} ماسة، و${ar(HS.toNextDiamond())} نجمات من ${ar(HS.STARS_PER_DIAMOND)} للماسة التالية`;
+  const barLabel = () => `متجر الهدايا: عندك ${ar(HS.diamonds())} ألماس، و${ar(HS.toNextDiamond())} نجمات من ${ar(HS.STARS_PER_DIAMOND)} للألماسة التالية`;
   HS.on('stars', () => { const b = document.getElementById('barDia'), y = document.getElementById('barYs'), btn = document.querySelector('.gb-stars');
     if (b) b.textContent = ar(HS.diamonds()); if (y) y.textContent = ar(HS.toNextDiamond()); if (btn) btn.setAttribute('aria-label', barLabel()); });
   /* the child's avatar in the top bar smiles for a moment: after a right answer, and longer for a new diamond */
@@ -110,7 +110,7 @@
   }
   const fx0 = HS.fx; HS.fx = k => { fx0(k); if (k === 'ok' || k === 'win' || k === 'combo') smile(900); };
   HS.on('diamond', n => { smile(2000); const b = document.querySelector('.gb-stars'); if (b) { b.classList.remove('hs-pop'); void b.offsetWidth; b.classList.add('hs-pop'); }
-    HS.toast(`💎 +${ar(n)} ماسة!`, 1600); });
+    HS.toast(`💎 +${ar(n)} ألماس!`, 1600); });
 
   /* ---------- online sync (Firebase): one family code shared by every device ---------- */
   const SYNC_TXT = { off: 'غير مفعّلة', connecting: '⏳ جاري الاتصال…', on: '✅ متزامن', offline: '📴 بدون إنترنت: يحفظ هنا ويرسل لاحقًا', error: '⚠️ تعذّر الاتصال، سنحاول مرة أخرى' };
@@ -123,7 +123,7 @@
       ? `<div class="pp-acc"><p>✅ مسجّل الدخول: <b dir="ltr">${esc(acc.email || acc.name)}</b></p>
           <p class="pp-note">📱 من جوالك تستطيع الآن: متابعة تقدّم كل طفل مباشرة، والموافقة على الهدايا التي يطلبها، وتغيير صفّه والمواد الصعبة. على جهاز الطفل سجّل الدخول مرة واحدة بنفس الحساب.</p>
           <div class="pp-actions"><button type="button" class="p-btn sec" id="ppSignOut">تسجيل الخروج من هذا الجهاز</button></div></div>`
-      : `<div class="pp-acc"><p class="pp-note">سجّل الدخول مرة واحدة على كل جهاز (جوالك، آيباد الطفل، اللابتوب): يظهر الأطفال وماساتهم وتقدّمهم في كل مكان، وتتحكم من جوالك: تتابع التقدّم، توافق على الهدايا، وتغيّر المواد الصعبة.</p>
+      : `<div class="pp-acc"><p class="pp-note">سجّل الدخول مرة واحدة على كل جهاز (جوالك، آيباد الطفل، اللابتوب): يظهر الأطفال وألماسهم وتقدّمهم في كل مكان، وتتحكم من جوالك: تتابع التقدّم، توافق على الهدايا، وتغيّر المواد الصعبة.</p>
           <div class="pp-actions"><button type="button" class="p-btn pp-g" id="ppSignG">${G} الدخول بحساب Google</button><button type="button" class="p-btn pp-a" id="ppSignA">${A} الدخول بحساب Apple</button></div>
           <p class="pp-note" id="ppSignE" role="alert"></p></div>`;
     return `${signin}
@@ -178,7 +178,7 @@
     document.body.insertAdjacentHTML('beforeend', `<div class="sh-gift" id="shGift" role="dialog" aria-modal="true" aria-label="مفاجأة"><div class="sh-gift-in">
       <div class="big">${HS.art('gift-box', { fb: '🎁' })}</div><h2>مفاجأة!</h2><p class="sh-gift-n">+ 💎 ${ar(n)}</p>${msgs.map(m => `<p class="sh-gift-m">«${esc(m)}»</p>`).join('')}
       <button type="button" class="p-btn" id="shGiftOk">شكرًا! 💛</button></div></div>`);
-    HS.fx('win'); HS.party(); HS.speak([['مفاجأة! حصلت على ' + n + ' ماسة', 'ar']]);
+    HS.fx('win'); HS.party(); HS.speak([['مفاجأة! حصلت على ' + n + ' ألماس', 'ar']]);
     document.getElementById('shGiftOk').onclick = () => { HS.seeGifts(me.id); document.getElementById('shGift').remove(); route(); };
   }
   function shop() {
@@ -188,13 +188,13 @@
       : c === 'stars' ? `<span class="sh-need">باقي 💎 ${ar(r.cost - bal)}</span>`
       : `<button type="button" class="p-btn ${buying === r.id ? 'warn' : ''}" data-buy="${r.id}">${buying === r.id ? 'متأكد؟ اضغط مرة ثانية ✅' : 'اشترِ'}</button>`; };
     P.innerHTML = `<div class="sh-head">${me ? `<span class="p-kid-av" style="background:${HS.kidColor(me)}">${HS.avatar(me)}</span>` : ''}
-        <div><h1 class="p-title">🛒 متجر الهدايا</h1><p class="sh-bal">عندك <b>💎 ${ar(bal)}</b> <small>· ⭐ ${ar(HS.toNextDiamond())} من ${ar(HS.STARS_PER_DIAMOND)} للماسة التالية</small></p></div></div>
+        <div><h1 class="p-title">🛒 متجر الهدايا</h1><p class="sh-bal">عندك <b>💎 ${ar(bal)}</b> <small>· ⭐ ${ar(HS.toNextDiamond())} من ${ar(HS.STARS_PER_DIAMOND)} للألماسة التالية</small></p></div></div>
       ${wait.length ? `<h3 class="sh-h">🎟️ كوبوناتك: اعرضها على بابا أو ماما</h3><div class="sh-coupons">${wait.map(o => `<div class="sh-coupon"><span class="em">${HS.rewardArt(o)}</span><div><b>${esc(o.name)}</b><small>اشتريتها ${fmtDate(o.t)} · 💎 ${ar(o.cost)}</small></div><span class="sh-stamp">ينتظر</span></div>`).join('')}</div>` : ''}
       ${goal ? `<div class="sh-goal"><span class="em">${HS.rewardArt(goal)}</span><div class="sh-goal-tx"><small>🎯 هدفك</small><b>${esc(goal.name)}</b>
           <div class="hs-meter ${bal >= goal.cost ? '' : 'mid'}"><i style="width:${pct(bal, goal.cost)}%"></i></div>
           <span>${bal >= goal.cost ? '🎉 تقدر تشتريه الآن!' : `💎 ${ar(bal)} من ${ar(goal.cost)} · باقي ${ar(goal.cost - bal)}`}</span></div>
           <button type="button" class="sh-x" data-goal="" aria-label="إلغاء الهدف">✕</button></div>`
-        : `<p class="sh-tip">🎯 اختر هدية واضغط «🎯 هدفي» لتجمع لها الماسات. 💎 تأتي من موادك المهمة، وكل ١٠ نجوم ⭐ تصير ماسة.</p>`}
+        : `<p class="sh-tip">🎯 اختر هدية واضغط «🎯 هدفي» لتجمع لها الألماس. 💎 تأتي من موادك المهمة، وكل ١٠ نجوم ⭐ تصير ألماسة.</p>`}
       <div class="sh-grid">${rs.map(r => { const c = HS.cantBuy(r), isGoal = goal && goal.id === r.id;
         return `<div class="sh-card ${c ? '' : 'can'} ${isGoal ? 'goal' : ''}" data-say="${r.id}"><span class="em">${HS.rewardArt(r)}</span><b>${esc(r.name)}</b><span class="sh-price">💎 ${ar(r.cost)}</span>
           <div class="hs-meter ${c ? 'mid' : ''}"><i style="width:${pct(bal, r.cost)}%"></i></div>${state(r)}
@@ -202,7 +202,7 @@
           ${isGoal ? '' : `<button type="button" class="sh-goalbtn" data-goal="${r.id}">🎯 هدفي</button>`}</div>`; }).join('') || `<div class="p-empty">${HS.mascot('point', { small: true, fb: '' })}<p>لا توجد مكافآت بعد. اطلبها من بابا أو ماما.</p></div>`}</div>
       <div class="sh-idea">${ideaOpen ? `<form class="p-inline" id="shIdeaF"><input id="shIdea" maxlength="60" placeholder="مثال: رحلة إلى البحر" aria-label="فكرتك"><button type="submit" class="p-btn">أرسل</button></form>`
         : `<button type="button" class="p-btn sec" id="shIdeaB">💡 عندي فكرة مكافأة</button>`}</div>
-      ${old.length ? `<h3 class="sh-h small">آخر المكافآت</h3><ul class="sh-old">${old.map(o => `<li>${o.em} ${esc(o.name)} · ${o.st === 'done' ? '✅ استلمتها' : '↩️ رجعت الماسات'}</li>`).join('')}</ul>` : ''}`;
+      ${old.length ? `<h3 class="sh-h small">آخر المكافآت</h3><ul class="sh-old">${old.map(o => `<li>${o.em} ${esc(o.name)} · ${o.st === 'done' ? '✅ استلمتها' : '↩️ رجع الألماس'}</li>`).join('')}</ul>` : ''}`;
     P.querySelectorAll('[data-buy]').forEach(b => b.onclick = e => {
       e.stopPropagation(); const id = b.dataset.buy;
       if (buying !== id) { buying = id; HS.fx('tap'); return shop(); }
@@ -213,7 +213,7 @@
     P.querySelectorAll('[data-goal]').forEach(b => b.onclick = e => { e.stopPropagation(); HS.setGoal(b.dataset.goal); HS.fx('tap'); if (b.dataset.goal) HS.toast('🎯 صار هدفك'); shop(); window.scrollTo(0, 0); });
     // tap a card to hear it (for children who can't read yet)
     P.querySelectorAll('[data-say]').forEach(c => c.onclick = () => { const r = rs.find(x => x.id === c.dataset.say), k = HS.cantBuy(r);
-      HS.speak([[r.name + '. ' + r.cost + ' ماسة. ' + (k === 'stars' ? 'باقي ' + (r.cost - bal) + ' ماسة' : k === 'week' ? 'خلصت هذا الأسبوع' : 'تقدر تشتريها'), 'ar']]); });
+      HS.speak([[r.name + '. ' + r.cost + ' ألماس. ' + (k === 'stars' ? 'باقي ' + (r.cost - bal) + ' ألماس' : k === 'week' ? 'خلصت هذا الأسبوع' : 'تقدر تشتريها'), 'ar']]); });
     const ib = document.getElementById('shIdeaB'); if (ib) ib.onclick = () => { ideaOpen = true; shop(); document.getElementById('shIdea').focus(); };
     const f = document.getElementById('shIdeaF'); if (f) f.onsubmit = e => { e.preventDefault(); const v = document.getElementById('shIdea').value.trim(); if (v) { HS.addIdea(v); HS.toast('💡 وصلت فكرتك لبابا وماما'); } ideaOpen = false; shop(); };
     giftPopup();
@@ -349,7 +349,7 @@
     const r = reviews(), out = [], me = HS.current(), nf = me && me.grade ? nextFocus(me) : null;
     if (nf) out.push(`<section class="p-panel p-next" aria-labelledby="pNx"><h2 id="pNx"><span aria-hidden="true">💎</span> خطوتك التالية</h2>
         <button type="button" class="p-go" data-nav="${nf.nav}"><span class="p-go-tile" aria-hidden="true">${HS.art(nf.art, { fb: nf.em, small: true })}</span>
-        <span class="p-go-tx"><small>${nf.where ? nf.where + ' · ' : ''}مادة تركيز: تعطي ماسات</small><b>${nf.name}</b></span><span class="go">${I.fwd}</span></button></section>`);
+        <span class="p-go-tx"><small>${nf.where ? nf.where + ' · ' : ''}مادة تركيز: تعطي ألماسًا</small><b>${nf.name}</b></span><span class="go">${I.fwd}</span></button></section>`);
     if (r.items.length) out.push(`<section class="p-panel p-review" aria-labelledby="pRv"><h2 id="pRv"><span aria-hidden="true">📅</span> مراجعة اليوم</h2>
         <p>أسئلة أخطأت فيها أو حان وقت تذكّرها:</p><div class="p-rv-list">${r.items.map(i => `<button type="button" class="p-rv" data-nav="${i.nav}"><span>${i.name}</span><b>${HS.count(i.n, i.noun)}</b><span class="go">${I.fwd}</span></button>`).join('')}</div></section>`);
     else if (r.seen) out.push(`<section class="p-panel p-review ok" aria-labelledby="pRv"><h2 id="pRv"><span aria-hidden="true">✅</span> لا توجد مراجعة اليوم</h2><p>كل ما تعلّمته في موعده. جرّب درسًا جديدًا أو اختبارًا.</p></section>`);
@@ -364,23 +364,23 @@
     if (list.length && !named) { try { history.replaceState(null, '', '#who'); } catch (e) {} bar('who'); return who(); }
     const kidsRow = () => named ? '' : kidsRowAll();
     const foot = `<footer class="p-foot">${HS.sync && HS.sync.family() ? `<p class="p-cloud" id="pCloud">${HS.sync.status() === 'on' ? '☁️ محفوظ أونلاين' : ''}</p>` : ''}
-      <p>${HS.sync && HS.sync.family() ? 'التقدّم والماسات محفوظة على هذا الجهاز وأونلاين' : 'التقدّم والماسات تُحفظ على هذا الجهاز'} · صفحة الأب من القفل 🔒 في الأعلى</p></footer>`;
+      <p>${HS.sync && HS.sync.family() ? 'التقدّم والألماس محفوظان على هذا الجهاز وأونلاين' : 'التقدّم والألماس يُحفظان على هذا الجهاز'} · صفحة الأب من القفل 🔒 في الأعلى</p></footer>`;
     if (named && me.grade) {
       P.innerHTML = hero() + kidsRow() + today() + myGrade(me) + `
-        <section class="p-sec" aria-label="المزيد"><div class="p-grid">${dictCard(me)}${atlasCard()}
-          <button type="button" class="p-card p-explore" data-nav="explore"><span class="p-tile" aria-hidden="true">🧭</span><span class="tx"><b>استكشف</b><small>صفوف ومواد أخرى، وألعاب الروضة</small></span><span class="go">${I.fwd}</span></button></div></section>` + foot;
+        <section class="p-sec" aria-label="صفوف أخرى"><div class="p-grid">
+          <button type="button" class="p-card p-explore" data-nav="explore"><span class="p-tile" aria-hidden="true">🧭</span><span class="tx"><b>صفوف ومواد أخرى</b><small>كل الصفوف والمواد، وألعاب الروضة</small></span><span class="go">${I.fwd}</span></button></div></section>` + extras(dictCard(me) + atlasCard()) + foot;
       return bindPicker(), giftPopup();
     }
     P.innerHTML = hero() + kidsRow() + (named ? `<button type="button" class="p-panel p-pickgrade" id="pPickGrade"><span aria-hidden="true">🎒</span><span><b>في أي صف أنت؟</b><small>اختر صفّك لتظهر لك مواده هنا</small></span><span class="go">${I.fwd}</span></button>` : '') + today() + `
       <section class="p-sec" aria-labelledby="pGr"><h2 id="pGr" class="p-h2">ماذا نتعلّم اليوم؟</h2>
-        <div class="p-grid">${CATALOG.map(y => card(y, y.app ? 'app-' + y.app : 'y-' + y.id)).join('')}</div></section>` + foot;
+        <div class="p-grid">${CATALOG.filter(y => !y.app).map(y => card(y, 'y-' + y.id)).join('')}</div></section>` + extras(CATALOG.filter(y => y.app && APPS[y.app]).map(y => card(y, 'app-' + y.app)).join('')) + foot;
     const pg = document.getElementById('pPickGrade'); if (pg) pg.onclick = () => setupGo({ step: 'grade', who: 'kid', pid: me.id, grade: me.grade });
     bindPicker(); giftPopup();
   }
   function shopButton() {
     const g = HS.goal(), bal = HS.stars(), w = HS.orders().some(o => o.st === 'wait');
     return `<button type="button" class="p-shop" data-nav="shop"><span class="em" aria-hidden="true">${g ? HS.rewardArt(g) : '🛒'}</span><span class="tx"><small>${g ? '🎯 هدفك' : 'متجر الهدايا'}</small><b>${g ? esc(g.name) : `عندك 💎 ${ar(bal)}`}</b>
-      ${g ? `<span class="hs-meter ${bal >= g.cost ? '' : 'mid'}"><i style="width:${pct(bal, g.cost)}%"></i></span>` : ''}<span class="p-shop-s">${g ? (bal >= g.cost ? '🎉 تقدر تشتريه الآن!' : `💎 ${ar(bal)} من ${ar(g.cost)}`) : 'هدايا تشتريها بالماس 💎'}${w ? ' · 🎟️ عندك كوبون' : ''}</span></span><span class="go">${I.fwd}</span></button>`;
+      ${g ? `<span class="hs-meter ${bal >= g.cost ? '' : 'mid'}"><i style="width:${pct(bal, g.cost)}%"></i></span>` : ''}<span class="p-shop-s">${g ? (bal >= g.cost ? '🎉 تقدر تشتريه الآن!' : `💎 ${ar(bal)} من ${ar(g.cost)}`) : 'هدايا تشتريها بالألماس 💎'}${w ? ' · 🎟️ عندك كوبون' : ''}</span></span><span class="go">${I.fwd}</span></button>`;
   }
 
 
@@ -437,7 +437,7 @@
     if (W.step === 'focus') {
       const ch = focusChoices(W.grade), who = kid ? esc(kid.name) : esc(W.name || 'الطفل');
       wizStep(`أي ${W.grade === 'kg' ? 'الألعاب' : 'المواد'} يحتاج فيها <span class="nm">${who}</span> مساعدة أكثر؟`,
-        `ما تختاره هنا يعطي <b>ماسات 💎</b> تُشترى بها الهدايا. باقي الأنشطة تعطي <b>نجومًا ⭐</b>، وكل ${ar(HS.STARS_PER_DIAMOND)} نجوم تصير ماسة واحدة.`,
+        `ما تختاره هنا يعطي <b>ألماسًا 💎</b> تُشترى بها الهدايا. باقي الأنشطة تعطي <b>نجومًا ⭐</b>، وكل ${ar(HS.STARS_PER_DIAMOND)} نجوم تصير ألماسة واحدة.`,
         `<div class="wz-focus" role="group" aria-label="مواد التركيز">${ch.map(c => `<button type="button" class="wz-f ${W.focus.includes(c.id) ? 'on' : ''}" aria-pressed="${W.focus.includes(c.id)}" data-f="${c.id}"><span class="em" aria-hidden="true">${c.art ? HS.art(c.art, { small: true, fb: c.em }) : c.em}</span><b>${c.name}</b>${c.soon ? '<small>دروسها قريبًا</small>' : ''}<span class="wz-tick" aria-hidden="true">💎</span></button>`).join('')}</div>
         <p class="pp-note">يمكنك تغييرها في أي وقت من صفحة الأب 🔒.</p>${W.from === 'parent' && kid && kid.needFocus ? '<button type="button" class="p-link" id="wzLater">لاحقًا: افتح صفحة الأب الآن</button>' : ''}`,
         { ready: W.focus.length > 0, nextText: HS.settings().pin ? 'تم ✓' : 'التالي ←', onNext: () => { if (!HS.settings().pin) { W.step = 'pin'; return setup(); } finish(); },
@@ -460,7 +460,7 @@
       const me = HS.profiles().find(x => x.id === W.done) || HS.current();
       P.innerHTML = `<section class="wz done" aria-labelledby="wzT"><div class="wz-done-av" style="background:${HS.kidColor(me)}">${HS.avatarHappy(me, { big: true })}</div>
         <h1 class="p-title" id="wzT">جاهز يا <span class="nm">${esc(me.name)}</span>! 🎉</h1>
-        <p class="p-sub">${HS.focusOf(me).length ? `تركيزك: ${focusChoices(me.grade).filter(c => HS.focusOf(me).includes(c.id)).map(c => c.name).join('، ')}. فيها تجمع الماسات 💎.` : 'كل نشاط يعطيك نجومًا ⭐، وكل ١٠ نجوم تصير ماسة 💎 تشتري بها الهدايا.'}</p>
+        <p class="p-sub">${HS.focusOf(me).length ? `تركيزك: ${focusChoices(me.grade).filter(c => HS.focusOf(me).includes(c.id)).map(c => c.name).join('، ')}. فيها تجمع الألماس 💎.` : 'كل نشاط يعطيك نجومًا ⭐، وكل ١٠ نجوم تصير ماسة 💎 تشتري بها الهدايا.'}</p>
         <div class="wz-nav"><button type="button" class="p-btn" id="wzGo">${W.from === 'parent' ? 'رجوع لصفحة الأب' : 'هيا نبدأ ←'}</button></div></section>`;
       HS.party && HS.party(); HS.fx('win');
       document.getElementById('wzGo').onclick = () => { const to = W.from === 'parent' ? 'parent' : 'home'; W = null; if (location.hash === '#' + to) route(); else location.hash = to; };
@@ -494,7 +494,7 @@
     const f = HS.focusOf(me), subs = y.subjects.slice().sort((a, b) => (f.includes(b.id) ? 1 : 0) - (f.includes(a.id) ? 1 : 0));
     const kgFocus = me.grade === 'kg' && f.length ? `<p class="p-focus-kg">💎 ألعاب التركيز: ${HS.KG_GROUPS.filter(g => f.includes(g.id)).map(g => g.em + ' ' + g.name).join(' · ')}</p>` : '';
     return `<section class="p-sec" aria-labelledby="pMy"><h2 id="pMy" class="p-h2">${tile(y, true)} ${y.name}</h2>${kgFocus}
-      <div class="p-grid">${subs.map(sb => { const c = card(sb, navOf(sb) || `s-${y.id}-${sb.id}`); return f.includes(sb.id) && me.grade !== 'kg' ? c.replace('<span class="tx">', '<span class="p-focus" aria-label="مادة تركيز: تعطي ماسات">💎 تركيز</span><span class="tx">') : c; }).join('')}</div></section>`;
+      <div class="p-grid">${subs.map(sb => { const c = card(sb, navOf(sb) || `s-${y.id}-${sb.id}`); return f.includes(sb.id) && me.grade !== 'kg' ? c.replace('<span class="tx">', '<span class="p-focus" aria-label="مادة تركيز: تعطي ألماسًا">💎 تركيز</span><span class="tx">') : c; }).join('')}</div></section>`;
   }
   /** «خطوتك التالية»: the next unit in a focus subject (the one practised last, or the first not mastered) */
   function nextFocus(me) {
@@ -506,6 +506,11 @@
     if (!cand.length) return null;
     const best = cand.slice().sort((a, b) => b.t - a.t)[0];
     return { nav: navOf(best.u), name: best.u.name, where: best.sb.name, em: best.u.em, art: best.u.art };
+  }
+  /** the dictionary and the atlas: extras for curiosity, set apart from the school subjects so they don't read as part of the curriculum */
+  function extras(cards) {
+    return cards ? `<section class="p-sec p-extra" aria-labelledby="pEx"><div class="p-extra-h"><h2 id="pEx" class="p-h2">ركن الاستكشاف</h2>
+      <p>إضافات للفضول والمتعة، ليست من المنهج المدرسي</p></div><div class="p-grid">${cards}</div></section>` : '';
   }
   function dictCard(me) {
     const d = CATALOG.find(x => x.app === 'dict'); if (!d) return '';
@@ -582,7 +587,7 @@
     // what needs the parent now: gifts to hand over, a missing grade, the next lesson to study
     const todo = [
       ...waits.map(o => `<div class="pp-todo gift"><span class="em">${HS.rewardArt(o)}</span><span class="tx"><b>${esc(o.name)}</b><small>اشتراها ${fmtDate(o.t)} بـ ${o.u === 'dia' ? '💎' : '⭐'} ${ar(o.cost)}. أعطه إياها قريبًا، فالمكافأة المتأخرة يضعف أثرها.</small></span>
-        <span class="pp-todo-b"><button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع الماسات</button></span></div>`),
+        <span class="pp-todo-b"><button type="button" class="p-btn" data-ord="${k.id}|${o.id}|done">✅ أعطيته</button><button type="button" class="p-btn sec" data-ord="${k.id}|${o.id}|back">↩️ إرجاع الألماس</button></span></div>`),
       ...(!guest && !k.grade ? [`<div class="pp-todo"><span class="em">🎒</span><span class="tx"><b>اختر صفّ ${esc(k.name)}</b><small>حتى تظهر له مواد صفّه في الصفحة الرئيسية.</small></span><span class="pp-todo-b"><button type="button" class="p-btn" data-setup="${k.id}">اختر الصف</button></span></div>`] : []),
       ...ur.filter(r => r.next).slice(0, 2).map(r => `<div class="pp-todo"><span class="em">➡️</span><span class="tx"><b>${r.next}</b><small>${r.em} ${r.title}</small></span></div>`)
     ];
@@ -598,7 +603,7 @@
       <div class="pp-prof"><span class="pp-av" style="background:${HS.kidColor(k)}">${HS.avatar(k)}</span>
         <div class="pp-who"><h2 class="nm">${esc(k.name)}</h2>
           ${guest ? '' : `<div class="pp-focus"><span class="pp-chip grade">${k.grade ? gradeName(k.grade) : 'بدون صف'}</span>${focus.map(c => `<span class="pp-chip">💎 ${c.name}</span>`).join('')}<button type="button" class="pp-link" data-setup="${k.id}">تعديل الصف والمواد</button></div>`}</div>
-        <div class="pp-figs">${fig('💎 ' + ar(HS.diamonds(k.id)), 'ماسات للصرف')}${fig('⭐ ' + ar(HS.yellow(k.id)), 'نجمات')}${fig('🔥 ' + ar(HS.dayStreak(k.id)), 'أيام متتالية')}${fig('📅 ' + ar(d.days.length), last ? 'أيام تعلّم · آخرها ' + fmtDate(Date.parse(last)) : 'أيام تعلّم')}</div></div>
+        <div class="pp-figs">${fig('💎 ' + ar(HS.diamonds(k.id)), 'ألماس للصرف')}${fig('⭐ ' + ar(HS.yellow(k.id)), 'نجمات')}${fig('🔥 ' + ar(HS.dayStreak(k.id)), 'أيام متتالية')}${fig('📅 ' + ar(d.days.length), last ? 'أيام تعلّم · آخرها ' + fmtDate(Date.parse(last)) : 'أيام تعلّم')}</div></div>
       ${todo.length ? `<h3 class="pp-h">يحتاجك الآن</h3><div class="pp-todos">${todo.join('')}</div>` : ''}
       <h3 class="pp-h">التقدّم</h3>
       ${!ur.length && !kg.length && !dOn && !aOn ? `<div class="pp-card pp-empty"><span class="em">🌱</span><p>لم يبدأ ${esc(k.name)} بعد. أول نشاط يلعبه سيظهر هنا: الإتقان، وما يخطئ فيه، والدرس التالي.</p></div>` : ''}
@@ -613,8 +618,8 @@
         ${kg.length ? `<article class="pp-card"><header><h4>🔤 ألعاب الروضة</h4></header><table class="pp-t"><thead><tr><th>اللعبة</th><th>المستوى</th><th>صح من أول مرة</th></tr></thead><tbody>${kg.map(g => `<tr><td>${g.name}</td><td>${g.max > 3 ? ar(g.lv || 1) + ' / ' + ar(g.max) : '⭐'.repeat(g.lv || 1)}</td><td>${pct0(g.c / (g.c + g.w))} <small>(${ar(g.c + g.w)})</small></td></tr>`).join('')}</tbody></table></article>` : ''}
       </div>
       ${!guest && shopOn() ? `<h3 class="pp-h">التشجيع</h3><div class="pp-card pp-gift"><p class="pp-goal">${goal ? `🎯 يجمع لـ <b>${esc(goal.em)} ${esc(goal.name)}</b>: ${ar(HS.stars(k.id))} من ${ar(goal.cost)} 💎` : '🎯 لم يختر هدفًا من المتجر بعد'}</p>
-        <form class="pp-gift-f" data-gift="${k.id}"><span class="pp-rl"><b>🎁 ماسات مفاجأة</b><small>المفاجأة لا تُضعف حبّ التعلّم مثل المكافأة الموعودة. امدح بها جهدًا محددًا.</small></span>
-          <div class="pp-gift-in"><select aria-label="عدد الماسات">${[5, 10, 20, 50].map(n => `<option value="${n}">💎 ${ar(n)}</option>`).join('')}</select>
+        <form class="pp-gift-f" data-gift="${k.id}"><span class="pp-rl"><b>🎁 ألماس مفاجأة</b><small>المفاجأة لا تُضعف حبّ التعلّم مثل المكافأة الموعودة. امدح بها جهدًا محددًا.</small></span>
+          <div class="pp-gift-in"><select aria-label="عدد الألماس">${[5, 10, 20, 50].map(n => `<option value="${n}">💎 ${ar(n)}</option>`).join('')}</select>
           <input maxlength="60" placeholder="رسالة قصيرة: فخور فيك لأنك ساعدت أختك" aria-label="رسالة"><button type="submit" class="p-btn">أرسل</button></div></form></div>` : ''}
       ${APPS.kg && isKg && !guest ? kgLevels(k.id) : ''}
       ${guest ? '' : `<div class="pp-quiet"><button type="button" class="pp-link" data-ren="${k.id}">✏️ تعديل الاسم</button><button type="button" class="pp-link" data-recol="${k.id}">🎨 تغيير اللون</button>
@@ -624,7 +629,7 @@
   }
   function ppShop() {
     return `<section class="pp-pane">
-      <div class="pp-card pp-list">${sw('ppShop', shopOn(), 'إظهار متجر الهدايا للأطفال', 'يشترون الهدايا بالماس 💎 الذي يجمعونه في المواد الصعبة')}</div>
+      <div class="pp-card pp-list">${sw('ppShop', shopOn(), 'إظهار متجر الهدايا للأطفال', 'يشترون الهدايا بالألماس 💎 الذي يجمعونه في المواد الصعبة')}</div>
       ${HS.ideas().length ? `<h3 class="pp-h">💡 أفكار اقترحها الأطفال</h3><div class="pp-card pp-ideas">${HS.ideas().map(i => `<div class="pp-idea"><span>${esc(i.name)}: «${esc(i.text)}»</span><button type="button" class="p-btn sec" data-idea-add="${i.id}">＋ للمتجر</button><button type="button" class="pp-x" data-idea-del="${i.id}" aria-label="حذف">✕</button></div>`).join('')}</div>` : ''}
       <h3 class="pp-h">الهدايا والأسعار</h3>
       <p class="pp-cap">«لمن» يجعل الهدية لطفل واحد، لأن الروضة والصف الرابع يجمعون بسرعات مختلفة. «في الأسبوع» = أكثر عدد يشتريه في ٧ أيام. تحت كل هدية: كم يومًا يحتاج كل طفل تقريبًا.</p>
@@ -640,8 +645,8 @@
         <li><b>أسعار صغيرة ومتوسطة وكبيرة:</b> أول هدية يجب أن يصل لها خلال يوم أو يومين، وإلا يفقد الحماس.</li>
         <li><b>أعطِ الهدية بسرعة:</b> كلما تأخرت بعد الشراء ضعف أثرها. الهدايا المنتظرة تظهر في تبويب كل طفل وعلى القفل في الأعلى.</li>
         <li><b>قلّل هدايا الشاشة:</b> دراسة من جامعة Guelph وجدت أن الأطفال الذين تُستعمل الشاشة مكافأةً لهم يقضون أمامها وقتًا أطول. لذلك عليها حد أسبوعي، والأفضل الوقت معكم والتجارب.</li>
-        <li><b>لا تأخذ النجوم عقابًا:</b> النجوم والماسات تُكسب ولا تُسحب.</li>
-        <li><b>المدح أولًا:</b> امدح الجهد بكلام محدد، واستعمل الماسات المفاجأة أحيانًا بدل الوعود.</li>
+        <li><b>لا تأخذ النجوم عقابًا:</b> النجوم والألماس تُكسب ولا تُسحب.</li>
+        <li><b>المدح أولًا:</b> امدح الجهد بكلام محدد، واستعمل الألماس المفاجئ أحيانًا بدل الوعود.</li>
         <li><b>دعهم يقترحون:</b> الطفل يعمل أكثر لهدية اختارها، واقتراحاتهم تظهر هنا.</li></ul></details>
     </section>`;
   }
@@ -706,7 +711,7 @@
     });
     P.querySelectorAll('[data-reset]').forEach(b => b.onclick = () => { const k = 'r' + b.dataset.reset; if (confirmKey === k) { HS.resetProgress(b.dataset.reset); confirmKey = ''; } else confirmKey = k; parent(); });
     P.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { const k = 'd' + b.dataset.del; if (confirmKey === k) { HS.removeProfile(b.dataset.del); confirmKey = ''; ptab = ''; } else confirmKey = k; parent(); });
-    P.querySelectorAll('[data-ord]').forEach(b => b.onclick = () => { const [k, o, how] = b.dataset.ord.split('|'); HS.settleOrder(k, o, how); HS.toast(how === 'done' ? '✅ تم' : '↩️ رجعت الماسات'); parent(); });
+    P.querySelectorAll('[data-ord]').forEach(b => b.onclick = () => { const [k, o, how] = b.dataset.ord.split('|'); HS.settleOrder(k, o, how); HS.toast(how === 'done' ? '✅ تم' : '↩️ رجع الألماس'); parent(); });
     P.querySelectorAll('[data-gift]').forEach(f => f.onsubmit = e => { e.preventDefault(); const n = +f.querySelector('select').value, m = f.querySelector('input').value.trim();
       HS.gift(f.dataset.gift, n, m); HS.toast(`🎁 أُرسلت 💎 ${ar(n)}، ستظهر له كمفاجأة`); parent(); });
     // gifts tab
